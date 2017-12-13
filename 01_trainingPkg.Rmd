@@ -1,11 +1,6 @@
----
-title: "Training outline"
-author: "Jessica Couture"
-date: "9/29/2016"
-output: html_document
----
 
-##### _Welcome to NCEAS_
+
+# _Welcome to NCEAS_
 
 Tour (if not given by Ginger), should go over these items:
 

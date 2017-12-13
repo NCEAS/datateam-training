@@ -1,9 +1,4 @@
----
-title: "Arctic training"
-author: "Jessica Couture"
-date: "9/23/2016"
-output: html_document
----
+#Intro to arcticdatautils
 
 ## Editing packages in R
 
