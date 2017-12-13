@@ -9,4 +9,7 @@ github-repo: rstudio/intern_training
 description: "This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects"
 ---
 
+# Welcome {#welcome}
+
+**Welcome. This training program is under active development and testing.**
 
