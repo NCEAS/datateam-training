@@ -5,10 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: rstudio/intern_training
 description: "This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects"
 ---
 
