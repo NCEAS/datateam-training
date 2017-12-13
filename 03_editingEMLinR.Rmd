@@ -236,7 +236,7 @@ physical1 <- pid_to_eml_physical(mn, id1)
 
 REMEMBER, if we are working in the test environment, we set it this way:
 
-```{r set evnironment}
+```{r}
 cn <- CNode('STAGING')
 mn <- getMNode(cn,'urn:node:mnTestARCTIC')
 ```
