@@ -23,14 +23,14 @@ library(digest)
 
 Once we have our libraries loaded we need to tell R which repo we want to be working with. If we are working on the production site, you can set the coordinating node (`cn`) and member node (`mn`) this way:
 
-```{r set evnironment}
+```{r set evnironment, eval= FALSE}
 cn <- CNode('PROD')
 mn <- getMNode(cn,'urn:node:ARCTIC')
 ```
 
 If we are working in the test environment, we set it this way:
 
-```{r set evnironment}
+```{r, eval = FALSE}
 cn <- CNode('STAGING')
 mn <- getMNode(cn,'urn:node:mnTestARCTIC')
 ```
@@ -49,14 +49,14 @@ options(dataone_test_token = "...")
 
 To publish a data package to the site, you will need to publish three types of objects: a metadata object (the .xml metadata file), data object (a .csv or other data files), and a resource map, which links the data objects to the metadata objects. We do this using a function called `publish_object`. To publish a metadata file you would use the following call:
 
-```{r publish object, eval=FALSE}
+```{r, eval=FALSE}
 meta_path <- 'path/to/your/metadata/metadata.xml'
 pid <- publish_object(mn, meta_path, format_id = format_eml())
 ```
 
 This call will save the id of the metadata object to the variable `pid`, which you will need later for the resource map. It also adds a formatID, which identifies what kind of object you just uploaded. Similarly, you can publish data objects like this:
 
-```{r publish object, eval=FALSE}
+```{r, eval=FALSE}
 data_path <- 'path/to/your/data/data.csv'
 data_pid <- publish_object(mn, data_path, format_id = 'text/csv')
 ```

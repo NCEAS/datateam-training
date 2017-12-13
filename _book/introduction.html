@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NCEAS Intern Training</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="NCEAS Intern Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  <meta name="github-repo" content="rstudio/intern_training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NCEAS Intern Training" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  
+
+<meta name="author" content="Jeanette Clark">
+
+
+<meta name="date" content="2017-12-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html">
+<link rel="next" href="attributes.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Placeholder</a></li>
+<li class="chapter" data-level="2" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>2</b> Placeholder</a></li>
+<li class="chapter" data-level="3" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><i class="fa fa-check"></i><b>3</b> devtools::install_github(“NCEAS/arcticdatautils”, ref = “v0.5.0”)</a><ul>
+<li class="chapter" data-level="3.1" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#editing-packages-in-r"><i class="fa fa-check"></i><b>3.1</b> Editing packages in R</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#set-environment"><i class="fa fa-check"></i><b>3.1.1</b> Set environment</a></li>
+<li class="chapter" data-level="3.1.2" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#set-token"><i class="fa fa-check"></i><b>3.1.2</b> Set token</a></li>
+<li class="chapter" data-level="3.1.3" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>3.1.3</b> Publishing a package to the site</a></li>
+<li class="chapter" data-level="3.1.4" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#edit-material"><i class="fa fa-check"></i><b>3.1.4</b> Edit material</a></li>
+<li class="chapter" data-level="3.1.5" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#update-the-data-package-with-the-new-eml-and-file"><i class="fa fa-check"></i><b>3.1.5</b> Update the data package with the new EML and file</a></li>
+<li class="chapter" data-level="3.1.6" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#update-metadata-with-the-otherentities-added"><i class="fa fa-check"></i><b>3.1.6</b> update metadata with the otherEntities added</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="attributes.html"><a href="attributes.html"><i class="fa fa-check"></i><b>5</b> Attributes</a><ul>
+<li class="chapter" data-level="5.1" data-path="attributes.html"><a href="attributes.html#building-the-attribute-table"><i class="fa fa-check"></i><b>5.1</b> Building the attribute table</a></li>
+<li class="chapter" data-level="5.2" data-path="attributes.html"><a href="attributes.html#defining-enumerated-domains"><i class="fa fa-check"></i><b>5.2</b> Defining enumerated domains</a></li>
+<li class="chapter" data-level="5.3" data-path="attributes.html"><a href="attributes.html#generating-the-attribute-list-and-data-table"><i class="fa fa-check"></i><b>5.3</b> Generating the attribute list and data table</a></li>
+<li class="chapter" data-level="5.4" data-path="attributes.html"><a href="attributes.html#adding-a-second-datatable"><i class="fa fa-check"></i><b>5.4</b> Adding a second dataTable</a></li>
+<li class="chapter" data-level="5.5" data-path="attributes.html"><a href="attributes.html#defining-custom-units"><i class="fa fa-check"></i><b>5.5</b> Defining custom units</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="setting-other-entities.html"><a href="setting-other-entities.html"><i class="fa fa-check"></i><b>6</b> Setting other entities</a><ul>
+<li class="chapter" data-level="6.1" data-path="setting-other-entities.html"><a href="setting-other-entities.html#for-files-that-arent-uploaded-yet"><i class="fa fa-check"></i><b>6.1</b> For files that aren’t uploaded yet</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="for-files-that-are-already-uploaded.html"><a href="for-files-that-are-already-uploaded.html"><i class="fa fa-check"></i><b>7</b> For files that are already uploaded</a></li>
+<li class="chapter" data-level="8" data-path="coverage.html"><a href="coverage.html"><i class="fa fa-check"></i><b>8</b> Coverage</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="keywords.html"><a href="keywords.html"><i class="fa fa-check"></i><b>10</b> Keywords</a></li>
+<li class="chapter" data-level="11" data-path="people.html"><a href="people.html"><i class="fa fa-check"></i><b>11</b> People</a></li>
+<li class="chapter" data-level="12" data-path="validating-and-writing-the-eml.html"><a href="validating-and-writing-the-eml.html"><i class="fa fa-check"></i><b>12</b> Validating and Writing the EML</a></li>
+<li class="chapter" data-level="13" data-path="dealing-with-unusual-cases.html"><a href="dealing-with-unusual-cases.html"><i class="fa fa-check"></i><b>13</b> Dealing with unusual cases</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Intern Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Introduction</h1>
+<p>When using the EML R package, you will usually be working with objects of class <code>eml</code>. For example, we can find out what type of object we just created when we ran the <code>read_eml</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(eml)</code></pre></div>
+<pre><code>## [1] &quot;eml&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;EML&quot;</code></pre>
+<p>Each of these <code>eml</code> objects represents a complete EML document (as in: the .xml file) and all of the information inside the <code>.xml</code> file can be viewed and edited with the EML package.</p>
+<p>These <code>eml</code> objects has what are called “slots,” each slot representing an element of the EML document such as “Title” or “Creator” and you will use these “slots” when working with your <code>eml</code> object. You can find out what slots you have available with the <code>slotNames</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml))</code></pre></div>
+<pre><code>##  [1] &quot;.Data&quot;              &quot;access&quot;             &quot;additionalMetadata&quot;
+##  [4] &quot;citation&quot;           &quot;dataset&quot;            &quot;lang&quot;              
+##  [7] &quot;packageId&quot;          &quot;protocol&quot;           &quot;schemaLocation&quot;    
+## [10] &quot;scope&quot;              &quot;slot_order&quot;         &quot;software&quot;          
+## [13] &quot;system&quot;</code></pre>
+<p>You can get at what’s in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., <code>eml@&lt;TAB&gt;</code>):</p>
+<div class="figure">
+<img src="rstudio-autocomplete.png" alt="RStudio Autocompletion" />
+<p class="caption">RStudio Autocompletion</p>
+</div>
+<p>You will notice that the list of slots on the <code>eml</code> object doesn’t include common EML things such as the dataset’s title or the creators. This is because EML (the XML) and the EML R package are both hierarchical. The (incomplete) EML XML for dataset with a title would look something like this:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;eml&gt;</span>
+  <span class="kw">&lt;dataset&gt;</span>
+    <span class="kw">&lt;title&gt;</span>My title goes here...<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/dataset&gt;</span>
+<span class="kw">&lt;/eml</span></code></pre></div>
+<p>You can see that the <code>title</code> is nested inside the <code>dataset</code> and the <code>dataset</code> is nested inside the root <code>eml</code> element of the document.</p>
+<p>Because the <code>title</code> is nested inside the <code>dataset</code> element, it will be a slot on <code>eml@dataset</code> instead of an slot of the main <code>eml</code> object:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml@dataset))</code></pre></div>
+<pre><code>##  [1] &quot;.Data&quot;               &quot;abstract&quot;            &quot;additionalInfo&quot;     
+##  [4] &quot;alternateIdentifier&quot; &quot;associatedParty&quot;     &quot;contact&quot;            
+##  [7] &quot;coverage&quot;            &quot;creator&quot;             &quot;dataTable&quot;          
+## [10] &quot;distribution&quot;        &quot;id&quot;                  &quot;intellectualRights&quot; 
+## [13] &quot;keywordSet&quot;          &quot;lang&quot;                &quot;language&quot;           
+## [16] &quot;maintenance&quot;         &quot;metadataProvider&quot;    &quot;methods&quot;            
+## [19] &quot;otherEntity&quot;         &quot;project&quot;             &quot;pubDate&quot;            
+## [22] &quot;publisher&quot;           &quot;pubPlace&quot;            &quot;purpose&quot;            
+## [25] &quot;references&quot;          &quot;schemaLocation&quot;      &quot;scope&quot;              
+## [28] &quot;series&quot;              &quot;shortName&quot;           &quot;slot_order&quot;         
+## [31] &quot;spatialRaster&quot;       &quot;spatialVector&quot;       &quot;storedProcedure&quot;    
+## [34] &quot;system&quot;              &quot;title&quot;               &quot;view&quot;</code></pre>
+<p><em>Remember, you can just type <code>eml@dataset</code> into your console and hit <TAB> to see this list of slot names. The <code>slotNames</code> function is used for demonstration purposes here.</em></p>
+<p>Slots can be nested in each other and are all based on the EML schema (more info here: <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html" class="uri">https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html</a>).</p>
+<p>Typing in the name of your <code>eml</code> object (in this case, <code>eml</code>, the name of the result of <code>read_eml</code>) and hitting <code>&lt;RETURN&gt;</code> in the console will print the entire EML onto the screen:</p>
+<p><code>eml</code></p>
+<p>Similarly, you can also view different elements of the EML by drilling down into the structure using the @ functionality. This would just print the dataset portion of the EML:</p>
+<p><code>eml@dataset</code></p>
+<p>Going even deeper, this command will print the <code>title</code> element, which is within the dataset element, of the EML document:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title</code></pre></div>
+<pre><code>## An object of class &quot;ListOftitle&quot;
+## [[1]]
+## &lt;title&gt;Subglacial conduit fluid dynamics simulation, Svalbard, Norway&lt;/title&gt;</code></pre>
+<p>Notice than when the last line prints, it doesn’t just print a string - it returns “An object of class <code>ListOftitle</code>.” The EML is composed of different classes of objects that make up these slots. If a slot can have multiple items, it may require an input of a list of a class. You can continue digging down into the EML using subsetting techniques for the S4 object class, with syntax that looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title@.Data[[<span class="dv">1</span>]]@.Data</code></pre></div>
+<pre><code>## [1] &quot;Subglacial conduit fluid dynamics simulation, Svalbard, Norway&quot;</code></pre>
+<p>Notice that this actually prints a character string. If you want to change the title, you could just assign this a new character string value, like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title@.Data[[<span class="dv">1</span>]]@.Data &lt;-<span class="st"> &#39;This is my new title&#39;</span></code></pre></div>
+<p>However, this isn’t best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. Instead, the EML package is used to create new objects of particular classes to put into the document, using the function <code>new</code>.</p>
+<p>The <code>new</code> function has a format that looks like <code>newobject &lt;- new('class', arguments...)</code>. It can be a hard function to use because “class” has to be set to a specific name and the argument structure will vary depending on what the slots are in that class. Because the function is so general, the <code>?new</code> help is not very helpful. In the EML package, a good guess to what the name of the class will be is a slot name (such as “title”). You can explore what slots are available within an object class by creating a new, empty object like this:</p>
+<p><code>test_title &lt;- new('title')</code></p>
+<p>and using the R autocomplete functionality on <code>test_title@</code>. Not that the slots <code>lang</code>, <code>slot_order</code>, <code>schemaLocation</code>, and <code>.Data</code> will always be present, and are set by the EML package automatically according to the required EML and XML schema. The other options will tell you what the arguments following the class name should be. In the case of the title class, the only option is <code>value</code>.</p>
+<p>So, to change the title, you might at first try do something like this:</p>
+<p><code>eml@dataset@title&lt;- new('title', .Data = 'This is my new title')</code></p>
+<p>Unfortunately it returns an error. The error reads:</p>
+<p><code>Error in (function (cl, name, valueClass)  :assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”</code> <code>; is(value, &quot;ListOftitle&quot;) is not TRUE</code></p>
+<p>The error says it cannot assign an object of class “title” to <code>eml@dataset@title</code>, and that there is not a value for <code>ListOftitle</code>. So this means that you have to assign to <code>@title</code> an object of class <code>ListOftitle</code>, which is composed of objects of class <code>title</code>. Even though <code>ListOftitle</code> is it’s own kind of class, we can avoid using the <code>new</code> function again here by simply putting the <code>title</code> object in a vector using the <code>c()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">title &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;title&#39;</span>, <span class="dt">.Data =</span> <span class="st">&#39;This is my new title&#39;</span>)
+eml@dataset@title &lt;-<span class="st"> </span><span class="kw">c</span>(title)</code></pre></div>
+<p>This seems kind of cumbersome, creating first a new title object, and then a list of title, especially since in most cases an EML will only have one title. However, say for some reason you need two titles - you can then do this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">title_second &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;title&#39;</span>, <span class="dt">.Data =</span> <span class="st">&#39;This dataset has two titles&#39;</span>)
+eml@dataset@title &lt;-<span class="st"> </span><span class="kw">c</span>(title, title_second)
+eml@dataset@title</code></pre></div>
+<pre><code>## An object of class &quot;ListOftitle&quot;
+## [[1]]
+## &lt;title&gt;This is my new title&lt;/title&gt; 
+## 
+## [[2]]
+## &lt;title&gt;This dataset has two titles&lt;/title&gt;</code></pre>
+<p>This functionality will prove very useful with other elements (such as dataTable), where there are usually more than one of the same element.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="attributes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

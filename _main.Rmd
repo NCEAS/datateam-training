@@ -1,3 +1,40 @@
+--- 
+title: "NCEAS Intern Training"
+author: "Jeanette Clark"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+github-repo: rstudio/intern_training
+description: "This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects"
+---
+
+# Placeholder
+
+<!--chapter:end:index.Rmd-->
+
+
+# Placeholder
+##### _Welcome to NCEAS_
+##### _Required accounts_
+##### _Open science background reading_
+##### _DataONE_
+##### _Training Exercise_
+
+<!--chapter:end:01_trainingPkg.Rmd-->
+
+
+# devtools::install_github("NCEAS/arcticdatautils", ref = "v0.5.0")
+## Editing packages in R
+### Set environment
+### Set token
+### Publishing a package to the site
+### Edit material
+### Update the data package with the new EML and file
+### update metadata with the otherEntities added
+
+<!--chapter:end:02_introArcticdatautils.Rmd-->
+
 ---
 title: "Practical EML in R"
 author: "Jeanette Clark"
@@ -19,7 +56,7 @@ library(digest)
 Set a path to a local copy of the EML that you would like to edit, and read in the EML.
 
 ```{r}
-path1 <- 'glacier_metadata.xml'
+path1 <- '~/arctic-data/docs/training/EML/Example_EML.xml'
 eml <- read_eml(path1)
 ```
 
@@ -213,7 +250,7 @@ attributeList1 <- set_attributes(attributes1, factors = factors1)
 
 Now the physical aspects of the data table, like its name, identifier (PID), header lines, and delimiter, need to be described. The function `set_physical` does this. See `?set_physical` for more options on what can be set in the physical element. One of the more important items to set here is the URL, which points to the newest version of the data object using the object's PID.
 
-```{r, eval=F}
+```{r}
 id1 <- 'PID1' #this should be an actual PID
 path <- '~/arctic-data/docs/training/EML/LakeSampleData.csv' #path to data table
 physical1 <- set_physical('LakeSampleData.csv', 
@@ -229,7 +266,7 @@ physical1 <- set_physical('LakeSampleData.csv',
 
 If the object is already on the Arctic Data Center, the physical section is very easy to write using its PID and the `pid_to_eml_physical` function:
 
-```{r, eval = F}
+```{r}
 id1 <- 'PID1' #this should be an actual PID
 cn <- CNode('PROD')
 mn <- getMNode(cn,'urn:node:ARCTIC')
@@ -249,7 +286,7 @@ Be very careful about what you publish on the production node (PROD, or arcticda
 
 The `physical1` and `attributeList1` elements are then used to create the `dataTable`, along with the name of the `dataTable` and its description.
 
-```{r, eval = F}
+```{r}
 dataTable1 <- new('dataTable',
                   entityName = 'LakeSampleData.csv',
                   entityDescription = 'Water sample temperature and salinity from the Eagle Mountain region',
@@ -261,7 +298,7 @@ dataTable1 <- new('dataTable',
 
 If the metadata document describes multiple Data Objects, a new set of attributes, attribute list, physical description, and dataTable can be created just as in the example above.
 
-```{r, eval = F}
+```{r}
 attributes2 <- data.frame(attributeName = c('Time', 'Wind_Speed'),
                           attributeDefinition = c('Date and time of wind speed reading', 'Measured wind speed'),
                           measurementScale = c('dateTime', 'ratio'),
@@ -285,7 +322,7 @@ dataTable2 <- new('dataTable',
 
 Now both `dataTable1` and `dataTable2` are added to the original EML using the `c()` function.
 
-```{r, eval = F}
+```{r}
 eml@dataset@dataTable <- c(dataTable1, dataTable2)
 ```
 
@@ -334,7 +371,7 @@ This will guess the format ID from the file extension. These should be checked a
 
 Finally, a data frame is created with all of that information, and that information is added into the EML using ```eml_add_entities```.
 
-```{r, eval = F}
+```{r}
 entity_df <- data.frame(type = 'otherEntity', 
                         path = paths, 
                         pid = pids, 
@@ -347,7 +384,7 @@ eml <- eml_add_entities(eml, entity_df)
 
 If you are trying to describe data objects that are already on the ADC, you can utilize `lapply` along with `get_package` to easily write the EML `otherEntity` elements. In this case, there are data tables and other entity type elements mixed in, so the `otherEntity` elements (non-csvs) are picked out by hand using indexes. The numbers in the call `otherEnts <- pkg$data[c(5,6,9,10)]` will change depending on your dataset.
 
-```{r, eval = F}
+```{r}
 pid = 'doi:10.18739/A2408F'
 pkg <- get_package(mn, pid, file_names = T)
 otherEnts <- pkg$data[c(5,6,9,10)] #select only `otherEntity` PIDs after viewing `pkg$data` contents
@@ -399,7 +436,7 @@ The methods tree in the EML section has many different options, visible in the s
 
 One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:
 
-```{r, eval = F}
+```{r}
 methods1 <- set_methods('methods_doc.docx')
 eml@dataset@methods <- methods1
 ```
@@ -431,7 +468,7 @@ NCEASadd <- new('address',
 
 The creator, contact, and associated party classes can easily be created using functions from the arcticdatautils package. Here, we use `eml_creator` to set our dataset creator.
 
-```{r, eval = F}
+```{r}
 JC_creator <- eml_creator("Jeanette", 
                           "Clark", 
                           "NCEAS", 
@@ -444,7 +481,7 @@ eml@dataset@creator <- c(JC_creator)
 
 Similarly, we can set the contacts. In this case, there are two, so we set eml@dataset@contact as a ListOfcontact, which contains both of them.
 
-```{r, eval = F}
+```{r}
 JC_contact <- eml_contact("Jeanette", 
                           "Clark", 
                           "NCEAS", 
@@ -464,7 +501,7 @@ eml@dataset@contact <- c(JC_contact, JG_contact)
 
 Finally, the associated parties are set. Note that associated parties MUST have a role defined, unlike creator or contact.
 
-```{r, eval = F}
+```{r}
 JG_ap <- eml_associated_party("Jesse", 
                               "Goldstein", 
                               "NCEAS", 
@@ -582,3 +619,6 @@ What I showed above is a pretty specific example (which conveniently is also one
   + *Index out of bounds*: If you receive an "index out of bounds" error that means you are trying to access an index beyond what exists in the list. For example, if there are 4 paragraphs in the abstract, and you write `test@para@.Data[[5]]` you will recieve this error.
  * **Use the schema!**: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html
  
+
+<!--chapter:end:03_editingEMLinR.Rmd-->
+

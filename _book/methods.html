@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NCEAS Intern Training</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="NCEAS Intern Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  <meta name="github-repo" content="rstudio/intern_training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NCEAS Intern Training" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  
+
+<meta name="author" content="Jeanette Clark">
+
+
+<meta name="date" content="2017-12-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="coverage.html">
+<link rel="next" href="keywords.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Placeholder</a></li>
+<li class="chapter" data-level="2" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>2</b> Placeholder</a></li>
+<li class="chapter" data-level="3" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><i class="fa fa-check"></i><b>3</b> devtools::install_github(“NCEAS/arcticdatautils”, ref = “v0.5.0”)</a><ul>
+<li class="chapter" data-level="3.1" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#editing-packages-in-r"><i class="fa fa-check"></i><b>3.1</b> Editing packages in R</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#set-environment"><i class="fa fa-check"></i><b>3.1.1</b> Set environment</a></li>
+<li class="chapter" data-level="3.1.2" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#set-token"><i class="fa fa-check"></i><b>3.1.2</b> Set token</a></li>
+<li class="chapter" data-level="3.1.3" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>3.1.3</b> Publishing a package to the site</a></li>
+<li class="chapter" data-level="3.1.4" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#edit-material"><i class="fa fa-check"></i><b>3.1.4</b> Edit material</a></li>
+<li class="chapter" data-level="3.1.5" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#update-the-data-package-with-the-new-eml-and-file"><i class="fa fa-check"></i><b>3.1.5</b> Update the data package with the new EML and file</a></li>
+<li class="chapter" data-level="3.1.6" data-path="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html"><a href="devtoolsinstall-githubnceasarcticdatautils-ref-v0-5-0.html#update-metadata-with-the-otherentities-added"><i class="fa fa-check"></i><b>3.1.6</b> update metadata with the otherEntities added</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="attributes.html"><a href="attributes.html"><i class="fa fa-check"></i><b>5</b> Attributes</a><ul>
+<li class="chapter" data-level="5.1" data-path="attributes.html"><a href="attributes.html#building-the-attribute-table"><i class="fa fa-check"></i><b>5.1</b> Building the attribute table</a></li>
+<li class="chapter" data-level="5.2" data-path="attributes.html"><a href="attributes.html#defining-enumerated-domains"><i class="fa fa-check"></i><b>5.2</b> Defining enumerated domains</a></li>
+<li class="chapter" data-level="5.3" data-path="attributes.html"><a href="attributes.html#generating-the-attribute-list-and-data-table"><i class="fa fa-check"></i><b>5.3</b> Generating the attribute list and data table</a></li>
+<li class="chapter" data-level="5.4" data-path="attributes.html"><a href="attributes.html#adding-a-second-datatable"><i class="fa fa-check"></i><b>5.4</b> Adding a second dataTable</a></li>
+<li class="chapter" data-level="5.5" data-path="attributes.html"><a href="attributes.html#defining-custom-units"><i class="fa fa-check"></i><b>5.5</b> Defining custom units</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="setting-other-entities.html"><a href="setting-other-entities.html"><i class="fa fa-check"></i><b>6</b> Setting other entities</a><ul>
+<li class="chapter" data-level="6.1" data-path="setting-other-entities.html"><a href="setting-other-entities.html#for-files-that-arent-uploaded-yet"><i class="fa fa-check"></i><b>6.1</b> For files that aren’t uploaded yet</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="for-files-that-are-already-uploaded.html"><a href="for-files-that-are-already-uploaded.html"><i class="fa fa-check"></i><b>7</b> For files that are already uploaded</a></li>
+<li class="chapter" data-level="8" data-path="coverage.html"><a href="coverage.html"><i class="fa fa-check"></i><b>8</b> Coverage</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="keywords.html"><a href="keywords.html"><i class="fa fa-check"></i><b>10</b> Keywords</a></li>
+<li class="chapter" data-level="11" data-path="people.html"><a href="people.html"><i class="fa fa-check"></i><b>11</b> People</a></li>
+<li class="chapter" data-level="12" data-path="validating-and-writing-the-eml.html"><a href="validating-and-writing-the-eml.html"><i class="fa fa-check"></i><b>12</b> Validating and Writing the EML</a></li>
+<li class="chapter" data-level="13" data-path="dealing-with-unusual-cases.html"><a href="dealing-with-unusual-cases.html"><i class="fa fa-check"></i><b>13</b> Dealing with unusual cases</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Intern Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Methods</h1>
+<p>The methods tree in the EML section has many different options, visible in the schema here: <a href="https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png" class="uri">https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png</a>. You can create new elements in the methods tree by following the schema and using the “new” command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, <code>method_step &lt;- new('methodStep')</code>, and using autocomplete on <code>method_step@</code>.</p>
+<p>One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">methods1 &lt;-<span class="st"> </span><span class="kw">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)
+eml@dataset@methods &lt;-<span class="st"> </span>methods1</code></pre></div>
+<p>If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML in a text editor, otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="coverage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="keywords.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

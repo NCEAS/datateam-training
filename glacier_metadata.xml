@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml
+      packageId="arctic-data.13882.4" system="knb"
+      xmlns:eml="eml://ecoinformatics.org/eml-2.1.1"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1"
+      xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1"
+      xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+<!-- Person who filled in the catalog entry form:   -->
+<!-- Form filled out at Thu Jul 20 00:00:12 2017 GMT -->
+<access authSystem="knb" order="allowFirst">
+<allow>
+  <principal>CN=arctic-data-admins,DC=dataone,DC=org</principal><permission>all</permission>
+</allow>
+<allow>
+  <principal>http://orcid.org/0000-0003-4703-1974</principal><permission>all</permission>
+</allow>
+</access>
+<dataset>
+<title>Subglacial conduit fluid dynamics simulation, Svalbard, Norway</title>
+<creator id="9596876644036312">
+<individualName>
+<givenName>Xiaofeng</givenName>
+<surName>Liu</surName>
+</individualName>
+<organizationName>Penn State University</organizationName>
+<positionName>Assistant Professor</positionName>
+<address></address>
+<electronicMailAddress>xliu@engr.ps.edu</electronicMailAddress>
+</creator>
+<metadataProvider id="2857515871032490">
+<individualName>
+<givenName>Xiaofeng</givenName>
+<surName>Liu</surName>
+</individualName>
+<organizationName>Penn State University</organizationName>
+<positionName>Assistant Professor</positionName>
+<address></address>
+<electronicMailAddress>xliu@engr.ps.edu</electronicMailAddress>
+</metadataProvider>
+<associatedParty id="3914491900677106">
+<individualName>
+<givenName>Ken</givenName>
+<surName>Mankoff</surName>
+</individualName>
+<organizationName>Penn State University</organizationName>
+<positionName>Research Associate</positionName>
+<address></address>
+<electronicMailAddress>mankoff@psu.edu</electronicMailAddress>
+<role>coPrincipalInvestigator</role>
+</associatedParty>
+<pubDate>2017-07-19</pubDate>
+<abstract>
+<para>This project will examine the processes controlling the flow of water through and beneath an Arctic glacier. The hydraulic properties of glaciers are a major factor influencing the rate at which glaciers slide on the underlying rock. Understanding subglacial flow is critical to developing models that accurately predict how glaciers will behave in response to warming climate and how glaciers will contribute to sea level rise. For outreach and educational purposes, the project will develop a web-based, interactive fluid dynamics tutorial concerning subglacial conduits. A project web site will also be developed. The project will contribute to workforce development by supporting the training of a graduate student and by providing partial support for three early-career scientists. This study will perform three-dimensional computational fluid dynamics (CFD) large eddy simulations (LES) of turbulent flows in a subglacial conduit using realistic surfaces and mesh boundaries. The computations will be done using 3D high-performance computing. The conduit geometry and roughness will be based on a unique set of field measurements made on a Svalbard glacier using with a modified video-game controller at mm resolution. The result of this effort is a first-ever high resolution visualization of a real subglacial conduit and the first subglacial LES simulations with realistic geometry. Results will be compared with model output using the more standard Darcy-Weisbach or Manning formulations. The study will provide improved insights into hydrological processes in mountain glaciers and large ice sheets such as the Greenland Ice Sheet. Here we present CFD simulation cases for the study of hydrodynamics within a real subglacial conduit. Also included are the conduit geometry acquired with a novel sensor, as well as the Matlab code for the preprocessing of the geometry for CFD simulations. </para>
+</abstract>
+<intellectualRights>
+<para>
+This work is dedicated to the public domain under the Creative Commons Universal 1.0 Public Domain Dedication.
+To view a copy of this dedication, visit https://creativecommons.org/publicdomain/zero/1.0/.
+</para>
+</intellectualRights>
+<distribution>
+<offline>
+<mediumName>digital </mediumName>
+</offline>
+</distribution>
+<coverage>
+<temporalCoverage>
+<rangeOfDates>
+<beginDate>
+<calendarDate>2015-07-01</calendarDate>
+</beginDate>
+<endDate>
+<calendarDate>2017-06-30</calendarDate>
+</endDate>
+</rangeOfDates>
+</temporalCoverage>
+<geographicCoverage>
+<geographicDescription>Svalbard glacier, Norway</geographicDescription>
+<boundingCoordinates>
+<westBoundingCoordinate>15.5600</westBoundingCoordinate>
+<eastBoundingCoordinate>15.5600</eastBoundingCoordinate>
+<northBoundingCoordinate>77.0278</northBoundingCoordinate>
+<southBoundingCoordinate>77.0278</southBoundingCoordinate>
+</boundingCoordinates>
+</geographicCoverage>
+</coverage>
+<contact id="73231147570780">
+<individualName>
+<givenName>Xiaofeng</givenName>
+<surName>Liu</surName>
+</individualName>
+<organizationName>Penn State University</organizationName>
+<positionName>Assistant Professor</positionName>
+<address></address>
+<electronicMailAddress>xliu@engr.ps.edu</electronicMailAddress>
+</contact>
+<methods><methodStep><description><section>
+<title>Computational simulations</title>
+<para>CFD simulation cases and results. Two model simulations were run - each representing a 10m section of the subglacial conduit. The A0a2 simulation represents a simplified surface of the conduit, while the A6a simulation represents a more complicated (and valid) surface of the conduit. Results for the last time t = 500s and t = 219s for the A0a2 and A6a model runs are copied within their respective subdirectories in the CFDCases.zip file. Instantaneous flow/pressure fields can be viewed using ParaView</para>
+</section></description></methodStep>
+</methods>
+<project>
+<title>Subglacial conduit fluid dynamics simulation</title>
+<personnel>
+<individualName>
+<givenName>Xiaofeng</givenName>
+<surName>Liu</surName>
+</individualName>
+<role>originator</role>
+</personnel>
+<funding>
+<para>1503928</para>
+</funding>
+</project>
+<otherEntity id="e015c99e36b343e47c8c04f6186998d02b3b406f001" scope="document">
+            <entityName>NearBottomFlowStructureByLambda2Global.mp4</entityName>
+            <physical scope="document">
+                <objectName>NearBottomFlowStructureByLambda2Global.mp4</objectName>
+                <size unit="bytes">202834075</size>
+                <authentication method="SHA1">e015c99e36b343e47c8c04f6186998d02b3b406f</authentication>
+                <dataFormat>
+                    <externallyDefinedFormat>
+                        <formatName>video/mp4</formatName>
+                    </externallyDefinedFormat>
+                </dataFormat>
+                <distribution id="e015c99e36b343e47c8c04f6186998d02b3b406f002" scope="document">
+                    <online>
+                        <url function="download">ecogrid://knb/arctic-data.13883.1</url>
+                    </online>
+
+                <access authSystem="knb" order="allowFirst">
+                    <allow>
+  <principal>CN=arctic-data-admins,DC=dataone,DC=org</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+  <principal>http://orcid.org/0000-0003-4703-1974</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+                        <principal>public</principal>
+                        <permission>read</permission>
+                    </allow>
+                </access>
+
+                </distribution>
+            </physical>
+            <entityType>Other</entityType>
+    </otherEntity>
+<otherEntity id="503568112953155a0b2e17cc09a44fdb7e6c7365001" scope="document">
+            <entityName>OpenFOAM_Subglaical_Conduit_CFDCases.zip</entityName>
+            <physical scope="document">
+                <objectName>OpenFOAM_Subglaical_Conduit_CFDCases.zip</objectName>
+                <size unit="bytes">914805875</size>
+                <authentication method="SHA1">503568112953155a0b2e17cc09a44fdb7e6c7365</authentication>
+                <dataFormat>
+                    <externallyDefinedFormat>
+                        <formatName>application/zip</formatName>
+                    </externallyDefinedFormat>
+                </dataFormat>
+                <distribution id="503568112953155a0b2e17cc09a44fdb7e6c7365002" scope="document">
+                    <online>
+                        <url function="download">ecogrid://knb/arctic-data.13880.1</url>
+                    </online>
+
+                <access authSystem="knb" order="allowFirst">
+                    <allow>
+  <principal>CN=arctic-data-admins,DC=dataone,DC=org</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+  <principal>http://orcid.org/0000-0003-4703-1974</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+                        <principal>public</principal>
+                        <permission>read</permission>
+                    </allow>
+                </access>
+
+                </distribution>
+            </physical>
+            <entityType>Other</entityType>
+    </otherEntity>
+<otherEntity id="25958e0b6238a71888576744ec0360bb870cb72e001" scope="document">
+            <entityName>Matlab_Code_Conduit_Mesh_Preparation.zip</entityName>
+            <physical scope="document">
+                <objectName>Matlab_Code_Conduit_Mesh_Preparation.zip</objectName>
+                <size unit="bytes">422053</size>
+                <authentication method="SHA1">25958e0b6238a71888576744ec0360bb870cb72e</authentication>
+                <dataFormat>
+                    <externallyDefinedFormat>
+                        <formatName>application/zip</formatName>
+                    </externallyDefinedFormat>
+                </dataFormat>
+                <distribution id="25958e0b6238a71888576744ec0360bb870cb72e002" scope="document">
+                    <online>
+                        <url function="download">ecogrid://knb/arctic-data.13889.1</url>
+                    </online>
+
+                <access authSystem="knb" order="allowFirst">
+                    <allow>
+  <principal>CN=arctic-data-admins,DC=dataone,DC=org</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+  <principal>http://orcid.org/0000-0003-4703-1974</principal><permission>all</permission>
+</allow>
+
+                    <allow>
+                        <principal>public</principal>
+                        <permission>read</permission>
+                    </allow>
+                </access>
+
+                </distribution>
+            </physical>
+            <entityType>Other</entityType>
+    </otherEntity>
+</dataset>
+</eml:eml>
