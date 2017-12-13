@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NCEAS Intern Training</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="NCEAS Intern Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  <meta name="github-repo" content="rstudio/intern_training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NCEAS Intern Training" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  
+
+<meta name="author" content="Jeanette Clark">
+
+
+<meta name="date" content="2017-12-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="welcome-to-nceas.html">
+<link rel="next" href="editing-eml-in-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="welcome-to-nceas.html"><a href="welcome-to-nceas.html"><i class="fa fa-check"></i><b>1</b> <em>Welcome to NCEAS</em></a></li>
+<li class="chapter" data-level="2" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html"><i class="fa fa-check"></i><b>2</b> Intro to arcticdatautils</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#editing-packages-in-r"><i class="fa fa-check"></i><b>2.1</b> Editing packages in R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#set-environment"><i class="fa fa-check"></i><b>2.1.1</b> Set environment</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#set-token"><i class="fa fa-check"></i><b>2.1.2</b> Set token</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>2.1.3</b> Publishing a package to the site</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#edit-material"><i class="fa fa-check"></i><b>2.1.4</b> Edit material</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#update-the-data-package-with-the-new-eml-and-file"><i class="fa fa-check"></i><b>2.1.5</b> Update the data package with the new EML and file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html"><i class="fa fa-check"></i><b>3</b> Editing EML in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#attributes"><i class="fa fa-check"></i><b>3.2</b> Attributes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#building-the-attribute-table"><i class="fa fa-check"></i><b>3.2.1</b> Building the attribute table</a></li>
+<li class="chapter" data-level="3.2.2" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#defining-enumerated-domains"><i class="fa fa-check"></i><b>3.2.2</b> Defining enumerated domains</a></li>
+<li class="chapter" data-level="3.2.3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#generating-the-attribute-list-and-data-table"><i class="fa fa-check"></i><b>3.2.3</b> Generating the attribute list and data table</a></li>
+<li class="chapter" data-level="3.2.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#adding-a-second-datatable"><i class="fa fa-check"></i><b>3.2.4</b> Adding a second dataTable</a></li>
+<li class="chapter" data-level="3.2.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#defining-custom-units"><i class="fa fa-check"></i><b>3.2.5</b> Defining custom units</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#setting-other-entities"><i class="fa fa-check"></i><b>3.3</b> Setting other entities</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#for-files-that-arent-uploaded-yet"><i class="fa fa-check"></i><b>3.3.1</b> For files that aren’t uploaded yet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#for-files-that-are-already-uploaded"><i class="fa fa-check"></i><b>3.4</b> For files that are already uploaded</a></li>
+<li class="chapter" data-level="3.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#coverage"><i class="fa fa-check"></i><b>3.5</b> Coverage</a></li>
+<li class="chapter" data-level="3.6" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#methods"><i class="fa fa-check"></i><b>3.6</b> Methods</a></li>
+<li class="chapter" data-level="3.7" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#keywords"><i class="fa fa-check"></i><b>3.7</b> Keywords</a></li>
+<li class="chapter" data-level="3.8" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#people"><i class="fa fa-check"></i><b>3.8</b> People</a></li>
+<li class="chapter" data-level="3.9" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#validating-and-writing-the-eml"><i class="fa fa-check"></i><b>3.9</b> Validating and Writing the EML</a></li>
+<li class="chapter" data-level="3.10" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#dealing-with-unusual-cases"><i class="fa fa-check"></i><b>3.10</b> Dealing with unusual cases</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Intern Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-arcticdatautils" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Intro to arcticdatautils</h1>
+<div id="editing-packages-in-r" class="section level2">
+<h2><span class="header-section-number">2.1</span> Editing packages in R</h2>
+<p>We will be using the arcticdatautils package and the dataone package to connect to the <a href="arcticdata.io">NSF Arctic Data Center</a> data repository and push and pull edits. To identify yourself as admin you will need to register a ‘token’ by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, copying your token into R and telling R where to connect by defining the member node using the code below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># devtools::install_github(&quot;NCEAS/arcticdatautils&quot;, ref = &quot;v0.5.0&quot;)</span>
+<span class="kw">library</span>(arcticdatautils)
+<span class="kw">library</span>(dataone)
+<span class="kw">library</span>(EML)
+<span class="kw">library</span>(digest)</code></pre></div>
+<div id="set-environment" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Set environment</h3>
+<p>Once we have our libraries loaded we need to tell R which repo we want to be working with. If we are working on the production site, you can set the coordinating node (<code>cn</code>) and member node (<code>mn</code>) this way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;PROD&#39;</span>)
+mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</code></pre></div>
+<p>If we are working in the test environment, we set it this way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)
+mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</code></pre></div>
+<p>A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through this training for the first time you should be using the test environment (STAGING, or test.articdata.io).</p>
+</div>
+<div id="set-token" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Set token</h3>
+<p>Now that we have the environment set we have to manually log in to the NSF ADC site to get our token and copy it to our R environment. <strong>This token is your identity on these sites, please treat it as you would a password</strong> (ie. don’t paste into scripts that will be shared). The easiest way to do this is to just run the token in the <em>console</em>. There’s no need to keep it in you script since its temporary anyway. Sometimes you’ll see a placeholder in scripts to remind users to get their token, such as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
+</div>
+<div id="publishing-a-package-to-the-site" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Publishing a package to the site</h3>
+<p>To publish a data package to the site, you will need to publish three types of objects: a metadata object (the .xml metadata file), data object (a .csv or other data files), and a resource map, which links the data objects to the metadata objects. We do this using a function called <code>publish_object</code>. To publish a metadata file you would use the following call:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta_path &lt;-<span class="st"> &#39;path/to/your/metadata/metadata.xml&#39;</span>
+pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn, meta_path, <span class="dt">format_id =</span> <span class="kw">format_eml</span>())</code></pre></div>
+<p>This call will save the id of the metadata object to the variable <code>pid</code>, which you will need later for the resource map. It also adds a formatID, which identifies what kind of object you just uploaded. Similarly, you can publish data objects like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_path &lt;-<span class="st"> &#39;path/to/your/data/data.csv&#39;</span>
+data_pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn, data_path, <span class="dt">format_id =</span> <span class="st">&#39;text/csv&#39;</span>)</code></pre></div>
+<p>Note that you will need to be explicit about your <code>format_id</code> here based on the file type. A list of format IDs can be found <a href="https://cn.dataone.org/cn/v2/formats">here on the DataONE website</a>.</p>
+<p>Finally, you can create and publish the resource map using <code>create_resource_map</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rm &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mn, pid, <span class="dt">data_pids =</span> data_pid)</code></pre></div>
+<p>And now your package should be up on the site!</p>
+<p>One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function <code>set_rights_and_access</code> will set both, and <code>set_access</code> will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder to the dataset is typically the submitter (if the dataset is submitted through the registry), but if a data team intern is publishing objects for a PI, the rights holder is the main point of contact for the dataset (ie the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCID.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set_rights_and_access</span>(mn, 
+                      <span class="kw">c</span>(pid, data_pid, rm), 
+                      <span class="dt">subject =</span> <span class="st">&#39;http://orcid.org/PUT0-YOUR-ORCD-HERE&#39;</span>,
+                      <span class="dt">permissions =</span> <span class="kw">c</span>(<span class="st">&#39;read&#39;</span>, <span class="st">&#39;write&#39;</span>, <span class="st">&#39;changePermission&#39;</span>))</code></pre></div>
+</div>
+<div id="edit-material" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Edit material</h3>
+<p>To edit material, you can download the EML from the site and edit it in R using the EML package, you can make whatever edits you need to using the <em>EML</em> package. Use the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd">ADC editing EML in R markdown</a> to help navigate making these edits. This work is a little tricky so work with fellow interns to complete these edits. Here in an example of replacing the abstract and adding “otherEntity” metadata for a new datatable <em>(note: to add an other entity, it helps to have the file locally inorder to pull system metadata information)</em>:</p>
+</div>
+<div id="update-the-data-package-with-the-new-eml-and-file" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Update the data package with the new EML and file</h3>
+<p>Once you are happy with your edits you can upload to the ADC. Any new data objects will have to be uploaded separately and once they are on the ADC, we can use their PID to link them into a package. Usually we’ll be updating exisiting work using <code>publish_update()</code> from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># publish the new data objects first</span>
+data_path &lt;-<span class="st"> &#39;path/to/your/data/data.csv&#39;</span>
+dataPid &lt;-<span class="kw">publish_object</span>(mn, data_path) 
+
+<span class="co"># the function get_package is helpful to get all other PIDs in a package if you know the metadata PID</span>
+metaPid &lt;-<span class="st"> &quot;urn:uuid:5933a052-5493-4f50-8622-ed83231d3fee&quot;</span>
+ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPid)
+
+### update metadata with the otherEntities added
+meta_path &lt;-<span class="st"> &quot;path/to/metadata/file.xml&quot;</span>
+<span class="kw">publish_update</span>(mn,
+               <span class="dt">metadata_pid =</span> metaPid <span class="co"># old metadata PID you pulled in originally. Alternatively could paste in the string:  &quot;urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee&quot;</span>
+               <span class="dt">resource_map_pid =</span> ids$resource_map,
+               <span class="dt">metadata_path =</span> meta_path, <span class="co"># new updated EML file,</span>
+               <span class="dt">data_pid =</span> dataPid, <span class="co"># this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)</span>
+               <span class="dt">check_first =</span> T,
+               <span class="dt">use_doi =</span> <span class="ot">FALSE</span>,
+               <span class="dt">public =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>If a package is ready to be public, note that you can change the <code>public</code> argument in the <code>publish_update</code> call to <code>TRUE</code>. Similarly, if you want to publish with a DOI instead of a UUID, you can change the <code>use_doi</code> argument to <code>TRUE</code>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="welcome-to-nceas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="editing-eml-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

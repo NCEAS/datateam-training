@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NCEAS Intern Training</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="NCEAS Intern Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  <meta name="github-repo" content="rstudio/intern_training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NCEAS Intern Training" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects" />
+  
+
+<meta name="author" content="Jeanette Clark">
+
+
+<meta name="date" content="2017-12-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="intro-to-arcticdatautils.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="welcome-to-nceas.html"><a href="welcome-to-nceas.html"><i class="fa fa-check"></i><b>1</b> <em>Welcome to NCEAS</em></a></li>
+<li class="chapter" data-level="2" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html"><i class="fa fa-check"></i><b>2</b> Intro to arcticdatautils</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#editing-packages-in-r"><i class="fa fa-check"></i><b>2.1</b> Editing packages in R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#set-environment"><i class="fa fa-check"></i><b>2.1.1</b> Set environment</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#set-token"><i class="fa fa-check"></i><b>2.1.2</b> Set token</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>2.1.3</b> Publishing a package to the site</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#edit-material"><i class="fa fa-check"></i><b>2.1.4</b> Edit material</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro-to-arcticdatautils.html"><a href="intro-to-arcticdatautils.html#update-the-data-package-with-the-new-eml-and-file"><i class="fa fa-check"></i><b>2.1.5</b> Update the data package with the new EML and file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html"><i class="fa fa-check"></i><b>3</b> Editing EML in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#attributes"><i class="fa fa-check"></i><b>3.2</b> Attributes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#building-the-attribute-table"><i class="fa fa-check"></i><b>3.2.1</b> Building the attribute table</a></li>
+<li class="chapter" data-level="3.2.2" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#defining-enumerated-domains"><i class="fa fa-check"></i><b>3.2.2</b> Defining enumerated domains</a></li>
+<li class="chapter" data-level="3.2.3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#generating-the-attribute-list-and-data-table"><i class="fa fa-check"></i><b>3.2.3</b> Generating the attribute list and data table</a></li>
+<li class="chapter" data-level="3.2.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#adding-a-second-datatable"><i class="fa fa-check"></i><b>3.2.4</b> Adding a second dataTable</a></li>
+<li class="chapter" data-level="3.2.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#defining-custom-units"><i class="fa fa-check"></i><b>3.2.5</b> Defining custom units</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#setting-other-entities"><i class="fa fa-check"></i><b>3.3</b> Setting other entities</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#for-files-that-arent-uploaded-yet"><i class="fa fa-check"></i><b>3.3.1</b> For files that aren’t uploaded yet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#for-files-that-are-already-uploaded"><i class="fa fa-check"></i><b>3.4</b> For files that are already uploaded</a></li>
+<li class="chapter" data-level="3.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#coverage"><i class="fa fa-check"></i><b>3.5</b> Coverage</a></li>
+<li class="chapter" data-level="3.6" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#methods"><i class="fa fa-check"></i><b>3.6</b> Methods</a></li>
+<li class="chapter" data-level="3.7" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#keywords"><i class="fa fa-check"></i><b>3.7</b> Keywords</a></li>
+<li class="chapter" data-level="3.8" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#people"><i class="fa fa-check"></i><b>3.8</b> People</a></li>
+<li class="chapter" data-level="3.9" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#validating-and-writing-the-eml"><i class="fa fa-check"></i><b>3.9</b> Validating and Writing the EML</a></li>
+<li class="chapter" data-level="3.10" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#dealing-with-unusual-cases"><i class="fa fa-check"></i><b>3.10</b> Dealing with unusual cases</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Intern Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">NCEAS Intern Training</h1>
+<h4 class="author"><em>Jeanette Clark</em></h4>
+<h4 class="date"><em>2017-12-13</em></h4>
+</div>
+<div id="welcome-to-nceas" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> <em>Welcome to NCEAS</em></h1>
+<p>Tour (if not given by Ginger), should go over these items:</p>
+<ul>
+<li>Events
+<ul>
+<li>Rountables</li>
+<li>Coffee Klatch</li>
+<li>HH &amp; mixers</li>
+</ul></li>
+<li>Coffee &amp; Snacks</li>
+<li>Bathrooms</li>
+<li>Key personnel:
+<ul>
+<li>Ginger</li>
+<li>Michelle</li>
+<li>Ana - HAVE HER TAKE YOUR PHOTO (room 309)</li>
+<li>Julia</li>
+<li>Thomas</li>
+<li>Nick</li>
+</ul></li>
+</ul>
+<div id="required-accounts" class="section level5">
+<h5><span class="header-section-number">1.0.0.0.1</span> <em>Required accounts</em></h5>
+<ul>
+<li><a href="https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account">LDAP - KNB &amp; NCEAS</a> - Jeanette or Jesse should set this up prior to intern start date to help get other accounts set up by the first day</li>
+<li>Datateam server - after LDAP creation, Jesse/Jeanette request creation of datateam accounts from <a href="mailto:help@nceas.ucsb.edu">help@nceas.ucsb.edu</a></li>
+<li>RT arcticdata queue - after LDAP creation, Jesse/Jeanette request adding to RT queue from <a href="mailto:help@nceas.ucsb.edu">help@nceas.ucsb.edu</a></li>
+<li>Github - after LDAP creation, Jesse/Jeanette request intern to be added to both arctic-data and sasap-data github from <a href="mailto:help@nceas.ucsb.edu">help@nceas.ucsb.edu</a></li>
+<li><a href="https://orcid.org/register">ORCiD</a> - new hire to do this day 1</li>
+<li><a href="http://slack.nceas.ucsb.edu/">NCEAS Slack</a> - new hire to do this day 1</li>
+<li>Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request an add from Chris on Slack</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=299555270">Schedule</a> - intern to fill out on day 1</li>
+</ul>
+</div>
+<div id="open-science-background-reading" class="section level5">
+<h5><span class="header-section-number">1.0.0.0.2</span> <em>Open science background reading</em></h5>
+<ul>
+<li>Read the content on the ADC webpage</li>
+<li><a href="https://arcticdata.io/about/">about</a></li>
+<li><a href="https://arcticdata.io/submit/">submission</a></li>
+<li><a href="https://arcticdata.io/preservation/">preservation</a></li>
+<li><a href="https://arcticdata.io/history/">history</a></li>
+<li><a href="http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full">Read Matt’s paper on effective data management</a></li>
+</ul>
+</div>
+<div id="dataone" class="section level5">
+<h5><span class="header-section-number">1.0.0.0.3</span> <em>DataONE</em></h5>
+<p>The <strong>Data Observation Network for Earth</strong> (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.</p>
+<p>Watch the first 38 minutes of <a href="https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ">this video</a> explaining how DataONE works.</p>
+</div>
+<div id="training-exercise" class="section level5">
+<h5><span class="header-section-number">1.0.0.0.4</span> <em>Training Exercise</em></h5>
+<ul>
+<li>Use tabula to extract Table 1 from <a href="http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta">this paper</a></li>
+<li>Reformat the table using the guidelines in the journal article on effective data management</li>
+<li>Preferable to use R to reformat the table</li>
+<li>Use Morpho to write metadata for the data table, drawing on information in the published paper it came from, BUT change the “creator” (or author) to your own name</li>
+<li>Save and export package locally, not to network</li>
+<li>After you export the package, find the metadata file on the local machine. It will be in the morpho export folder, in the metadata sub folder, and will have a file name that looks like datateam2.3 with no extension. Change this filename to something more clear with an xml extension, like “science_metadata.xml”</li>
+<li>Transfer the file to the datateam server using the <a href="https://help.nceas.ucsb.edu/remote_file_access">cyberduck client</a></li>
+<li>A note on paths: on the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</li>
+<li>Submit the data to test.arcticdata.io using the web form (UI)</li>
+<li>Submit the data to test.arcticdata.io using <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/introArcticdatautils.Rmd">arcticdatautils</a></li>
+<li>Compare your submission against the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md">checklist</a> and update it until it meets all the checks by:</li>
+<li>Updating data files as necessary,</li>
+<li>Manipulating the EML using the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd">EML package</a>,</li>
+<li>and then updating the submission on the test site using arcticdatautils.</li>
+<li>Finally, upload your script to the GitHub Enterprise repository by following <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/github_inRStudio.Rmd">these instructions</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro-to-arcticdatautils.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
