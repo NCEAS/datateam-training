@@ -1,0 +1,44 @@
+# Introduction
+
+These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
+
+## Open science background reading
+
+Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC
+
+* [about](https://arcticdata.io/about/)
+* [submission](https://arcticdata.io/submit/)
+* [preservation](https://arcticdata.io/preservation/)
+* [history](https://arcticdata.io/history/)
+
+## Effective Data Management
+
+Read Matt Jones' paper on [effective data management](http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full) to learn how we will be organizing datasets prior to archival.
+
+## Using DataONE
+
+The **Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
+
+Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.
+
+
+## Exercise
+
+* Use tabula to extract Table 1 from [this paper](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
+* Reformat the table using R under the guidelines in the journal article on effective data management
+* Go to [test.arcticdata.io](test.arcticdata.io) and submit your reformatted file with appropriate metadata that you derive from the text of the paper
+    + list yourself as the first creator so your test submission can easily be found
+
+
+_this part will get moved around into different chapters_
+  + Save and export package locally, not to network
+  + After you export the package, find the metadata file on the local machine. It will be in the morpho export folder, in the metadata sub folder, and will have a file name that looks like datateam2.3 with no extension. Change this filename to something more clear with an xml extension, like "science_metadata.xml"
+  + Transfer the file to the datateam server using the [cyberduck client](https://help.nceas.ucsb.edu/remote_file_access)
+  + A note on paths: on the servers, paths to files in your folder always start with `/home/yourusername/...`.
+* Submit the data to test.arcticdata.io using the web form (UI)
+* Submit the data to test.arcticdata.io using [arcticdatautils](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/introArcticdatautils.Rmd)
+* Compare your submission against the [checklist](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md) and update it until it meets all the checks by:
+  + Updating data files as necessary,
+  + Manipulating the EML using the [EML package](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd),
+  + and then updating the submission on the test site using arcticdatautils.
+* Finally, upload your script to the GitHub Enterprise repository by following [these instructions](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/github_inRStudio.Rmd)

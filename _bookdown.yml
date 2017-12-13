@@ -3,9 +3,4 @@ language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
-rmd_files: [
-  "index.Rmd",
-  "01_trainingPkg.Rmd",
-  "02_introArcticdatautils.Rmd",
-  "03_editingEMLinR.Rmd"]
 output_dir: "docs"
