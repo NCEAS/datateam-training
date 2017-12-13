@@ -1,0 +1,116 @@
+---
+title: "Arctic training"
+author: "Jessica Couture"
+date: "9/23/2016"
+output: html_document
+---
+
+## Editing packages in R
+
+We will be using the arcticdatautils package and the dataone package to connect to the [NSF Arctic Data Center](arcticdata.io) data repository and push and pull edits. To identify yourself as admin you will need to register a 'token' by signing in to the ADC with your [ORCiD](https://orcid.org/register), copying your token into R and telling R where to connect by defining the member node using the code below. 
+
+
+
+```{r load libraries, message=FALSE}
+# devtools::install_github("NCEAS/arcticdatautils", ref = "v0.5.0")
+library(arcticdatautils)
+library(dataone)
+library(EML)
+library(digest)
+```
+
+### Set environment
+
+Once we have our libraries loaded we need to tell R which repo we want to be working with. If we are working on the production site, you can set the coordinating node (`cn`) and member node (`mn`) this way:
+
+```{r set evnironment}
+cn <- CNode('PROD')
+mn <- getMNode(cn,'urn:node:ARCTIC')
+```
+
+If we are working in the test environment, we set it this way:
+
+```{r set evnironment}
+cn <- CNode('STAGING')
+mn <- getMNode(cn,'urn:node:mnTestARCTIC')
+```
+
+A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through this training for the first time you should be using the test environment (STAGING, or test.articdata.io).
+
+### Set token
+
+Now that we have the environment set we have to manually log in to the NSF ADC site to get our token and copy it to our R environment. **This token is your identity on these sites, please treat it as you would a password** (ie. don't paste into scripts that will be shared). The easiest way to do this is to just run the token in the *console*. There's no need to keep it in you script since its temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
+
+```{r token, message=FALSE, eval=FALSE}
+options(dataone_test_token = "...")
+```
+
+### Publishing a package to the site
+
+To publish a data package to the site, you will need to publish three types of objects: a metadata object (the .xml metadata file), data object (a .csv or other data files), and a resource map, which links the data objects to the metadata objects. We do this using a function called `publish_object`. To publish a metadata file you would use the following call:
+
+```{r publish object, eval=FALSE}
+meta_path <- 'path/to/your/metadata/metadata.xml'
+pid <- publish_object(mn, meta_path, format_id = format_eml())
+```
+
+This call will save the id of the metadata object to the variable `pid`, which you will need later for the resource map. It also adds a formatID, which identifies what kind of object you just uploaded. Similarly, you can publish data objects like this:
+
+```{r publish object, eval=FALSE}
+data_path <- 'path/to/your/data/data.csv'
+data_pid <- publish_object(mn, data_path, format_id = 'text/csv')
+```
+
+Note that you will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
+
+Finally, you can create and publish the resource map using `create_resource_map`.
+
+```{r create resource map, eval=FALSE}
+rm <- create_resource_map(mn, pid, data_pids = data_pid)
+```
+
+And now your package should be up on the site!
+
+One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function `set_rights_and_access` will set both, and `set_access` will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder to the dataset is typically the submitter (if the dataset is submitted through the registry), but if a data team intern is publishing objects for a PI, the rights holder is the main point of contact for the dataset (ie the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCID.
+
+```{r set rights and access, eval = FALSE}
+set_rights_and_access(mn, 
+                      c(pid, data_pid, rm), 
+                      subject = 'http://orcid.org/PUT0-YOUR-ORCD-HERE',
+                      permissions = c('read', 'write', 'changePermission'))
+```
+
+
+### Edit material
+
+To edit material, you can download the EML from the site and edit it in R using the EML package, you can make whatever edits you need to using the *EML* package. Use the [ADC editing EML in R markdown](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd) to help navigate making these edits. This work is a little tricky so work with fellow interns to complete these edits. Here in an example of replacing the abstract and adding "otherEntity" metadata for a new datatable *(note: to add an other entity, it helps to have the file locally inorder to pull system metadata information)*:
+
+### Update the data package with the new EML and file
+
+Once you are happy with your edits you can upload to the ADC. Any new data objects will have to be uploaded separately and once they are on the ADC, we can use their PID to link them into a package. Usually we'll be updating exisiting work using `publish_update()` from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package).
+
+
+```{r, eval=FALSE}
+
+# publish the new data objects first
+data_path <- 'path/to/your/data/data.csv'
+dataPid <-publish_object(mn, data_path) 
+
+# the function get_package is helpful to get all other PIDs in a package if you know the metadata PID
+metaPid <- "urn:uuid:5933a052-5493-4f50-8622-ed83231d3fee"
+ids <- get_package(mn, metaPid)
+
+### update metadata with the otherEntities added
+meta_path <- "path/to/metadata/file.xml"
+publish_update(mn,
+               metadata_pid = metaPid # old metadata PID you pulled in originally. Alternatively could paste in the string:  "urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee"
+               resource_map_pid = ids$resource_map,
+               metadata_path = meta_path, # new updated EML file,
+               data_pid = dataPid, # this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)
+               check_first = T,
+               use_doi = FALSE,
+               public = FALSE)
+```
+
+If a package is ready to be public, note that you can change the `public` argument in the `publish_update` call to `TRUE`. Similarly, if you want to publish with a DOI instead of a UUID, you can change the `use_doi` argument to `TRUE`.
+

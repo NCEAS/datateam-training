@@ -1,0 +1,584 @@
+---
+title: "Practical EML in R"
+author: "Jeanette Clark"
+date: "2/9/2017"
+output: html_document
+---
+
+This document is a practical tutorial for using the EML package to solve many metadata problems seen in the ADC. Much of this information can be found in the vignettes here: https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd
+
+First, load in some packages.
+```{r}
+library(dataone)
+library(arcticdatautils)
+library(EML)
+library(XML)  
+library(digest)
+```
+
+Set a path to a local copy of the EML that you would like to edit, and read in the EML.
+
+```{r}
+path1 <- '~/arctic-data/docs/training/EML/Example_EML.xml'
+eml <- read_eml(path1)
+```
+
+# Introduction
+
+When using the EML R package, you will usually be working with objects of class `eml`.
+For example, we can find out what type of object we just created when we ran the `read_eml` function:
+
+```{r}
+class(eml)
+```
+
+Each of these `eml` objects represents a complete EML document (as in: the .xml file) and all of the information inside the `.xml` file can be viewed and edited with the EML package.
+
+These `eml` objects has what are called "slots," each slot representing an element of the EML document such as "Title" or "Creator" and you will use these "slots" when working with your `eml` object. 
+You can find out what slots you have available with the `slotNames` function:
+
+```{r}
+sort(slotNames(eml))
+```
+
+You can get at what's in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., `eml@<TAB>`):
+
+![RStudio Autocompletion](rstudio-autocomplete.png)
+
+You will notice that the list of slots on the `eml` object doesn't include common EML things such as the dataset's title or the creators.
+This is because EML (the XML) and the EML R package are both hierarchical.
+The (incomplete) EML XML for dataset with a title would look something like this:
+
+```{xml}
+<eml>
+  <dataset>
+    <title>My title goes here...</title>
+  </dataset>
+</eml
+```
+
+You can see that the `title` is nested inside the `dataset` and the `dataset` is nested inside the root `eml` element of the document.
+
+Because the `title` is nested inside the `dataset` element, it will be a slot on `eml@dataset` instead of an slot of the main `eml` object:
+
+```{r}
+sort(slotNames(eml@dataset))
+```
+
+*Remember, you can just type `eml@dataset` into your console and hit <TAB> to see this list of slot names. The `slotNames` function is used for demonstration purposes here.*
+
+Slots can be nested in each other and are all based on the EML schema (more info here: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html).
+
+Typing in the name of your `eml` object (in this case, `eml`, the name of the result of `read_eml`) and hitting `<RETURN>` in the console will print the entire EML onto the screen:
+
+`eml`
+
+Similarly, you can also view different elements of the EML by drilling down into the structure using the @ functionality.
+This would just print the dataset portion of the EML:
+
+`eml@dataset`
+
+Going even deeper, this command will print the `title` element, which is within the dataset element, of the EML document:
+
+```{r}
+eml@dataset@title
+```
+
+Notice than when the last line prints, it doesn't just print a string - it returns "An object of class `ListOftitle`."
+The EML is composed of different classes of objects that make up these slots. If a slot can have multiple items, it may require an input of a list of a class. You can continue digging down into the EML using subsetting techniques for the S4 object class, with syntax that looks like this:
+
+```{r}
+eml@dataset@title@.Data[[1]]@.Data
+```
+
+Notice that this actually prints a character string. If you want to change the title, you could just assign this a new character string value, like this:
+
+```{r}
+eml@dataset@title@.Data[[1]]@.Data <- 'This is my new title'
+```
+
+However, this isn't best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. Instead, the EML package is used to create new objects of particular classes to put into the document, using the function `new`.
+
+The `new` function has a format that looks like `newobject <- new('class', arguments...)`. It can be a hard function to use because "class" has to be set to a specific name and the argument structure will vary depending on what the slots are in that class. Because the function is so general, the `?new` help is not very helpful. In the EML package, a good guess to what the name of the class will be is a slot name (such as "title"). You can explore what slots are available within an object class by creating a new, empty object like this:
+
+`test_title <- new('title')`
+
+and using the R autocomplete functionality on `test_title@`. Not that the slots `lang`, `slot_order`, `schemaLocation`, and `.Data` will always be present, and are set by the EML package automatically according to the required EML and XML schema. The other options will tell you what the arguments following the class name should be. In the case of the title class, the only option is `value`.
+
+So, to change the title, you might at first try do something like this:
+
+`eml@dataset@title<- new('title', .Data = 'This is my new title')`
+
+Unfortunately it returns an error. The error reads: 
+
+`Error in (function (cl, name, valueClass)  :assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”`
+`; is(value, "ListOftitle") is not TRUE`
+              
+The error says it cannot assign an object of class "title" to `eml@dataset@title`, and that there is not a value for `ListOftitle`. So this means that you have to assign to `@title` an object of class `ListOftitle`, which is composed of objects of class `title`. Even though `ListOftitle` is it's own kind of class, we can avoid using the `new` function again here by simply putting the `title` object in a vector using the `c()` function.
+
+```{r}
+title <- new('title', .Data = 'This is my new title')
+eml@dataset@title <- c(title)
+```
+
+This seems kind of cumbersome, creating first a new title object, and then a list of title, especially since in most cases an EML will only have one title. However, say for some reason you need two titles - you can then do this:
+
+```{r}
+title_second <- new('title', .Data = 'This dataset has two titles')
+eml@dataset@title <- c(title, title_second)
+eml@dataset@title
+```
+
+This functionality will prove very useful with other elements (such as dataTable), where there are usually more than one of the same element.
+
+# Attributes
+
+Since attribute information has to be added to the metadata, we'll cover attributes first.
+
+## Building the attribute table
+
+First you need to generate a dataframe with attribute information. This dataframe has rows that are attributes, and the following columns:
+
+* **attributeName**: The name of the attribute as listed in the csv. Required.
+* **attributeDefinition**: Longer description of the attribute. Required.
+* **measurementScale**: One of: nominal, ordinal, dateTime, ratio, interval. Required.
+    + *nominal*: unordered categories or text. eg: (Male, Female) or (Yukon River, Kuskokwim River)
+    + *ordinal*: ordered categories. eg: Low, Medium, High
+    + *dateTime*: date or time values from the Gregorian calendar. eg: 01-01-2001
+    + *ratio*: measurement scale with a meaningful zero point. eg: 200 Kelvin is half as hot as 400 Kelvin, 1.2 metersPerSecond is twice as fast as 0.6 metersPerSecond.
+    + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. eg: 12.2 degrees Celsius, 21 degrees Latitude
+* **domain**: One of: textDomain, enumeratedDomain, numericDomain, dateTimeDomain. Required.
+    + *textDomain*: text that is free-form, or matches a pattern
+    + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. eg: CASC = Cascade Lake, HEAR = Heart Lake
+    + *dateTimeDomain*: dateTime attributes
+    + *numericDomain*: attributes that are numbers (either ratio or interval)
+* **formatString**: Required for dateTimeDomain, NA otherwise. Format string for dates, eg "MM/DD/YYYY".
+* **definition**: Required for textDomain, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.
+* **unit**: Required for numericDomain, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found here: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html#StandardUnitDictionary
+* **numberType**: Required for numericDomain, NA otherwise. Options are "real", "natural", "whole", "integer".
+    + *real*: positive and negative fractions and non fractions (...-1,-0.25,0,0.25,1...)
+    + *natural*: non-zero positive counting numbers (1,2,3...)
+    + *whole*: positive counting numbers and zero (0,1,2,3...)
+    + *integer*: positive and negative counting numbers and zero (...-2,-1,0,1,2...)
+* **missingValueCode**: Code for missing values (eg: '-999', 'NA', 'NaN'). NA otherwise. Note that an NA missing value code should be a string, 'NA', and numbers should also be strings, '-999.'
+* **missingValueCodeExplanation**: Explanation for missing values, NA if no missing value code exists.
+
+```{r}
+attributes1 <- data.frame(
+    
+    attributeName = c('Date', 'Location', 'Region','Sample_No', 'Sample_vol', 'Salinity', 'Temperature', 'sampling_comments'),
+    attributeDefinition = c('Date sample was taken on', 'Location code representing location where sample was taken','Region where sample was taken', 'Sample number', 'Sample volume', 'Salinity of sample in PSU', 'Temperature of sample', 'comments about sampling process'),
+    measurementScale = c('dateTime', 'nominal','nominal', 'nominal', 'ratio', 'ratio', 'interval', 'nominal'),
+    domain = c('dateTimeDomain', 'enumeratedDomain','enumeratedDomain', 'textDomain', 'numericDomain', 'numericDomain', 'numericDomain', 'textDomain'),
+    formatString = c('MM-DD-YYYY', NA,NA,NA,NA,NA,NA,NA),
+    definition = c(NA,NA,NA,'Sample number', NA, NA, NA, 'comments about sampling process'),
+    unit = c(NA, NA, NA, NA,'milliliter', 'dimensionless', 'celsius', NA),
+    numberType = c(NA, NA, NA,NA, 'real', 'real', 'real', NA),
+    missingValueCode = c(NA, NA, NA,NA, NA, NA, NA, 'NA'),
+    missingValueCodeExplanation = c(NA, NA, NA,NA, NA, NA, NA, 'no sampling comments'),
+    
+    stringsAsFactors = FALSE)
+```
+
+Typing this out in R can be a bit of a pain, so you can import a table made in another program (such as Excel) as your attribute table - just make sure that rows are attributes and column names match the column names as listed above exactly (case is important).
+`attributes1 <- read.csv('~/arctic-data/docs/training/EML/LakeSampleData.csv', stringsAsFactors = F)`
+
+## Defining enumerated domains
+
+For attributes that are enumerated domains, a second table is needed with three columns: `attributeName`, `code`, and `definition`. `attributeName` is repeated for all codes belonging to a common attribute. To make things a little easier and less repetitve, coding wise, codes can be defined using named character vectors and then converted to a data frame.
+In this example, there are two enumerated domains in the attribute list - "Location" and "Region"
+
+```{r}
+Location <- c(CASC = 'Cascade Lake', CHIK = 'Chikumunik Lake', HEAR = 'Heart Lake', NISH = 'Nishlik Lake' )
+Region <- c(W_MTN = 'West region, locations West of Eagle Mountain', E_MTN = 'East region, locations East of Eagle Mountain')
+```
+
+The definitions are then written into a dataframe using the names of the named character vectors, and their definitions.
+
+```{r}
+factors1 <- rbind(data.frame(attributeName = 'Location', code = names(Location), definition = unname(Location)),
+                  data.frame(attributeName = 'Region', code = names(Region), definition = unname(Region)))
+factors1
+```
+
+This table can also be generated using a different program, such as Excel, and imported to R as a .csv, similar to what can be done with the attribute table.
+
+## Generating the attribute list and data table
+
+Next the attributeList is generated from the attributes and the factors using the function `set_attributes`. This puts all of the information from the attribute `data.frame` and the factor `data.frame` defining the enumerated domains into the slotted EML schema.
+
+```{r}
+attributeList1 <- set_attributes(attributes1, factors = factors1) 
+```
+
+Now the physical aspects of the data table, like its name, identifier (PID), header lines, and delimiter, need to be described. The function `set_physical` does this. See `?set_physical` for more options on what can be set in the physical element. One of the more important items to set here is the URL, which points to the newest version of the data object using the object's PID.
+
+```{r}
+id1 <- 'PID1' #this should be an actual PID
+path <- '~/arctic-data/docs/training/EML/LakeSampleData.csv' #path to data table
+physical1 <- set_physical('LakeSampleData.csv', 
+                          id = id1, 
+                          size = as.character(file.size(path)), 
+                          sizeUnit = 'bytes',
+                          authentication = digest(path, algo="sha1", serialize=FALSE, file=TRUE), 
+                          authMethod = 'SHA-1',
+                          numHeaderLines = '1', 
+                          fieldDelimiter = ',',
+                          url = paste0('https://cn.dataone.org/cn/v2/resolve/', id1))
+```
+
+If the object is already on the Arctic Data Center, the physical section is very easy to write using its PID and the `pid_to_eml_physical` function:
+
+```{r}
+id1 <- 'PID1' #this should be an actual PID
+cn <- CNode('PROD')
+mn <- getMNode(cn,'urn:node:ARCTIC')
+physical1 <- pid_to_eml_physical(mn, id1)
+```
+
+
+REMEMBER, if we are working in the test environment, we set it this way:
+
+```{r set evnironment}
+cn <- CNode('STAGING')
+mn <- getMNode(cn,'urn:node:mnTestARCTIC')
+```
+
+Be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training for the first time you should be using the test environment (STAGING, or test.articdata.io).
+
+
+The `physical1` and `attributeList1` elements are then used to create the `dataTable`, along with the name of the `dataTable` and its description.
+
+```{r}
+dataTable1 <- new('dataTable',
+                  entityName = 'LakeSampleData.csv',
+                  entityDescription = 'Water sample temperature and salinity from the Eagle Mountain region',
+                  physical = physical1,
+                  attributeList = attributeList1)
+```
+
+## Adding a second dataTable
+
+If the metadata document describes multiple Data Objects, a new set of attributes, attribute list, physical description, and dataTable can be created just as in the example above.
+
+```{r}
+attributes2 <- data.frame(attributeName = c('Time', 'Wind_Speed'),
+                          attributeDefinition = c('Date and time of wind speed reading', 'Measured wind speed'),
+                          measurementScale = c('dateTime', 'ratio'),
+                          domain = c('dateTimeDomain', 'numericDomain'),
+                          formatString = c('YYYY-MM-DD hh:mm:ss', NA),
+                          definition = c(NA, NA),
+                          unit = c(NA, 'metersPerSecond'),
+                          numberType = c(NA, 'real'),
+                          missingValueCode = c(NA, NA),
+                          codeExplanation = c(NA, NA),
+                          stringsAsFactors = FALSE)
+attributeList2 <- set_attributes(attributes2)
+id2 <- 'PID2'
+physical2 <- pid_to_eml_physical(mn, id2)
+dataTable2 <- new('dataTable', 
+                  entityName = 'EagleMtnWindData.csv', 
+                  entityDescription = 'Wind data from Eagle Mountain', 
+                  physical = physical2, 
+                  attributeList = attributeList2)
+```
+
+Now both `dataTable1` and `dataTable2` are added to the original EML using the `c()` function.
+
+```{r}
+eml@dataset@dataTable <- c(dataTable1, dataTable2)
+```
+
+## Defining custom units
+
+If you get a warning message about your units not being in the standard unit list, a custom unit list needs to be created and added to the additionalMetadata slot of the EML. First we create a custom unit data frame with columns `id` (the name of the unit, as it appears in the attribute table), `unitType`, and `parentSI`. Each custom unit has a row in the data frame. To determine what the unitType and parentSI are for each unit, it may be helpful to reference the list of custom units. This list can easily be viewed in your R console using these commands: 
+
+```{r}
+standardUnits <- get_unitList()
+View(standardUnits$units)
+```
+
+The following lines create the standard unit data table, use the function `set_unitList` to slot it into the EML, and then add it as addionalMetadata to the EML.
+
+```{r}
+custom_units <- data.frame(id = c('horsepower', 'gallonPerMinute'), 
+                           unitType = c('power', 'volumetricRate'), 
+                           parentSI = c('watt', 'litersPerSecond'))
+unitlist <- set_unitList(custom_units)
+eml@additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+```
+
+# Setting other entities
+
+In cases where the data package was submitted originally via the registry, the original EML usually has the data tables described as "other entity" elements in the EML. This information is now redundant since we created data table elements describing these objects. Remove the other entities by replacing the other entity element in the EML with a `ListOfotherEntity` object that consists of an empty list.
+
+```{r}
+eml@dataset@otherEntity <- new('ListOfotherEntity', list())
+```
+
+## For files that aren't uploaded yet
+
+There are times, however, when it may be necessary to create other entity tables for objects that are not described using a data table. Examples of these can include: R scripts, large NetCDF file directories, or audio/image files. Adding other entities is easy as long as you have paths to the files on the server and PIDs. This workflow is best if you are uploading files to the ADC yourself.
+
+First get the list of pathnames for the files you are going to upload.
+
+```paths <- list.files("/home/sjclark/EML_learning/", full.names = TRUE)```
+
+Then generate PIDs for those files. These will be the data PIDs you use in `publish_update`, but note that you may have other data PIDs for data objects that are not other entities.
+
+```pids <- vapply(paths, function(x) { paste0("urn:uuid:", uuid::UUIDgenerate()) }, "")```
+
+This will guess the format ID from the file extension. These should be checked afterwards and potentially changed.
+
+```format_ids <- guess_format_id(paths)```
+
+Finally, a data frame is created with all of that information, and that information is added into the EML using ```eml_add_entities```.
+
+```{r}
+entity_df <- data.frame(type = 'otherEntity', 
+                        path = paths, 
+                        pid = pids, 
+                        format_id = format_ids, 
+                        stringsAsFactors = FALSE)
+eml <- eml_add_entities(eml, entity_df)
+```
+
+# For files that are already uploaded
+
+If you are trying to describe data objects that are already on the ADC, you can utilize `lapply` along with `get_package` to easily write the EML `otherEntity` elements. In this case, there are data tables and other entity type elements mixed in, so the `otherEntity` elements (non-csvs) are picked out by hand using indexes. The numbers in the call `otherEnts <- pkg$data[c(5,6,9,10)]` will change depending on your dataset.
+
+```{r}
+pid = 'doi:10.18739/A2408F'
+pkg <- get_package(mn, pid, file_names = T)
+otherEnts <- pkg$data[c(5,6,9,10)] #select only `otherEntity` PIDs after viewing `pkg$data` contents
+eml@dataset@otherEntity <- new("ListOfotherEntity", pid_to_eml_other_entity(mn, otherEnts))
+```
+
+# Coverage
+
+Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a dataset. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
+
+```{r}
+coverage <- set_coverage(beginDate = '2012-01-01', 
+                         endDate = '2012-01-10', 
+                         sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'),
+                         geographicDescription = "The geographic region covers the lake region near Eagle Mountain.",
+                         west = -154.6192, 
+                         east = -154.5753, 
+                         north = 68.3831, 
+                         south = 68.3619)
+eml@dataset@coverage <- coverage
+```
+
+You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages.
+
+```{r}
+geocov1 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 1",
+               boundingCoordinates = new("boundingCoordinates", 
+                                         northBoundingCoordinate = new("northBoundingCoordinate", 68),
+                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -154),
+                                         southBoundingCoordinate = new("southBoundingCoordinate", 67),
+                                         westBoundingCoordinate =  new("westBoundingCoordinate", -155)))
+
+geocov2 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 2",
+               boundingCoordinates = new("boundingCoordinates",
+                                         northBoundingCoordinate = new("northBoundingCoordinate", 65),
+                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -155),
+                                         southBoundingCoordinate = new("southBoundingCoordinate", 64),
+                                         westBoundingCoordinate =  new("westBoundingCoordinate", -156)))
+
+coverage <- set_coverage(beginDate = '2012-01-01', 
+                         endDate = '2012-01-10', 
+                         sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'))
+eml@dataset@coverage@geographicCoverage <- c(geocov1, geocov2)
+```
+
+# Methods
+
+The methods tree in the EML section has many different options, visible in the schema here: https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png. You can create new elements in the methods tree by following the schema and using the "new" command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, `method_step <- new('methodStep')`, and using autocomplete on `method_step@`.
+
+One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:
+
+```{r}
+methods1 <- set_methods('methods_doc.docx')
+eml@dataset@methods <- methods1
+```
+
+If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML in a text editor, otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.
+
+# Keywords
+
+Keywords are another item that can easily be created if no keywords exist. 
+
+```{r}
+keywords <- new('keywordSet', 
+                keywordThesaurus = 'GCMD',
+                keyword = c('keyword1', 'keyword2', 'keyword3'))
+eml@dataset@keywordSet <- c(keywords)
+```
+
+# People
+
+To add people, with their addresses, you need to add addresses as their own object class, which you then add to the contact, creator, or associated party classes.
+
+```{r}
+NCEASadd <- new('address', 
+                deliveryPoint = '735 State St #300', 
+                city = 'Santa Barbara', 
+                administrativeArea = 'CA', 
+                postalCode = '93101')
+```
+
+The creator, contact, and associated party classes can easily be created using functions from the arcticdatautils package. Here, we use `eml_creator` to set our dataset creator.
+
+```{r}
+JC_creator <- eml_creator("Jeanette", 
+                          "Clark", 
+                          "NCEAS", 
+                          "jclark@nceas.ucsb.edu", 
+                          phone = '123-456-7890', 
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          address = NCEASadd)
+eml@dataset@creator <- c(JC_creator)
+```
+
+Similarly, we can set the contacts. In this case, there are two, so we set eml@dataset@contact as a ListOfcontact, which contains both of them.
+
+```{r}
+JC_contact <- eml_contact("Jeanette", 
+                          "Clark", 
+                          "NCEAS", 
+                          "jclark@nceas.ucsb.edu", 
+                          phone = '123-456-7890', 
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          address = NCEASadd)
+JG_contact <- eml_contact("Jesse", 
+                          "Goldstein", 
+                          "NCEAS", 
+                          "jclark@nceas.ucsb.edu", 
+                          phone = '123-456-7890', 
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          address = NCEASadd)
+eml@dataset@contact <- c(JC_contact, JG_contact)
+```
+
+Finally, the associated parties are set. Note that associated parties MUST have a role defined, unlike creator or contact.
+
+```{r}
+JG_ap <- eml_associated_party("Jesse", 
+                              "Goldstein", 
+                              "NCEAS", 
+                              "jclark@nceas.ucsb.edu", 
+                              phone = '123-456-7890', 
+                              address = NCEASadd, 
+                              userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                              role = "metaataProvider")
+eml@dataset@associatedParty <- c(JG_ap)
+```
+
+# Validating and Writing the EML
+
+The last step is to write and validate the EML. For time-saving purposes, first you write the EML:
+
+`path2 <- '/path/to/new/eml/Lake Physical Properties Data.xml'`
+`write_eml(eml, path2)`
+
+Now, you validate the eml. The EML validation step indicates whether the EML that you've created is valid both with regard to EML and XML schema. Hopefully it returns `TRUE`.
+
+`eml_validate(path2)`
+
+If the EML validate returns `FALSE`, it is accompanied by an error that will be in this format:
+
+`69.0: Element 'boundingCoordinates': This element is not expected. Expected is one of ( geographicDescription, references ).`
+
+This error essentially says, the EML validator reached the slot `boundingCoordinates` but did not expect this element. Instead it expected either `geographicDescription` or `references`. Referring to the schema maps (eg: https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-coverage.png) you can see that before bounding coordinates, there must be a geographic description. The fix would be to return to your definiton of the geographicCoverage, and insert a geographicDescription into the geographicCoverage object (ie:` geocov1 <- new('geographicCoverage', geographicDescription = 'Description here',...))`.
+
+# Dealing with unusual cases
+
+Typically, the biggest issue most datateam members have using the EML package is trying to add multiple values within a slot. In some cases, like adding multiple `dataTable` instances or multiple `creator` instances, this is easy, as is shown above. Other times, particularly if the slot is nested within a slot that we use a helper function for (like `set_attributes`), it can get a little more challenging. By delving a little deeper into the EML S4 class of objects though, you can resolve most problems relatively easily.
+
+Any slot that allows for a list of objects, as listed in the EML schema (https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html), will have a class called the slot name, in addition to a class called `ListOfslotName`. You can use the `new` function to create an object of the slot itself and a list of objects within that slot. For example:
+
+```{r, eval=FALSE}
+m1 <- new('missingValueCode', code = 'NA', codeExplanation = 'No data taken')
+m2 <- new('missingValueCode', code = '-999',  codeExplanation = 'Sensor malfunctioned')
+
+codes <- new('ListOfmissingValueCode', list(m1, m2))
+```
+
+In this case, this slot is nested within a part of the EML that we typically construct with a helper function - so how do we actually get this list of missing value codes into the attribute table? 
+
+One strategy would be to construct the attribute list without the missing value code information for the attribute with mutliple attributes, and then insert the `ListOfmissingValueCode` into it. So, building our attribute list as normal, 
+
+```{r, eval = FALSE}
+attributes1 <- read.csv('~/arctic-data/docs/training/EML/LakeSampleData.csv', stringsAsFactors = F)
+attlist1 <- set_attributes(attrbutes1)
+```
+
+You can then dig down into the individual attributes using the `@` functionality. Note that all of the attributes are stored as a `ListOfattributes` object. You can view a single value within this list by calling `attlist1@attributes@.Data[[n]]` where n represents the index of the list you want to view.
+
+```
+attlist1@attribute@.Data[[1]]
+<attribute system="uuid">
+  <attributeName>Date</attributeName>
+  <attributeDefinition>Date sample was taken on</attributeDefinition>
+  <measurementScale>
+    <dateTime>
+      <formatString>MM-DD-YYYY</formatString>
+    </dateTime>
+  </measurementScale>
+</attribute>
+```
+
+You can also run commands on `attlist1@attribute@.Data` just like you would any other list. One useful one is `length(attlist1@attribute@.Data)` which will return the number of items in the list.
+
+So to insert the list of missing value codes, you'll need to navigate to the index in the list of the attribute that you need to modify, and then dig even deeper into the slots. Don't forget that the `tab` key is your friend and can help you find slot names! So if you know that you need to change the 6th attribute in the list, you can type the following to see what is in there now:
+```
+attlist1@attribute@.Data[[6]]@missingValueCode
+
+An object of class "ListOfmissingValueCode"
+[[1]]
+<missingValueCode/>
+```
+
+Now to add the list, you'll have to execute the following (repeating lines for clarity):
+
+```{r, eval=FALSE}
+m1 <- new('missingValueCode', code = 'NA', codeExplanation = 'No data taken')
+m2 <- new('missingValueCode', code = '-999',  codeExplanation = 'Sensor malfunctioned')
+
+codes <- new('ListOfmissingValueCode', list(m1, m2))
+
+attlist1@attribute@.Data[[6]]@missingValueCode <- codes
+
+
+```
+
+Now, if you view this attribute again you should see the mutliple missing value codes:
+
+```
+> attlist1@attribute@.Data[[6]]@missingValueCode
+An object of class "ListOfmissingValueCode"
+[[1]]
+<missingValueCode>
+  <code>NA</code>
+  <codeExplanation>No data taken</codeExplanation>
+</missingValueCode>
+
+[[2]]
+<missingValueCode>
+  <code>-999</code>
+  <codeExplanation>Sensor malfunctioned</codeExplanation>
+</missingValueCode>
+```
+
+What I showed above is a pretty specific example (which conveniently is also one of our more common "rare cases"), but there are some general strategies you can employ to figure out how to insert other objects that need to be deeply nested into an EML.
+
+* **Create an empty test object**: example: `test <- new('abstract')`
+* **Use the @ and `tab` functionality to explore slots in that object**: example: `test@para`
+  + *What are all these slots??*: Remember that the `schemaLocation`, `lang`, `slot_order`, and `section` slots are related to the schema and are not actual slots which contain values you can edit.
+  + *`.Data`*: if you run into a `.Data` using the `tab` key, that means that the slot can be part of a list.
+* **Use indexing to access individual items in a list**: example: `test@para@.Data[[2]]`
+  + *Index out of bounds*: If you receive an "index out of bounds" error that means you are trying to access an index beyond what exists in the list. For example, if there are 4 paragraphs in the abstract, and you write `test@para@.Data[[5]]` you will recieve this error.
+ * **Use the schema!**: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html
+ 

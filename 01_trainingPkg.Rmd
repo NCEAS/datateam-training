@@ -1,0 +1,72 @@
+---
+title: "Training outline"
+author: "Jessica Couture"
+date: "9/29/2016"
+output: html_document
+---
+
+##### _Welcome to NCEAS_
+
+Tour (if not given by Ginger), should go over these items:
+
+* Events
+    + Rountables
+    + Coffee Klatch
+    + HH & mixers
+* Coffee & Snacks
+* Bathrooms
+* Key personnel:
+    + Ginger
+    + Michelle
+    + Ana - HAVE HER TAKE YOUR PHOTO  (room 309)
+    + Julia
+    + Thomas
+    + Nick
+ 
+##### _Required accounts_
+
+* [LDAP - KNB & NCEAS](https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account) - Jeanette or Jesse should set this up prior to intern start date to help get other accounts set up by the first day
+* Datateam server - after LDAP creation, Jesse/Jeanette request creation of datateam accounts from help@nceas.ucsb.edu
+* RT arcticdata queue - after LDAP creation, Jesse/Jeanette request adding to RT queue from help@nceas.ucsb.edu
+* Github - after LDAP creation, Jesse/Jeanette request intern to be added to both arctic-data and sasap-data github from help@nceas.ucsb.edu
+* [ORCiD](https://orcid.org/register) - new hire to do this day 1
+* [NCEAS Slack](http://slack.nceas.ucsb.edu/) - new hire to do this day 1
+* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request an add from Chris on Slack
+* [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=299555270) - intern to fill out on day 1
+
+
+##### _Open science background reading_
+
+* Read the content on the ADC webpage
+  + [about](https://arcticdata.io/about/)
+  + [submission](https://arcticdata.io/submit/)
+  + [preservation](https://arcticdata.io/preservation/)
+  + [history](https://arcticdata.io/history/)
+* [Read Matt's paper on effective data management](http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full)
+
+
+
+##### _DataONE_
+
+The **Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
+
+Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works.
+
+
+##### _Training Exercise_
+
+* Use tabula to extract Table 1 from [this paper](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
+* Reformat the table using the guidelines in the journal article on effective data management
+  + Preferable to use R to reformat the table
+* Use Morpho to write metadata for the data table, drawing on information in the published paper it came from, BUT change the "creator" (or author) to your own name
+  + Save and export package locally, not to network
+  + After you export the package, find the metadata file on the local machine. It will be in the morpho export folder, in the metadata sub folder, and will have a file name that looks like datateam2.3 with no extension. Change this filename to something more clear with an xml extension, like "science_metadata.xml"
+  + Transfer the file to the datateam server using the [cyberduck client](https://help.nceas.ucsb.edu/remote_file_access)
+  + A note on paths: on the servers, paths to files in your folder always start with `/home/yourusername/...`.
+* Submit the data to test.arcticdata.io using the web form (UI)
+* Submit the data to test.arcticdata.io using [arcticdatautils](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/introArcticdatautils.Rmd)
+* Compare your submission against the [checklist](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md) and update it until it meets all the checks by:
+  + Updating data files as necessary,
+  + Manipulating the EML using the [EML package](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd),
+  + and then updating the submission on the test site using arcticdatautils.
+* Finally, upload your script to the GitHub Enterprise repository by following [these instructions](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/github_inRStudio.Rmd)
