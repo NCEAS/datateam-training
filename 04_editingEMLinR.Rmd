@@ -574,7 +574,7 @@ What I showed above is a pretty specific example (which conveniently is also one
   + *Index out of bounds*: If you receive an "index out of bounds" error that means you are trying to access an index beyond what exists in the list. For example, if there are 4 paragraphs in the abstract, and you write `test@para@.Data[[5]]` you will recieve this error.
  * **Use the schema!**: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html
  
-## Exercise {exercise5}
+## Exercise {#exercise5}
 * Read in the EML that you updated in the previous exercise into R
 * Use the `eml` package to replace the exsiting `dataTable` slot with a new `dataTable` object with an attribute list and physical section you wrote in R
 * Write and validate your EML

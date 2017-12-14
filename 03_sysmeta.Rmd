@@ -63,7 +63,7 @@ After you have changed the necessary slot, you can update the system metadata us
 updateSystemMetadata(mn, pid, sysmeta)
 ```
 
-### Exercise {exercise4}
+### Exercise {#exercise4}
 * Read the system metadata in from the data file you uploaded in the previous chapter
 * Check to make sure the `fileName` and `formatId` are set correctly
 * Update the system metadata if necessary.

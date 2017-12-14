@@ -83,7 +83,7 @@ set_rights_and_access(mn,
 ```
 
 
-### Exercise {exercise2}
+### Exercise {#exercise2}
 
 * Locate the data package you published by navigating to the "my profile" section on [test.arcticdata.io](test.arcticdata.io). 
 * Download the metadata and data files and transfer them to the datateam server.
@@ -128,7 +128,7 @@ publish_update(mn,
 
 If a package is ready to be public, note that you can change the `public` argument in the `publish_update` call to `TRUE`. Similarly, if you want to publish with a DOI type identifier instead of a UUID type identifer, you can change the `use_doi` argument to `TRUE`.
 
-### Exercise {exercise3}
+### Exercise {#exercise3}
 
 * Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/... with the resource map pid you generated in that exercise. 
 * Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom). 
