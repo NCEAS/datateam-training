@@ -1,4 +1,4 @@
-# Introduction
+# Introduction to open science
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
 
@@ -21,8 +21,11 @@ The **Data Observation Network for Earth** (DataONE) is a community driven proje
 
 Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.
 
+## Creating metadata
 
-## Exercise
+Most submitters to the ADC submit their data and metadata through an online form we call the registry. This is how you will create your first metadata record. The metadata specification we use is called the Ecological Metadata Language, or EML.
+
+### Exercise
 
 * Use the "tabula" program to extract Table 1 from [this paper](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
 * Reformat the table using R under the guidelines in the journal article on effective data management

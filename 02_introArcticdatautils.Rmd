@@ -1,6 +1,6 @@
-#Intro to arcticdatautils
+#Using arcticdatautils
 
-## Editing packages in R
+## Uploading packages using R
 
 We will be using the arcticdatautils package and the dataone package to connect to the [NSF Arctic Data Center](arcticdata.io) data repository and push and pull edits. To identify yourself as admin you will need to register a 'token' by signing in to the ADC with your [ORCiD](https://orcid.org/register), copying your token into R and telling R where to connect by defining the member node using the code below. 
 
@@ -84,13 +84,14 @@ set_rights_and_access(mn,
 ```
 
 
-## Exercise
+### Exercise
 
-Locate the data package you published by navigating to the "my profile" section on [test.arcticdata.io](test.arcticdata.io). Download the metadata and data files and transfer them to the datateam server.
+* Locate the data package you published by navigating to the "my profile" section on [test.arcticdata.io](test.arcticdata.io). 
+* Download the metadata and data files and transfer them to the datateam server.
+* Using the functions described in the section above, pubish your metadata record and data file to the site.
+* View your new dataset (which is identical to the one you created previously) by appending the pid of your resource map (in the example above, the resource map pid was saved to the variable `rm`) to the end of the URL test.arcticdata.io/#view/... 
 
-Using the functions described in the section above, pubish your metadata record and data file to the site. You should be able to view your new dataset (which is identical to the one you created previously) by appending the pid of your resource map (in the example above, the resource map pid was saved to the variable `rm`) to the end of the URL test.arcticdata.io/#view/... 
-
-### Uploading a new version
+## Uploading a new version
 
 To edit material, we use the `publish_update` or `update_object` functions in `arcticdatautils`.
 
@@ -128,11 +129,13 @@ publish_update(mn,
 
 If a package is ready to be public, note that you can change the `public` argument in the `publish_update` call to `TRUE`. Similarly, if you want to publish with a DOI type identifier instead of a UUID type identifer, you can change the `use_doi` argument to `TRUE`.
 
-## Exercise
+### Exercise
 
-Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/... with the resource map pid you generated in that exercise. Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom). Navigate to the title section, and make a change to the title text within the `<title>`...`</title>` section. Do not change the `<title>` or `</title>` syntax. Upload the file back to the datateam server. 
-
-Using the `publish_update` function, update your data package as shown above.
+* Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/... with the resource map pid you generated in that exercise. 
+* Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom). 
+* Navigate to the title section, and make a change to the title text within the `<title>`...`</title>` section. 
+    + Do not change the `<title>` or `</title>` syntax. Upload the file back to the datateam server. 
+* Using the `publish_update` function, update your data package as shown above.
 
 
 
