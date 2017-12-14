@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="system-metadata.html">
-
+<link rel="next" href="using-git-in-rstudio.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -148,6 +148,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#dealing-with-unusual-cases"><i class="fa fa-check"></i><b>5.4</b> Dealing with unusual cases</a></li>
 <li class="chapter" data-level="5.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#exercise-4"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html"><i class="fa fa-check"></i><b>6</b> Using git in RStudio</a><ul>
+<li class="chapter" data-level="6.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>6.2</b> So why do I need to use this again?</a></li>
+<li class="chapter" data-level="6.3" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#setting-up-git"><i class="fa fa-check"></i><b>6.3</b> Setting up git</a></li>
+<li class="chapter" data-level="6.4" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>6.4</b> Cloning the arctic-data repo</a></li>
+<li class="chapter" data-level="6.5" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#adding-a-new-script-to-the-github"><i class="fa fa-check"></i><b>6.5</b> Adding a new script to the github</a></li>
+<li class="chapter" data-level="6.6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#editing-scripts"><i class="fa fa-check"></i><b>6.6</b> Editing Scripts</a></li>
+<li class="chapter" data-level="6.7" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#where-do-i-commit"><i class="fa fa-check"></i><b>6.7</b> Where do I commit?</a></li>
+<li class="chapter" data-level="6.8" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>6.8</b> My Git tab disappeared</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -193,7 +203,7 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 ## [13] &quot;system&quot;</code></pre>
 <p>You can access information in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., <code>eml@&lt;TAB&gt;</code>):</p>
 <div class="figure">
-<img src="rstudio-autocomplete.png" alt="RStudio Autocompletion" />
+<img src="images/rstudio-autocomplete.png" alt="RStudio Autocompletion" />
 <p class="caption">RStudio Autocompletion</p>
 </div>
 <p>You will notice that the list of slots on the <code>eml</code> object doesn’t include common EML things such as the dataset’s title or the creators. This is because EML (the XML) and the EML R package are both hierarchical. The (incomplete) EML XML for dataset with a title would look something like this:</p>
@@ -607,8 +617,8 @@ An object of class &quot;ListOfmissingValueCode&quot;
           </div>
         </div>
       </div>
-<a href="system-metadata.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="system-metadata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-git-in-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

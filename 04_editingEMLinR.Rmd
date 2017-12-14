@@ -40,7 +40,7 @@ sort(slotNames(eml))
 
 You can access information in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., `eml@<TAB>`):
 
-![RStudio Autocompletion](rstudio-autocomplete.png)
+![RStudio Autocompletion](images/rstudio-autocomplete.png)
 
 You will notice that the list of slots on the `eml` object doesn't include common EML things such as the dataset's title or the creators.
 This is because EML (the XML) and the EML R package are both hierarchical.
