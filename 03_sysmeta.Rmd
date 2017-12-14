@@ -1,5 +1,7 @@
 # System metadata
 
+New data team members should complete [the exercise in this section](#exercise4) as part of training.
+
 ## Introduction
 Every object in the Arctic Data Center (or on the KNB) has "system metadata." An object's system metadata has information about the file itself, such as the name of the file, the format, who the rights holder is, and what the access policy is (amongst other things). Sometimes we will need to edit system metadata in order to make sure that things on the webpage display correctly, or to ensure a file downloads from the website with the correct file name and extension.
 
@@ -61,7 +63,7 @@ After you have changed the necessary slot, you can update the system metadata us
 updateSystemMetadata(mn, pid, sysmeta)
 ```
 
-### Exercise
+### Exercise {exercise4}
 * Read the system metadata in from the data file you uploaded in the previous chapter
 * Check to make sure the `fileName` and `formatId` are set correctly
 * Update the system metadata if necessary.
