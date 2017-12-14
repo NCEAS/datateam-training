@@ -10,7 +10,7 @@ three separate interfaces:
 [All Tickets](#alltickets)  
 [Ticket Page](#exampleticket)
 
-### Front Page
+### Front Page {#frontpage}
 
 ![](images/Frontpage.png) 
 
@@ -30,7 +30,7 @@ This is what you see first
 9. Ticket Status - Status and how long ago it was created  
 10. Take - claim the ticket as yours  
 
-### All Tickets
+### All Tickets {#alltickets}
 
 ![](images/All_tickets.png)   
 
@@ -39,7 +39,7 @@ This is the queue interface from number 6 of the Front page
 2. Ticket status  
 3. Owner - who has claimed the ticket  
 
-### Example Ticket
+### Example Ticket {#exampleticket}
 
 ![](images/Example_ticket.png)  
 
@@ -57,22 +57,9 @@ This is the queue interface from number 6 of the Front page
  + Resolve - ticket completed  
 8. History - message history and option to reply (to submitter and beyond) or comment (internal message)
 
-## Email Templates
-
-  [Initial response](#initial)  
-  [Title](#title)  
-  [Abstract](#abstract)    
-  [Best practices](#practices)  
-  [Methods](#methods)  
-  [Data Files](#data)  
-  [DOI and data set finalization](#DOI)  
-  [Nesting](#nest)  
-  [Finding multiple data sets](#multiple)  
-  [Asking for approval](#approve)
-  [Other FAQs](#faq)  
+## Email templates
   
-  
-###  <a id="initial">Initial Response</a>
+### Initial response
 
 *Quick response*  
 Hello _____,  
@@ -82,12 +69,12 @@ From my preliminary examination of your submission I have noticed a few items th
  See comments below:  
 
 
-### <a id="title">Title needs work</a>  
+### Title needs work  
 
 We would like to add some more context to your data set title. A descriptive title that provides context about the where, what, and when of a dataset is often far more useful in search results. Something like: 'OUR SUGGESTION HERE, WHERE, WHEN' might be an option.
 
 
-### <a id="abstract">Abstract comments</a>
+### Abstract comments
 
 *What's supposed to be in an abstract*  
 Your abstract, while informative, appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data set fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: https://www.nsf.gov/awardsearch/showAward?AWD_ID=#######&HistoricalAwards=false
@@ -95,7 +82,7 @@ Your abstract, while informative, appears to be missing some information. We sug
 Please let us know how to proceed.
 
 
-### <a id="practices">Best Practices</a>
+### Best practices
 
 We noticed that the data files submitted are in _____ format. We recommend conversion of these files into a plain text/csv (OR ANOTHER APPROPRIATE OPEN-SOURCE) format in order to facilitate an accurate transfer of information to future researchers and ensure preservation of the data in perpetuity. We will perform these conversions for you. Below are some linked articles about data science best practices that the NSF Arctic Data Center adheres to:  
 DataONE - https://www.dataone.org/best-practices
@@ -103,12 +90,12 @@ DataONE - https://www.dataone.org/best-practices
 "Good Enough Practices in Scientific Computing" - http://arxiv.org/pdf/1609.00037v1.pdf  
 
 
-### <a id="methods">Methods</a>
+### Methods
 
 Your methods, while informative, appear to be missing some information. Enough detail should be included so that a reasonable scientist can replicate the study without consulting you nor any other resources. This should hold true today, or even decades or a century from now. Users need to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. We would be happy to add more content for you. Please provide us with a more robust methods section directly in this email or point us to a document from which we can extract more methods.
 
 
-### <a id="data">Data Files</a>
+### Data files
 
 We noticed that the data files contain...
 -blank cells. What do these represent?
@@ -119,7 +106,7 @@ We noticed that the data files contain...
 We noticed that no data files were submitted. With the exception of sensitive social science data, NSF requires the submission of all data products prior to publication. Do you intend to submit data files?
 
 
-### <a id="DOI">DOI and data set finalization comments</a>
+### DOI and data set finalization comments
 
 *Replying to questions about DOIs*  
 We attribute DOIs to data sets as one might give a DOI to a citable publication. Thus, a DOI is permanently associated with a unique and immutable version of a data set. If the data set changes, a new DOI will be created and the old DOI will be preserved with the original version.
@@ -138,25 +125,25 @@ https://doi.org/10.00000/X00X0X
 Please let us know if you need any further assistance.
 
 
-### <a id="policy">NSF ARC data submission policy</a>
+### NSF ARC data submission policy
 
 The NSF ARC program managers check compliance with their data policies when checking annual reports. Generally, NSF ARC requires that fully quality controlled data be uploaded within 6 months of collection for AON projects, or within 2 years of collection (or by end of the grant) for other ARC funded projects. Additionally, complete metadata must be submitted within two years of collection or before the end of the award, whichever comes first. Please find an overview of the NSF ARC policies [here](https://arcticdata.io/submit/#who-must-submit) and the full policy information [here](https://www.nsf.gov/pubs/2014/nsf14584/nsf14584.htm#grantcond).
 
 Investigators should upload their data to the [Arctic Data Center](https://arcticdata.io), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
 
 
-###  <a id="nest">Nesting</a>
+###  Nesting
 
 Nesting data sets under a common "parent" is beneficial so that all data sets funded by the same award can be found in one place. This way additional data sets can be added to the group without altering existing ones. Once we process all the "child" data sets you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data set [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data sets funded by the same award? If so, we are happy to do all this grouping for you.
 
 
-###  <a id="multiple">Finding multiple data sets</a>
+### Finding multiple data sets
 
 If linking to multiple data sets, you can send a link to the profile associated with the submitter’s ORCID ID and it will display all the data sets.
 	Ex.: https://arcticdata.io/catalog/#profile/http://orcid.org/0000-0002-2604-4533
 
 
-###  <a id="approve">Asking for approval</a>
+### Asking for approval
 
 Hi PI,
 
@@ -165,7 +152,7 @@ I have updated your data set and you can view it here after logging in: [URL]
 Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing.
 
 
-###  <a id="faq">Other FAQs</a>
+### Other FAQs
 
 *Q: Can I replace data that has already been uploaded and keep the DOI?*  
 A: Once you have published your data with the Arctic Data Center, it can still be updated by providing an additional version which can replace the original, while still preserving the original and making it available to anyone who might have cited it. To update your data, return to the data submission tool used to submit it, and provide an update.
