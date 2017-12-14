@@ -1,12 +1,12 @@
 --- 
 title: "NCEAS Data Team Training"
-author: "Jeanette Clark"
+author: "Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 github-repo: rstudio/datateam_training
-description: "This is a training guide and reference resource for NCEAS interns working on the SASAP and Arctic Data Center Projects"
+description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center Projects"
 ---
 
 # Welcome to NCEAS! {#welcome}
