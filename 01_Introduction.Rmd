@@ -11,7 +11,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 * [preservation](https://arcticdata.io/preservation/)
 * [history](https://arcticdata.io/history/)
 
-## Effective Data Management
+## Effective data management
 
 Read Matt Jones' paper on [effective data management](http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full) to learn how we will be organizing datasets prior to archival.
 

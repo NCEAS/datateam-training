@@ -2,25 +2,25 @@
 
 #Editing EML in R
 
-This document is a practical tutorial for using the EML package to solve many metadata problems seen in the ADC. Much of this information can be found in the vignettes here: https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd
+## Introduction
+
+This chapter is a practical tutorial for using the EML package to read, edit, write, and validate EML documents. Much of this information can be also be found in the vignettes for the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd).
 
 First, load in some packages.
+
 ```{r}
-library(dataone)
-library(arcticdatautils)
 library(EML)
 library(XML)  
 library(digest)
+library(arcticdatautils)
 ```
 
-Set a path to a local copy of the EML that you would like to edit, and read in the EML.
+Set a path to a local copy of the EML that you would like to edit, and read the EML into R.
 
 ```{r}
 path1 <- 'glacier_metadata.xml'
 eml <- read_eml(path1)
 ```
-
-## Introduction
 
 When using the EML R package, you will usually be working with objects of class `eml`.
 For example, we can find out what type of object we just created when we ran the `read_eml` function:
@@ -29,16 +29,16 @@ For example, we can find out what type of object we just created when we ran the
 class(eml)
 ```
 
-Each of these `eml` objects represents a complete EML document (as in: the .xml file) and all of the information inside the `.xml` file can be viewed and edited with the EML package.
+This `eml` object represents a complete EML document (as in: the .xml file) and all of the information inside the `.xml` file can be viewed and edited with the EML package.
 
-These `eml` objects has what are called "slots," each slot representing an element of the EML document such as "Title" or "Creator" and you will use these "slots" when working with your `eml` object. 
+The `eml` object has what are called "slots," each slot representing an element of the EML document such as "Title" or "Creator" and you will use these "slots" when working with your `eml` object. 
 You can find out what slots you have available with the `slotNames` function:
 
 ```{r}
 sort(slotNames(eml))
 ```
 
-You can get at what's in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., `eml@<TAB>`):
+You can access information in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., `eml@<TAB>`):
 
 ![RStudio Autocompletion](rstudio-autocomplete.png)
 
@@ -46,7 +46,7 @@ You will notice that the list of slots on the `eml` object doesn't include commo
 This is because EML (the XML) and the EML R package are both hierarchical.
 The (incomplete) EML XML for dataset with a title would look something like this:
 
-```{xml}
+```
 <eml>
   <dataset>
     <title>My title goes here...</title>
@@ -64,7 +64,7 @@ sort(slotNames(eml@dataset))
 
 *Remember, you can just type `eml@dataset` into your console and hit <TAB> to see this list of slot names. The `slotNames` function is used for demonstration purposes here.*
 
-Slots can be nested in each other and are all based on the EML schema (more info here: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html).
+Slots can be nested in each other and are all based on the EML [schema](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html).
 
 Typing in the name of your `eml` object (in this case, `eml`, the name of the result of `read_eml`) and hitting `<RETURN>` in the console will print the entire EML onto the screen:
 
@@ -126,13 +126,15 @@ eml@dataset@title <- c(title, title_second)
 eml@dataset@title
 ```
 
-This functionality will prove very useful with other elements (such as dataTable), where there are usually more than one of the same element.
+This functionality will prove very useful with other elements (such as dataTable), where there is usually more than one of the same element.
 
-## Attributes
+## Making edits
+
+### Setting attributes
 
 Since attribute information has to be added to the metadata, we'll cover attributes first.
 
-### Building the attribute table
+#### Building the attribute table
 
 First you need to generate a dataframe with attribute information. This dataframe has rows that are attributes, and the following columns:
 
@@ -180,7 +182,7 @@ attributes1 <- data.frame(
 Typing this out in R can be a bit of a pain, so you can import a table made in another program (such as Excel) as your attribute table - just make sure that rows are attributes and column names match the column names as listed above exactly (case is important).
 `attributes1 <- read.csv('~/arctic-data/docs/training/EML/LakeSampleData.csv', stringsAsFactors = F)`
 
-### Defining enumerated domains
+#### Defining enumerated domains
 
 For attributes that are enumerated domains, a second table is needed with three columns: `attributeName`, `code`, and `definition`. `attributeName` is repeated for all codes belonging to a common attribute. To make things a little easier and less repetitve, coding wise, codes can be defined using named character vectors and then converted to a data frame.
 In this example, there are two enumerated domains in the attribute list - "Location" and "Region"
@@ -200,7 +202,7 @@ factors1
 
 This table can also be generated using a different program, such as Excel, and imported to R as a .csv, similar to what can be done with the attribute table.
 
-### Generating the attribute list and data table
+#### Generating the attribute list and data table
 
 Next the attributeList is generated from the attributes and the factors using the function `set_attributes`. This puts all of the information from the attribute `data.frame` and the factor `data.frame` defining the enumerated domains into the slotted EML schema.
 
@@ -236,12 +238,12 @@ physical1 <- pid_to_eml_physical(mn, id1)
 
 REMEMBER, if we are working in the test environment, we set it this way:
 
-```{r}
+```{r, eval = F}
 cn <- CNode('STAGING')
 mn <- getMNode(cn,'urn:node:mnTestARCTIC')
 ```
 
-Be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training for the first time you should be using the test environment (STAGING, or test.articdata.io).
+*Reminder*: Be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training for the first time you should be using the test environment (STAGING, or test.articdata.io).
 
 
 The `physical1` and `attributeList1` elements are then used to create the `dataTable`, along with the name of the `dataTable` and its description.
@@ -254,7 +256,7 @@ dataTable1 <- new('dataTable',
                   attributeList = attributeList1)
 ```
 
-### Adding a second dataTable
+#### Adding a second dataTable
 
 If the metadata document describes multiple Data Objects, a new set of attributes, attribute list, physical description, and dataTable can be created just as in the example above.
 
@@ -286,13 +288,13 @@ Now both `dataTable1` and `dataTable2` are added to the original EML using the `
 eml@dataset@dataTable <- c(dataTable1, dataTable2)
 ```
 
-### Defining custom units
+#### Defining custom units
 
 If you get a warning message about your units not being in the standard unit list, a custom unit list needs to be created and added to the additionalMetadata slot of the EML. First we create a custom unit data frame with columns `id` (the name of the unit, as it appears in the attribute table), `unitType`, and `parentSI`. Each custom unit has a row in the data frame. To determine what the unitType and parentSI are for each unit, it may be helpful to reference the list of custom units. This list can easily be viewed in your R console using these commands: 
 
-```{r}
+```{r, eval = FALSE}
 standardUnits <- get_unitList()
-#View(standardUnits$units)
+View(standardUnits$units)
 ```
 
 The following lines create the standard unit data table, use the function `set_unitList` to slot it into the EML, and then add it as addionalMetadata to the EML.
@@ -305,7 +307,9 @@ unitlist <- set_unitList(custom_units)
 eml@additionalMetadata <- c(as(unitlist, "additionalMetadata"))
 ```
 
-## Setting other entities
+### Setting other entities
+
+#### Removing other entities
 
 In cases where the data package was submitted originally via the registry, the original EML usually has the data tables described as "other entity" elements in the EML. This information is now redundant since we created data table elements describing these objects. Remove the other entities by replacing the other entity element in the EML with a `ListOfotherEntity` object that consists of an empty list.
 
@@ -313,7 +317,7 @@ In cases where the data package was submitted originally via the registry, the o
 eml@dataset@otherEntity <- new('ListOfotherEntity', list())
 ```
 
-### For files that aren't uploaded yet
+#### Adding other entities for files that aren't uploaded yet
 
 There are times, however, when it may be necessary to create other entity tables for objects that are not described using a data table. Examples of these can include: R scripts, large NetCDF file directories, or audio/image files. Adding other entities is easy as long as you have paths to the files on the server and PIDs. This workflow is best if you are uploading files to the ADC yourself.
 
@@ -340,7 +344,7 @@ entity_df <- data.frame(type = 'otherEntity',
 eml <- eml_add_entities(eml, entity_df)
 ```
 
-## For files that are already uploaded
+#### Adding other entities for files that are already uploaded
 
 If you are trying to describe data objects that are already on the ADC, you can utilize `lapply` along with `get_package` to easily write the EML `otherEntity` elements. In this case, there are data tables and other entity type elements mixed in, so the `otherEntity` elements (non-csvs) are picked out by hand using indexes. The numbers in the call `otherEnts <- pkg$data[c(5,6,9,10)]` will change depending on your dataset.
 
@@ -351,7 +355,7 @@ otherEnts <- pkg$data[c(5,6,9,10)] #select only `otherEntity` PIDs after viewing
 eml@dataset@otherEntity <- new("ListOfotherEntity", pid_to_eml_other_entity(mn, otherEnts))
 ```
 
-## Coverage
+### Setting coverages
 
 Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a dataset. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
 
@@ -390,9 +394,9 @@ coverage <- set_coverage(beginDate = '2012-01-01',
 eml@dataset@coverage@geographicCoverage <- c(geocov1, geocov2)
 ```
 
-## Methods
+### Setting methods
 
-The methods tree in the EML section has many different options, visible in the schema here: https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png. You can create new elements in the methods tree by following the schema and using the "new" command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, `method_step <- new('methodStep')`, and using autocomplete on `method_step@`.
+The methods tree in the EML section has many different options, visible in the [schema](https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png). You can create new elements in the methods tree by following the schema and using the "new" command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, `method_step <- new('methodStep')`, and using autocomplete on `method_step@`.
 
 One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:
 
@@ -403,18 +407,7 @@ eml@dataset@methods <- methods1
 
 If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML in a text editor, otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.
 
-## Keywords
-
-Keywords are another item that can easily be created if no keywords exist. 
-
-```{r}
-keywords <- new('keywordSet', 
-                keywordThesaurus = 'GCMD',
-                keyword = c('keyword1', 'keyword2', 'keyword3'))
-eml@dataset@keywordSet <- c(keywords)
-```
-
-## People
+### Adding people
 
 To add people, with their addresses, you need to add addresses as their own object class, which you then add to the contact, creator, or associated party classes.
 
@@ -428,33 +421,33 @@ NCEASadd <- new('address',
 
 The creator, contact, and associated party classes can easily be created using functions from the arcticdatautils package. Here, we use `eml_creator` to set our dataset creator.
 
-```{r, eval = F}
+```{r}
 JC_creator <- eml_creator("Jeanette", 
                           "Clark", 
                           "NCEAS", 
                           "jclark@nceas.ucsb.edu", 
                           phone = '123-456-7890', 
-                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ',
                           address = NCEASadd)
 eml@dataset@creator <- c(JC_creator)
 ```
 
 Similarly, we can set the contacts. In this case, there are two, so we set eml@dataset@contact as a ListOfcontact, which contains both of them.
 
-```{r, eval = F}
+```{r}
 JC_contact <- eml_contact("Jeanette", 
                           "Clark", 
                           "NCEAS", 
                           "jclark@nceas.ucsb.edu", 
                           phone = '123-456-7890', 
-                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ',
                           address = NCEASadd)
 JG_contact <- eml_contact("Jesse", 
                           "Goldstein", 
                           "NCEAS", 
                           "jclark@nceas.ucsb.edu", 
                           phone = '123-456-7890', 
-                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                          userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ',
                           address = NCEASadd)
 eml@dataset@contact <- c(JC_contact, JG_contact)
 ```
@@ -468,12 +461,12 @@ JG_ap <- eml_associated_party("Jesse",
                               "jclark@nceas.ucsb.edu", 
                               phone = '123-456-7890', 
                               address = NCEASadd, 
-                              userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ'
+                              userId = 'https://orcid.org/WWWW-XXXX-YYYY-ZZZZ',
                               role = "metaataProvider")
 eml@dataset@associatedParty <- c(JG_ap)
 ```
 
-## Validating and Writing the EML
+## Validating and writing the EML
 
 The last step is to write and validate the EML. For time-saving purposes, first you write the EML:
 
@@ -578,4 +571,13 @@ What I showed above is a pretty specific example (which conveniently is also one
 * **Use indexing to access individual items in a list**: example: `test@para@.Data[[2]]`
   + *Index out of bounds*: If you receive an "index out of bounds" error that means you are trying to access an index beyond what exists in the list. For example, if there are 4 paragraphs in the abstract, and you write `test@para@.Data[[5]]` you will recieve this error.
  * **Use the schema!**: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html
+ 
+## Exercise
+* Read in the EML that you updated in the previous exercise into R
+* Use the `eml` package to replace the exsiting `dataTable` slot with a new `dataTable` object with an attribute list and physical section you wrote in R
+* Write and validate your EML
+* Update your package with the new EML using `publish_update`
+* Use the [checklist](to review your submission)
+* Make edits where necessary, and publish an update if needed
+ 
  

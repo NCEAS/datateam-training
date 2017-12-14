@@ -7,11 +7,8 @@ We will be using the arcticdatautils package and the dataone package to connect 
 
 
 ```{r load libraries, message=FALSE}
-# devtools::install_github("NCEAS/arcticdatautils", ref = "v0.5.0")
 library(arcticdatautils)
 library(dataone)
-library(EML)
-library(digest)
 ```
 
 ### Set environment

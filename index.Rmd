@@ -1,5 +1,5 @@
 --- 
-title: "NCEAS Intern Training"
+title: "NCEAS Data Team Training"
 author: "Jeanette Clark"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

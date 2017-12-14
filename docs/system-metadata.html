@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction-to-open-science.html">
+<link rel="prev" href="using-arcticdatautils.html">
+<link rel="next" href="editing-eml-in-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -167,57 +167,56 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">NCEAS Data Team Training</h1>
-<h4 class="author"><em>Jeanette Clark</em></h4>
-<h4 class="date"><em>2017-12-14</em></h4>
+<div id="system-metadata" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> System metadata</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>Every object in the Arctic Data Center (or on the KNB) has “system metadata.” An object’s system metadata has information about the file itself, such as the name of the file, the format, who the rights holder is, and what the access policy is (amongst other things). Sometimes we will need to edit system metadata in order to make sure that things on the webpage display correctly, or to ensure a file downloads from the website with the correct file name and extension.</p>
+<p>Although the majority of system metadata changes that need to be made are done with the functions in arcticdatautils, sometimes we need to change aspects of the system metadata (or sysmeta) outside of those functions. This markdown explains how to do this using the functions <code>getSystemMetadata</code> and <code>updateSystemMetadata</code>.</p>
 </div>
-<div id="welcome" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Welcome to NCEAS!</h1>
-<div id="first-day-to-dos" class="section level2">
-<h2><span class="header-section-number">1.1</span> First day to-dos:</h2>
+<div id="editing-sysmeta" class="section level2">
+<h2><span class="header-section-number">4.2</span> Editing sysmeta</h2>
+<p>First we need to load in some packages, and set up our environment. Note that typically if you are editing sysmeta you will need to set a token just like if you were updating a package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arcticdatautils)
+<span class="kw">library</span>(dataone)
+
+cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)
+mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>) <span class="co">#Loading in the test environment for this example</span></code></pre></div>
+<p>Next, we input the <code>mn</code> instance and PID of interest into the <code>getSystemMetadata</code> function. Note that the PID should be of the object of interest, not just the package of interest. Each individual object (metadata file, resource map, data file) will have its own system metadata.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pid &lt;-<span class="st"> &#39;urn:uuid:9a1b02a8-713e-4682-aafb-95c854a4c24a&#39;</span>
+sysmeta &lt;-<span class="st"> </span><span class="kw">getSystemMetadata</span>(mn, pid)</code></pre></div>
+<p>This returns an S4 object (more on these objects in Chapter 4), called <code>sysmeta</code>. The sysmeta object has the following “slots”: * serial version * identifier * formatId * checksum * checksumAlgorithm * submitter * rightsHolder * accesPolicy * replicationAllowed * numberReplicas * preferredNodes * blockedNodes * obsoletes * obsoletedBy * archived * dateUploaded * dateSysMetaModified.</p>
+<p>You can view and edit slots using the <code>@</code> functionality.</p>
+<p><code>sysmeta@fileName</code> <code>[1] &quot;WELTS_flatfile.csv&quot;</code></p>
+<p>If you want to change a slot, you can simply do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sysmeta@fileName &lt;-<span class="st"> &#39;AlaskaWells.csv&#39;</span></code></pre></div>
+<p>Note that some slots cannot be changed by simple text replace (particularly the accessPolicy). There are various helper functions for changing the accessPolicy and rightsHolder such as <code>addAccessRule</code> (which takes the sysmeta as an input) or <code>set_access</code>, which only requires a PID. In general, you most frequently need to use <code>getSystemMetadata</code> to change either the formatId or fileName slots.</p>
+<p>After you have changed the necessary slot, you can update the system metadata using the <code>updateSystemMetadata</code> function, which takes the <code>mn</code> instance, your PID of interest, and the edited sysmeta object as arguments.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">updateSystemMetadata</span>(mn, pid, sysmeta)</code></pre></div>
+<div id="exercise-3" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Exercise</h3>
 <ul>
-<li>Get a tour of the office from Ginger, Jeanette, or Jesse</li>
-<li>Fill out required paperwork from Michelle</li>
-<li>Have Ana take your picture (room 309)</li>
-<li>Set up the remainder of your accounts</li>
+<li>Read the system metadata in from the data file you uploaded in the previous chapter</li>
+<li>Check to make sure the <code>fileName</code> and <code>formatId</code> are set correctly</li>
+<li>Update the system metadata if necessary.</li>
 </ul>
 </div>
-<div id="account-information" class="section level2">
-<h2><span class="header-section-number">1.2</span> Account information</h2>
-<ul>
-<li><a href="https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account">LDAP - NCEAS</a> - Jeanette or Jesse should have set this up prior to your start date to help get other accounts set up by the first day. This account and password control your access to:
-<ul>
-<li>arcticdata <a href="https://support.nceas.ucsb.edu/rt/">RT queue</a></li>
-<li>Github - <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/">arctic-data</a> and <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/">sasap-data</a></li>
-</ul></li>
-<li>Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal</li>
-<li><a href="https://orcid.org/register">ORCiD</a> - create an account</li>
-<li><a href="http://slack.nceas.ucsb.edu/">NCEAS Slack</a> - get an invite from <a href="slack.nceas.ucsb.edu" class="uri">slack.nceas.ucsb.edu</a></li>
-<li>Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request an add from Chris on Slack</li>
-<li><a href="https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=299555270">Schedule</a> - fill out anticipated quarterly schedule</li>
-</ul>
 </div>
-<div id="nceas-events" class="section level2">
-<h2><span class="header-section-number">1.3</span> NCEAS Events</h2>
-<p>NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the weekly events are :</p>
-<ul>
-<li>Roundtable
-<ul>
-<li>weekly presentation and discussion of research by a visiting or local scientist</li>
-<li>Wednesdays at 12:15 in the lounge</li>
-</ul></li>
-<li>Coffee Klatch
-<ul>
-<li>coffee, socializing, and news updates for NCEAS</li>
-<li>Tuesdays at 10:30 in the lounge</li>
-</ul></li>
-<li>Salad Potluck
-<ul>
-<li>potluck salad and socializing, bring a topping or side to share!</li>
-<li>second Tuesday of the month, 12:15 in the lounge</li>
-</ul></li>
-</ul>
+<div id="editing-sysmeta-on-lots-of-files" class="section level2">
+<h2><span class="header-section-number">4.3</span> Editing sysmeta on lots of files</h2>
+<p>If you have a lot of files that all need a similar change, you can use a for loop or the apply functions to efficiently make all of your changes. Say you need to change all of the format IDs of data objects in a package so that they are <code>text/csv</code>. You could do this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PID &lt;-<span class="st"> &#39;some_pid&#39;</span>
+ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, PID) <span class="co">#get all pids in a package</span>
+data_pids &lt;-<span class="st"> </span><span class="kw">unlist</span>(ids$data)
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(data_pids)){    <span class="co">#run for loop over all of the data ids</span>
+  sysmeta &lt;-<span class="st"> </span><span class="kw">getSystemMetadata</span>(mn, data_pids[i])
+  sysmeta@formatId &lt;-<span class="st"> &quot;text/csv&quot;</span>
+  <span class="kw">updateSystemMetadata</span>(mn, data_pids[i], sysmeta)
+}</code></pre></div>
+</div>
+<div id="identifiers-and-sysmeta" class="section level2">
+<h2><span class="header-section-number">4.4</span> Identifiers and sysmeta</h2>
+<p>Importantly, changing the system metadata does NOT necessitate a change in the PID of an object. This is because changes to the system metadata do not change the object itself, they are only changing the description of the object (although ideally the system metadata is accurate when an object is first published).</p>
 
 </div>
 </div>
@@ -226,8 +225,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction-to-open-science.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-arcticdatautils.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="editing-eml-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
