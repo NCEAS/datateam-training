@@ -11,7 +11,7 @@ description: "This is a training guide and reference resource for NCEAS interns 
 
 # Welcome to NCEAS! {#welcome}
 
-## First day to-dos:
+## First day to-dos
 
 * Get a tour of the office from Ginger, Jeanette, or Jesse
 * Fill out required paperwork from Michelle
