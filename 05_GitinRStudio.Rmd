@@ -5,7 +5,7 @@
 First, read the excellent intro to git put together by the eco-data-science group at UCSB/NCEAS. Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands.
 [git intro](https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf)
 
-## So why do I need to use this again?
+### So why do I need to use this again?
 
 There are several reasons why using the arctic-data github is helpful, both for you and for the rest of the data team. Here are a few:
 
@@ -25,7 +25,7 @@ Now you need to set up your git global options, and tell it who you are. At the 
 After running these commands, the shell prompt should look like this:
 ![global config](images/shell_config.jpeg)
 
-## Cloning the arctic-data repo
+### Cloning the arctic-data repo
 
 Next, you need to clone the arctic-data repository to your RStudio. You do this by adding it as a "project." In your RStudio window, click File > New Project. Then click Version Control, and then select the Git option. If you are prompted to save your workspace during this process, make sure all of your work is saved, and you don't need anything in your environment, and then click 'Don't Save.' 
 
@@ -35,9 +35,9 @@ You should see a prompt asking you for a URL. Fill it out like this to clone the
 
 You will be prompted for your username and password, and then git will clone the directory. The username/password you use should be the same one you use to log in when you go to http://github.nceas.ucsb.edu/KNB/arctic-data. Now you should have a directory called arctic-data in your RStudio files window.
 
-## Adding a new script to the github
+## Working with the repository
 
-
+### Adding a new script
 If you have been working on a script that you want to put in the arctic-data github, you need to save it somewhere in the arctic-data folder you made in your account on the server. You can do this by either moving your script into the folder or using the save-as functionality. Note that git will try and version anything that you save in this folder, so you should be careful about what you save here. Things that probably shouldn't be saved in this folder, for our purposes include:
 
 * **Tokens**: Any token file or script with a token in it should NOT be saved in the repository. Others could steal your login credentials if you put a token on the github.
@@ -57,7 +57,7 @@ Push commit, and your commit will be saved. Now you want to merge the commits yo
 
 Always remember, the order is **commit-pull-push**
 
-## Editing Scripts
+### Editing a script
 
 If you want to change a script, the workflow is the same. Just open the script that was saved in the arctic-data folder on your server account, make your changes, save the changes, stage them by clicking the box, commit, pull, then push to merge your version with the main version on the website. Do NOT edit scripts using the website. It is much easier to accidentally overwrite the history of a file this way.
 
@@ -66,7 +66,7 @@ One thing you might be wondering as you are working on a script is, how often sh
 And one final note, you can make multiple commits before you push to the repo. If you are making lots of changes to the script, you might want to make several commits before pull-push. You can see how many commits you are ahead of the "origin/master" branch (i.e. what you see on the website) by looking for text in your git tab in RStudio that looks like this:
 ![multiple commits](images/multiple_commits.jpeg)
 
-## Where do I commit?
+### Where do I commit?
 
 The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with subfolders listed by project. Directories can be created as needed but please ask Jesse or Jeanette first so we can try and maintain some semblance of order in the file structure. 
 
