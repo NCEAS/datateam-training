@@ -108,12 +108,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#open-science-background-reading"><i class="fa fa-check"></i><b>2.1</b> Open science background reading</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#effective-data-management"><i class="fa fa-check"></i><b>2.2</b> Effective data management</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#using-dataone"><i class="fa fa-check"></i><b>2.3</b> Using DataONE</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#creating-metadata"><i class="fa fa-check"></i><b>2.4</b> Creating metadata</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise"><i class="fa fa-check"></i><b>2.4.1</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#working-on-a-remote-server"><i class="fa fa-check"></i><b>2.5</b> Working on a remote server</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#cyberduck-instructions"><i class="fa fa-check"></i><b>2.5.1</b> Cyberduck instructions</a></li>
-<li class="chapter" data-level="2.5.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-paths"><i class="fa fa-check"></i><b>2.5.2</b> A note on paths</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#working-on-a-remote-server"><i class="fa fa-check"></i><b>2.4</b> Working on a remote server</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#cyberduck-instructions"><i class="fa fa-check"></i><b>2.4.1</b> Cyberduck instructions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-paths"><i class="fa fa-check"></i><b>2.4.2</b> A note on paths</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise"><i class="fa fa-check"></i><b>2.4.3</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i><b>3</b> Using arcticdatautils</a><ul>
@@ -189,11 +187,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The <strong>Data Observation Network for Earth</strong> (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.</p>
 <p>Watch the first 38 minutes of <a href="https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ">this video</a> explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.</p>
 </div>
-<div id="creating-metadata" class="section level2">
-<h2><span class="header-section-number">2.4</span> Creating metadata</h2>
-<p>Most submitters to the ADC submit their data and metadata through an online form we call the registry. This is how you will create your first metadata record. The metadata specification we use is called the Ecological Metadata Language, or EML.</p>
+<div id="working-on-a-remote-server" class="section level2">
+<h2><span class="header-section-number">2.4</span> Working on a remote server</h2>
+<p>All of the work that we do at NCEAS is done on our remote server, called “datateam.” If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through the link <a href="datateam.nceas.ucsb.edu/rstudio/" class="uri">datateam.nceas.ucsb.edu/rstudio/</a>. To transfer files on and off of the server, you’ll need to use either bash commands in the terminal, or a program called cyberduck.</p>
+<div id="cyberduck-instructions" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Cyberduck instructions</h3>
+<p>To use cyberduck to transfer local files onto the datateam server:</p>
+<ol style="list-style-type: decimal">
+<li>Open Cyberduck</li>
+<li>Click “Open Connection”</li>
+<li>From the drop-down, choose “SFTP (SSH File Transfer Protocol)”</li>
+<li>Enter “datateam.nceas.ucsb.edu” for Server</li>
+<li>Enter your username and password</li>
+<li>Connect</li>
+</ol>
+<p>From here, you can drag and drop files onto and off of the server.</p>
+</div>
+<div id="a-note-on-paths" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> A note on paths</h3>
+<p>On the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</p>
+<p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.</p>
+</div>
 <div id="exercise" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Exercise</h3>
+<h3><span class="header-section-number">2.4.3</span> Exercise</h3>
 <ul>
 <li>Use the “tabula” program to extract Table 1 from <a href="http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta">this paper</a></li>
 <li>Reformat the table using R under the guidelines in the journal article on effective data management
@@ -208,29 +224,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>attributes (column names) should be defined, including correct units and missing value codes</li>
 </ul></li>
 </ul>
-</div>
-</div>
-<div id="working-on-a-remote-server" class="section level2">
-<h2><span class="header-section-number">2.5</span> Working on a remote server</h2>
-<p>All of the work that we do at NCEAS is done on our remote server, called “datateam.” If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through the link <a href="datateam.nceas.ucsb.edu/rstudio/" class="uri">datateam.nceas.ucsb.edu/rstudio/</a>. To transfer files on and off of the server, you’ll need to use either bash commands in the terminal, or a program called cyberduck.</p>
-<div id="cyberduck-instructions" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> Cyberduck instructions</h3>
-<p>To use cyberduck to transfer local files onto the datateam server:</p>
-<ol style="list-style-type: decimal">
-<li>Open Cyberduck</li>
-<li>Click “Open Connection”</li>
-<li>From the drop-down, choose “SFTP (SSH File Transfer Protocol)”</li>
-<li>Enter “datateam.nceas.ucsb.edu” for Server</li>
-<li>Enter your username and password</li>
-<li>Connect</li>
-</ol>
-<p>From here, you can drag and drop files onto and off of the server.</p>
-</div>
-<div id="a-note-on-paths" class="section level3">
-<h3><span class="header-section-number">2.5.2</span> A note on paths</h3>
-<p>On the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</p>
-<p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.</p>
-<p><a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/introArcticdatautils.Rmd">arcticdatautils</a> * Compare your submission against the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md">checklist</a> and update it until it meets all the checks by: + Updating data files as necessary, + Manipulating the EML using the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd">EML package</a>, + and then updating the submission on the test site using arcticdatautils. * Finally, upload your script to the GitHub Enterprise repository by following <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/github_inRStudio.Rmd">these instructions</a></p>
 
 </div>
 </div>
