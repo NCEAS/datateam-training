@@ -30,7 +30,7 @@ cn <- CNode('STAGING')
 mn <- getMNode(cn,'urn:node:mnTestARCTIC')
 ```
 
-A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through this training for the first time you should be using the test environment (STAGING, or test.articdata.io).
+A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training exercises, you should be using the test environment (STAGING, or test.articdata.io).
 
 ### Set token
 
@@ -40,9 +40,19 @@ Now that we have the environment set we have to manually log in to the NSF ADC s
 options(dataone_test_token = "...")
 ```
 
+### What is in a package?
+
+A data package generally consists of at least 3 "objects" or files. One object is the metadata file itself. Ths file is in XML format, and has the extension `.xml`. We sometimes refer to this file as the EML, which is the metadata standard that it uses. Another object or objects are the data files themselves. Most commonly these are data tables (`.csv`), but they can also be audio files, netCDF files, plain text files, pdf documents, image files, etc. The final object is the resource map. This object is a text file that defines the relationships between all of the other objects in the data package. It says things like "this metadata file describes this data file," and is critical to making a data package render correctly on the website with the metadata files and all of the data files in te right place. Fortunately, we rarely if ever have to actually look at the contents of resource maps, they are generated for us using `arcticdatautils`.
+
+### About identifiers
+
+Each object (metadata files, data files, resource maps) on the Artic Data Center or KNB has a unique identifier, also sometimes called a "pid". When you look at the landing page for a dataset, for example [here](https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z), you can find the resource map identifier in the URL (`resource_map_doi:10.18739/A2836Z`), the metadata identifer in the "General > Identifier" section of the metadata record (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "online distribution info" section (`arctic-data.9546.1`).
+
+Different versions of a package are linked together by what we call the version chain. Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the object that was updated. When making changes to a package, always use the `update_object` or `publish_update` commands from `arcticdatautils` to ensure that the version chain is maintained.
+
 ### Publishing a package to the site
 
-To publish a data package to the site, you will need to publish three types of objects: a metadata object (the .xml metadata file), data object (a .csv or other data files), and a resource map, which links the data objects to the metadata objects. We do this using a function called `publish_object`. To publish a metadata file you would use the following call:
+Objects are published to the site using a function called `publish_object`. To publish a metadata file you would use the following call:
 
 ```{r, eval=FALSE}
 meta_path <- 'path/to/your/metadata/metadata.xml'
@@ -64,8 +74,6 @@ Finally, you can create and publish the resource map using `create_resource_map`
 rm <- create_resource_map(mn, pid, data_pids = data_pid)
 ```
 
-And now your package should be up on the site!
-
 One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function `set_rights_and_access` will set both, and `set_access` will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder to the dataset is typically the submitter (if the dataset is submitted through the registry), but if a data team intern is publishing objects for a PI, the rights holder is the main point of contact for the dataset (ie the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCID.
 
 ```{r set rights and access, eval = FALSE}
@@ -76,36 +84,57 @@ set_rights_and_access(mn,
 ```
 
 
-### Edit material
+## Exercise
 
-To edit material, you can download the EML from the site and edit it in R using the EML package, you can make whatever edits you need to using the *EML* package. Use the [ADC editing EML in R markdown](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd) to help navigate making these edits. This work is a little tricky so work with fellow interns to complete these edits. Here in an example of replacing the abstract and adding "otherEntity" metadata for a new datatable *(note: to add an other entity, it helps to have the file locally inorder to pull system metadata information)*:
+Locate the data package you published by navigating to the "my profile" section on [test.arcticdata.io](test.arcticdata.io). Download the metadata and data files and transfer them to the datateam server.
 
-### Update the data package with the new EML and file
+Using the functions described in the section above, pubish your metadata record and data file to the site. You should be able to view your new dataset (which is identical to the one you created previously) by appending the pid of your resource map (in the example above, the resource map pid was saved to the variable `rm`) to the end of the URL test.arcticdata.io/#view/... 
 
-Once you are happy with your edits you can upload to the ADC. Any new data objects will have to be uploaded separately and once they are on the ADC, we can use their PID to link them into a package. Usually we'll be updating exisiting work using `publish_update()` from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package).
+### Uploading a new version
 
+To edit material, we use the `publish_update` or `update_object` functions in `arcticdatautils`.
 
-```{r, eval=FALSE}
+Usually we'll be updating exisiting work using `publish_update()` from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.
 
-# publish the new data objects first
-data_path <- 'path/to/your/data/data.csv'
-dataPid <-publish_object(mn, data_path) 
+The following example shows how you would add a data file to a package, and make a change to the metadata file.
 
+First, make whatever edits you ned to make to the metadata, and save them to the server.
+
+Define the path to your metadata.
+```{r, eval = FALSE}
+meta_path <- "path/to/metadata/file.xml"
+```
+
+Use either the metadata or resource map pid for your existing data package and the function `get_package` to return all of the existing pids in the data package as a named list.
+
+```{r, eval = FALSE}
 # the function get_package is helpful to get all other PIDs in a package if you know the metadata PID
 metaPid <- "urn:uuid:5933a052-5493-4f50-8622-ed83231d3fee"
 ids <- get_package(mn, metaPid)
+```
 
-### update metadata with the otherEntities added
-meta_path <- "path/to/metadata/file.xml"
+Finally, use the `publish_update` function with the results of the lines above to update your data package.
+
+```{r, eval = FALSE}
 publish_update(mn,
                metadata_pid = metaPid # old metadata PID you pulled in originally. Alternatively could paste in the string:  "urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee"
                resource_map_pid = ids$resource_map,
-               metadata_path = meta_path, # new updated EML file,
-               data_pid = dataPid, # this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)
+               metadata_path = meta_path, # path to updated EML file,
+               data_pid = ids$data, # this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)
                check_first = T,
                use_doi = FALSE,
                public = FALSE)
 ```
 
-If a package is ready to be public, note that you can change the `public` argument in the `publish_update` call to `TRUE`. Similarly, if you want to publish with a DOI instead of a UUID, you can change the `use_doi` argument to `TRUE`.
+If a package is ready to be public, note that you can change the `public` argument in the `publish_update` call to `TRUE`. Similarly, if you want to publish with a DOI type identifier instead of a UUID type identifer, you can change the `use_doi` argument to `TRUE`.
+
+## Exercise
+
+Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/... with the resource map pid you generated in that exercise. Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom). Navigate to the title section, and make a change to the title text within the `<title>`...`</title>` section. Do not change the `<title>` or `</title>` syntax. Upload the file back to the datateam server. 
+
+Using the `publish_update` function, update your data package as shown above.
+
+
+
+
 
