@@ -1,0 +1,211 @@
+# Introduction to Solr
+
+Solr is what's known as an index.
+More specifically, it's a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.).
+Every Object in Metacat will have a corresponding Solr document for it that contains information about that Object.
+Each type of Object will have a different set of fields in its Solr document.
+For example, an EML document will have a `title` field (corresponding to the EML document's `<title>` element), while a CSV will not.
+
+The fields that go into a Solr document are populated by information such as:
+
+- The System Metadata (fileName, accessPolicy, etc)
+- The Object itself (e.g. title, creators, etc. for an EML record)
+- Additional computed fields (e.g., a geohash for quick spatial search)
+
+Indexing the Objects Metacat stores lets us execute some interesting and very useful queries such as:
+
+- What are the most recently updated datasets?
+- What Metadata and Data Objects are in a given Data Package?
+- What is the total size (in terms of disk space) of all Objects stored in Metacat?
+
+## Querying Solr
+
+Solr is queried via what's called an HTTP API.
+Practically, what this means it that you can visit a URL (web address) in a web browser to execute a query.
+This may be a little bit weird at first but I hope some examples will make it more clear.
+
+So I said you visit a URL to query Solr.
+But what address do you visit?
+For the Arctic Data Center (https://arcticdata.io), every Solr query starts with a base URL of https://arcticdata.io/metacat/d1/mn/v2/query/solr/.
+If you visit that URL, you will see a list of fields Solr is storing for the Objects it indexes:
+
+```xml
+<ns2:queryEngineDescription xmlns:ns2="http://ns.dataone.org/service/types/v1.1">
+  <queryEngineVersion>3.6.2.2012.12.18.19.52.59</queryEngineVersion>
+  <name>solr</name>
+  <queryField>
+    <name>abstract</name>
+    <description>
+      The full text of the abstract as provided in the science metadata document.
+    </description>
+    ...truncated...
+```
+
+You can see that there is a large set of queryable fields, though, as I said above, not all types of Objects will have values set for all of the possible fields because some fields do not make sense for some Objects (e.g., `title` for a CSV).
+
+### Parts of a Query
+
+Each Solr query is comprised of a number of parameters.
+These are like arguments to a function in R, but they are entered as parts of a URL.
+
+The most common parameters are:
+
+- `q`: The query. This is like `subset` or `dplyr::filter` in R
+- `fl`: What fields are returned for the documents that match your query (`q`). If not set, all fields are returned.
+- `rows`: The maximum number of documents to return. Solr will truncate your result if the result size is greater than `rows`.
+- `sort`: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded)
+
+To use these parameters, we append to the base URL like this:
+
+https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q={QUERY}&fl={FIELDS}&rows={ROWS}
+
+and we replace the text inside `{}` with the value we want for each parameter.
+Note that the parameters can come in any order so the following is equivalent:
+
+https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl={FIELDS}&rows={ROWS}&q={QUERY}
+
+The first parameter in the URL must have a '?' in front of it and all subsequent parameters must have an '&' between them.
+It's really easy to get the URL wrong when typing it in manually like this so be sure to double-check your URL and think critically about the result: Solr tries to always return something even if it's not what you intended.
+
+### Constructing a Query
+
+The query ('q') parameter uses a syntax that looks like `field:value`, where `field` is one of the Solr fields and `value` is an expression.
+The expression can match a specific value exactly, e.g.,
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:arctic-data.7747.1`
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:"doi:10.5065/D60P0X4S"`
+
+which finds the Solr document for a specific Object by PID (identifier).
+Note that in the second example, the DOI PID is surrounded in double quotes.
+This is because Solr has [reserved characters](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html), of which ':' is one, so we have to help Solr by surrounding values with reserved characters in them in quotes (as I did here) or escaping them.
+
+Queries can take on a more advanced form such as a wildcard expression:
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:arctic-data.*`
+
+finds all the Objects that start with "arctic-data." followed by anything ("*")
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*`
+
+finds all the Objects with the word "soil" somewhere in the title.
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=origin:*Stafford*+AND+title:Bering Strait&fl=title&sort=title+desc&rows=10`
+
+finds 10 Objects where one of the EML `creator`s has a name that contains the substring "Stafford" and the `title` contains the substring "Bering Strait", sorted by `title` (descending order).
+Note that the `+AND+` between the `origin` and `title` query above specifies that both conditions must be true for a Solr document to be returned.
+We could've also switched the `+AND+` to `+OR+` and/or added more conditions to the query.
+
+Here's a slightly more advanced one:
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:METADATA+AND+-obsoletedBy:*&sort=dateUploaded+desc&rows=25`
+
+This query is the query MetacatUI uses to fill in the https://arcticdata.io/catalog/ page.
+Notice the `-obsoletedBy:*`.
+The '-' before the field inverts the expression so this part of the query means "things that have no `obsoletedBy` value set".
+
+We can also just find everything:
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*`
+
+finds any value in any field.
+
+### Faceting
+
+Above we went through querying across Solr documents but we can also summarize what's in Solr with Faceting which lets us group Solr documents together and count them.
+This is like `table` in R.
+Faceting can do a query within a query, but more commonly I use it to summarize unique values in a field.
+For example, we can find the unique format IDs on Data Objects:
+
+- https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&fq=formatType:DATA&facet=true&facet.field=formatId&rows=0
+
+To facet, we usually do a few things:
+
+- Add the parameter `facet=true`
+- Add the parameter `facet.field={FIELD}` with the field we want to facet (group) on
+- Set `rows=0` because we don't care about the matched Solr documents
+- Optionally specify `fq={expression}` which filters out Solr documents before faceting. In the above example, we have to do this to only count Data Objects. Without it, the facet result would include formatIDs for metadata and resource maps which we don't want.
+
+### Stats
+
+With Faceting, we found we could make queries to find the unique values for a Solr field.
+With Stats, we can have Solr calculate statistics on numerical values (such as `fileSize`).
+
+- https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:DATA&stats=true&stats.field=size&rows=0
+
+This query calculates a set of summary statistics for the `size` field on Data Objects that Solr has indexed.
+In this case, Solr's `size` field indexes the `fileSize` field in the System Metadata for each Object in Metacat.
+
+## Querying Solr through R
+
+What if I told you that every time you run the `query` function in the `dataone` R package you are asking R to visit a URL like the ones above, parse the information returned by the page, and present it in an R-friendly way such as a `list` or `data.frame`?
+Well that's what happens!
+Then why might we use R in the first place?
+There are two big advantages:
+
+1. The result is returned in a more useful way to R without extra work on your part
+2. We can more easily pass our authentication token with the query
+
+Why does #2 matter?
+Well by default, all of those URLs above only returned publicly-readable Solr documents.
+If a private document matched any of those queries, Solr doesn't give you any idea and acts like the non-public-readable documents don't exist.
+So we must pass an authentication token to access non-public-readable content.
+This bit is crucial for working with the Arctic Data Center so you'll very often want to use R instead of visiting those URLs in a web browser.
+
+And there's good news: all of the URLs you visited above can be turned into an R expression very easily.
+For example:
+
+- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*`
+
+becomes
+
+```r
+library(dataone)
+cn <- CNode("PROD")
+mn <- getMNode(cn, "urn:node:ARCTIC")
+# Set your token if you need/want!
+query(mn, "q=title:*soil*&fl=title&rows=10")
+```
+
+I just deleted the first part of the URL, up to and including the '?', and pasted the rest in as the second argument to `query`.
+You may have seen an alternative syntax:
+
+```r
+query(mn, list(q="title:*soil*",
+               fl="title",
+               rows="10"))
+```
+
+this is the same query as above because the `query` function takes either a string (the first form) or a named list (the second form).
+
+By default, `query` returns the result as a `list`.
+This is definitely useful but a `data.frame` can be a more useful way to work with the result.
+To get a `data.frame` instead, just set the `as` argument to 'data.frame' to get a `data.frame`:
+
+```r
+query(mn, list(q="title:*soil*",
+               fl="title",
+               rows="10"),
+      as = "data.frame")
+1  Daily Average Soil, Air and Ground Temperatures - Council Forest Site [Romanovsky, V.]
+2     Canadian Transect of Soils and Vegetation for the Circumpolar Arctic Vegetation Map
+3                                   Soil Temperatures, Toolik Lake, Alaska, 1995 and 1996
+4                                        Soil Temperature ARCSS grid Atqasuk, Alaska 2013
+5                                                        X-ray fluorescence, Barrow soils
+6                                                Toolik Lake, Alaska Soil moisture - 2014
+7                           Thermal Soil Properties for Ivotuk and Council [Beringer, J.]
+8                                          Soil Temperature NIMS grid Barrow, Alaska 2014
+9                                           Ivotuk Soil Data - Station Met2 [Hinzman, L.]
+10                                                         thule_tram_soil_temps_2013.csv
+```
+
+## Key takeaways
+
+- Find out what you can query at https://arcticdata.io/metacat/d1/mn/v2/query/solr
+- The Solr HTTP API is what the R `dataone` package uses when you run `query`
+- Pass a token if you want to include non-public-readable objects in the results (you often do!)
+
+## More resources
+
+- Solr's [The Standard Query Parser](https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser) docs (high level of detail)
+- Another quick reference: https://wiki.apache.org/solr/SolrQuerySyntax
+- http://www.solrtutorial.com/

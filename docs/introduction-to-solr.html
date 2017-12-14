@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="introduction-to-open-science.html">
-<link rel="next" href="system-metadata.html">
+<link rel="prev" href="using-git-in-rstudio.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -190,99 +190,161 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-arcticdatautils" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Using arcticdatautils</h1>
-<div id="uploading-packages-using-r" class="section level2">
-<h2><span class="header-section-number">3.1</span> Uploading packages using R</h2>
-<p>We will be using the arcticdatautils package and the dataone package to connect to the <a href="arcticdata.io">NSF Arctic Data Center</a> data repository and push and pull edits. To identify yourself as admin you will need to register a ‘token’ by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, copying your token into R and telling R where to connect by defining the member node using the code below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arcticdatautils)
-<span class="kw">library</span>(dataone)</code></pre></div>
-<div id="set-environment" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Set environment</h3>
-<p>Once we have our libraries loaded we need to tell R which repo we want to be working with. If we are working on the production site, you can set the coordinating node (<code>cn</code>) and member node (<code>mn</code>) this way:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;PROD&#39;</span>)
-mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</code></pre></div>
-<p>If we are working in the test environment, we set it this way:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)
-mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</code></pre></div>
-<p>A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training exercises, you should be using the test environment (STAGING, or test.articdata.io).</p>
-</div>
-<div id="set-token" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Set token</h3>
-<p>Now that we have the environment set we have to manually log in to the NSF ADC site to get our token and copy it to our R environment. <strong>This token is your identity on these sites, please treat it as you would a password</strong> (ie. don’t paste into scripts that will be shared). The easiest way to do this is to just run the token in the <em>console</em>. There’s no need to keep it in you script since its temporary anyway. Sometimes you’ll see a placeholder in scripts to remind users to get their token, such as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
-</div>
-<div id="what-is-in-a-package" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> What is in a package?</h3>
-<p>A data package generally consists of at least 3 “objects” or files. One object is the metadata file itself. Ths file is in XML format, and has the extension <code>.xml</code>. We sometimes refer to this file as the EML, which is the metadata standard that it uses. Another object or objects are the data files themselves. Most commonly these are data tables (<code>.csv</code>), but they can also be audio files, netCDF files, plain text files, pdf documents, image files, etc. The final object is the resource map. This object is a text file that defines the relationships between all of the other objects in the data package. It says things like “this metadata file describes this data file,” and is critical to making a data package render correctly on the website with the metadata files and all of the data files in te right place. Fortunately, we rarely if ever have to actually look at the contents of resource maps, they are generated for us using <code>arcticdatautils</code>.</p>
-</div>
-<div id="about-identifiers" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> About identifiers</h3>
-<p>Each object (metadata files, data files, resource maps) on the Artic Data Center or KNB has a unique identifier, also sometimes called a “pid”. When you look at the landing page for a dataset, for example <a href="https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z">here</a>, you can find the resource map identifier in the URL (<code>resource_map_doi:10.18739/A2836Z</code>), the metadata identifer in the “General &gt; Identifier” section of the metadata record (<code>doi:10.18739/A2836Z</code>), and the data identifier by clicking the “more info” link next to the data object, and looking at the “online distribution info” section (<code>arctic-data.9546.1</code>).</p>
-<p>Different versions of a package are linked together by what we call the version chain. Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the object that was updated. When making changes to a package, always use the <code>update_object</code> or <code>publish_update</code> commands from <code>arcticdatautils</code> to ensure that the version chain is maintained.</p>
-</div>
-<div id="publishing-a-package-to-the-site" class="section level3">
-<h3><span class="header-section-number">3.1.5</span> Publishing a package to the site</h3>
-<p>Objects are published to the site using a function called <code>publish_object</code>. To publish a metadata file you would use the following call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta_path &lt;-<span class="st"> &#39;path/to/your/metadata/metadata.xml&#39;</span>
-pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn, meta_path, <span class="dt">format_id =</span> <span class="kw">format_eml</span>())</code></pre></div>
-<p>This call will save the id of the metadata object to the variable <code>pid</code>, which you will need later for the resource map. It also adds a formatID, which identifies what kind of object you just uploaded. Similarly, you can publish data objects like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_path &lt;-<span class="st"> &#39;path/to/your/data/data.csv&#39;</span>
-data_pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn, data_path, <span class="dt">format_id =</span> <span class="st">&#39;text/csv&#39;</span>)</code></pre></div>
-<p>Note that you will need to be explicit about your <code>format_id</code> here based on the file type. A list of format IDs can be found <a href="https://cn.dataone.org/cn/v2/formats">here on the DataONE website</a>.</p>
-<p>Finally, you can create and publish the resource map using <code>create_resource_map</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rm &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mn, pid, <span class="dt">data_pids =</span> data_pid)</code></pre></div>
-<p>One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function <code>set_rights_and_access</code> will set both, and <code>set_access</code> will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder to the dataset is typically the submitter (if the dataset is submitted through the registry), but if a data team intern is publishing objects for a PI, the rights holder is the main point of contact for the dataset (ie the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCID.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set_rights_and_access</span>(mn, 
-                      <span class="kw">c</span>(pid, data_pid, rm), 
-                      <span class="dt">subject =</span> <span class="st">&#39;http://orcid.org/PUT0-YOUR-ORCD-HERE&#39;</span>,
-                      <span class="dt">permissions =</span> <span class="kw">c</span>(<span class="st">&#39;read&#39;</span>, <span class="st">&#39;write&#39;</span>, <span class="st">&#39;changePermission&#39;</span>))</code></pre></div>
-</div>
-<div id="exercise-1" class="section level3">
-<h3><span class="header-section-number">3.1.6</span> Exercise</h3>
+<div id="introduction-to-solr" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Introduction to Solr</h1>
+<p>Solr is what’s known as an index. More specifically, it’s a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.). Every Object in Metacat will have a corresponding Solr document for it that contains information about that Object. Each type of Object will have a different set of fields in its Solr document. For example, an EML document will have a <code>title</code> field (corresponding to the EML document’s <code>&lt;title&gt;</code> element), while a CSV will not.</p>
+<p>The fields that go into a Solr document are populated by information such as:</p>
 <ul>
-<li>Locate the data package you published by navigating to the “my profile” section on <a href="test.arcticdata.io" class="uri">test.arcticdata.io</a>.</li>
-<li>Download the metadata and data files and transfer them to the datateam server.</li>
-<li>Using the functions described in the section above, pubish your metadata record and data file to the site.</li>
-<li>View your new dataset (which is identical to the one you created previously) by appending the pid of your resource map (in the example above, the resource map pid was saved to the variable <code>rm</code>) to the end of the URL test.arcticdata.io/#view/…</li>
+<li>The System Metadata (fileName, accessPolicy, etc)</li>
+<li>The Object itself (e.g. title, creators, etc. for an EML record)</li>
+<li>Additional computed fields (e.g., a geohash for quick spatial search)</li>
+</ul>
+<p>Indexing the Objects Metacat stores lets us execute some interesting and very useful queries such as:</p>
+<ul>
+<li>What are the most recently updated datasets?</li>
+<li>What Metadata and Data Objects are in a given Data Package?</li>
+<li>What is the total size (in terms of disk space) of all Objects stored in Metacat?</li>
+</ul>
+<div id="querying-solr" class="section level2">
+<h2><span class="header-section-number">7.1</span> Querying Solr</h2>
+<p>Solr is queried via what’s called an HTTP API. Practically, what this means it that you can visit a URL (web address) in a web browser to execute a query. This may be a little bit weird at first but I hope some examples will make it more clear.</p>
+<p>So I said you visit a URL to query Solr. But what address do you visit? For the Arctic Data Center (<a href="https://arcticdata.io" class="uri">https://arcticdata.io</a>), every Solr query starts with a base URL of <a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/</a>. If you visit that URL, you will see a list of fields Solr is storing for the Objects it indexes:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;ns2:queryEngineDescription</span><span class="ot"> xmlns:ns2=</span><span class="st">&quot;http://ns.dataone.org/service/types/v1.1&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;queryEngineVersion&gt;</span>3.6.2.2012.12.18.19.52.59<span class="kw">&lt;/queryEngineVersion&gt;</span>
+  <span class="kw">&lt;name&gt;</span>solr<span class="kw">&lt;/name&gt;</span>
+  <span class="kw">&lt;queryField&gt;</span>
+    <span class="kw">&lt;name&gt;</span>abstract<span class="kw">&lt;/name&gt;</span>
+    <span class="kw">&lt;description&gt;</span>
+      The full text of the abstract as provided in the science metadata document.
+    <span class="kw">&lt;/description&gt;</span>
+    ...truncated...</code></pre></div>
+<p>You can see that there is a large set of queryable fields, though, as I said above, not all types of Objects will have values set for all of the possible fields because some fields do not make sense for some Objects (e.g., <code>title</code> for a CSV).</p>
+<div id="parts-of-a-query" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Parts of a Query</h3>
+<p>Each Solr query is comprised of a number of parameters. These are like arguments to a function in R, but they are entered as parts of a URL.</p>
+<p>The most common parameters are:</p>
+<ul>
+<li><code>q</code>: The query. This is like <code>subset</code> or <code>dplyr::filter</code> in R</li>
+<li><code>fl</code>: What fields are returned for the documents that match your query (<code>q</code>). If not set, all fields are returned.</li>
+<li><code>rows</code>: The maximum number of documents to return. Solr will truncate your result if the result size is greater than <code>rows</code>.</li>
+<li><code>sort</code>: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded)</li>
+</ul>
+<p>To use these parameters, we append to the base URL like this:</p>
+<p><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q</a>={QUERY}&amp;fl={FIELDS}&amp;rows={ROWS}</p>
+<p>and we replace the text inside <code>{}</code> with the value we want for each parameter. Note that the parameters can come in any order so the following is equivalent:</p>
+<p><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl</a>={FIELDS}&amp;rows={ROWS}&amp;q={QUERY}</p>
+<p>The first parameter in the URL must have a ‘?’ in front of it and all subsequent parameters must have an ‘&amp;’ between them. It’s really easy to get the URL wrong when typing it in manually like this so be sure to double-check your URL and think critically about the result: Solr tries to always return something even if it’s not what you intended.</p>
+</div>
+<div id="constructing-a-query" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Constructing a Query</h3>
+<p>The query (‘q’) parameter uses a syntax that looks like <code>field:value</code>, where <code>field</code> is one of the Solr fields and <code>value</code> is an expression. The expression can match a specific value exactly, e.g.,</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:arctic-data.7747.1</code></li>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:&quot;doi:10.5065/D60P0X4S&quot;</code></li>
+</ul>
+<p>which finds the Solr document for a specific Object by PID (identifier). Note that in the second example, the DOI PID is surrounded in double quotes. This is because Solr has <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">reserved characters</a>, of which ‘:’ is one, so we have to help Solr by surrounding values with reserved characters in them in quotes (as I did here) or escaping them.</p>
+<p>Queries can take on a more advanced form such as a wildcard expression:</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=identifier:arctic-data.*</code></li>
+</ul>
+<p>finds all the Objects that start with “arctic-data.” followed by anything (“*“)</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*</code></li>
+</ul>
+<p>finds all the Objects with the word “soil” somewhere in the title.</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=origin:*Stafford*+AND+title:Bering Strait&amp;fl=title&amp;sort=title+desc&amp;rows=10</code></li>
+</ul>
+<p>finds 10 Objects where one of the EML <code>creator</code>s has a name that contains the substring “Stafford” and the <code>title</code> contains the substring “Bering Strait”, sorted by <code>title</code> (descending order). Note that the <code>+AND+</code> between the <code>origin</code> and <code>title</code> query above specifies that both conditions must be true for a Solr document to be returned. We could’ve also switched the <code>+AND+</code> to <code>+OR+</code> and/or added more conditions to the query.</p>
+<p>Here’s a slightly more advanced one:</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:METADATA+AND+-obsoletedBy:*&amp;sort=dateUploaded+desc&amp;rows=25</code></li>
+</ul>
+<p>This query is the query MetacatUI uses to fill in the <a href="https://arcticdata.io/catalog/" class="uri">https://arcticdata.io/catalog/</a> page. Notice the <code>-obsoletedBy:*</code>. The ‘-’ before the field inverts the expression so this part of the query means “things that have no <code>obsoletedBy</code> value set”.</p>
+<p>We can also just find everything:</p>
+<ul>
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*</code></li>
+</ul>
+<p>finds any value in any field.</p>
+</div>
+<div id="faceting" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Faceting</h3>
+<p>Above we went through querying across Solr documents but we can also summarize what’s in Solr with Faceting which lets us group Solr documents together and count them. This is like <code>table</code> in R. Faceting can do a query within a query, but more commonly I use it to summarize unique values in a field. For example, we can find the unique format IDs on Data Objects:</p>
+<ul>
+<li><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&amp;fq=formatType:DATA&amp;facet=true&amp;facet.field=formatId&amp;rows=0" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&amp;fq=formatType:DATA&amp;facet=true&amp;facet.field=formatId&amp;rows=0</a></li>
+</ul>
+<p>To facet, we usually do a few things:</p>
+<ul>
+<li>Add the parameter <code>facet=true</code></li>
+<li>Add the parameter <code>facet.field={FIELD}</code> with the field we want to facet (group) on</li>
+<li>Set <code>rows=0</code> because we don’t care about the matched Solr documents</li>
+<li>Optionally specify <code>fq={expression}</code> which filters out Solr documents before faceting. In the above example, we have to do this to only count Data Objects. Without it, the facet result would include formatIDs for metadata and resource maps which we don’t want.</li>
 </ul>
 </div>
+<div id="stats" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> Stats</h3>
+<p>With Faceting, we found we could make queries to find the unique values for a Solr field. With Stats, we can have Solr calculate statistics on numerical values (such as <code>fileSize</code>).</p>
+<ul>
+<li><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:DATA&amp;stats=true&amp;stats.field=size&amp;rows=0" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:DATA&amp;stats=true&amp;stats.field=size&amp;rows=0</a></li>
+</ul>
+<p>This query calculates a set of summary statistics for the <code>size</code> field on Data Objects that Solr has indexed. In this case, Solr’s <code>size</code> field indexes the <code>fileSize</code> field in the System Metadata for each Object in Metacat.</p>
 </div>
-<div id="uploading-a-new-version" class="section level2">
-<h2><span class="header-section-number">3.2</span> Uploading a new version</h2>
-<p>To edit material, we use the <code>publish_update</code> or <code>update_object</code> functions in <code>arcticdatautils</code>.</p>
-<p>Usually we’ll be updating exisiting work using <code>publish_update()</code> from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.</p>
-<p>The following example shows how you would add a data file to a package, and make a change to the metadata file.</p>
-<p>First, make whatever edits you ned to make to the metadata, and save them to the server.</p>
-<p>Define the path to your metadata.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta_path &lt;-<span class="st"> &quot;path/to/metadata/file.xml&quot;</span></code></pre></div>
-<p>Use either the metadata or resource map pid for your existing data package and the function <code>get_package</code> to return all of the existing pids in the data package as a named list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the function get_package is helpful to get all other PIDs in a package if you know the metadata PID</span>
-metaPid &lt;-<span class="st"> &quot;urn:uuid:5933a052-5493-4f50-8622-ed83231d3fee&quot;</span>
-ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPid)</code></pre></div>
-<p>Finally, use the <code>publish_update</code> function with the results of the lines above to update your data package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">publish_update</span>(mn,
-               <span class="dt">metadata_pid =</span> metaPid <span class="co"># old metadata PID you pulled in originally. Alternatively could paste in the string:  &quot;urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee&quot;</span>
-               <span class="dt">resource_map_pid =</span> ids$resource_map,
-               <span class="dt">metadata_path =</span> meta_path, <span class="co"># path to updated EML file,</span>
-               <span class="dt">data_pid =</span> ids$data, <span class="co"># this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)</span>
-               <span class="dt">check_first =</span> T,
-               <span class="dt">use_doi =</span> <span class="ot">FALSE</span>,
-               <span class="dt">public =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p>If a package is ready to be public, note that you can change the <code>public</code> argument in the <code>publish_update</code> call to <code>TRUE</code>. Similarly, if you want to publish with a DOI type identifier instead of a UUID type identifer, you can change the <code>use_doi</code> argument to <code>TRUE</code>.</p>
-<div id="exercise-2" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Exercise</h3>
+</div>
+<div id="querying-solr-through-r" class="section level2">
+<h2><span class="header-section-number">7.2</span> Querying Solr through R</h2>
+<p>What if I told you that every time you run the <code>query</code> function in the <code>dataone</code> R package you are asking R to visit a URL like the ones above, parse the information returned by the page, and present it in an R-friendly way such as a <code>list</code> or <code>data.frame</code>? Well that’s what happens! Then why might we use R in the first place? There are two big advantages:</p>
+<ol style="list-style-type: decimal">
+<li>The result is returned in a more useful way to R without extra work on your part</li>
+<li>We can more easily pass our authentication token with the query</li>
+</ol>
+<p>Why does #2 matter? Well by default, all of those URLs above only returned publicly-readable Solr documents. If a private document matched any of those queries, Solr doesn’t give you any idea and acts like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the Arctic Data Center so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
+<p>And there’s good news: all of the URLs you visited above can be turned into an R expression very easily. For example:</p>
 <ul>
-<li>Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/… with the resource map pid you generated in that exercise.</li>
-<li>Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom).</li>
-<li>Navigate to the title section, and make a change to the title text within the <code>&lt;title&gt;</code>…<code>&lt;/title&gt;</code> section.
+<li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*</code></li>
+</ul>
+<p>becomes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
+cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&quot;PROD&quot;</span>)
+mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)
+<span class="co"># Set your token if you need/want!</span>
+<span class="kw">query</span>(mn, <span class="st">&quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;</span>)</code></pre></div>
+<p>I just deleted the first part of the URL, up to and including the ‘?’, and pasted the rest in as the second argument to <code>query</code>. You may have seen an alternative syntax:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">query</span>(mn, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:*soil*&quot;</span>,
+               <span class="dt">fl=</span><span class="st">&quot;title&quot;</span>,
+               <span class="dt">rows=</span><span class="st">&quot;10&quot;</span>))</code></pre></div>
+<p>this is the same query as above because the <code>query</code> function takes either a string (the first form) or a named list (the second form).</p>
+<p>By default, <code>query</code> returns the result as a <code>list</code>. This is definitely useful but a <code>data.frame</code> can be a more useful way to work with the result. To get a <code>data.frame</code> instead, just set the <code>as</code> argument to ‘data.frame’ to get a <code>data.frame</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">query</span>(mn, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:*soil*&quot;</span>,
+               <span class="dt">fl=</span><span class="st">&quot;title&quot;</span>,
+               <span class="dt">rows=</span><span class="st">&quot;10&quot;</span>),
+      <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)
+<span class="dv">1</span>  Daily Average Soil, Air and Ground Temperatures -<span class="st"> </span>Council Forest Site [Romanovsky, V.]
+<span class="dv">2</span>     Canadian Transect of Soils and Vegetation for the Circumpolar Arctic Vegetation Map
+<span class="dv">3</span>                                   Soil Temperatures, Toolik Lake, Alaska, <span class="dv">1995</span> and <span class="dv">1996</span>
+<span class="dv">4</span>                                        Soil Temperature ARCSS grid Atqasuk, Alaska <span class="dv">2013</span>
+<span class="dv">5</span>                                                        X-ray fluorescence, Barrow soils
+<span class="dv">6</span>                                                Toolik Lake, Alaska Soil moisture -<span class="st"> </span><span class="dv">2014</span>
+<span class="dv">7</span>                           Thermal Soil Properties for Ivotuk and Council [Beringer, J.]
+<span class="dv">8</span>                                          Soil Temperature NIMS grid Barrow, Alaska <span class="dv">2014</span>
+<span class="dv">9</span>                                           Ivotuk Soil Data -<span class="st"> </span>Station Met2 [Hinzman, L.]
+<span class="dv">10</span>                                                         thule_tram_soil_temps_2013.csv</code></pre></div>
+</div>
+<div id="key-takeaways" class="section level2">
+<h2><span class="header-section-number">7.3</span> Key takeaways</h2>
 <ul>
-<li>Do not change the <code>&lt;title&gt;</code> or <code>&lt;/title&gt;</code> syntax. Upload the file back to the datateam server.</li>
-</ul></li>
-<li>Using the <code>publish_update</code> function, update your data package as shown above.</li>
+<li>Find out what you can query at <a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr</a></li>
+<li>The Solr HTTP API is what the R <code>dataone</code> package uses when you run <code>query</code></li>
+<li>Pass a token if you want to include non-public-readable objects in the results (you often do!)</li>
+</ul>
+</div>
+<div id="more-resources" class="section level2">
+<h2><span class="header-section-number">7.4</span> More resources</h2>
+<ul>
+<li>Solr’s <a href="https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser">The Standard Query Parser</a> docs (high level of detail)</li>
+<li>Another quick reference: <a href="https://wiki.apache.org/solr/SolrQuerySyntax" class="uri">https://wiki.apache.org/solr/SolrQuerySyntax</a></li>
+<li><a href="http://www.solrtutorial.com/" class="uri">http://www.solrtutorial.com/</a></li>
 </ul>
 
-</div>
 </div>
 </div>
             </section>
@@ -290,8 +352,8 @@ ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPi
           </div>
         </div>
       </div>
-<a href="introduction-to-open-science.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="system-metadata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-git-in-rstudio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
