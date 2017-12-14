@@ -1,0 +1,214 @@
+# Using RT
+
+##Navigating RT
+
+The [RT ticketing system](https://support.nceas.ucsb.edu/rt/) is how we
+communicate with folks interacting with the Arctic Data Center.  
+We use it for managing submissions, access issues etc. It consists of
+three separate interfaces:  
+[Front Page](#frontpage)  
+[All Tickets](#alltickets)  
+[Ticket Page](#exampleticket)
+
+### Front Page
+
+![](images/Frontpage.png) 
+
+This is what you see first  
+
+1. Home - brings you to this homepage  
+2. Tickets - to search for tickets (also see number 5)  
+3. Tools - not needed  
+4. New Ticket - create a new ticket  
+5. Search - Type in the ticket number to quickly navigate to a ticket  
+6. Queue - Lists all of the tickets currently in arcticdata and their status  
+ + New = unopened tickets that require attention  
+ + Open = tickets currently open, under investigation by team member  
+ + Stalled = tickets awaiting response from PI/Submitter  
+7. Tickets I Own - These are the current open tickets that are claimed by me  
+8. Unowned Tickets - Newest tickets awaiting claim  
+9. Ticket Status - Status and how long ago it was created  
+10. Take - claim the ticket as yours  
+
+### All Tickets
+
+![](images/All_tickets.png)   
+
+This is the queue interface from number 6 of the Front page  
+1. Ticket number and title  
+2. Ticket status  
+3. Owner - who has claimed the ticket  
+
+### Example Ticket
+
+![](images/Example_ticket.png)  
+
+1. Title - Include the PI's name for reference  
+2. Display - homepage of the ticket  
+3. History - Comment/Email history, see bottom of Display page  
+4. Basics - edit the title, status and ownership here  
+5. People - option to add more people to the watchlist for a given ticket conversation  
+6. Links - option to "Merge into" another ticket number if this is part of a larger conversation. Also option to add a reference to other ticket number  
+7. Actions  
+ + Reply - message the submittor/PI/all watchers  
+ + Comment - attach internal message (no submitters)  
+ + Open It - Open the ticket  
+ + Stall - submitter has not responded in greater than 1 week  
+ + Resolve - ticket completed  
+8. History - message history and option to reply (to submitter and beyond) or comment (internal message)
+
+## Email Templates
+
+  [Initial response](#initial)  
+  [Title](#title)  
+  [Abstract](#abstract)    
+  [Best practices](#practices)  
+  [Methods](#methods)  
+  [Data Files](#data)  
+  [DOI and data set finalization](#DOI)  
+  [Nesting](#nest)  
+  [Finding multiple data sets](#multiple)  
+  [Asking for approval](#approve)
+  [Other FAQs](#faq)  
+  
+  
+###  <a id="initial">Initial Response</a>
+
+*Quick response*  
+Hello _____,  
+Thank you for your recent submission to the NSF Arctic Data Center. We will review your dataset and get back to you with any suggestions.
+
+From my preliminary examination of your submission I have noticed a few items that I would like to bring to your attention. We are happy to make any edits for you.
+ See comments below:  
+
+
+### <a id="title">Title needs work</a>  
+
+We would like to add some more context to your data set title. A descriptive title that provides context about the where, what, and when of a dataset is often far more useful in search results. Something like: 'OUR SUGGESTION HERE, WHERE, WHEN' might be an option.
+
+
+### <a id="abstract">Abstract comments</a>
+
+*What's supposed to be in an abstract*  
+Your abstract, while informative, appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data set fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: https://www.nsf.gov/awardsearch/showAward?AWD_ID=#######&HistoricalAwards=false
+
+Please let us know how to proceed.
+
+
+### <a id="practices">Best Practices</a>
+
+We noticed that the data files submitted are in _____ format. We recommend conversion of these files into a plain text/csv (OR ANOTHER APPROPRIATE OPEN-SOURCE) format in order to facilitate an accurate transfer of information to future researchers and ensure preservation of the data in perpetuity. We will perform these conversions for you. Below are some linked articles about data science best practices that the NSF Arctic Data Center adheres to:  
+DataONE - https://www.dataone.org/best-practices
+"Some Simple Guidelines for Effective Data Management" -  http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full
+"Good Enough Practices in Scientific Computing" - http://arxiv.org/pdf/1609.00037v1.pdf  
+
+
+### <a id="methods">Methods</a>
+
+Your methods, while informative, appear to be missing some information. Enough detail should be included so that a reasonable scientist can replicate the study without consulting you nor any other resources. This should hold true today, or even decades or a century from now. Users need to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. We would be happy to add more content for you. Please provide us with a more robust methods section directly in this email or point us to a document from which we can extract more methods.
+
+
+### <a id="data">Data Files</a>
+
+We noticed that the data files contain...
+-blank cells. What do these represent?
+-some column headers that are unclear. Please define "X".
+-some abbreviations that are unclear. Please define "XYZ", including the unit of measure.
+-columns whose units are unclear. What are the units of measurement for the columns labeled "ABC" and "XYZ"?
+
+We noticed that no data files were submitted. With the exception of sensitive social science data, NSF requires the submission of all data products prior to publication. Do you intend to submit data files?
+
+
+### <a id="DOI">DOI and data set finalization comments</a>
+
+*Replying to questions about DOIs*  
+We attribute DOIs to data sets as one might give a DOI to a citable publication. Thus, a DOI is permanently associated with a unique and immutable version of a data set. If the data set changes, a new DOI will be created and the old DOI will be preserved with the original version.
+
+DOIs and URLs for previous versions of data sets remain active on the Arctic Data Center (will continue to resolve to the data set landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to that latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the dataset that was cited, while pointing users to the newest version if one exists.
+
+*Clarification of updating with a DOI and version control*  
+We definitely support updating a data set that has already been assigned a DOI, but when we do so we mark it as a new revision that replaces the original and give it its own DOI. We do that so that any citations of the original version of the data set remain valid (i.e.: after the update, people still know exactly which data were used in the work citing it).
+
+*Sending finalized URL before resolving ticket*
+[NOTE: the URL format is very specific here, please try to follow it exactly (but subsitute in the actual DOI of interest)]
+Here is the link to your finalized data package:
+
+https://doi.org/10.00000/X00X0X
+
+Please let us know if you need any further assistance.
+
+
+### <a id="policy">NSF ARC data submission policy</a>
+
+The NSF ARC program managers check compliance with their data policies when checking annual reports. Generally, NSF ARC requires that fully quality controlled data be uploaded within 6 months of collection for AON projects, or within 2 years of collection (or by end of the grant) for other ARC funded projects. Additionally, complete metadata must be submitted within two years of collection or before the end of the award, whichever comes first. Please find an overview of the NSF ARC policies [here](https://arcticdata.io/submit/#who-must-submit) and the full policy information [here](https://www.nsf.gov/pubs/2014/nsf14584/nsf14584.htm#grantcond).
+
+Investigators should upload their data to the [Arctic Data Center](https://arcticdata.io), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
+
+
+###  <a id="nest">Nesting</a>
+
+Nesting data sets under a common "parent" is beneficial so that all data sets funded by the same award can be found in one place. This way additional data sets can be added to the group without altering existing ones. Once we process all the "child" data sets you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data set [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data sets funded by the same award? If so, we are happy to do all this grouping for you.
+
+
+###  <a id="multiple">Finding multiple data sets</a>
+
+If linking to multiple data sets, you can send a link to the profile associated with the submitter’s ORCID ID and it will display all the data sets.
+	Ex.: https://arcticdata.io/catalog/#profile/http://orcid.org/0000-0002-2604-4533
+
+
+###  <a id="approve">Asking for approval</a>
+
+Hi PI,
+
+I have updated your data set and you can view it here after logging in: [URL]
+
+Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing.
+
+
+###  <a id="faq">Other FAQs</a>
+
+*Q: Can I replace data that has already been uploaded and keep the DOI?*  
+A: Once you have published your data with the Arctic Data Center, it can still be updated by providing an additional version which can replace the original, while still preserving the original and making it available to anyone who might have cited it. To update your data, return to the data submission tool used to submit it, and provide an update.
+
+**Any** update to a data set qualifies as a **new version** and therefore requires a new DOI. This is because each DOI represents a unique, immutable version, just like for a journal article. DOIs and URLs for previous versions of data sets remain active on the Arctic Data Center (will continue to resolve to the dataset landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to the latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the dataset that was cited, while pointing users to the newest version if one exists.
+
+*Q: Why don't I see the data set that I uploaded to the ADC?*   
+Possible Answer #1: The data set is still private because we are awaiting your approval to publish it. Please login with your ORCID ID to view private data sets.
+Possible Answer #2: The data set is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID ID. Once we receive that confirmation we will be happy to grant you permission to view and edit the data set.
+Possible Answer #3: The data set is still private and we accidentally failed to grant you access. I apologize for the mistake. I have since updated the access policy. Please let us know if you are still having trouble viweing this data set here: (URL). Remember to login with your ORCID ID.
+
+*Issue: I would like to display multiple geographic coverages for my data set, but the form only accepts one point or bounding box.*   
+Unfortunatley, the current web form does not allow users to input more than one geographic coverage. We are happy to add multiple coverages (maps) for you. Please provide us with the coordinates. Note that next version of the web form will support the addition of multiple locations by users. We anticipate this release in the coming months.
+
+*Issue: MANY files to upload (100s or 1000s).*  
+A: Please consider zipping the files up for transfer. Can you upload the files to a drive we can access, such as G Drive or Dropbox? Alternatively, if you have a publically accesible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available [here](https://help.nceas.ucsb.edu/remote_file_access). Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
+
+*Q: May another person (e.g. my student) submit data using my ORCID ID so that it is linked to me?*  
+A: I would recommend instead that the student set up their own ORCID accounts at https://orcid.org/register and submit data sets from that account. Submissions are processed by our team and, at that point, we can grant you full rights to the metadata and data files even though another person submitted them.
+
+*Issue: Web form not cooperating.*  
+A: I apologize that you are experiencing difficulties while attempting to submit your data set. We are happy to attempt to troubleshoot this for you. Which operating system (including the version) and browser (with version #) are you using? At which exact step did the issue arise. What error message did you recieve? Please provide us with any screenshots of the error message.
+
+*Q: May I submit a non-NSF funded data set?*  
+A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formated, open-source data files).
+For larger data sets, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment. Also, please note that NSF-funded projects take priority when it comes to processing. Information on best practices for data and metadata organization is available [here](https://arcticdata.io/submit/#preparing-data).
+
+*Q: Can I add another data file to an existing submission without having to fill out another metadata form?*  
+A: Yes. Navigate to the data set after being sure to login. Then click the green "Edit" button. The form will populate with the already existing metadata so there is no need to fill it out again. Just scroll to the bottom of the form to "Upload Data", click "Choose File", and browse to the data file you wish to add.
+Be aware that the DOI will need to change after you add this file (or make any changes to a data set) as, just like for a journal article, a DOI represents a unique and immutable version. The current URL will remain functional, but clearly display a message at the top of that page stating "A newer version of this dataset exists" with a link to the latest version.
+
+*Q: Can I add these data anytime or is there some deadline associated with the grant, or some other restriction I'm not aware of?*   
+A: We are happy to accept your submission any time; however, NSF has stricter policies. For all ARC supported projects, the policies state that "Complete metadata must be submitted... within two years of collection or before the end of the award, whichever comes first. All data and derived data products that are appropriate for submission... must be submitted within two years of collection or before the end of the award, whichever comes first." For all AON projects, "Real-time data must be made publicly available immediately. All data must be submitted... within 6 months of collection, and be fully quality controlled. All data sets and derived data products must be accompanied by a metadata profile and full documentation."
+
+*Q: Can you clarify what constitutes sensitive information (in relation to social science data and whether it needs to be uploaded)?*  
+A: Sensitive information includes human subjects data and data that are governed by an Institutional Review Board policy. Data that are ethically or legally sensitive or at risk of decontextualization also constitute sensitive information.
+
+The NSF policy states "NSF realizes that on occasion there are data gathered of a particularly sensitive nature, such as the locations of archaeological sites or nest locations of endangered species. It is not the intention of this policy to reveal such information publicly. Discipline standards, indigenous community cultural rules, and state and federal regulations and laws should be followed for these types of data." The full policies are available [here](https://www.nsf.gov/pubs/2014/nsf14584/nsf14584.htm#grantcond).
+
+*Q: Can we submit data as an Excel file?*   
+A: While the Arctic Data Center supports the upload of any data file format, sharing data can be greatly enhanced if you use ubiquitous, easy-to-read formats. For instance, while Microsoft Excel files are commonplace, it is better to export these spreadsheets to Comma Separated Values (CSV) text files, which can be read on any computer without needing to have Microsoft products installed. Data submitted in Excel workbooks will undergo conversion to CSVs by our staff before being made public.
+
+So, yes, you are free to submit an Excel workbook, however we strongly recommend converting each sheet to a CSV. The goal is not only for users to be able to read data files, but to be able to analyze them with software, such as R Studio. Typically, we would extract any plots and include them as separate image files.
+
+[ONLY SAY THIS NEXT PART IF THE PI CONTINUES TO INSIST] I understand that having the plots in the same file as the data they are built from simplifies organization. If you definitely prefer to have the Excel workbook included, we ask that you allow us to document the data in both formats and include a note in the metadata clarifying that the data are indeed duplicated (but in different formats).
+
