@@ -149,14 +149,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#exercise-4"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html"><i class="fa fa-check"></i><b>6</b> Using git in RStudio</a><ul>
-<li class="chapter" data-level="6.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>6.2</b> So why do I need to use this again?</a></li>
-<li class="chapter" data-level="6.3" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#setting-up-git"><i class="fa fa-check"></i><b>6.3</b> Setting up git</a></li>
-<li class="chapter" data-level="6.4" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>6.4</b> Cloning the arctic-data repo</a></li>
-<li class="chapter" data-level="6.5" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#adding-a-new-script-to-the-github"><i class="fa fa-check"></i><b>6.5</b> Adding a new script to the github</a></li>
-<li class="chapter" data-level="6.6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#editing-scripts"><i class="fa fa-check"></i><b>6.6</b> Editing Scripts</a></li>
-<li class="chapter" data-level="6.7" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#where-do-i-commit"><i class="fa fa-check"></i><b>6.7</b> Where do I commit?</a></li>
-<li class="chapter" data-level="6.8" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>6.8</b> My Git tab disappeared</a></li>
+<li class="chapter" data-level="6.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>6.1.1</b> So why do I need to use this again?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#setting-up-git"><i class="fa fa-check"></i><b>6.2</b> Setting up git</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>6.2.1</b> Cloning the arctic-data repo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#working-with-the-repository"><i class="fa fa-check"></i><b>6.3</b> Working with the repository</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#adding-a-new-script"><i class="fa fa-check"></i><b>6.3.1</b> Adding a new script</a></li>
+<li class="chapter" data-level="6.3.2" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#editing-a-script"><i class="fa fa-check"></i><b>6.3.2</b> Editing a script</a></li>
+<li class="chapter" data-level="6.3.3" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#where-do-i-commit"><i class="fa fa-check"></i><b>6.3.3</b> Where do I commit?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>6.4</b> My Git tab disappeared</a></li>
 </ul></li>
 </ul>
 
@@ -180,9 +184,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="introduction-2" class="section level2">
 <h2><span class="header-section-number">6.1</span> Introduction</h2>
 <p>First, read the excellent intro to git put together by the eco-data-science group at UCSB/NCEAS. Don’t worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. <a href="https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf">git intro</a></p>
-</div>
-<div id="so-why-do-i-need-to-use-this-again" class="section level2">
-<h2><span class="header-section-number">6.2</span> So why do I need to use this again?</h2>
+<div id="so-why-do-i-need-to-use-this-again" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> So why do I need to use this again?</h3>
 <p>There are several reasons why using the arctic-data github is helpful, both for you and for the rest of the data team. Here are a few:</p>
 <ul>
 <li><strong>Versioning</strong>: Accidentally make a change to your code and can’t figure out why it broke? Wish you could go back to that version that worked? If you add your code to the github you can do this!</li>
@@ -191,14 +194,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><strong>Solve future problems</strong>: Some of the issues we see in ADC submissions come up over and over again. When all of our code is on github, we can easily reference code built for other submissions, instead of trying to solve the same problems over and over again from scratch.</li>
 </ul>
 </div>
+</div>
 <div id="setting-up-git" class="section level2">
-<h2><span class="header-section-number">6.3</span> Setting up git</h2>
+<h2><span class="header-section-number">6.2</span> Setting up git</h2>
 <p>Now you need to set up your git global options, and tell it who you are. At the top of your RStudio window, select Tools &gt; Shell. In the prompt, you will need to run two commands, one at a time. The first tells git what your name is, the second what your email address is. These are the commands:</p>
 <p><code>git config --global user.name &quot;My Name&quot;</code> <code>git config --global user.email myemail@domain.com</code></p>
 <p>After running these commands, the shell prompt should look like this: <img src="images/shell_config.jpeg" alt="global config" /></p>
-</div>
-<div id="cloning-the-arctic-data-repo" class="section level2">
-<h2><span class="header-section-number">6.4</span> Cloning the arctic-data repo</h2>
+<div id="cloning-the-arctic-data-repo" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Cloning the arctic-data repo</h3>
 <p>Next, you need to clone the arctic-data repository to your RStudio. You do this by adding it as a “project.” In your RStudio window, click File &gt; New Project. Then click Version Control, and then select the Git option. If you are prompted to save your workspace during this process, make sure all of your work is saved, and you don’t need anything in your environment, and then click ‘Don’t Save.’</p>
 <p>You should see a prompt asking you for a URL. Fill it out like this to clone the arctic-data repository into the top level of your home directory. Note that the URL is the same URL you use to view the repository on the web. If you are using the sasap-data repository, the URL is <a href="http://github.nceas.ucsb.edu/NCEAS/sasap-data/" class="uri">http://github.nceas.ucsb.edu/NCEAS/sasap-data/</a>.</p>
 <div class="figure">
@@ -207,8 +210,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>You will be prompted for your username and password, and then git will clone the directory. The username/password you use should be the same one you use to log in when you go to <a href="http://github.nceas.ucsb.edu/KNB/arctic-data" class="uri">http://github.nceas.ucsb.edu/KNB/arctic-data</a>. Now you should have a directory called arctic-data in your RStudio files window.</p>
 </div>
-<div id="adding-a-new-script-to-the-github" class="section level2">
-<h2><span class="header-section-number">6.5</span> Adding a new script to the github</h2>
+</div>
+<div id="working-with-the-repository" class="section level2">
+<h2><span class="header-section-number">6.3</span> Working with the repository</h2>
+<div id="adding-a-new-script" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Adding a new script</h3>
 <p>If you have been working on a script that you want to put in the arctic-data github, you need to save it somewhere in the arctic-data folder you made in your account on the server. You can do this by either moving your script into the folder or using the save-as functionality. Note that git will try and version anything that you save in this folder, so you should be careful about what you save here. Things that probably shouldn’t be saved in this folder, for our purposes include:</p>
 <ul>
 <li><strong>Tokens</strong>: Any token file or script with a token in it should NOT be saved in the repository. Others could steal your login credentials if you put a token on the github.</li>
@@ -222,18 +228,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Push commit, and your commit will be saved. Now you want to merge the commits you made with the master version of the repository. You do this by using the command “push.” Before you push, you need to pull though, always, to avoid merge conflicts. Click “pull” and type in your credentials. Then, assuming you don’t have a merge conflict, you can push your changes by clicking “push.”</p>
 <p>Always remember, the order is <strong>commit-pull-push</strong></p>
 </div>
-<div id="editing-scripts" class="section level2">
-<h2><span class="header-section-number">6.6</span> Editing Scripts</h2>
+<div id="editing-a-script" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Editing a script</h3>
 <p>If you want to change a script, the workflow is the same. Just open the script that was saved in the arctic-data folder on your server account, make your changes, save the changes, stage them by clicking the box, commit, pull, then push to merge your version with the main version on the website. Do NOT edit scripts using the website. It is much easier to accidentally overwrite the history of a file this way.</p>
 <p>One thing you might be wondering as you are working on a script is, how often should I be committing my changes? It might not make sense to commit-pull-push after every single tiny change - if only because it would slow you way down. Personally, I commit every time I feel that a significant change has happened and that the chunk of code I was working on is “done.” Sometimes this is an entire script, other times it is just a few lines within a script. A good sign that you are committing too infrequently might be if many of your commit messages address a wide variety of coding tasks, such as: “wrote for loop to create referenced attribute lists for tables 1:20. also created nesting structure for this package with another package. also created attribute list for data table 40.”</p>
 <p>And one final note, you can make multiple commits before you push to the repo. If you are making lots of changes to the script, you might want to make several commits before pull-push. You can see how many commits you are ahead of the “origin/master” branch (i.e. what you see on the website) by looking for text in your git tab in RStudio that looks like this: <img src="images/multiple_commits.jpeg" alt="multiple commits" /></p>
 </div>
-<div id="where-do-i-commit" class="section level2">
-<h2><span class="header-section-number">6.7</span> Where do I commit?</h2>
+<div id="where-do-i-commit" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Where do I commit?</h3>
 <p>The default right now is to save data-processing scripts in the <code>arctic-data/datateam/data-processing/</code> directory, with subfolders listed by project. Directories can be created as needed but please ask Jesse or Jeanette first so we can try and maintain some semblance of order in the file structure.</p>
 </div>
+</div>
 <div id="my-git-tab-disappeared" class="section level2">
-<h2><span class="header-section-number">6.8</span> My Git tab disappeared</h2>
+<h2><span class="header-section-number">6.4</span> My Git tab disappeared</h2>
 <p>Sometimes R will crash so hard it loses your project information, causing your git tab to disappear. If this happens <em>anything you saved, but did not commit or push</em> in your arctic-data (or sasap-data) folder is no longer being tracked by github. To get the tab back, first, rename your old arctic-data folder to something else (like arctic-data_old). This will ensure that any work that you had in that folder that you didn’t push to the master branch is not lost. Next, follow the steps above in “cloning the arctic-data repo” to re-clone the repository. Then, move whatever scripts or parts of scripts that were not being tracked into the arctic-data repo so that they are tracked again, and merge them back into the master branch.</p>
 <p>Ideally, you are committing and pushing your scripts frequently enough that you don’t have to resort to this. If you had changes you had committed but not pushed, you can still push these changes from the command line. See Jeanette for more info on how to do this if it is the case.</p>
 <p>Remember: <em>commit, pull, push</em> frequently (at least once a day).</p>
