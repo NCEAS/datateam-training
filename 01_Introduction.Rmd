@@ -2,7 +2,7 @@
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
 
-New data team members should complete [the exercise in this section](#exercise1) as part of training.
+New data team members should complete Exercise 1 (below) as part of training.
 
 ## Open science background reading
 
@@ -26,20 +26,21 @@ Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/fo
 
 ## Working on a remote server
 
-All of the work that we do at NCEAS is done on our remote server, called "datateam." If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through the link [datateam.nceas.ucsb.edu/rstudio/](datateam.nceas.ucsb.edu/rstudio/). To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or a program called cyberduck.
+All of the work that we do at NCEAS is done on our remote server, called "datateam." If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
 
 ### Cyberduck instructions
 
-To use cyberduck to transfer local files onto the datateam server:
+To use Cyberduck to transfer local files onto the Datateam server:
 
-1) Open Cyberduck
-2) Click "Open Connection"
-3) From the drop-down, choose "SFTP (SSH File Transfer Protocol)"
-4) Enter "datateam.nceas.ucsb.edu" for Server
-5) Enter your username and password
-6) Connect
+1) Open Cyberduck.
+2) Check that you have the latest version (Cyberduck -> Check for Update...). If not, download and install the latest (you may need Jesse or Jeanette to enter a pw).
+3) Click "Open Connection".
+4) From the drop-down, choose "SFTP (Secure File Transfer Protocol)".
+5) Enter "datateam.nceas.ucsb.edu" for Server.
+6) Enter your username and password.
+7) Connect.
 
-From here, you can drag and drop files onto and off of the server.
+From here, you can drag and drop files to and from the server.
 
 ### A note on paths
 
@@ -47,14 +48,13 @@ On the servers, paths to files in your folder always start with `/home/yourusern
 
 When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.
 
+### Exercise 1
 
-### Exercise {#exercise1}
-
-* Use the "tabula" program to extract Table 1 from [this paper](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
-* Reformat the table using R under the guidelines in the journal article on effective data management
-    + If you need an R refresher, take as much time as you need to go over the [data carpentry guide](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
-    + You may also find the data carpentry [lesson on `dplyr`](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) helpful
-* Go to [test.arcticdata.io](test.arcticdata.io) and submit your reformatted file with appropriate metadata that you derive from the text of the paper
-    + list yourself as the first creator so your test submission can easily be found
-    + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine
-    + attributes (column names) should be defined, including correct units and missing value codes
+* Use the "Tabula" program to extract Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
+* Reformat the table using R under the guidelines in the journal article on effective data management.
+    + If you need an R refresher, take as much time as you need to go over the [data carpentry guide.](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
+    + You may also find the data carpentry [lesson on `dplyr`](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) helpful.
+* Go to [test.arcticdata.io](https://test.arcticdata.io/#data) and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
+    + list yourself as the first 'Creator' so your test submission can easily be found,
+    + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,
+    + attributes (column names) should be defined, including correct units and missing value codes.

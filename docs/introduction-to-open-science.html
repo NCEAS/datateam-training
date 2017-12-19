@@ -111,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#working-on-a-remote-server"><i class="fa fa-check"></i><b>2.4</b> Working on a remote server</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#cyberduck-instructions"><i class="fa fa-check"></i><b>2.4.1</b> Cyberduck instructions</a></li>
 <li class="chapter" data-level="2.4.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-paths"><i class="fa fa-check"></i><b>2.4.2</b> A note on paths</a></li>
-<li class="chapter" data-level="2.4.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise1"><i class="fa fa-check"></i><b>2.4.3</b> Exercise</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>2.4.3</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i><b>3</b> Using arcticdatautils</a><ul>
@@ -220,7 +220,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="introduction-to-open-science" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Introduction to open science</h1>
 <p>These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.</p>
-<p>New data team members should complete <a href="introduction-to-open-science.html#exercise1">the exercise in this section</a> as part of training.</p>
+<p>New data team members should complete Exercise 1 (below) as part of training.</p>
 <div id="open-science-background-reading" class="section level2">
 <h2><span class="header-section-number">2.1</span> Open science background reading</h2>
 <p>Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC</p>
@@ -242,39 +242,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="working-on-a-remote-server" class="section level2">
 <h2><span class="header-section-number">2.4</span> Working on a remote server</h2>
-<p>All of the work that we do at NCEAS is done on our remote server, called “datateam.” If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through the link <a href="datateam.nceas.ucsb.edu/rstudio/" class="uri">datateam.nceas.ucsb.edu/rstudio/</a>. To transfer files on and off of the server, you’ll need to use either bash commands in the terminal, or a program called cyberduck.</p>
+<p>All of the work that we do at NCEAS is done on our remote server, called “datateam.” If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through this <a href="https://datateam.nceas.ucsb.edu/rstudio/">link.</a> To transfer files on and off of the server, you’ll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.</p>
 <div id="cyberduck-instructions" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Cyberduck instructions</h3>
-<p>To use cyberduck to transfer local files onto the datateam server:</p>
+<p>To use Cyberduck to transfer local files onto the Datateam server:</p>
 <ol style="list-style-type: decimal">
-<li>Open Cyberduck</li>
-<li>Click “Open Connection”</li>
-<li>From the drop-down, choose “SFTP (SSH File Transfer Protocol)”</li>
-<li>Enter “datateam.nceas.ucsb.edu” for Server</li>
-<li>Enter your username and password</li>
-<li>Connect</li>
+<li>Open Cyberduck.</li>
+<li>Check that you have the latest version (Cyberduck -&gt; Check for Update…). If not, download and install the latest (you may need Jesse or Jeanette to enter a pw).</li>
+<li>Click “Open Connection”.</li>
+<li>From the drop-down, choose “SFTP (Secure File Transfer Protocol)”.</li>
+<li>Enter “datateam.nceas.ucsb.edu” for Server.</li>
+<li>Enter your username and password.</li>
+<li>Connect.</li>
 </ol>
-<p>From here, you can drag and drop files onto and off of the server.</p>
+<p>From here, you can drag and drop files to and from the server.</p>
 </div>
 <div id="a-note-on-paths" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> A note on paths</h3>
 <p>On the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</p>
 <p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.</p>
 </div>
-<div id="exercise1" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> Exercise</h3>
+<div id="exercise-1" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Exercise 1</h3>
 <ul>
-<li>Use the “tabula” program to extract Table 1 from <a href="http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta">this paper</a></li>
-<li>Reformat the table using R under the guidelines in the journal article on effective data management
+<li>Use the “Tabula” program to extract Table 1 from <a href="http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta">this paper.</a></li>
+<li>Reformat the table using R under the guidelines in the journal article on effective data management.
 <ul>
-<li>If you need an R refresher, take as much time as you need to go over the <a href="http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html">data carpentry guide</a></li>
-<li>You may also find the data carpentry <a href="http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html">lesson on <code>dplyr</code></a> helpful</li>
+<li>If you need an R refresher, take as much time as you need to go over the <a href="http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html">data carpentry guide.</a></li>
+<li>You may also find the data carpentry <a href="http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html">lesson on <code>dplyr</code></a> helpful.</li>
 </ul></li>
-<li>Go to <a href="test.arcticdata.io" class="uri">test.arcticdata.io</a> and submit your reformatted file with appropriate metadata that you derive from the text of the paper
+<li>Go to <a href="https://test.arcticdata.io/#data">test.arcticdata.io</a> and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
 <ul>
-<li>list yourself as the first creator so your test submission can easily be found</li>
-<li>for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine</li>
-<li>attributes (column names) should be defined, including correct units and missing value codes</li>
+<li>list yourself as the first ‘Creator’ so your test submission can easily be found,</li>
+<li>for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,</li>
+<li>attributes (column names) should be defined, including correct units and missing value codes.</li>
 </ul></li>
 </ul>
 
