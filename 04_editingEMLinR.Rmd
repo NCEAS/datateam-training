@@ -20,7 +20,7 @@ library(arcticdatautils)
 Set a path to a local copy of the EML that you would like to edit, and read the EML into R.
 
 ```{r}
-path1 <- 'glacier_metadata.xml'
+path1 <- 'data/glacier_metadata.xml'
 eml <- read_eml(path1)
 ```
 
