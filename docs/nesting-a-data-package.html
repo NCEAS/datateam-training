@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="using-arcticdatautils.html">
+<link rel="prev" href="introduction-to-solr.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -217,68 +217,131 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-open-science" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Introduction to open science</h1>
-<p>These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.</p>
-<p>New data team members should complete <a href="introduction-to-open-science.html#exercise1">the exercise in this section</a> as part of training.</p>
-<div id="open-science-background-reading" class="section level2">
-<h2><span class="header-section-number">2.1</span> Open science background reading</h2>
-<p>Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC</p>
+<div id="nesting-a-data-package" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Nesting a data package</h1>
+<div id="introduction-3" class="section level2">
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>This document is a practical tutorial for creating nesting relationships between data packages on the DataOne member nodes.</p>
+<p>Data packages on the DataOne member nodes can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common “parent” data package.</p>
+<p>The structure of nested data packages resembles a pyramid. There is one top level, or “parent”, with one or more data packages, or “children”, nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceeds 3 levels. This <a href="https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3">example</a> has three levels. The link will take you the top level, or “grandparent”. This top level has 5 children (nested datasets). If you click on any one of these children you can see that they have children as well.</p>
+<p>Some common uses for nesting:</p>
 <ul>
-<li><a href="https://arcticdata.io/about/">about</a></li>
-<li><a href="https://arcticdata.io/submit/">submission</a></li>
-<li><a href="https://arcticdata.io/preservation/">preservation</a></li>
-<li><a href="https://arcticdata.io/history/">history</a></li>
+<li>collected data varies by year</li>
+<li>an NSF award funds several related projects</li>
+<li>data collection is still ongoing</li>
+<li>data files exceed the 1000 file limit per data package</li>
 </ul>
 </div>
-<div id="effective-data-management" class="section level2">
-<h2><span class="header-section-number">2.2</span> Effective data management</h2>
-<p>Read Matt Jones’ paper on <a href="http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full">effective data management</a> to learn how we will be organizing datasets prior to archival.</p>
-</div>
-<div id="using-dataone" class="section level2">
-<h2><span class="header-section-number">2.3</span> Using DataONE</h2>
-<p>The <strong>Data Observation Network for Earth</strong> (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.</p>
-<p>Watch the first 38 minutes of <a href="https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ">this video</a> explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.</p>
-</div>
-<div id="working-on-a-remote-server" class="section level2">
-<h2><span class="header-section-number">2.4</span> Working on a remote server</h2>
-<p>All of the work that we do at NCEAS is done on our remote server, called “datateam.” If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. We access RStudio for our server through the link <a href="datateam.nceas.ucsb.edu/rstudio/" class="uri">datateam.nceas.ucsb.edu/rstudio/</a>. To transfer files on and off of the server, you’ll need to use either bash commands in the terminal, or a program called cyberduck.</p>
-<div id="cyberduck-instructions" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Cyberduck instructions</h3>
-<p>To use cyberduck to transfer local files onto the datateam server:</p>
-<ol style="list-style-type: decimal">
-<li>Open Cyberduck</li>
-<li>Click “Open Connection”</li>
-<li>From the drop-down, choose “SFTP (SSH File Transfer Protocol)”</li>
-<li>Enter “datateam.nceas.ucsb.edu” for Server</li>
-<li>Enter your username and password</li>
-<li>Connect</li>
-</ol>
-<p>From here, you can drag and drop files onto and off of the server.</p>
-</div>
-<div id="a-note-on-paths" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> A note on paths</h3>
-<p>On the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</p>
-<p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.</p>
-</div>
-<div id="exercise1" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> Exercise</h3>
+<div id="exercise" class="section level2">
+<h2><span class="header-section-number">9.2</span> Exercise</h2>
+<p>We will create two data packages on the test node to nest beneath a parent. These data packages contain measurements taken from Lake E1 in Alaska in 2013 and 2014.</p>
+<p>First, load the Arctic Data Center Test Node and libraries.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
+<span class="kw">library</span>(arcticdatautils)
+<span class="kw">library</span>(EML)
+cnTest &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)
+mnTest &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cnTest,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</code></pre></div>
 <ul>
-<li>Use the “tabula” program to extract Table 1 from <a href="http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta">this paper</a></li>
-<li>Reformat the table using R under the guidelines in the journal article on effective data management
+<li>We can publish several data files at once using the <code>dir</code> and <code>sapply</code> functions. <code>dir</code> returns the paths to every file located in a folder.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/2013&quot;</span>,
+                  <span class="dt">full.names =</span> T)
+## View file paths 
+paths_<span class="dv">2013</span></code></pre></div>
+<pre><code>## [1] &quot;/home/dmullen/Nesting_Training/2013/2012_2013_winter_E1_temperature.csv&quot;
+## [2] &quot;/home/dmullen/Nesting_Training/2013/2013_summer_E1_temperature.csv&quot;</code></pre>
 <ul>
-<li>If you need an R refresher, take as much time as you need to go over the <a href="http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html">data carpentry guide</a></li>
-<li>You may also find the data carpentry <a href="http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html">lesson on <code>dplyr</code></a> helpful</li>
-</ul></li>
-<li>Go to <a href="test.arcticdata.io" class="uri">test.arcticdata.io</a> and submit your reformatted file with appropriate metadata that you derive from the text of the paper
+<li>We can use <code>sapply</code> to apply a function over a list or vector. In this instance we will use it to apply <code>publish_object</code> over the vector of files paths (paths_2013) in order to publish them.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">sapply</span>(paths_<span class="dv">2013</span>, <span class="cf">function</span>(path) { <span class="kw">publish_object</span>(mnTest, path, <span class="dt">format =</span> <span class="st">&quot;text/csv&quot;</span>) })</code></pre></div>
 <ul>
-<li>list yourself as the first creator so your test submission can easily be found</li>
-<li>for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine</li>
-<li>attributes (column names) should be defined, including correct units and missing value codes</li>
-</ul></li>
+<li>Publish the metadata file to the test node using <code>publish_object</code>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metadata2013 &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest,
+                               <span class="dt">path =</span> <span class="st">&quot;/home/dmullen/Nesting_Training/E1_2013metadata.xml&quot;</span>,
+                               <span class="dt">format =</span> <span class="kw">format_eml</span>())</code></pre></div>
+<ul>
+<li>Create a resource map to associate the data with the metadata. Here we specify the metadata and data identifiers that we would like the resource map to associate together. These are the identifiers of the objects we just publish to the test node.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap2013 &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest,
+                                       <span class="dt">metadata_pid =</span> metadata2013,
+                                       <span class="dt">data_pids =</span> data2013)</code></pre></div>
+<ul>
+<li>Repeat the same steps as above for the 2014 data package.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths_<span class="dv">2014</span> &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/2014&quot;</span>, <span class="dt">full.names =</span> T)
+data_<span class="dv">2014</span> &lt;-<span class="st"> </span><span class="kw">sapply</span>(paths_<span class="dv">2014</span>, <span class="cf">function</span>(path) { <span class="kw">publish_object</span>(mnTest, path, <span class="dt">format =</span> <span class="st">&quot;text/csv&quot;</span>) })
+metadata2014 &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest, <span class="dt">path =</span> <span class="st">&quot;/home/dmullen/Nesting_Training/E1_2014metadata.xml&quot;</span>, <span class="dt">format =</span> <span class="kw">format_eml</span>())
+resourceMap2014 &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest, <span class="dt">metadata_pid =</span> metadata2014, <span class="dt">data_pids =</span> data2014)</code></pre></div>
+<p>These two packages correspond to data from the same study, varying only by year; however, they currently exist on the test node as independent entities. We will associate them with each other by nesting them underneath a parent. <em>Note:</em> Data packages are usually not entirely uploaded through the R client. Typically a PI will submit the metadata and data, and the resource map is automatically generated by the node.</p>
+</div>
+<div id="creating-a-parent" class="section level2">
+<h2><span class="header-section-number">9.3</span> Creating a Parent</h2>
+<p>In some cases a parent package already exists. More typically, you will need to create one by editing the existing metadata. The parent package should contain a generalized summary of the metadata of each of its children. It typically does not contain any data itself. We will now generalize a metadata file from one of the children in order to create the parent.</p>
+<ul>
+<li>Read in one of the child’s metadata files, in this case 2013.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/E1_2013metadata.xml&quot;</span>)
+## View the title 
+eml_parent<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></div>
+<pre><code>## An object of class &quot;ListOftitle&quot;
+## [[1]]
+## &lt;title&gt;Time series of water temperature, specific conductance and oxygen from Lake E1, North Slope, Alaska, 2012-2013.&lt;/title&gt;</code></pre>
+<ul>
+<li>The title of this child contains “2012-2013”. This is too specific for the parent, as the temporal range of both children is 2012-2014. The parent should reflect this larger time range.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>title &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">new</span>(<span class="st">&quot;title&quot;</span>,
+                                  <span class="dt">.Data =</span> <span class="st">&quot;Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014&quot;</span>))</code></pre></div>
+<ul>
+<li>Like the title, the temporal coverage elements in this EML need to be adjusted. This field depends on whether or not the project has been completed. +If the project is ongoing and the PI plans on submitting data in the future, set the Temporal Coverage to the start date of the project using a ’singleDateTime` element. We leave it open-ended and do not include an ending date. +If the project has been completed, set the Temporal Coverage to the start and end dates of the entire study. *In this case lets assume the project has completed. We will update the temporal coverage to reflect the entire duration of the study. Since we are using the metadata from the first year of the project, we only need to update the ‘endDate’ element.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>coverage<span class="op">@</span>temporalCoverage<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>rangeOfDates<span class="op">@</span>endDate<span class="op">@</span>calendarDate &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;calendarDate&quot;</span>,
+                                                                                                 <span class="st">&quot;2014-09-20&quot;</span>)</code></pre></div>
+<ul>
+<li>Remove data tables and otherEntities from the metadata. If you recall from previous chapters, <code>dataTables</code> contain metadata associated with data files (generally csvs) and <code>otherEntities</code> contain metadata about any other files in the data package (for instance a readMe or code). Because the parent does not contain any data objects, we want to remove <code>dataTables</code> and <code>otherEntities</code> from the metdata file. In this instance, the E1 2013 metadata only contains <code>dataTables</code>. We can remove these by setting the <code>dataTable</code> element in the EML to a new blank object.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>dataTable &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;ListOfdataTable&quot;</span>)</code></pre></div>
+<ul>
+<li><p>In most cases elements like the abstract, contacts, creators, geographic description, and methods are already generalized and do not require changes.</p></li>
+<li><p>Before writing your parent EML make sure that it validates. This is just a check to make sure everything is in the correct format.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eml_validate</span>(eml_parent)</code></pre></div>
+<ul>
+<li>After your EML validates we need to save, or “write”, it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using “Save as” in microsoft word. We opened a file (E1_2013.xml), made some changes, and “save it as” a new file called eml_parent.xml.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## This will create the file &quot;eml_parent.xml&quot; at the location specified by path
+path =<span class="st"> &quot;/home/YOURUSERNAME/eml_parent.xml&quot;</span>
+<span class="kw">write_eml</span>(eml_parent, path)</code></pre></div>
+<ul>
+<li>Next, we will publish the parent metadata to the test node.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metadata_parent &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest, <span class="dt">path =</span> path, <span class="dt">format_id =</span> <span class="kw">format_eml</span>())</code></pre></div>
+<p>Finally, we create a resource map for the parent package. We nest the two child data packages using the <code>child_pids</code> argument in <code>create_resource_map</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap_parent &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest, 
+                                          <span class="dt">metadata_pid =</span> metadata_parent,
+                                          <span class="dt">child_pids =</span> <span class="kw">c</span>(resourceMap2013, resourceMap2014))</code></pre></div>
+<p>The child packages are now nested underneath the parent.</p>
+</div>
+<div id="adding-a-child-to-a-pre-existing-parent" class="section level2">
+<h2><span class="header-section-number">9.4</span> Adding a child to a pre-existing parent</h2>
+<p>In some cases you will need to nest a new child underneath an existing parent. In this case we will nest the 2015 data for Lake E1 with our existing data package.</p>
+<ul>
+<li>First, create the 2015 child package.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/2015&quot;</span>, <span class="dt">full.names =</span> T)
+data_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw">sapply</span>(paths_<span class="dv">2015</span>, <span class="cf">function</span>(path) { <span class="kw">publish_object</span>(mnTest, path, <span class="dt">format =</span> <span class="st">&quot;text/csv&quot;</span>) })
+metadata2015 &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest, <span class="dt">path =</span> <span class="st">&quot;/home/dmullen/Nesting_Training/E1_2015metadata.xml&quot;</span>, <span class="dt">format =</span> <span class="kw">format_eml</span>())
+resourceMap2015 &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest, <span class="dt">metadata_pid =</span> metadata2015, <span class="dt">data_pids =</span> data2015)</code></pre></div>
+<ul>
+<li>Nest the new child using the <code>child_pids</code> argument in <code>update_resource_map()</code>. Note: it’s important the resource maps of <em>ALL</em> the children in the <code>child_pids</code> argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap_parent2 &lt;-<span class="st"> </span><span class="kw">update_resource_map</span>(mnTest, 
+                                           <span class="dt">resource_map_pid =</span> resourceMap_parent,
+                                           <span class="dt">metadata_pid =</span> metadata_parent)</code></pre></div>
+<ul>
+<li>Nesting relationships can also be modified using the <code>child_pids</code> argument in <code>publish_update</code> in the same manner</li>
 </ul>
 
-</div>
 </div>
 </div>
             </section>
@@ -286,8 +349,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-arcticdatautils.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction-to-solr.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
