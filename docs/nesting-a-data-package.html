@@ -244,16 +244,14 @@ mnTest &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cnTest,<sp
 <ul>
 <li>We can publish several data files at once using the <code>dir</code> and <code>sapply</code> functions. <code>dir</code> returns the paths to every file located in a folder.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/2013&quot;</span>,
-                  <span class="dt">full.names =</span> T)
-## View file paths 
-paths_<span class="dv">2013</span></code></pre></div>
-<pre><code>## [1] &quot;/home/dmullen/Nesting_Training/2013/2012_2013_winter_E1_temperature.csv&quot;
-## [2] &quot;/home/dmullen/Nesting_Training/2013/2013_summer_E1_temperature.csv&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>(<span class="st">&quot;data/2013&quot;</span>, <span class="dt">full.names =</span> T)</code></pre></div>
+<pre><code>## [1] &quot;data/2013/2012_2013_winter_E1_temperature.csv&quot;
+## [2] &quot;data/2013/2013_summer_E1_temperature.csv&quot;</code></pre>
 <ul>
 <li>We can use <code>sapply</code> to apply a function over a list or vector. In this instance we will use it to apply <code>publish_object</code> over the vector of files paths (paths_2013) in order to publish them.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">sapply</span>(paths_<span class="dv">2013</span>, <span class="cf">function</span>(path) { <span class="kw">publish_object</span>(mnTest, path, <span class="dt">format =</span> <span class="st">&quot;text/csv&quot;</span>) })</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/2013&quot;</span>, <span class="dt">full.names =</span> T)
+data_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw">sapply</span>(paths_<span class="dv">2013</span>, <span class="cf">function</span>(path) { <span class="kw">publish_object</span>(mnTest, path, <span class="dt">format =</span> <span class="st">&quot;text/csv&quot;</span>) })</code></pre></div>
 <ul>
 <li>Publish the metadata file to the test node using <code>publish_object</code>.</li>
 </ul>
@@ -281,7 +279,9 @@ resourceMap2014 &lt;-<span class="st"> </span><span class="kw">create_resource_m
 <ul>
 <li>Read in one of the child’s metadata files, in this case 2013.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="st">&quot;/home/dmullen/Nesting_Training/E1_2013metadata.xml&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="st">&quot;data/E1_2013metadata.xml&quot;</span>)
+## Use this code when you are reading in the parent 
+<span class="co"># eml_parent &lt;- read_eml(&quot;/home/dmullen/Nesting_Training/E1_2013metadata.xml&quot;)</span>
 ## View the title 
 eml_parent<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></div>
 <pre><code>## An object of class &quot;ListOftitle&quot;

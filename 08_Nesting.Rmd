@@ -38,15 +38,13 @@ mnTest <- getMNode(cnTest,'urn:node:mnTestARCTIC')
 * We can publish several data files at once using the `dir` and `sapply` functions.  `dir` returns the paths to every file located in a folder.  
   
 ```{r, eval = T}
-paths_2013 <- dir("/home/dmullen/Nesting_Training/2013",
-                  full.names = T)
-## View file paths 
-paths_2013
+dir("data/2013", full.names = T)
 ```
   
 * We can use `sapply` to apply a function over a list or vector.  In this instance we will use it to apply `publish_object` over the vector of files paths (paths_2013) in order to publish them.
   
 ```{r}
+paths_2013 <- dir("/home/dmullen/Nesting_Training/2013", full.names = T)
 data_2013 <- sapply(paths_2013, function(path) { publish_object(mnTest, path, format = "text/csv") })
 ```
 
@@ -84,7 +82,9 @@ In some cases a parent package already exists.  More typically, you will need to
 * Read in one of the child's metadata files, in this case 2013.  
   
 ```{r, eval = T}
-eml_parent <- read_eml("/home/dmullen/Nesting_Training/E1_2013metadata.xml")
+eml_parent <- read_eml("data/E1_2013metadata.xml")
+## Use this code when you are reading in the parent 
+# eml_parent <- read_eml("/home/dmullen/Nesting_Training/E1_2013metadata.xml")
 ## View the title 
 eml_parent@dataset@title
 ```

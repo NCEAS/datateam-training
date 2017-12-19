@@ -229,7 +229,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(digest)
 <span class="kw">library</span>(arcticdatautils)</code></pre></div>
 <p>Set a path to a local copy of the EML that you would like to edit, and read the EML into R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> &#39;glacier_metadata.xml&#39;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> &#39;data/glacier_metadata.xml&#39;</span>
 eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code></pre></div>
 <p>When using the EML R package, you will usually be working with objects of class <code>eml</code>. For example, we can find out what type of object we just created when we ran the <code>read_eml</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(eml)</code></pre></div>

@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="arctic-data.14231.1" system="knb" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <access order="allowFirst" authSystem="knb">
+    <allow>
+      <principal>CN=arctic-data-admins,DC=dataone,DC=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>http://orcid.org/0000-0002-4873-4164</principal>
+      <permission>all</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Time series of water temperature, specific conductance and oxygen from Lake E1, North Slope, Alaska, 2012-2013.</title>
+    <creator>
+      <individualName>
+        <givenName>Sally</givenName>
+        <surName>MacIntyre</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>sally.macintyre@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-3644-7237</userId>
+    </creator>
+    <creator id="3195314033475789">
+      <individualName>
+        <givenName>Alicia</givenName>
+        <surName>Cortes</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>alicia.cortes@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-4873-4164</userId>
+    </creator>
+    <metadataProvider id="7125216930612339">
+      <individualName>
+        <givenName>Alicia</givenName>
+        <surName>Cortes</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>alicia.cortes@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-4873-4164</userId>
+    </metadataProvider>
+    <associatedParty id="682954221036842">
+      <individualName>
+        <givenName>Sally</givenName>
+        <surName>MacIntyre</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>sally.macintyre@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-3644-7237</userId>
+      <role>principalInvestigator</role>
+    </associatedParty>
+    <pubDate>2017-10-09</pubDate>
+    <abstract>Lakes are especially numerous in the arctic region, extending over about one quarter of the territory.
+                                            For approximately nine months of the year, the waters of arctic lakes are under ice.  Despite the duration of the 
+                                            ice-covered period, few studies have addressed the limnology (biological, chemical, and physical features) of these
+                                            lakes during their ice-covered period.  However, under ice circulation affects the background hydrodynamic state of lakes
+                                            during the summer.  We aim to look at the full year cycle lake circulation in order to quantify the effects of hydrodynamics
+                                            on nutrient and gas fluxes and place the results within the context of climate change in the Arctic.  In this study, we propose to 
+                                            carry out several goals:  (1) to quantify physical controls on under ice thermal structure and circulation, mixing of snow melt 
+                                            waters and mixing during spring and fall  (2) to quantify respiration rates in arctic lakes of differing morphology and geological 
+                                            substrates  (3) to illustrate the linkages and feedbacks between these physical and biogeochemical processes.  The proposed research
+                                            will be carried out in lakes being studied by the Artic Long Term Ecological Research (LTER).  The selected lakes are: Toolik Lake, 
+                                            Lake E1, Lake E5, Lake E6 and Lake N2.  The Lakes range in size from 1 to 1500 hectares.  We measured time series of water temperatures,
+                                            specific conductance and dissolved oxygen at several depths from a taut-line moored chain of loggers in different seasons (summer
+                                            and winter) and across multiple years.</abstract>
+    <keywordSet>
+      <keyword>Earth Science &gt; Lake physics &gt; hydrodynamics &gt; temperature </keyword>
+      <keyword>Earth Science &gt; Lake physics &gt; hydrodynamics &gt; specific conductance</keyword>
+      <keyword>Earth Science &gt; Lake physics &gt; hydrodynamics &gt; oxygen </keyword>
+      <keywordThesaurus>GCMD</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>
+      <para>
+This work is licensed under the Creative Commons Attribution 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+</para>
+    </intellectualRights>
+    <distribution>
+      <offline>
+        <mediumName>digital </mediumName>
+      </offline>
+    </distribution>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Lake E1, North Slope, Alaska </geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-149.5533</westBoundingCoordinate>
+          <eastBoundingCoordinate>-149.5533</eastBoundingCoordinate>
+          <northBoundingCoordinate>68.6264</northBoundingCoordinate>
+          <southBoundingCoordinate>68.6264</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2012-09-24</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2013-09-20</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <contact>
+      <individualName>
+        <givenName>Sally</givenName>
+        <surName>MacIntyre</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>sally.macintyre@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-3644-7237</userId>
+    </contact>
+    <contact id="6934054927869013">
+      <individualName>
+        <givenName>Alicia</givenName>
+        <surName>Cortes</surName>
+      </individualName>
+      <organizationName>University of California Santa Barbara</organizationName>
+      <address>
+        <city>Santa Barbara</city>
+        <administrativeArea>California</administrativeArea>
+        <postalCode>93106-9625</postalCode>
+        <country>USA</country>
+      </address>
+      <electronicMailAddress>alicia.cortes@ucsb.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-4873-4164</userId>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>
+	    For winter and summer deployments: Time-series of several variables were measured using self-contained
+            loggers on taut-line moorings with a subsurface float about 1 m to 2 m below the air-water interface or the ice, in
+             summer and winter deployments, respectively. Loggers were attached to the array formed by the sub-surface float.
+	 </para>
+          <para>
+	    In summer, in addition to the sub-surface float array, a set of loggers were also suspended from a 
+            surface float which is a sheet of styrofoam sandwiched between plywood with a logger attached horizontally to the 
+            bottom of the float, so that it was shielded from direct sunlight.
+	 </para>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para>
+		   Sampling method for Temperature in the summer: An Onset Water Temperature Logger with an accuracy of 0.2 degrees celsius and a resolution
+		   of 0.02 degrees celsius was used. The sampling interval was 5 minutes.   (Note: Sampling methods for temperature can vary by lake and season.  
+		   Methods for conductance and dissolved oxygen were constant throughout)
+		</para>
+              </listitem>
+              <listitem>
+                <para>
+		  Sampling method for Temperature in the winter: An RBR Ltd. model TR 1050 Water Temperature Logger with accuracy and resolution of 0.002 degrees  		  celsisus and time constant of 3 seconds was used.
+		  The recorded data is at 5 minute averages. The Original sampling interval was 10 seconds. We calibrate loggers every 2 years.
+		</para>
+              </listitem>
+              <listitem>
+                <para>
+		   Sampling method for Conductance: An Onset U24-001 HOBO Freshwater Conductivity Data Logger with an accuracy of 50 microsiemens/centimeter
+		   and a resolution of 2 microsiemens/centimeter.  The recorded data is at 30 minute averages. The original sampling interval
+		   was 30 minutes in winter and 10 minutes in summer. 
+		</para>
+              </listitem>
+              <listitem>
+                <para>
+		   Sampling method for dissolved oxygen: A PME miniDOT optical dissolved oxygen Logger
+                   with accuracy of 5% milligrams/liter and a resolution of 0.01 milligrams/liter was used.  The sampling interval was 10 minutes.
+		</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>Circulation and Respiration in Ice-covered Arctic Lakes</title>
+      <personnel>
+        <individualName>
+          <givenName>Sally</givenName>
+          <surName>MacIntyre</surName>
+        </individualName>
+        <role>originator</role>
+      </personnel>
+      <funding>1204267</funding>
+    </project>
+    <dataTable>
+      <entityName>2012_2013_winter_E1_temperature.csv</entityName>
+      <entityDescription>This file contains a time series matrix of temperature measurements at a specific depth (X-axis) and time (Y-axis)</entityDescription>
+      <physical scope="document">
+        <objectName>2012_2013_winter_E1_temperature.csv</objectName>
+        <size unit="bytes">11118770</size>
+        <authentication method="SHA1">2e6247dc7bee110c0ba66ff6af8126011a5c07f2</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:3f658463-2af4-4ee2-8304-4f2edf83650b</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>DOY</attributeName>
+          <attributeDefinition>Decimal Day of the Year.  Example: In the data file 2015_2016_winter_E6_temperature.csv,
+                                   values for decimal day of year begin at 255.709193.   This corresponds to approximately 71%
+                                   of the way through the 256th day of 2015, or 5:02 pm on September 19th, 2015.  In data files
+                                   that contain a transition to a new calendar year, values for the new year begin at 365.00000 (or 366.00000 for leap years).</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>2.9</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 2.9 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>3.88</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 3.88 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>4.85</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 4.85 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>5.83</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 5.83 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>6.8</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 6.8 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>7.78</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 7.78 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>8.75</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 8.75 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>9.73</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 9.73 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>10.7</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 10.7 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>11.7</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 11.7 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>12.1</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 12.1 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+    </dataTable>
+    <dataTable>
+      <entityName>2013_summer_E1_temperature.csv</entityName>
+      <entityDescription>This file contains a time series matrix of temperature measurements at a specific depth (X-axis) and time (Y-axis)</entityDescription>
+      <physical scope="document">
+        <objectName>2013_summer_E1_temperature.csv</objectName>
+        <size unit="bytes">3782958</size>
+        <authentication method="SHA1">ed0576ed7d89a8d606a74c8adc593e3422c5c184</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:fa913a0f-7d09-48af-8325-bfb0426dcc73</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>DOY</attributeName>
+          <attributeDefinition>Decimal Day of the Year.  Example: In the data file 2015_2016_winter_E6_temperature.csv,
+                                   values for decimal day of year begin at 255.709193.   This corresponds to approximately 71%
+                                   of the way through the 256th day of 2015, or 5:02 pm on September 19th, 2015.  In data files
+                                   that contain a transition to a new calendar year, values for the new year begin at 365.00000 (or 366.00000 for leap years).</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>0.05</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 0.05 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>0.2</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 0.2 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>0.55</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 0.55 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>0.95</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 0.95 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>1.25</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 1.25 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>1.76</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 1.76 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>2.52</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 2.52 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>3.32</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 3.32 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>4.32</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 4.32 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>5.28</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 5.28 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>6.28</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 6.28 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>7.26</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 7.26 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>8.27</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 8.27 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>9.25</attributeName>
+          <attributeDefinition>Recorded temperature in celsius by the logger at 9.25 meters depth</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>-99</code>
+            <codeExplanation>no data due to quality assurance/quality control checks</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+    </dataTable>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <unitList xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <unit id="microSiemensPerCentimeter" name="microSiemensPerCentimeter" parentSI="siemen" unitType="conductance"/>
+      </unitList>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>
