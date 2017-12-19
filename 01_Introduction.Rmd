@@ -2,7 +2,7 @@
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
 
-New data team members should complete Exercise 1 (below) as part of training.
+New data team members should complete [Exercise 1](#exercise1) as part of training.
 
 ## Open science background reading
 
@@ -46,9 +46,9 @@ From here, you can drag and drop files to and from the server.
 
 On the servers, paths to files in your folder always start with `/home/yourusername/...`.
 
-When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another intern or Jesse or Jeanette need to run your script, it is not dependent on a working directory.
+When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
 
-### Exercise 1
+### Exercise 1 {#exercise1}
 
 * Use the "Tabula" program to extract Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
 * Reformat the table using R under the guidelines in the journal article on effective data management.

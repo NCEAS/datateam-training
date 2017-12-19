@@ -111,20 +111,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#working-on-a-remote-server"><i class="fa fa-check"></i><b>2.4</b> Working on a remote server</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#cyberduck-instructions"><i class="fa fa-check"></i><b>2.4.1</b> Cyberduck instructions</a></li>
 <li class="chapter" data-level="2.4.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-paths"><i class="fa fa-check"></i><b>2.4.2</b> A note on paths</a></li>
-<li class="chapter" data-level="2.4.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>2.4.3</b> Exercise 1</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise1"><i class="fa fa-check"></i><b>2.4.3</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i><b>3</b> Using arcticdatautils</a><ul>
 <li class="chapter" data-level="3.1" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#uploading-packages-using-r"><i class="fa fa-check"></i><b>3.1</b> Uploading packages using R</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#set-environment"><i class="fa fa-check"></i><b>3.1.1</b> Set environment</a></li>
-<li class="chapter" data-level="3.1.2" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#set-token"><i class="fa fa-check"></i><b>3.1.2</b> Set token</a></li>
-<li class="chapter" data-level="3.1.3" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#what-is-in-a-package"><i class="fa fa-check"></i><b>3.1.3</b> What is in a package?</a></li>
-<li class="chapter" data-level="3.1.4" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#about-identifiers"><i class="fa fa-check"></i><b>3.1.4</b> About identifiers</a></li>
-<li class="chapter" data-level="3.1.5" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>3.1.5</b> Publishing a package to the site</a></li>
-<li class="chapter" data-level="3.1.6" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#exercise2"><i class="fa fa-check"></i><b>3.1.6</b> Exercise</a></li>
+<li class="chapter" data-level="3.1.2" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#what-is-in-a-package"><i class="fa fa-check"></i><b>3.1.2</b> What is in a package?</a></li>
+<li class="chapter" data-level="3.1.3" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#about-identifiers"><i class="fa fa-check"></i><b>3.1.3</b> About identifiers</a></li>
+<li class="chapter" data-level="3.1.4" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#publishing-a-package-to-the-site"><i class="fa fa-check"></i><b>3.1.4</b> Publishing a package to the site</a></li>
+<li class="chapter" data-level="3.1.5" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#exercise2"><i class="fa fa-check"></i><b>3.1.5</b> Exercise 2</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#uploading-a-new-version"><i class="fa fa-check"></i><b>3.2</b> Uploading a new version</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#exercise3"><i class="fa fa-check"></i><b>3.2.1</b> Exercise</a></li>
+<li class="chapter" data-level="3.2.1" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html#exercise3"><i class="fa fa-check"></i><b>3.2.1</b> Exercise 3</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="system-metadata.html"><a href="system-metadata.html"><i class="fa fa-check"></i><b>4</b> System metadata</a><ul>
@@ -222,12 +221,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>New data team members should complete exercises <a href="using-arcticdatautils.html#exercise2">two</a> and <a href="using-arcticdatautils.html#exercise3">three</a> as part of training.</p>
 <div id="uploading-packages-using-r" class="section level2">
 <h2><span class="header-section-number">3.1</span> Uploading packages using R</h2>
-<p>We will be using the arcticdatautils package and the dataone package to connect to the <a href="arcticdata.io">NSF Arctic Data Center</a> data repository and push and pull edits. To identify yourself as admin you will need to register a ‘token’ by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, copying your token into R and telling R where to connect by defining the member node using the code below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arcticdatautils)
-<span class="kw">library</span>(dataone)</code></pre></div>
+<p>We will be using the arcticdatautils package and the dataone package to connect to the <a href="https://arcticdata.io">NSF Arctic Data Center (ADC)</a> data repository and push and pull edits. To identify yourself as an admin you will need to pass a ‘token’ into R. Do this by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, hovering over your name and clicking on “My profile”, then navigating to “Setings” and “Authentication Token”, copying the “Token for DataONE R”, and pasting and running it in your R console.</p>
+<p><strong>This token is your identity on these sites, please treat it as you would a password</strong> (ie. don’t paste into scripts that will be shared). The easiest way to do this is to always run the token in the <em>console</em>. There’s no need to keep it in your script since it’s temporary anyway. Sometimes you’ll see a placeholder in scripts to remind users to get their token, such as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
+<p>Next, please be sure these packages are loaded:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
+<span class="kw">library</span>(arcticdatautils)
+<span class="kw">library</span>(dataone)
+<span class="kw">library</span>(datapack)</code></pre></div>
 <div id="set-environment" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Set environment</h3>
-<p>Once we have our libraries loaded we need to tell R which repo we want to be working with. If we are working on the production site, you can set the coordinating node (<code>cn</code>) and member node (<code>mn</code>) this way:</p>
+<p>Once we have our libraries loaded, we need to tell R with which repo we want to work. If we are working on the production site, you can set the coordinating node (<code>cn</code>) and member node (<code>mn</code>) this way:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;PROD&#39;</span>)
 mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</code></pre></div>
 <p>If we are working in the test environment, we set it this way:</p>
@@ -235,22 +239,17 @@ mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class
 mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</code></pre></div>
 <p>A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training exercises, you should be using the test environment (STAGING, or test.articdata.io).</p>
 </div>
-<div id="set-token" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Set token</h3>
-<p>Now that we have the environment set we have to manually log in to the NSF ADC site to get our token and copy it to our R environment. <strong>This token is your identity on these sites, please treat it as you would a password</strong> (ie. don’t paste into scripts that will be shared). The easiest way to do this is to just run the token in the <em>console</em>. There’s no need to keep it in you script since its temporary anyway. Sometimes you’ll see a placeholder in scripts to remind users to get their token, such as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
-</div>
 <div id="what-is-in-a-package" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> What is in a package?</h3>
-<p>A data package generally consists of at least 3 “objects” or files. One object is the metadata file itself. Ths file is in XML format, and has the extension <code>.xml</code>. We sometimes refer to this file as the EML, which is the metadata standard that it uses. Another object or objects are the data files themselves. Most commonly these are data tables (<code>.csv</code>), but they can also be audio files, netCDF files, plain text files, pdf documents, image files, etc. The final object is the resource map. This object is a text file that defines the relationships between all of the other objects in the data package. It says things like “this metadata file describes this data file,” and is critical to making a data package render correctly on the website with the metadata files and all of the data files in te right place. Fortunately, we rarely if ever have to actually look at the contents of resource maps, they are generated for us using <code>arcticdatautils</code>.</p>
+<h3><span class="header-section-number">3.1.2</span> What is in a package?</h3>
+<p>A data package generally consists of at least 3 “objects” or files. One object is the metadata file itself. Ths file is in XML format, and has the extension <code>.xml</code> (extensible markup language). We often refer to this file as the EML (Ecological Metadata Language), which is the metadata standard that it uses. Other objects are the data files themselves. Most commonly these are data tables (<code>.csv</code>), but they can also be audio files, netCDF files, plain text files, pdf documents, image files, etc. The final object is the resource map. This object is a text file that defines the relationships between all of the other objects in the data package. It says things like “this metadata file describes this data file,” and is critical to making a data package render correctly on the website with the metadata file and all of the data files together in the correct place. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using <code>arcticdatautils</code>.</p>
 </div>
 <div id="about-identifiers" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> About identifiers</h3>
-<p>Each object (metadata files, data files, resource maps) on the Artic Data Center or KNB has a unique identifier, also sometimes called a “pid”. When you look at the landing page for a dataset, for example <a href="https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z">here</a>, you can find the resource map identifier in the URL (<code>resource_map_doi:10.18739/A2836Z</code>), the metadata identifer in the “General &gt; Identifier” section of the metadata record (<code>doi:10.18739/A2836Z</code>), and the data identifier by clicking the “more info” link next to the data object, and looking at the “online distribution info” section (<code>arctic-data.9546.1</code>).</p>
-<p>Different versions of a package are linked together by what we call the version chain. Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the object that was updated. When making changes to a package, always use the <code>update_object</code> or <code>publish_update</code> commands from <code>arcticdatautils</code> to ensure that the version chain is maintained.</p>
+<h3><span class="header-section-number">3.1.3</span> About identifiers</h3>
+<p>Each object (metadata files, data files, resource maps) on the ADC or KNB (another repo) has a unique identifier, also sometimes called a “PID” (persistent identifier). When you look at the landing page for a dataset, for example <a href="https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z">here</a>, you can find the resource map identifier in the URL (<code>resource_map_doi:10.18739/A2836Z</code>), the metadata identifer in the “General &gt; Identifier” section of the metadata record (<code>doi:10.18739/A2836Z</code>), and the data identifier by clicking the “more info” link next to the data object, and looking at the “Online Distribution Info” section (<code>arctic-data.9546.1</code>).</p>
+<p>Different versions of a package are linked together by what we call the “version chain” or “obsolescence chain”. Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the <code>update_object</code> or <code>publish_update</code> commands from <code>arcticdatautils</code> on the <em>latest versions</em> of all objects to ensure that the version chain is maintained.</p>
 </div>
 <div id="publishing-a-package-to-the-site" class="section level3">
-<h3><span class="header-section-number">3.1.5</span> Publishing a package to the site</h3>
+<h3><span class="header-section-number">3.1.4</span> Publishing a package to the site</h3>
 <p>Objects are published to the site using a function called <code>publish_object</code>. To publish a metadata file you would use the following call:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta_path &lt;-<span class="st"> &#39;path/to/your/metadata/metadata.xml&#39;</span>
 pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn, meta_path, <span class="dt">format_id =</span> <span class="kw">format_eml</span>())</code></pre></div>
@@ -260,52 +259,51 @@ data_pid &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mn
 <p>Note that you will need to be explicit about your <code>format_id</code> here based on the file type. A list of format IDs can be found <a href="https://cn.dataone.org/cn/v2/formats">here on the DataONE website</a>.</p>
 <p>Finally, you can create and publish the resource map using <code>create_resource_map</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rm &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mn, pid, <span class="dt">data_pids =</span> data_pid)</code></pre></div>
-<p>One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function <code>set_rights_and_access</code> will set both, and <code>set_access</code> will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder to the dataset is typically the submitter (if the dataset is submitted through the registry), but if a data team intern is publishing objects for a PI, the rights holder is the main point of contact for the dataset (ie the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCID.</p>
+<p>One final step is to make sure that the rights and access on thes objects you uploaded are set correctly. The function <code>set_rights_and_access</code> will set both, and <code>set_access</code> will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder of the data package is typically the submitter (if the dataset is submitted through the web form (sometimes refered to as the “registry”)), but if a data team member is publishing objects for a PI, the rights holder should be the main point of contact for the dataset (i.e. the person who requested that we upload the data for them). In this example, we set rights and access for all of the objects created above, using an example ORCiD.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set_rights_and_access</span>(mn, 
                       <span class="kw">c</span>(pid, data_pid, rm), 
                       <span class="dt">subject =</span> <span class="st">&#39;http://orcid.org/PUT0-YOUR-ORCD-HERE&#39;</span>,
                       <span class="dt">permissions =</span> <span class="kw">c</span>(<span class="st">&#39;read&#39;</span>, <span class="st">&#39;write&#39;</span>, <span class="st">&#39;changePermission&#39;</span>))</code></pre></div>
 </div>
 <div id="exercise2" class="section level3">
-<h3><span class="header-section-number">3.1.6</span> Exercise</h3>
+<h3><span class="header-section-number">3.1.5</span> Exercise 2</h3>
 <ul>
-<li>Locate the data package you published by navigating to the “my profile” section on <a href="test.arcticdata.io" class="uri">test.arcticdata.io</a>.</li>
-<li>Download the metadata and data files and transfer them to the datateam server.</li>
+<li>Locate the data package you published by navigating to the “My Profile” section on <a href="https://test.arcticdata.io">test.arcticdata.io</a>.</li>
+<li>Download the metadata and data files and transfer them to the Datateam server.</li>
 <li>Using the functions described in the section above, pubish your metadata record and data file to the site.</li>
-<li>View your new dataset (which is identical to the one you created previously) by appending the pid of your resource map (in the example above, the resource map pid was saved to the variable <code>rm</code>) to the end of the URL test.arcticdata.io/#view/…</li>
+<li>View your new dataset (which is identical to the one you created previously) by appending the PID of the latest version of the EML to the end of the URL test.arcticdata.io/#view/…</li>
 </ul>
 </div>
 </div>
 <div id="uploading-a-new-version" class="section level2">
 <h2><span class="header-section-number">3.2</span> Uploading a new version</h2>
 <p>To edit material, we use the <code>publish_update</code> or <code>update_object</code> functions in <code>arcticdatautils</code>.</p>
-<p>Usually we’ll be updating exisiting work using <code>publish_update()</code> from the arcticdatautils package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.</p>
-<p>The following example shows how you would add a data file to a package, and make a change to the metadata file.</p>
-<p>First, make whatever edits you ned to make to the metadata, and save them to the server.</p>
+<p>Usually we’ll be updating exisiting work using <code>publish_update()</code> from the <code>arcticdatautils</code> package, which has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.</p>
+<p>The following example shows how you would add a data file to a package and make a change to the metadata file.</p>
+<p>First, make whatever edits you need to make to the metadata, and save them to the server.</p>
 <p>Define the path to your metadata.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta_path &lt;-<span class="st"> &quot;path/to/metadata/file.xml&quot;</span></code></pre></div>
-<p>Use either the metadata or resource map pid for your existing data package and the function <code>get_package</code> to return all of the existing pids in the data package as a named list.</p>
+<p>Use either the metadata or resource map PID for your existing data package and the function <code>get_package</code> to return all of the existing PIDs in the data package as a named list.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the function get_package is helpful to get all other PIDs in a package if you know the metadata PID</span>
 metaPid &lt;-<span class="st"> &quot;urn:uuid:5933a052-5493-4f50-8622-ed83231d3fee&quot;</span>
-ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPid)</code></pre></div>
+ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPid, <span class="dt">file_names =</span> T)</code></pre></div>
 <p>Finally, use the <code>publish_update</code> function with the results of the lines above to update your data package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">publish_update</span>(mn,
                <span class="dt">metadata_pid =</span> metaPid <span class="co"># old metadata PID you pulled in originally. Alternatively could paste in the string:  &quot;urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee&quot;</span>
                <span class="dt">resource_map_pid =</span> ids<span class="op">$</span>resource_map,
                <span class="dt">metadata_path =</span> meta_path, <span class="co"># path to updated EML file,</span>
                <span class="dt">data_pid =</span> ids<span class="op">$</span>data, <span class="co"># this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)</span>
-               <span class="dt">check_first =</span> T,
                <span class="dt">use_doi =</span> <span class="ot">FALSE</span>,
                <span class="dt">public =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p>If a package is ready to be public, note that you can change the <code>public</code> argument in the <code>publish_update</code> call to <code>TRUE</code>. Similarly, if you want to publish with a DOI type identifier instead of a UUID type identifer, you can change the <code>use_doi</code> argument to <code>TRUE</code>.</p>
+<p>If a package is ready to be public, note that you can change the <code>public</code> argument in the <code>publish_update</code> call to <code>TRUE</code>. Similarly, if you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the <code>use_doi</code> argument to <code>TRUE</code>.</p>
 <div id="exercise3" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Exercise</h3>
+<h3><span class="header-section-number">3.2.1</span> Exercise 3</h3>
 <ul>
-<li>Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/… with the resource map pid you generated in that exercise.</li>
-<li>Download the EML to your computer, and open it in a plain text editor (TextEdit or Atom).</li>
-<li>Navigate to the title section, and make a change to the title text within the <code>&lt;title&gt;</code>…<code>&lt;/title&gt;</code> section.
+<li>Locate the data package you published in the previous exercise by navigating to the URL test.arcticdata.io/#view/… with the EML PID you generated in that exercise.</li>
+<li>Download the EML to your computer, and open it in a plain text editor (TextEdit, Atom, or Notepad++).</li>
+<li>Navigate to the ‘Title’ section, and make a change to the title text within the <code>&lt;title&gt;</code>…<code>&lt;/title&gt;</code> section.
 <ul>
-<li>Do not change the <code>&lt;title&gt;</code> or <code>&lt;/title&gt;</code> syntax. Upload the file back to the datateam server.</li>
+<li>Do not change the <code>&lt;title&gt;</code> or <code>&lt;/title&gt;</code> syntax. Upload the file back to the Datateam server.</li>
 </ul></li>
 <li>Using the <code>publish_update</code> function, update your data package as shown above.</li>
 </ul>
