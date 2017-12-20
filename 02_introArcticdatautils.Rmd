@@ -4,7 +4,7 @@ New data team members should complete exercises [two](#exercise2) and [three](#e
 
 ## Uploading packages using R
 
-We will be using the arcticdatautils package and the dataone package to connect to the [NSF Arctic Data Center (ADC)](https://arcticdata.io) data repository and push and pull edits. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your [ORCiD](https://orcid.org/register), hovering over your name and clicking on "My profile", then navigating to "Setings" and "Authentication Token", copying the "Token for DataONE R", and pasting and running it in your R console.
+We will be using the `arcticdatautils` package and the dataone package to connect to the [NSF Arctic Data Center (ADC)](https://arcticdata.io) data repository and push and pull edits. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your [ORCiD](https://orcid.org/register), hovering over your name and clicking on "My profile", then navigating to "Setings" and "Authentication Token", copying the "Token for DataONE R", and pasting and running it in your R console.
 
 **This token is your identity on these sites, please treat it as you would a password** (ie. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 

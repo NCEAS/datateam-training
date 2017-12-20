@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum">
 
 
-<meta name="date" content="2017-12-19">
+<meta name="date" content="2017-12-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -236,26 +236,26 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 ## attr(,&quot;package&quot;)
 ## [1] &quot;EML&quot;</code></pre>
 <p>This <code>eml</code> object represents a complete EML document (as in: the .xml file) and all of the information inside the <code>.xml</code> file can be viewed and edited with the EML package.</p>
-<p>The <code>eml</code> object has what are called “slots,” each slot representing an element of the EML document such as “Title” or “Creator” and you will use these “slots” when working with your <code>eml</code> object. You can find out what slots you have available with the <code>slotNames</code> function:</p>
+<p>The <code>eml</code> object has what are called “slots”, each slot representing an element of the EML document such as “Title” or “Creator” and you will use these “slots” when working with your <code>eml</code> object. (Sometimes we call the slots “elements” or “tags”.) You can find out what slots you have available with the <code>slotNames</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml))</code></pre></div>
 <pre><code>##  [1] &quot;access&quot;             &quot;additionalMetadata&quot; &quot;citation&quot;          
 ##  [4] &quot;.Data&quot;              &quot;dataset&quot;            &quot;lang&quot;              
 ##  [7] &quot;packageId&quot;          &quot;protocol&quot;           &quot;schemaLocation&quot;    
 ## [10] &quot;scope&quot;              &quot;slot_order&quot;         &quot;software&quot;          
 ## [13] &quot;system&quot;</code></pre>
-<p>You can access information in one of these slots by adding an @ symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., <code>eml@&lt;TAB&gt;</code>):</p>
+<p>You can access information in one of these slots by adding an <code>@</code> symbol at the end of the variable you want to view the slots of and hitting TAB (e.g., <code>eml@&lt;TAB&gt;</code>):</p>
 <div class="figure">
 <img src="images/rstudio-autocomplete.png" alt="RStudio Autocompletion" />
 <p class="caption">RStudio Autocompletion</p>
 </div>
-<p>You will notice that the list of slots on the <code>eml</code> object doesn’t include common EML things such as the dataset’s title or the creators. This is because EML (the XML) and the EML R package are both hierarchical. The (incomplete) EML XML for dataset with a title would look something like this:</p>
+<p>You will notice that the list of slots on the <code>eml</code> object doesn’t include common EML things such as the dataset’s title or the creators. This is because EML (the XML) and the EML R package are both hierarchical. The (incomplete) EML XML for a dataset with a title would look something like this:</p>
 <pre><code>&lt;eml&gt;
   &lt;dataset&gt;
     &lt;title&gt;My title goes here...&lt;/title&gt;
   &lt;/dataset&gt;
 &lt;/eml</code></pre>
 <p>You can see that the <code>title</code> is nested inside the <code>dataset</code> and the <code>dataset</code> is nested inside the root <code>eml</code> element of the document.</p>
-<p>Because the <code>title</code> is nested inside the <code>dataset</code> element, it will be a slot on <code>eml@dataset</code> instead of an slot of the main <code>eml</code> object:</p>
+<p>Because the <code>title</code> is nested inside the <code>dataset</code> element, it will be a slot of <code>eml@dataset</code> instead of a slot of the main <code>eml</code> object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml<span class="op">@</span>dataset))</code></pre></div>
 <pre><code>##  [1] &quot;abstract&quot;            &quot;additionalInfo&quot;      &quot;alternateIdentifier&quot;
 ##  [4] &quot;associatedParty&quot;     &quot;contact&quot;             &quot;coverage&quot;           
@@ -269,13 +269,13 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 ## [28] &quot;series&quot;              &quot;shortName&quot;           &quot;slot_order&quot;         
 ## [31] &quot;spatialRaster&quot;       &quot;spatialVector&quot;       &quot;storedProcedure&quot;    
 ## [34] &quot;system&quot;              &quot;title&quot;               &quot;view&quot;</code></pre>
-<p><em>Remember, you can just type <code>eml@dataset</code> into your console and hit <TAB> to see this list of slot names. The <code>slotNames</code> function is used for demonstration purposes here.</em></p>
-<p>Slots can be nested in each other and are all based on the EML <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html">schema</a>.</p>
+<p><em>Remember, you can just type <code>eml@dataset@</code> into your console and hit <TAB> to see this list of slot names. The <code>slotNames</code> function is used for demonstration purposes here.</em></p>
+<p>Slots can be nested in each other and are all based on the EML <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html#moduleDescriptions">schema</a>.</p>
 <p>Typing in the name of your <code>eml</code> object (in this case, <code>eml</code>, the name of the result of <code>read_eml</code>) and hitting <code>&lt;RETURN&gt;</code> in the console will print the entire EML onto the screen:</p>
 <p><code>eml</code></p>
-<p>Similarly, you can also view different elements of the EML by drilling down into the structure using the @ functionality. This would just print the dataset portion of the EML:</p>
+<p>Similarly, you can also view different elements of the EML by drilling down into the structure using the <code>@</code> functionality. This would just print the dataset portion of the EML:</p>
 <p><code>eml@dataset</code></p>
-<p>Going even deeper, this command will print the <code>title</code> element, which is within the dataset element, of the EML document:</p>
+<p>Going even deeper, this command will print the <code>title</code> element, which is within the <code>dataset</code> element, of the EML document:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></div>
 <pre><code>## An object of class &quot;ListOftitle&quot;
 ## [[1]]
@@ -283,12 +283,12 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 <p>Notice than when the last line prints, it doesn’t just print a string - it returns “An object of class <code>ListOftitle</code>.” The EML is composed of different classes of objects that make up these slots. If a slot can have multiple items, it may require an input of a list of a class. You can continue digging down into the EML using subsetting techniques for the S4 object class, with syntax that looks like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>.Data</code></pre></div>
 <pre><code>## [1] &quot;Subglacial conduit fluid dynamics simulation, Svalbard, Norway&quot;</code></pre>
-<p>Notice that this actually prints a character string. If you want to change the title, you could just assign this a new character string value, like this:</p>
+<p>Notice that this actually prints a character string. If you want to change the title, you could just assign this a new character string value, like so:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>.Data &lt;-<span class="st"> &#39;This is my new title&#39;</span></code></pre></div>
-<p>However, this isn’t best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. Instead, the EML package is used to create new objects of particular classes to put into the document, using the function <code>new</code>.</p>
-<p>The <code>new</code> function has a format that looks like <code>newobject &lt;- new('class', arguments...)</code>. It can be a hard function to use because “class” has to be set to a specific name and the argument structure will vary depending on what the slots are in that class. Because the function is so general, the <code>?new</code> help is not very helpful. In the EML package, a good guess to what the name of the class will be is a slot name (such as “title”). You can explore what slots are available within an object class by creating a new, empty object like this:</p>
+<p>However, this isn’t the best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. Instead, the EML package is used to create new objects of particular classes to put into the document, using the function <code>new</code>.</p>
+<p>The <code>new</code> function has a format that looks like <code>newobject &lt;- new('class', arguments...)</code>. It can be a difficult function to use because “class” has to be set to a specific name and the argument structure will vary depending on what the slots are in that class. Because the function is so general, the <code>?new</code> help is not very helpful. In the EML package, a good guess to what the name of the class will be is a slot name (such as “title”). You can explore what slots are available within an object class by creating a new, empty object like this:</p>
 <p><code>test_title &lt;- new('title')</code></p>
-<p>and using the R autocomplete functionality on <code>test_title@</code>. Not that the slots <code>lang</code>, <code>slot_order</code>, <code>schemaLocation</code>, and <code>.Data</code> will always be present, and are set by the EML package automatically according to the required EML and XML schema. The other options will tell you what the arguments following the class name should be. In the case of the title class, the only option is <code>value</code>.</p>
+<p>and using the R autocomplete functionality on <code>test_title@</code>. Note that the slots <code>lang</code>, <code>slot_order</code>, <code>schemaLocation</code>, and <code>.Data</code> will always be present, and are set by the EML package automatically according to the required EML and XML schema. The other options will tell you what the arguments following the class name should be. In the case of the title class, the only option is <code>value</code>.</p>
 <p>So, to change the title, you might at first try do something like this:</p>
 <p><code>eml@dataset@title&lt;- new('title', .Data = 'This is my new title')</code></p>
 <p>Unfortunately it returns an error. The error reads:</p>
@@ -306,7 +306,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></
 ## 
 ## [[2]]
 ## &lt;title&gt;This dataset has two titles&lt;/title&gt;</code></pre>
-<p>This functionality will prove very useful with other elements (such as dataTable), where there is usually more than one of the same element.</p>
+<p>This functionality will prove very useful with other elements (such as <code>dataTable</code>), where there is usually more than one of the same element.</p>
 </div>
 <div id="making-edits" class="section level2">
 <h2><span class="header-section-number">5.2</span> Making edits</h2>
@@ -324,8 +324,8 @@ eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></
 <li><em>nominal</em>: unordered categories or text. eg: (Male, Female) or (Yukon River, Kuskokwim River)</li>
 <li><em>ordinal</em>: ordered categories. eg: Low, Medium, High</li>
 <li><em>dateTime</em>: date or time values from the Gregorian calendar. eg: 01-01-2001</li>
-<li><em>ratio</em>: measurement scale with a meaningful zero point. eg: 200 Kelvin is half as hot as 400 Kelvin, 1.2 metersPerSecond is twice as fast as 0.6 metersPerSecond.</li>
-<li><em>interval</em>: values from a scale with equidistant points, where the zero point is arbitrary. eg: 12.2 degrees Celsius, 21 degrees Latitude</li>
+<li><em>ratio</em>: measurement scale with a meaningful zero point in nature. Ratios are proportional to the measured variable. e.g.: 0 Kelvin represents a complete absence of heat. 200 Kelvin is half as hot as 400 Kelvin. 1.2 meters per second is twice as fast as 0.6 meters per second.</li>
+<li><em>interval</em>: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or latitude and longitude coordinates, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius</li>
 </ul></li>
 <li><strong>domain</strong>: One of: textDomain, enumeratedDomain, numericDomain, dateTimeDomain. Required.
 <ul>
@@ -361,7 +361,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></
     <span class="dt">missingValueCodeExplanation =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;no sampling comments&#39;</span>),
     
     <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p>Typing this out in R can be a bit of a pain, so you can import a table made in another program (such as Excel) as your attribute table - just make sure that rows are attributes and column names match the column names as listed above exactly (case is important). <code>attributes1 &lt;- read.csv('~/arctic-data/docs/training/EML/LakeSampleData.csv', stringsAsFactors = F)</code></p>
+<p>Typing this out in R can be a bit of a pain, so you can import a table made in another program (such as Excel) as your attribute table - just make sure that rows are attributes and column names match the column names as listed above <em>exactly</em> (case is important). <code>attributes1 &lt;- read.csv('~/arctic-data/docs/training/EML/LakeSampleData.csv', stringsAsFactors = F)</code></p>
 </div>
 <div id="defining-enumerated-domains" class="section level4">
 <h4><span class="header-section-number">5.2.1.2</span> Defining enumerated domains</h4>
@@ -397,7 +397,7 @@ physical1 &lt;-<span class="st"> </span><span class="kw">set_physical</span>(<sp
                           <span class="dt">numHeaderLines =</span> <span class="st">&#39;1&#39;</span>, 
                           <span class="dt">fieldDelimiter =</span> <span class="st">&#39;,&#39;</span>,
                           <span class="dt">url =</span> <span class="kw">paste0</span>(<span class="st">&#39;https://cn.dataone.org/cn/v2/resolve/&#39;</span>, id1))</code></pre></div>
-<p>If the object is already on the Arctic Data Center, the physical section is very easy to write using its PID and the <code>pid_to_eml_physical</code> function:</p>
+<p>If the object is already on the ADC, the physical section is very easy to write using its PID and the <code>pid_to_eml_physical</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id1 &lt;-<span class="st"> &#39;PID1&#39;</span> <span class="co">#this should be an actual PID</span>
 cn &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;PROD&#39;</span>)
 mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)
@@ -415,7 +415,7 @@ mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn,<span class
 </div>
 <div id="adding-a-second-datatable" class="section level4">
 <h4><span class="header-section-number">5.2.1.4</span> Adding a second dataTable</h4>
-<p>If the metadata document describes multiple Data Objects, a new set of attributes, attribute list, physical description, and dataTable can be created just as in the example above.</p>
+<p>If the metadata document describes multiple Data Objects, a new set of attributes, <code>attributeList</code>, <code>physical</code> description, and <code>dataTable</code> can be created just as in the example above.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">attributes2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">attributeName =</span> <span class="kw">c</span>(<span class="st">&#39;Time&#39;</span>, <span class="st">&#39;Wind_Speed&#39;</span>),
                           <span class="dt">attributeDefinition =</span> <span class="kw">c</span>(<span class="st">&#39;Date and time of wind speed reading&#39;</span>, <span class="st">&#39;Measured wind speed&#39;</span>),
                           <span class="dt">measurementScale =</span> <span class="kw">c</span>(<span class="st">&#39;dateTime&#39;</span>, <span class="st">&#39;ratio&#39;</span>),
@@ -440,10 +440,10 @@ dataTable2 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class
 </div>
 <div id="defining-custom-units" class="section level4">
 <h4><span class="header-section-number">5.2.1.5</span> Defining custom units</h4>
-<p>If you get a warning message about your units not being in the standard unit list, a custom unit list needs to be created and added to the additionalMetadata slot of the EML. First we create a custom unit data frame with columns <code>id</code> (the name of the unit, as it appears in the attribute table), <code>unitType</code>, and <code>parentSI</code>. Each custom unit has a row in the data frame. To determine what the unitType and parentSI are for each unit, it may be helpful to reference the list of custom units. This list can easily be viewed in your R console using these commands:</p>
+<p>If you get a warning message about your units not being in the standard unit list, a custom unit list needs to be created and added to the <code>additionalMetadata</code> slot of the EML. First we create a custom unit data frame with columns <code>id</code> (the name of the unit, as it appears in the attribute table), <code>unitType</code>, and <code>parentSI</code>. Each custom unit has a row in the data frame. To determine what the <code>unitType</code> and <code>parentSI</code> are for each unit, it may be helpful to reference the list of custom units. This list can easily be viewed in your R console using these commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">standardUnits &lt;-<span class="st"> </span><span class="kw">get_unitList</span>()
 <span class="kw">View</span>(standardUnits<span class="op">$</span>units)</code></pre></div>
-<p>The following lines create the standard unit data table, use the function <code>set_unitList</code> to slot it into the EML, and then add it as addionalMetadata to the EML.</p>
+<p>The following lines create the standard unit data table, use the function <code>set_unitList</code> to slot it into the EML, and then add it as <code>addionalMetadata</code> to the EML.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">custom_units &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;horsepower&#39;</span>, <span class="st">&#39;gallonPerMinute&#39;</span>), 
                            <span class="dt">unitType =</span> <span class="kw">c</span>(<span class="st">&#39;power&#39;</span>, <span class="st">&#39;volumetricRate&#39;</span>), 
                            <span class="dt">parentSI =</span> <span class="kw">c</span>(<span class="st">&#39;watt&#39;</span>, <span class="st">&#39;litersPerSecond&#39;</span>))
@@ -455,12 +455,12 @@ eml<span class="op">@</span>additionalMetadata &lt;-<span class="st"> </span><sp
 <h3><span class="header-section-number">5.2.2</span> Setting other entities</h3>
 <div id="removing-other-entities" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> Removing other entities</h4>
-<p>In cases where the data package was submitted originally via the registry, the original EML usually has the data tables described as “other entity” elements in the EML. This information is now redundant since we created data table elements describing these objects. Remove the other entities by replacing the other entity element in the EML with a <code>ListOfotherEntity</code> object that consists of an empty list.</p>
+<p>In cases where the data package was submitted originally via the web form, the original EML usually has the data tables described as “other entity” elements in the EML. This information is now redundant since we created data table elements describing these objects. Remove the other entities by replacing the <code>otherEntity</code> element in the EML with a <code>ListOfotherEntity</code> object that consists of an empty list.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>otherEntity &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;ListOfotherEntity&#39;</span>, <span class="kw">list</span>())</code></pre></div>
 </div>
 <div id="adding-other-entities-for-files-that-arent-uploaded-yet" class="section level4">
 <h4><span class="header-section-number">5.2.2.2</span> Adding other entities for files that aren’t uploaded yet</h4>
-<p>There are times, however, when it may be necessary to create other entity tables for objects that are not described using a data table. Examples of these can include: R scripts, large NetCDF file directories, or audio/image files. Adding other entities is easy as long as you have paths to the files on the server and PIDs. This workflow is best if you are uploading files to the ADC yourself.</p>
+<p>There are times, however, when it may be necessary to create <code>otherEntity</code> tables for objects that are not described using a data table. Examples of these can include: R scripts, large NetCDF file directories, or audio/image files. Adding other entities is easy as long as you have paths to the files on the server and PIDs. This workflow is best if you are uploading files to the ADC yourself.</p>
 <p>First get the list of pathnames for the files you are going to upload.</p>
 <p><code>paths &lt;- list.files(&quot;/home/sjclark/EML_learning/&quot;, full.names = TRUE)</code></p>
 <p>Then generate PIDs for those files. These will be the data PIDs you use in <code>publish_update</code>, but note that you may have other data PIDs for data objects that are not other entities.</p>
@@ -522,7 +522,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>coverage<span class=
 <p>One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">methods1 &lt;-<span class="st"> </span><span class="kw">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)
 eml<span class="op">@</span>dataset<span class="op">@</span>methods &lt;-<span class="st"> </span>methods1</code></pre></div>
-<p>If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML in a text editor, otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.</p>
+<p>If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.</p>
 </div>
 <div id="adding-people" class="section level3">
 <h3><span class="header-section-number">5.2.5</span> Adding people</h3>
@@ -532,7 +532,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>methods &lt;-<span c
                 <span class="dt">city =</span> <span class="st">&#39;Santa Barbara&#39;</span>, 
                 <span class="dt">administrativeArea =</span> <span class="st">&#39;CA&#39;</span>, 
                 <span class="dt">postalCode =</span> <span class="st">&#39;93101&#39;</span>)</code></pre></div>
-<p>The creator, contact, and associated party classes can easily be created using functions from the arcticdatautils package. Here, we use <code>eml_creator</code> to set our dataset creator.</p>
+<p>The creator, contact, and associated party classes can easily be created using functions from the <code>arcticdatautils</code> package. Here, we use <code>eml_creator</code> to set our dataset creator.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">JC_creator &lt;-<span class="st"> </span><span class="kw">eml_creator</span>(<span class="st">&quot;Jeanette&quot;</span>, 
                           <span class="st">&quot;Clark&quot;</span>, 
                           <span class="st">&quot;NCEAS&quot;</span>, 
@@ -541,18 +541,18 @@ eml<span class="op">@</span>dataset<span class="op">@</span>methods &lt;-<span c
                           <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                           <span class="dt">address =</span> NCEASadd)
 eml<span class="op">@</span>dataset<span class="op">@</span>creator &lt;-<span class="st"> </span><span class="kw">c</span>(JC_creator)</code></pre></div>
-<p>Similarly, we can set the contacts. In this case, there are two, so we set <a href="mailto:eml@dataset@contact">eml@dataset@contact</a> as a ListOfcontact, which contains both of them.</p>
+<p>Similarly, we can set the contacts. In this case, there are two, so we set <code>eml@dataset@contact</code> as a <code>ListOfcontact</code>, which contains both of them.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">JC_contact &lt;-<span class="st"> </span><span class="kw">eml_contact</span>(<span class="st">&quot;Jeanette&quot;</span>, 
                           <span class="st">&quot;Clark&quot;</span>, 
                           <span class="st">&quot;NCEAS&quot;</span>, 
                           <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, 
-                          <span class="dt">phone =</span> <span class="st">&#39;123-456-7890&#39;</span>, 
+                          <span class="dt">phone =</span> <span class="st">&#39;805-893-5095&#39;</span>, 
                           <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                           <span class="dt">address =</span> NCEASadd)
 JG_contact &lt;-<span class="st"> </span><span class="kw">eml_contact</span>(<span class="st">&quot;Jesse&quot;</span>, 
                           <span class="st">&quot;Goldstein&quot;</span>, 
                           <span class="st">&quot;NCEAS&quot;</span>, 
-                          <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, 
+                          <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>, 
                           <span class="dt">phone =</span> <span class="st">&#39;123-456-7890&#39;</span>, 
                           <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                           <span class="dt">address =</span> NCEASadd)
@@ -577,12 +577,12 @@ eml<span class="op">@</span>dataset<span class="op">@</span>associatedParty &lt;
 <p><code>eml_validate(path2)</code></p>
 <p>If the EML validate returns <code>FALSE</code>, it is accompanied by an error that will be in this format:</p>
 <p><code>69.0: Element 'boundingCoordinates': This element is not expected. Expected is one of ( geographicDescription, references ).</code></p>
-<p>This error essentially says, the EML validator reached the slot <code>boundingCoordinates</code> but did not expect this element. Instead it expected either <code>geographicDescription</code> or <code>references</code>. Referring to the schema maps (eg: <a href="https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-coverage.png" class="uri">https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-coverage.png</a>) you can see that before bounding coordinates, there must be a geographic description. The fix would be to return to your definiton of the geographicCoverage, and insert a geographicDescription into the geographicCoverage object (ie:<code>geocov1 &lt;- new('geographicCoverage', geographicDescription = 'Description here',...))</code>.</p>
+<p>This error essentially says, the EML validator reached the slot <code>boundingCoordinates</code> but did not expect this element. Instead it expected either <code>geographicDescription</code> or <code>references</code>. Referring to the schema maps (eg: <a href="https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-coverage.png" class="uri">https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-coverage.png</a>) you can see that before bounding coordinates, there must be a geographic description. The fix would be to return to your definiton of the geographicCoverage, and insert a <code>geographicDescription</code> into the geographicCoverage object (ie:<code>geocov1 &lt;- new('geographicCoverage', geographicDescription = 'Description here',...))</code>.</p>
 </div>
 <div id="dealing-with-unusual-cases" class="section level2">
 <h2><span class="header-section-number">5.4</span> Dealing with unusual cases</h2>
 <p>Typically, the biggest issue most datateam members have using the EML package is trying to add multiple values within a slot. In some cases, like adding multiple <code>dataTable</code> instances or multiple <code>creator</code> instances, this is easy, as is shown above. Other times, particularly if the slot is nested within a slot that we use a helper function for (like <code>set_attributes</code>), it can get a little more challenging. By delving a little deeper into the EML S4 class of objects though, you can resolve most problems relatively easily.</p>
-<p>Any slot that allows for a list of objects, as listed in the EML schema (<a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html" class="uri">https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html</a>), will have a class called the slot name, in addition to a class called <code>ListOfslotName</code>. You can use the <code>new</code> function to create an object of the slot itself and a list of objects within that slot. For example:</p>
+<p>Any slot that allows for a list of objects, as listed in the EML <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html#moduleDescriptions">schema</a>, will have a class called the slot name, in addition to a class called <code>ListOfslotName</code>. You can use the <code>new</code> function to create an object of the slot itself and a list of objects within that slot. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;missingValueCode&#39;</span>, <span class="dt">code =</span> <span class="st">&#39;NA&#39;</span>, <span class="dt">codeExplanation =</span> <span class="st">&#39;No data taken&#39;</span>)
 m2 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;missingValueCode&#39;</span>, <span class="dt">code =</span> <span class="st">&#39;-999&#39;</span>,  <span class="dt">codeExplanation =</span> <span class="st">&#39;Sensor malfunctioned&#39;</span>)
 
@@ -633,12 +633,12 @@ An object of class &quot;ListOfmissingValueCode&quot;
 <p>What I showed above is a pretty specific example (which conveniently is also one of our more common “rare cases”), but there are some general strategies you can employ to figure out how to insert other objects that need to be deeply nested into an EML.</p>
 <ul>
 <li><strong>Create an empty test object</strong>: example: <code>test &lt;- new('abstract')</code></li>
-<li><strong>Use the @ and <code>tab</code> functionality to explore slots in that object</strong>: example: <code>test@para</code></li>
+<li><strong>Use the <code>@</code> and <code>tab</code> functionality to explore slots in that object</strong>: example: <code>test@para</code></li>
 <li><em>What are all these slots??</em>: Remember that the <code>schemaLocation</code>, <code>lang</code>, <code>slot_order</code>, and <code>section</code> slots are related to the schema and are not actual slots which contain values you can edit.</li>
 <li><em><code>.Data</code></em>: if you run into a <code>.Data</code> using the <code>tab</code> key, that means that the slot can be part of a list.</li>
 <li><strong>Use indexing to access individual items in a list</strong>: example: <code>test@para@.Data[[2]]</code></li>
 <li><em>Index out of bounds</em>: If you receive an “index out of bounds” error that means you are trying to access an index beyond what exists in the list. For example, if there are 4 paragraphs in the abstract, and you write <code>test@para@.Data[[5]]</code> you will recieve this error.</li>
-<li><strong>Use the schema!</strong>: <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html" class="uri">https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html</a></li>
+<li><strong>Use the schema!</strong>: <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html#moduleDescriptions" class="uri">https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html#moduleDescriptions</a></li>
 </ul>
 </div>
 <div id="exercise5" class="section level2">
@@ -648,8 +648,8 @@ An object of class &quot;ListOfmissingValueCode&quot;
 <li>Use the <code>eml</code> package to replace the exsiting <code>dataTable</code> slot with a new <code>dataTable</code> object with an attribute list and physical section you wrote in R</li>
 <li>Write and validate your EML</li>
 <li>Update your package with the new EML using <code>publish_update</code></li>
-<li>Use the <a href="to%20review%20your%20submission">checklist</a></li>
-<li>Make edits where necessary, and publish an update if needed</li>
+<li>Use the <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md">checklist</a> to review your submission.</li>
+<li>Make edits where necessary, and publish updates as needed</li>
 </ul>
 
 </div>

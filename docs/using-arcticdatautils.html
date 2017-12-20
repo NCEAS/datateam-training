@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum">
 
 
-<meta name="date" content="2017-12-19">
+<meta name="date" content="2017-12-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -221,7 +221,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>New data team members should complete exercises <a href="using-arcticdatautils.html#exercise2">two</a> and <a href="using-arcticdatautils.html#exercise3">three</a> as part of training.</p>
 <div id="uploading-packages-using-r" class="section level2">
 <h2><span class="header-section-number">3.1</span> Uploading packages using R</h2>
-<p>We will be using the arcticdatautils package and the dataone package to connect to the <a href="https://arcticdata.io">NSF Arctic Data Center (ADC)</a> data repository and push and pull edits. To identify yourself as an admin you will need to pass a ‘token’ into R. Do this by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, hovering over your name and clicking on “My profile”, then navigating to “Setings” and “Authentication Token”, copying the “Token for DataONE R”, and pasting and running it in your R console.</p>
+<p>We will be using the <code>arcticdatautils</code> package and the dataone package to connect to the <a href="https://arcticdata.io">NSF Arctic Data Center (ADC)</a> data repository and push and pull edits. To identify yourself as an admin you will need to pass a ‘token’ into R. Do this by signing in to the ADC with your <a href="https://orcid.org/register">ORCiD</a>, hovering over your name and clicking on “My profile”, then navigating to “Setings” and “Authentication Token”, copying the “Token for DataONE R”, and pasting and running it in your R console.</p>
 <p><strong>This token is your identity on these sites, please treat it as you would a password</strong> (ie. don’t paste into scripts that will be shared). The easiest way to do this is to always run the token in the <em>console</em>. There’s no need to keep it in your script since it’s temporary anyway. Sometimes you’ll see a placeholder in scripts to remind users to get their token, such as:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
 <p>Next, please be sure these packages are loaded:</p>
