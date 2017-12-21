@@ -256,9 +256,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>sort</code>: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded)</li>
 </ul>
 <p>To use these parameters, we append to the base URL like this:</p>
-<p><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q</a>={QUERY}&amp;fl={FIELDS}&amp;rows={ROWS}</p>
+<p><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q={QUERY}&amp;fl={FIELDS}&amp;rows={ROWS}</code></p>
 <p>and we replace the text inside <code>{}</code> with the value we want for each parameter. Note that the parameters can come in any order so the following is equivalent:</p>
-<p><a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl</a>={FIELDS}&amp;rows={ROWS}&amp;q={QUERY}</p>
+<p><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl={FIELDS}&amp;rows={ROWS}&amp;q={QUERY}</code></p>
 <p>The first parameter in the URL must have a ‘?’ in front of it and all subsequent parameters must have an ‘&amp;’ between them. It’s really easy to get the URL wrong when typing it in manually like this so be sure to double-check your URL and think critically about the result: Solr tries to always return something even if it’s not what you intended.</p>
 </div>
 <div id="constructing-a-query" class="section level3">
@@ -362,6 +362,7 @@ mn &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn, <span clas
 <li>The Solr HTTP API is what the R <code>dataone</code> package uses when you run <code>query</code></li>
 <li>Pass a token if you want to include non-public-readable objects in the results (you often do!)</li>
 </ul>
+<p>These skills are highly transferable. Note the syntax of the URL for a Google search.</p>
 </div>
 <div id="more-resources" class="section level2">
 <h2><span class="header-section-number">8.4</span> More resources</h2>
