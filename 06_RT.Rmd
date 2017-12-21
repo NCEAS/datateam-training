@@ -47,7 +47,7 @@ This is the queue interface from number 6 of the Front page
 2. Display - homepage of the ticket  
 3. History - Comment/Email history, see bottom of Display page  
 4. Basics - edit the title, status and ownership here  
-5. People - option to add more people to the watchlist for a given ticket conversation. Note that user/ PI/ submitter email addresses should be listed as "Requestors". Requestors are only emailed on "Reply"s, not "Comments". Ensure your ticket has a Requestor before attempting to contact users/ PIs/ submitters.   
+5. People - option to add more people to the watchlist for a given ticket conversation. Note that user/ PI/ submitter email addresses should be listed as "Requestors". Requestors are only emailed on "Replys", not "Comments". Ensure your ticket has a Requestor before attempting to contact users/ PIs/ submitters.   
 6. Links - option to "Merge into" another ticket number if this is part of a larger conversation. Also option to add a reference to other ticket number  
 7. Actions  
  + Reply - message the submitter/ PI/ all watchers  
