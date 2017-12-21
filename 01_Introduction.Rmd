@@ -6,7 +6,7 @@ New data team members should complete [Exercise 1](#exercise1) as part of traini
 
 ## Open science background reading
 
-Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC
+Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC. We encourage you to follow the links within these pages to gain a deeper understanding.
 
 * [about](https://arcticdata.io/about/)
 * [submission](https://arcticdata.io/submit/)

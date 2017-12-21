@@ -1,4 +1,4 @@
-#Using git in RStudio
+#Using Git in RStudio
 
 ## Introduction
 

@@ -4,7 +4,7 @@
 
 The [RT ticketing system](https://support.nceas.ucsb.edu/rt/) is how we
 communicate with folks interacting with the Arctic Data Center.  
-We use it for managing submissions, access issues etc. It consists of
+We use it for managing submissions, accessing issues, etc. It consists of
 three separate interfaces:  
 [Front Page](#frontpage)  
 [All Tickets](#alltickets)  
@@ -50,10 +50,10 @@ This is the queue interface from number 6 of the Front page
 5. People - option to add more people to the watchlist for a given ticket conversation  
 6. Links - option to "Merge into" another ticket number if this is part of a larger conversation. Also option to add a reference to other ticket number  
 7. Actions  
- + Reply - message the submittor/PI/all watchers  
+ + Reply - message the submitter/ PI/ all watchers  
  + Comment - attach internal message (no submitters)  
  + Open It - Open the ticket  
- + Stall - submitter has not responded in greater than 1 week  
+ + Stall - submitter has not responded in greater than 1 month  
  + Resolve - ticket completed  
 8. History - message history and option to reply (to submitter and beyond) or comment (internal message)
 
