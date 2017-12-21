@@ -1,7 +1,7 @@
 # Introduction to Solr
 
 Solr is what's known as an index.
-More specifically, it's a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.).
+More specifically, it's a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.). [Metacat](https://www.dataone.org/software-tools/metacat) is our underlying metadata catalog and the foundation of our data repositories for both the CN and all MNs.
 Every Object in Metacat will have a corresponding Solr document for it that contains information about that Object.
 Each type of Object will have a different set of fields in its Solr document.
 For example, an EML document will have a `title` field (corresponding to the EML document's `<title>` element), while a CSV will not.
@@ -12,7 +12,7 @@ The fields that go into a Solr document are populated by information such as:
 - The Object itself (e.g. title, creators, etc. for an EML record)
 - Additional computed fields (e.g., a geohash for quick spatial search)
 
-Indexing the Objects Metacat stores lets us execute some interesting and very useful queries such as:
+Indexing the Object's Metacat stores lets us execute some interesting and very useful queries such as:
 
 - What are the most recently updated datasets?
 - What Metadata and Data Objects are in a given Data Package?
@@ -20,7 +20,7 @@ Indexing the Objects Metacat stores lets us execute some interesting and very us
 
 ## Querying Solr
 
-Solr is queried via what's called an HTTP API.
+Solr is queried via what's called an HTTP API (Application Programming Interface).
 Practically, what this means it that you can visit a URL (web address) in a web browser to execute a query.
 This may be a little bit weird at first but I hope some examples will make it more clear.
 
@@ -57,12 +57,12 @@ The most common parameters are:
 
 To use these parameters, we append to the base URL like this:
 
-https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q={QUERY}&fl={FIELDS}&rows={ROWS}
+`https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q={QUERY}&fl={FIELDS}&rows={ROWS}`
 
 and we replace the text inside `{}` with the value we want for each parameter.
 Note that the parameters can come in any order so the following is equivalent:
 
-https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl={FIELDS}&rows={ROWS}&q={QUERY}
+`https://arcticdata.io/metacat/d1/mn/v2/query/solr/?fl={FIELDS}&rows={ROWS}&q={QUERY}`
 
 The first parameter in the URL must have a '?' in front of it and all subsequent parameters must have an '&' between them.
 It's really easy to get the URL wrong when typing it in manually like this so be sure to double-check your URL and think critically about the result: Solr tries to always return something even if it's not what you intended.
@@ -149,7 +149,7 @@ Why does #2 matter?
 Well by default, all of those URLs above only returned publicly-readable Solr documents.
 If a private document matched any of those queries, Solr doesn't give you any idea and acts like the non-public-readable documents don't exist.
 So we must pass an authentication token to access non-public-readable content.
-This bit is crucial for working with the Arctic Data Center so you'll very often want to use R instead of visiting those URLs in a web browser.
+This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
 
 And there's good news: all of the URLs you visited above can be turned into an R expression very easily.
 For example:
@@ -203,6 +203,8 @@ query(mn, list(q="title:*soil*",
 - Find out what you can query at https://arcticdata.io/metacat/d1/mn/v2/query/solr
 - The Solr HTTP API is what the R `dataone` package uses when you run `query`
 - Pass a token if you want to include non-public-readable objects in the results (you often do!)
+
+These skills are highly transferable. Note the syntax of the URL for a Google search.
 
 ## More resources
 

@@ -36,7 +36,7 @@ cn <- CNode('STAGING')
 mn <- getMNode(cn,'urn:node:mnTestARCTIC')
 ```
 
-A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training exercises, you should be using the test environment (STAGING, or test.articdata.io).
+A note on nodes - be very careful about what you publish on the production node (PROD, or arcticdata.io). This node should NEVER be used to publish test or training datasets. While going through training exercises, you should be using the test environment (STAGING, or test.articdata.io). The CN is [DataONE](https://search.dataone.org/#data).
 
 ### What is in a package?
 

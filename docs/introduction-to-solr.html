@@ -147,7 +147,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#dealing-with-unusual-cases"><i class="fa fa-check"></i><b>5.4</b> Dealing with unusual cases</a></li>
 <li class="chapter" data-level="5.5" data-path="editing-eml-in-r.html"><a href="editing-eml-in-r.html#exercise5"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html"><i class="fa fa-check"></i><b>6</b> Using git in RStudio</a><ul>
+<li class="chapter" data-level="6" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html"><i class="fa fa-check"></i><b>6</b> Using Git in RStudio</a><ul>
 <li class="chapter" data-level="6.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="using-git-in-rstudio.html"><a href="using-git-in-rstudio.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>6.1.1</b> So why do I need to use this again?</a></li>
 </ul></li>
@@ -218,14 +218,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="introduction-to-solr" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Introduction to Solr</h1>
-<p>Solr is what’s known as an index. More specifically, it’s a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.). Every Object in Metacat will have a corresponding Solr document for it that contains information about that Object. Each type of Object will have a different set of fields in its Solr document. For example, an EML document will have a <code>title</code> field (corresponding to the EML document’s <code>&lt;title&gt;</code> element), while a CSV will not.</p>
+<p>Solr is what’s known as an index. More specifically, it’s a piece of software that we install with every instance of Metacat which we use to query all of the Objects Metacat stores (metadata, data, resource maps, etc.). <a href="https://www.dataone.org/software-tools/metacat">Metacat</a> is our underlying metadata catalog and the foundation of our data repositories for both the CN and all MNs. Every Object in Metacat will have a corresponding Solr document for it that contains information about that Object. Each type of Object will have a different set of fields in its Solr document. For example, an EML document will have a <code>title</code> field (corresponding to the EML document’s <code>&lt;title&gt;</code> element), while a CSV will not.</p>
 <p>The fields that go into a Solr document are populated by information such as:</p>
 <ul>
 <li>The System Metadata (fileName, accessPolicy, etc)</li>
 <li>The Object itself (e.g. title, creators, etc. for an EML record)</li>
 <li>Additional computed fields (e.g., a geohash for quick spatial search)</li>
 </ul>
-<p>Indexing the Objects Metacat stores lets us execute some interesting and very useful queries such as:</p>
+<p>Indexing the Object’s Metacat stores lets us execute some interesting and very useful queries such as:</p>
 <ul>
 <li>What are the most recently updated datasets?</li>
 <li>What Metadata and Data Objects are in a given Data Package?</li>
@@ -233,7 +233,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <div id="querying-solr" class="section level2">
 <h2><span class="header-section-number">8.1</span> Querying Solr</h2>
-<p>Solr is queried via what’s called an HTTP API. Practically, what this means it that you can visit a URL (web address) in a web browser to execute a query. This may be a little bit weird at first but I hope some examples will make it more clear.</p>
+<p>Solr is queried via what’s called an HTTP API (Application Programming Interface). Practically, what this means it that you can visit a URL (web address) in a web browser to execute a query. This may be a little bit weird at first but I hope some examples will make it more clear.</p>
 <p>So I said you visit a URL to query Solr. But what address do you visit? For the Arctic Data Center (<a href="https://arcticdata.io" class="uri">https://arcticdata.io</a>), every Solr query starts with a base URL of <a href="https://arcticdata.io/metacat/d1/mn/v2/query/solr/" class="uri">https://arcticdata.io/metacat/d1/mn/v2/query/solr/</a>. If you visit that URL, you will see a list of fields Solr is storing for the Objects it indexes:</p>
 <div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;ns2:queryEngineDescription</span><span class="ot"> xmlns:ns2=</span><span class="st">&quot;http://ns.dataone.org/service/types/v1.1&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;queryEngineVersion&gt;</span>3.6.2.2012.12.18.19.52.59<span class="kw">&lt;/queryEngineVersion&gt;</span>
@@ -323,7 +323,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>The result is returned in a more useful way to R without extra work on your part</li>
 <li>We can more easily pass our authentication token with the query</li>
 </ol>
-<p>Why does #2 matter? Well by default, all of those URLs above only returned publicly-readable Solr documents. If a private document matched any of those queries, Solr doesn’t give you any idea and acts like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the Arctic Data Center so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
+<p>Why does #2 matter? Well by default, all of those URLs above only returned publicly-readable Solr documents. If a private document matched any of those queries, Solr doesn’t give you any idea and acts like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
 <p>And there’s good news: all of the URLs you visited above can be turned into an R expression very easily. For example:</p>
 <ul>
 <li><code>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*</code></li>
