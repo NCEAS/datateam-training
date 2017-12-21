@@ -220,12 +220,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 9</span> Nesting a data package</h1>
 <div id="introduction-3" class="section level2">
 <h2><span class="header-section-number">9.1</span> Introduction</h2>
-<p>This document is a practical tutorial for creating nesting relationships between data packages on the DataOne member nodes.</p>
-<p>Data packages on the DataOne member nodes can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common “parent” data package.</p>
-<p>The structure of nested data packages resembles a pyramid. There is one top level, or “parent”, with one or more data packages, or “children”, nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceeds 3 levels. This <a href="https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3">example</a> has three levels. The link will take you the top level, or “grandparent”. This top level has 5 children (nested datasets). If you click on any one of these children you can see that they have children as well.</p>
+<p>This document is a practical tutorial for creating nesting relationships between data packages on the DataONE member nodes (MNs).</p>
+<p>Data packages on MNs can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common “parent” data package.</p>
+<p>The structure of nested data packages resembles a pyramid. There is one top level, or “parent”, with one or more data packages, or “children”, nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceed 3 levels. This <a href="https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3">example</a> has three levels. The link will take you to the top level, or “grandparent”. This top level has 5 children (nested datasets). If you click on any one of these children you can see that they have children of their own.</p>
 <p>Some common uses for nesting:</p>
 <ul>
-<li>collected data varies by year</li>
+<li>collected data vary by year</li>
 <li>an NSF award funds several related projects</li>
 <li>data collection is still ongoing</li>
 <li>data files exceed the 1000 file limit per data package</li>
@@ -258,7 +258,7 @@ data_<span class="dv">2013</span> &lt;-<span class="st"> </span><span class="kw"
                                <span class="dt">path =</span> <span class="st">&quot;/home/dmullen/Nesting_Training/E1_2013metadata.xml&quot;</span>,
                                <span class="dt">format =</span> <span class="kw">format_eml</span>())</code></pre></div>
 <ul>
-<li>Create a resource map to associate the data with the metadata. Here we specify the metadata and data identifiers that we would like the resource map to associate together. These are the identifiers of the objects we just publish to the test node.</li>
+<li>Create a resource map to associate the data with the metadata. Here we specify the metadata and data identifiers (PIDs) that we would like the resource map to associate together. These are the identifiers of the objects we just published to the test node.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap2013 &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest,
                                        <span class="dt">metadata_pid =</span> metadata2013,
@@ -274,9 +274,9 @@ resourceMap2014 &lt;-<span class="st"> </span><span class="kw">create_resource_m
 </div>
 <div id="creating-a-parent" class="section level2">
 <h2><span class="header-section-number">9.3</span> Creating a Parent</h2>
-<p>In some cases a parent package already exists. More typically, you will need to create one by editing the existing metadata. The parent package should contain a generalized summary of the metadata of each of its children. It typically does not contain any data itself. We will now generalize a metadata file from one of the children in order to create the parent.</p>
+<p>In some cases a parent package already exists. Search the ADC for the NSF award number to see if there are already exisiting packages. Parents usually have a <code>UUID</code> rather than a <code>DOI</code> and often start with a title like “Collaborative research:”, but not always. More typically, you will need to create a new parent by editing the existing metadata. The parent package should contain a generalized summary for the metadata of each of its children. It typically does not contain any data itself. We will now generalize a metadata file from one of the children in order to create the parent.</p>
 <ul>
-<li>Read in one of the child’s metadata files, in this case 2013.</li>
+<li>Read in one of the children’s metadata files (EML), in this case 2013.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="st">&quot;data/E1_2013metadata.xml&quot;</span>)
 ## Use this code when you are reading in the parent 
@@ -287,17 +287,19 @@ eml_parent<span class="op">@</span>dataset<span class="op">@</span>title</code><
 ## [[1]]
 ## &lt;title&gt;Time series of water temperature, specific conductance and oxygen from Lake E1, North Slope, Alaska, 2012-2013.&lt;/title&gt;</code></pre>
 <ul>
-<li>The title of this child contains “2012-2013”. This is too specific for the parent, as the temporal range of both children is 2012-2014. The parent should reflect this larger time range.</li>
+<li>The title of this child contains “2012-2013”. This is too specific for the parent, as the temporal range of both children is 2012-2014. The parent should encompass this larger time range.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>title &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">new</span>(<span class="st">&quot;title&quot;</span>,
                                   <span class="dt">.Data =</span> <span class="st">&quot;Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014&quot;</span>))</code></pre></div>
 <ul>
-<li>Like the title, the temporal coverage elements in this EML need to be adjusted. This field depends on whether or not the project has been completed. +If the project is ongoing and the PI plans on submitting data in the future, set the Temporal Coverage to the start date of the project using a ’singleDateTime` element. We leave it open-ended and do not include an ending date. +If the project has been completed, set the Temporal Coverage to the start and end dates of the entire study. *In this case lets assume the project has completed. We will update the temporal coverage to reflect the entire duration of the study. Since we are using the metadata from the first year of the project, we only need to update the ‘endDate’ element.</li>
+<li>Like the title, the temporal coverage elements in this EML need to be adjusted. This field depends on whether or not the project has been completed.<br />
++If the project is ongoing and the PI plans on submitting data in the future, set the Temporal Coverage to the start date of the project using a <code>singleDateTime</code> element. We leave it open-ended and do not include an ending date.<br />
++If the project has been completed, set the Temporal Coverage to the start and end dates of the entire study. *In this case lets assume the project has been completed. We will update the temporal coverage to reflect the entire duration of the study. Since we are using the metadata from the first year of the project, we only need to update the <code>endDate</code> element.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>coverage<span class="op">@</span>temporalCoverage<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>rangeOfDates<span class="op">@</span>endDate<span class="op">@</span>calendarDate &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;calendarDate&quot;</span>,
                                                                                                  <span class="st">&quot;2014-09-20&quot;</span>)</code></pre></div>
 <ul>
-<li>Remove data tables and otherEntities from the metadata. If you recall from previous chapters, <code>dataTables</code> contain metadata associated with data files (generally csvs) and <code>otherEntities</code> contain metadata about any other files in the data package (for instance a readMe or code). Because the parent does not contain any data objects, we want to remove <code>dataTables</code> and <code>otherEntities</code> from the metdata file. In this instance, the E1 2013 metadata only contains <code>dataTables</code>. We can remove these by setting the <code>dataTable</code> element in the EML to a new blank object.</li>
+<li>Remove <code>dataTable</code>s and <code>otherEntity</code>s from the metadata. If you recall from previous chapters, <code>dataTable</code>s contain metadata associated with data files (generally CSVs) and <code>otherEntity</code>s contain metadata about any other files in the data package (for instance a readMe or coding script). Because the parent does not contain any data objects, we want to remove <code>dataTables</code> and <code>otherEntities</code> from the metdata file. In this instance, the E1 2013 metadata only contains <code>dataTable</code>s. We can remove these by setting the <code>dataTable</code> element in the EML to a new blank object.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml_parent<span class="op">@</span>dataset<span class="op">@</span>dataTable &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;ListOfdataTable&quot;</span>)</code></pre></div>
 <ul>
@@ -306,7 +308,7 @@ eml_parent<span class="op">@</span>dataset<span class="op">@</span>title</code><
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eml_validate</span>(eml_parent)</code></pre></div>
 <ul>
-<li>After your EML validates we need to save, or “write”, it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using “Save as” in microsoft word. We opened a file (E1_2013.xml), made some changes, and “save it as” a new file called eml_parent.xml.</li>
+<li>After your EML validates we need to save, or “write”, it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using “Save as” in Microsoft Word. We opened a file (E1_2013.xml), made some changes, and “saved it as” a new file called eml_parent.xml.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## This will create the file &quot;eml_parent.xml&quot; at the location specified by path
 path =<span class="st"> &quot;/home/YOURUSERNAME/eml_parent.xml&quot;</span>
@@ -332,13 +334,13 @@ data_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw"
 metadata2015 &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest, <span class="dt">path =</span> <span class="st">&quot;/home/dmullen/Nesting_Training/E1_2015metadata.xml&quot;</span>, <span class="dt">format =</span> <span class="kw">format_eml</span>())
 resourceMap2015 &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest, <span class="dt">metadata_pid =</span> metadata2015, <span class="dt">data_pids =</span> data2015)</code></pre></div>
 <ul>
-<li>Nest the new child using the <code>child_pids</code> argument in <code>update_resource_map()</code>. Note: it’s important the resource maps of <em>ALL</em> the children in the <code>child_pids</code> argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.</li>
+<li>Nest the new child using the <code>child_pids</code> argument in <code>update_resource_map()</code>. Note: it’s important to include the <em>resource map PIDs of ALL the children</em> in the <code>child_pids</code> argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap_parent2 &lt;-<span class="st"> </span><span class="kw">update_resource_map</span>(mnTest, 
                                            <span class="dt">resource_map_pid =</span> resourceMap_parent,
                                            <span class="dt">metadata_pid =</span> metadata_parent)</code></pre></div>
 <ul>
-<li>Nesting relationships can also be modified using the <code>child_pids</code> argument in <code>publish_update</code> in the same manner</li>
+<li>Nesting relationships can also be modified using the <code>child_pids</code> argument in <code>publish_update</code> in the same manner.</li>
 </ul>
 
 </div>
