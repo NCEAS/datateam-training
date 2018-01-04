@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum">
 
 
-<meta name="date" content="2017-12-21">
+<meta name="date" content="2018-01-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -263,7 +263,7 @@ sysmeta &lt;-<span class="st"> </span><span class="kw">getSystemMetadata</span>(
 <p>You can view and edit slots using the <code>@</code> functionality.</p>
 <p><code>sysmeta@fileName</code> <code>[1] &quot;WELTS_flatfile.csv&quot;</code></p>
 <p>If you want to change a slot, you can simply do the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sysmeta@fileName &lt;-<span class="st"> &#39;AlaskaWells.csv&#39;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sysmeta<span class="op">@</span>fileName &lt;-<span class="st"> &#39;AlaskaWells.csv&#39;</span></code></pre></div>
 <p>Note that some slots cannot be changed by simple text replace (particularly the <code>accessPolicy</code>). There are various helper functions for changing the <code>accessPolicy</code> and <code>rightsHolder</code> such as <code>addAccessRule</code> (which takes the sysmeta as an input) or <code>set_access</code>, which only requires a PID. In general, you most frequently need to use <code>getSystemMetadata</code> to change either the <code>formatId</code> or <code>fileName</code> slots.</p>
 <p>After you have changed the necessary slot, you can update the system metadata using the <code>updateSystemMetadata</code> function, which takes the <code>mn</code> instance, your PID of interest, and the edited sysmeta object as arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">updateSystemMetadata</span>(mn, pid, sysmeta)</code></pre></div>
@@ -281,10 +281,10 @@ sysmeta &lt;-<span class="st"> </span><span class="kw">getSystemMetadata</span>(
 <p>If you have a lot of files that all need a similar change, you can use a for loop or the apply functions to efficiently make all of your changes. Say you need to change all of the <code>formatId</code>s of data objects in a package so that they are <code>text/csv</code>. You could do this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PID &lt;-<span class="st"> &#39;some_pid&#39;</span>
 ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, PID) <span class="co">#get all pids in a package</span>
-data_pids &lt;-<span class="st"> </span><span class="kw">unlist</span>(ids$data)
-for (i in <span class="dv">1</span>:<span class="kw">length</span>(data_pids)){    <span class="co">#run for loop over all of the data ids</span>
+data_pids &lt;-<span class="st"> </span><span class="kw">unlist</span>(ids<span class="op">$</span>data)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(data_pids)){    <span class="co">#run for loop over all of the data ids</span>
   sysmeta &lt;-<span class="st"> </span><span class="kw">getSystemMetadata</span>(mn, data_pids[i])
-  sysmeta@formatId &lt;-<span class="st"> &quot;text/csv&quot;</span>
+  sysmeta<span class="op">@</span>formatId &lt;-<span class="st"> &quot;text/csv&quot;</span>
   <span class="kw">updateSystemMetadata</span>(mn, data_pids[i], sysmeta)
 }</code></pre></div>
 </div>
