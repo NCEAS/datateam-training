@@ -115,7 +115,7 @@ Finally, use the `publish_update` function with the results of the lines above t
 
 ```{r, eval = FALSE}
 publish_update(mn,
-               metadata_pid = metaPid # old metadata PID you pulled in originally. Alternatively could paste in the string:  "urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee"
+               metadata_pid = metaPid, # old metadata PID you pulled in originally. Alternatively could paste in the string:  "urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee"
                resource_map_pid = ids$resource_map,
                metadata_path = meta_path, # path to updated EML file,
                data_pid = ids$data, # this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)

@@ -5,7 +5,7 @@ New data team members should complete [the exercise in this section](#exercise5)
 
 ## Introduction
 
-This chapter is a practical tutorial for using the EML package to read, edit, write, and validate EML documents. Much of this information can be also be found in the vignettes for the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd).
+This chapter is a practical tutorial for using the EML package to read, edit, write, and validate EML documents. Much of this information can also be found in the vignettes for the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd).
 
 First, load in some packages.
 
