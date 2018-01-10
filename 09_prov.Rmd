@@ -26,6 +26,109 @@ A data package with an object that has multiple sources added will look like thi
 
 For simple packages on the Arctic Data Center, adding prov through the prov editor at [beta.arcticdata.io](beta.arcticdata.io) is super easy!
 
+## Understanding resource maps
+
+Before we dive further into constructing prov in R, we need to talk more about resource maps.
+
+All Data Packages have a single Resource Map. But what is a Resource Map and how do we use one to find out what Objects are in a particular Data Package? This document is a short introduction but a more complete guide can be found [here](https://releases.dataone.org/online/api-documentation-v2.0/design/DataPackage.html?highlight=resource%20map).
+
+A Resource Map is a special kind of XML document that describes (amongst other things) an Aggregation. The Aggregation describes the members of a Data Package (metadata and data, usually). We can use the `dataone` R package to download a Resource Map if we know its PID:
+
+```{r, eval = F}
+library(dataone)
+
+mn <- MNode("https://test.arcticdata.io/metacat/d1/mn/v2")
+pid <- "urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556" # A Resource Map PID
+
+path <- tempfile(fileext = ".xml") # We're saving to a temporary file but you can save elsewhere
+writeLines(rawToChar(getObject(mn, pid)), path) # Write the object to `path`
+```
+
+If we open that file up on a text editor, we see this:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:cito="http://purl.org/spar/cito/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:ore="http://www.openarchives.org/ore/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:provone="http://purl.dataone.org/provone/2015/01/15/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27">
+    <cito:isDocumentedBy rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation">
+    <rdf:type rdf:resource="http://www.openarchives.org/ore/terms/Aggregation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5">
+    <cito:isDocumentedBy rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5">
+    <cito:documents rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5">
+    <cito:documents rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27">
+    <ore:isAggregatedBy rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation">
+    <dc:title>DataONE Aggregation</dc:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556">
+    <dcterms:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556">
+    <ore:describes rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5">
+    <ore:isAggregatedBy rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation">
+    <ore:aggregates rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation">
+    <ore:aggregates rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556">
+    <rdf:type rdf:resource="http://www.openarchives.org/ore/terms/ResourceMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27">
+    <dcterms:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5">
+    <dcterms:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5</dcterms:identifier>
+  </rdf:Description>
+</rdf:RDF>
+```
+
+Whoa. What is this thing and how do you read it? The short of it is that, if you want to find the members of the Data Package, you want to look for lines like this:
+
+
+
+```
+<rdf:Description rdf:about="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation">
+    <ore:aggregates rdf:resource="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5"/>
+```
+
+This line says "The Aggregation aggregates `urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5`" so that means `urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5` is in our Data Package! The key bit is the `<rdf:Description rdf:about="...#aggregation` part. If you look for another similar statement, you'll also see that `urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27` is part of our Data Package.
+
+Now we know *which* Objects are in our Data Package but we don't know which one is metadata and which one is data. For that, we need to get a copy of the System Metadata for each object:
+
+```{r, eval=FALSE}
+library(dataone)
+
+mn <- MNode("https://test.arcticdata.io/metacat/d1/mn/v2")
+getSystemMetadata(mn, "urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5")@formatId
+[1] "eml://ecoinformatics.org/eml-2.1.1"
+
+getSystemMetadata(mn, "urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27")@formatId
+[1] "application/octet-stream"
+```
+
+From the format IDs, we can see the first PID is metadata and the second PID is data. Now we know enough to know what's in the Data Package:
+
+* Resource Map: urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556
+* Metadata: urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5
+* Data: urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27
+
+Now that you've actually seen a resource map, we can dive further into prov.
+
 ## `datapack`
 
 For packages not on the ADC, or packages that are extremely complicated, it may be best to upload prov relationships using R. The `datapack` package has several functions which help add relationships in a very simple way. These relationships are stored in the resource map. When you update a package just by adding prov, the package will not get any new identifiers with the exception of the resource map.

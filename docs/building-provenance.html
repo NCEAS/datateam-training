@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<meta name="date" content="2018-01-09">
+<meta name="date" content="2018-01-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -202,10 +202,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>10</b> Building Provenance</a><ul>
 <li class="chapter" data-level="10.1" data-path="building-provenance.html"><a href="building-provenance.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.2" data-path="building-provenance.html"><a href="building-provenance.html#the-prov-editor"><i class="fa fa-check"></i><b>10.2</b> The Prov Editor</a></li>
-<li class="chapter" data-level="10.3" data-path="building-provenance.html"><a href="building-provenance.html#datapack"><i class="fa fa-check"></i><b>10.3</b> <code>datapack</code></a><ul>
-<li class="chapter" data-level="10.3.1" data-path="building-provenance.html"><a href="building-provenance.html#fixing-mistakes"><i class="fa fa-check"></i><b>10.3.1</b> Fixing mistakes</a></li>
+<li class="chapter" data-level="10.3" data-path="building-provenance.html"><a href="building-provenance.html#understanding-resource-maps"><i class="fa fa-check"></i><b>10.3</b> Understanding resource maps</a></li>
+<li class="chapter" data-level="10.4" data-path="building-provenance.html"><a href="building-provenance.html#datapack"><i class="fa fa-check"></i><b>10.4</b> <code>datapack</code></a><ul>
+<li class="chapter" data-level="10.4.1" data-path="building-provenance.html"><a href="building-provenance.html#fixing-mistakes"><i class="fa fa-check"></i><b>10.4.1</b> Fixing mistakes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="building-provenance.html"><a href="building-provenance.html#references"><i class="fa fa-check"></i><b>10.4</b> References</a></li>
+<li class="chapter" data-level="10.5" data-path="building-provenance.html"><a href="building-provenance.html#references"><i class="fa fa-check"></i><b>10.5</b> References</a></li>
 </ul></li>
 </ul>
 
@@ -246,8 +247,90 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>A data package with an object that has multiple sources added will look like this. <img src="images/prov_sources.png" alt="sources" /></p>
 <p>For simple packages on the Arctic Data Center, adding prov through the prov editor at <a href="beta.arcticdata.io" class="uri">beta.arcticdata.io</a> is super easy!</p>
 </div>
+<div id="understanding-resource-maps" class="section level2">
+<h2><span class="header-section-number">10.3</span> Understanding resource maps</h2>
+<p>Before we dive further into constructing prov in R, we need to talk more about resource maps.</p>
+<p>All Data Packages have a single Resource Map. But what is a Resource Map and how do we use one to find out what Objects are in a particular Data Package? This document is a short introduction but a more complete guide can be found <a href="https://releases.dataone.org/online/api-documentation-v2.0/design/DataPackage.html?highlight=resource%20map">here</a>.</p>
+<p>A Resource Map is a special kind of XML document that describes (amongst other things) an Aggregation. The Aggregation describes the members of a Data Package (metadata and data, usually). We can use the <code>dataone</code> R package to download a Resource Map if we know its PID:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
+
+mn &lt;-<span class="st"> </span><span class="kw">MNode</span>(<span class="st">&quot;https://test.arcticdata.io/metacat/d1/mn/v2&quot;</span>)
+pid &lt;-<span class="st"> &quot;urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556&quot;</span> <span class="co"># A Resource Map PID</span>
+
+path &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.xml&quot;</span>) <span class="co"># We&#39;re saving to a temporary file but you can save elsewhere</span>
+<span class="kw">writeLines</span>(<span class="kw">rawToChar</span>(<span class="kw">getObject</span>(mn, pid)), path) <span class="co"># Write the object to `path`</span></code></pre></div>
+<p>If we open that file up on a text editor, we see this:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:cito=&quot;http://purl.org/spar/cito/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot; xmlns:foaf=&quot;http://xmlns.com/foaf/0.1/&quot; xmlns:ore=&quot;http://www.openarchives.org/ore/terms/&quot; xmlns:prov=&quot;http://www.w3.org/ns/prov#&quot; xmlns:provone=&quot;http://purl.dataone.org/provone/2015/01/15/ontology#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;&gt;
+    &lt;cito:isDocumentedBy rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.openarchives.org/ore/terms/Aggregation&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;&gt;
+    &lt;cito:isDocumentedBy rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;&gt;
+    &lt;cito:documents rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;&gt;
+    &lt;cito:documents rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;&gt;
+    &lt;ore:isAggregatedBy rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;&gt;
+    &lt;dc:title&gt;DataONE Aggregation&lt;/dc:title&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556&quot;&gt;
+    &lt;dcterms:identifier rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#string&quot;&gt;urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556&lt;/dcterms:identifier&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556&quot;&gt;
+    &lt;ore:describes rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;&gt;
+    &lt;ore:isAggregatedBy rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;&gt;
+    &lt;ore:aggregates rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;&gt;
+    &lt;ore:aggregates rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.openarchives.org/ore/terms/ResourceMap&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;&gt;
+    &lt;dcterms:identifier rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#string&quot;&gt;urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27&lt;/dcterms:identifier&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;&gt;
+    &lt;dcterms:identifier rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#string&quot;&gt;urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5&lt;/dcterms:identifier&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</code></pre>
+<p>Whoa. What is this thing and how do you read it? The short of it is that, if you want to find the members of the Data Package, you want to look for lines like this:</p>
+<pre><code>&lt;rdf:Description rdf:about=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A82bd7d7f-9e18-4fd2-8bda-99b1fddab556#aggregation&quot;&gt;
+    &lt;ore:aggregates rdf:resource=&quot;https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ac59b7505-39e6-4def-bc82-b67a8d117ce5&quot;/&gt;</code></pre>
+<p>This line says “The Aggregation aggregates <code>urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5</code>” so that means <code>urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5</code> is in our Data Package! The key bit is the <code>&lt;rdf:Description rdf:about=&quot;...#aggregation</code> part. If you look for another similar statement, you’ll also see that <code>urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27</code> is part of our Data Package.</p>
+<p>Now we know <em>which</em> Objects are in our Data Package but we don’t know which one is metadata and which one is data. For that, we need to get a copy of the System Metadata for each object:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
+
+mn &lt;-<span class="st"> </span><span class="kw">MNode</span>(<span class="st">&quot;https://test.arcticdata.io/metacat/d1/mn/v2&quot;</span>)
+<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5&quot;</span>)@formatId
+[<span class="dv">1</span>] <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span>
+
+<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;</span>)@formatId
+[<span class="dv">1</span>] <span class="st">&quot;application/octet-stream&quot;</span></code></pre></div>
+<p>From the format IDs, we can see the first PID is metadata and the second PID is data. Now we know enough to know what’s in the Data Package:</p>
+<ul>
+<li>Resource Map: <a href="urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556" class="uri">urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556</a></li>
+<li>Metadata: <a href="urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5" class="uri">urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5</a></li>
+<li>Data: <a href="urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27" class="uri">urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27</a></li>
+</ul>
+<p>Now that you’ve actually seen a resource map, we can dive further into prov.</p>
+</div>
 <div id="datapack" class="section level2">
-<h2><span class="header-section-number">10.3</span> <code>datapack</code></h2>
+<h2><span class="header-section-number">10.4</span> <code>datapack</code></h2>
 <p>For packages not on the ADC, or packages that are extremely complicated, it may be best to upload prov relationships using R. The <code>datapack</code> package has several functions which help add relationships in a very simple way. These relationships are stored in the resource map. When you update a package just by adding prov, the package will not get any new identifiers with the exception of the resource map.</p>
 <p>First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function <code>D1Client</code> sets the DataONE client with the coordinating node instance as the first argument, and membernode as the second argument.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
@@ -319,13 +402,13 @@ RightsHolder: http://orcid.org/0000-0002-2192-403X</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resmapId_new &lt;-<span class="st"> </span><span class="kw">uploadDataPackage</span>(d1c, pkg, <span class="dt">public=</span><span class="ot">TRUE</span>, <span class="dt">quiet=</span><span class="ot">FALSE</span>)</code></pre></div>
 <p>If successful you should be able to navigate to the landing page of your dataset, and icons should show up where the sources and derivations are, such as in this example <img src="images/prov_inputoutput.png" alt="prov_works" /></p>
 <div id="fixing-mistakes" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> Fixing mistakes</h3>
+<h3><span class="header-section-number">10.4.1</span> Fixing mistakes</h3>
 <p>If you messed up updating a datapackage using <code>datapack</code>, there unfortunately isn’t a great way to undo your work, as the <code>describeWorkflow</code> only adds prov relationships, it does not replace them. If you messed up, the best course of action is to update the resource map with a clean version that does not have prov using <code>update_resource_map</code>, and then go through the steps outlined above again.</p>
 <p>Note: this has not been thorougly tested, and more extreme actions may be necessary to fully nuke the prov relationships. See Jeanette if things do not work as expected.</p>
 </div>
 </div>
 <div id="references" class="section level2">
-<h2><span class="header-section-number">10.4</span> References</h2>
+<h2><span class="header-section-number">10.5</span> References</h2>
 <p>Ioannidis, John P A. 2005. “Why Most Published Research Findings Are False.” PLoS Medicine 2 (8): e124. <a href="doi:10.1371/journal.pmed.0020124" class="uri">doi:10.1371/journal.pmed.0020124</a>.</p>
 <p>Hampton, Stephanie E, Sean Anderson, Sarah C Bagby, Corinna Gries, Xueying Han, Edmund Hart, Matthew B Jones, et al. 2015. “The Tao of Open Science for Ecology.” Ecosphere 6 (July). <a href="doi:http://dx.doi.org/10.1890/ES14-00402.1" class="uri">doi:http://dx.doi.org/10.1890/ES14-00402.1</a>.</p>
 <p>Munafò, Marcus R., Brian A. Nosek, Dorothy V. M. Bishop, Katherine S. Button, Christopher D. Chambers, Nathalie Percie du Sert, Uri Simonsohn, Eric-Jan Wagenmakers, Jennifer J. Ware, and John P. A. Ioannidis. 2017. “A Manifesto for Reproducible Science.” Nature Human Behaviour 1 (1): 0021. <a href="doi:10.1038/s41562-016-0021" class="uri">doi:10.1038/s41562-016-0021</a>.</p>
