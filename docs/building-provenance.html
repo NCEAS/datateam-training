@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="nesting-a-data-package.html">
 
-<link rel="next" href="introduction-to-open-science.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -224,57 +224,111 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">NCEAS Data Team Training</h1>
-<h4 class="author"><em>Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum</em></h4>
-<h4 class="date"><em>2018-01-09</em></h4>
+<div id="building-provenance" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Building Provenance</h1>
+<div id="introduction-4" class="section level2">
+<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>The provenance chain describes the origin and processing history of data. Provenance can exist on a continuum, ranging from prose descriptions of the history, to formal provenance traces, to fully executable environments. In this section we will describe how to build provenance using formal provenance traces in DataONE.</p>
+<p>Provenance is becoming increasingly important in the face of what is being called a reproducibility crisis in science. J. P. A. Ioannidis (2005) wrote that “Most Research Findings Are False for Most Research Designs and for Most Fields”. Ioannidis outlined ways in which the research process has lead to inflated effect sizes and hypothesis tests that codify existing biases.</p>
+<p>The first step towards addressing these issues is to be able to evaluate the data, analyses, and models on which conclusions are drawn. Under current practice, this can be difficult because data are typically unavailable, the method sections of papers do not detail the computational approaches used, and analyses and models are often conducted in graphical programs, or, when scripted analyses are employed, the code is not available.</p>
+<p>And yet, this is easily remedied. Researchers can achieve computational reproducibility through open science approaches, including straightforward steps for archiving data and code openly along with the scientific workflows describing the provenance of scientific results (e.g., Hampton et al. (2015), Munafò et al. (2017)).</p>
+<p>At NCEAS and in the datateam, not only do we archive data and code openly, but we also describe the workflows that involve that data and code using provenance, formalizing the provenance trace for a workflow that might look like this <img src="images/workflow.png" alt="workflow" /> into an easily understandable trace including archived data objects, such as what is shown <a href="https://goa.nceas.ucsb.edu/#view/urn:uuid:3249ada0-afe3-4dd6-875e-0f7928a4c171">here</a>.</p>
+<p>There are two ways that we add provenance in the datateam - the prov editor and the R <code>datapack</code> package.</p>
 </div>
-<div id="welcome" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Welcome to NCEAS!</h1>
-<div id="first-day-to-dos" class="section level2">
-<h2><span class="header-section-number">1.1</span> First day to-dos</h2>
-<ul>
-<li>Get a tour of the office from Ginger, Jeanette, or Jesse</li>
-<li>Fill out required paperwork from Michelle</li>
-<li>Have Ana take your picture (room 309)</li>
-<li>Set up the remainder of your accounts</li>
-</ul>
+<div id="the-prov-editor" class="section level2">
+<h2><span class="header-section-number">10.2</span> The Prov Editor</h2>
+<p>Provenance can easily be added to production Arctic Data Center packages using the provenance editor on <a href="beta.arcticdata.io" class="uri">beta.arcticdata.io</a>. On the landing page of a data package within beta, in the <code>dataTable</code> or <code>otherEntity</code> section where you would like to add a provenance relationship, you can choose to add either a “source” or a “derivation”, to the left or right of the object pane, respectively.</p>
+<div class="figure">
+<img src="images/add_prov.png" alt="add prov" />
+<p class="caption">add prov</p>
 </div>
-<div id="account-information" class="section level2">
-<h2><span class="header-section-number">1.2</span> Account information</h2>
-<ul>
-<li><a href="https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account">LDAP - NCEAS</a> - Jeanette or Jesse should have set this up prior to your start date to help get other accounts set up by the first day. This account and password control your access to:
-<ul>
-<li>arcticdata <a href="https://support.nceas.ucsb.edu/rt/">RT queue</a></li>
-<li>GitHub - <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/">arctic-data</a> and <a href="https://github.nceas.ucsb.edu/NCEAS/sasap-data/">sasap-data</a></li>
-</ul></li>
-<li>Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal</li>
-<li><a href="https://orcid.org/register">ORCiD</a> - create an account</li>
-<li><a href="http://nceas.slack.com">NCEAS Slack</a> - get an invite from <a href="http://slack.nceas.ucsb.edu">slack.nceas.ucsb.edu</a></li>
-<li>Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request an add from Chris on Slack</li>
-<li><a href="https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118">Schedule</a> - fill out anticipated quarterly schedule</li>
-</ul>
+<p>To add a source data file, click on the circle with the “+ add” text. Similarly, a source script would be added by selecting the arrow. Selecting the circle to add a source file pulls up the following screen, where you can select the source from other data objects within the same data package. <img src="images/add_source.png" alt="add source" /></p>
+<p>A data package with an object that has multiple sources added will look like this. <img src="images/prov_sources.png" alt="sources" /></p>
+<p>For simple packages on the Arctic Data Center, adding prov through the prov editor at <a href="beta.arcticdata.io" class="uri">beta.arcticdata.io</a> is super easy!</p>
 </div>
-<div id="nceas-events" class="section level2">
-<h2><span class="header-section-number">1.3</span> NCEAS Events</h2>
-<p>NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the weekly events are :</p>
-<ul>
-<li>Roundtable
-<ul>
-<li>weekly presentation and discussion of research by a visiting or local scientist</li>
-<li>Wednesdays at 12:15 in the lounge</li>
-</ul></li>
-<li>Coffee Klatch
-<ul>
-<li>coffee, socializing, and news updates for NCEAS</li>
-<li>Tuesdays at 10:30 in the lounge</li>
-</ul></li>
-<li>Salad Potluck
-<ul>
-<li>potluck salad and socializing, bring a topping or side to share!</li>
-<li>second Tuesday of the month, 12:15 in the lounge</li>
-</ul></li>
-</ul>
+<div id="datapack" class="section level2">
+<h2><span class="header-section-number">10.3</span> <code>datapack</code></h2>
+<p>For packages not on the ADC, or packages that are extremely complicated, it may be best to upload prov relationships using R. The <code>datapack</code> package has several functions which help add relationships in a very simple way. These relationships are stored in the resource map. When you update a package just by adding prov, the package will not get any new identifiers with the exception of the resource map.</p>
+<p>First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function <code>D1Client</code> sets the DataONE client with the coordinating node instance as the first argument, and membernode as the second argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
+<span class="kw">library</span>(datapack)
+d1c &lt;-<span class="st"> </span><span class="kw">D1Client</span>(<span class="st">&quot;STAGING2&quot;</span>, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</code></pre></div>
+<p>Next, get the pid of the resource map of the data package you are adding prov to, and load that package into R using the <code>getDataPackage</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resmapId &lt;-<span class="st"> &quot;urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b&quot;</span>
+pkg &lt;-<span class="st"> </span><span class="kw">getDataPackage</span>(d1c, <span class="dt">id=</span>resmapId, <span class="dt">lazyLoad=</span><span class="ot">TRUE</span>, <span class="dt">limit=</span><span class="st">&quot;0MB&quot;</span>, <span class="dt">quiet=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>Printing <code>pkg</code> in your console shows you the contents of the data package, including all of the objects and their names:</p>
+<pre><code>&gt; pkg
+Members:
+
+filename   format         mediaType  size     identifier                                    modified local 
+esc...er.R application/R  NA         888      knb.92049.1                                   n        n     
+PWS....csv text/csv       NA         1871469  knb.92050.1                                   n        n     
+PWS....csv text/csv       NA         1508128  knb.92051.1                                   n        n     
+NA         eml:/...-2.1.1 NA         15658    urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b n        y     
+
+Package identifier: resource_map_urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b
+RightsHolder: http://orcid.org/0000-0002-2192-403X</code></pre>
+<p>It will also show the existing relationships in the resource map, which in this case are mostly the “documents” relationships that specify that the metadata record is describing all of these data files.</p>
+<pre><code>Relationships:
+                                   subject           predicate                                   object
+2          esc_reformatting_PWSweirTower.R cito:isDocumentedBy urn:uuid:8f501606-...4-b22d-050a4176a97b
+4                        PWS_weirTower.csv cito:isDocumentedBy urn:uuid:8f501606-...4-b22d-050a4176a97b
+1                PWS_Weir_Tower_export.csv cito:isDocumentedBy urn:uuid:8f501606-...4-b22d-050a4176a97b
+3 urn:uuid:8f501606-...4-b22d-050a4176a97b     dcterms:creator                    _r1515542097r415842r1
+5 urn:uuid:8f501606-...4-b22d-050a4176a97b      cito:documents          esc_reformatting_PWSweirTower.R
+6 urn:uuid:8f501606-...4-b22d-050a4176a97b      cito:documents                        PWS_weirTower.csv
+7 urn:uuid:8f501606-...4-b22d-050a4176a97b      cito:documents                PWS_Weir_Tower_export.csv
+8 urn:uuid:8f501606-...4-b22d-050a4176a97b      cito:documents urn:uuid:8f501606-...4-b22d-050a4176a97b
+9 urn:uuid:8f501606-...4-b22d-050a4176a97b cito:isDocumentedBy urn:uuid:8f501606-...4-b22d-050a4176a97b</code></pre>
+<p>In this example above, the data package has two .csv files, with an R script that converts one to the other. To create our provenance trace, first we need to select the source object, and save the pid to a variable. We do this using the <code>selectMember</code> function, and we can query part of the system metadata to select the file that we want. This function takes the data package (<code>pkg</code>), the name of the sysmeta field to query (in this case we use the <code>fileName</code>), and the value that you want to match that field to (in this case, ‘PWS_Weir_Tower_export.csv’).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sourceObjId &lt;-<span class="st"> </span><span class="kw">selectMember</span>(pkg, <span class="dt">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="dt">value=</span><span class="st">&#39;PWS_Weir_Tower_export.csv&#39;</span>)</code></pre></div>
+<p>This returns a list of the source object pids that match the query (in this case only one object matches).</p>
+<pre><code>&gt; sourceObjId
+[1] &quot;knb.92051.1&quot;</code></pre>
+<p>Now we need to select our output object. Here, we use the <code>selectMember</code> function again, and save the result to a new variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outputObjId &lt;-<span class="st"> </span><span class="kw">selectMember</span>(pkg, <span class="dt">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="dt">value=</span><span class="st">&#39;PWS_weirTower.csv&#39;</span>)</code></pre></div>
+<p>Now we query for the R script. In this case, we query based on the value of the <code>formatId</code> as opposed to the filename. This can be useful if you wish to select a large list of pids that are all similar.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">programObjId &lt;-<span class="st"> </span><span class="kw">selectMember</span>(pkg, <span class="dt">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="dt">value=</span><span class="st">&quot;application/R&quot;</span>)</code></pre></div>
+<p>Next, you use these lists of pids and a function called <code>describeWorkflow</code> to add these relationships to the data package. Note that if you do not have a program in the workflow, or a source file, you can simply leave those arguments blank.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkg &lt;-<span class="st"> </span><span class="kw">describeWorkflow</span>(pkg, <span class="dt">sources=</span>sourceObjId, <span class="dt">program=</span>programObjId, <span class="dt">derivations=</span>outputObjId)</code></pre></div>
+<p>Viewing <code>pkg</code> again confirms that these relationships have been inserted into the data package, as shown by the “wasDerivedFrom” and “wasGeneratedBy” statements. It is always a good idea to print <code>pkg</code> to confirm that your pid selection process worked as expected, and your prov relationships make sense.</p>
+<pre><code>Relationships (updated):
+
+                                subject                 predicate                               object
+15 _1db49d06-ae98-4...9101-39f7c0b45a95                  rdf:type                     prov:Association
+14 _1db49d06-ae98-4...9101-39f7c0b45a95              prov:hadPlan      esc_reformatting_PWSweirTower.R
+1       esc_reformatting_PWSweirTower.R       cito:isDocumentedBy urn:uuid:8f50160...b22d-050a4176a97b
+16      esc_reformatting_PWSweirTower.R                  rdf:type                      provone:Program
+8                     PWS_weirTower.csv       cito:isDocumentedBy urn:uuid:8f50160...b22d-050a4176a97b
+11                    PWS_weirTower.csv                  rdf:type                         provone:Data
+20                    PWS_weirTower.csv       prov:wasDerivedFrom            PWS_Weir_Tower_export.csv
+19                    PWS_weirTower.csv       prov:wasGeneratedBy urn:uuid:3dd59b0...bc38-3b5d8fa644ac
+6             PWS_Weir_Tower_export.csv       cito:isDocumentedBy urn:uuid:8f50160...b22d-050a4176a97b
+10            PWS_Weir_Tower_export.csv                  rdf:type                         provone:Data
+9                 _r1515544826r415842r1                 foaf:name                     DataONE R Client
+17 urn:uuid:3dd59b0...bc38-3b5d8fa644ac        dcterms:identifier urn:uuid:3dd59b0...bc38-3b5d8fa644ac
+13 urn:uuid:3dd59b0...bc38-3b5d8fa644ac                  rdf:type                    provone:Execution
+12 urn:uuid:3dd59b0...bc38-3b5d8fa644ac prov:qualifiedAssociation _1db49d06-ae98-4...9101-39f7c0b45a95
+18 urn:uuid:3dd59b0...bc38-3b5d8fa644ac                 prov:used            PWS_Weir_Tower_export.csv
+5  urn:uuid:8f50160...b22d-050a4176a97b            cito:documents      esc_reformatting_PWSweirTower.R
+4  urn:uuid:8f50160...b22d-050a4176a97b            cito:documents                    PWS_weirTower.csv
+3  urn:uuid:8f50160...b22d-050a4176a97b            cito:documents            PWS_Weir_Tower_export.csv
+2  urn:uuid:8f50160...b22d-050a4176a97b            cito:documents urn:uuid:8f50160...b22d-050a4176a97b
+7  urn:uuid:8f50160...b22d-050a4176a97b       cito:isDocumentedBy urn:uuid:8f50160...b22d-050a4176a97b</code></pre>
+<p>Finally, you can upload the data package using the <code>uploadDataPackage</code> function, which takes the DataONE client <code>d1c</code> we set in the beginning, the updated <code>pkg</code> variable, and some options for public read and whether informational messages are printed during the upload process.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resmapId_new &lt;-<span class="st"> </span><span class="kw">uploadDataPackage</span>(d1c, pkg, <span class="dt">public=</span><span class="ot">TRUE</span>, <span class="dt">quiet=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>If successful you should be able to navigate to the landing page of your dataset, and icons should show up where the sources and derivations are, such as in this example <img src="images/prov_inputoutput.png" alt="prov_works" /></p>
+<div id="fixing-mistakes" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Fixing mistakes</h3>
+<p>If you messed up updating a datapackage using <code>datapack</code>, there unfortunately isn’t a great way to undo your work, as the <code>describeWorkflow</code> only adds prov relationships, it does not replace them. If you messed up, the best course of action is to update the resource map with a clean version that does not have prov using <code>update_resource_map</code>, and then go through the steps outlined above again.</p>
+<p>Note: this has not been thorougly tested, and more extreme actions may be necessary to fully nuke the prov relationships. See Jeanette if things do not work as expected.</p>
+</div>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">10.4</span> References</h2>
+<p>Ioannidis, John P A. 2005. “Why Most Published Research Findings Are False.” PLoS Medicine 2 (8): e124. <a href="doi:10.1371/journal.pmed.0020124" class="uri">doi:10.1371/journal.pmed.0020124</a>.</p>
+<p>Hampton, Stephanie E, Sean Anderson, Sarah C Bagby, Corinna Gries, Xueying Han, Edmund Hart, Matthew B Jones, et al. 2015. “The Tao of Open Science for Ecology.” Ecosphere 6 (July). <a href="doi:http://dx.doi.org/10.1890/ES14-00402.1" class="uri">doi:http://dx.doi.org/10.1890/ES14-00402.1</a>.</p>
+<p>Munafò, Marcus R., Brian A. Nosek, Dorothy V. M. Bishop, Katherine S. Button, Christopher D. Chambers, Nathalie Percie du Sert, Uri Simonsohn, Eric-Jan Wagenmakers, Jennifer J. Ware, and John P. A. Ioannidis. 2017. “A Manifesto for Reproducible Science.” Nature Human Behaviour 1 (1): 0021. <a href="doi:10.1038/s41562-016-0021" class="uri">doi:10.1038/s41562-016-0021</a>.</p>
 
 </div>
 </div>
@@ -283,8 +337,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
+<a href="nesting-a-data-package.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="introduction-to-open-science.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
