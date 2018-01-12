@@ -2,8 +2,9 @@
 
 ## Introduction
 
-First, read the excellent intro to Git put together by the eco-data-science group at UCSB/NCEAS. Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands.
-[Git intro](https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf)
+Important! If you have never used git before, or only used it a little, or have no idea what is is, check out this intro to git put together by the ecodatascience group at UCSB. [https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf](https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf)
+Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.
+
 
 ### So why do I need to use this again?
 
