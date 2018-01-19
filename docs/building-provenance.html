@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<meta name="date" content="2018-01-12">
+<meta name="date" content="2018-01-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -316,10 +316,10 @@ path &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class=
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dataone)
 
 mn &lt;-<span class="st"> </span><span class="kw">MNode</span>(<span class="st">&quot;https://test.arcticdata.io/metacat/d1/mn/v2&quot;</span>)
-<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5&quot;</span>)@formatId
+<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5&quot;</span>)<span class="op">@</span>formatId
 [<span class="dv">1</span>] <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span>
 
-<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;</span>)@formatId
+<span class="kw">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27&quot;</span>)<span class="op">@</span>formatId
 [<span class="dv">1</span>] <span class="st">&quot;application/octet-stream&quot;</span></code></pre></div>
 <p>From the format IDs, we can see the first PID is metadata and the second PID is data. Now we know enough to know what’s in the Data Package:</p>
 <ul>
