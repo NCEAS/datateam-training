@@ -25,11 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<<<<<<< HEAD
 <meta name="date" content="2018-01-22">
-=======
-<meta name="date" content="2018-01-19">
->>>>>>> 64de50739e69e9df4fd76a73b1ff62e29cfbf013
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -251,8 +247,8 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 <p>This <code>eml</code> object represents a complete EML document (as in: the .xml file) and all of the information inside the <code>.xml</code> file can be viewed and edited with the EML package.</p>
 <p>The <code>eml</code> object has what are called “slots”, each slot representing an element of the EML document such as “Title” or “Creator” and you will use these “slots” when working with your <code>eml</code> object. (Sometimes we call the slots “elements” or “tags”.) You can find out what slots you have available with the <code>slotNames</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml))</code></pre></div>
-<pre><code>##  [1] &quot;access&quot;             &quot;additionalMetadata&quot; &quot;citation&quot;          
-##  [4] &quot;.Data&quot;              &quot;dataset&quot;            &quot;lang&quot;              
+<pre><code>##  [1] &quot;.Data&quot;              &quot;access&quot;             &quot;additionalMetadata&quot;
+##  [4] &quot;citation&quot;           &quot;dataset&quot;            &quot;lang&quot;              
 ##  [7] &quot;packageId&quot;          &quot;protocol&quot;           &quot;schemaLocation&quot;    
 ## [10] &quot;scope&quot;              &quot;slot_order&quot;         &quot;software&quot;          
 ## [13] &quot;system&quot;</code></pre>
@@ -269,10 +265,10 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 &lt;/eml</code></pre>
 <p>You can see that the <code>title</code> is nested inside the <code>dataset</code> and the <code>dataset</code> is nested inside the root <code>eml</code> element of the document.</p>
 <p>Because the <code>title</code> is nested inside the <code>dataset</code> element, it will be a slot of <code>eml@dataset</code> instead of a slot of the main <code>eml</code> object:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml<span class="op">@</span>dataset))</code></pre></div>
-<pre><code>##  [1] &quot;abstract&quot;            &quot;additionalInfo&quot;      &quot;alternateIdentifier&quot;
-##  [4] &quot;associatedParty&quot;     &quot;contact&quot;             &quot;coverage&quot;           
-##  [7] &quot;creator&quot;             &quot;.Data&quot;               &quot;dataTable&quot;          
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">slotNames</span>(eml@dataset))</code></pre></div>
+<pre><code>##  [1] &quot;.Data&quot;               &quot;abstract&quot;            &quot;additionalInfo&quot;     
+##  [4] &quot;alternateIdentifier&quot; &quot;associatedParty&quot;     &quot;contact&quot;            
+##  [7] &quot;coverage&quot;            &quot;creator&quot;             &quot;dataTable&quot;          
 ## [10] &quot;distribution&quot;        &quot;id&quot;                  &quot;intellectualRights&quot; 
 ## [13] &quot;keywordSet&quot;          &quot;lang&quot;                &quot;language&quot;           
 ## [16] &quot;maintenance&quot;         &quot;metadataProvider&quot;    &quot;methods&quot;            
@@ -289,15 +285,15 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 <p>Similarly, you can also view different elements of the EML by drilling down into the structure using the <code>@</code> functionality. This would just print the dataset portion of the EML:</p>
 <p><code>eml@dataset</code></p>
 <p>Going even deeper, this command will print the <code>title</code> element, which is within the <code>dataset</code> element, of the EML document:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title</code></pre></div>
 <pre><code>## An object of class &quot;ListOftitle&quot;
 ## [[1]]
 ## &lt;title&gt;Subglacial conduit fluid dynamics simulation, Svalbard, Norway&lt;/title&gt;</code></pre>
 <p>Notice than when the last line prints, it doesn’t just print a string - it returns “An object of class <code>ListOftitle</code>.” The EML is composed of different classes of objects that make up these slots. If a slot can have multiple items, it may require an input of a list of a class. You can continue digging down into the EML using subsetting techniques for the S4 object class, with syntax that looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>.Data</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title@.Data[[<span class="dv">1</span>]]@.Data</code></pre></div>
 <pre><code>## [1] &quot;Subglacial conduit fluid dynamics simulation, Svalbard, Norway&quot;</code></pre>
 <p>Notice that this actually prints a character string. If you want to change the title, you could just assign this a new character string value, like so:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>title<span class="op">@</span>.Data[[<span class="dv">1</span>]]<span class="op">@</span>.Data &lt;-<span class="st"> &#39;This is my new title&#39;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@title@.Data[[<span class="dv">1</span>]]@.Data &lt;-<span class="st"> &#39;This is my new title&#39;</span></code></pre></div>
 <p>However, this isn’t the best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. Instead, the EML package is used to create new objects of particular classes to put into the document, using the function <code>new</code>.</p>
 <p>The <code>new</code> function has a format that looks like <code>newobject &lt;- new('class', arguments...)</code>. It can be a difficult function to use because “class” has to be set to a specific name and the argument structure will vary depending on what the slots are in that class. Because the function is so general, the <code>?new</code> help is not very helpful. In the EML package, a good guess to what the name of the class will be is a slot name (such as “title”). You can explore what slots are available within an object class by creating a new, empty object like this:</p>
 <p><code>test_title &lt;- new('title')</code></p>
@@ -308,14 +304,14 @@ eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code>
 <p><code>Error in (function (cl, name, valueClass)  :assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”</code> <code>; is(value, &quot;ListOftitle&quot;) is not TRUE</code></p>
 <p>The error says it cannot assign an object of class “title” to <code>eml@dataset@title</code>, and that there is not a value for <code>ListOftitle</code>. So this means that you have to assign to <code>@title</code> an object of class <code>ListOftitle</code>, which is composed of objects of class <code>title</code>. Even though <code>ListOftitle</code> is it’s own kind of class, we can avoid using the <code>new</code> function again here by simply putting the <code>title</code> object in a vector using the <code>c()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">title &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;title&#39;</span>, <span class="dt">.Data =</span> <span class="st">&#39;This is my new title&#39;</span>)
-eml<span class="op">@</span>dataset<span class="op">@</span>title &lt;-<span class="st"> </span><span class="kw">c</span>(title)</code></pre></div>
+eml@dataset@title &lt;-<span class="st"> </span><span class="kw">c</span>(title)</code></pre></div>
 <p>This seems kind of cumbersome, creating first a new title object, and then a list of title, especially since in most cases an EML will only have one title. However, say for some reason you need two titles - you can then do this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">title_second &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;title&#39;</span>, <span class="dt">.Data =</span> <span class="st">&#39;This dataset has two titles&#39;</span>)
-eml<span class="op">@</span>dataset<span class="op">@</span>title &lt;-<span class="st"> </span><span class="kw">c</span>(title, title_second)
-eml<span class="op">@</span>dataset<span class="op">@</span>title</code></pre></div>
+eml@dataset@title &lt;-<span class="st"> </span><span class="kw">c</span>(title, title_second)
+eml@dataset@title</code></pre></div>
 <pre><code>## An object of class &quot;ListOftitle&quot;
 ## [[1]]
-## &lt;title&gt;This is my new title&lt;/title&gt;
+## &lt;title&gt;This is my new title&lt;/title&gt; 
 ## 
 ## [[2]]
 ## &lt;title&gt;This dataset has two titles&lt;/title&gt;</code></pre>
@@ -450,19 +446,19 @@ dataTable2 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class
                   <span class="dt">physical =</span> physical2, 
                   <span class="dt">attributeList =</span> attributeList2)</code></pre></div>
 <p>Now both <code>dataTable1</code> and <code>dataTable2</code> are added to the original EML using the <code>c()</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>dataTable &lt;-<span class="st"> </span><span class="kw">c</span>(dataTable1, dataTable2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@dataTable &lt;-<span class="st"> </span><span class="kw">c</span>(dataTable1, dataTable2)</code></pre></div>
 </div>
 <div id="defining-custom-units" class="section level4">
 <h4><span class="header-section-number">5.2.1.5</span> Defining custom units</h4>
 <p>If you get a warning message about your units not being in the standard unit list, a custom unit list needs to be created and added to the <code>additionalMetadata</code> slot of the EML. First we create a custom unit data frame with columns <code>id</code> (the name of the unit, as it appears in the attribute table), <code>unitType</code>, and <code>parentSI</code>. Each custom unit has a row in the data frame. To determine what the <code>unitType</code> and <code>parentSI</code> are for each unit, it may be helpful to reference the list of custom units. This list can easily be viewed in your R console using these commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">standardUnits &lt;-<span class="st"> </span><span class="kw">get_unitList</span>()
-<span class="kw">View</span>(standardUnits<span class="op">$</span>units)</code></pre></div>
+<span class="kw">View</span>(standardUnits$units)</code></pre></div>
 <p>The following lines create the standard unit data table, use the function <code>set_unitList</code> to slot it into the EML, and then add it as <code>addionalMetadata</code> to the EML.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">custom_units &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;horsepower&#39;</span>, <span class="st">&#39;gallonPerMinute&#39;</span>), 
                            <span class="dt">unitType =</span> <span class="kw">c</span>(<span class="st">&#39;power&#39;</span>, <span class="st">&#39;volumetricRate&#39;</span>), 
                            <span class="dt">parentSI =</span> <span class="kw">c</span>(<span class="st">&#39;watt&#39;</span>, <span class="st">&#39;litersPerSecond&#39;</span>))
 unitlist &lt;-<span class="st"> </span><span class="kw">set_unitList</span>(custom_units)
-eml<span class="op">@</span>additionalMetadata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">as</span>(unitlist, <span class="st">&quot;additionalMetadata&quot;</span>))</code></pre></div>
+eml@additionalMetadata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">as</span>(unitlist, <span class="st">&quot;additionalMetadata&quot;</span>))</code></pre></div>
 </div>
 </div>
 <div id="setting-other-entities" class="section level3">
@@ -470,7 +466,7 @@ eml<span class="op">@</span>additionalMetadata &lt;-<span class="st"> </span><sp
 <div id="removing-other-entities" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> Removing other entities</h4>
 <p>In cases where the data package was submitted originally via the web form, the original EML usually has the data tables described as “other entity” elements in the EML. This information is now redundant since we created data table elements describing these objects. Remove the other entities by replacing the <code>otherEntity</code> element in the EML with a <code>ListOfotherEntity</code> object that consists of an empty list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml<span class="op">@</span>dataset<span class="op">@</span>otherEntity &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;ListOfotherEntity&#39;</span>, <span class="kw">list</span>())</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eml@dataset@otherEntity &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;ListOfotherEntity&#39;</span>, <span class="kw">list</span>())</code></pre></div>
 </div>
 <div id="adding-other-entities-for-files-that-arent-uploaded-yet" class="section level4">
 <h4><span class="header-section-number">5.2.2.2</span> Adding other entities for files that aren’t uploaded yet</h4>
@@ -494,8 +490,8 @@ eml &lt;-<span class="st"> </span><span class="kw">eml_add_entities</span>(eml, 
 <p>If you are trying to describe data objects that are already on the ADC, you can utilize <code>lapply</code> along with <code>get_package</code> to easily write the EML <code>otherEntity</code> elements. In this case, there are data tables and other entity type elements mixed in, so the <code>otherEntity</code> elements (non-csvs) are picked out by hand using indexes. The numbers in the call <code>otherEnts &lt;- pkg$data[c(5,6,9,10)]</code> will change depending on your dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pid =<span class="st"> &#39;doi:10.18739/A2408F&#39;</span>
 pkg &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, pid, <span class="dt">file_names =</span> T)
-otherEnts &lt;-<span class="st"> </span>pkg<span class="op">$</span>data[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">10</span>)] <span class="co">#select only `otherEntity` PIDs after viewing `pkg$data` contents</span>
-eml<span class="op">@</span>dataset<span class="op">@</span>otherEntity &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;ListOfotherEntity&quot;</span>, <span class="kw">pid_to_eml_other_entity</span>(mn, otherEnts))</code></pre></div>
+otherEnts &lt;-<span class="st"> </span>pkg$data[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">10</span>)] <span class="co">#select only `otherEntity` PIDs after viewing `pkg$data` contents</span>
+eml@dataset@otherEntity &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;ListOfotherEntity&quot;</span>, <span class="kw">pid_to_eml_other_entity</span>(mn, otherEnts))</code></pre></div>
 </div>
 </div>
 <div id="setting-coverages" class="section level3">
@@ -505,37 +501,37 @@ eml<span class="op">@</span>dataset<span class="op">@</span>otherEntity &lt;-<sp
                          <span class="dt">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, 
                          <span class="dt">sci_names =</span> <span class="kw">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>),
                          <span class="dt">geographicDescription =</span> <span class="st">&quot;The geographic region covers the lake region near Eagle Mountain.&quot;</span>,
-                         <span class="dt">west =</span> <span class="op">-</span><span class="fl">154.6192</span>, 
-                         <span class="dt">east =</span> <span class="op">-</span><span class="fl">154.5753</span>, 
+                         <span class="dt">west =</span> -<span class="fl">154.6192</span>, 
+                         <span class="dt">east =</span> -<span class="fl">154.5753</span>, 
                          <span class="dt">north =</span> <span class="fl">68.3831</span>, 
                          <span class="dt">south =</span> <span class="fl">68.3619</span>)
-eml<span class="op">@</span>dataset<span class="op">@</span>coverage &lt;-<span class="st"> </span>coverage</code></pre></div>
+eml@dataset@coverage &lt;-<span class="st"> </span>coverage</code></pre></div>
 <p>You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">geocov1 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;geographicCoverage&quot;</span>, <span class="dt">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,
                <span class="dt">boundingCoordinates =</span> <span class="kw">new</span>(<span class="st">&quot;boundingCoordinates&quot;</span>, 
                                          <span class="dt">northBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;northBoundingCoordinate&quot;</span>, <span class="dv">68</span>),
-                                         <span class="dt">eastBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;eastBoundingCoordinate&quot;</span>, <span class="op">-</span><span class="dv">154</span>),
+                                         <span class="dt">eastBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;eastBoundingCoordinate&quot;</span>, -<span class="dv">154</span>),
                                          <span class="dt">southBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;southBoundingCoordinate&quot;</span>, <span class="dv">67</span>),
-                                         <span class="dt">westBoundingCoordinate =</span>  <span class="kw">new</span>(<span class="st">&quot;westBoundingCoordinate&quot;</span>, <span class="op">-</span><span class="dv">155</span>)))
+                                         <span class="dt">westBoundingCoordinate =</span>  <span class="kw">new</span>(<span class="st">&quot;westBoundingCoordinate&quot;</span>, -<span class="dv">155</span>)))
 
 geocov2 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;geographicCoverage&quot;</span>, <span class="dt">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 2&quot;</span>,
                <span class="dt">boundingCoordinates =</span> <span class="kw">new</span>(<span class="st">&quot;boundingCoordinates&quot;</span>,
                                          <span class="dt">northBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;northBoundingCoordinate&quot;</span>, <span class="dv">65</span>),
-                                         <span class="dt">eastBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;eastBoundingCoordinate&quot;</span>, <span class="op">-</span><span class="dv">155</span>),
+                                         <span class="dt">eastBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;eastBoundingCoordinate&quot;</span>, -<span class="dv">155</span>),
                                          <span class="dt">southBoundingCoordinate =</span> <span class="kw">new</span>(<span class="st">&quot;southBoundingCoordinate&quot;</span>, <span class="dv">64</span>),
-                                         <span class="dt">westBoundingCoordinate =</span>  <span class="kw">new</span>(<span class="st">&quot;westBoundingCoordinate&quot;</span>, <span class="op">-</span><span class="dv">156</span>)))
+                                         <span class="dt">westBoundingCoordinate =</span>  <span class="kw">new</span>(<span class="st">&quot;westBoundingCoordinate&quot;</span>, -<span class="dv">156</span>)))
 
 coverage &lt;-<span class="st"> </span><span class="kw">set_coverage</span>(<span class="dt">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, 
                          <span class="dt">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, 
                          <span class="dt">sci_names =</span> <span class="kw">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>))
-eml<span class="op">@</span>dataset<span class="op">@</span>coverage<span class="op">@</span>geographicCoverage &lt;-<span class="st"> </span><span class="kw">c</span>(geocov1, geocov2)</code></pre></div>
+eml@dataset@coverage@geographicCoverage &lt;-<span class="st"> </span><span class="kw">c</span>(geocov1, geocov2)</code></pre></div>
 </div>
 <div id="setting-methods" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Setting methods</h3>
 <p>The methods tree in the EML section has many different options, visible in the <a href="https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png">schema</a>. You can create new elements in the methods tree by following the schema and using the “new” command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, <code>method_step &lt;- new('methodStep')</code>, and using autocomplete on <code>method_step@</code>.</p>
 <p>One very simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">methods1 &lt;-<span class="st"> </span><span class="kw">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)
-eml<span class="op">@</span>dataset<span class="op">@</span>methods &lt;-<span class="st"> </span>methods1</code></pre></div>
+eml@dataset@methods &lt;-<span class="st"> </span>methods1</code></pre></div>
 <p>If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.</p>
 </div>
 <div id="adding-people" class="section level3">
@@ -554,7 +550,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>methods &lt;-<span c
                           <span class="dt">phone =</span> <span class="st">&#39;123-456-7890&#39;</span>, 
                           <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                           <span class="dt">address =</span> NCEASadd)
-eml<span class="op">@</span>dataset<span class="op">@</span>creator &lt;-<span class="st"> </span><span class="kw">c</span>(JC_creator)</code></pre></div>
+eml@dataset@creator &lt;-<span class="st"> </span><span class="kw">c</span>(JC_creator)</code></pre></div>
 <p>Similarly, we can set the contacts. In this case, there are two, so we set <code>eml@dataset@contact</code> as a <code>ListOfcontact</code>, which contains both of them.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">JC_contact &lt;-<span class="st"> </span><span class="kw">eml_contact</span>(<span class="st">&quot;Jeanette&quot;</span>, 
                           <span class="st">&quot;Clark&quot;</span>, 
@@ -570,7 +566,7 @@ JG_contact &lt;-<span class="st"> </span><span class="kw">eml_contact</span>(<sp
                           <span class="dt">phone =</span> <span class="st">&#39;123-456-7890&#39;</span>, 
                           <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                           <span class="dt">address =</span> NCEASadd)
-eml<span class="op">@</span>dataset<span class="op">@</span>contact &lt;-<span class="st"> </span><span class="kw">c</span>(JC_contact, JG_contact)</code></pre></div>
+eml@dataset@contact &lt;-<span class="st"> </span><span class="kw">c</span>(JC_contact, JG_contact)</code></pre></div>
 <p>Finally, the associated parties are set. Note that associated parties MUST have a role defined, unlike creator or contact.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">JG_ap &lt;-<span class="st"> </span><span class="kw">eml_associated_party</span>(<span class="st">&quot;Jesse&quot;</span>, 
                               <span class="st">&quot;Goldstein&quot;</span>, 
@@ -580,7 +576,7 @@ eml<span class="op">@</span>dataset<span class="op">@</span>contact &lt;-<span c
                               <span class="dt">address =</span> NCEASadd, 
                               <span class="dt">userId =</span> <span class="st">&#39;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&#39;</span>,
                               <span class="dt">role =</span> <span class="st">&quot;metaataProvider&quot;</span>)
-eml<span class="op">@</span>dataset<span class="op">@</span>associatedParty &lt;-<span class="st"> </span><span class="kw">c</span>(JG_ap)</code></pre></div>
+eml@dataset@associatedParty &lt;-<span class="st"> </span><span class="kw">c</span>(JG_ap)</code></pre></div>
 </div>
 </div>
 <div id="validating-and-writing-the-eml" class="section level2">
@@ -629,7 +625,7 @@ m2 &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#
 
 codes &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;ListOfmissingValueCode&#39;</span>, <span class="kw">list</span>(m1, m2))
 
-attlist1<span class="op">@</span>attribute<span class="op">@</span>.Data[[<span class="dv">6</span>]]<span class="op">@</span>missingValueCode &lt;-<span class="st"> </span>codes</code></pre></div>
+attlist1@attribute@.Data[[<span class="dv">6</span>]]@missingValueCode &lt;-<span class="st"> </span>codes</code></pre></div>
 <p>Now, if you view this attribute again you should see the mutliple missing value codes:</p>
 <pre><code>&gt; attlist1@attribute@.Data[[6]]@missingValueCode
 An object of class &quot;ListOfmissingValueCode&quot;
