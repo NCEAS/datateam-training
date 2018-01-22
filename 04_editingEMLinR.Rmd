@@ -139,8 +139,9 @@ Since attribute information has to be added to the metadata, we'll cover attribu
 
 First you need to generate a dataframe with attribute information. This dataframe has rows that are attributes, and the following columns:
 
-* **attributeName**: The name of the attribute as listed in the csv. Required.
-* **attributeDefinition**: Longer description of the attribute. Required.
+* **attributeName**: The name of the attribute as listed in the csv. Required. eg: "c_temp"
+* **attributeLabel**: A descriptive label that can be used to display the name of an attribute. It is not constrained by system limitations on length or special characters. Optional. eg: "Temperature (Celsius)"
+* **attributeDefinition**: Longer description of the attribute, including the required context for interpreting the attributeName. Required. eg: "The nearshore water temperature in the upper intertidal zone, measured in degrees celsius."
 * **measurementScale**: One of: nominal, ordinal, dateTime, ratio, interval. Required.
     + *nominal*: unordered categories or text. eg: (Male, Female) or (Yukon River, Kuskokwim River)
     + *ordinal*: ordered categories. eg: Low, Medium, High
