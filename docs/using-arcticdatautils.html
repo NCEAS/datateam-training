@@ -25,7 +25,11 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
+<<<<<<< HEAD
 <meta name="date" content="2018-01-22">
+=======
+<meta name="date" content="2018-01-19">
+>>>>>>> 64de50739e69e9df4fd76a73b1ff62e29cfbf013
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -299,9 +303,9 @@ ids &lt;-<span class="st"> </span><span class="kw">get_package</span>(mn, metaPi
 <p>Finally, use the <code>publish_update</code> function with the results of the lines above to update your data package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">publish_update</span>(mn,
                <span class="dt">metadata_pid =</span> metaPid, <span class="co"># old metadata PID you pulled in originally. Alternatively could paste in the string:  &quot;urn:uuid:a592a9a2-547c-48ee-bff2-add133aa64ee&quot;</span>
-               <span class="dt">resource_map_pid =</span> ids$resource_map,
+               <span class="dt">resource_map_pid =</span> ids<span class="op">$</span>resource_map,
                <span class="dt">metadata_path =</span> meta_path, <span class="co"># path to updated EML file,</span>
-               <span class="dt">data_pid =</span> ids$data, <span class="co"># this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)</span>
+               <span class="dt">data_pid =</span> ids<span class="op">$</span>data, <span class="co"># this can also be 2+ by including the PIDs in a vector c(pid1, pid2,pid3)</span>
                <span class="dt">use_doi =</span> <span class="ot">FALSE</span>,
                <span class="dt">public =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>If a package is ready to be public, note that you can change the <code>public</code> argument in the <code>publish_update</code> call to <code>TRUE</code>. Similarly, if you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the <code>use_doi</code> argument to <code>TRUE</code>.</p>

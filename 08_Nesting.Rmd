@@ -157,7 +157,8 @@ resourceMap2015 <- create_resource_map(mnTest, metadata_pid = metadata2015, data
 ```{r}
 resourceMap_parent2 <- update_resource_map(mnTest, 
                                            resource_map_pid = resourceMap_parent,
-                                           metadata_pid = metadata_parent)
+                                           metadata_pid = metadata_parent,
+                                           child_pids = c(resourceMap2013, resourceMap2014, resourceMap2015))
 ```
   
 * Nesting relationships can also be modified using the `child_pids` argument in `publish_update` in the same manner.
