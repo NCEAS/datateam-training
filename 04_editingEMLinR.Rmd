@@ -250,7 +250,7 @@ The `physical1` and `attributeList1` elements are then used to create the `dataT
 
 ```{r, eval = F}
 dataTable1 <- new('dataTable',
-                  entityName = 'LakeSampleData.csv',
+                  entityName = 'Lake Sample Data',
                   entityDescription = 'Water sample temperature and salinity from the Eagle Mountain region',
                   physical = physical1,
                   attributeList = attributeList1)
