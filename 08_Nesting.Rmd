@@ -130,7 +130,7 @@ write_eml(eml_parent, path)
 metadata_parent <- publish_object(mnTest, path = path, format_id = format_eml())
 ```
   
-Finally, we create a resource map for the parent package. We nest the two child data packages using the `child_pids` argument in `create_resource_map`.  
+Finally, we create a resource map for the parent package. We nest the two child data packages using the `child_pids` argument in `create_resource_map`.  Note that these `child_pids` are pids for the resource maps of the child packages, NOT the metadata pids.
   
 ```{r}
 resourceMap_parent <- create_resource_map(mnTest, 

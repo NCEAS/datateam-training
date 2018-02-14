@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<meta name="date" content="2018-02-01">
+<meta name="date" content="2018-02-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -326,7 +326,7 @@ path =<span class="st"> &quot;/home/YOURUSERNAME/eml_parent.xml&quot;</span>
 <li>Next, we will publish the parent metadata to the test node.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metadata_parent &lt;-<span class="st"> </span><span class="kw">publish_object</span>(mnTest, <span class="dt">path =</span> path, <span class="dt">format_id =</span> <span class="kw">format_eml</span>())</code></pre></div>
-<p>Finally, we create a resource map for the parent package. We nest the two child data packages using the <code>child_pids</code> argument in <code>create_resource_map</code>.</p>
+<p>Finally, we create a resource map for the parent package. We nest the two child data packages using the <code>child_pids</code> argument in <code>create_resource_map</code>. Note that these <code>child_pids</code> are pids for the resource maps of the child packages, NOT the metadata pids.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resourceMap_parent &lt;-<span class="st"> </span><span class="kw">create_resource_map</span>(mnTest, 
                                           <span class="dt">metadata_pid =</span> metadata_parent,
                                           <span class="dt">child_pids =</span> <span class="kw">c</span>(resourceMap2013, resourceMap2014))</code></pre></div>
