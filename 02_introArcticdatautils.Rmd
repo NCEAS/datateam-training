@@ -15,10 +15,16 @@ options(dataone_test_token = "...")
 Next, please be sure these packages are loaded:
 ```{r load libraries, message=FALSE}
 library(devtools)
-library(arcticdatautils)
 library(dataone)
 library(datapack)
 ```
+
+Now install a couple of packages:
+```{r, eval = F}
+install.packages('remotes'); library(remotes)
+remotes::install_github("nceas/arcticdatautils"); library(arcticdatautils)
+```
+
 
 ### Set environment
 

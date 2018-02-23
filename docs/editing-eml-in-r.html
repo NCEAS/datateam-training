@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<meta name="date" content="2018-02-14">
+<meta name="date" content="2018-02-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -233,9 +233,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This chapter is a practical tutorial for using the EML package to read, edit, write, and validate EML documents. Much of this information can also be found in the vignettes for the <a href="https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd">EML package</a>.</p>
 <p>First, load in some packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(EML)
-<span class="kw">library</span>(XML)  
-<span class="kw">library</span>(digest)
-<span class="kw">library</span>(arcticdatautils)</code></pre></div>
+<span class="kw">library</span>(XML)  </code></pre></div>
+<pre><code>## Warning: package &#39;XML&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(digest)</code></pre></div>
+<pre><code>## Warning: package &#39;digest&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arcticdatautils)</code></pre></div>
 <p>Set a path to a local copy of the EML that you would like to edit, and read the EML into R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> &#39;data/glacier_metadata.xml&#39;</span>
 eml &lt;-<span class="st"> </span><span class="kw">read_eml</span>(path1)</code></pre></div>

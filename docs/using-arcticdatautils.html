@@ -25,7 +25,7 @@
 <meta name="author" content="Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter">
 
 
-<meta name="date" content="2018-02-14">
+<meta name="date" content="2018-02-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,9 +235,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</code></pre></div>
 <p>Next, please be sure these packages are loaded:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
-<span class="kw">library</span>(arcticdatautils)
 <span class="kw">library</span>(dataone)
 <span class="kw">library</span>(datapack)</code></pre></div>
+<p>Now install a couple of packages:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;remotes&#39;</span>); <span class="kw">library</span>(remotes)
+remotes::<span class="kw">install_github</span>(<span class="st">&quot;nceas/arcticdatautils&quot;</span>); <span class="kw">library</span>(arcticdatautils)</code></pre></div>
 <div id="set-environment" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Set environment</h3>
 <p>Once we have our libraries loaded, we need to tell R with which repo we want to work. If we are working on the production site, you can set the coordinating node (<code>cn</code>) and member node (<code>mn</code>) this way:</p>
