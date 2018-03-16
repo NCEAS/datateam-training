@@ -1,0 +1,19 @@
+language: r
+pandoc_version: 2.1.1
+sudo: false
+cache: packages
+script:
+  - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN #set in travis-ci dashboard
+  on:
+    branch: master
+  local_dir: docs
+addons:
+  apt:
+    packages:
+      - librdf0-dev
+      - libnetcdf-dev
+      - r-cran-ncdf4
