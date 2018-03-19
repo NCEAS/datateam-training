@@ -15,7 +15,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones' paper on [effective data management](http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full) to learn how we will be organizing datasets prior to archival.
+Read Matt Jones' paper on [effective data management](http://www.jstor.org/stable/pdf/bullecosociamer.90.2.205.pdf?refreqid=excelsior:086f3755ac689fab9f491f083875cb0c) to learn how we will be organizing datasets prior to archival.
 
 ## Using DataONE
 
