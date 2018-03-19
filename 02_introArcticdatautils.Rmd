@@ -1,4 +1,4 @@
-#Using arcticdatautils
+# Using arcticdatautils
 
 New data team members should complete exercises [two](#exercise2) and [three](#exercise3) as part of training.
 
