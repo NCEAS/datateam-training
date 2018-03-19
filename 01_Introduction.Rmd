@@ -15,7 +15,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones' paper on [effective data management](http://www.jstor.org/stable/pdf/bullecosociamer.90.2.205.pdf?refreqid=excelsior:086f3755ac689fab9f491f083875cb0c) (click [here](https://drive.google.com/file/d/12LAl85HYOArgjR-8p7ZHM-VPD9R1zv8n/view?usp=sharing) if the first link doesn't work) to learn how we will be organizing datasets prior to archival.
+Read Matt Jones' paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
 
 ## Using DataONE
 
@@ -51,7 +51,7 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 ### A note on scripts
 
-To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`.
+To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [Naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
 
 ### Exercise 1 {#exercise1}
 
