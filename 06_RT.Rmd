@@ -14,7 +14,7 @@ three separate interfaces:
 
 ![](images/Frontpage.png) 
 
-This is what you see first  
+This is what you see first   
 
 1. Home - brings you to this homepage  
 2. Tickets - to search for tickets (also see number 5)  
