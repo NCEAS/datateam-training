@@ -6,7 +6,7 @@ knitr::opts_chunk$set(eval = F)
 
 ## Introduction  
 
-This document is a practical tutorial for creating nesting relationships between data packages on the DataONE member nodes (MNs).  
+This document is a tutorial for creating nesting relationships between data packages on the DataONE member nodes (MNs). 
 
 Data packages on MNs can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common "parent" data package.  
 
