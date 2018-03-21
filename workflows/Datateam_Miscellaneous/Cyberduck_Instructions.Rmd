@@ -1,0 +1,13 @@
+## Cyberduck Instructions {#Cyberduck_Instructions}
+
+To use Cyberduck to transfer local files onto the Datateam server:
+
+1) Open Cyberduck.
+2) Check that you have the latest version (Cyberduck -> Check for Update...). If not, download and install the latest (you may need Jesse or Jeanette to enter a pw).
+3) Click "Open Connection".
+4) From the drop-down, choose "SFTP (Secure File Transfer Protocol)".
+5) Enter "datateam.nceas.ucsb.edu" for Server.
+6) Enter your username and password.
+7) Connect.
+
+From here, you can drag and drop files to and from the server.
