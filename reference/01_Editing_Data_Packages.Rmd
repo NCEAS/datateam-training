@@ -1,0 +1,10 @@
+#Editing Data Packages
+
+```{r, child = '../workflows/Editing_Data_Packages/Setting_DataONE_Nodes.Rmd'}
+```
+
+```{r, child = '../workflows/Editing_Data_Packages/Publishing_an_Object.Rmd'}
+```
+
+```{r, child = '../workflows/Editing_Data_Packages/Create_a_Resource_Map.Rmd'}
+```

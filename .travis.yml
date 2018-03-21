@@ -4,6 +4,7 @@ sudo: false
 cache: packages
 script:
   - Rscript -e "xfun::in_dir('training', bookdown::render_book('index.Rmd', 'bookdown::gitbook'))"
+  - Rscript -e "xfun::in_dir('reference', bookdown::render_book('index.Rmd', 'bookdown::gitbook'))"
 deploy:
   provider: pages
   skip_cleanup: true

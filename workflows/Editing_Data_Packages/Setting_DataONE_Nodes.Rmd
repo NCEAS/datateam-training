@@ -6,22 +6,22 @@ Tell R which repo you want to work with by setting the `Coordinating Node` (cn) 
 
 ### Test Nodes
 ```{r, eval = F}
-# ADC
+# ADC (test.arcticdata.io)
 cn <- dataone::CNode('STAGINGNEW')
 mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 
-# KNB
+# KNB (dev.nceas.ucsb.edu)
 cn <- dataone::CNode("STAGING2")
 mn <- dataone::getMNode(cn, "urn:node:mnTestKNB")
 ```
 
 ### Production Nodes
 ```{r, eval = F}
-# ADC
+# ADC (arcticdata.io)
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 
-# KNB
+# KNB (knb.ecoinformatics.org)
 cn <- dataone::CNode("PROD")
 mn <- dataone::getMNode(cn, "urn:node:KNB")
 ```

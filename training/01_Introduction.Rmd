@@ -2,8 +2,6 @@
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
 
-New data team members should complete [Exercise 1](#exercise1) as part of training.
-
 ## Open science background reading
 
 Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC. We encourage you to follow the links within these pages to gain a deeper understanding.
@@ -29,17 +27,8 @@ All of the work that we do at NCEAS is done on our remote server, datateam.nceas
 
 We access RStudio for our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
 
-### Cyberduck instructions
-
-To use Cyberduck to transfer local files onto the Datateam server:
-
-1) Open Cyberduck.
-2) Check that you have the latest version (Cyberduck -> Check for Update...). If not, download and install the latest (you may need Jesse or Jeanette to enter a pw).
-3) Click "Open Connection".
-4) From the drop-down, choose "SFTP (Secure File Transfer Protocol)".
-5) Enter "datateam.nceas.ucsb.edu" for Server.
-6) Enter your username and password.
-7) Connect.
+```{r, child = '../workflows/Datateam_Miscellaneous/Cyberduck_Instructions.Rmd'}
+```
 
 From here, you can drag and drop files to and from the server.
 
@@ -53,7 +42,7 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [Naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
 
-### Exercise 1 {#exercise1}
+### Exercise 1 {#exercise1 .excercise}
 
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
 * Reformat the table using R under the guidelines in the journal article on effective data management.
