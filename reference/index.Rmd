@@ -15,7 +15,7 @@ description: "This is a reference resource for NCEAS data team members working o
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/datateam_miscellaneous/"
-sections <- dir(path = chapter)
+sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```
 

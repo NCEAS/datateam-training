@@ -7,10 +7,14 @@ Although the majority of system metadata changes that need to be made are done a
 ```{r, child = '../workflows/edit_data_packages/edit_sysmeta.Rmd'}
 ```
 
+```{r, child = '../workflows/edit_data_packages/set_rights_and_access.Rmd'}
+```
+
 ### Exercise 5 {.exercise}
 * Read the system metadata in from the data file you uploaded in [previously](#exercise-4).
 * Check to make sure the `fileName` and `formatId` are set correctly.
 * Update the system metadata if necessary.
+* Set the rights and access for all objects with your ORCiD.
 
 
 

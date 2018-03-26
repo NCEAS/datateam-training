@@ -1,9 +1,9 @@
 bookdown::gitbook:
-  css: styles.css
+  css: ../styles.css
   split_by: chapter
   config:
     toc:
-      collapse: chapter
+      collapse: section
       before: |
         <li><a href="./">Data Team Training</a></li>
       after: |

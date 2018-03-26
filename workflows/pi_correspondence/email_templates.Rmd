@@ -1,7 +1,7 @@
-# Edit data packages
+## Email Templates
 
 ```{r, echo = FALSE}
-chapter <- "../workflows/edit_data_packages/"
+chapter <- "email_templates/"
 sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```

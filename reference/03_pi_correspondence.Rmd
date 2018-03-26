@@ -1,7 +1,7 @@
-# Edit data packages
+# PI correspondence
 
 ```{r, echo = FALSE}
-chapter <- "../workflows/edit_data_packages/"
+chapter <- "../workflows/pi_correspondence/"
 sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```

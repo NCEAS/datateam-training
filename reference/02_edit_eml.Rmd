@@ -2,7 +2,7 @@
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/edit_eml/"
-sections <- dir(path = chapter)
+sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```
 

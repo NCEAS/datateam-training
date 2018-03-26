@@ -1,0 +1,56 @@
+## Navigate RT
+
+The [RT ticketing system](https://support.nceas.ucsb.edu/rt/) is how we
+communicate with folks interacting with the Arctic Data Center.  
+We use it for managing submissions, accessing issues, etc. It consists of
+three separate interfaces:  
+[Front Page](#front-page)  
+[All Tickets](#all-tickets)  
+[Ticket Page](#example-ticket)
+
+### Front page 
+
+![](../images/front_page_rt.png) 
+
+This is what you see first   
+
+1. Home - brings you to this homepage  
+2. Tickets - to search for tickets (also see number 5)  
+3. Tools - not needed  
+4. New Ticket - create a new ticket  
+5. Search - Type in the ticket number to quickly navigate to a ticket  
+6. Queue - Lists all of the tickets currently in arcticdata and their status  
+ + New = unopened tickets that require attention  
+ + Open = tickets currently open, under investigation by team member  
+ + Stalled = tickets awaiting response from PI/Submitter  
+7. Tickets I Own - These are the current open tickets that are claimed by me  
+8. Unowned Tickets - Newest tickets awaiting claim  
+9. Ticket Status - Status and how long ago it was created  
+10. Take - claim the ticket as yours  
+
+### All tickets
+
+![](../images/all_tickets_rt.png)   
+
+This is the queue interface from number 6 of the Front page  
+1. Ticket number and title  
+2. Ticket status  
+3. Owner - who has claimed the ticket  
+
+### Example ticket 
+
+![](../images/example_ticket_rt.png)  
+
+1. Title - Include the PI's name for reference  
+2. Display - homepage of the ticket  
+3. History - Comment/Email history, see bottom of Display page  
+4. Basics - edit the title, status and ownership here  
+5. People - option to add more people to the watchlist for a given ticket conversation. Note that user/ PI/ submitter email addresses should be listed as "Requestors". Requestors are only emailed on "Replys", not "Comments". Ensure your ticket has a Requestor before attempting to contact users/ PIs/ submitters.   
+6. Links - option to "Merge into" another ticket number if this is part of a larger conversation. Also option to add a reference to other ticket number  
+7. Actions  
+ + Reply - message the submitter/ PI/ all watchers  
+ + Comment - attach internal message (no submitters, only Data Teamers)  
+ + Open It - Open the ticket  
+ + Stall - submitter has not responded in greater than 1 month  
+ + Resolve - ticket completed  
+8. History - message history and option to reply (to submitter and beyond) or comment (internal message)
