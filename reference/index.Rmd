@@ -1,17 +1,4 @@
---- 
-title: "NCEAS Data Team Reference"
-author: "Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter, Irene Steves"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: 
-  bookdown::gitbook:
-    css: ../styles.css
-documentclass: book
-github-repo: rstudio/datateam-training
-description: "This is a reference resource for NCEAS data team members working on the SASAP and Arctic Data Center Projects"
----
-
-# Datateam Miscellaneous {#Datateam_Miscellaneous}
+# Datateam miscellaneous
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/datateam_miscellaneous/"
