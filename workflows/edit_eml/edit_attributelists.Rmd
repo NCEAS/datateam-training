@@ -17,21 +17,21 @@ attributes <- attributeList$attributes
 
 Attribute information should be stored in a `data.frame` with the following columns.
 
-* **attributeName**: The name of the attribute as listed in the csv. Required. eg: "c_temp"
-* **attributeLabel**: A descriptive label that can be used to display the name of an attribute. It is not constrained by system limitations on length or special characters. Optional. eg: "Temperature (Celsius)"
-* **attributeDefinition**: Longer description of the attribute, including the required context for interpreting the attributeName. Required. eg: "The nearshore water temperature in the upper intertidal zone, measured in degrees celsius."
+* **attributeName**: The name of the attribute as listed in the csv. Required. e.g.: "c_temp"
+* **attributeLabel**: A descriptive label that can be used to display the name of an attribute. It is not constrained by system limitations on length or special characters. Optional. e.g.: "Temperature (Celsius)"
+* **attributeDefinition**: Longer description of the attribute, including the required context for interpreting the attributeName. Required. e.g.: "The near shore water temperature in the upper inter-tidal zone, measured in degrees Celsius."
 * **measurementScale**: One of: nominal, ordinal, dateTime, ratio, interval. Required.
-    + *nominal*: unordered categories or text. eg: (Male, Female) or (Yukon River, Kuskokwim River)
-    + *ordinal*: ordered categories. eg: Low, Medium, High
-    + *dateTime*: date or time values from the Gregorian calendar. eg: 01-01-2001
+    + *nominal*: unordered categories or text. e.g.: (Male, Female) or (Yukon River, Kuskokwim River)
+    + *ordinal*: ordered categories. e.g.: Low, Medium, High
+    + *dateTime*: date or time values from the Gregorian calendar. e.g.: 01-01-2001
     + *ratio*: measurement scale with a meaningful zero point in nature. Ratios are proportional to the measured variable. e.g.: 0 Kelvin represents a complete absence of heat. 200 Kelvin is half as hot as 400 Kelvin. 1.2 meters per second is twice as fast as 0.6 meters per second.
     + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or latitude and longitude coordinates, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius
 * **domain**: One of: textDomain, enumeratedDomain, numericDomain, dateTimeDomain. Required.
     + *textDomain*: text that is free-form, or matches a pattern
-    + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. eg: CASC = Cascade Lake, HEAR = Heart Lake
+    + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. e.g.: CASC = Cascade Lake, HEAR = Heart Lake
     + *dateTimeDomain*: dateTime attributes
     + *numericDomain*: attributes that are numbers (either ratio or interval)
-* **formatString**: Required for dateTimeDomain, NA otherwise. Format string for dates, eg "MM/DD/YYYY".
+* **formatString**: Required for dateTimeDomain, NA otherwise. Format string for dates, e.g. "MM/DD/YYYY".
 * **definition**: Required for textDomain, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.
 * **unit**: Required for numericDomain, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found here: https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html#StandardUnitDictionary
 * **numberType**: Required for numericDomain, NA otherwise. Options are "real", "natural", "whole", "integer".
@@ -39,7 +39,7 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *natural*: non-zero positive counting numbers (1,2,3...)
     + *whole*: positive counting numbers and zero (0,1,2,3...)
     + *integer*: positive and negative counting numbers and zero (...-2,-1,0,1,2...)
-* **missingValueCode**: Code for missing values (eg: '-999', 'NA', 'NaN'). NA otherwise. Note that an NA missing value code should be a string, 'NA', and numbers should also be strings, '-999.'
+* **missingValueCode**: Code for missing values (e.g.: '-999', 'NA', 'NaN'). NA otherwise. Note that an NA missing value code should be a string, 'NA', and numbers should also be strings, '-999.'
 * **missingValueCodeExplanation**: Explanation for missing values, NA if no missing value code exists.
 
 You can create attributes by hand by typing them out in R following a workflow similar to that as below.
@@ -61,7 +61,7 @@ attributes <- data.frame(
     stringsAsFactors = FALSE)
 ```
 
-Howerver, typing this out in R can be a major pain. Luckily, there is a shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will autofill some fields for you), or to edit an existing attribute table, or create attributes from scratch using the following commands (the commands will launch a shiny app in your web browser).
+However, typing this out in R can be a major pain. Luckily, there is a shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you), or to edit an existing attribute table, or create attributes from scratch using the following commands (the commands will launch a shiny app in your web browser).
 
 ```{r, eval = FALSE}
 # From data (recommended)
@@ -85,7 +85,7 @@ standardUnits <- get_unitList()
 View(standardUnits$units)
 ```
 
-Additionally, `datamgmt::create_attributes_table` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help autogenerate a custom unit.
+Additionally, `datamgmt::create_attributes_table` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit.
 
 ``` {r, eval = FALSE}
 datamgmt::get_custom_units("your_unit")
@@ -100,14 +100,14 @@ Note, `datamgmt::create_attributes_table` calls `datamgmt::get_custom_units` for
 * **abbreviation**
 * **definition**
 
-`datamgmt::get_custom_units` will autogenerate many of these fields for you (**but don't just assume the autogeneration will be perfect, always ensure the autogeneration correctly handles your unit**)
+`datamgmt::get_custom_units` will auto-generate many of these fields for you (**but don't just assume the autogeneration will be perfect, always ensure the autogeneration correctly handles your unit**)
 
 ### Edit Factors
 
 For attributes that are `enumeratedDomains`, a table is needed with three columns: `attributeName`, `code`, and `definition`.
 
 * **attributeName** should be the same as the `attributeName` within the attribute table and repeated for all codes belonging to a common attribute. 
-* **code** should contain all unquie values of the given `attributeName` that exist within the actual data.
+* **code** should contain all unique values of the given `attributeName` that exist within the actual data.
 * **definition** should contain a plain text definition that describes each code.
 
 There is a tab in the `datamgmt::create_attributes_table` app that will help you build factors.
@@ -120,7 +120,7 @@ Location <- c(CASC = 'Cascade Lake', CHIK = 'Chikumunik Lake', HEAR = 'Heart Lak
 Region <- c(W_MTN = 'West region, locations West of Eagle Mountain', E_MTN = 'East region, locations East of Eagle Mountain')
 ```
 
-The definitions are then written into a dataframe using the names of the named character vectors, and their definitions.
+The definitions are then written into a data frame using the names of the named character vectors, and their definitions.
 
 ```{r, eval = FALSE}
 factors <- rbind(data.frame(attributeName = 'Location', code = names(Location), definition = unname(Location)),

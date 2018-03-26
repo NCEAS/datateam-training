@@ -5,7 +5,7 @@ Before responding to a new submission use this checklist to review the submissio
 - [Title](#poor-title)
     - Is descriptive of the work (provides enough information to understand the contents at a general scientific level)
     - Provides a location of the work
-    - Provides a timeframe of the work
+    - Provides a time frame of the work
 - [Abstract](#poor-abstract)
     - Describes the DATA
 - [Data](#poor-data)

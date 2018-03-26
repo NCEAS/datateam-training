@@ -10,7 +10,7 @@ NCEASadd <- new("address",
                 postalCode = '93101')
 ```
 
-The creator, contact, and associated party classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our dataset creator.
+The creator, contact, and associated party classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our data set creator.
 
 ```{r, eval = FALSE}
 JC_creator <- arcticdatautils::eml_creator("Jeanette", 

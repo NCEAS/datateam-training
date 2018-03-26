@@ -14,13 +14,13 @@ A data package generally consists of at least 3 "objects" or files.
 
 ## About identifiers
 
-Each object (metadata files, data files, resource maps) on the ADC or KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a dataset, for example [here](https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z), you can find the resource map identifier in the URL (`resource_map_doi:10.18739/A2836Z`), the metadata identifer in the "General > Identifier" section of the metadata record (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
+Each object (metadata files, data files, resource maps) on the ADC or KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a data set, for example [here](https://arcticdata.io/catalog/#view/resource_map_doi:10.18739/A2836Z), you can find the resource map identifier in the URL (`resource_map_doi:10.18739/A2836Z`), the metadata identifier in the "General > Identifier" section of the metadata record (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
 
 Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the `arcticdatautils::update_object` or `arcticdatautils::publish_update` commands on the *latest versions* of all objects to ensure that the version chain is maintained.
 
 ## Uploading packages using R
 
-We will be using R to connect to the [NSF Arctic Data Center (ADC)](https://arcticdata.io) data repository to push and pull edits. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your [ORCiD](https://orcid.org/register), hovering over your name and clicking on "My profile", then navigating to "Setings" and "Authentication Token", copying the "Token for DataONE R", and pasting and running it in your R console.
+We will be using R to connect to the [NSF Arctic Data Center (ADC)](https://arcticdata.io) data repository to push and pull edits. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your [ORCiD](https://orcid.org/register), hovering over your name and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and pasting and running it in your R console.
 
 **This token is your identity on these sites, please treat it as you would a password** (ie. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 
@@ -37,7 +37,7 @@ library(EML)
 library(XML)
 ```
 
-If any package could not be loaded, use the following commad (replacing package_name with the actual package name) to install the package.
+If any package could not be loaded, use the following command (replacing package_name with the actual package name) to install the package.
 
 ```{r, eval = F}
 install.package("package_name")
@@ -69,7 +69,7 @@ mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 
 * Locate the data package you published in [Exercise 1](#exercise-1) by navigating to the "My Profile" section on [test.arcticdata.io](https://test.arcticdata.io).
 * Download the metadata and data files and transfer them to the Datateam server.
-* Using the functions described in the section above, pubish your metadata record and data file to the site. (When you do so, make sure you save the `pids` to different variables in R...) i.e.
+* Using the functions described in the section above, publish your metadata record and data file to the site. (When you do so, make sure you save the `pids` to different variables in R...) i.e.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
 data_pid <- arcticdatautils::publish_object(...)
@@ -77,7 +77,7 @@ metadata_pid <- arcticdatautils::publish_object(...)
 ```
 
 * Then create a `resource_map` containing your data and metadata.
-* View your new dataset (which is identical to the one you created previously) by appending the `metadata` `pid` the end of the URL test.arcticdata.io/#view/... 
+* View your new data set (which is identical to the one you created previously) by appending the `metadata` `pid` the end of the URL test.arcticdata.io/#view/... 
 
 
 

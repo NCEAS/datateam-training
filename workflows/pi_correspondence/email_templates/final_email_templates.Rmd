@@ -20,7 +20,7 @@
 >We definitely support updating a data set that has already been assigned a DOI, but when we do so we mark it as a new revision that replaces the original and give it its own DOI. We do that so that any citations of the original version of the data set remain valid (i.e.: after the update, people still know exactly which data were used in the work citing it).
 
 *Sending finalized URL before resolving ticket*
-[NOTE: the URL format is very specific here, please try to follow it exactly (but subsitute in the actual DOI of interest)]
+[NOTE: the URL format is very specific here, please try to follow it exactly (but substitute in the actual DOI of interest)]
 >Here is the link to your finalized data package:
 
 >https://doi.org/10.00000/X00X0X

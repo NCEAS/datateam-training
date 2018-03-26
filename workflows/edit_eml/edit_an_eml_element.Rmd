@@ -28,7 +28,7 @@ new_title <- EML::read_eml("<title>New Title 2</title>")
 eml@dataset@title[[1]] <- new_title
 ```
 
-Note, without specifiying which title with `[[1]]`, the following code will give you the error `Error in (function (cl, name, valueClass) : assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”; is(value, "ListOftitle") is not TRUE`.
+Note, without specifying which title with `[[1]]`, the following code will give you the error `Error in (function (cl, name, valueClass) : assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”; is(value, "ListOftitle") is not TRUE`.
 
 ``` {r, eval = FALSE}
 # Bad Example
@@ -36,14 +36,14 @@ new_title <- EML::read_eml("<title>New Title 2</title>")
 eml@dataset@title <- new_title
 ```
 
-The above gives an error because `eml@dataset@title` is a slot for a list and `new_title` is a single object. Therefore you must either specifiy which title you want to replace as was done above by specifying the first title in the list with `[[1]]` or turn `new_title` into a list/vector utilizing the `c()` command as follows.
+The above gives an error because `eml@dataset@title` is a slot for a list and `new_title` is a single object. Therefore you must either specify which title you want to replace as was done above by specifying the first title in the list with `[[1]]` or turn `new_title` into a list/vector utilizing the `c()` command as follows.
 
 ``` {r, eval = FALSE}
 new_title <- EML::read_eml("<title>New Title 2</title>")
 eml@dataset@title <- c(new_title)
 ```
 
-However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desireable so be careful.
+However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desirable so be careful.
 
 One final note, a benefit of this method to edit EML objects is that [advanced text features can be easily added using this workflow](#advanced-eml-text).
 

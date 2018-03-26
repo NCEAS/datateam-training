@@ -1,6 +1,6 @@
 ## Set coverages
 
-Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a dataset. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
+Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a data set. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
 
 ```{r, eval = FALSE}
 coverage <- EML::set_coverage(beginDate = '2012-01-01', 

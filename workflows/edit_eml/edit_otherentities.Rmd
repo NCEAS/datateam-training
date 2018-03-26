@@ -2,7 +2,7 @@
 
 ### Remove otherEntities
 
-To remove an `otherEntity` use the following command. This may be useful if a data object is originally listed as an `otherEntity` and then transfered to a `dataTable`.
+To remove an `otherEntity` use the following command. This may be useful if a data object is originally listed as an `otherEntity` and then transferred to a `dataTable`.
 
 ```{r, eval = FALSE}
 eml@dataset@otherEntity[[i]] <- NULL

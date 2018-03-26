@@ -74,7 +74,7 @@ NA's are defined.
 
 > Thank you for your submission to the Arctic Data Center! Based on the NSF awards, your most recent submission and the [PACKAGE NAME] parent package seem like disparate projects, is that correct?
 
-> Nesting data packages under a common “parent” is beneficial so that all packages funded by the same award can be found in one place. This way additional packages can be added to the group without altering existing ones. Once we process all the “child” data pacakges you upload, we can group them under the same “parent”. The parent does not need to contain any data files itself, but will be populated with metadata only.
+> Nesting data packages under a common “parent” is beneficial so that all packages funded by the same award can be found in one place. This way additional packages can be added to the group without altering existing ones. Once we process all the “child” data packages you upload, we can group them under the same “parent”. The parent does not need to contain any data files itself, but will be populated with metadata only.
 
 #### Poor methods
 
