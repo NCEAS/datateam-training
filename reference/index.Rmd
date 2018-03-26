@@ -1,5 +1,5 @@
 --- 
-title: "NCEAS Data Team Training"
+title: "NCEAS Data Team Reference"
 author: "Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter, Irene Steves"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -13,5 +13,11 @@ description: "This is a reference resource for NCEAS data team members working o
 
 # Datateam Miscellaneous {#Datateam_Miscellaneous}
 
-```{r, child = '../workflows/Datateam_Miscellaneous/Cyberduck_Instructions.Rmd'}
+```{r, echo = FALSE}
+chapter <- "../workflows/datateam_miscellaneous/"
+sections <- dir(path = chapter)
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
 ```

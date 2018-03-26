@@ -1,0 +1,11 @@
+# Edit data packages
+
+```{r, echo = FALSE}
+chapter <- "../workflows/edit_data_packages/"
+sections <- dir(path = chapter)
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+

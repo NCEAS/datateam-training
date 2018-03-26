@@ -1,0 +1,48 @@
+## Update a package
+
+To update a package, use `arcticdatautils::publish_update`. This function has an argument for adding data PIDs (or otherwise including existing data PIDs to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.
+
+First make sure you have the package you want to update, [loaded into R](#get-package-and-eml).
+
+### Updating metadata
+
+If you need to make edits to the metadata, do so. Then write the `eml` metadata to a file.
+
+``` {r, eval = F}
+eml_path <- "path/to/metadata/science_metadata.xml"
+write_eml(eml, eml_path)
+```
+
+Next verify the eml is valid.
+
+``` {r, eval = F}
+EML::eml_validate(eml_path)
+```
+
+The above should return `TRUE` if the `eml` is valid. If it returns `FALSE`, fix the eml file, use `write_eml()` to save the fixed file, and retry.
+
+### Updating data
+
+If you need to make edits to the data, [do so](#update-an-object).
+
+### Publish update
+
+Finally, update your data package at the `Member Node`.
+
+```{r, eval = FALSE}
+update <- arcticdatautils::publish_update(mn, 
+                                          metadata_pid = pkg$metadata,
+                                          resource_map_pid =pkg$resource_map,
+                                          data_pids = pkg$data,
+                                          child_pids = NULL,
+                                          use_doi = FALSE, 
+                                          metadata_path = eml_path, 
+                                          public = FALSE,
+                                          check_first = TRUE)
+```
+
+If a package is ready to be public, you can change the `public` argument in the `publish_update` call to `TRUE`.
+
+If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the `use_doi` argument to `TRUE`. **This should only be done after the package is finalized and has been thoroughly reviewed!**
+
+If the package has children change `child_pids` to `pkg$child_packages`.

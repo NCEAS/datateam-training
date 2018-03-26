@@ -1,0 +1,10 @@
+## Navigate EML
+
+The first task when editing an eml file is navigating the eml file. An eml file is organized in a structure that contains many lists nested within other lists. Visualizing the eml structure, it resembles a tree with branches that split into smaller branches which split into even smaller branches and so on. To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the eml structure. However, you have to tell R where you want to go in the structure when you use the `@` symbol. An example is if you want to go into the dataset of your eml you would use the command ```eml@dataset```. If you want to go to the creators of your dataset you would use ```eml@dataset@creator```. Note, here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of avaliable locations in the structure will appear (e.g., `eml@<TAB>`):
+
+![RStudio Autocompletion Example](../images/rstudio-autocomplete.png)
+
+Note if you hit tab, and the only option is `.Data`, this implies most likely that you are trying to go deeper within a list. For example ```eml@dataset@creator@<TAB>``` wil return only `.Data`. This is because `creator` is a list object (i.e. you can have multiple creators). If you want to go deeper into the eml structure, you first must tell R which creator you are interseted in. Do this by writing `[[i]]` first where `i` is index of the creator you are concerned with. 
+For example, if you want to look at the first creator i = 1. Now ```eml@dataset@creator[[1]]@<TAB>``` will give you many more options. Note, `.Data` also sometimes means you have reached the end of a branch in the eml structure.
+
+Another greate resource for navigating the eml structure is [looking at the schema which defines the structure](https://github.com/NCEAS/eml). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.

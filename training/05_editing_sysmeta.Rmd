@@ -1,0 +1,16 @@
+# System metadata
+
+Every object on the ADC (or on the KNB (the 'Knowledge Network for Biocomplexity')) has "system metadata". An object's system metadata has information about the file itself, such as the name of the file, the format, who the rights holder is, and what the access policy is (amongst other things). Sometimes we will need to edit system metadata in order to make sure that things on the webpage display correctly, or to ensure a file downloads from the website with the correct file name and extension.
+
+Although the majority of system metadata changes that need to be made are done automatically, sometimes we need to change aspects of the system metadata (or 'sysmeta' for short) manually.
+
+```{r, child = '../workflows/edit_data_packages/edit_sysmeta.Rmd'}
+```
+
+### Exercise 5 {.exercise}
+* Read the system metadata in from the data file you uploaded in [previously](#exercise-4).
+* Check to make sure the `fileName` and `formatId` are set correctly.
+* Update the system metadata if necessary.
+
+
+

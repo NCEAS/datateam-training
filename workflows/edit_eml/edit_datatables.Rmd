@@ -1,0 +1,14 @@
+## Edit dataTables
+
+To edit a `dataTable`, first [edit/create an `attributeList`](#edit-attributelists) and [set the physical](#set-physical). 
+Then create a new dataTable with the `new()` command as follows.
+
+```{r, eval = FALSE}
+dataTable <- new("dataTable",
+                 entityName = "A descriptive name for the data (does not need to be the same as the data file)",
+                 entityDescription = "A description of the data",
+                 physical = physical,
+                 attributeList = attributeList)
+```
+
+The `dataTable` must then be set to the eml i.e. `eml@dataset@dataTable[[i]] <- dataTable`.

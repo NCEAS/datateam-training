@@ -1,0 +1,24 @@
+## Update an object
+
+To update an object (a data file), use `arcticdatautils::update_object`.
+
+First make sure you have the package that contains the data you want to update, [loaded into R](#get-package-and-eml).
+
+Then define the path to the updated object.
+
+``` {r, eval = FALSE}
+data_path <- "path/to/data/file.csv"
+```
+
+Then update the object at the `Member Node`. When updating the object, it is best practice to update your `pkg` in R at the same time. In the following code, replace `i` with the index of the data pid you want to update.
+
+``` {r, eval = FALSE}
+pkg$data[i] <- update_object(mn,
+                     pid <- pkg$data[i],
+                     path <- data_path,
+                     format_id = NULL,
+                     new_pid = NULL,
+                     sid = NULL)
+```
+
+Note that you will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).

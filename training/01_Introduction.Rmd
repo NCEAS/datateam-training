@@ -27,22 +27,20 @@ All of the work that we do at NCEAS is done on our remote server, datateam.nceas
 
 We access RStudio for our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
 
-```{r, child = '../workflows/Datateam_Miscellaneous/Cyberduck_Instructions.Rmd'}
+```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
 ```
 
-From here, you can drag and drop files to and from the server.
-
-### A note on paths
+## A note on paths
 
 On the servers, paths to files in your folder always start with `/home/yourusername/...`.
 
 When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
 
-### A note on scripts
+## A note on scripts
 
 To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [Naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
 
-### Exercise 1 {#exercise1 .excercise}
+## Exercise 1 {.exercise}
 
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
 * Reformat the table using R under the guidelines in the journal article on effective data management.

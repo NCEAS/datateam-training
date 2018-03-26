@@ -1,0 +1,42 @@
+
+# Editing EML in R
+
+This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd)). For some additional background, also check out [this paper](data/eml-principles.pdf) on EML and the principles for metadata creation.
+
+Once you have an [eml file loaded into R](#get-package-and-eml), you can use R to edit the eml file.
+
+```{r, child = '../workflows/edit_eml/navigate_eml.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/edit_attributelists.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_physical.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/edit_datatables.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/edit_otherentities.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_methods.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
+```
+
+## Exercise 4 {.exercise}
+* Make sure your package from [before](#exercise-3) is loaded into R
+* Replace the exsiting `dataTable` with a new `dataTable` object with an attribute list and physical section you write in R using the above commands
+* Then [write, validate, and update your package](#update-a-package)
+* Use the [checklist](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md) to review your submission.
+* Make edits where necessary, and publish updates as needed
+ 
+ 

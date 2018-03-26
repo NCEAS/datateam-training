@@ -1,0 +1,5 @@
+## Set methods
+
+The methods tree in the EML section has many different options, visible in the [schema](https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png). You can create new elements in the methods tree by following the schema and using the "new" command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, `method_step <- new('methodStep')`, and using autocomplete on `method_step@`.
+
+Potentially the most useful way to set methods is by [editing with EML](#edit-eml-with-eml)

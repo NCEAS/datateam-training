@@ -1,0 +1,29 @@
+## Set DataONE nodes 
+Tell R which repo you want to work with by setting the `Coordinating Node` (cn) and `Member Node` (mn) using the appropriate code below.
+
+**A note on nodes - be very careful about what you publish on production nodes (PROD, or arcticdata.io). These nodes should NEVER be used to publish test or training datasets.**
+
+
+### Test nodes
+```{r, eval = F}
+# ADC (test.arcticdata.io)
+cn <- dataone::CNode('STAGING')
+mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
+
+# KNB (dev.nceas.ucsb.edu)
+cn <- dataone::CNode("STAGING2")
+mn <- dataone::getMNode(cn, "urn:node:mnTestKNB")
+```
+
+### Production nodes
+```{r, eval = F}
+# ADC (arcticdata.io)
+cn <- dataone::CNode('PROD')
+mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+
+# KNB (knb.ecoinformatics.org)
+cn <- dataone::CNode("PROD")
+mn <- dataone::getMNode(cn, "urn:node:KNB")
+```
+
+[More DataONE nodes can be found here.](https://cn.dataone.org/cn/v2/node)

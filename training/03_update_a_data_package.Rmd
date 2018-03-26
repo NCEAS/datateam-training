@@ -1,0 +1,22 @@
+# Update a data package
+
+This chapter will teach you how to edit an existing data package in R.
+
+```{r, child = '../workflows/edit_data_packages/get_package_and_eml.Rmd'}
+```
+
+```{r, child = '../workflows/edit_data_packages/update_an_object.Rmd'}
+```
+
+```{r, child = '../workflows/edit_data_packages/update_a_package.Rmd'}
+```
+
+## Exercise 3 {.exercise}
+
+* Locate the data package you published in the [previous exercise](#exercise-2) by navigating to the URL test.arcticdata.io/#view/...
+* Load the package and eml into R using the above commands.
+* Load the data file associated with the package into R as a `data.frame`. (Hint: use `read.csv()` to upload the data file from your computer/the server)
+* Make an edit to the data in R (e.g. change one of the colnames to `"TEST"`)
+* Save the edited data. (Hint: use `write.csv(data, row.names = FALSE)`)
+* Update the data file in the package with the edited data file using the above commands.
+* Update your package using the above commands.
