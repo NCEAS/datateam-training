@@ -1,9 +1,0 @@
-## Create a Resource Map (#Create_a_Resource_Map)
-
-If you are creating a new data package. You must create a `resource_map`. `Resource_maps` provide information about the resources in the data package (e.g. what data files should be included in the package, where is the metadata, etc.)
-
-To create a new resource map with an existing [published](#Publishin_an_Object) `metadata_pid` and or `data_pids`, use the following command.
-
-```{r create resource map, eval = FALSE}
-resource_map_pid <- arcticdatautils::create_resource_map(mn, metadata_pid = metadata_pid, data_pids = data_pids)
-```
