@@ -2,7 +2,7 @@
 
 Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a dataset. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
 
-```{r}
+```{r, eval = FALSE}
 coverage <- EML::set_coverage(beginDate = '2012-01-01', 
                               endDate = '2012-01-10', 
                               sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'),
@@ -16,7 +16,7 @@ eml@dataset@coverage <- coverage
 
 You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages.
 
-```{r}
+```{r, eval = FALSE}
 geocov1 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 1",
                boundingCoordinates = new("boundingCoordinates", 
                                          northBoundingCoordinate = new("northBoundingCoordinate", 68),
