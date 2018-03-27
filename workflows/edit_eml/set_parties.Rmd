@@ -1,0 +1,59 @@
+## Set parties
+
+To add people, with their addresses, you need to add addresses as their own object class, which you then add to the contact, creator, or associated party classes.
+
+```{r, eval = FALSE}
+NCEASadd <- new("address", 
+                deliveryPoint = "735 State St #300", 
+                city = "Santa Barbara", 
+                administrativeArea = 'CA', 
+                postalCode = '93101')
+```
+
+The creator, contact, and associated party classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our data set creator.
+
+```{r, eval = FALSE}
+JC_creator <- arcticdatautils::eml_creator("Jeanette", 
+                                           "Clark", 
+                                           "NCEAS", 
+                                           "jclark@nceas.ucsb.edu", 
+                                           phone = "123-456-7890", 
+                                           userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
+                                           address = NCEASadd)
+eml@dataset@creator <- c(JC_creator)
+```
+
+Similarly, we can set the contacts. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
+
+```{r, eval = FALSE}
+JC_contact <- arcticdatautils::eml_contact("Jeanette", 
+                                           "Clark", 
+                                           "NCEAS", 
+                                           "jclark@nceas.ucsb.edu", 
+                                           phone = "123-456-7890",  
+                                           userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
+                                           address = NCEASadd)
+JG_contact <- arcticdatautils::eml_contact("Jesse", 
+                                           "Goldstein", 
+                                           "NCEAS", 
+                                           "jgoldstein@nceas.ucsb.edu", 
+                                           phone = "123-456-7890",  
+                                           userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
+                                           address = NCEASadd)
+eml@dataset@contact <- c(JC_contact, JG_contact)
+```
+
+Finally, the associated parties are set. Note that associated parties MUST have a role defined, unlike creator or contact.
+
+```{r, eval = FALSE}
+JG_ap <- arcticdatautils::eml_associated_party("Jesse", 
+                                               "Goldstein", 
+                                               "NCEAS", 
+                                               "jclark@nceas.ucsb.edu", 
+                                               phone = "123-456-7890",  
+                                               address = NCEASadd, 
+                                               userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
+                                               role = "metaataProvider")
+eml@dataset@associatedParty <- c(JG_ap)
+```
+

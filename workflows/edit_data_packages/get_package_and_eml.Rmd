@@ -1,0 +1,27 @@
+## Get package and EML
+
+To update a package, you must load it into your R environment. After [setting your node](#set-dataone-nodes), use the following commands to load the package.
+
+``` {r, eval = FALSE}
+rm_pid <- "your_resource_map_pid"
+
+pkg <- arcticdatautils::get_package(mn,
+                                    rm_pid,
+                                    file_names = TRUE)
+```
+
+After loading the package, you can also load the eml file into R using the following command.
+
+``` {r, eval = FALSE}
+eml <- EML::read_eml(rawToChar(dataone::getObject(mn, pkg$metadata)))
+```
+
+### Tip to always have the most recent resource map
+
+When editing `resource_maps`, you always want to be working with the most recent update. To ensure you have the most recent `resource_map`, you can use the following commands.
+
+``` {r, eval = FALSE}
+rm_pid_original <- "your_original_resource_map_pid"
+all_rm_versions <- arcticdatautils::get_all_versions(mn, rm_pid_original)
+rm_pid <- all_rm_versions[length(all_rm_versions)]
+```

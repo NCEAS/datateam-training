@@ -1,0 +1,11 @@
+## Email Templates
+
+```{r, echo = FALSE}
+chapter <- "email_templates/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+

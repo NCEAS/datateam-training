@@ -1,0 +1,53 @@
+# Introduction to open science
+
+These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
+
+## Open science background reading
+
+Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC. We encourage you to follow the links within these pages to gain a deeper understanding.
+
+* [about](https://arcticdata.io/about/)
+* [submission](https://arcticdata.io/submit/)
+* [preservation](https://arcticdata.io/preservation/)
+* [history](https://arcticdata.io/history/)
+
+## Effective data management
+
+Read Matt Jones' paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
+
+## Using DataONE
+
+The **Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
+
+Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.
+
+## Working on a remote server
+
+All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
+
+We access RStudio for our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
+
+```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
+```
+
+## A note on paths
+
+On the servers, paths to files in your folder always start with `/home/yourusername/...`.
+
+When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
+
+## A note on scripts
+
+To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [Naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
+
+## Exercise 1 {.exercise}
+
+* Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
+* Reformat the table using R under the guidelines in the journal article on effective data management.
+    + If you need an R refresher, take as much time as you need to go over the [data carpentry guide.](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html).
+    + You may also find the data carpentry [lesson on `dplyr`](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) and OHI's [data wrangling chapters](http://ohi-science.org/data-science-training/dplyr.html) helpful.
+* Go to [test.arcticdata.io](https://test.arcticdata.io/#data) and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
+    + list yourself as the first 'Creator' so your test submission can easily be found,
+    + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,
+    + directly copying and pasting sections from the paper (abstract, methods, etc.) is also fine,
+    + attributes (column names) should be defined, including correct units and missing value codes.

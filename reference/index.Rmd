@@ -1,0 +1,10 @@
+# Datateam miscellaneous
+
+```{r, echo = FALSE}
+chapter <- "../workflows/datateam_miscellaneous/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```

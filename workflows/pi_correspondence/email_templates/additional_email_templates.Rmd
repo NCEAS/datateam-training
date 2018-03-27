@@ -1,0 +1,44 @@
+### Additional email templates
+
+#### Deadlines
+If the PI is checking about dates/timing:
+
+> We process submissions in the order in which they are received, and yours still has a few ahead of it in our queue. Are you facing any deadlines? If so, we may be able to expedite publication of your submission.
+
+#### Pre-assigned DOI
+If the PI needs a DOI right away:
+
+> We can provide you with a pre-assigned DOI that you can reference in your paper. However, please note that it will not become active until after we have finished processing your submission and the package is published. 
+
+#### Best practices
+
+>We noticed that the data files submitted are in _____ format. We recommend conversion of these files into a plain text/csv (OR ANOTHER APPROPRIATE OPEN-SOURCE) format in order to facilitate an accurate transfer of information to future researchers and ensure preservation of the data in perpetuity. We will perform these conversions for you. Below are some linked articles about data science best practices that the NSF Arctic Data Center adheres to:  
+DataONE - https://www.dataone.org/best-practices
+"Some Simple Guidelines for Effective Data Management" -  http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full
+"Good Enough Practices in Scientific Computing" - http://arxiv.org/pdf/1609.00037v1.pdf  
+
+#### Adding metadata via R
+
+>KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R!
+
+>[Here](https://nceas.github.io/sasap-training/materials/reproducible-analysis-in-r/data-documentation-and-publishing.html#publishing-data-from-r) are some training materials we have that use both the `dataone` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
+
+>If you prefer, there are Java, Python, Matlab, and Bash/cURL clients as well.
+
+
+####  Nesting
+
+>Nesting data sets under a common "parent" is beneficial so that all data sets funded by the same award can be found in one place. This way additional data sets can be added to the group without altering existing ones. Once we process all the "child" data sets you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data set [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data sets funded by the same award? If so, we are happy to do all this grouping for you.
+
+
+#### Finding multiple data sets
+
+>If linking to multiple data sets, you can send a link to the profile associated with the submitter’s ORCID ID and it will display all the data sets.
+	Ex.: https://arcticdata.io/catalog/#profile/http://orcid.org/0000-0002-2604-4533
+	
+	
+#### NSF ARC data submission policy
+
+>The NSF ARC program managers check compliance with their data policies when checking annual reports. Generally, NSF ARC requires that fully quality controlled data be uploaded within 6 months of collection for AON projects, or within 2 years of collection (or by end of the grant) for other ARC funded projects. Additionally, complete metadata must be submitted within two years of collection or before the end of the award, whichever comes first. Please find an overview of the NSF ARC policies >[here](https://arcticdata.io/submit/#who-must-submit) and the full policy information >[here](https://www.nsf.gov/pubs/2014/nsf14584/nsf14584.htm#grantcond).
+
+>Investigators should upload their data to the [Arctic Data Center](https://arcticdata.io), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.

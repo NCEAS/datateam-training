@@ -1,0 +1,39 @@
+## Set coverages
+
+Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a data set. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering `eml@dataset@coverage` into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using `set_coverage`. 
+
+```{r, eval = FALSE}
+coverage <- EML::set_coverage(beginDate = '2012-01-01', 
+                              endDate = '2012-01-10', 
+                              sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'),
+                              geographicDescription = "The geographic region covers the lake region near Eagle Mountain.",
+                              west = -154.6192, 
+                              east = -154.5753, 
+                              north = 68.3831, 
+                              south = 68.3619)
+eml@dataset@coverage <- coverage
+```
+
+You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages.
+
+```{r, eval = FALSE}
+geocov1 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 1",
+               boundingCoordinates = new("boundingCoordinates", 
+                                         northBoundingCoordinate = new("northBoundingCoordinate", 68),
+                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -154),
+                                         southBoundingCoordinate = new("southBoundingCoordinate", 67),
+                                         westBoundingCoordinate =  new("westBoundingCoordinate", -155)))
+
+geocov2 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 2",
+               boundingCoordinates = new("boundingCoordinates",
+                                         northBoundingCoordinate = new("northBoundingCoordinate", 65),
+                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -155),
+                                         southBoundingCoordinate = new("southBoundingCoordinate", 64),
+                                         westBoundingCoordinate =  new("westBoundingCoordinate", -156)))
+
+coverage <- EML::set_coverage(beginDate = '2012-01-01', 
+                              endDate = '2012-01-10', 
+                              sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'))
+eml@dataset@coverage@geographicCoverage <- c(geocov1, geocov2)
+```
+

@@ -1,0 +1,68 @@
+## Edit an EML element
+
+There are multiple ways to edit an EML element. 
+
+### Edit EML with strings
+The most basic way to edit an EML element would be to go into the eml schema to the location of a character string and then replace that character string with a new character string.
+
+For example to change the title one could use the following commands.
+
+``` {r, eval = FALSE}
+new_title <- "New Title"
+eml@dataset@title[[1]]@.Data <- new_title
+```
+
+However, this isn't the best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. 
+
+### Edit EML with EML
+For editing simple text sections, a better option is to use `EML::read_eml`. To use this function, one would first run the slot that is in need of editing. For example, for a title this would involve calling
+
+``` {r, eval = FALSE}
+eml@dataset@title[[1]]
+```
+
+and then copying the result. In this case, the result will be of the form `<title>Title Text Here</title>`. To make a new title, one would replace the text between the `<title></title>` tags using a similar workflow as below.
+
+``` {r, eval = FALSE}
+new_title <- EML::read_eml("<title>New Title 2</title>")
+eml@dataset@title[[1]] <- new_title
+```
+
+Note, without specifying which title with `[[1]]`, the following code will give you the error `Error in (function (cl, name, valueClass) : assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”; is(value, "ListOftitle") is not TRUE`.
+
+``` {r, eval = FALSE}
+# Bad Example
+new_title <- EML::read_eml("<title>New Title 2</title>")
+eml@dataset@title <- new_title
+```
+
+The above gives an error because `eml@dataset@title` is a slot for a list and `new_title` is a single object. Therefore you must either specify which title you want to replace as was done above by specifying the first title in the list with `[[1]]` or turn `new_title` into a list/vector utilizing the `c()` command as follows.
+
+``` {r, eval = FALSE}
+new_title <- EML::read_eml("<title>New Title 2</title>")
+eml@dataset@title <- c(new_title)
+```
+
+However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desirable so be careful.
+
+One final note, a benefit of this method to edit EML objects is that [advanced text features can be easily added using this workflow](#advanced-eml-text).
+
+### Edit EML with objects
+
+A final way to edit an EML element would be to build a new object to replace the old object. To begin, you must determine the class of the object you want to edit (generally this is just the schema name of the object). The function `class()` is helpful here. For example, if you want to edit `eml@dataset@title[[1]]` use the following command to find the class.
+
+``` {r, eval = FALSE}
+class(eml@dataset@title[[1]])
+```
+
+The result shows that this object has a class `title`. Therefore you must replace it with an object of class `title`. To do so use `as()`. To use `as()` input the the desired string followed by the desired `class`.
+
+``` {r, eval = FALSE}
+new_title <- as("New Title 3", "title")
+
+eml@dataset@title[[1]] <- new_title
+#or
+eml@dataset@title <- c(new_title)
+```
+
+Note, if you want to create an object with nested objects, you may have to use the command `new()` which is similar to `as()` but with the order of specifying values and class switched. See help on [editing datatables for an example of when to use `new()`](#edit-datatables).

@@ -1,0 +1,11 @@
+bookdown::gitbook:
+  css: ../styles.css
+  split_by: section
+  number_sections: FALSE
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Data Team Reference</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
