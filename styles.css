@@ -2,11 +2,16 @@
   background-color: #ccffcc !important;
 }
 
+.note, .warning {
+  padding: 1em 1em 1em 6em;
+  background: #cccccc 1em center/4em no-repeat;
+}
+
 .note {
-  color: #660099 !important;
+  background-image: url("images/note.png");
 }
 
 .warning {
-  color: #990033 !important;
-  font-weight: bold;
+  background-image: url("images/warning.png");
 }
+
