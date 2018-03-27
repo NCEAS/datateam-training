@@ -1,3 +1,12 @@
 .exercise {
   background-color: #ccffcc !important;
 }
+
+.note {
+  color: #660099 !important;
+}
+
+.warning {
+  color: #990033 !important;
+  font-weight: bold;
+}

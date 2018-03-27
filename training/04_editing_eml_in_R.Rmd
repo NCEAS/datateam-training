@@ -5,7 +5,7 @@ This chapter is a practical tutorial for using R to read, edit, write, and valid
 
 Once you have an [eml file loaded into R](#get-package-and-eml), you can use R to edit the eml file.
 
-```{r, child = '../workflows/edit_eml/navigate_eml.Rmd'}
+```{r, child = '../workflows/edit_eml/explore_eml.Rmd'}
 ```
 
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}

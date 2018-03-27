@@ -1,4 +1,4 @@
-## Navigate EML
+## Explore EML
 
 The first task when editing an eml file is navigating the eml file. An eml file is organized in a structure that contains many lists nested within other lists. Visualizing the eml structure, it resembles a tree with branches that split into smaller branches which split into even smaller branches and so on. To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the eml structure. However, you have to tell R where you want to go in the structure when you use the `@` symbol. An example is if you want to go into the data set of your eml you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note, here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
 

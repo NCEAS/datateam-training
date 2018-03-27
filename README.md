@@ -27,7 +27,7 @@ If you would like to contribute to the repo, please follow these conventions.
 
 * Use the root form of verbs in file names (e.g. edit not editing)
 
-
+* Use the custom css styles.css to format exercices, notes, and warnings.
 
 
   

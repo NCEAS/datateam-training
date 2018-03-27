@@ -16,11 +16,12 @@ After loading the package, you can also load the eml file into R using the follo
 eml <- EML::read_eml(rawToChar(dataone::getObject(mn, pkg$metadata)))
 ```
 
-### Tip to always have the most recent resource map
+```{block, type = 'note'}
+**Tip to always have the most recent resource map.**
 
 When editing `resource_maps`, you always want to be working with the most recent update. To ensure you have the most recent `resource_map`, you can use the following commands.
-
-``` {r, eval = FALSE}
+```
+``` {r, eval = FALSE, class.source = 'note'}
 rm_pid_original <- "your_original_resource_map_pid"
 all_rm_versions <- arcticdatautils::get_all_versions(mn, rm_pid_original)
 rm_pid <- all_rm_versions[length(all_rm_versions)]
