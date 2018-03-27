@@ -1,3 +1,17 @@
 .exercise {
   background-color: #ccffcc !important;
 }
+
+.note, .warning {
+  padding: 1em 1em 1em 6em;
+  background: #cccccc 1em center/4em no-repeat;
+}
+
+.note {
+  background-image: url("images/note.png");
+}
+
+.warning {
+  background-image: url("images/warning.png");
+}
+
