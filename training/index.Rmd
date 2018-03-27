@@ -1,6 +1,6 @@
 --- 
 title: "NCEAS Data Team Training"
-author: "Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter, Irene Steves"
+author: "Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter, Irene Steves, Mitchell Maier"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
