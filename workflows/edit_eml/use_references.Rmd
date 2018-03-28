@@ -1,5 +1,10 @@
 ## Use references
 
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(methods)
+```
+
+
 ### Introduction
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
     
