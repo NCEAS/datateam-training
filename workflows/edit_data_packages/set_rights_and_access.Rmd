@@ -24,3 +24,9 @@ set_rights_and_access(mn,
                       subject = subject,
                       permissions = c('read','write','changePermission'))
 ```
+
+If you ever need to remove/add public access to your package or object, you can use `remove_public_read` or `set_public_read`, respectively. 
+
+```{r eval = FALSE}
+arcticdatautils::remove_public_read(mn, c(pkg$metadata, pkg$data, pkg$resource_map))
+```
