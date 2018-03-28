@@ -16,7 +16,7 @@ There are a few benefits to doing this, including:
 ### Quick and Dirty
 Here's an example of a general work-flow you'd use for references. See the following sections for step-by-step explanations:
     
-    ```{r}
+    ```{r eval = FALSE}
 eml_path <- system.file("example-eml.xml", package = "arcticdatautils")
 eml <- read_eml(eml_path)
 
@@ -88,7 +88,7 @@ doc@dataset@title <- c(new("title", .Data = "EML References Demo"))
 doc@dataset@creator  <- c(arcticdatautils::eml_creator("Bryce", "Mecum"))
 ```
 
-``` xml
+```
 <eml packageId="my_test_doc" system="my_system">
 <dataset>
 <title>EML References Demo</title>
@@ -121,7 +121,7 @@ Note: The `id` needs to be unique within the EML record but doesn't need to have
 
 So here we do just that:
     
-``` xml
+```
 <eml packageId="my_test_doc" system="my_system">
     <dataset>
     <title>EML References Demo</title>
@@ -144,7 +144,7 @@ Here's an example of what we did above, but with AttributeLists. We'll start wit
 
 Let's start by making some synthetic data:
 
-``` r
+``` {r eval = FALSE}
 paths <- c(tempfile(fileext = ".csv"), 
 tempfile(fileext = ".csv"), 
 tempfile(fileext = ".csv"))
@@ -165,7 +165,7 @@ paths[3])
 
 And then we can create a single attributes CSV for them to share:
 
-``` r
+``` {r eval = FALSE}
 attr_csv <- tempfile(fileext = ".csv")
 attrs <- data.frame(attributeName = c("temp_c", "length_m", "weight_kg"),
 attributeDefinition = c("Temperature", "Length", "Weight"),
@@ -177,7 +177,7 @@ stringsAsFactors = FALSE)
 
 We'll start by creating `dataTable` elements for each of the three CSV files:
     
-``` r
+``` {r eval = FALSE}
 library(arcticdatautils)
 doc <- eml_add_entities(doc, data.frame(type = "dataTable",
                                         path = paths,
@@ -187,19 +187,19 @@ doc <- eml_add_entities(doc, data.frame(type = "dataTable",
 
 Then to set up the attributeList we created, we will set it like we normally would on the first `dataTable` *only*:
     
-``` r
+``` {r eval = FALSE}
 doc@dataset@dataTable[[1]]@attributeList <- set_attributes(attrs, col_classes = c("numeric", "numeric", "numeric"))
 ```
 
 Then we assign an `id` attribute to the attributeList on the first dataTable:
     
-``` r
+``` {r eval = FALSE}
 doc@dataset@dataTable[[1]]@attributeList@id <- new("xml_attribute", "shared_attributes")
 ```
 
 And now we can reference this attributeList by the `id` 'shared\_attributes' in the rest of the `dataTable` elements:
     
-``` r
+``` {r eval = FALSE}
 for (i in 2:length(doc@dataset@dataTable)) {
     doc@dataset@dataTable[[i]]@attributeList@references <- new("references", "shared_attributes")
 }
