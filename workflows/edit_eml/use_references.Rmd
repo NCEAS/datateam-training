@@ -3,6 +3,7 @@
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(methods)
 library(dplyr)
+library(datamgmt)
 ```
 
 ### Introduction
