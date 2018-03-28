@@ -2,8 +2,8 @@
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(methods)
+library(dplyr)
 ```
-
 
 ### Introduction
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
@@ -70,22 +70,15 @@ The `datamgmt::add_creator_id()` function is a shortcut for one of our most comm
 1. Add the ORCID to a creator (usually the first creator)
 2. Update the contact information for that individual's other roles
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
-library(dplyr)
-```
-
-
 ```{r eval = TRUE}
-eml <- EML::read_eml(file.path(system.file(package = "datamgmt"), "dummy_meta_full.xml"))
-
 eml <- eml %>%
-    datamgmt::add_creator_id(surname = "high-stakes",
+    datamgmt::add_creator_id(surname = "mecum",
                    orcid = "https://orcid.org/0000-1234-5678-4321",
-                   id = "henrietta")
+                   id = "bryce")
 
 # Use references to add updated contact info to Henrietta's other roles
-eml@dataset@contact[[1]] <- new('contact', reference = "henrietta")
-eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "henrietta")
+eml@dataset@contact[[1]] <- new('contact', reference = "bryce")
+eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "bryce")
 ```
 
 ```{block, type = "note"}
