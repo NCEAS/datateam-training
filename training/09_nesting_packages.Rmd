@@ -31,26 +31,16 @@ To create a new parent, you will need to:
     - *Methods:* Often not needed, but may be included if all children use the same methods
 
 
-2. **Publish it to the member node** (ADC) using `publish_object`.
-3. **Create a resource map** to link the parent and children together using `create_resource_map`.
+2. **Publish the parent metadata to the member node** (ADC) using `publish_object`.
+3. **Create a resource map** to link the parent and children together using `create_resource_map` and the `child_pids` argument.
 
-
-```{r eval = FALSE}
-child_rm_pids <- c("child_rm_pid1", "child_rm_pid2")
-parent_path <- "path/to/parent/science-metadata.xml"
-
-metadata_parent <- publish_object(mnTest, 
-                                  path = parent_path, 
-                                  format_id = format_eml())
-
-rm_parent <- create_resource_map(mnTest,
-                                 metadata_pid = metadata_parent,
-                                 child_pids = child_rm_pids)
+```{block, type = "warning"}
+Make sure you use the children's *resource map* PIDs when you create the resource map! If you forget to, consult Jesse or Jeanette for help on how to fix it.
 ```
 
 ## Add children to an existing parent
 
-Nest the new child using the `child_pids` argument in `update_resource_map()` or `publish_update()`. 
+Nest the new child using the `child_pids` argument in `publish_update()`. 
 
 ```{block, type = "note"}
 It's important to include the *resource map PIDs of ALL the children* in the `child_pids` argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.
@@ -60,13 +50,6 @@ It's important to include the *resource map PIDs of ALL the children* in the `ch
 rm_child_new <- "some_child_rm_pid"
 pkg_parent <- get_package(mnTest, rm_parent)
 
-rm_parent2 <- update_resource_map(mnTest,
-                                  resource_map_pid = rm_parent,
-                                  metadata_pid = pkg_parent$metadata,
-                                  child_pids = c(pkg_parent$child_packages, 
-                                                 rm_child_new))
-
-#Alternatively:
 rm_parent2 <- publish_update(mnTest,
                              resource_map_pid = rm_parent,
                              metadata_pid = pkg_parent$metadata,
