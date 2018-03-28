@@ -1,0 +1,10 @@
+## Show indexing status
+Sometimes it takes a while for the website to be updated with the updates you've made in R. To check whether it's been indexed, just use: 
+    
+```{r eval = FALSE}
+show_indexing_status(mn, pids)
+```
+
+```{block, type="note"}
+The status bar will either show 0% (not indexed) or 100% (should be online already).
+```

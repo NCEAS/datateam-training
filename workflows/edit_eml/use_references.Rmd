@@ -1,0 +1,206 @@
+## Use references
+You may want to use EML references if you have the following scenarios (not exhaustive):
+    
+-   One person has multiple roles in the dataset (creator, contact, etc)
+-   One or more Entities shares all or some Attributes
+
+### Introduction
+EML supports something called References which are a way to avoid repeating the same information multiple times in the same EML record.
+
+There are a few benefits to doing this, including:
+    
+-   Making it clear that two things are the same (e.g., the creator is the same person as the contact, two entities have the exact same attributes)
+-   Reducing the size on disk of EML records with highly redundant information
+-   Faster read/write/validate with the R EML package
+
+### Quick and Dirty
+Here's an example of a general work-flow you'd use for references. See the following sections for step-by-step explanations:
+    
+    ```{r}
+eml_path <- system.file("example-eml.xml", package = "arcticdatautils")
+eml <- read_eml(eml_path)
+
+eml@dataset@creator[[1]]@id <- new("xml_attribute", "bryce") #add a reference
+eml@dataset@contact[[1]] <- new('contact', reference = "bryce") #use the reference
+```
+
+The `datamgmt::add_creator_id` function is a shortcut for the most common reason for editing contacts: you need to add the ORCID to a creator, and then update the contact information in their other roles. 
+
+```{r eval = FALSE}
+eml_path <- file.path(system.file(package = "datamgmt"), "dummy_meta_full.xml")
+eml <- EML::read_eml(eml_path_original)
+add_creator_id(eml, orcid = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ")
+
+eml <- eml %>%
+    add_creator_id(surname = "high-stakes",
+                   orcid = "https://orcid.org/0000-1234-5678-4321",
+                   id = "henrietta")
+
+#use references to add updated contact info to Henrietta's other roles
+eml@dataset@contact[[1]] <- new('contact', reference = "henrietta")
+eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "henrietta")
+```
+
+The function invisibly returns the full EML, which can be saved to a variable. It also prints the changed creator entry so that it's easy to check that the appropriate change was made. In addition to the EML, at least one of either the orcid or reference id is required.
+
+_Note:_ updated creator information cannot be used as a reference for associatedParties because the extra "role" field is required. Also, the function does not (yet) account for cases in which multiple creators have the same surname
+
+### Example with parties
+It's very common to see the contact and creator referring to the same person with XML like this:
+    
+``` {r eval = FALSE}
+library(EML)
+doc <- new("eml")
+doc@packageId <- new("xml_attribute", "my_test_doc")
+doc@system <- new("xml_attribute", "my_system")
+doc@dataset@title <- c(new("title", .Data = "EML References Demo"))
+doc@dataset@creator  <- c(arcticdatautils::eml_creator("Bryce", "Mecum"))
+doc@dataset@contact <- c(arcticdatautils::eml_contact("Bryce", "Mecum"))
+```
+
+``` xml
+<eml packageId="my_test_doc" system="my_system">
+    <dataset>
+    <title>EML References Demo</title>
+    <creator>
+    <individualName>
+    <givenName>Bryce</givenName>
+    <surName>Mecum</surName>
+    </individualName>
+    </creator>
+    <contact>
+    <individualName>
+    <givenName>Bryce</givenName>
+    <surName>Mecum</surName>
+    </individualName>
+    </contact>
+    </dataset>
+    </eml>
+```
+
+So you see those two times Bryce Mecum is referenced there? If I mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there's some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.
+
+``` {r eval = FALSE}
+doc <- new("eml")
+doc@packageId <- new("xml_attribute", "my_test_doc")
+doc@system <- new("xml_attribute", "my_system")
+doc@dataset@title <- c(new("title", .Data = "EML References Demo"))
+doc@dataset@creator  <- c(arcticdatautils::eml_creator("Bryce", "Mecum"))
+```
+
+``` xml
+<eml packageId="my_test_doc" system="my_system">
+<dataset>
+<title>EML References Demo</title>
+<creator>
+<individualName>
+<givenName>Bryce</givenName>
+<surName>Mecum</surName>
+</individualName>
+</creator>
+</dataset>
+</eml> 
+```
+
+We start by putting Bryce Mecum in the document once, here as a creator, but this could be as a contact or other type of party. Then we need to do two things:
+
+1.  Set the `id` attribute on the thing we want to refer *to*
+
+```
+party <- eml_party('creator', 'Bryce', 'Mecum')
+party@id <- new("xml_attribute", "cont_ref")
+```
+
+2.  Add a `references` element to the thing we want to refer *from* by `id`
+
+```
+contact <- new('contact', reference = 'cont_ref') 
+```
+
+Note: The `id` needs to be unique within the EML record but doesn't need to have meaning outside of that.
+
+So here we do just that:
+    
+``` xml
+<eml packageId="my_test_doc" system="my_system">
+    <dataset>
+    <title>EML References Demo</title>
+    <creator id="brycemecum">
+    <individualName>
+    <givenName>Bryce</givenName>
+    <surName>Mecum</surName>
+    </individualName>
+    </creator>
+    <contact>
+    <references>brycemecum</references>
+    </contact>
+    </dataset>
+    </eml>
+```
+
+### Example with attributes
+
+Here's an example of what we did above, but with AttributeLists. We'll start with the same EML document we were working with above and add three CSVs with the same attributes.
+
+Let's start by making some synthetic data:
+
+``` r
+paths <- c(tempfile(fileext = ".csv"), 
+tempfile(fileext = ".csv"), 
+tempfile(fileext = ".csv"))
+
+write.csv(data.frame(temp_c = runif(10, 0, 100), 
+length_m = rnorm(10, 50, 5), 
+weight_kg = rnorm(10, 100, 20)),
+paths[1])
+write.csv(data.frame(temp_c = runif(10, 0, 100), 
+length_m = rnorm(10, 50, 5), 
+weight_kg = rnorm(10, 100, 20)),
+paths[2])
+write.csv(data.frame(temp_c = runif(10, 0, 100), 
+length_m = rnorm(10, 50, 5), 
+weight_kg = rnorm(10, 100, 20)),
+paths[3])
+```
+
+And then we can create a single attributes CSV for them to share:
+
+``` r
+attr_csv <- tempfile(fileext = ".csv")
+attrs <- data.frame(attributeName = c("temp_c", "length_m", "weight_kg"),
+attributeDefinition = c("Temperature", "Length", "Weight"),
+measurementScale = c("ratio"),
+unit = c("celsius", "meter", "kilogram"),
+numberType = c("real"),
+stringsAsFactors = FALSE)
+```
+
+We'll start by creating `dataTable` elements for each of the three CSV files:
+    
+``` r
+library(arcticdatautils)
+doc <- eml_add_entities(doc, data.frame(type = "dataTable",
+                                        path = paths,
+                                        pid = c("csv_a", "csv_b", "csv_c"),
+                                        format_id = "text/csv"))
+```
+
+Then to set up the attributeList we created, we will set it like we normally would on the first `dataTable` *only*:
+    
+``` r
+doc@dataset@dataTable[[1]]@attributeList <- set_attributes(attrs, col_classes = c("numeric", "numeric", "numeric"))
+```
+
+Then we assign an `id` attribute to the attributeList on the first dataTable:
+    
+``` r
+doc@dataset@dataTable[[1]]@attributeList@id <- new("xml_attribute", "shared_attributes")
+```
+
+And now we can reference this attributeList by the `id` 'shared\_attributes' in the rest of the `dataTable` elements:
+    
+``` r
+for (i in 2:length(doc@dataset@dataTable)) {
+    doc@dataset@dataTable[[i]]@attributeList@references <- new("references", "shared_attributes")
+}
+```
