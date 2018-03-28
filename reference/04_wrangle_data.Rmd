@@ -1,4 +1,4 @@
-# PI correspondence
+# Wrangle data
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/wrangle_data/"
