@@ -7,4 +7,4 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Data Team Training</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://nceas.github.io/datateam-training/reference" target="blank">Reference Guide</a></li>
