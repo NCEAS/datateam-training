@@ -42,10 +42,6 @@ Make sure you use the children's *resource map* PIDs when you create the resourc
 
 Nest the new child using the `child_pids` argument in `publish_update()`. 
 
-```{block, type = "note"}
-It's important to include the *resource map PIDs of ALL the children* in the `child_pids` argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.
-```
-
 ```{r eval = FALSE}
 rm_child_new <- "some_child_rm_pid"
 pkg_parent <- get_package(mnTest, rm_parent)
@@ -55,10 +51,11 @@ rm_parent2 <- publish_update(mnTest,
                              metadata_pid = pkg_parent$metadata,
                              child_pids = c(pkg_parent$child_packages, 
                                             rm_child_new))
+# include the resource map PIDs of ALL the children* in the `child_pids` argument, otherwise the nesting relationships between any omitted children and the parent will be deleted
 ```
 
 ```{block, type = "warning"}
-Check through all arguments carefully before you publish to production! Do you need to update the metadata? If so, include the `metadata_path`. Does the parent include data objects? If so, include the `data_pids` argument. Does the parent have a parent? If so, include the `parent_data_pids` and `parent_child_pids` arguments.
+Check through all arguments carefully before you publish to production! Do you need to update the metadata? Does the parent include data objects? Does the parent have a parent? 
 
 Parents can be tricky to fix and work with (especially if they have serial identifiers/SIDs), so if you're not sure how something works, try it on a test node.
 ```
