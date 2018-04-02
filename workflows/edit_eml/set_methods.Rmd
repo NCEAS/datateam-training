@@ -2,4 +2,13 @@
 
 The methods tree in the EML section has many different options, visible in the [schema](https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png). You can create new elements in the methods tree by following the schema and using the "new" command. Remember you can explore possible slots within an element by creating an empty object of the class you are trying to create. For example, `method_step <- new('methodStep')`, and using auto-complete on `method_step@`.
 
-Potentially the most useful way to set methods is by [editing with EML](#edit-eml-with-eml)
+Potentially the most useful way to set methods is by [editing with EML](#edit-eml-with-eml) 
+
+Another simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:
+
+```{r, eval = F}
+methods1 <- set_methods('methods_doc.docx')
+eml@dataset@methods <- methods1
+```
+
+If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.
