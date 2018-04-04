@@ -15,6 +15,7 @@ Subscripts, superscripts, and italics:
 ```
 
 ### Links
+Be sure to incluse the "https://" before the link or it will redirect incorrectly. Also, always check that your links go through to the correct page. Please be aware that most links are inherently unstable so always default to archiving files over pointing to websites when possible and appropriate. 
 
 ```
 <ulink url="https://some_url.com">
