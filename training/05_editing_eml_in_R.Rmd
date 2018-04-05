@@ -1,14 +1,9 @@
 
 # Editing EML in R
 
-We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. For additional background on EML and principles for metadata creation, check out [this paper](data/eml-principles.pdf).
-
 This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd)).
 
 Once you have an [eml file loaded into R](#get-package-and-eml), you can use R to edit the eml file.
-
-```{r, child = '../workflows/edit_eml/explore_eml.Rmd'}
-```
 
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
