@@ -1,5 +1,5 @@
 
-## Adding a pre generated identifier to the eml
+## Add a pre generated identifier to the eml
 
 When you pre generate a UUID or DOI, the change is not automatically reflected in the "Identifier" section of the eml so this makes sure that the eml lines up with the identifier being used. 
 
