@@ -1,10 +1,59 @@
 ## Explore EML
 
-The first task when editing an eml file is navigating the eml file. An eml file is organized in a structure that contains many lists nested within other lists. Visualizing the eml structure, it resembles a tree with branches that split into smaller branches which split into even smaller branches and so on. To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the eml structure. However, you have to tell R where you want to go in the structure when you use the `@` symbol. An example is if you want to go into the data set of your eml you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note, here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
+The first task when editing an eml file is navigating the eml file. An eml file is organized in a structure that contains many lists nested within other lists. 
+
+The function `EML::eml_view()` (`install.packages("listviewer")` if it doesn't work) allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.
+
+![](../images/eml_view.png)
+
+To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the eml structure. However, you have to tell R where you want to go in the structure when you use the `@` symbol. An example is if you want to go into the data set of your eml you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note, here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
 
 ![RStudio Autocompletion Example](../images/rstudio_autocomplete.png)
 
 Note if you hit tab, and the only option is `.Data`, this implies most likely that you are trying to go deeper within a list. For example ```eml@dataset@creator@<TAB>``` will return only `.Data`. This is because `creator` is a list object (i.e. you can have multiple creators). If you want to go deeper into the eml structure, you first must tell R which creator you are interested in. Do this by writing `[[i]]` first where `i` is index of the creator you are concerned with. 
 For example, if you want to look at the first creator i = 1. Now ```eml@dataset@creator[[1]]@<TAB>``` will give you many more options. Note, `.Data` also sometimes means you have reached the end of a branch in the eml structure.
 
-Another great resource for navigating the eml structure is [looking at the schema which defines the structure](https://github.com/NCEAS/eml). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the eml structure is [looking at the schema which defines the structure](https://github.com/NCEAS/eml) (also [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+
+For example, let's take a look at [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png). To start off, notice that some elements are in solid boxes, whereas others are in dashed boxes.
+
+![](../images/eml-surname.png)  ![](../images/eml-givenname.png)
+
+A solid box indicates that the element is _required_ if the element above it (to the left) is used. Conversely, a dashed box indicates that the element is _optional_.
+
+### Access specific elements
+The `eml_get` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
+
+```{r}
+library(EML)
+eml <- EML::read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
+EML::eml_get(eml, "creator")
+```
+
+```{r}
+EML::eml_get(eml, "boundingCoordinates")
+```
+
+```{r}
+EML::eml_get(eml, "url")
+```
+
+You can also use the `which_in_eml` function from the `datamgmt` package to get indices within an EML list. Here are some examples:
+
+```{r eval = FALSE}
+# Question: Which creators have a surName "Smith"?
+n <- which_in_eml(eml@dataset@creator, "surName", "Smith")
+# Answer: eml@dataset@creator[n]
+
+# Question: Which dataTables have an entityName that begins with "2016"
+n <- which_in_eml(eml@dataset@dataTable, "entityName", function(x) {grepl("^2016", x)})
+# Answer: eml@dataset@dataTable[n]
+
+# Question: Which attributes in dataTable[[1]] have a numberType "natural"?
+n <- which_in_eml(eml@dataset@dataTable[[1]]@attributeList@attribute, "numberType", "natural")
+# Answer: eml@dataset@dataTable[[1]]@attributeList@attribute[n]
+
+#' # Question: Which dataTables have at least one attribute with a numberType "natural"?
+n <- which_in_eml(eml@dataset@dataTable, "numberType", function(x) {"natural" %in% x})
+# Answer: eml@dataset@dataTable[n]
+```

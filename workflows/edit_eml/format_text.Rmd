@@ -1,0 +1,51 @@
+## Format text in EML
+Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this [demo](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml) for a full example. Additional info is also available [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html).
+
+```{block, type="note"}
+Many of these formatting functions only work when enclosed by `<para></para>`
+```
+
+### Type-setting
+Subscripts, superscripts, and italics:
+    
+```
+<subscript>You can do subscripts</subscript>
+<superscript>or superscipts</superscript>
+<emphasis>or even italics.</emphasis> 
+```
+
+### Links
+Be sure to incluse the "https://" before the link or it will redirect incorrectly. Also, always check that your links go through to the correct page. Please be aware that most links are inherently unstable so always default to archiving files over pointing to websites when possible and appropriate. 
+
+```
+<ulink url="https://some_url.com">
+    <citetitle>some text</citetitle>
+</ulink>
+```
+
+### Lists
+Unordered (bulletted) lists:
+    
+```
+<itemizedlist>
+    <listitem>
+        <para>Paragraphs</para>
+    </listitem>
+    <listitem>
+        <para>Sections w/ subsections (w/ titles)</para>
+    </listitem>
+</itemizedlist>
+```
+
+Ordered lists (1, 2, 3)...
+
+```
+<orderedlist>
+    <listitem>
+        <para>something</para>
+    </listitem>
+    <listitem>
+        <para>something else</para>
+    </listitem>
+</orderedlist>
+```

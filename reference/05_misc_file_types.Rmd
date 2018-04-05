@@ -1,0 +1,10 @@
+# Miscellaneous file types
+
+```{r, echo = FALSE}
+chapter <- "../workflows/misc_file_types/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```

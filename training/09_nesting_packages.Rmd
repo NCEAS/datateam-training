@@ -6,117 +6,166 @@ knitr::opts_chunk$set(eval = F)
 
 ## Introduction  
 
-This document is a tutorial for creating nesting relationships between data packages on the DataONE member nodes (MNs). 
+Data packages on member nodes can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common "parent" data package.
 
-Data packages on MNs can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common "parent" data package.  
+The structure of nested data packages resembles a pyramid. There is one top level, or "parent", with one or more data packages, or "children", nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceed 3 levels. [This "grandparent"](https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3) has has 5+ children (nested datasets), some of which have children packages of their own.   
 
-The structure of nested data packages resembles a pyramid. There is one top level, or "parent", with one or more data packages, or "children", nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceed 3 levels. This [example](https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3) has three levels. The link will take you to the top level, or "grandparent". This top level has 5 children (nested datasets). If you click on any one of these children you can see that they have children of their own.      
-
-Some common uses for nesting:  
+Here are some common uses for nesting:  
 
 * collected data vary by year
 * an NSF award funds several related projects 
 * data collection is still ongoing 
 * data files exceed the 1000 file limit per data package
 
-## Exercise
-  
-We will create two data packages on the test node to nest beneath a parent. These data packages contain measurements taken from Lake E1 in Alaska in 2013 and 2014.  
+## Create a new parent package 
+In some cases, a parent package already exists. Search the ADC for the NSF award number to see if there are already exisiting packages. Parents usually have a `UUID` rather than a `DOI` and often start with a title like "Collaborative research:", but not always. More typically, you will need to create a new parent by editing the existing metadata. The parent package should contain a generalized summary for the metadata of each of its children. 
+
+To create a new parent, you will need to:
+
+1. **Create parent metadata.** It's often easiest to start with a child's metadata and generalize it
+
+    - *Abstract/title:* Remove dates and other details that are specific to the child package. Sometimes the NSF award abstract/title will work
+    - *Data tables/other entities:* generally top-level parents do not include data objects, so these sections can be removed
+    - *Geographic coverage:* Expand to include geographic coverage of all children, if needed
+    - *Temporal coverage:* Expand to include temporal ranges of all children, if needed. If the study is ongoing, include the most recent end date; the parent can be updated when additional children are added
+    - *Methods:* Often not needed, but may be included if all children use the same methods
+
+
+2. **Publish the parent metadata to the member node** (ADC) using `publish_object`.
+3. **Create a resource map** to link the parent and children together using `create_resource_map` and the `child_pids` argument.
+
+```{block, type = "warning"}
+Make sure you use the children's *resource map* PIDs when you create the resource map! If you forget to, consult Jesse or Jeanette for help on how to fix it.
+```
+
+## Add children to an existing parent
+
+Nest the new child using the `child_pids` argument in `publish_update()`. 
+
+```{r eval = FALSE}
+rm_child_new <- "some_child_rm_pid"
+pkg_parent <- get_package(mnTest, rm_parent)
+
+rm_parent2 <- publish_update(mnTest,
+                             resource_map_pid = rm_parent,
+                             metadata_pid = pkg_parent$metadata,
+                             child_pids = c(pkg_parent$child_packages, 
+                                            rm_child_new))
+# include the resource map PIDs of ALL the children* in the `child_pids` argument, otherwise the nesting relationships between any omitted children and the parent will be deleted
+```
+
+```{block, type = "warning"}
+Check through all arguments carefully before you publish to production! Do you need to update the metadata? Does the parent include data objects? Does the parent have a parent? 
+
+Parents can be tricky to fix and work with (especially if they have serial identifiers/SIDs), so if you're not sure how something works, try it on a test node.
+```
+ 
+## Example
+
+We can start by creating two data packages on the test node to nest beneath a parent. These data packages contain measurements taken from Lake E1 in Alaska in 2013 and 2014.  
 
 First, load the Arctic Data Center Test Node and libraries.
   
-```{r, eval = T}
+```{r eval = TRUE}
 library(dataone)
 library(arcticdatautils)
 library(EML)
+
 cnTest <- CNode('STAGING')
 mnTest <- getMNode(cnTest,'urn:node:mnTestARCTIC')
 ```
 
-* We can publish several data files at once using the `dir` and `sapply` functions.  `dir` returns the paths to every file located in a folder.  
-  
-```{r, eval = T}
-dir("data/2013", full.names = T)
-```
-  
-* We can use `sapply` to apply a function over a list or vector. In this instance we will use it to apply `publish_object` over the vector of files paths (paths_2013) in order to publish them.
-  
-```{r}
-paths_2013 <- dir("/home/dmullen/Nesting_Training/2013", full.names = T)
-data_2013 <- sapply(paths_2013, function(path) { publish_object(mnTest, path, format = "text/csv") })
-```
+We can publish several data files at once using the `dir` and `sapply` functions. `dir` returns the paths to every file located in a folder.  
 
-* Publish the metadata file to the test node using `publish_object`.
+```{r, eval = T}
+dir("data/2013", full.names = TRUE)
+```
+  
+We can use `sapply` to apply a function over a list or vector. In this instance we will use it to apply `publish_object` over the vector of files paths (`paths`) in order to publish them. Then, publish the metadata file to the test node using `publish_object`.
   
 ```{r}
-metadata2013 <- publish_object(mnTest,
-                               path = "/home/dmullen/Nesting_Training/E1_2013metadata.xml",
+paths <- dir("/home/dmullen/Nesting_Training/2013", full.names = TRUE)
+meta_path <- "/home/dmullen/Nesting_Training/E1_2013metadata.xml"
+
+data_pids <- sapply(paths, function(path) { 
+  publish_object(mnTest, path, format = "text/csv") 
+  })
+metadata_pid <- publish_object(mnTest,
+                               path = meta_path,
                                format = format_eml())
 ```
-  
-* Create a resource map to associate the data with the metadata. Here we specify the metadata and data identifiers (PIDs) that we would like the resource map to associate together. These are the identifiers of the objects we just published to the test node.  
+
+Create a resource map to associate the data with the metadata. Here we specify the metadata and data identifiers (PIDs) that we would like the resource map to associate together.  
   
 ```{r}
-resourceMap2013 <- create_resource_map(mnTest,
-                                       metadata_pid = metadata2013,
-                                       data_pids = data2013)
+rm_2013 <- create_resource_map(mnTest,
+                               metadata_pid = metadata_pid,
+                               data_pids = data_pids)
 ```
   
-* Repeat the same steps as above for the 2014 data package. 
+Repeat the same steps as above for the 2014 data package. 
   
 ```{r}
-paths_2014 <- dir("/home/dmullen/Nesting_Training/2014", full.names = T)
-data_2014 <- sapply(paths_2014, function(path) { publish_object(mnTest, path, format = "text/csv") })
-metadata2014 <- publish_object(mnTest, path = "/home/dmullen/Nesting_Training/E1_2014metadata.xml", format = format_eml())
-resourceMap2014 <- create_resource_map(mnTest, metadata_pid = metadata2014, data_pids = data2014)
+# Change paths and meta_path:
+paths <- dir("/home/dmullen/Nesting_Training/2014", full.names = TRUE)
+meta_path <- "/home/dmullen/Nesting_Training/E1_2014metadata.xml"
+
+data_pids <- sapply(paths, function(path) { 
+  publish_object(mnTest, path, format = "text/csv") 
+  })
+metadata_pid <- publish_object(mnTest,
+                               path = meta_path,
+                               format = format_eml())
+
+# Store new resource map as rm_2014
+rm_2014 <- create_resource_map(mnTest,
+                               metadata_pid = metadata_pid,
+                               data_pids = data_pids)
 ```
 
-These two packages correspond to data from the same study, varying only by year; however, they currently exist on the test node as independent entities. We will associate them with each other by nesting them underneath a parent. *Note:* Data packages are usually not entirely uploaded through the R client. Typically a PI will submit the metadata and data, and the resource map is automatically generated by the node.    
-  
-## Creating a Parent  
-In some cases a parent package already exists. Search the ADC for the NSF award number to see if there are already exisiting packages. Parents usually have a `UUID` rather than a `DOI` and often start with a title like "Collaborative research:", but not always. More typically, you will need to create a new parent by editing the existing metadata. The parent package should contain a generalized summary for the metadata of each of its children. It typically does not contain any data itself. We will now generalize a metadata file from one of the children in order to create the parent.  
+These two packages correspond to data from the same study, varying only by year; however, they currently exist on the test node as independent entities. We will associate them with each other by nesting them underneath a parent. 
 
-* Read in one of the children's metadata files (EML), in this case 2013.  
+Now, let's create a parent metadata file. Read in one of the children's metadata files (EML). 
   
 ```{r, eval = T}
 eml_parent <- read_eml("data/E1_2013metadata.xml")
 ## Use this code when you are reading in the parent 
 # eml_parent <- read_eml("/home/dmullen/Nesting_Training/E1_2013metadata.xml")
+
 ## View the title 
 eml_parent@dataset@title
 ```
-  
-* The title of this child contains "2012-2013". This is too specific for the parent, as the temporal range of both children is 2012-2014. The parent should encompass this larger time range. 
+
+The title of this child contains "2012-2013". This is too specific for the parent, as the temporal range of both children is 2012-2014. The parent should encompass this larger time range. 
   
 ```{r}
+new_title <- "Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014"
 eml_parent@dataset@title <- c(new("title",
-                                  .Data = "Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014"))
+                                  .Data = new_title))
 ```
   
-* Like the title, the temporal coverage elements in this EML need to be adjusted. This field depends on whether or not the project has been completed.  
-+If the project is ongoing and the PI plans on submitting data in the future, set the Temporal Coverage to the start date of the project using a `singleDateTime` element.  We leave it open-ended and do not include an ending date.  
-+If the project has been completed, set the Temporal Coverage to the start and end dates of the entire study. *In this case lets assume the project has been completed. We will update the temporal coverage to reflect the entire duration of the study. Since we are using the metadata from the first year of the project, we only need to update the `endDate` element.  
+Like the title, the temporal coverage elements in this EML need to be adjusted. 
 
 ```{r}
-eml_parent@dataset@coverage@temporalCoverage@.Data[[1]]@rangeOfDates@endDate@calendarDate <- new("calendarDate",
-                                                                                                 "2014-09-20")
+new_end_date <- new("calendarDate", "2014-09-20")
+eml_parent@dataset@coverage@temporalCoverage@.Data[[1]]@rangeOfDates@endDate@calendarDate <- new_end_date
 ```
   
-* Remove `dataTable`s and `otherEntity`s from the metadata. If you recall from previous chapters, `dataTable`s contain metadata associated with data files (generally CSVs) and `otherEntity`s contain metadata about any other files in the data package (for instance a readMe or coding script). Because the parent does not contain any data objects, we want to remove `dataTables` and `otherEntities` from the metdata file. In this instance, the E1 2013 metadata only contains `dataTable`s. We can remove these by setting the `dataTable` element in the EML to a new blank object.  
+Remove `dataTable`s and `otherEntity`s from the metadata. If you recall from previous chapters, `dataTable`s contain metadata associated with data files (generally CSVs) and `otherEntity`s contain metadata about any other files in the data package (for instance a README or coding script). Because the parent does not contain any data objects, we want to remove `dataTables` and `otherEntities` from the metdata file. In this instance, the E1 2013 metadata only contains `dataTable`s. We can remove these by setting the `dataTable` element in the EML to a new blank object.  
   
 ```{r}
 eml_parent@dataset@dataTable <- new("ListOfdataTable")
 ```
 
-* In most cases elements like the abstract, contacts, creators, geographic description, and methods are already generalized and do not require changes.  
+In this case, the abstract, contacts, creators, geographic description, and methods are already generalized and do not require changes. 
   
-* Before writing your parent EML make sure that it validates. This is just a check to make sure everything is in the correct format.  
+Before writing your parent EML make sure that it validates. This is just a check to make sure everything is in the correct format.  
   
 ```{r}
 eml_validate(eml_parent)
 ```
   
-* After your EML validates we need to save, or "write", it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using "Save as" in Microsoft Word. We opened a file (E1_2013.xml), made some changes, and "saved it as" a new file called eml_parent.xml.  
+After your EML validates we need to save, or "write", it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using "Save as" in Microsoft Word. We opened a file (E1_2013.xml), made some changes, and "saved it as" a new file called eml_parent.xml.  
   
 ```{r}
 ## This will create the file "eml_parent.xml" at the location specified by path
@@ -124,41 +173,21 @@ path = "/home/YOURUSERNAME/eml_parent.xml"
 write_eml(eml_parent, path)
 ```
   
-* Next, we will publish the parent metadata to the test node.  
+Next, we will publish the parent metadata to the test node.  
   
 ```{r}
-metadata_parent <- publish_object(mnTest, path = path, format_id = format_eml())
+metadata_parent <- publish_object(mnTest, 
+                                  path = path, 
+                                  format_id = format_eml())
 ```
-  
+
 Finally, we create a resource map for the parent package. We nest the two child data packages using the `child_pids` argument in `create_resource_map`.  Note that these `child_pids` are pids for the resource maps of the child packages, NOT the metadata pids.
   
 ```{r}
 resourceMap_parent <- create_resource_map(mnTest, 
                                           metadata_pid = metadata_parent,
-                                          child_pids = c(resourceMap2013, resourceMap2014))
+                                          child_pids = c(rm_2013, rm_2014))
 ```
   
 The child packages are now nested underneath the parent.  
-  
-## Adding a child to a pre-existing parent 
-In some cases you will need to nest a new child underneath an existing parent. In this case we will nest the 2015 data for Lake E1 with our existing data package.  
-
-* First, create the 2015 child package.  
-  
-```{r}
-paths_2015 <- dir("/home/dmullen/Nesting_Training/2015", full.names = T)
-data_2015 <- sapply(paths_2015, function(path) { publish_object(mnTest, path, format = "text/csv") })
-metadata2015 <- publish_object(mnTest, path = "/home/dmullen/Nesting_Training/E1_2015metadata.xml", format = format_eml())
-resourceMap2015 <- create_resource_map(mnTest, metadata_pid = metadata2015, data_pids = data2015)
-```
-  
-* Nest the new child using the `child_pids` argument in `update_resource_map()`. Note: it's important to include the *resource map PIDs of ALL the children* in the `child_pids` argument, otherwise the nesting relationships between any omitted children and the parent will be deleted.  
-  
-```{r}
-resourceMap_parent2 <- update_resource_map(mnTest, 
-                                           resource_map_pid = resourceMap_parent,
-                                           metadata_pid = metadata_parent,
-                                           child_pids = c(resourceMap2013, resourceMap2014, resourceMap2015))
-```
-  
-* Nesting relationships can also be modified using the `child_pids` argument in `publish_update` in the same manner.
+ 
