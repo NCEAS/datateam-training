@@ -1,4 +1,3 @@
-## Explore EML
 
 We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. EML is written in XML (extensible markup language) and functions for building and editing EML are in the [EML R package](https://github.com/ropensci/EML).
 
