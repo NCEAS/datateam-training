@@ -10,4 +10,4 @@ eml@packageId <- new("xml_attribute",
                       .Data = doiPid)
 ```
 
-Be sure to include the `identifier=` argument in your `publish_update` command so the pre generated identifier is applied.
+Be sure to include the `identifier=` argument in your [publish update](#publish-update) command so the pre generated identifier is applied.
