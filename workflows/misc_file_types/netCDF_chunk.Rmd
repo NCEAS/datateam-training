@@ -4,12 +4,10 @@
 This section is for dealing with netCDF (.nc) files. These files require data tables but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or these R commands:
 
 ```{r, eval=FALSE}
-library(arcticdatautils)
-library(ncdf4)
 filepath <- '/home/.../ICECAPS_precip_product_2010_2015.nc' 
 
 # gets attribute info
-atts <- get_ncdf4_attributes(filepath)
+atts <- arcticdatautils::get_ncdf4_attributes(filepath)
 # preview of View(atts)
 atts[1:10,]
 ```
@@ -18,8 +16,8 @@ atts[1:10,]
 
 ```{r, eval=FALSE}
 # returns the actual values for a specified attribute
-t <- nc_open(filepath)
-test <- ncvar_get(t, 't2m')
+t <- ncdf4::nc_open(filepath)
+test <- ncdf4::ncvar_get(t, 't2m')
 # preview of View(test)
 test[1:10]
 ```
