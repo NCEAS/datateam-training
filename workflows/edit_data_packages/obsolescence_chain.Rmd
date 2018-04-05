@@ -10,13 +10,13 @@ This chunk is to obsolete one dataset. If there are more to add to the chain, mo
 # PID for data set to be hidden: doi:10…
 
 # adding data set to hide in the slot before the first version of the visible data set
-gsmOG <- getSystemMetadata(mn, "urn:uuid:...")
-gsmOG@obsoletes <- "doi:10…"
-updateSystemMetadata(mn, "urn:uuid:...", gsmOG)
+sysmeta1 <- getSystemMetadata(mn, "urn:uuid:...")
+sysmeta1@obsoletes <- "doi:10…"
+updateSystemMetadata(mn, "urn:uuid:...", sysmeta1)
 
 # adding first version to obsolescence chain after hidden version
-gsmObs1 <- getSystemMetadata(mn, "doi:10…")
-gsmObs1@obsoletedBy <- "urn:uuid:..."
-updateSystemMetadata(mn, "doi:10…", gsmObs1)
+sysmeta0 <- getSystemMetadata(mn, "doi:10…")
+sysmeta0@obsoletedBy <- "urn:uuid:..."
+updateSystemMetadata(mn, "doi:10…", sysmeta0)
 
 ```
