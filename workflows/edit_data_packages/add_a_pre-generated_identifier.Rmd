@@ -5,7 +5,7 @@ When you pre generate a UUID or DOI, the change is not automatically reflected i
 
 ```{r, eval = FALSE}
 ## Generate DOI and add to EML
-doiPid <- generateIdentifier(mn, "DOI")
+doiPid <- dataone::generateIdentifier(mn, "DOI")
 eml@packageId <- new("xml_attribute",
                       .Data = doiPid)
 ```
