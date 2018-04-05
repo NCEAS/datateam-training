@@ -11,10 +11,10 @@ filepath <- '/home/.../ICECAPS_precip_product_2010_2015.nc'
 # gets attribute info
 atts <- get_ncdf4_attributes(filepath)
 # preview of View(atts)
-atts[1:5,]
+atts[1:10,]
 ```
 
-![](../../images/netcdf_att_preview.png)
+![](../../images/netcdf_full_att_preview.png)
 
 ```{r, eval=FALSE}
 # returns the actual values for a specified attribute
