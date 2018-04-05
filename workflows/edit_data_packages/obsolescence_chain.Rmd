@@ -1,0 +1,22 @@
+
+## Obsolescence chain
+
+This chunk is to obsolete one dataset. If there are more to add to the chain, more steps can be added, carefully making sure to fill in `obsoletes` and `obsoletedBy` slots for each one. 
+
+```{r, eval = FALSE}
+# get oldest version of the file you want to be visible. Use get_all_versions and look at the first.
+# urn:uuid:...
+
+# PID for data set to be hidden: doi:10…
+
+# adding data set to hide in the slot before the first version of the visible data set
+gsmOG <- getSystemMetadata(mn, "urn:uuid:...")
+gsmOG@obsoletes <- "doi:10…"
+updateSystemMetadata(mn, "urn:uuid:...", gsmOG)
+
+# adding first version to obsolescence chain after hidden version
+gsmObs1 <- getSystemMetadata(mn, "doi:10…")
+gsmObs1@obsoletedBy <- "urn:uuid:..."
+updateSystemMetadata(mn, "doi:10…", gsmObs1)
+
+```
