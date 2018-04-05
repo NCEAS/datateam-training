@@ -1,11 +1,5 @@
----
-title: "Working with netCDFs"
-output: html_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Working with netCDFs
 
 This section is for dealing with netCDF (.nc) files. These files require data tables but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or these R commands:
 
