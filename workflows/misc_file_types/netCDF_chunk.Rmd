@@ -14,7 +14,7 @@ atts <- get_ncdf4_attributes(filepath)
 atts[1:5,]
 ```
 
-![](../images/netcdf_att_preview.png)
+![](../../images/netcdf_att_preview.png)
 
 ```{r, eval=FALSE}
 # returns the actual values for a specified attribute
@@ -24,6 +24,6 @@ test <- ncvar_get(t, 't2m')
 test[1:10]
 ```
 
-![](../images/netcdf_value_preview.png)
+![](../../images/netcdf_value_preview.png)
 
 The `formatId` in the sysmeta will most likely be `netCDF-4`.
