@@ -1,4 +1,4 @@
-###Understand the EML schema
+### Understand the EML schema
 
 Another great resource for navigating the `eml` structure is [looking at the schema which defines the structure](https://github.com/NCEAS/eml). The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
