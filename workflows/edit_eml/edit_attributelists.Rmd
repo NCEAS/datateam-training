@@ -78,12 +78,21 @@ Once you are done editing a table in the app, click the `Print` button to print 
 
 ### Edit Custom Units
 
-If you have units that are not in the standard EML unit list, you will need to build a custom unit list. To determine if your units are standard or not you can look through the standard units by using the following commands.
+EML has a set list of units that can be added to an eml file. These can be seen by using the following code.
 
 ```{r, eval = FALSE}
 standardUnits <- get_unitList()
 View(standardUnits$units)
 ```
+
+If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields.
+
+* **id**: The unit id (ids are camelCased)
+* **unitType**: The unit type (run `View(standardUnits$unitTypes)` to see standard unitTypes)
+* **parentSI**: The parent SI unit (e.g. for kilometer parentSI = "meter")
+* **multiplierToSI**: Multiplier to the parent SI unit (e.g. for kilometer multiplierToSI = 1000)
+* **abbreviation**: Unit abbreviation (e.g. for kilometer abbreviation = "km")
+* **description**: Text defining the unit (e.g. for kilometer definition = "1000 meters")
 
 Additionally, `datamgmt::create_attributes_table` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit.
 
@@ -92,13 +101,6 @@ datamgmt::get_custom_units("your_unit")
 ```
 
 Note, `datamgmt::create_attributes_table` calls `datamgmt::get_custom_units` for you! Custom units need to have the following columns.
-
-* **id** 
-* **unitType**
-* **parentSI**
-* **multiplierToSI**
-* **abbreviation**
-* **definition**
 
 `datamgmt::get_custom_units` will auto-generate many of these fields for you (**but don't just assume the autogeneration will be perfect, always ensure the autogeneration correctly handles your unit**)
 
