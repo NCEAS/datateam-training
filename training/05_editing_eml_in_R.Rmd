@@ -1,12 +1,9 @@
 
 # Editing EML in R
 
-This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd)). For some additional background, also check out [this paper](data/eml-principles.pdf) on EML and the principles for metadata creation.
+This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd)).
 
 Once you have an [eml file loaded into R](#get-package-and-eml), you can use R to edit the eml file.
-
-```{r, child = '../workflows/edit_eml/explore_eml.Rmd'}
-```
 
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```

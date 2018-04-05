@@ -1,0 +1,10 @@
+# Explore EML
+
+```{r, child = '../workflows/explore_eml/explore_eml_intro.Rmd'}
+```
+
+```{r, child = '../workflows/explore_eml/understand_eml_schema.Rmd'}
+```
+
+```{r, child = '../workflows/explore_eml/access_specific_elements.Rmd'}
+```

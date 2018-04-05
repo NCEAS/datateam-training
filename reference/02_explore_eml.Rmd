@@ -1,0 +1,10 @@
+# Explore EML
+
+```{r, echo = FALSE}
+chapter <- "../workflows/explore_eml/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
