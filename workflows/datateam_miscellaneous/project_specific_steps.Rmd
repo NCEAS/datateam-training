@@ -13,3 +13,5 @@ Then, update the access permissions in the system metadata using `set_rights_and
 pkg <- get_package(mn, resource_map_pid)
 set_rights_and_access(mn, unlist(pkg), 'CN=SASAP,DC=dataone,DC=org', permissions = c('read', 'write', 'changePermission'))
 ```
+
+Finally, go through the [SASAP checklist](https://github.nceas.ucsb.edu/NCEAS/sasap-data/blob/master/data-submission/checklist.Rmd) to ensure that the package meets all of the project-specific requirements for publishing.
