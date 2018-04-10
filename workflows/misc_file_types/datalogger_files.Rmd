@@ -1,0 +1,5 @@
+## Datalogger files
+
+.hobo files are raw data files offloaded from a sensor, and can include real-time graphs of temperature and soil moisture conditions.
+
+.hobo files can be opened using HOBOware, which can be downloaded from [here](http://www.onsetcomp.com/hoboware-free-download). 
