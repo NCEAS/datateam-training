@@ -23,3 +23,10 @@ updateSystemMetadata(mn, pid, sysmeta)
 ### Identifiers and sysmeta
 
 Importantly, changing the system metadata does NOT necessitate a change in the PID of an object. This is because changes to the system metadata do not change the object itself, they are only changing the description of the object (although ideally the system metadata is accurate when an object is first published). 
+
+### Additional resources
+
+For a more in-depth (and technical) guide to sysmeta, check out the DataOne documentation: 
+
+- [System Metadata](https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html)
+- [Data Types in CICore](https://releases.dataone.org/online/api-documentation-v2.0.1/apis/Types2.html)
