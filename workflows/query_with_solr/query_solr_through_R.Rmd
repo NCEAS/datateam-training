@@ -7,53 +7,25 @@ Though it's possible to [query Solr directly through its HTTP API](#query-solr),
 
 Why does #2 matter?
 Well by default, all of those URLs above only returned publicly-readable Solr documents.
-If a private document matched any of those queries, Solr doesn't give you any idea and acts like the non-public-readable documents don't exist.
-So we must pass an authentication token to access non-public-readable content.
-This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
+If a private document matched any of those queries, Solr doesn't give you any idea and acts like the non-public-readable documents don't exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
 
-And there's good news: all of the URLs you visited above can be turned into an R expression very easily.
-For example:
-
-- `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=title:*soil*`
-
-becomes
-
-```{r eval = FALSE}
+```{r}
 library(dataone)
 cn <- CNode("PROD")
 mn <- getMNode(cn, "urn:node:ARCTIC")
 # Set your token if you need/want!
-query(mn, "q=title:*soil*&fl=title&rows=10")
-```
 
-I just deleted the first part of the URL, up to and including the '?', and pasted the rest in as the second argument to `query`.
-You may have seen an alternative syntax:
-
-```{r eval = FALSE}
 query(mn, list(q="title:*soil*",
                fl="title",
                rows="10"))
+#or alternatively: query(mn, "q=title:*soil*&fl=title&rows=10")
 ```
 
-this is the same query as above because the `query` function takes either a string (the first form) or a named list (the second form).
+By default, `query` returns the result as a `list`, but a `data.frame` can be a more useful way to work with the result. To get a `data.frame` instead, just set the `as` argument to 'data.frame' to get a `data.frame`:
 
-By default, `query` returns the result as a `list`.
-This is definitely useful but a `data.frame` can be a more useful way to work with the result.
-To get a `data.frame` instead, just set the `as` argument to 'data.frame' to get a `data.frame`:
-
-```{r eval = FALSE}
+```{r eval = TRUE}
 query(mn, list(q="title:*soil*",
                fl="title",
                rows="10"),
       as = "data.frame")
-1  Daily Average Soil, Air and Ground Temperatures - Council Forest Site [Romanovsky, V.]
-2     Canadian Transect of Soils and Vegetation for the Circumpolar Arctic Vegetation Map
-3                                   Soil Temperatures, Toolik Lake, Alaska, 1995 and 1996
-4                                        Soil Temperature ARCSS grid Atqasuk, Alaska 2013
-5                                                        X-ray fluorescence, Barrow soils
-6                                                Toolik Lake, Alaska Soil moisture - 2014
-7                           Thermal Soil Properties for Ivotuk and Council [Beringer, J.]
-8                                          Soil Temperature NIMS grid Barrow, Alaska 2014
-9                                           Ivotuk Soil Data - Station Met2 [Hinzman, L.]
-10                                                         thule_tram_soil_temps_2013.csv
 ```
