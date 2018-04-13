@@ -18,7 +18,7 @@ Indexing the Object's Metacat stores lets us execute some interesting and very u
 - What Metadata and Data Objects are in a given Data Package?
 - What is the total size (in terms of disk space) of all Objects stored in Metacat?
 
-```{r, child = '../workflows/query_with_solr/query_solr.Rmd'}
+```{r, child = '../workflows/query_with_solr/query_solr_through_R.Rmd'}
 ```
 
 ## Key takeaways
