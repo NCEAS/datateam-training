@@ -1,0 +1,76 @@
+# Edit data packages
+
+```{r, echo = FALSE}
+chapter <- "../workflows/edit_data_packages/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Explore EML
+
+```{r, echo = FALSE}
+chapter <- "../workflows/explore_eml/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Edit EML
+
+```{r, echo = FALSE}
+chapter <- "../workflows/edit_eml/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# PI correspondence
+
+```{r, echo = FALSE}
+chapter <- "../workflows/pi_correspondence/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Miscellaneous file types
+
+```{r, echo = FALSE}
+chapter <- "../workflows/misc_file_types/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Wrangle data
+
+```{r, echo = FALSE}
+chapter <- "../workflows/wrangle_data/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Query with Solr
+
+```{r, echo = FALSE}
+chapter <- "../workflows/query_with_solr/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
