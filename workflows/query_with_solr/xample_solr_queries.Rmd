@@ -1,0 +1,58 @@
+## Example Solr queries
+
+Query multiple fields 
+
+```{r echo = FALSE}
+cn <- dataone::CNode('PROD')
+mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+```
+
+```{r}
+dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
+                        fl="title",
+                        rows="10"),
+               as = "data.frame")
+
+dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
+                        fl="title",
+                        rows="10"),
+               as = "data.frame")
+```
+
+Query multiple conditions within one field
+
+```{r}
+dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
+                        fl="title",
+                        rows="10"),
+               as = "data.frame")
+```
+
+Use NOT in a query
+
+```{r}
+#just add'-' before a query parameter
+
+dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
+                        fl="title",
+                        rows="10"),
+               as = "data.frame")
+```
+
+
+
+Query on a coordinating node
+
+```{r}
+dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
+                        fl="title",
+                        rows="10"),
+               as = "data.frame")
+```
+
+```
+# all resource maps with > 100 data objects that are not on the Arctic Data Center
+
+https://cn.dataone.org/cn/v2/query/solr/?q=resourceMap:*+AND+-datasource:*ARCTIC*&rows=0&facet=true&facet.field=resourceMap&facet.mincount=100
+```
+
