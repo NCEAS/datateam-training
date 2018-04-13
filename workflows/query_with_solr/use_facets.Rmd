@@ -13,3 +13,7 @@ To facet, we usually do a few things:
 - Add the parameter `facet.field={FIELD}` with the field we want to facet (group) on
 - Set `rows=0` because we don't care about the matched Solr documents
 - Optionally specify `fq={expression}` which filters out Solr documents before faceting. In the above example, we have to do this to only count Data Objects. Without it, the facet result would include formatIDs for metadata and resource maps which we don't want.
+
+```{block, type = "note"}
+Currently, the `dataone::query()` function does not support faceting, so you'll have to run your queries as a URL.
+```
