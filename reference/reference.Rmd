@@ -74,3 +74,9 @@ children <- paste0(chapter, sections)
 
 ```{r, child = children}
 ```
+
+## More resources
+
+- Solr's [The Standard Query Parser](https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser) docs (high level of detail)
+- Another quick reference: https://wiki.apache.org/solr/SolrQuerySyntax
+- http://www.solrtutorial.com/
