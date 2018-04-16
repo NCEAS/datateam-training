@@ -3,6 +3,7 @@
 ```{r echo = FALSE}
 library(knitr)
 library(magrittr)
+library(DT)
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 ```
@@ -14,7 +15,7 @@ dataone::query(mn, list(q="*:*",
                         fl="*",
                         rows="5"),
                as = "data.frame") %>% 
-  knitr::kable() #display concisely
+  DT::datatable() #display concisely
 ```
 
 ### Query a wildcard expression 
@@ -25,7 +26,7 @@ dataone::query(mn, list(q="id:arctic-data.*",
                         fl="*",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 ```
 
 ### Query multiple fields 
@@ -35,13 +36,13 @@ dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 
 dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
                         fl="title",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 ```
 
 ### Query multiple conditions within one field
@@ -51,7 +52,7 @@ dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
                         fl="title",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 ```
 
 ### Use NOT in a query
@@ -63,7 +64,7 @@ dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
                         fl="title",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 ```
 
 ### Query a coordinating node
@@ -73,7 +74,7 @@ dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
                         rows="5"),
                as = "data.frame")  %>% 
-  knitr::kable()
+  DT::datatable()
 ```
 
 ### Use facets
