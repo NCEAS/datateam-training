@@ -1,77 +1,85 @@
 ## Example Solr queries
 
 ```{r echo = FALSE}
+library(knitr)
+library(magrittr)
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 ```
 
-Find everything
+### Find everything
 
 ```{r}
 dataone::query(mn, list(q="*:*",
                         fl="*",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame") %>% 
+  knitr::kable() #display concisely
 ```
 
-Query a wildcard expression 
+### Query a wildcard expression 
 
 ```{r}
 #find any id that starts with arctic-data.
 dataone::query(mn, list(q="id:arctic-data.*",
                         fl="*",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 ```
 
-Query multiple fields 
+### Query multiple fields 
 
 ```{r}
 dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 
 dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
                         fl="title",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 ```
 
-Query multiple conditions within one field
+### Query multiple conditions within one field
 
 ```{r}
 dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
                         fl="title",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 ```
 
-Use NOT in a query
+### Use NOT in a query
+
+Just add `-` before a query parameter!
 
 ```{r}
-#just add'-' before a query parameter
-
 dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
                         fl="title",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 ```
 
-
-
-Query on a coordinating node
+### Query a coordinating node
 
 ```{r}
 dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
-                        rows="10"),
-               as = "data.frame")
+                        rows="5"),
+               as = "data.frame")  %>% 
+  knitr::kable()
 ```
 
-```
-# all resource maps with > 100 data objects that are not on the Arctic Data Center
+### Use facets
 
+All resource maps with > 100 data objects that are _not_ on the Arctic Data Center:
+
+```
 https://cn.dataone.org/cn/v2/query/solr/?q=resourceMap:*+AND+-datasource:*ARCTIC*&rows=0&facet=true&facet.field=resourceMap&facet.mincount=100
 ```
-

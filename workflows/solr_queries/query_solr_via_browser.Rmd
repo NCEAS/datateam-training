@@ -15,7 +15,7 @@ If I break it down into pieces, I get:
 - the **query** - `q=soil+science`
 - **other parameters**, which are separated by `&` - `oq=soil+science&aqs=chrome.0.69i59.1350j0j1&sourceid=chrome&ie=UTF-8`
 
-Most of the time, you'll query either the Arctic Data Center member node or the `PROD` cooridinating node, which have the following base URLs:
+Most of the time, you'll query either the Arctic Data Center member node or the `PROD` coordinating node, which have the following base URLs:
 
 - Arctic Data Center member node: https://arcticdata.io/metacat/d1/mn/v2/query/solr
 - `PROD` coordinating node: https://cn.dataone.org/cn/v2/query/solr
@@ -25,7 +25,7 @@ You can then append your query parameters to your base URL:
 `https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q={QUERY}&fl={FIELDS}&rows={ROWS}`
 
 ```{block, type = "note"}
-If you visit that URL, you will see a list of fields Solr is storing for the Objects it indexes.
+Visit the base URL to see a list of fields Solr is storing for the objects it indexes.
 
-You can see that there is a large set of queryable fields, though not all types of Objects will have values set for all of the possible fields because some fields do not make sense for some Objects (e.g., `title` for a CSV).
+There is a large set of queryable fields, though not all types of objects will have values set for all of the possible fields because some fields do not make sense for some objects (e.g., `title` for a CSV).
 ```
