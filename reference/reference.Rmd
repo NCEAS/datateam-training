@@ -64,10 +64,10 @@ children <- paste0(chapter, sections)
 ```{r, child = children}
 ```
 
-# Query with Solr
+# Solr queries
 
 ```{r, echo = FALSE}
-chapter <- "../workflows/query_with_solr/"
+chapter <- "../workflows/solr_queries/"
 sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```

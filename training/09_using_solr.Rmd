@@ -3,7 +3,7 @@
 Solr is what's known as an index, which helps us keep track of objects stored in our metadata catalog ([Metacat](https://www.dataone.org/software-tools/metacat)).
 
 Every object in Metacat has a corresponding Solr document for it that contains information about that object.
-Each type of Object will have a different set of fields in its Solr document. For example, an EML document will have a `title` field (corresponding to the EML document's `<title>` element), while a CSV will not.
+Each type of object will have a different set of fields in its Solr document. For example, an EML document will have a `title` field (corresponding to the EML document's `<title>` element), while a CSV will not.
 
 The fields that go into a Solr document are populated by information such as:
 
@@ -11,16 +11,16 @@ The fields that go into a Solr document are populated by information such as:
 - The object itself (e.g. title, creators, etc. for an EML record)
 - Additional computed fields (e.g., a geohash for quick spatial search)
 
-Indexing the Object's Metacat stores lets us execute some interesting and very useful queries such as:
+Indexing the object's Metacat stores lets us execute some interesting and very useful queries such as:
 
 - What are the most recently updated datasets?
 - What Metadata and Data Objects are in a given Data Package?
 - What is the total size (in terms of disk space) of all Objects stored in Metacat?
 
-Querying Solr is possible [by tacking a query onto a base URL](#query-solr) or [through the `dataone::query()` function in R](#query-solr-through-R). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
+Querying Solr is possible [by tacking a query onto a base URL](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html) or [through the `dataone::query()` function in R](https://nceas.github.io/datateam-training/training/introduction-to-solr.html#query-solr-through-r). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
 
-```{r, child = '../workflows/query_with_solr/construct_a_query.Rmd'}
+```{r, child = '../workflows/solr_queries/construct_a_query.Rmd'}
 ```
 
-```{r, child = '../workflows/query_with_solr/query_solr_through_R.Rmd'}
+```{r, child = '../workflows/solr_queries/query_solr_through_R.Rmd'}
 ```
