@@ -1,11 +1,30 @@
 ## Example Solr queries
 
-Query multiple fields 
-
 ```{r echo = FALSE}
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 ```
+
+Find everything
+
+```{r}
+dataone::query(mn, list(q="*:*",
+                        fl="*",
+                        rows="10"),
+               as = "data.frame")
+```
+
+Query a wildcard expression 
+
+```{r}
+#find any id that starts with arctic-data.
+dataone::query(mn, list(q="id:arctic-data.*",
+                        fl="*",
+                        rows="10"),
+               as = "data.frame")
+```
+
+Query multiple fields 
 
 ```{r}
 dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
