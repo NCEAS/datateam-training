@@ -17,10 +17,10 @@ Indexing the Object's Metacat stores lets us execute some interesting and very u
 - What Metadata and Data Objects are in a given Data Package?
 - What is the total size (in terms of disk space) of all Objects stored in Metacat?
 
-Querying Solr is possible [by tacking a query onto a base URL](#query-solr) or [through the `dataone::query()` function in R](#query-solr-through-R). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
+Querying Solr is possible [by tacking a query onto a base URL](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html) or [through the `dataone::query()` function in R](https://nceas.github.io/datateam-training/training/introduction-to-solr.html#query-solr-through-r). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
 
-```{r, child = '../workflows/query_with_solr/construct_a_query.Rmd'}
+```{r, child = '../workflows/solr_queries/construct_a_query.Rmd'}
 ```
 
-```{r, child = '../workflows/query_with_solr/query_solr_through_R.Rmd'}
+```{r, child = '../workflows/solr_queries/query_solr_through_R.Rmd'}
 ```
