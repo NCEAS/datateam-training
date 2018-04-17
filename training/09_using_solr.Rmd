@@ -13,7 +13,7 @@ Once you understand the logic of queries, it becomes a flexible tool that can be
 - What metadata and data objects are in a given data package?
 - What is the total size (in terms of disk space) of all objects stored in Metacat?
 
-Querying Solr is possible [by tacking a query onto a base URL](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html) or [through the `dataone::query()` function in R](https://nceas.github.io/datateam-training/training/introduction-to-solr.html#query-solr-through-r). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
+Querying Solr is possible [by tacking a query onto a base URL](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html) or [through the `dataone::query()` function in R](https://nceas.github.io/datateam-training/training/introduction-to-solr.html#query-solr-through-r). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/solr-queries.html) for more on Solr.
 
 ```{r, child = '../workflows/solr_queries/construct_a_query.Rmd'}
 ```
