@@ -3,7 +3,8 @@
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(methods)
 library(dplyr)
-# library(datamgmt)
+library(EML)
+library(datamgmt)
 ```
 
 ### Introduction
@@ -22,7 +23,6 @@ You may want to use EML references if you have the following scenarios (not exha
 It's very common to see the contact and creator referring to the same person with XML like this:
     
 ``` {r eval = TRUE, echo = FALSE}
-library(EML)
 eml <- new("eml")
 eml@packageId <- new("xml_attribute", "my_test_doc")
 eml@system <- new("xml_attribute", "my_system")
@@ -62,8 +62,6 @@ for (i in 2:length(eml@dataset@dataTable)) {
 }
 ```
 
-_Want more info? See more in-depth examples [here](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/working-with-eml-references.md)._
-
 ### Add creator IDs
 
 The `datamgmt::add_creator_id()` function is a shortcut for one of our most common use-cases: you get a package that does not have an ORCID associated with any of the contacts, and you need to add at least one into the metadata. To do this, you can:
@@ -71,7 +69,7 @@ The `datamgmt::add_creator_id()` function is a shortcut for one of our most comm
 1. Add the ORCID to a creator (usually the first creator)
 2. Update the contact information for that individual's other roles
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 eml <- eml %>%
     datamgmt::add_creator_id(surname = "mecum",
                    orcid = "https://orcid.org/0000-1234-5678-4321",
