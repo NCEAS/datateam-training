@@ -1,6 +1,6 @@
 ## Example Solr queries
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(knitr)
 library(magrittr)
 library(kableExtra)
