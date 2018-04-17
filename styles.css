@@ -1,9 +1,3 @@
-.markdown-section table {
-    table-layout: fixed;
-    display:block;
-    overflow-x: auto;
-}
-
 .exercise {
   background-color: #ccffcc !important;
 }
