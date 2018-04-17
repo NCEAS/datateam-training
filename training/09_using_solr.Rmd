@@ -1,21 +1,17 @@
 # Introduction to Solr
 
-Solr is what's known as an index, which helps us keep track of objects stored in our metadata catalog ([Metacat](https://www.dataone.org/software-tools/metacat)).
+Solr is what's known as an index, which helps us keep track of the data, metadata, and resource map objects stored in our metadata catalog, [Metacat](https://www.dataone.org/software-tools/metacat).
 
-Every object in Metacat has a corresponding Solr document for it that contains information about that object.
-Each type of object will have a different set of fields in its Solr document. For example, an EML document will have a `title` field (corresponding to the EML document's `<title>` element), while a CSV will not.
+Solr allows you to quickly search through any coordinating or member node. Some more common use-cases include:
 
-The fields that go into a Solr document are populated by information such as:
+- Recovering lost pids - if you publish new data objects ([`publish_object`](https://nceas.github.io/datateam-training/training/create-data-packages-in-r.html#publish-an-object)) but forget to save the pids, you can recover them with a query. For example, you can search for all data objects that are not associated with a resource map _and_ are published using your ORCID (`q=-resourceMap:*+AND+submitter:*XXXX-YYYY-ZZZZ-WWWW`)
+- Working with groups of packages - if you want to find all data, metadata, and resource maps associated with a PI, you can use `q=origin:*SURNAME*` or perhaps `q=rightsHolder:*XXXX-YYYY-ZZZZ-WWWW`
 
-- The system metadata (fileName, accessPolicy, etc)
-- The object itself (e.g. title, creators, etc. for an EML record)
-- Additional computed fields (e.g., a geohash for quick spatial search)
-
-Indexing the object's Metacat stores lets us execute some interesting and very useful queries such as:
+Once you understand the logic of queries, it becomes a flexible tool that can be used to answer a variety of interesting and useful questions, for example: 
 
 - What are the most recently updated datasets?
-- What Metadata and Data Objects are in a given Data Package?
-- What is the total size (in terms of disk space) of all Objects stored in Metacat?
+- What metadata and data objects are in a given data package?
+- What is the total size (in terms of disk space) of all objects stored in Metacat?
 
 Querying Solr is possible [by tacking a query onto a base URL](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html) or [through the `dataone::query()` function in R](https://nceas.github.io/datateam-training/training/introduction-to-solr.html#query-solr-through-r). For now, we'll just cover the basics of Solr queries in R. See the [Data Team References](https://nceas.github.io/datateam-training/reference/query-with-solr.html) for more on Solr.
 
