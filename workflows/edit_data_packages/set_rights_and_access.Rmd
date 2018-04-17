@@ -2,8 +2,8 @@
 
 One final step when creating/updating packages is to make sure that the rights and access on all the objects that were uploaded are set correctly within the sysmeta. The function `arcticdatautils::set_rights_and_access` will set both, and `arcticdatautils::set_access` will just set access. There are two functions for this because a rights holder should always have access, but not all people who need access are rights holders. The rights holder of the data package is typically the submitter (if the dataset is submitted through the web form, sometimes referred to as the "registry"), but if a data team member is publishing objects for a PI, the rights holder should be the main point of contact for the dataset (i.e. the person who requested that we upload the data for them). 
 
-To set the rights and access for all of the objects in a [package](#get-package-and-eml), first get the ORCiD of the person you want to give access and rights to.
-You can set this manually, or grab it from one of the creators in an eml file. You can look up ORCiDs [here](https://orcid.org/orcid-search/search). 
+To set the rights and access for all of the objects in a [package](#get-package-and-eml), first get the ORCID of the person you want to give access and rights to.
+You can set this manually, or grab it from one of the creators in an eml file. You can look up ORCID [here](https://orcid.org/orcid-search/search). 
 
 ```{r, eval = FALSE}
 # Manually set ORCiD
@@ -14,7 +14,7 @@ You can set this manually, or grab it from one of the creators in an eml file. Y
  subject <- sub("^https://", "http://", subject)
 ```
 
-Note, when setting metadata, the ORCiD must start with `http://`. ORCiDs in eml should start with `https://`. The `sub` command above will change this formatting for you.
+Note, when setting metadata, the ORCID must start with `http://`. ORCIDs in eml should start with `https://`. The `sub` command above will change this formatting for you.
 
 Next, set the rights and access using the following command.
 
