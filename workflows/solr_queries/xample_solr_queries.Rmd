@@ -34,8 +34,8 @@ format_query_result(result)
 ### Query a wildcard expression 
 
 ```{r type = "markdown-table"}
-#find any id that starts with arctic-data.
-result <- dataone::query(mn, list(q="id:arctic-data.*",
+#find any id that starts with arctic-data.6
+result <- dataone::query(mn, list(q="id:arctic-data.6*",
                                   fl="*",
                                   rows="5"),
                          as = "data.frame")
