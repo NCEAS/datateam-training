@@ -12,7 +12,7 @@ mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 format_query_result <- function(query_result) {
   query_result %>% 
     knitr::kable(format = "html") %>% 
-    kableExtra::kable_styling() %>% 
+    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
     kableExtra::scroll_box(box_css = "overflow-x: auto") #display concisely
 }
 ```
