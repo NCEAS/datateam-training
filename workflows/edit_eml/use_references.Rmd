@@ -68,7 +68,7 @@ _Want more info? See more in-depth examples [here](https://github.nceas.ucsb.edu
 
 The `datamgmt::add_creator_id()` function is a shortcut for one of our most common use-cases: you get a package that does not have an ORCID associated with any of the contacts, and you need to add at least one into the metadata. To do this, you can:
 
-1. Add the ORCID to a creator (usually the first creator). You can look up ORCiDs [here](https://orcid.org/orcid-search/search). 
+1. Add the ORCID to a creator (usually the first creator). You can look up ORCIDs [here](https://orcid.org/orcid-search/search). 
 2. Update the contact information for that individual's other roles
 
 ```{r eval = FALSE}
