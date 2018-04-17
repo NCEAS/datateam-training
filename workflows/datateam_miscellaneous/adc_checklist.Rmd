@@ -1,0 +1,63 @@
+## Final checklist before notifying submitter (PI)
+
+- **Descriptive title:** what, where, when - provides enough information to understand the contents at a general scientific level (only first word and proper nouns capitalized, as in a journal article title; do not add a period at the end, it will auto-populate)
+    - Ex: "Active layer soil bulk density, moisture, carbon and nitrogen concentration and stable isotope data from Alaska borehole sites, 2015"
+
+- **Descriptive abstract:** specifies purpose, data collected, and other applicable information (&#8805;100 words) - provides an overview of the scientific context/project/hypotheses, how the data set fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents
+
+    Bad example:
+
+      - A low-resolution 3D model of a subglacial conduit derived from a photographic survey and structure-from-motion.
+
+    Good example:
+
+      - In this study, the locations of 193 old aerial photographs of northern Alaskan landscapes were re-photographed and assessed for changes in vegetation. The original photographs were taken over northern Alaska between 1948 and 1951, and the new photographs were taken between 1999 and 2003. The region covered by the original and repeat photographs stretches from the southern extent of the Brooks Range in the south to the Coastal Plain in the north, and from the Chukchi Sea in the west to the Canning River in the east. The original photographs were taken by the U.S. military as part of geologic reconnaissance and exploration, and the method used to acquire them was to fly both sides of a river valley while photographing the river and the facing valley slopes. Of the several thousand original photographs, only a fraction were repeated for the purpose of assessing vegetation change. Repeat photographs were selected for geographic coverage and to produce the greatest likelihood of detecting vegetation change. The original and repeat photographs were then scanned and stored in TIFF format. Individual image file sizes range from 5 to 60 MB each, and the total file size for the data set is approximately 11 GB.
+
+- **Data file types** are registered DataOne formats and properly set in the EML (`formatName`) and the system metadata for ALL DATA OBJECTS
+    - See registered DataOne formats [here](https://cn.dataone.org/cn/v2/formats)
+    - Data files stored using proprietary software could disappear or no longer be accessible when the software is no longer available. Preserving data in text-based, open-source file formats ensures preservation of data for, theoretically, all time (ex: CSV instead of XLS). These transferrable file formats also reduce the possibility of information being "lost in translation".
+
+- `fileName` is properly set (including extension) in the system metadata for all objects (besides resource map) - do this by using `set_file_name()`
+
+- **Data file names:** clear, but short descriptions without blank spaces (include extension)
+- Ex: “Corvallis_VegBiodiv_2007.csv”
+
+- **Column headers** (within data files): no spaces (use underscore or camelCase), `attributeList` adequately defines ALL column headers (including units)
+
+- **Cell etiquette:** only one value (piece of information) per cell (for lat/long use decimal degrees) - `attributeList` should define ALL codes used (defining missing value codes is essential)
+     
+- Each data file has either a `dataTable` or an `otherEntity`
+
+- `entityName`s are properly set in all `dataTable`s and `otherEntity`s
+
+- Download buttons in `dataTable`s and `otherEntity`s download correct data files
+
+- `dataTable`s and `otherEntity`s must include `physical` - all `physical` sections match the information for the respective data object: `objectName` (including extension), `size` (including units), `authentication` (checksum), `formatName` (file format), and `url` (online distribution info links end in correct PID)
+
+- **Creator and contact roles** are complete
+      - First/Last Name, emails are essential - use ONE `givenName` slot for EACH first OR middle name, like so:  
+      `<individualName>  
+        <givenName>Austin</givenName>  
+        <givenName>Samuel</givenName>  
+        <surName>Post</surName>  
+      </individualName>`  
+      - Whenever they exist and are known, ORCID iDs should be included for all party types - enter iDs (in this format:  
+      `<userId directory="https://orcid.org/">https://orcid.org/0000-0000-0000-0000</userId>`)  
+      in the `userId` slots. Note the "s" in "https". See how to do this in an automated fashion [here](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/editingEMLinR.Rmd)  
+      - Use the "references" tag to copy information for the same individual to multiple "party type"s ("creator", "contact", "associatedParty"), [like so](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/EML/working-with-eml-references.md)  
+      - Emails are important, phone #s and addresses are less critical
+
+- **Geographic and temporal ranges** are sensible (start date preceeds end date) and appropriate to the study site and period; geogrpahic description is accurate
+
+- **Funding numbers** are accurate and included
+    - NSF-funded projects can be searched [here](https://www.nsf.gov/awardsearch/); we also accept non-NSF funded arctic data sets
+
+- **Methods:** provide enough detail so that a reasonable scientist can replicate the study without needing to consult anyone nor any other resources
+
+- Double check for garbled symbols, spelling, and gramatical errors
+
+- If the data set is still private and awaiting PI and/or submitter review, be sure that the `accessPolicy`s on ALL OBJECTS (metadata, resource map, data objects) grants `read`, `write`, and `changePermission` privileges to the PI's and/or submitter's ORCID iDs (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") - do this using `set_access()`. **Make sure to OMIT the "s" after "http" in the ORCID.**
+
+- `rightsHolder` is properly set (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") to PIs on ALL OBJECTS (metadata, resource map, data objects) - do this using `set_rights_holder()` - **this should be a last step**
+
+- After approval and DOI'ing, log out to ensure the landing page looks correct to average users. If there are discrepencies, ensure all versions (of all objects) following a public version, are also public.
