@@ -1,58 +1,87 @@
 ## Example Solr queries
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(knitr)
 library(magrittr)
-library(DT)
+library(kableExtra)
+library(tibble)
+
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+
+format_query_result <- function(query_result) {
+  query_result %>% 
+    knitr::kable(format = "html") %>% 
+    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
+    kableExtra::scroll_box(box_css = "overflow-x: auto") #display concisely
+}
 ```
 
 ### Find everything
 
 ```{r}
-dataone::query(mn, list(q="*:*",
-                        fl="*",
-                        rows="5"),
-               as = "data.frame") %>% 
-  DT::datatable() #display concisely
+result <- dataone::query(mn, list(q="*:*",
+                                  fl="*",
+                                  rows="5"),
+                         as = "data.frame")
 ```
+
+```{r echo = FALSE}
+format_query_result(result)
+```
+
 
 ### Query a wildcard expression 
 
-```{r}
+```{r type = "markdown-table"}
 #find any id that starts with arctic-data.
-dataone::query(mn, list(q="id:arctic-data.*",
-                        fl="*",
-                        rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+result <- dataone::query(mn, list(q="id:arctic-data.*",
+                                  fl="*",
+                                  rows="5"),
+                         as = "data.frame")
+```
+
+```{r echo = FALSE}
+format_query_result(result)
 ```
 
 ### Query multiple fields 
 
 ```{r}
-dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
+result <- dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
                         rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
-
-dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
-                        fl="title",
-                        rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+                        as = "data.frame")
 ```
+
+```{r echo = FALSE}
+format_query_result(result)
+```
+
+```{r}
+result <- dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
+                                  fl="title",
+                                  rows="5"),
+                         as = "data.frame")
+```
+
+
+```{r echo = FALSE}
+format_query_result(result)
+```
+
 
 ### Query multiple conditions within one field
 
 ```{r}
-dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
-                        fl="title",
-                        rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+result <- dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
+                                  fl="title",
+                                  rows="5"),
+                         as = "data.frame") 
+```
+
+```{r echo = FALSE}
+format_query_result(result)
 ```
 
 ### Use NOT in a query
@@ -60,21 +89,27 @@ dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
 Just add `-` before a query parameter!
 
 ```{r}
-dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
-                        fl="title",
-                        rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+result <- dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
+                                  fl="title",
+                                  rows="5"),
+                         as = "data.frame")
+```
+
+```{r echo = FALSE}
+format_query_result(result)
 ```
 
 ### Query a coordinating node
 
 ```{r}
-dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
-                        fl="title",
-                        rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+result <- dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
+                                  fl="title",
+                                  rows="5"),
+                         as = "data.frame")
+```
+
+```{r echo = FALSE}
+format_query_result(result)
 ```
 
 ### Use facets

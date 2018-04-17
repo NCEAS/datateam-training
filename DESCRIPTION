@@ -4,7 +4,7 @@ Author: Placeholder
 Maintainer: Placeholder <developer@some.domain.net>
 Description: This is a description. 
 Version: 0.0.1
-Imports: bookdown, xfun, rmarkdown, tidyverse, arcticdatautils, EML, dataone, remotes, janitor, DT, datamgmt
+Imports: bookdown, xfun, rmarkdown, tidyverse, arcticdatautils, EML, dataone, remotes, janitor, DT, datamgmt, kableExtra
 Remotes: rstudio/bookdown, NCEAS/arcticdatautils@*release, NCEAS/datamgmt
 License: Apache License (== 2.0)
 RoxygenNote: 6.0.1
