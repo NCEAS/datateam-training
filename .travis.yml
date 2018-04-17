@@ -16,5 +16,6 @@ addons:
   apt:
     packages:
       - librdf0-dev
+      - libudunits2-dev
       - libnetcdf-dev
       - r-cran-ncdf4
