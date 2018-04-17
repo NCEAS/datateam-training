@@ -76,6 +76,8 @@ datamgmt::create_attributes_table()
 
 Once you are done editing a table in the app, click the `Print` button to print text of a code that will build a data frame in R. Copy that code and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`).
 
+For simple attribute corrections, `datamgmt::edit_attribute` allows you to edit the slots of a single attribute within an attribute list.
+
 ### Edit Custom Units
 
 If you have units that are not in the standard EML unit list, you will need to build a custom unit list. To determine if your units are standard or not you can look through the standard units by using the following commands.
