@@ -4,6 +4,7 @@
 library(knitr)
 library(magrittr)
 library(DT)
+library(kableExtra)
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 ```
@@ -15,7 +16,9 @@ dataone::query(mn, list(q="*:*",
                         fl="*",
                         rows="5"),
                as = "data.frame") %>% 
-  DT::datatable() #display concisely
+  kable(format = "html") %>% 
+  kable_styling(latex_options = "scale_down",
+                full_width = FALSE) #display concisely
 ```
 
 ### Query a wildcard expression 
@@ -25,8 +28,7 @@ dataone::query(mn, list(q="*:*",
 dataone::query(mn, list(q="id:arctic-data.*",
                         fl="*",
                         rows="5"),
-               as = "data.frame")  %>% 
-  DT::datatable()
+               as = "data.frame")
 ```
 
 ### Query multiple fields 
