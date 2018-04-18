@@ -4,9 +4,21 @@ We use the Ecological Metadata Language (EML) to store structured metadata for a
 For additional background on EML and principles for metadata creation, check out [this paper](data/eml-principles.pdf).
 
 The first task when editing an `eml` file is navigating the `eml` file. An `eml` file is organized in a structure that contains many lists nested within other lists. 
-The function `EML::eml_view()` (`install.packages("listviewer")` if it doesn't work) allows you to get a crude view of an `eml` file in the viewer. It can be useful for exploring the file.
+The function `EML::eml_view` (make sure to install the `listviewer` if you don't have it already) allows you to get a crude view of an `eml` file in the viewer. It can be useful for exploring the file.
 
-![](../images/eml_view.png)
+```{r echo=FALSE, message = FALSE, error = FALSE}
+library(dataone)
+library(arcticdatautils)
+library(EML)
+
+cn <- CNode('PROD')
+mn <- getMNode(cn,'urn:node:ARCTIC')
+```
+```{r}
+eml_raw <- rawToChar(dataone::getObject(mn,
+                                        "doi:10.18739/A2FS1H"))
+EML::eml_view(eml_raw) # you can also pass a path to an eml file
+```
 
 To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the `eml` structure and to see what slots are nested within other slots. However, you have to tell R where you want to go in the structure when you use the `@` symbol. For example, if you want to go into the dataset of your `eml` you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
 
