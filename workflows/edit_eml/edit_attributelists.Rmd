@@ -97,7 +97,7 @@ If you have units that are not in the standard EML unit list, you will need to b
 Additionally, `datamgmt::create_attributes_table` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit.
 
 ``` {r, eval = FALSE}
-datamgmt::get_custom_units("your_unit")
+datamgmt::return_eml_units("your_unit")
 ```
 
 Note, `datamgmt::create_attributes_table` calls `datamgmt::get_custom_units` for you! Custom units need to have the following columns.
