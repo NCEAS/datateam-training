@@ -5,11 +5,10 @@ The function `EML::eml_view` (make sure to install the `listviewer` if you don't
 
 ```{r echo=FALSE, message = FALSE, error = FALSE}
 library(dataone)
-library(arcticdatautils)
 library(EML)
 
-cn <- CNode('PROD')
-mn <- getMNode(cn,'urn:node:ARCTIC')
+cn <- dataone::CNode('PROD')
+mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 ```
 ```{r}
 eml_raw <- rawToChar(dataone::getObject(mn,
