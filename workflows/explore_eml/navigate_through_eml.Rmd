@@ -1,7 +1,4 @@
-
-We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. EML is written in XML (extensible markup language) and functions for building and editing EML are in the [EML R package](https://github.com/ropensci/EML).
-
-For additional background on EML and principles for metadata creation, check out [this paper](data/eml-principles.pdf).
+## Navigate through EML
 
 The first task when editing an `eml` file is navigating the `eml` file. An `eml` file is organized in a structure that contains many lists nested within other lists. 
 The function `EML::eml_view` (make sure to install the `listviewer` if you don't have it already) allows you to get a crude view of an `eml` file in the viewer. It can be useful for exploring the file.
@@ -25,5 +22,3 @@ To navigate this complex structure in R, use the `@` symbol. The `@` symbol allo
 ![RStudio Autocompletion Example](../images/rstudio_autocomplete.png)
 
 Note if you hit tab, and the only option is `.Data`, this implies most likely that you are trying to go deeper within a list. For example ```eml@dataset@creator@<TAB>``` will return only `.Data`. This is because `creator` is a list object (i.e. you can have multiple creators). If you want to go deeper into `creator`, you first must tell R which creator you are interested in. Do this by writing `[[i]]` first where `i` is index of the creator you are concerned with. For example, if you want to look at the first creator i = 1. Now ```eml@dataset@creator[[1]]@<TAB>``` will give you many more options. Note, `.Data` also sometimes means you have reached the end of a branch in the `eml` structure.
-
-

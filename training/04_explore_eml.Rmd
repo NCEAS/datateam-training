@@ -1,6 +1,10 @@
 # Explore EML
 
-```{r, child = '../workflows/explore_eml/explore_eml_intro.Rmd'}
+We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. EML is written in XML (extensible markup language) and functions for building and editing EML are in the [EML R package](https://github.com/ropensci/EML).
+
+For additional background on EML and principles for metadata creation, check out [this paper](data/eml-principles.pdf).
+
+```{r, child = '../workflows/explore_eml/navigate_through_eml.Rmd'}
 ```
 
 ```{r, child = '../workflows/explore_eml/understand_eml_schema.Rmd'}
