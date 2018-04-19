@@ -4,7 +4,7 @@ Another great resource for navigating the `eml` structure is [looking at the sch
 
 For example, let's take a look at [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png). To start off, notice that some elements are in solid boxes, whereas others are in dashed boxes.
 
-![](../images/eml-surname-expanded.png)  ![](../images/eml-givenname-expanded.png)
+<img src="../images/eml-surname.png" alt="solid" style="width: 150px;"/>  <img src="../images/eml-givenname.png" alt="dashed" style="width: 150px;"/>
 
 A solid box indicates that the element is _required_ if the element above it (to the left in the schema) is used, whereas a dashed box indicates that the element is _optional_.
 
