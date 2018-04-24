@@ -1,6 +1,6 @@
 ## Update an object
 
-The `arcticdatautils::update_object` function updates a data object but does not change the resource map or EML. To simultaneously update all three parts of a data package, you can use the `datamgmt::update_package_object` function.
+The `arcticdatautils::update_object` function updates a data object but does not change the resource map or EML. To simultaneously update all three parts of a data package, you can use the `datamgmt::update_package_object`.
 
 The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_package_object.html) function updates a data object, and then automatically updates the package resource map with the new data pid. If an object already has a dataTable or otherEntity with a working physical section, the EML will be updated with the new data’s physical.
 
@@ -17,7 +17,7 @@ update_package_object(mn,
                       ...) #any other arguments to pass to publish_update (child_pids, etc)
 ```
 
-To try it out for yourself, you can run this code to create a dummy package on [test.arctic.io](https://test.arctic.io) and update an object.
+To try it out for yourself, you can run this code to create a dummy package on [test.arctic.io](https://test.arctic.io) and update one of its objects.
 
 ```{r eval = FALSE}
 #input token to run
@@ -33,6 +33,6 @@ file.remove("new_file.csv") #clean up
 #check out the package on test.arcticdata.io
 ```
 
-```{type = "note"}
+```{block, type = "note"}
 You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
 ```
