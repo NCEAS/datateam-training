@@ -8,7 +8,7 @@ output:
     css: ../styles.css
 documentclass: book
 github-repo: rstudio/datateam-training
-description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center Projects"
+description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects"
 ---
 # Welcome to NCEAS! {#welcome}
 
@@ -22,17 +22,19 @@ description: "This is a training guide and reference resource for NCEAS data tea
 ## Account information
 * [LDAP - NCEAS](https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account) - Jeanette or Jesse should have set this up prior to your start date to help get other accounts set up by the first day. This account and password control your access to:
     + arcticdata [RT queue](https://support.nceas.ucsb.edu/rt/)
-    + GitHub - [arctic-data](https://github.nceas.ucsb.edu/KNB/arctic-data/) and [sasap-data](https://github.nceas.ucsb.edu/NCEAS/sasap-data/)
+    + GitHub Enterprise - [arctic-data](https://github.nceas.ucsb.edu/KNB/arctic-data/) and [sasap-data](https://github.nceas.ucsb.edu/NCEAS/sasap-data/)
 * Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal
 * [ORCiD](https://orcid.org/register) - create an account
 * [NCEAS Slack](http://nceas.slack.com) - get an invite from [slack.nceas.ucsb.edu](http://slack.nceas.ucsb.edu)
-* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request an add from Chris on Slack
-* [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118) - fill out anticipated quarterly schedule
+    + Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam, #sasap, #social
+* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Jesse or Jeanette in Slack
+* GitHub - if you do not have a public GitHub account already, please register for one [here](https://github.com/join?source=header-home)
+* [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118) - fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
 
 
 ## NCEAS Events
 
-NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the weekly events are :
+NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the recurring events are:
 
 * Roundtable
     + weekly presentation and discussion of research by a visiting or local scientist
