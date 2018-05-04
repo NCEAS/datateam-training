@@ -6,7 +6,7 @@ Potentially the most useful way to set methods is by [editing with EML](#edit-em
 
 Another simple, and potentially useful way to add methods to an EML that have no methods at all is adding them via a word document. An example is shown below:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 methods1 <- set_methods('methods_doc.docx')
 eml@dataset@methods <- methods1
 ```
