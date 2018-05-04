@@ -18,7 +18,7 @@ Note, when setting metadata, the ORCID must start with `http://`. ORCIDs in eml 
 
 Next, set the rights and access using the following command.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 set_rights_and_access(mn, 
                       pids = c(pkg$metadata, pkg$data, pkg$resource_map),
                       subject = subject,

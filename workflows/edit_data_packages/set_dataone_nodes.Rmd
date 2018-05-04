@@ -6,7 +6,7 @@ A note on nodes - be very careful about what you publish on production nodes (PR
 ```
 
 ### Test nodes
-```{r, eval = F}
+```{r, eval = FALSE}
 # ADC (test.arcticdata.io)
 cn <- dataone::CNode('STAGING')
 mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
@@ -17,7 +17,7 @@ mn <- dataone::getMNode(cn, "urn:node:mnTestKNB")
 ```
 
 ### Production nodes
-```{r, eval = F}
+```{r, eval = FALSE}
 # ADC (arcticdata.io)
 cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
