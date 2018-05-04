@@ -1,24 +1,38 @@
 ## Update an object
 
-To update an object (a data file), use `arcticdatautils::update_object`.
+The `arcticdatautils::update_object` function updates a data object but does not change the resource map or EML. To simultaneously update all three parts of a data package, you can use the `datamgmt::update_package_object`.
 
-First make sure you have the package that contains the data you want to update, [loaded into R](#get-package-and-eml).
+The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_package_object.html) function updates a data object, and then automatically updates the package resource map with the new data pid. If an object already has a dataTable or otherEntity with a working physical section, the EML will be updated with the new data’s physical.
 
-Then define the path to the updated object.
+To use, input the following arguments:
 
-``` {r, eval = FALSE}
-data_path <- "path/to/data/file.csv"
+```{r eval = FALSE}
+update_package_object(mn,
+                      data_pid = "the data pid you need to update",
+                      new_data_path = "path/to/the/new/data.csv",
+                      resource_map_pid = "resource map of the data package",
+                      format_id = "the formatId",
+                      public = FALSE,
+                      use_doi = FALSE,
+                      ...) #any other arguments to pass to publish_update (child_pids, etc)
 ```
 
-Then update the object at the `Member Node`. When updating the object, it is best practice to update your `pkg` in R at the same time. In the following code, replace `i` with the index of the data pid you want to update.
+To try it out for yourself, you can run this code to create a dummy package on [test.arctic.io](https://test.arctic.io) and update one of its objects.
 
-``` {r, eval = FALSE}
-pkg$data[i] <- update_object(mn,
-                     pid <- pkg$data[i],
-                     path <- data_path,
-                     format_id = NULL,
-                     new_pid = NULL,
-                     sid = NULL)
+```{r eval = FALSE}
+#input token to run
+cnTest <- dataone::CNode('STAGING')
+mnTest <- dataone::getMNode(cnTest,'urn:node:mnTestARCTIC')
+
+pkg <- create_dummy_package2(mnTest, title = "My package")
+
+file.create("new_file.csv")
+update_package_object(mnTest, pkg$data[1], "new_file.csv", pkg$resource_map, format_id = "text/csv")
+file.remove("new_file.csv") #clean up
+
+#check out the package on test.arcticdata.io
 ```
 
-Note that you will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
+```{block, type = "note"}
+You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
+```

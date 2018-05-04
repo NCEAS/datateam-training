@@ -34,7 +34,7 @@ All Data Packages have a single Resource Map. But what is a Resource Map and how
 
 A Resource Map is a special kind of XML document that describes (amongst other things) an Aggregation. The Aggregation describes the members of a Data Package (metadata and data, usually). We can use the `dataone` R package to download a Resource Map if we know its PID:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 library(dataone)
 
 mn <- MNode("https://test.arcticdata.io/metacat/d1/mn/v2")
@@ -135,7 +135,7 @@ For packages not on the ADC, or packages that are extremely complicated, it may 
 
 First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function `D1Client` sets the DataONE client with the coordinating node instance as the first argument, and membernode as the second argument.
 
-```{r, warning=F, message = F}
+```{r, warning=F, message = F, eval = FALSE}
 library(dataone)
 library(datapack)
 d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")
@@ -143,7 +143,7 @@ d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")
 
 Next, get the pid of the resource map of the data package you are adding prov to, and load that package into R using the `getDataPackage` function.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 resmapId <- "urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b"
 pkg <- getDataPackage(d1c, id=resmapId, lazyLoad=TRUE, limit="0MB", quiet=FALSE)
 ```
@@ -183,7 +183,7 @@ Relationships:
 
 In this example above, the data package has two .csv files, with an R script that converts one to the other. To create our provenance trace, first we need to select the source object, and save the pid to a variable. We do this using the `selectMember` function, and we can query part of the system metadata to select the file that we want. This function takes the data package (`pkg`), the name of the sysmeta field to query (in this case we use the `fileName`), and the value that you want to match that field to (in this case, 'PWS_Weir_Tower_export.csv').
 
-```{r, eval = F}
+```{r, eval = FALSE}
 sourceObjId <- selectMember(pkg, name="sysmeta@fileName", value='PWS_Weir_Tower_export.csv')
 ```
 
@@ -196,19 +196,19 @@ This returns a list of the source object pids that match the query (in this case
 
 Now we need to select our output object. Here, we use the `selectMember` function again, and save the result to a new variable.
 
-```{r, eval=F}
+```{r, eval = FALSE}
 outputObjId <- selectMember(pkg, name="sysmeta@fileName", value='PWS_weirTower.csv')
 ```
 
 Now we query for the R script. In this case, we query based on the value of the `formatId` as opposed to the filename. This can be useful if you wish to select a large list of pids that are all similar.
 
-```{r, eval=F}
+```{r, eval = FALSE}
 programObjId <- selectMember(pkg, name="sysmeta@formatId", value="application/R")
 ```
 
 Next, you use these lists of pids and a function called `describeWorkflow` to add these relationships to the data package. Note that if you do not have a program in the workflow, or a source file, you can simply leave those arguments blank.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 pkg <- describeWorkflow(pkg, sources=sourceObjId, program=programObjId, derivations=outputObjId)
 ```
 
@@ -242,7 +242,7 @@ Relationships (updated):
 
 Finally, you can upload the data package using the `uploadDataPackage` function, which takes the DataONE client `d1c` we set in the beginning, the updated `pkg` variable, and some options for public read and whether informational messages are printed during the upload process.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 resmapId_new <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE)
 ```
 

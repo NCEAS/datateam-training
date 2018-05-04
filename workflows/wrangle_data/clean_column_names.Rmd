@@ -1,7 +1,7 @@
 ## Clean column names
 You might have [read](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/0012-9623-90.2.205) that column names should not include spaces or special characters. Inevitably, you'll encounter data that is not so tidy. For example:
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 df <- data.frame(`First Name` = c("Homer", "Marge", "Ned"),
 `Last Name` = c("Simpson", "Simpson", "Flanders"),
 `date of birth` = c("1/1/1960", "10/20/1965", "3/22/1961"),
@@ -12,6 +12,6 @@ print(df)
 
 To tidy it up, you can use the `clean_names()` function from the `janitor` package:
     
-```{r}
+```{r, eval = FALSE}
 janitor::clean_names(df)
 ```

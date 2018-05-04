@@ -3,17 +3,12 @@
 The first task when editing an `eml` file is navigating the `eml` file. An `eml` file is organized in a structure that contains many lists nested within other lists. 
 The function `EML::eml_view` (make sure to install the `listviewer` if you don't have it already) allows you to get a crude view of an `eml` file in the viewer. It can be useful for exploring the file.
 
-```{r echo=FALSE, message = FALSE, error = FALSE}
-library(dataone)
-library(arcticdatautils)
-library(EML)
+```{r echo = FALSE, message = FALSE, error = FALSE, eval = FALSE}
+cn <- dataone::CNode('PROD')
+mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+eml_raw <- rawToChar(dataone::getObject(mn, "doi:10.18739/A2FS1H"))
 
-cn <- CNode('PROD')
-mn <- getMNode(cn,'urn:node:ARCTIC')
-```
-```{r}
-eml_raw <- rawToChar(dataone::getObject(mn,
-                                        "doi:10.18739/A2FS1H"))
+# You can use the following command to view the eml file dynamically.
 EML::eml_view(eml_raw) # you can also pass a path to an eml file
 ```
 

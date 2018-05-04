@@ -24,12 +24,12 @@ We will be using R to connect to the [NSF Arctic Data Center (ADC)](https://arct
 
 **This token is your identity on these sites, please treat it as you would a password** (ie. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 
-```{r token, message=FALSE, eval=FALSE}
+```{r token, message=FALSE, eval = FALSE}
 options(dataone_test_token = "...")
 ```
 
 Next, please be sure these packages are loaded:
-```{r load libraries, message=FALSE}
+```{r load libraries, message = FALSE, eval = FALSE}
 library(devtools)
 library(dataone)
 library(datapack)
@@ -39,12 +39,12 @@ library(XML)
 
 If any package could not be loaded, use the following command (replacing package_name with the actual package name) to install the package.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 install.package("package_name")
 ```
 
 Now install a couple of packages:
-```{r, eval = F}
+```{r, eval = FALSE}
 devtools::install_github("nceas/arcticdatautils"); library(arcticdatautils)
 devtools::install_github("nceas/datamgmt"); library(datamgmt)
 ```
@@ -54,7 +54,7 @@ devtools::install_github("nceas/datamgmt"); library(datamgmt)
 
 For now set the node to the test Arctic node.
 
-``` {r, eval = F, class.source = 'exercise'}
+``` {r, eval = FALSE, class.source = 'exercise'}
 cn <- dataone::CNode('STAGING')
 mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 ```
