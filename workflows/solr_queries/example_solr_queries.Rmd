@@ -1,6 +1,6 @@
 ## Example Solr queries
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, eval = FALSE}
 library(knitr)
 library(magrittr)
 library(kableExtra)
@@ -19,21 +19,21 @@ format_query_result <- function(query_result) {
 
 ### Find everything
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(mn, list(q="*:*",
                                   fl="*",
                                   rows="5"),
                          as = "data.frame")
 ```
 
-```{r echo = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 format_query_result(result)
 ```
 
 
 ### Query a wildcard expression 
 
-```{r type = "markdown-table"}
+```{r type = "markdown-table", eval = FALSE}
 #find any id that starts with arctic-data.6
 result <- dataone::query(mn, list(q="id:arctic-data.6*",
                                   fl="*",
@@ -41,24 +41,24 @@ result <- dataone::query(mn, list(q="id:arctic-data.6*",
                          as = "data.frame")
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
 ### Query multiple fields 
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(mn, list(q="title:*soil*+AND+origin:*Ludwig*",
                         fl="title",
                         rows="5"),
                         as = "data.frame")
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
                                   fl="title",
                                   rows="5"),
@@ -66,21 +66,21 @@ result <- dataone::query(mn, list(q="title:*soil*+OR+origin:*Ludwig*",
 ```
 
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
 
 ### Query multiple conditions within one field
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(mn, list(q="title:(*soil*+AND+*carbon*)",
                                   fl="title",
                                   rows="5"),
                          as = "data.frame") 
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
@@ -88,27 +88,27 @@ format_query_result(result)
 
 Just add `-` before a query parameter!
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(mn, list(q="title:(*soil*+AND+-*carbon*)",
                                   fl="title",
                                   rows="5"),
                          as = "data.frame")
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
 ### Query a coordinating node
 
-```{r}
+```{r, eval = FALSE}
 result <- dataone::query(cn, list(q="title:*soil*+AND+origin:*Ludwig*",
                                   fl="title",
                                   rows="5"),
                          as = "data.frame")
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 format_query_result(result)
 ```
 
