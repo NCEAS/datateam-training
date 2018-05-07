@@ -1,21 +1,41 @@
 ## Access specific elements
 The `eml_get` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of `eml` and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
 
-```{r echo = FALSE, message = FALSE, warning = FALSE}
-library(arcticdatautils) #load to grab package
-```
-
-```{r "creator"}
+```{r "creator", eval = FALSE}
 eml <- EML::read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
 EML::eml_get(eml, "creator")
 ```
 
-```{r "boundingCoords"}
-EML::eml_get(eml, "boundingCoordinates")
+```
+[[1]]
+An object of class "ListOfcreator"
+[[1]]
+<creator system="uuid">
+  <individualName>
+    <givenName>Bryce</givenName>
+    <surName>Mecum</surName>
+  </individualName>
+  <organizationName>National Center for Ecological Analysis and Synthesis</organizationName>
+</creator>
 ```
 
-```{r "url"}
+```{r "boundingCoords", eval = FALSE}
+EML::eml_get(eml, "boundingCoordinates")
+```
+```
+<boundingCoordinates>
+  <westBoundingCoordinate>-135</westBoundingCoordinate>
+  <eastBoundingCoordinate>-134</eastBoundingCoordinate>
+  <northBoundingCoordinate>59</northBoundingCoordinate>
+  <southBoundingCoordinate>57</southBoundingCoordinate>
+</boundingCoordinates>
+```
+
+```{r "url", eval = FALSE}
 EML::eml_get(eml, "url")
+```
+```
+[1] "ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456"
 ```
 
 You can also use the `which_in_eml` function from the `datamgmt` package to get indices within an `eml` list. Here are some examples:
