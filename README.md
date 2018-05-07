@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/NCEAS/datateam-training.svg?branch=master)](https://travis-ci.org/NCEAS/datateam-training)
+
 # Introduction
 This repo stores reference materials for the NCEAS data team. All reference materials can be accessed at the following address.
 
