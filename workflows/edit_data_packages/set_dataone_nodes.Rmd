@@ -27,4 +27,5 @@ cn <- dataone::CNode("PROD")
 mn <- dataone::getMNode(cn, "urn:node:KNB")
 ```
 
-[More DataONE nodes can be found here.](https://cn.dataone.org/cn/v2/node)
+[More DataONE TEST nodes can be found here.](https://cn-stage.test.dataone.org/cn/v2/node)
+[More DataONE PROD nodes can be found here.](https://cn.dataone.org/cn/v2/node)
