@@ -75,6 +75,17 @@ children <- paste0(chapter, sections)
 ```{r, child = children}
 ```
 
+# ADC Web Submissions
+
+```{r, echo = FALSE}
+chapter <- "../workflows/adc_web_submissions/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
 ## More resources
 
 - Solr's [The Standard Query Parser](https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser) docs (high level of detail)

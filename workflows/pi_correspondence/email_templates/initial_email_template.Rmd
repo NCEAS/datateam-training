@@ -88,5 +88,18 @@ Submissions should:
 
 > NSF requires that comprehensive methods information be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
 
+#### Need Attributes
+
+> I noticed that your dataset had incomplete attribute/variable information. Can you please add attribute/variable information to each of your data files by clicking on the `Describe` button located to the right of each of your files at the top of the submission page located here https://beta.arcticdata.io/catalog/#submit/[INSERT EML PID HERE]. Please see the below guidance for what attribute/variable information should contain.
+
+>For data sets with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (attributes may also be known as variables and in tabular data are arranged in either columns or rows). Note, storage of data in a long versus wide format will allow for much more succinct metadata. Also, please note that tabular data stored within structured formats such as zip, NetCDF, or ESRI spatial files should also comply with these guidelines.
+
+> - A name (often the column or row header in the file). Like file names, only letters, numbers, hyphens (“-“), and underscores (“_”) should be used in attribute names. Always avoid using spaces and specialized ASCII characters when naming attributes.
+> - A complete definition.
+> - Any missing value codes along with explanations for those codes.
+> - For all numeric data, unit information is needed.
+> - For all date-time data, a date-time format is needed (e.g. "YYYY-MM-DD").
+> - For text data, full descriptions for all patterns/codes are needed if the text is constrained to a list of patterns or codes (e.g. a phone number would be constrained to a certain pattern and abbreviations for site locations may be constrained to a list of codes).
+
 
 
