@@ -13,19 +13,19 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones' paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
+Read Matt Jones et al.'s paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
 
 ## Using DataONE
 
-The **Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
+**Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Jesse or Jeanette questions.
+Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/folders/0BxXanx5RKvlgSV9CYTRlTHJ4VzQ) explaining how DataONE works. This video is pretty technical, and you may not understand it all at first. Please feel free to ask Dom, Jeanette, or Jesse questions.
 
 ## Working on a remote server
 
 All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
 
-We access RStudio for our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
+We access RStudio on our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
 
 ```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
 ```
@@ -38,7 +38,7 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 ## A note on scripts
 
-To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [Naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
+To make it easy to follow the flow of your work, it may help to number your scripts. For example, `01_clean_data.R`, `02_edit_EML.R`, `03_publish.R`. Check out Jenny Bryan's slidedeck on [naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) for more on this.
 
 ## Exercise 1 {.exercise}
 
