@@ -15,7 +15,10 @@ A data package generally consists of at least 3 "objects" or files.
 ## About identifiers
 
 Each object (metadata files, data files, resource maps) on the ADC or the KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a data set, for example [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2836Z), you can find the resource map identifier listed under the title in the gray bar after the words "Files in this dataset Package:" (`resource_map_doi:10.18739/A2836Z`), the metadata identifier in the "General > Identifier" section of the metadata record or after the title with blue font (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
+
+
 ![](images/PIDs.png)
+
 
 Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the `arcticdatautils::update_object` or `arcticdatautils::publish_update` commands on the *latest versions* of all objects to ensure that the version chain is maintained.
 
