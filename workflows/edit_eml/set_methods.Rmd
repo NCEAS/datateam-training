@@ -12,3 +12,25 @@ eml@dataset@methods <- methods1
 ```
 
 If you want to make minor changes to existing method information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing method information.
+
+### Adding sampling info to methods section
+
+```{r, eval = FALSE}
+# add method steps as new variables
+step1 <- new('methodStep',
+             description = "methods text")
+
+stEx <- new("studyExtent", 
+           description = "study extent description")
+
+samp <- new("sampling", 
+           studyExtent = stEx,
+           samplingDescription = "sampling description text")
+
+# combine all methods steps and sampling info 
+methods1 <- new("methods",
+               methodStep = c(step1),
+               sampling = samp)
+               
+eml@dataset@methods <- methods1
+```

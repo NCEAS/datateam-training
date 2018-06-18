@@ -37,3 +37,22 @@ coverage <- EML::set_coverage(beginDate = '2012-01-01',
 eml@dataset@coverage@geographicCoverage <- c(geocov1, geocov2)
 ```
 
+To set taxonomic coverage:
+
+```{r, eval = FALSE}
+# add each new element as a tax object
+tax1 <- new("taxonomicClassification",
+            taxonRankName = new("taxonRankName", "Species"),
+            taxonRankValue = new("taxonRankValue", "Calamagrostis deschampsioides"))
+
+tax2 <- new("taxonomicClassification", 
+            taxonRankName = new("taxonRankName", "Species"),
+            taxonRankValue = new("taxonRankValue", "Carex aquatilis"))
+
+# combine all tax elements into taxonomic coverage object
+taxcov <- new("taxonomicCoverage",
+               taxonomicClassification = c(tax1, tax2))
+
+eml@dataset@coverage@taxonomicCoverage <- c(taxcov)
+
+```
