@@ -36,3 +36,4 @@ vignettes/*.pdf
 # Docs folder as will be built on the fly
 /docs
 
+*.DS_Store
