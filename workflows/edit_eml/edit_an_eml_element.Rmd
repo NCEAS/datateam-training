@@ -3,18 +3,18 @@
 There are multiple ways to edit an EML element. 
 
 ### Edit EML with strings
-The most basic way to edit an EML element would be to go into the eml schema to the location of a character string and then replace that character string with a new character string.
+The most basic way to edit an EML element would be to go into the EML schema to the location of a character string and then replace that character string with a new one.
 
-For example to change the title one could use the following commands.
+For example, to change the title one could use the following commands:
 
 ``` {r, eval = FALSE}
 new_title <- "New Title"
 eml@dataset@title[[1]]@.Data <- new_title
 ```
 
-However, this isn't the best method to edit the EML unless you are an expert both in S4 objects and in the EML schema, since the nesting and lists of elements can get very complex. 
+However, this isn't the best method to edit the EML (unless you are an expert in both S4 objects and the EML schema) since the nesting and lists of elements can get very complex. 
 
-### Edit EML with EML
+### Edit EML with the "EML" package
 For editing simple text sections, a better option is to use `EML::read_eml`. To use this function, one would first run the slot that is in need of editing. For example, for a title this would involve calling
 
 ``` {r, eval = FALSE}
@@ -45,17 +45,17 @@ eml@dataset@title <- c(new_title)
 
 However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desirable so be careful.
 
-One final note, a benefit of this method to edit EML objects is that [advanced text features can be easily added using this workflow](#advanced-eml-text).
+One final note, a benefit of this method to edit EML objects is that advanced text features can be easily added using [this workflow](#format-text-in-eml).
 
 ### Edit EML with objects
 
-A final way to edit an EML element would be to build a new object to replace the old object. To begin, you must determine the class of the object you want to edit (generally this is just the schema name of the object). The function `class()` is helpful here. For example, if you want to edit `eml@dataset@title[[1]]` use the following command to find the class.
+A final way to edit an EML element would be to build a new object to replace the old object. To begin, you must determine the class of the object you want to edit (generally this is just the schema name of the object). The function `class()` is helpful here. For example, if you want to edit `eml@dataset@title[[1]]` use the following command to find the class:
 
 ``` {r, eval = FALSE}
 class(eml@dataset@title[[1]])
 ```
 
-The result shows that this object has a class `title`. Therefore you must replace it with an object of class `title`. To do so use `as()`. To use `as()` input the the desired string followed by the desired `class`.
+The result shows that this object has a class `title`. Therefore you must replace it with an object of class `title`. To do so, use `as()`. To use `as()`, input the desired string followed by the desired `class`.
 
 ``` {r, eval = FALSE}
 new_title <- as("New Title 3", "title")
@@ -65,4 +65,4 @@ eml@dataset@title[[1]] <- new_title
 eml@dataset@title <- c(new_title)
 ```
 
-Note, if you want to create an object with nested objects, you may have to use the command `new()` which is similar to `as()` but with the order of specifying values and class switched. See help on [editing datatables for an example of when to use `new()`](#edit-datatables).
+Note that if you want to create an object with nested objects, you may have to use the command `new()` which is similar to `as()` but with the order of specifying values and class switched. See help on [editing datatables](#edit-datatables) for an example of when to use `new()`.
