@@ -1,6 +1,6 @@
 ## Understand the EML schema
 
-Another great resource for navigating the `eml` structure is [looking at the schema which defines the structure](https://github.com/NCEAS/eml). The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the `EML` structure is looking at the [schema](https://github.com/NCEAS/eml) which defines the structure. The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
 For example, let's take a look at [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png). To start off, notice that some elements are in solid boxes, whereas others are in dashed boxes.
 
@@ -10,10 +10,10 @@ A solid box indicates that the element is _required_ if the element above it (to
 
 Notice also that below the `givenName` element it says "0..infinity". This means that the element is unbounded &mdash; a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the `surName` element &mdash; a party can have only one surname.
 
-You will also see icons linking the eml slots together which indicate the ordering of subsequent slots. These can indicate either a "sequence" or a "choice". In our example from `eml-party`, a "choice" icon indicates that either an `individualName`, `organizationName`, or `positionName` is required, but you do not need all three. However, the "sequence" icon tells us that if you use an `individualName`, you must include the `surName` as a child element. If you include the optional child elements `salutation` and `givenName`, they must be written in the order presented in the schema.
+You will also see icons linking the EML slots together, which indicate the ordering of subsequent slots. These can indicate either a "sequence" or a "choice". In our example from `eml-party`, a "choice" icon indicates that either an `individualName`, `organizationName`, or `positionName` is required, but you do not need all three. However, the "sequence" icon tells us that if you use an `individualName`, you must include the `surName` as a child element. If you include the optional child elements `salutation` and `givenName`, they must be written in the order presented in the schema.
 
 ![](../images/eml-party.png)
 
-The eml schema sections you may find particularly helpful include [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png), [eml-attribute](), and [eml-physical]().
+The eml schema sections you may find particularly helpful include [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png), [eml-attribute](https://github.com/NCEAS/eml/blob/master/eml-attribute.png), and [eml-physical](https://github.com/NCEAS/eml/blob/master/eml-physical.png). (Click "Download" to zoom in.)
 
-For a more detailed description of the `eml` schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).
+For a more detailed description of the `EML` schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).
