@@ -45,7 +45,7 @@ eml@dataset@title <- c(new_title)
 
 However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desirable so be careful.
 
-One final note, a benefit of this method to edit EML objects is that advanced text features can be easily added using [this workflow](#format-text-in-eml).
+One final note, a benefit of this method to edit EML objects is that advanced text features can be easily added using [this workflow](https://nceas.github.io/datateam-training/reference/format-text-in-eml.html).
 
 ### Edit EML with objects
 
