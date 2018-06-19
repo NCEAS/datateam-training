@@ -23,7 +23,8 @@ When editing `resource_maps`, you always want to be working with the most recent
 
 <pre class="sourceCode r"><code class="sourceCode r">rm_pid_original &lt;-<span class="st"> &quot;your_original_resource_map_pid&quot;</span>
 all_rm_versions &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">get_all_versions</span>(mn, rm_pid_original)
-rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</span>(all_rm_versions)]</code></pre>
+rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</span>(all_rm_versions)]
+print(rm_pid)</code></pre>
 
 ```
 
@@ -32,4 +33,5 @@ rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</sp
 rm_pid_original <- "your_original_resource_map_pid"
 all_rm_versions <- arcticdatautils::get_all_versions(mn, rm_pid_original)
 rm_pid <- all_rm_versions[length(all_rm_versions)]
+print(rm_pid)
 ```

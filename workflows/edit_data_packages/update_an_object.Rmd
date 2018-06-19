@@ -2,16 +2,16 @@
 
 The `arcticdatautils::update_object` function updates a data object but does not change the resource map or EML. To simultaneously update all three parts of a data package, you can use the `datamgmt::update_package_object`.
 
-The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_package_object.html) function updates a data object, and then automatically updates the package resource map with the new data pid. If an object already has a dataTable or otherEntity with a working physical section, the EML will be updated with the new data’s physical.
+The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_package_object.html) function updates a data object, and then automatically updates the package resource map with the new data `PID`. If an object already has a `dataTable` or `otherEntity` with a working `physical` section, the EML will be updated with the new data object’s `physical`.
 
 To use, input the following arguments:
 
 ```{r eval = FALSE}
 update_package_object(mn,
-                      data_pid = "the data pid you need to update",
+                      data_pid = "the data PID you need to update", # pkg$data
                       new_data_path = "path/to/the/new/data.csv",
-                      resource_map_pid = "resource map of the data package",
-                      format_id = "the formatId",
+                      resource_map_pid = "resource map of the data package", # pkg$resource_map
+                      format_id = "the formatId", # use line 2 (Id:) from https://cn.dataone.org/cn/v2/formats
                       public = FALSE,
                       use_doi = FALSE,
                       ...) #any other arguments to pass to publish_update (child_pids, etc)
@@ -35,4 +35,5 @@ file.remove("new_file.csv") #clean up
 
 ```{block, type = "note"}
 You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
+Use line 2 (Id:) exactly, character for character.
 ```
