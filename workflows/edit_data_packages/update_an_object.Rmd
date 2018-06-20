@@ -7,7 +7,7 @@ The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_
 To use, input the following arguments:
 
 ```{r eval = FALSE}
-update_package_object(mn,
+update_package_object(mnT,
                       data_pid = "the data PID you need to update", # pkg$data
                       new_data_path = "path/to/the/new/data.csv",
                       resource_map_pid = "resource map of the data package", # pkg$resource_map
@@ -21,13 +21,13 @@ To try it out for yourself, you can run this code to create a dummy package on [
 
 ```{r eval = FALSE}
 #input token to run
-cnTest <- dataone::CNode('STAGING')
-mnTest <- dataone::getMNode(cnTest,'urn:node:mnTestARCTIC')
+cnT <- dataone::CNode('STAGING')
+mnT <- dataone::getMNode(cnT,'urn:node:mnTestARCTIC')
 
-pkg <- create_dummy_package2(mnTest, title = "My package")
+pkg <- create_dummy_package2(mnT, title = "My package")
 
 file.create("new_file.csv")
-update_package_object(mnTest, pkg$data[1], "new_file.csv", pkg$resource_map, format_id = "text/csv")
+update_package_object(mnT, pkg$data[1], "new_file.csv", pkg$resource_map, format_id = "text/csv")
 file.remove("new_file.csv") #clean up
 
 #check out the package on test.arcticdata.io

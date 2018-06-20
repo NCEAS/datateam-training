@@ -22,7 +22,7 @@ Once you know the `format_id` you can publish your object using the commands bel
 path <- "path/to/your/file"
 format_id <- "your/format_id"
 
-pid <- arcticdatautils::publish_object(mn,
+pid <- arcticdatautils::publish_object(mnT,
                                        path = path,
                                        format_id = format_id)
 ```

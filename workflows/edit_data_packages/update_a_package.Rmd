@@ -30,7 +30,7 @@ If you need to make edits to the data, [do so](#update-an-object).
 Finally, update your data package at the `Member Node`.
 
 ```{r, eval = FALSE}
-update <- arcticdatautils::publish_update(mn, 
+update <- arcticdatautils::publish_update(mnT, 
                                           metadata_pid = pkg$metadata,
                                           resource_map_pid =pkg$resource_map,
                                           data_pids = pkg$data,
