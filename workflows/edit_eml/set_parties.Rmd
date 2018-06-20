@@ -1,6 +1,6 @@
 ## Set parties
 
-To add people, with their addresses, you need to add addresses as their own object class, which you then add to the contact, creator, or associated party classes.
+To add people, with their addresses, you need to add addresses as their own object class, which you then add to the `contact`, `creator`, or `associatedParty` classes.
 
 ```{r, eval = FALSE}
 NCEASadd <- new("address", 
@@ -10,7 +10,7 @@ NCEASadd <- new("address",
                 postalCode = '93101')
 ```
 
-The creator, contact, and associated party classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our data set creator.
+The `creator`, `contact`, and `associatedParty` classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our data set `creator`.
 
 ```{r, eval = FALSE}
 JC_creator <- arcticdatautils::eml_creator("Jeanette", 
@@ -23,7 +23,7 @@ JC_creator <- arcticdatautils::eml_creator("Jeanette",
 eml@dataset@creator <- c(JC_creator)
 ```
 
-Similarly, we can set the contacts. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
+Similarly, we can set the `contact`s. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
 
 ```{r, eval = FALSE}
 JC_contact <- arcticdatautils::eml_contact("Jeanette", 
@@ -43,7 +43,7 @@ JG_contact <- arcticdatautils::eml_contact("Jesse",
 eml@dataset@contact <- c(JC_contact, JG_contact)
 ```
 
-Finally, the associated parties are set. Note that associated parties MUST have a role defined, unlike creator or contact.
+Finally, the `associatedParty`s are set. Note that `associatedParty`s MUST have a role defined, unlike `creator` or `contact`.
 
 ```{r, eval = FALSE}
 JG_ap <- arcticdatautils::eml_associated_party("Jesse", 

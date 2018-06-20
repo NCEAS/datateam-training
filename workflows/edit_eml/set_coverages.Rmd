@@ -14,7 +14,7 @@ coverage <- EML::set_coverage(beginDate = '2012-01-01',
 eml@dataset@coverage <- coverage
 ```
 
-You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages.
+You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages:
 
 ```{r, eval = FALSE}
 geocov1 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 1",

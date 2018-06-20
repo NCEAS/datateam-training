@@ -30,10 +30,10 @@ Once you have an [EML file loaded into R](#get-package-and-eml), you can use R t
 ```
 
 ## Exercise 4 {.exercise}
-* Make sure your package from [before](#exercise-3) is loaded into R
-* Replace the existing `dataTable` with a new `dataTable` object with an attribute list and physical section you write in R using the above commands
-* Then [write, validate, and update your package](#update-a-package)
+* Make sure your package from [before](#exercise-3) is loaded into R.
+* Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
+* Then [write, validate, and update your package](#update-a-package).
 * Use the [checklist](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/master/datateam/How_To/Checklist.md) to review your submission.
-* Make edits where necessary, and publish updates as needed
+* Make edits where necessary, and publish updates as needed.
  
  

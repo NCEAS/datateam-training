@@ -10,13 +10,13 @@ eml@dataset@otherEntity[[i]] <- NULL
 
 ### Create otherEntities
 
-If you need to create/update an `otherEntity`make sure to [publish](#publish-an-object) or [update](#update-an-object) your data object first (if it is not already on the DataONE node). Then build your `otherEntity`.
+If you need to create/update an `otherEntity`, make sure to [publish](#publish-an-object) or [update](#update-an-object) your data object first (if it is not already on the DataONE MN). Then build your `otherEntity`.
 
 ```{r, eval = FALSE}
 otherEntity <- arcticdatautils::pid_to_eml_other_entity(mn, pkg$data[[i]])[[1]]
 ```
 
-Alternatively, you can build the `otherEntity` of a data object not in your package by simply inputting the data pid.
+Alternatively, you can build the `otherEntity` of a data object not in your package by simply inputting the data `PID`.
 
 ```{r, eval = FALSE}
 otherEntity <- arcticdatautils::pid_to_eml_other_entity(mn, "your_data_pid")[[1]]
@@ -29,7 +29,7 @@ otherEntity@entityName <- as("A descriptive name for the data", "entityName")
 otherEntity@entityDescription <- as("A description of the data", "entityDescription")
 ```
 
-The `otherEntity` must then be set to the eml i.e. 
+The `otherEntity` must then be set to the EML, like so: 
 
 ``` {r, eval = FALSE}
 eml@dataset@otherEntity[[i]] <- otherEntity
