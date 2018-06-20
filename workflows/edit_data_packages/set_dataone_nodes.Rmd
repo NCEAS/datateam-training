@@ -8,12 +8,12 @@ A note on nodes - be very careful about what you publish on production nodes (PR
 ### Staging (Test) nodes
 ```{r, eval = F}
 # ADC (test.arcticdata.io)
-cn <- dataone::CNode('STAGING')
-mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
+cnT <- dataone::CNode('STAGING')
+mnT <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 
 # KNB (dev.nceas.ucsb.edu)
-cn <- dataone::CNode("STAGING2")
-mn <- dataone::getMNode(cn, "urn:node:mnTestKNB")
+cnT2 <- dataone::CNode("STAGING2")
+mnT2 <- dataone::getMNode(cn, "urn:node:mnTestKNB")
 ```
 
 ### Production nodes
@@ -23,8 +23,8 @@ cn <- dataone::CNode('PROD')
 mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
 
 # KNB (knb.ecoinformatics.org)
-cn <- dataone::CNode("PROD")
-mn <- dataone::getMNode(cn, "urn:node:KNB")
+cn2 <- dataone::CNode("PROD")
+mn2 <- dataone::getMNode(cn, "urn:node:KNB")
 ```
 
 [More DataONE STAGING nodes can be found here.](https://cn-stage.test.dataone.org/cn/v2/node)

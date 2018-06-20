@@ -60,8 +60,8 @@ remotes::install_github("nceas/datamgmt"); library(datamgmt)
 For now, set the node to the test Arctic node.
 
 ``` {r, eval = F, class.source = 'exercise'}
-cn <- dataone::CNode('STAGING')
-mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
+cnT <- dataone::CNode('STAGING')
+mnT <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 ```
 
 ```{r, child = '../workflows/edit_data_packages/publish_an_object.Rmd'}
@@ -74,7 +74,7 @@ mn <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 
 * Locate the data package you published in [Exercise 1](#exercise-1) by navigating to the "My Profile > My Data" section on [test.arcticdata.io](https://test.arcticdata.io).
 * Download the metadata and data files and transfer them to the Datateam server.
-* Using the functions described in the section above, publish your metadata record and data file to the site. (When you do so, make sure you save the `PIDs` to different variables in R...) i.e.
+* Using the functions described in the section above, publish your metadata record and data file to the site. (When you do so, make sure you save the `PID`s to different variables in R...) i.e.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
 data_pid <- arcticdatautils::publish_object(...)
