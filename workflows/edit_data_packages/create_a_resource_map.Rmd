@@ -1,6 +1,6 @@
 ## Create a resource map
 
-If you are creating a new data package. You must create a `resource_map`. `Resource_maps` provide information about the resources in the data package (e.g. what data files should be included in the package, where is the metadata, etc.)
+If you are creating a new data package. You must create a `resource_map`. `Resource_maps` provide information about the resources in the data package (e.g. what data files should be included in the package, where the metadata are, etc.)
 
 To create a new resource map with an existing [published](#publish-an-object) `metadata_pid` and `data_pids`, use the following command.
 

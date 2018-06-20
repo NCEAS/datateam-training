@@ -6,7 +6,7 @@ First make sure you have the package you want to update, [loaded into R](#get-pa
 
 ### Updating metadata
 
-If you need to make edits to the metadata, do so. Then write the `eml` metadata to a file.
+If you need to make edits to the metadata, do so. Then write the `EML` metadata to a file.
 
 ``` {r, eval = F}
 eml_path <- "path/to/metadata/science_metadata.xml"

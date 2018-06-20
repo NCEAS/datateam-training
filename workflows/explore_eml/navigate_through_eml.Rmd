@@ -16,7 +16,7 @@ eml_raw <- rawToChar(dataone::getObject(mn,
 EML::eml_view(eml_raw) # you can also pass a path to an eml file
 ```
 
-To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the `EML` structure and to see what slots are nested within other slots. However, you have to tell R where you want to go in the structure when you use the `@` symbol. For example, if you want to go into the dataset of your `EML` you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
+To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the `EML` structure and to see what slots are nested within other slots. However, you have to tell R where you want to go in the structure when you use the `@` symbol. For example, if you want to go into the data set of your `EML` you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
 
 ![RStudio Autocompletion Example](../images/rstudio_autocomplete.png)
 
