@@ -64,6 +64,8 @@
 
 - **Methods:** provide enough detail so that a reasonable scientist can interpret and reuse the data without needing to consult anyone nor any other resources
 
+- Ensure that the `project` section of the EML matches the information from the NSF award as opposed to only being specific to this one data package
+
 - Double check for garbled symbols, spelling, and gramatical errors
 
 - If the data set is still private and awaiting PI and/or submitter review, be sure that the `accessPolicy`s on ALL OBJECTS (metadata, resource map, data objects) grants `read`, `write`, and `changePermission` privileges to the PI's and/or submitter's ORCID iDs (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") - do this using `set_access()`. **Make sure to OMIT the "s" after "http" in the ORCiD for this sysmeta field. This is different than how we want ORCiDs formatted in EMLs**

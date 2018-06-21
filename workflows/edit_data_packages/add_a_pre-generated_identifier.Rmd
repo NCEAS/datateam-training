@@ -1,13 +1,12 @@
 
-## Add a pre generated identifier to the eml
+## Add a pre-generated identifier to the EML
 
-When you pre generate a UUID or DOI, the change is not automatically reflected in the "Identifier" section of the eml so this makes sure that the eml lines up with the identifier being used. 
-
+When you pre-generate a UUID or DOI, the change is not automatically reflected in the `packageId` section of the EML. Use the code below to ensure that the EML lines up with the desired identifier: 
 ```{r, eval = FALSE}
 ## Generate DOI and add to EML
-doiPid <- dataone::generateIdentifier(mn, "DOI")
+doiPid <- dataone::generateIdentifier(mnT, "DOI")
 eml@packageId <- new("xml_attribute",
                       .Data = doiPid)
 ```
 
-Be sure to include the `identifier=` argument in your [publish update](#publish-update) command so the pre generated identifier is applied.
+Be sure to include the `identifier=` argument in your [publish update](#publish-update) command so the pre-generated identifier is applied.
