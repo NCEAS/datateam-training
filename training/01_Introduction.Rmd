@@ -15,6 +15,8 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 Read Matt Jones et al.'s paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
 
+(Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
+
 ## Using DataONE
 
 **Data Observation Network for Earth** (DataONE) is a community driven project providing access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
