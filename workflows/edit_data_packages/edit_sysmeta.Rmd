@@ -1,9 +1,9 @@
 ## Edit sysmeta
 
-To edit the sysmeta of an object (data file, EML, or resource_map, etc.) with a `PID`, first load the sysmeta into R using the following command:
+To edit the sysmeta of an object (data file, EML, or resource map, etc.) with a `PID`, first load the sysmeta into R using the following command:
 
 ```{r, eval = FALSE}
-sysmeta <- dataone::getSystemMetadata(mn, pid)
+sysmeta <- dataone::getSystemMetadata(mnT, pid)
 ```
 
 Then edit the sysmeta slots by using `@` functionality. For example, to change the `fileName` use the following command:
@@ -26,7 +26,7 @@ Importantly, changing the system metadata does NOT necessitate a change in the `
 
 ### Additional resources
 
-For a more in-depth (and technical) guide to sysmeta, check out the DataOne documentation: 
+For a more in-depth (and technical) guide to sysmeta, check out the DataONE documentation: 
 
 - [System Metadata](https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html)
 - [Data Types in CICore](https://releases.dataone.org/online/api-documentation-v2.0.1/apis/Types2.html)
