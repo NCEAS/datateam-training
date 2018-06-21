@@ -13,7 +13,7 @@ pkg <- arcticdatautils::get_package(mnT,
 After loading the package, you can also load the EML file into R using the following command:
 
 ``` {r, eval = FALSE}
-eml <- EML::read_eml(rawToChar(dataone::getObject(mnT, pkg$metadata)))
+eml <- EML::read_eml(dataone::getObject(mnT, pkg$metadata))
 ```
 
 ```{block, type = 'note'}
