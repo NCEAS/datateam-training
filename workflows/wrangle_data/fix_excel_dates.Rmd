@@ -7,5 +7,5 @@ janitor::excel_numeric_to_date(c(43134, 43135, 43136))
 ```
 
 ```{block, type="warning"}
-Make sure you check that the date makes sense!
+Make sure you check that the dates make sense!
 ```
