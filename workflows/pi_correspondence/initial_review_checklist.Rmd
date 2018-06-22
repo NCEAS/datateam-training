@@ -2,26 +2,26 @@
 
 Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the [initial email template](#initial-email-template) and insert comments as needed.
 
-- [Title](#poor-title)
+- [Title](#title)
     - Is descriptive of the work (provides enough information to understand the contents at a general scientific level)
     - Provides a location of the work
     - Provides a time frame of the work
-- [Abstract](#poor-abstract)
+- [Abstract](#abstract)
     - Describes the DATA
-- [Data](#poor-data)
+- [Data](#data)
     - At least one data file
     - No xls/xlsx files (or other proprietary files)
     - File contents and relationships among files are clear
     - All attributes are clearly defined
     - Column names do not use spaces or special characters
-    - NA's are defined
-- [Funding](#poor-funding)
+    - NA's are explained
+- [Funding](#funding)
     - At least one funding number
     - If there are multiple submissions with the same funding number/creators, check about nesting
-- [Methods](#poor-methods)
+- [Methods](#methods)
     - Enough detail is provided in metadata
 - Contacts
     - At least one contact with email and ORCiD
 - Temporal/geographic coverage
-    - Includes coverage that makes sense.
+    - Includes coverage that makes sense
 
