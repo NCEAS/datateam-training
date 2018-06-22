@@ -34,6 +34,6 @@ file.remove("new_file.csv") #clean up
 ```
 
 ```{block, type = "note"}
-You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats).
+You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here](https://cn.dataone.org/cn/v2/formats) on the DataONE website.
 Use line 2 (Id:) exactly, character for character.
 ```
