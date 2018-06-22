@@ -62,7 +62,7 @@
 - **Funding numbers** are accurate and included
     - NSF-funded projects can be searched [here](https://www.nsf.gov/awardsearch/); we also accept non-NSF funded arctic data sets
 
-- **Methods:** provide enough detail so that a reasonable scientist can interpret and reuse the data without needing to consult anyone nor any other resources
+- **Methods:** provide enough detail so that a reasonable scientist can interpret the study and data for reuse without needing to consult anyone nor any other resources
 
 - Ensure that the `project` section of the EML matches the information from the NSF award as opposed to only being specific to this one data package
 
