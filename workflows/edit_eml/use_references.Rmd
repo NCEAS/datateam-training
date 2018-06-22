@@ -82,5 +82,6 @@ eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "bryce"
 ```{block, type = "note"}
 Updated creator information cannot be used as a reference for `associatedParties` because the extra "role" field is required. Also, the function does not (yet) account for cases in which multiple creators have the same surname.
 
-Check out the help file for `add_creator_id` for more information: `?datamgmt::add_creator_id`
+Check out the help file for `add_creator_id` for more information: 
+`?datamgmt::add_creator_id`
 ```

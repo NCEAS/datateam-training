@@ -1,6 +1,6 @@
 ## Understand the EML schema
 
-Another great resource for navigating the `EML` structure is looking at the [schema](https://github.com/NCEAS/eml) which defines the structure. The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the EML structure is looking at the [schema](https://github.com/NCEAS/eml) which defines the structure. The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). However, the schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
 For example, let's take a look at [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png). To start off, notice that some elements are in solid boxes, whereas others are in dashed boxes.
 
@@ -16,4 +16,4 @@ You will also see icons linking the EML slots together, which indicate the order
 
 The eml schema sections you may find particularly helpful include [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png), [eml-attribute](https://github.com/NCEAS/eml/blob/master/eml-attribute.png), and [eml-physical](https://github.com/NCEAS/eml/blob/master/eml-physical.png). (Click "Download" to zoom in.)
 
-For a more detailed description of the `EML` schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).
+For a more detailed description of the EML schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).
