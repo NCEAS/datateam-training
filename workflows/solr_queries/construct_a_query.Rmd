@@ -4,16 +4,16 @@ Each Solr query is comprised of a number of parameters. These are like arguments
 
 The most common parameters are:
 
-- `q`: The query. This is like `subset` or `dplyr::filter` in R
+- `q`: The query. This is like `subset` or `dplyr::filter` in R.
 - `fl`: What fields are returned for the documents that match your query (`q`). If not set, all fields are returned.
 - `rows`: The maximum number of documents to return. Solr will truncate your result if the result size is greater than `rows`.
-- `sort`: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded)
+- `sort`: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded).
 
-The query ('q') parameter uses a syntax that looks like `field:value`, where `field` is one of the Solr fields and `value` is an expression. The expression can match a specific value exactly, e.g., `q=identifier:arctic-data.7747.1` or `q=identifier:"doi:10.5065/D60P0X4S"`, which finds the Solr document for a specific Object by PID (identifier).
+The query (`q`) parameter uses a syntax that looks like `field:value`, where `field` is one of the Solr fields and `value` is an expression. The expression can match a specific value exactly, e.g., `q=identifier:arctic-data.7747.1` or `q=identifier:"doi:10.5065/D60P0X4S"`, which finds the Solr document for a specific Object by `PID` (identifier).
 
 
 ```{block, type = "note"}
-In the second example, the DOI PID is surrounded in double quotes. This is because Solr has [reserved characters](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html), of which `:` is one, so we have to help Solr by surrounding values with reserved characters in them in quotes or escaping them.
+In the second example, the DOI `PID` is surrounded in double quotes. This is because Solr has [reserved characters](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html), of which `:` is one, so we have to help Solr by surrounding values with reserved characters in them in quotes or by escaping them.
 ```
 
 
