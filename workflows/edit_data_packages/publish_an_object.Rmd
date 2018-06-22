@@ -1,31 +1,33 @@
 ## Publish an object
 
 Objects (data files, xml metadata files) can be published to a DataONE node using the function `arcticdatautils::publish_object`. 
-To publish an object, you must first get the `format_id` of the object you want to publish. A few common `format_ids` are listed below.
+To publish an object, you must first get the `formatId` of the object you want to publish. A few common `formatId`s are listed below.
 
 ```{r, eval = FALSE}
 # .csv file
-format_id <- "text/csv"
+formatId <- "text/csv"
 
 # .txt file
-format_id <- "text/plain"
+formatId <- "text/plain"
 
 # metadata file
-format_id = format_eml()
+formatId <- "eml://ecoinformatics.org/eml-2.1.1"
+# OR
+formatId <- format_eml()
 ```
 
-Most objects have `format_ids` that can be found [here on the DataONE website](https://cn.dataone.org/cn/v2/formats). Metadata files (as shown above) use a special function to set the `format_id`. If the `format_id` is not listed at the DataONE website, you can set the `format_id <- NULL`.
+Most objects have registered `formatId`s that can be found on the DataONE website [here](https://cn.dataone.org/cn/v2/formats). Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
 
-Once you know the `format_id` you can publish your object using the commands below.
+Once you know the `formatId` you can publish your object using these commands:
 
 ```{r, eval = FALSE}
 path <- "path/to/your/file"
-format_id <- "your/format_id"
+formatId <- "your/formatId"
 
 pid <- arcticdatautils::publish_object(mnT,
                                        path = path,
-                                       format_id = format_id)
+                                       formatId = formatId)
 ```
 
-After publishing the object, the `pid` will need to be added to a `resource_map` by [updating](#update-a-package) or [creating](#create-a-resource-map) a `resource_map`. Additionally, the [rights and access](#set-rights-and-access) for the object must be set.
+After publishing the object, the `PID` will need to be added to a resource map by [updating](#update-a-package) or [creating](#create-a-resource-map) a resource map. Additionally, the [rights and access](#set-rights-and-access) for the object must be set.
 
