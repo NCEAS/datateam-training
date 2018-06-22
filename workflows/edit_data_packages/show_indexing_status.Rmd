@@ -1,8 +1,8 @@
 ## Show indexing status
-Sometimes it takes a while for the website to be updated with the updates you've made in R. To check whether it's been indexed, just use: 
+Sometimes it takes a while for the website to render with the updates you've made in R. To check whether a `PID` has been indexed yet, use: 
     
 ```{r eval = FALSE}
-show_indexing_status(mn, pids)
+show_indexing_status(mn, pid)
 ```
 
 ```{block, type="note"}
