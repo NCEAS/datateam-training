@@ -1,6 +1,6 @@
 ## Add Physicals to Submissions
 
-New submissions made through the web editor will not have any `physical` sections within the `otherEntities`. Add them to the `eml` with the following script.
+New submissions made through the web editor will not have any `physical` sections within the `otherEntity`s. Add them to the EML with the following script:
     
 ```{r, eval = FALSE}
 for (i in seq_along(eml@dataset@otherEntity)) {

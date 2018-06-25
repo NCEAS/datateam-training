@@ -1,8 +1,8 @@
 ## Assess Attributes
 
-New submissions made through the web editor should have attributes created by the submitter. If there are no attributes, or if they are incomplete, please use the [email template](#need-attributes) to correspond with the submitter to ask for attributes.
+New submissions made through the web editor should have attributes created by the `submitter`. If there are no attributes, or if they are incomplete, please use the [email template](https://nceas.github.io/datateam-training/reference/email-templates.html) to correspond with the `submitter` to ask for attributes.
 
-Additonally, the web editor will not allow for the creation of custom units. Submitters should select `other/none` in the editor unit dropdown if they cannot find their desired unit. In the `eml` document, these will result in `dimensionless` units. Accordingly, new submissions should be checked for `dimensionless` units. This can be done with the following code.
+Additonally, the web editor will not allow for the creation of custom units. `submitter`s should select `other/none` in the editor unit dropdown if they cannot find their desired unit. In the EML document, these will result in `dimensionless` units. Accordingly, new submissions should be checked for `dimensionless` units. This can be done with the following code.
     
 ```{r, eval = FALSE}
 dim_units <- sapply(eml@dataset@otherEntity, function(x) {
@@ -18,6 +18,8 @@ dim_units <- sapply(eml@dataset@otherEntity, function(x) {
   return(out)  
 })
 dim_units <- data.frame(t(do.call(cbind, dim_units)))
+
+dim_units
 ```
 
-If dimensionless units are found, first check the `attributeDefinition`, `attributeLabel`, and `attributeName` to see if `dimensionless` seems to be an appropriate unit for the attribute. If there is any question about wether or not `dimensionless` seems appropriate, ask another member of the data team. If there is still any question about what the unit should be, reach out to the submitter and ask for clarification. 
+If dimensionless units are found, first check the `attributeDefinition`, `attributeLabel`, and `attributeName` to see if `dimensionless` seems to be an appropriate unit for the attribute. If there is any question about wether or not `dimensionless` seems appropriate, ask another member of the data team. If there is still any question about what the unit should be, reach out to the `submitter` and ask for clarification. 
