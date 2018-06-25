@@ -1,6 +1,6 @@
 ## Query Solr via a browser
 
-Solr is queried via what's called an HTTP API (Application Programming Interface). Practically, what this means it that you can execute a query in your browser by tacking a query onto a base URL. 
+Solr is queried via what's called an HTTP API (Application Program Interface). Practically, what this means it that you can execute a query in your browser by tacking a query onto a base URL. 
 
 This is similar to the way Google handles your searches. If I search "soil science" in Google, for example, the URL becomes:
 
