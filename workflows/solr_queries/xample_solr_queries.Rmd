@@ -26,11 +26,6 @@ result <- dataone::query(mn, list(q="*:*",
                          as = "data.frame")
 ```
 
-```{r echo = FALSE}
-format_query_result(result)
-```
-
-
 ### Query a wildcard expression 
 
 ```{r eval = FALSE}
