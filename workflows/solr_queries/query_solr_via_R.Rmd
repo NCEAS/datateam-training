@@ -1,13 +1,13 @@
 ## Query Solr through R
 
-Though it's possible to [query Solr directly through its HTTP API](#query-solr), we typically run our queries through R, for two main reasons: 
+Though it's possible to [query Solr directly through its HTTP API](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html), we typically run our queries through R, for two main reasons: 
 
 1. The result is returned in a more useful way to R without extra work on your part
 2. We can more easily pass our authentication token with the query
 
 Why does #2 matter?
-Well by default, all of those URLs above only returned publicly-readable Solr documents.
-If a private document matched any of those queries, Solr doesn't give you any idea and acts like the non-public-readable documents don't exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
+Well by default, all of those URLs above only return publicly-readable Solr documents.
+If a private document matches any of those queries, Solr won't tell you that. It will act like the non-public-readable documents don't exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
 
 ```{r}
 cn <- dataone::CNode("PROD")
