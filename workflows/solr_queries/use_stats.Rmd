@@ -1,8 +1,8 @@
 ## Use stats
 
-With stats, we can have [Solr calculate statistics](https://lucene.apache.org/solr/guide/7_3/the-stats-component.html#the-stats-component) on numerical values (such as `fileSize`).
+With stats, we can have [Solr calculate statistics](https://lucene.apache.org/solr/guide/7_3/the-stats-component.html#the-stats-component) on numerical values (such as `size`).
 
 - https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=formatType:DATA&stats=true&stats.field=size&rows=0
 
-This query calculates a set of summary statistics for the `size` field on Data Objects that Solr has indexed.
-In this case, Solr's `size` field indexes the `fileSize` field in the System Metadata for each Object in Metacat.
+This query calculates a set of summary statistics for the `size` field on data objects that Solr has indexed.
+In this case, Solr's `size` field indexes the `size` field in the system metadata for each object in Metacat.
