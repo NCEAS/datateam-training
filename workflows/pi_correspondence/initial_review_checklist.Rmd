@@ -12,7 +12,7 @@ Before responding to a new submission use this checklist to review the submissio
     - At least one data file
     - No xls/xlsx files (or other proprietary files)
     - File contents and relationships among files are clear
-    - All attributes are clearly defined
+    - All attributes are clearly defined. [Quality control any `dimensionless` units](https://nceas.github.io/datateam-training/reference/assess-attributes.html).
     - Column names do not use spaces or special characters
     - NA's are explained
 - Funding

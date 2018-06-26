@@ -25,7 +25,8 @@
 - **Column headers** (within data files): no spaces (use underscore or camelCase), `attributeList` adequately defines ALL column headers (including units)
 
 - **Cell etiquette:** only one value (piece of information) per cell (for lat/long use decimal degrees) - `attributeList` should define ALL codes used (including defining missing value codes; WHY are data absent?)
-     
+
+- **Entity level metadata:**     
 - Each data file has either a `dataTable` or an `otherEntity`
 
 - `entityName`s are properly set in all `dataTable`s and `otherEntity`s
@@ -33,6 +34,8 @@
 - Download buttons in `dataTable`s and `otherEntity`s download correct data files
 
 - `dataTable`s and `otherEntity`s must include `physical` - all `physical` sections match the information for the respective data object: `objectName` (including extension), `size` (including units), `authentication` (checksum), `formatName` (file format), and `url` (online distribution info links end in correct PID)
+
+- Any `dimensionless` units entered through the editor must be checked and quality controlled for accuracy. For attributes with `numericDomain`s, the editor has a unit option of "Other / None" which populates as `dimensionless` in the EML. There is also a `dimensionless` option for submitters. While some attributes may be correctly marked as `dimensionless` (percent, ppm, ppb, other ratios, etc.), others may just be a placeholder in need of a custom unit. Please refer to [here](https://nceas.github.io/datateam-training/reference/assess-attributes.html) for more information.
 
 - **Creator and contact roles** are complete
       - First/Last Name, emails are essential - use ONE `givenName` slot for EACH first OR middle name, like so:  
