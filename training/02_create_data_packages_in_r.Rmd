@@ -54,10 +54,7 @@ remotes::install_github("nceas/arcticdatautils"); library(arcticdatautils)
 remotes::install_github("nceas/datamgmt"); library(datamgmt)
 ```
 
-```{r, child = '../workflows/edit_data_packages/set_dataone_nodes.Rmd'}
-```
-
-For now, set the node to the test Arctic node.
+For this training, we will be working exclusively on the Arctic test site, or "node." Set the node to the test Arctic node:
 
 ``` {r, eval = F, class.source = 'exercise'}
 cnT <- dataone::CNode('STAGING')

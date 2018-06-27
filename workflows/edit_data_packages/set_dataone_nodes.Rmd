@@ -1,9 +1,17 @@
 ## Set DataONE nodes 
-Tell R which repo you want to work with by setting the coordinating node (CN) and member node (MN) using the appropriate code below.
+
+DataONE is a network of data repositories that is structured with coordinating nodes (CN) and member nodes (MN). The network tree looks something like this:
+
+![](../images/dataone-nodes-tree.png)
+
+At the top level is DataONE itself. Within DataONE there are several coordinating nodes, including nodes for both production material and testing material. Within these coordinating nodes are many member nodes, including ones for both the Arctic Data Center and the KNB. To set the environment in which you want to publish data, you need to set both the coordinating node and the member node. For example, if you are publishing to the Arctic Data Center test site, you would want to set the coordinating node to STAGING and the member node to mnTestArctic.
+
 
 ```{block, type = "warning"}
 A note on nodes - be very careful about what you publish on production nodes (`PROD`, or arcticdata.io). These nodes should NEVER be used to publish test or training data sets.
 ```
+
+The primary nodes we work on, and how to set them in R, are below:
 
 ### Staging (Test) nodes
 ```{r, eval = F}
