@@ -7,6 +7,8 @@ source('~/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
 eml@dataset@project <- sasap_project()
 ```
 
+Next you should add SASAP-specific taxonomic coverage to the EML using the `add_SASAP_taxa` function found in `sasap-data/data-submission/Helpers`. This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. Run everything in the `add_SASAP_taxa.R` script prior to running `eml <- add_SASAP_taxa(eml)`.
+
 Then, update the access permissions in the system metadata using `set_rights_and_access`.
 
 ```{r, eval=FALSE}
