@@ -29,6 +29,50 @@ Once you have an [EML file loaded into R](#get-package-and-eml), you can use R t
 ```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
 ```
 
+## SASAP package workflows
+Sometimes many data sets are associated with a larger project, such as the State of Alaska Salmon and People (SASAP) project. These data sets should be given additional project-specific information using `eml@dataset@project`. This will add pre-defined information including the project title, funding sources, and key personnel. You will also want to set access permissions to the project as well. If you are working on a SASAP data set, prior to writing the EML and publishing the data set you will set the project with this code:
+
+```{r, eval=FALSE}
+source('~/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
+eml@dataset@project <- sasap_project()
+```
+
+Next you should add SASAP-specific taxonomic coverage to the EML using the `add_SASAP_taxa` function found in `sasap-data/data-submission/Helpers`. This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. Run everything in the `add_SASAP_taxa.R` script prior to running `eml <- add_SASAP_taxa(eml)`.
+
+Then, update the access permissions in the system metadata using `set_rights_and_access`.
+
+```{r, eval=FALSE}
+pkg <- get_package(mn, resource_map_pid)
+set_rights_and_access(mn, unlist(pkg), 'CN=SASAP,DC=dataone,DC=org', permissions = c('read', 'write', 'changePermission'))
+```
+
+Finally, go through the [SASAP checklist](https://github.nceas.ucsb.edu/NCEAS/sasap-data/blob/master/data-submission/checklist.Rmd) to ensure that the package meets all of the project-specific requirements for publishing.
+
+After your package is published, run the `qa_package()` function from the `datamgmt` package. 
+
+The function arguments are as follows:
+```{r, eval=FALSE}
+qa_package <- function(node, pid, readAllData = TRUE,
+                       check_attributes = TRUE,
+                       check_creators = FALSE,
+                       check_access = FALSE)
+```
+
+By default, `qa_package` checks for:
+- Correctness of distribution URLs for each data object (URLs must match the EML physical section for the object)
+- Congruence of metadata and data 
+
+The `check_creators` and `check_access` flags can be set to `TRUE` to check: 
+- Correctness of ORCIDs of creators in a given EML
+- Rights and access are set for creators for a give pid sysmeta
+
+In most cases, QA package will be run just by passing in a member node and the resource map pid.
+```{r, eval=FALSE}
+qa_package(mn, resource_map_pid)
+```
+
+Note that there are some issues with the function that are documented [here](https://github.com/NCEAS/datamgmt/issues/145). 
+
 ## Exercise 4 {.exercise}
 * Make sure your package from [before](#exercise-3) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
