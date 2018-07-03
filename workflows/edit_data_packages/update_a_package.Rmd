@@ -17,12 +17,12 @@ pkg <- get_package(mnT, "resource_map_pid")
 ```
 
 ```{r, eval = FALSE}
-update <- arcticdatautils::publish_update(mnT, 
-                                          metadata_pid = pkg$metadata,
-                                          resource_map_pid =pkg$resource_map,
-                                          data_pids = pkg$data,
-                                          metadata_path = eml_path, 
-                                          public = FALSE)
+update <- publish_update(mnT, 
+                          metadata_pid = pkg$metadata,
+                          resource_map_pid =pkg$resource_map,
+                          data_pids = pkg$data,
+                          metadata_path = eml_path, 
+                          public = FALSE)
 ```
 
 Note that there are other arguments to `publish_update` you may need.
