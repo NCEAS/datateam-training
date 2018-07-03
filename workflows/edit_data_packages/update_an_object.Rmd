@@ -11,7 +11,7 @@ The `arcticdatautils::update_object` function takes care of the first of these t
 The code will look like this (very similar to the `publish_object` function call):
 
 ```{r, eval = F}
-id_new <- update_object(mnT, 
+id_new <- update_object(adc_test, 
                         data_pid = "the data pid you need to update",
                         path = "path/to/new/file.csv",
                         format_id = "text/csv")

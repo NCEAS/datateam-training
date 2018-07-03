@@ -3,7 +3,7 @@
 To edit the sysmeta of an object (data file, EML, or resource map, etc.) with a `PID`, first load the sysmeta into R using the following command:
 
 ```{r, eval = FALSE}
-sysmeta <- dataone::getSystemMetadata(adc_test, pid)
+sysmeta <- getSystemMetadata(mn, pid)
 ```
 
 Then edit the sysmeta slots by using `@` functionality. For example, to change the `fileName` use the following command:

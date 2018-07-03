@@ -22,7 +22,7 @@ eml <- read_eml(getObject(adc_test, pkg$metadata))
 When editing resource maps (or any object), you always want to be working with the most recent update. To ensure you have the most recent resource map, you can use the following commands:
 
 <pre class="sourceCode r"><code class="sourceCode r">rm_pid_original &lt;-<span class="st"> &quot;your_original_resource_map_pid&quot;</span>
-all_rm_versions &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">get_all_versions</span>(mnT, rm_pid_original)
+all_rm_versions &lt;-<span class="st"> </span><span class="op"></span><span class="kw">get_all_versions</span>(adc_test, rm_pid_original)
 rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</span>(all_rm_versions)]
 print(rm_pid)</code></pre>
 
