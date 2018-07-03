@@ -52,7 +52,7 @@ After you save your script in the appropriate place within the arctic-data folde
 Before you commit your changes, you need to click the little box under "Staged". Do not stage or commit any .Rproj file. After clicking the box for your file, click "Commit" to commit your changes. In the window that pops up (you may need to force the browser to allow pop-ups), write your commit message. *Always* include a commit message. Remember that the commit message should be a concise description of the changes that were made to a file. Your window should look like this:
 ![](images/commit.jpeg)
 
-Push 'Commit', and your commit will be saved. Now you want to merge the commits you made with the master version of the repository. You do this by using the command "Push." But before you push, you *always* need to pull first to avoid merge conflicts. Click "Pull" and type in your credentials. Then, assuming you don't have a merge conflict, you can push your changes by clicking "Push".
+Push 'Commit', and your commit will be saved to your local repository (this will not push it to the remote repository, yet). Now you want to merge the commits you made with the master version of the remote repository. You do this by using the command "Push." But before you push, you *always* need to pull first to avoid merge conflicts. Pulling will merge the current version of the remote repository with your local repository, on your local machine. Click "Pull" and type in your credentials. Then, assuming you don't have a merge conflict, you can push your changes by clicking "Push". 
 
 Always remember, the order is **commit-pull-push**.
 

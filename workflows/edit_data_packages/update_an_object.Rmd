@@ -1,39 +1,29 @@
-## Update an object
+## Update a data file
 
-The `arcticdatautils::update_object` function updates a data object but does not change the resource map or EML. To simultaneously update all three parts of a data package, you can use the `datamgmt::update_package_object`.
+To update a data file, you need to do three things:
 
-The [`update_package_object`](https://nceas.github.io/datamgmt/reference/update_package_object.html) function updates a data object, and then automatically updates the package resource map with the new data `PID`. If an object already has a `dataTable` or `otherEntity` with a working `physical` section, the EML will be updated with the new data object’s `physical`.
+1)  update the object itself, 
+2)  update the metadata that describes that object
+3)  update the resource map (which affiliates the object with the metadata).
 
-To use, input the following arguments:
+The `arcticdatautils::update_object` function takes care of the first of these tasks. As arguments, update object takes the member node instance you are working in, the `pid` of the object to be updated, the path to the new version of that object on your computer, and the format id of the object.
 
-```{r eval = FALSE}
-update_package_object(mnT,
-                      data_pid = "the data PID you need to update", # pkg$data
-                      new_data_path = "path/to/the/new/data.csv",
-                      resource_map_pid = "resource map of the data package", # pkg$resource_map
-                      format_id = "the formatId", # use line 2 (Id:) from https://cn.dataone.org/cn/v2/formats
-                      public = FALSE,
-                      use_doi = FALSE,
-                      ...) #any other arguments to pass to publish_update (child_pids, etc)
+The code will look like this (very similar to the `publish_object` function call):
+
+```{r, eval = F}
+id_new <- update_object(mnT, 
+                        data_pid = "the data pid you need to update",
+                        path = "path/to/new/file.csv",
+                        format_id = "text/csv")
 ```
 
-To try it out for yourself, you can run this code to create a dummy package on [test.arctic.io](https://test.arctic.io) and update one of its objects.
-
-```{r eval = FALSE}
-#input token to run
-cnT <- dataone::CNode('STAGING')
-mnT <- dataone::getMNode(cnT,'urn:node:mnTestARCTIC')
-
-pkg <- create_dummy_package2(mnT, title = "My package")
-
-file.create("new_file.csv")
-update_package_object(mnT, pkg$data[1], "new_file.csv", pkg$resource_map, format_id = "text/csv")
-file.remove("new_file.csv") #clean up
-
-#check out the package on test.arcticdata.io
-```
 
 ```{block, type = "note"}
 You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here](https://cn.dataone.org/cn/v2/formats) on the DataONE website.
 Use line 2 (Id:) exactly, character for character.
 ```
+
+
+To acomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 6](https://nceas.github.io/datateam-training/training/editing-eml-in-r.html). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
+
+Once you have updated your metadata and saved it, you can update the package itself.
