@@ -16,7 +16,7 @@ Note that some slots cannot be changed by simple text replace (particularly the 
 
 ```{r, eval = FALSE}
 # Example of setting the formatId slot
-sysmeta@formatId <- 'text/xml'
+sysmeta@formatId <- "eml://ecoinformatics.org/eml-2.1.1"
 ```
 
 After you have changed the necessary slot, you can update the system metadata using the following command:
