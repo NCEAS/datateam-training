@@ -1,5 +1,6 @@
 ## Update a package
 
+
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update`.
 
 To update a package, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to add or remove data objects, and/or make metadata edits.

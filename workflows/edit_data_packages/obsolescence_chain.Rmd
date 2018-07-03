@@ -1,6 +1,8 @@
 
 ## Obsolescence chain
 
+You can obosolete a dataset using the function `datamgmt::obsolete_package`.  Use the documentation for instructions on using the function.  The following workflow explains how the functions operates: 
+  
 This chunk is to obsolete one data set. If there are more to add to the chain, more steps can be added. Be very careful. Make sure to fill in `obsoletes` and `obsoletedBy` slots for each one. 
 
 ```{r, eval = FALSE}
