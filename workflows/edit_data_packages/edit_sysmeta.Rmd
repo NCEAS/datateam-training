@@ -12,7 +12,7 @@ Then edit the sysmeta slots by using `@` functionality. For example, to change t
 sysmeta@fileName <- 'NewFileName.csv'
 ```
 
-Note that some slots cannot be changed by simple text replace (particularly the `accessPolicy`). There are various helper functions for changing the `accessPolicy` and `rightsHolder` such as `datapack::addAccessRule` (which takes the sysmeta as an input) or [`arcticdatautils::set_rights_and_access`](#set-rights-and-access), which only requires a `PID`. In general, you most frequently need to use `dataone::getSystemMetadata` to change either the `formatId` or `fileName` slots (see [the DataONE list of format ids](https://cn.dataone.org/cn/v2/formats) for acceptable formats.
+Note that some slots cannot be changed by simple text replace (particularly the `accessPolicy`). There are various helper functions for changing the `accessPolicy` and `rightsHolder` such as `datapack::addAccessRule` (which takes the sysmeta as an input) or [`arcticdatautils::set_rights_and_access`](#set-rights-and-access), which only requires a `PID`. In general, you most frequently need to use `dataone::getSystemMetadata` to change either the `formatId` or `fileName` slots (see [the DataONE list of format ids](https://cn.dataone.org/cn/v2/formats)) for acceptable formats.
 
 ```{r, eval = FALSE}
 # Example of setting the formatId slot
