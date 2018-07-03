@@ -16,23 +16,23 @@ The primary nodes we work on, and how to set them in R, are below:
 ### Staging (Test) nodes
 ```{r, eval = F}
 # ADC (test.arcticdata.io)
-cnT <- dataone::CNode('STAGING')
-mnT <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
+cn_staging <- CNode('STAGING')
+adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 
 # KNB (dev.nceas.ucsb.edu)
-cnT2 <- dataone::CNode("STAGING2")
-mnT2 <- dataone::getMNode(cn, "urn:node:mnTestKNB")
+cn_staging2 <- CNode("STAGING2")
+knb_test <- getMNode(cn_staging2, "urn:node:mnTestKNB")
 ```
 
 ### Production nodes
 ```{r, eval = F}
 # ADC (arcticdata.io)
-cn <- dataone::CNode('PROD')
-mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+cn_prod <- CNode('PROD')
+adc_prod <- getMNode(cn_prod,'urn:node:ARCTIC')
 
 # KNB (knb.ecoinformatics.org)
-cn2 <- dataone::CNode("PROD")
-mn2 <- dataone::getMNode(cn, "urn:node:KNB")
+cn_prod <- CNode("PROD")
+knb_prod <- getMNode(cn_prod, "urn:node:KNB")
 ```
 
 More DataONE STAGING nodes can be found [here](https://cn-stage.test.dataone.org/cn/v2/node).

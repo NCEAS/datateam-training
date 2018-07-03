@@ -59,8 +59,8 @@ library(datamgmt)
 For this training, we will be working exclusively on the Arctic test site, or "node." Set the node to the test Arctic node:
 
 ``` {r, eval = F, class.source = 'exercise'}
-cnT <- dataone::CNode('STAGING')
-mnT <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
+cn_staging <- CNode('STAGING')
+adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 ```
 
 ```{r, child = '../workflows/edit_data_packages/publish_an_object.Rmd'}
@@ -76,8 +76,8 @@ mnT <- dataone::getMNode(cn,'urn:node:mnTestARCTIC')
 * Using the functions described in the section above, publish your metadata record and data file to the site. (When you do so, make sure you save the `PID`s to different variables in R...) i.e.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
-data_pid <- arcticdatautils::publish_object(...)
-metadata_pid <- arcticdatautils::publish_object(...)
+data_pid <- publish_object(...)
+metadata_pid <- publish_object(...)
 ```
 
 * Then create a resource map containing your data and metadata.

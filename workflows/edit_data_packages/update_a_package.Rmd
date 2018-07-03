@@ -1,6 +1,6 @@
 ## Update a package
 
-To update a package, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.
+To update a package, use `publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s to make sure that they stay with the package). This function allows you to add or remove data objects, and/or make metadata edits.
 
 First make sure you have the package you want to update, [loaded into R](#get-package-and-eml).
 
@@ -16,7 +16,7 @@ write_eml(eml, eml_path)
 Next verify the eml is valid.
 
 ``` {r, eval = F}
-EML::eml_validate(eml_path)
+eml_validate(eml_path)
 ```
 
 The above should return `TRUE` if the `EML` is valid. If it returns `FALSE`, fix the EML file, use `write_eml()` to save the fixed file, and retry.

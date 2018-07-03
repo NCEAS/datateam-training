@@ -11,6 +11,7 @@ You can set this manually, or grab it from one of the creators in an EML file. Y
 
 # Set ORCiD from EML creator
  subject <- eml@dataset@creator[[1]]@userId[[1]]@.Data
+ # As a convention we use `http:` instead of `https:` in our system metadata
  subject <- sub("^https://", "http://", subject)
 ```
 
@@ -19,7 +20,7 @@ Note, when setting metadata, the ORCiD must start with `http://`. ORCiDs in EML 
 Next, set the rights and access using the following command:
 
 ```{r, eval = F}
-set_rights_and_access(mnT, 
+set_rights_and_access(adc_test, 
                       pids = c(pkg$metadata, pkg$data, pkg$resource_map),
                       subject = subject,
                       permissions = c('read','write','changePermission'))
@@ -28,5 +29,5 @@ set_rights_and_access(mnT,
 If you ever need to remove/add public access to your package or object, you can use `remove_public_read` or `set_public_read`, respectively. 
 
 ```{r eval = FALSE}
-arcticdatautils::remove_public_read(mnT, c(pkg$metadata, pkg$data, pkg$resource_map))
+remove_public_read(adc_test, c(pkg$metadata, pkg$data, pkg$resource_map))
 ```

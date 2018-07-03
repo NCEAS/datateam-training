@@ -5,7 +5,7 @@ If you are creating a new data package, you must create a resource map. Resource
 To create a new resource map with an existing [published](#publish-an-object) `metadata_pid` and `data_pids`, use the following command:
 
 ```{r create resource map, eval = FALSE}
-resource_map_pid <- arcticdatautils::create_resource_map(mnT,
-                                                         metadata_pid = metadata_pid,
-                                                         data_pids = data_pids)
+resource_map_pid <- create_resource_map(adc_test,
+                                        metadata_pid = metadata_pid,
+                                        data_pids = data_pids)
 ```
