@@ -50,8 +50,10 @@ install.packages("package_name")
 
 Now install a couple of packages:
 ```{r, eval = F}
-remotes::install_github("nceas/arcticdatautils"); library(arcticdatautils)
-remotes::install_github("nceas/datamgmt"); library(datamgmt)
+remotes::install_github("nceas/arcticdatautils")
+library(arcticdatautils)
+remotes::install_github("nceas/datamgmt")
+library(datamgmt)
 ```
 
 For this training, we will be working exclusively on the Arctic test site, or "node." Set the node to the test Arctic node:
