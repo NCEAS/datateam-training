@@ -2,8 +2,8 @@
 The `eml_get` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
 
 ```{r "creator", eval = FALSE}
-eml <- EML::read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
-EML::eml_get(eml, "creator")
+eml <- read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
+eml_get(eml, "creator")
 ```
 ```
 [[1]]
@@ -20,7 +20,7 @@ An object of class "ListOfcreator"
 
 
 ```{r "boundingCoords", eval = FALSE}
-EML::eml_get(eml, "boundingCoordinates")
+eml_get(eml, "boundingCoordinates")
 ```
 ```
 <boundingCoordinates>
@@ -33,7 +33,7 @@ EML::eml_get(eml, "boundingCoordinates")
 
 
 ```{r "url", eval = FALSE}
-EML::eml_get(eml, "url")
+eml_get(eml, "url")
 ```
 ```
 [1] "ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456"

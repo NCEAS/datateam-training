@@ -56,7 +56,7 @@ remotes::install_github("nceas/datamgmt")
 library(datamgmt)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node." Set the node to the test Arctic node:
+For this training, we will be working exclusively on the Arctic test site, or "node."  In many of the functions you will use this will be the first argument.  It is often referred to in documentation as `mn`, short for member node. Set the node to the test Arctic node:
 
 ``` {r, eval = F, class.source = 'exercise'}
 cn_staging <- CNode('STAGING')
