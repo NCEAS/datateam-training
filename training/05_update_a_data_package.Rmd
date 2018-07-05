@@ -2,9 +2,6 @@
 
 This chapter will teach you how to edit an existing data package in R.
 
-```{r, child = '../workflows/edit_data_packages/get_package_and_eml.Rmd'}
-```
-
 ```{r, child = '../workflows/edit_data_packages/update_an_object.Rmd'}
 ```
 
