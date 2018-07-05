@@ -8,7 +8,7 @@ This chapter will teach you how to edit an existing data package in R.
 ```{r, child = '../workflows/edit_data_packages/update_a_package.Rmd'}
 ```
 
-## Exercise 3 {.exercise}
+## Exercise 4 {.exercise}
 
 * Locate the data package you published in the [previous exercise](#exercise-2) by navigating to the URL test.arcticdata.io/#view/...
 * Load the package and EML into R using the above commands.

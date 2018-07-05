@@ -97,7 +97,7 @@ qa_package(mn, resource_map_pid)
 
 Note that there are some issues with the function that are documented [here](https://github.com/NCEAS/datamgmt/issues/145). 
 
-## Exercise 4 {.exercise}
+## Exercise 3 {.exercise}
 * Make sure your package from [before](#exercise-3) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
 * Then write, validate, and update your package.
