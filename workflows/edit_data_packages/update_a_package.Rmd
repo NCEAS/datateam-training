@@ -1,15 +1,12 @@
-## Update a package
-
+## Update a package with a new data object
 
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update`.
 
-To update a package, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to add or remove data objects, and/or make metadata edits.
-
-First make sure you have the package you want to update, [loaded into R](#get-package-and-eml) using `get_package`.
+Make sure you have the package you want to update, [loaded into R](#get-package-and-eml) using `get_package`.
 
 ### Publish update
 
-Now we can update your data package.
+Now we can update your data package to include the new data object.
 
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
@@ -21,12 +18,10 @@ pkg <- get_package(adc_test, "resource_map_pid")
 update <- publish_update(adc_test, 
                          metadata_pid = pkg$metadata,
                          resource_map_pid =pkg$resource_map,
-                         data_pids = pkg$data,
+                         data_pids = c(pkg$data, id_new),
                          metadata_path = eml_path, 
                          public = FALSE)
 ```
-
-Note that there are other arguments to `publish_update` you may need.
 
 If a package is ready to be public, you can change the `public` argument in the `publish_update` call to `TRUE`.
 

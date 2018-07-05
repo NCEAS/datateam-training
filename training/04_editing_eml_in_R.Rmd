@@ -3,7 +3,8 @@
 
 This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the [EML package](https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd)).
 
-Once you have an [EML file loaded into R](#get-package-and-eml), you can use R to edit it.
+```{r, child = '../workflows/edit_data_packages/get_package_and_eml.Rmd'}
+```
 
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
@@ -28,6 +29,29 @@ Once you have an [EML file loaded into R](#get-package-and-eml), you can use R t
 
 ```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
 ```
+
+## Validate your EML and update the data package
+
+To make sure that your edited EML is valid against the EML schema, run `eml_validate` on your EML. Fix any errors that you see, and then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
+
+```{r, eval = F}
+eml_validate(eml)
+eml_path <- "path/to/save/eml.xml"
+write_eml(eml, eml_path)
+```
+
+To update a package with the newly edited EML, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following section](#update-a-package)).
+
+```{r, eval = FALSE}
+update <- publish_update(adc_test, 
+                         metadata_pid = pkg$metadata,
+                         resource_map_pid = pkg$resource_map,
+                         data_pids = pkg$data,
+                         metadata_path = eml_path, 
+                         public = FALSE)
+```
+
+Note that there are other arguments to `publish_update` you may need.
 
 ## SASAP package workflows
 Sometimes many data sets are associated with a larger project, such as the State of Alaska Salmon and People (SASAP) project. These data sets should be given additional project-specific information using `eml@dataset@project`. This will add pre-defined information including the project title, funding sources, and key personnel. You will also want to set access permissions to the project as well. If you are working on a SASAP data set, prior to writing the EML and publishing the data set you will set the project with this code:
@@ -73,10 +97,10 @@ qa_package(mn, resource_map_pid)
 
 Note that there are some issues with the function that are documented [here](https://github.com/NCEAS/datamgmt/issues/145). 
 
-## Exercise 4 {.exercise}
+## Exercise 3 {.exercise}
 * Make sure your package from [before](#exercise-3) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
-* Then [write, validate, and update your package](#update-a-package).
+* Then write, validate, and update your package.
 * Use the [checklist](https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter-pi.html) to review your submission.
 * Make edits where necessary, and publish updates as needed.
  
