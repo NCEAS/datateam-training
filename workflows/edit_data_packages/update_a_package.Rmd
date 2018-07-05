@@ -14,16 +14,16 @@ Now we can update your data package.
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
 
-pkg <- get_package(mnT, "resource_map_pid")
+pkg <- get_package(adc_test, "resource_map_pid")
 ```
 
 ```{r, eval = FALSE}
-update <- publish_update(mnT, 
-                          metadata_pid = pkg$metadata,
-                          resource_map_pid =pkg$resource_map,
-                          data_pids = pkg$data,
-                          metadata_path = eml_path, 
-                          public = FALSE)
+update <- publish_update(adc_test, 
+                         metadata_pid = pkg$metadata,
+                         resource_map_pid =pkg$resource_map,
+                         data_pids = pkg$data,
+                         metadata_path = eml_path, 
+                         public = FALSE)
 ```
 
 Note that there are other arguments to `publish_update` you may need.
@@ -32,6 +32,6 @@ If a package is ready to be public, you can change the `public` argument in the 
 
 If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the `use_doi` argument to `TRUE`. **This should only be done after the package is finalized and has been thoroughly reviewed!**
 
-If the package has children change `child_pids` to `pkg$child_packages`.
+If the package has children, set the `child_pids` argument to `pkg$child_packages`.
 
 Refresh the landing page at test.arcticdata.io/#view/... for this package and then follow the "newer version" link to view the latest.

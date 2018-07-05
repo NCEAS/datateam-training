@@ -7,13 +7,13 @@ The function `EML::eml_view` (make sure to install and load the `listviewer` pac
 library(dataone)
 library(EML)
 
-cn <- dataone::CNode('PROD')
-mn <- dataone::getMNode(cn,'urn:node:ARCTIC')
+cn_prod <- CNode('PROD')
+adc_prod <- dataone::getMNode(cn_prod, 'urn:node:ARCTIC')
 ```
 ```{r}
-eml_raw <- rawToChar(dataone::getObject(mn,
-                                        "doi:10.18739/A2FS1H"))
-EML::eml_view(eml_raw) # you can also pass a path to an EML file
+eml_raw <- rawToChar(getObject(adc_prod,
+                               "doi:10.18739/A2FS1H"))
+eml_view(eml_raw) # you can also pass a path to an EML file
 ```
 
 To navigate this complex structure in R, use the `@` symbol. The `@` symbol allows you to go deeper into the EML structure and to see what slots are nested within other slots. However, you have to tell R where you want to go in the structure when you use the `@` symbol. For example, if you want to go into the data set of your EML you would use the command ```eml@dataset```. If you want to go to the creators of your data set you would use ```eml@dataset@creator```. Note here that `creators` are contained within `dataset`. If you aren't sure where you want to go, hit the tab button on your keyboard after typing `@` and a list of available locations in the structure will appear (e.g., `eml@<TAB>`):
@@ -21,3 +21,5 @@ To navigate this complex structure in R, use the `@` symbol. The `@` symbol allo
 ![](../images/rstudio_autocomplete.png)
 
 Note that if you hit tab, and the only option is `.Data`, this most likely implies that you are trying to go deeper within a list. For example ```eml@dataset@creator@<TAB>``` will return only `.Data`. This is because `creator` is a list object (i.e. you can have multiple `creator`s). If you want to go deeper into `creator`, you first must tell R which `creator` you are interested in. Do this by writing `[[i]]` first where `i` is the index of the `creator` you are concerned with. For example, if you want to look at the first `creator` i = 1. Now ```eml@dataset@creator[[1]]@<TAB>``` will give you many more options. Note, `.Data` sometimes means you have reached the end of a branch in the EML structure.
+
+At this point stop and take a deep breath.  The key takeaway is that EML is a hierarchical tree structure.  The best way to get familiar with it is to explore the structure.  Try entering `eml@dataset` into your console, and print it. Now make the search more specific, for instance: `eml@dataset@abstract`.  

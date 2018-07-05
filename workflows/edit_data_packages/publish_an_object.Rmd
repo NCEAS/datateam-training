@@ -1,6 +1,6 @@
 ## Publish an object
 
-Objects (data files, xml metadata files) can be published to a DataONE node using the function `arcticdatautils::publish_object`. 
+Objects (data files, xml metadata files) can be published to a DataONE node using the function `publish_object` from the `arcticdatautils` R Package. 
 To publish an object, you must first get the `formatId` of the object you want to publish. A few common `formatId`s are listed below.
 
 ```{r, eval = FALSE}
