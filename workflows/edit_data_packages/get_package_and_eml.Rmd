@@ -1,6 +1,6 @@
 ## Get package and EML
 
-To update a package, you must load it into your R environment. After [setting your node](#set-dataone-nodes), use the following commands to load the package:
+Before we look more in depth at EML, we first need to load your data package into R. After [setting your node](#set-dataone-nodes), use the following commands to load the package:
 
 ``` {r, eval = FALSE}
 rm_pid <- "your_resource_map_pid"
@@ -19,7 +19,7 @@ eml <- read_eml(getObject(adc_test, pkg$metadata))
 ```{block, type = 'note'}
 **Tip to always have the most recent resource map.**
 
-When editing resource maps (or any object), you always want to be working with the most recent update. To ensure you have the most recent resource map, you can use the following commands:
+When editing data packages, you always want to be working with the most recent update. To ensure you have the most recent resource map, you can use the following commands:
 
 <pre class="sourceCode r"><code class="sourceCode r">rm_pid_original &lt;-<span class="st"> &quot;your_original_resource_map_pid&quot;</span>
 all_rm_versions &lt;-<span class="st"> </span><span class="op"></span><span class="kw">get_all_versions</span>(adc_test, rm_pid_original)
