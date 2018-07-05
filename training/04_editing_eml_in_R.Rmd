@@ -100,7 +100,7 @@ Note that there are some issues with the function that are documented [here](htt
 ## Exercise 4 {.exercise}
 * Make sure your package from [before](#exercise-3) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
-* Then [write, validate, and update your package](#update-a-package).
+* Then write, validate, and update your package.
 * Use the [checklist](https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter-pi.html) to review your submission.
 * Make edits where necessary, and publish updates as needed.
  
