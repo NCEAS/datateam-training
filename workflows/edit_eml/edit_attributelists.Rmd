@@ -6,9 +6,14 @@ Attributes are stored in an [attributeList](https://github.com/NCEAS/eml/blob/ma
 2. A data.frame of custom units (if applicable)
 3. A data.frame of factors (if applicable)
 
+Attributes can exist in an EML `eml@dataset@dataTable` or an `eml@dataset@otherEntity` object.  We prefer to store them in `dataTable` objects. Please note that submitting attribute information through the website will store them in an `otherEntity` by default.
+
 Note, to edit/examine an existing attribute table already in an EML file you can use the following commands: 
 
 ```{r, eval = FALSE}
+# If they stored in an otherEntity (submitted from the website by default)
+attributeList <- EML::get_attributes(eml@dataset@otherEntity[[i]]@attributeList)
+# Or if they are stored in a 'dataTable' (usually created by a datateam member)
 attributeList <- EML::get_attributes(eml@dataset@dataTable[[i]]@attributeList)
 attributes <- attributeList$attributes
 print(attributes)
