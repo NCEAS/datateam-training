@@ -4,20 +4,20 @@
 
 > Hi [submitter],
 
-> I have updated your data set and you can view it here after logging in: [URL]
+> I have updated your data package and you can view it here after logging in: [URL]
 
 > Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing.
 
 
-#### DOI and data set finalization comments
+#### DOI and data package finalization comments
 
 *Replying to questions about DOIs*  
-> We attribute DOIs to data sets as one might give a DOI to a citable publication. Thus, a DOI is permanently associated with a unique and immutable version of a data set. If the data set changes, a new DOI will be created and the old DOI will be preserved with the original version.
+> We attribute DOIs to data packages as one might give a DOI to a citable publication. Thus, a DOI is permanently associated with a unique and immutable version of a data package. If the data package changes, a new DOI will be created and the old DOI will be preserved with the original version.
 
-> DOIs and URLs for previous versions of data sets remain active on the Arctic Data Center (will continue to resolve to the data set landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to that latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data set that was cited, while pointing users to the newest version if one exists.
+> DOIs and URLs for previous versions of data packages remain active on the Arctic Data Center (will continue to resolve to the data package landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to that latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data package that was cited, while pointing users to the newest version if one exists.
 
 *Clarification of updating with a DOI and version control*  
-> We definitely support updating a data set that has already been assigned a DOI, but when we do so we mark it as a new revision that replaces the original and give it its own DOI. We do that so that any citations of the original version of the data set remain valid (i.e.: after the update, people still know exactly which data were used in the work citing it).
+> We definitely support updating a data package that has already been assigned a DOI, but when we do so we mark it as a new revision that replaces the original and give it its own DOI. We do that so that any citations of the original version of the data package remain valid (i.e.: after the update, people still know exactly which data were used in the work citing it).
 
 *Sending finalized URL before resolving ticket*
 [NOTE: the URL format is very specific here, please try to follow it exactly (but substitute in the actual DOI of interest)]  

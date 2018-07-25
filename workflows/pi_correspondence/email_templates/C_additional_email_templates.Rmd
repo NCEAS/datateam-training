@@ -28,12 +28,12 @@ DataONE - https://www.dataone.org/best-practices
 
 ####  Nesting
 
->Nesting data sets under a common "parent" is beneficial so that all data sets funded by the same award can be found in one place. This way additional data sets can be added to the group without altering existing ones. Once we process all the "child" data sets you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data set [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data sets funded by the same award? If so, we are happy to do all this grouping for you.
+>Nesting data packages under a common "parent" is beneficial so that all data packages funded by the same award can be found in one place. This way additional data packages can be added to the group without altering existing ones. Once we process all the "child" data packages you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data package [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data packages funded by the same award? If so, we are happy to do all this grouping for you.
 
 
-#### Finding multiple data sets
+#### Finding multiple data packages
 
->If linking to multiple data sets, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data sets.
+>If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
 	e.g.: https://arcticdata.io/catalog/#profile/http://orcid.org/0000-0002-2604-4533
 	
 	
@@ -42,3 +42,12 @@ DataONE - https://www.dataone.org/best-practices
 >The NSF Section for Arctic Sciences (ARC) program managers check compliance with their data policies when checking annual reports. Generally, NSF ARC requires that fully quality controlled data be uploaded within 6 months of collection for Arctic Observing Network (AON) projects, or within 2 years of collection (or by end of the grant) for other ARC funded projects. Additionally, complete metadata must be submitted within two years of collection or before the end of the award, whichever comes first. (NSF policies include special exceptions for Arctic Social Sciences Program (ASSP) awards and other awards that contain sensitive data, including human subjects data and data that are governed by an Institutional Review Board policy. These special conditions exist for sharing social science data that are ethically or legally sensitive or at risk of decontextualization.) Please find an overview of the NSF ARC policies [here](https://arcticdata.io/submit/#who-must-submit) and the full policy information [here](https://www.nsf.gov/pubs/2014/nsf14584/nsf14584.htm#grantcond).
 
 >Investigators should upload their data to the [Arctic Data Center](https://arcticdata.io), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
+
+
+#### Linking ORCiD and LDAP accounts
+
+> First create an account at orcid.org/register if you have not already. After that account registration is complete, login to the KNB with your ORCID iD here: https://knb.ecoinformatics.org/#share. Next, hover over the icon on the top right and choose "My Profile". Then, click the "Settings" tab and scroll down to "Add Another Account". Enter your name or username from your Morpho account and select yourself (your name should populate as an option). Click the "+". You will then need to log out of knb.ecoinformatics.org and then log back in with your old LDAP account (click "have an existing account", and enter your Morpho credentials with the organization set to "unaffiliated") to finalize the linkage between the two accounts. Navigate to "My Profile" and "Settings" to confirm the linkage.
+
+> After completing this, all of your previously submitted data pacakges should show up on your KNB "My Profile" page, whether you are logged in using your ORCiD or Morpho account, and you will be able to submit data either using Morpho or our web interface.
+
+
