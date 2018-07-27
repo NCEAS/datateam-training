@@ -50,4 +50,6 @@ DataONE - https://www.dataone.org/best-practices
 
 > After completing this, all of your previously submitted data pacakges should show up on your KNB "My Profile" page, whether you are logged in using your ORCiD or Morpho account, and you will be able to submit data either using Morpho or our web interface.
 
+> Or, try reversing my instructions - log in first using your Morpho account (by clicking the "existing account" button and selecting organization "unaffiliated"), look for your ORCiD account, then log out and back in with ORCiD to confirm the linkage.
+
 
