@@ -1,0 +1,3 @@
+## Edit spatialVectors
+
+Occasionally, you may encounter a third type of data object: `spatialVector`. This object contains spatial data, such as a shapefile or geodatabase. Editing a `spatialVector` is similar to editing a `dataTable` or an `otherEntity`. An `attributeList` and `physical` should also be present for a `spatialVector`.

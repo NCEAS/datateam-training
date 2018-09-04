@@ -21,6 +21,9 @@ This chapter is a practical tutorial for using R to read, edit, write, and valid
 ```{r, child = '../workflows/edit_eml/edit_otherentities.Rmd'}
 ```
 
+```{r, child = '../workflows/edit_eml/edit_spatialvectors.Rmd'}
+```
+
 ```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
 ```
 
