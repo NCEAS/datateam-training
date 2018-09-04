@@ -24,6 +24,6 @@ Use line 2 (Id:) exactly, character for character.
 ```
 
 
-To acomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 4](https://nceas.github.io/datateam-training/training/editing-eml-in-r.html). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
+To acomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 4](https://nceas.github.io/datateam-training/training/edit-eml-in-r.html). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
 
 Once you have updated your metadata and saved it, you can update the package itself.
