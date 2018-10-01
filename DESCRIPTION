@@ -1,12 +1,28 @@
-Package: placeholder
+Package: Placeholder
 Title: Data Team Training
-Author: Placeholder
-Maintainer: Placeholder <developer@some.domain.net>
-Description: This is a description. 
+Author: Jeanette Clark, Jesse Goldstein, Dominic Mullen, Bryce Mecum, Matt Jones, Peter Slaughter, Irene Steves, Mitchell Maier, Emily O’Dean
+Maintainer: Jeanette Clark <jclark@nceas.ucsb.edu>
+Description: NCEAS Data Team Training materials. 
 Version: 0.0.1
-Imports: bookdown, xfun, rmarkdown, magrittr, stringr, tibble, arcticdatautils, EML, dataone, remotes, janitor, DT, datamgmt, kableExtra, listviewer
+Imports: 
+  arcticdatautils,
+  bookdown,
+  datamgmt,
+  DT,
+  EML, 
+  dataone,
+  janitor,
+  listviewer,
+  kableExtra,
+  magrittr,
+  remotes,
+  rmarkdown, 
+  sf,
+  stringr, 
+  tibble,
+  xfun
 Remotes: rstudio/bookdown, NCEAS/arcticdatautils@*release, NCEAS/datamgmt
 License: Apache License (== 2.0)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 LazyData: true
 Encoding: UTF-8
