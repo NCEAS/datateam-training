@@ -7,7 +7,6 @@ Version: 0.0.1
 Imports: 
   arcticdatautils,
   bookdown,
-  datamgmt,
   DT,
   EML, 
   dataone,
@@ -17,7 +16,6 @@ Imports:
   magrittr,
   remotes,
   rmarkdown, 
-  sf,
   stringr, 
   tibble,
   xfun
