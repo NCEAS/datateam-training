@@ -53,6 +53,15 @@ result <- query(adc_prod, list(q="title:soil* OR origin:Ludwig",
 You can use either spaces or `+` to separate query parameters. When typing queries in R, it's often easier to read if you use spaces. However, when using the browser, you may want to use `+` to keep the query clean. (The browser will replace spaces with `%20`.)
 ```
 
+### Query pids with special characters 
+```{r, eval = FALSE}
+# Wrap the pid with special characters with escaped backslashes
+dataone::query(adc, list(q = paste0('id:', '\"', 'doi:10.18739/A20R9M36V', '\"'),
+                         fl = 'dateUploaded AND identifier',
+                         rows = 5000),
+               as = "data.frame")
+```
+
 ### Query multiple conditions within one field
 
 ```{r eval = FALSE}
