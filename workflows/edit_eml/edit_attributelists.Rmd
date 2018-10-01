@@ -11,7 +11,7 @@ Attributes can exist in an EML `eml@dataset@dataTable` or an `eml@dataset@otherE
 Note, to edit/examine an existing attribute table already in an EML file you can use the following commands: 
 
 ```{r, eval = FALSE}
-# If they stored in an otherEntity (submitted from the website by default)
+# If they are stored in an otherEntity (submitted from the website by default)
 attributeList <- EML::get_attributes(eml@dataset@otherEntity[[i]]@attributeList)
 # Or if they are stored in a 'dataTable' (usually created by a datateam member)
 attributeList <- EML::get_attributes(eml@dataset@dataTable[[i]]@attributeList)

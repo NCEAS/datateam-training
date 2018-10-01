@@ -50,7 +50,7 @@
       - Use the `references` tag to copy information for the same individual to multiple party types (`creator`, `contact`, `associatedParty`), [like so](https://nceas.github.io/datateam-training/reference/use-references.html)  
       - Emails are important, phone #s and addresses are less critical
 
-- **Geographic and temporal ranges** are sensible (start date preceeds end date) and appropriate to the study site and period; geogrpahic description is accurate and inlcudes generally understood context
+- **Geographic and temporal ranges** are sensible (start date preceeds end date) and appropriate to the study site and period; geographic description is accurate and includes commonly understood context
 
     Bad examples:
 
