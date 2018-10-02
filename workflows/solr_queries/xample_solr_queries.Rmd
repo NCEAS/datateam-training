@@ -53,6 +53,16 @@ result <- query(adc_prod, list(q="title:soil* OR origin:Ludwig",
 You can use either spaces or `+` to separate query parameters. When typing queries in R, it's often easier to read if you use spaces. However, when using the browser, you may want to use `+` to keep the query clean. (The browser will replace spaces with `%20`.)
 ```
 
+### Query pids by a specific submitter
+
+```{r, eval = FALSE}
+result <- query(adc_prod, list(q = 'submitter:"http://orcid.org/0000-0003-4703-1974"',
+               fl = 'identifier,submitter,fileName, size',
+               sort = 'dateUploaded+desc',
+               rows='1000'),
+      as = "data.frame")
+```
+
 ### Query pids with special characters 
 ```{r, eval = FALSE}
 # Wrap the pid with special characters with escaped backslashes
