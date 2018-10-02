@@ -10,13 +10,13 @@ Well by default, all of those URLs above only return publicly-readable Solr docu
 If a private document matches any of those queries, Solr won't tell you that. It will act like the non-public-readable documents don't exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
 
 ```{r}
-cn_prod <- CNode("PROD")
-adc_prod <- getMNode(cn_prod, "urn:node:ARCTIC")
+cn <- CNode("PROD")
+adc <- getMNode(cn, "urn:node:ARCTIC")
 # Set your token if you need/want!
 
 #string your parameters together like this: dataone::query(mn, "q=title:*soil*&fl=title&rows=10")
 #or alternatively, list them out:
-query(adc_prod, list(q="title:*soil*",
+query(adc, list(q="title:*soil*",
                      fl="title",
                      rows="10"))
 ```
@@ -24,7 +24,7 @@ query(adc_prod, list(q="title:*soil*",
 By default, `query` returns the result as a `list`, but a `data.frame` can be a more useful way to work with the result. To get a `data.frame` instead, just set the `as` argument to 'data.frame' to get a `data.frame`:
 
 ```{r eval = TRUE}
-query(adc_prod, list(q="title:*soil*",
+query(adc, list(q="title:*soil*",
                      fl="title",
                      rows="10"),
       as = "data.frame")

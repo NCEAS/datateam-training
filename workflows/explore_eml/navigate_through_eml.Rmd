@@ -7,11 +7,11 @@ The function `EML::eml_view` (make sure to install and load the `listviewer` pac
 library(dataone)
 library(EML)
 
-cn_prod <- CNode('PROD')
-adc_prod <- dataone::getMNode(cn_prod, 'urn:node:ARCTIC')
+cn <- CNode('PROD')
+adc <- dataone::getMNode(cn, 'urn:node:ARCTIC')
 ```
 ```{r}
-eml_raw <- rawToChar(getObject(adc_prod,
+eml_raw <- rawToChar(getObject(adc,
                                "doi:10.18739/A2FS1H"))
 eml_view(eml_raw) # you can also pass a path to an EML file
 ```
