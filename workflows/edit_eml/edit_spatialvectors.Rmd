@@ -8,7 +8,7 @@ To add a `geometry` slot use:
 eml@dataset@spatialVector[[1]]@geometry[[1]] <- read_eml("<geometry>Polygon</geometry>")
 ```
 
-Additionally, spatial data should typically be archived within a compressed .zip file in order to reduce file sizes. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
+Additionally, spatial data should typically be archived within a .zip file to ensure all related and interdependent files stay together. For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
 
 Here is an example of what `spatialVector` metadata should look like, including `physical`, `attributeList`, and `geometry` slots:
 
