@@ -3,13 +3,13 @@
 To set the `physical` aspects of a `dataTable`, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to [set the member node](https://nceas.github.io/datateam-training/training/create-data-packages-in-r.html#set-dataone-nodes) to test.arcticdata.io !**
 
 ```{r, eval = FALSE}
-physical <- arcticdatautils::pid_to_eml_physical(mnT, pkg$data[[i]])
+physical <- arcticdatautils::pid_to_eml_physical(mn, pkg$data[[i]])
 ```
 
 Alternatively, you can set the `physical` of a data object not yet in your package by simply inputting the data `PID`:
 
 ```{r, eval = FALSE}
-physical <- arcticdatautils::pid_to_eml_physical(mnT, "your_data_pid")
+physical <- arcticdatautils::pid_to_eml_physical(mn, "your_data_pid")
 ```
 
 Note, the `physical` must then be [added to a `dataTable`](#edit-datatables).

@@ -27,12 +27,18 @@ knb_test <- getMNode(cn_staging2, "urn:node:mnTestKNB")
 ### Production nodes
 ```{r, eval = F}
 # ADC (arcticdata.io)
-cn_prod <- CNode('PROD')
-adc_prod <- getMNode(cn_prod,'urn:node:ARCTIC')
+cn <- CNode('PROD')
+adc <- getMNode(cn,'urn:node:ARCTIC')
 
 # KNB (knb.ecoinformatics.org)
-cn_prod <- CNode("PROD")
-knb_prod <- getMNode(cn_prod, "urn:node:KNB")
+knb <- getMNode(cn, "urn:node:KNB")
+
+# GOA 
+goa <- getMNode(cn, "urn:node:GOA")
+
+# You can also use the datamgmt::guess_membernode function to set a member node
+# Note: this pid looks like a URL - it's really a unique identifier
+dryad <- datamgmt::guess_member_node('https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00')
 ```
 
 More DataONE STAGING nodes can be found [here](https://cn-stage.test.dataone.org/cn/v2/node).

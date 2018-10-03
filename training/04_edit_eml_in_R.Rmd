@@ -59,11 +59,16 @@ Note that there are other arguments to `publish_update` you may need.
 Sometimes many data sets are associated with a larger project, such as the State of Alaska Salmon and People (SASAP) project. These data sets should be given additional project-specific information using `eml@dataset@project`. This will add pre-defined information including the project title, funding sources, and key personnel. You will also want to set access permissions to the project as well. If you are working on a SASAP data set, prior to writing the EML and publishing the data set you will set the project with this code:
 
 ```{r, eval=FALSE}
-source('~/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
+source('/home/eodean/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
 eml@dataset@project <- sasap_project()
 ```
 
-Next you should add SASAP-specific taxonomic coverage to the EML using the `add_SASAP_taxa` function found in `sasap-data/data-submission/Helpers`. This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. Run everything in the `add_SASAP_taxa.R` script prior to running `eml <- add_SASAP_taxa(eml)`.
+Next you should add SASAP-specific taxonomic coverage to the EML using the `add_sasap_taxa` function.  This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. 
+  
+```{r, eval=FALSE}
+source('/home/dmullen/sasap-helpers/add_sasap_taxa.R')
+eml <- add_sasap_taxa(mn, eml)
+```
 
 Then, update the access permissions in the system metadata using `set_rights_and_access`.
 

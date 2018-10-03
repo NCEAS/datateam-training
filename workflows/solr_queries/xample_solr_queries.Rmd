@@ -5,8 +5,8 @@ For additional examples and explanations, check out the Apache Lucene [Query Par
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(magrittr)
 
-cn_prod <- CNode('PROD')
-adc_prod <- getMNode(cn_prod,'urn:node:ARCTIC')
+cn <- CNode('PROD')
+adc <- getMNode(cn,'urn:node:ARCTIC')
 
 format_query_result <- function(query_result) {
   query_result %>% 
@@ -20,7 +20,7 @@ format_query_result <- function(query_result) {
 ### Find everything
 
 ```{r}
-result <- query(adc_prod, list(q="*:*",
+result <- query(adc, list(q="*:*",
                                fl="*",
                                rows="20"),
                 as = "data.frame")
@@ -30,7 +30,7 @@ result <- query(adc_prod, list(q="*:*",
 
 ```{r eval = FALSE}
 #find any id that starts with arctic-data.6
-result <- query(adc_prod, list(q="id:arctic-data.6*",
+result <- query(adc, list(q="id:arctic-data.6*",
                                rows="5000"),
                 as = "data.frame")
 ```
@@ -38,13 +38,13 @@ result <- query(adc_prod, list(q="id:arctic-data.6*",
 ### Query multiple fields 
 
 ```{r eval = FALSE}
-result <- query(adc_prod, list(q="title:soil*+AND+origin:Ludwig",
+result <- query(adc, list(q="title:soil*+AND+origin:Ludwig",
                                rows="5000"),
                 as = "data.frame")
 ```
 
 ```{r eval = FALSE}
-result <- query(adc_prod, list(q="title:soil* OR origin:Ludwig",
+result <- query(adc, list(q="title:soil* OR origin:Ludwig",
                                rows="5000"),
                 as = "data.frame")
 ```
@@ -53,10 +53,29 @@ result <- query(adc_prod, list(q="title:soil* OR origin:Ludwig",
 You can use either spaces or `+` to separate query parameters. When typing queries in R, it's often easier to read if you use spaces. However, when using the browser, you may want to use `+` to keep the query clean. (The browser will replace spaces with `%20`.)
 ```
 
+### Query pids by a specific submitter
+
+```{r, eval = FALSE}
+result <- query(adc_prod, list(q = 'submitter:"http://orcid.org/0000-0003-4703-1974"',
+               fl = 'identifier,submitter,fileName, size',
+               sort = 'dateUploaded+desc',
+               rows='1000'),
+      as = "data.frame")
+```
+
+### Query pids with special characters 
+```{r, eval = FALSE}
+# Wrap the pid with special characters with escaped backslashes
+dataone::query(adc, list(q = paste0('id:', '\"', 'doi:10.18739/A20R9M36V', '\"'),
+                         fl = 'dateUploaded AND identifier',
+                         rows = 5000),
+               as = "data.frame")
+```
+
 ### Query multiple conditions within one field
 
 ```{r eval = FALSE}
-result <- query(adc_prod, list(q="title:(soil* AND carbo*)",
+result <- query(adc, list(q="title:(soil* AND carbo*)",
                                rows="5000"),
                 as = "data.frame") 
 ```
@@ -66,7 +85,7 @@ result <- query(adc_prod, list(q="title:(soil* AND carbo*)",
 Just add `-` before a query parameter!
 
 ```{r eval = FALSE}
-result <- query(adc_prod, list(q="title:(soil AND -carbon)",
+result <- query(adc, list(q="title:(soil AND -carbon)",
                                rows="5000"),
                 as = "data.frame")
 ```
@@ -74,7 +93,7 @@ result <- query(adc_prod, list(q="title:(soil AND -carbon)",
 ### Query a coordinating node
 
 ```{r eval = FALSE}
-result <- query(cn_prod, list(q="title:soil* AND origin:Ludwig",
+result <- query(cn, list(q="title:soil* AND origin:Ludwig",
                               rows="5000"),
                 as = "data.frame")
 ```
