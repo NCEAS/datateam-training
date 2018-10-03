@@ -42,7 +42,7 @@ eml_path <- "path/to/save/eml.xml"
 write_eml(eml, eml_path)
 ```
 
-To update a package with the newly edited EML, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following section](#update-a-package)).
+To update a package with the newly edited EML, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
 
 ```{r, eval = FALSE}
 update <- publish_update(adc_test, 
@@ -105,7 +105,7 @@ qa_package(mn, resource_map_pid)
 Note that there are some issues with the function that are documented [here](https://github.com/NCEAS/datamgmt/issues/145). 
 
 ## Exercise 3 {.exercise}
-* Make sure your package from [before](#exercise-3) is loaded into R.
+* Make sure your package from [before](#exercise-2) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
 * Then write, validate, and update your package.
 * Use the [checklist](https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter-pi.html) to review your submission.
