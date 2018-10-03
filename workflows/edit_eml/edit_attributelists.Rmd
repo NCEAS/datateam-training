@@ -6,15 +6,17 @@ Attributes are stored in an [attributeList](https://github.com/NCEAS/eml/blob/ma
 2. A data.frame of custom units (if applicable)
 3. A data.frame of factors (if applicable)
 
-Attributes can exist in an EML `eml@dataset@dataTable` or an `eml@dataset@otherEntity` object.  We prefer to store them in `dataTable` objects. Please note that submitting attribute information through the website will store them in an `otherEntity` by default.
+Attributes can exist in EML for `dataTable`, `otherEntity`, and `spatialVector` data objects. Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
 
-Note, to edit/examine an existing attribute table already in an EML file you can use the following commands: 
+To edit or examine an existing attribute table already in an EML file, you can use the following commands: 
 
 ```{r, eval = FALSE}
 # If they are stored in an otherEntity (submitted from the website by default)
 attributeList <- EML::get_attributes(eml@dataset@otherEntity[[i]]@attributeList)
-# Or if they are stored in a 'dataTable' (usually created by a datateam member)
+# Or if they are stored in a dataTable (usually created by a datateam member)
 attributeList <- EML::get_attributes(eml@dataset@dataTable[[i]]@attributeList)
+# Or if they are stored in a spatialVector (usually created by a datateam member)
+attributeList <- EML::get_attributes(eml@dataset@spatialVector[[i]]@attributeList)
 attributes <- attributeList$attributes
 print(attributes)
 ```
@@ -48,7 +50,7 @@ Attribute information should be stored in a `data.frame` with the following colu
 * **missingValueCode**: Code for missing values (e.g.: '-999', 'NA', 'NaN'). NA otherwise. Note that an NA missing value code should be a string, 'NA', and numbers should also be strings, '-999.'
 * **missingValueCodeExplanation**: Explanation for missing values, NA if no missing value code exists.
 
-You can create attributes by hand by typing them out in R following a workflow similar to the one below.
+You can create attributes manually by typing them out in R following a workflow similar to the one below:
 
 ```{r, eval = FALSE}
 attributes <- data.frame(
@@ -67,13 +69,13 @@ attributes <- data.frame(
     stringsAsFactors = FALSE)
 ```
 
-However, typing this out in R can be a major pain. Luckily, there is a shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you), or to edit an existing attribute table, or create attributes from scratch using the following commands (these commands will launch a shiny app in your web browser):
+However, typing this out in R can be a major pain. Luckily, there is a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you), to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
 
 ```{r, eval = FALSE}
 # From data (recommended)
 datamgmt::create_attributes_table(data = data)
 
-# From an attribute table
+# From an existing attribute table
 datamgmt::create_attributes_table(attributes_table = attributes_table)
 
 # From scratch
@@ -89,7 +91,7 @@ For simple attribute corrections, `datamgmt::edit_attribute` allows you to edit 
 EML has a set list of units that can be added to an EML file. These can be seen by using the following code:
 
 ```{r, eval = FALSE}
-standardUnits <- get_unitList()
+standardUnits <- EML::get_unitList()
 View(standardUnits$units)
 ```
 
@@ -108,9 +110,7 @@ Additionally, `datamgmt::create_attributes_table` will tell you if each of your 
 datamgmt::return_eml_units("your_unit")
 ```
 
-Note, `datamgmt::create_attributes_table` calls `datamgmt::get_custom_units` for you!
-
-`datamgmt::get_custom_units` will auto-generate many of these fields for you (**but don't just assume the auto-generation will be perfect; always ensure the auto-generation correctly handles your unit**.)
+Note that `datamgmt::create_attributes_table` calls `datamgmt::return_eml_units` for you! `datamgmt::return_eml_units` will auto-generate many of these fields for you (**but don't just assume the auto-generation will be perfect; always ensure the auto-generation correctly handles your unit**.)
 
 ### Edit Factors
 

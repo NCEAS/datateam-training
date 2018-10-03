@@ -1,6 +1,6 @@
 ## Set physical
 
-To set the `physical` aspects of a `dataTable`, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to [set the member node](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html) to test.arcticdata.io !**
+To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to [set the member node](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html) to test.arcticdata.io !**
 
 ```{r, eval = FALSE}
 physical <- arcticdatautils::pid_to_eml_physical(mn, pkg$data[[i]])
@@ -12,20 +12,20 @@ Alternatively, you can set the `physical` of a data object not yet in your packa
 physical <- arcticdatautils::pid_to_eml_physical(mn, "your_data_pid")
 ```
 
-Note, the `physical` must then be [added to a `dataTable`](#edit-datatables).
+The `physical` must then be assigned to the data object.
 
 A final, but not recommended option, is to set the `physical` by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to [publish](#publish-an-object) or [update](#update-a-data-file) your data first and then use `pid_to_eml_physical` to set the `physical`.
 
 ```{r, eval = FALSE}
-id <- 'your_data_pid' #this should be an actual PID
-path <- '~/your/data/path' #path to data table
-physical <- EML::set_physical(objectName = 'your_file_name', 
-                         id = id, 
-                         size = as.character(file.size(path)), 
-                         sizeUnit = 'bytes',
-                         authentication = digest(path, algo="sha1", serialize=FALSE, file=TRUE), 
-                         authMethod = 'SHA-1',
-                         numHeaderLines = '1', 
-                         fieldDelimiter = ',',
-                         url = paste0('https://cn.dataone.org/cn/v2/resolve/', id))
+id <- 'your_data_pid' # this should be an actual PID
+path <- '~/your/data/path' # path to data table
+physical <- EML::set_physical(objectName = 'your_file_name',
+                              id = id,
+                              size = as.character(file.size(path)),
+                              sizeUnit = 'bytes',
+                              authentication = digest(path, algo="sha1", serialize=FALSE, file=TRUE),
+                              authMethod = 'SHA-1',
+                              numHeaderLines = '1',
+                              fieldDelimiter = ',',
+                              url = paste0('https://cn.dataone.org/cn/v2/resolve/', id))
 ```
