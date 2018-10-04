@@ -46,7 +46,7 @@
       </individualName>`  
       - Whenever they exist and are known, ORCID iDs should be included for all party types - enter iDs (in this format:  
       `<userId directory="https://orcid.org/">https://orcid.org/0000-0000-0000-0000</userId>`)  
-      in the `userId` slots. Note the "s" in "https". See how to do this in an automated fashion [here](https://nceas.github.io/datateam-training/training/editing-eml-in-r.html#edit-an-eml-element)  
+      in the `userId` slots. Note the "s" in "https". See how to do this in an automated fashion [here](https://nceas.github.io/datateam-training/training/edit-eml-in-r.html#edit-an-eml-element)  
       - Use the `references` tag to copy information for the same individual to multiple party types (`creator`, `contact`, `associatedParty`), [like so](https://nceas.github.io/datateam-training/reference/use-references.html)  
       - Emails are important, phone #s and addresses are less critical
 

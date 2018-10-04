@@ -10,16 +10,19 @@ documentclass: book
 github-repo: rstudio/datateam-training
 description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects"
 ---
-# Welcome to NCEAS! {#welcome}
 
-## First day to-dos
+# Welcome to NCEAS! {-}
+
+## First day to-dos {-}
 
 * Get a tour of the office from Ginger, Dom, Jeanette, or Jesse
 * Fill out required paperwork from Michelle
 * Have Ana take your picture (room 309)
 * Set up the remainder of your accounts
 
-## Account information
+
+## Account information {-}
+
 * [LDAP - NCEAS](https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account) - Jeanette or Jesse should have set this up prior to your start date to help get other accounts set up by the first day. This account and password control your access to:
     + arcticdata [RT queue](https://support.nceas.ucsb.edu/rt/)
     + GitHub Enterprise - [arctic-data](https://github.nceas.ucsb.edu/KNB/arctic-data/) and [sasap-data](https://github.nceas.ucsb.edu/NCEAS/sasap-data/)
@@ -32,7 +35,7 @@ description: "This is a training guide and reference resource for NCEAS data tea
 * [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118) - fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
 
 
-## NCEAS Events
+## NCEAS Events {-}
 
 NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the recurring events are:
 
