@@ -3,7 +3,7 @@
 
 You can obosolete a dataset using the function `datamgmt::obsolete_package`.  Use the documentation for instructions on using the function.  The following workflow explains how the functions operates: 
   
-This chunk is to obsolete one data set. If there are more to add to the chain, more steps can be added. Be very careful. Make sure to fill in `obsoletes` and `obsoletedBy` slots for each one. 
+This chunk is to obsolete one data set. If there are more to add to the chain, more steps can be added. Be very careful. Make sure to fill in `obsoletes` and `obsoletedBy` slots for each one.  The `obsoletes` and `obsoletedBy` fields must be `NA`, once they are populated they can't be modified.  
 
 ```{r, eval = FALSE}
 # get oldest version of the file you want to be visible. Use get_all_versions and look at the latest.
@@ -12,13 +12,20 @@ This chunk is to obsolete one data set. If there are more to add to the chain, m
 # PID for data set to be obsoleted (hidden): doi:10…
 
 # adding data set to obsolete (hide) in the slot before the first version of the visible data set
-sysmeta1 <- getSystemMetadata(mn, "urn:uuid:...")
-sysmeta1@obsoletes <- "doi:10…"
-updateSystemMetadata(mn, "urn:uuid:...", sysmeta1)
+sysmeta1 <- getSystemMetadata(mn, "urn:uuid:example_pid")
+sysmeta1@obsoletes <- "doi:10.example_doi"
+updateSystemMetadata(mn, "urn:uuid:example_pid", sysmeta1)
 
 # adding first version to obsolescence chain after obsoleted (hidden) version
-sysmeta0 <- getSystemMetadata(mn, "doi:10…")
-sysmeta0@obsoletedBy <- "urn:uuid:..."
-updateSystemMetadata(mn, "doi:10…", sysmeta0)
+sysmeta0 <- getSystemMetadata(mn, "doi:10.example_doi")
+sysmeta0@obsoletedBy <- "urn:uuid:example_pid"
+updateSystemMetadata(mn, "doi:10.example_doi", sysmeta0)
 
+```
+
+The following code is equivalent to the code chunk above. This method is recommended, however it is necessary to read the function documenation first. 
+
+```{r, eval = FALSE}
+datamgmt::obsolete_package(mn, metadata_obsolete = "doi:10.example_doi", 
+                           metadata_new = "urn:uuid:example_pid")
 ```
