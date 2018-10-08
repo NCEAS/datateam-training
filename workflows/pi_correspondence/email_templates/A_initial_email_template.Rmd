@@ -35,7 +35,7 @@ At least one data file
 
 Open formats
 
-> We noticed that the data files submitted are in xlsx format. Please convert your files to a plain text/csv (or other open source format) in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.
+> We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format) in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.
 
 > We noticed you submitted your data as a .fig file. While the Arctic Data Center supports the upload of any data file format, sharing data can be greatly enhanced if you use ubiquitous, easy-to-read formats. We recommend conversion of your data to txt or csv (or other open) formats for better archival.
 
@@ -72,7 +72,7 @@ Submissions should:
 
 #### Attributes
 
-> I noticed that your data package has incomplete attribute/variable information. Please add attribute/variable information to each of your data files. You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, cliking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
+> I noticed that your data package has incomplete attribute/variable information. Please add attribute/variable information to each of your data files. You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
 
 > For data packages with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (attributes may also be known as variables and in tabular data are arranged in either columns or rows). Note, storage of data in a long versus wide format will allow for much more succinct metadata. Also, please note that tabular data stored within structured formats such as zip, NetCDF, or ESRI spatial files should also comply with these guidelines.
 
