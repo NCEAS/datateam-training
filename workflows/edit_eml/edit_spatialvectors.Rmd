@@ -1,0 +1,65 @@
+## Edit spatialVectors
+
+Occasionally, you may encounter a third type of data object: `spatialVector`. This object contains spatial data, such as a shapefile or geodatabase. Editing a `spatialVector` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'.
+
+To add a `geometry` slot use:
+
+```{r, eval = FALSE}
+eml@dataset@spatialVector[[1]]@geometry[[1]] <- read_eml("<geometry>Polygon</geometry>")
+```
+
+Additionally, spatial data should typically be archived within a .zip file to ensure all related and interdependent files stay together. For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
+
+Here is an example of what `spatialVector` metadata should look like, including `physical`, `attributeList`, and `geometry` slots:
+
+```
+<spatialVector system="uuid">
+  <entityName>sasap_regions.zip</entityName>
+  <entityDescription>Contains the shapefile depicting the SASAP regions. Zip contains .cpg, .dbf, .prj, .shp, and .shx files.</entityDescription>
+  <physical scope="document">
+    <objectName>sasap_regions.zip</objectName>
+    <size unit="bytes">2533992</size>
+    <authentication method="SHA1">2d199f6f1f5f5b36525d1cf1019c0a4551b98762</authentication>
+    <dataFormat>
+      <externallyDefinedFormat>
+        <formatName>application/zip</formatName>
+      </externallyDefinedFormat>
+    </dataFormat>
+    <distribution scope="document">
+      <online>
+        <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:f6ab206b-312c-4caf-89c8-89eb9d031aac</url>
+      </online>
+    </distribution>
+  </physical>
+  <attributeList>
+    <attribute>
+      <attributeName>region_id</attributeName>
+      <attributeDefinition>SASAP region ID</attributeDefinition>
+      <measurementScale>
+        <interval>
+          <unit>
+            <standardUnit>dimensionless</standardUnit>
+          </unit>
+          <numericDomain>
+            <numberType>natural</numberType>
+          </numericDomain>
+        </interval>
+      </measurementScale>
+    </attribute>
+    <attribute>
+      <attributeName>region</attributeName>
+      <attributeDefinition>SASAP region name</attributeDefinition>
+      <measurementScale>
+        <nominal>
+          <nonNumericDomain>
+            <textDomain>
+              <definition>SASAP region name</definition>
+            </textDomain>
+          </nonNumericDomain>
+        </nominal>
+      </measurementScale>
+    </attribute>
+  </attributeList>
+  <geometry>Polygon</geometry>
+</spatialVector>
+```

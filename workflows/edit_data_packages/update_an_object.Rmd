@@ -12,7 +12,7 @@ The code will look like this (very similar to the `publish_object` function call
 
 ```{r, eval = F}
 id_new <- update_object(adc_test, 
-                        data_pid = "the data pid you need to update",
+                        pid = "the data pid you need to update",
                         path = "path/to/new/file.csv",
                         format_id = "text/csv")
 ```
@@ -24,6 +24,6 @@ Use line 2 (Id:) exactly, character for character.
 ```
 
 
-To acomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 6](https://nceas.github.io/datateam-training/training/editing-eml-in-r.html). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
+To acomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 4](#edit-eml-in-r). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
 
 Once you have updated your metadata and saved it, you can update the package itself.

@@ -13,10 +13,10 @@ NCEASadd <- new("address",
 The `creator`, `contact`, and `associatedParty` classes can easily be created using functions from the `arcticdatautils` package. Here, we use `eml_creator` to set our data set `creator`.
 
 ```{r, eval = FALSE}
-JC_creator <- arcticdatautils::eml_creator("Jeanette", 
-                                           "Clark", 
-                                           "NCEAS", 
-                                           "jclark@nceas.ucsb.edu", 
+JC_creator <- arcticdatautils::eml_creator(given_names = "Jeanette", 
+                                           sur_name = "Clark", 
+                                           organization = "NCEAS", 
+                                           email = "jclark@nceas.ucsb.edu", 
                                            phone = "123-456-7890", 
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
@@ -26,17 +26,17 @@ eml@dataset@creator <- c(JC_creator)
 Similarly, we can set the `contact`s. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
 
 ```{r, eval = FALSE}
-JC_contact <- arcticdatautils::eml_contact("Jeanette", 
-                                           "Clark", 
-                                           "NCEAS", 
-                                           "jclark@nceas.ucsb.edu", 
+JC_contact <- arcticdatautils::eml_contact(given_names = "Jeanette", 
+                                           sur_name = "Clark", 
+                                           organization = "NCEAS", 
+                                           email = "jclark@nceas.ucsb.edu", 
                                            phone = "123-456-7890",  
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
-JG_contact <- arcticdatautils::eml_contact("Jesse", 
-                                           "Goldstein", 
-                                           "NCEAS", 
-                                           "jgoldstein@nceas.ucsb.edu", 
+JG_contact <- arcticdatautils::eml_contact(given_names = "Jesse", 
+                                           sur_name = "Goldstein", 
+                                           organization = "NCEAS", 
+                                           email = "jgoldstein@nceas.ucsb.edu", 
                                            phone = "123-456-7890",  
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
@@ -46,10 +46,10 @@ eml@dataset@contact <- c(JC_contact, JG_contact)
 Finally, the `associatedParty`s are set. Note that `associatedParty`s MUST have a role defined, unlike `creator` or `contact`.
 
 ```{r, eval = FALSE}
-JG_ap <- arcticdatautils::eml_associated_party("Jesse", 
-                                               "Goldstein", 
-                                               "NCEAS", 
-                                               "jclark@nceas.ucsb.edu", 
+JG_ap <- arcticdatautils::eml_associated_party(given_names = "Jesse", 
+                                               sur_name = "Goldstein", 
+                                               organization = "NCEAS", 
+                                               email = "jgoldstein@nceas.ucsb.edu",
                                                phone = "123-456-7890",  
                                                address = NCEASadd, 
                                                userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",

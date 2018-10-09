@@ -25,7 +25,7 @@ Does not use acronyms
 
 Describes DATA in package (ideally > 100 words)
 
-> Your abstract, while informative, appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].
+> Your abstract appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].
 
 #### Data
 
@@ -35,7 +35,7 @@ At least one data file
 
 Open formats
 
-> We noticed that the data files submitted are in xlsx format. Please convert your files to a plain text/csv (or other open source format) in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.
+> We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format) in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.
 
 > We noticed you submitted your data as a .fig file. While the Arctic Data Center supports the upload of any data file format, sharing data can be greatly enhanced if you use ubiquitous, easy-to-read formats. We recommend conversion of your data to txt or csv (or other open) formats for better archival.
 
@@ -66,13 +66,13 @@ Submissions should:
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
 
-> Your methods, while informative, appear to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you nor any other resources. This should hold true today, or even decades from now. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
+> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you nor any other resources. This should hold true today, or even decades from now. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
 
 > NSF requires that comprehensive methods information be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
 
 #### Attributes
 
-> I noticed that your data package has incomplete attribute/variable information. Can you please add attribute/variable information to each of your data files by clicking on the "Describe" button located to the right of each of your files at the top of the submission page located here https://beta.arcticdata.io/catalog/#submit/[INSERT EML PID HERE] and then click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
+> I noticed that your data package has incomplete attribute/variable information. Please add attribute/variable information to each of your data files. You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
 
 > For data packages with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (attributes may also be known as variables and in tabular data are arranged in either columns or rows). Note, storage of data in a long versus wide format will allow for much more succinct metadata. Also, please note that tabular data stored within structured formats such as zip, NetCDF, or ESRI spatial files should also comply with these guidelines.
 
