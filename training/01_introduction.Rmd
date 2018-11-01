@@ -27,7 +27,7 @@ Watch the first 38 minutes of [this video](https://drive.google.com/drive/u/0/fo
 
 All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
 
-We access RStudio on our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server, you'll need to use either bash commands in the terminal, or an FTP client. We use a client called Cyberduck.
+We access RStudio on our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server we often use our NCEAS secure FTP client, Cyberduck.
 
 ```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
 ```
