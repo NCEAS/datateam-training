@@ -18,4 +18,4 @@ If you would like to contribute to the repo, please follow these conventions:
 
 * Use the root form of verbs in filenames (e.g., edit not editing).
 
-* Use the custom 'styles.css' to format exercices, notes, and warnings (see existing chapters for examples).
+* Use the custom 'styles.css' to format exercises, notes, and warnings (see existing chapters for examples).
