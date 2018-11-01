@@ -5,10 +5,12 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
+    highlight: tango
     css: ../styles.css
 documentclass: book
 github-repo: rstudio/datateam-training
 description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects"
+favicon: "favicon.ico"
 ---
 
 # Welcome to NCEAS! {-}

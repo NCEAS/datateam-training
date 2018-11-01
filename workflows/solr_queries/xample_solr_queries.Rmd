@@ -56,7 +56,7 @@ You can use either spaces or `+` to separate query parameters. When typing queri
 ### Query pids by a specific submitter
 
 ```{r, eval = FALSE}
-result <- query(adc_prod, list(q = 'submitter:"http://orcid.org/0000-0003-4703-1974"',
+result <- query(adc, list(q = 'submitter:"http://orcid.org/0000-0003-4703-1974"',
                fl = 'identifier,submitter,fileName, size',
                sort = 'dateUploaded+desc',
                rows='1000'),
@@ -64,6 +64,7 @@ result <- query(adc_prod, list(q = 'submitter:"http://orcid.org/0000-0003-4703-1
 ```
 
 ### Query pids with special characters 
+
 ```{r, eval = FALSE}
 # Wrap the pid with special characters with escaped backslashes
 dataone::query(adc, list(q = paste0('id:', '\"', 'doi:10.18739/A20R9M36V', '\"'),
@@ -78,6 +79,16 @@ dataone::query(adc, list(q = paste0('id:', '\"', 'doi:10.18739/A20R9M36V', '\"')
 result <- query(adc, list(q="title:(soil* AND carbo*)",
                                rows="5000"),
                 as = "data.frame") 
+```
+
+### Query for latest versions only
+
+```{r eval = FALSE}
+result <- query(adc, list(q = "rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)",
+                          fl = "identifier,rightsHolder,formatId",
+                          start ="0",
+                          rows = "1500"),
+                     as="data.frame")
 ```
 
 ### Use NOT in a query

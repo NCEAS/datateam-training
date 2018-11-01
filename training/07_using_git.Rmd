@@ -71,8 +71,4 @@ The default right now is to save data-processing scripts in the `arctic-data/dat
 
 ## My Git tab disappeared
 
-Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. If this happens *anything you saved, but did not commit or push* in your arctic-data (or sasap-data) folder is no longer being tracked by GitHub. To get the tab back, first rename your old arctic-data folder to something else (like 'arctic-data_old'). This will ensure that any work that you had in that folder that you didn't push to the master branch is not lost. Next, follow the steps above in "Cloning the arctic-data repo" to re-clone the repository. Then, move whatever scripts or parts of scripts that were not being tracked into the arctic-data repo so that they are tracked again, and merge them back into the master branch.
-
-Ideally, you are committing and pushing your scripts frequently enough that you don't have to resort to this. If you had changes you had committed but not pushed, you can still push these changes from the command line. See Dom or Jeanette for more info on how to do this if it is the case.
-
-Remember: *commit, pull, push* frequently (at least once a day).
+Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your "project" and all you need to do is reopen it. If your git tab has dissapeared, in the top right of your RStudio session, you should see a little R logo with "Project: (None)" next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select "arctic-data" or "sasap-data." Once you have opened your project, the git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.
