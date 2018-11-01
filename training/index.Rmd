@@ -18,8 +18,8 @@ favicon: "favicon.ico"
 ## First day to-dos {-}
 
 * Get a tour of the office from Ginger, Dom, Jeanette, or Jesse
-* Fill out required paperwork from Michelle
-* Have Ana take your picture (room 309)
+* Fill out required paperwork from Ana (room 309)
+* Have Gabriella take your picture (room 309)
 * Set up the remainder of your accounts
 
 
@@ -35,6 +35,8 @@ favicon: "favicon.ico"
 * Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Dom, Jeanette, or Jesse in Slack
 * GitHub - if you do not have a public GitHub account already, please register for one [here](https://github.com/join?source=header-home)
 * [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118) - fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
+* [Electronic Timekeeping](https://timekeeping.ucsb.edu/) - make sure you can log on to electronic timekeeping 
+via your UCSBNetID and password.  Log your hours for you first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  [Detailed instructions](https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf)
 
 
 ## NCEAS Events {-}
