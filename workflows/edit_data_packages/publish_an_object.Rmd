@@ -26,7 +26,7 @@ formatId <- "your/formatId"
 
 pid <- publish_object(adc_test,
                       path = path,
-                      format_id = formatId)
+                      format_id = formatId) # note that the output of this function is the PID of the newly published object
 ```
 
 After publishing the object, the `PID` will need to be added to a resource map by [updating](#update-a-package) or [creating](#create-a-resource-map) a resource map. Additionally, the [rights and access](#set-rights-and-access) for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don't need to do this.   
