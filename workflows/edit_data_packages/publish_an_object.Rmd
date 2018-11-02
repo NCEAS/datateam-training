@@ -1,4 +1,4 @@
-## Publish an object
+## Publish objects
 
 Objects (data files, xml metadata files) can be published to a DataONE node using the function `publish_object` from the `arcticdatautils` R Package. 
 To publish an object, you must first get the `formatId` of the object you want to publish. A few common `formatId`s are listed below.
@@ -16,9 +16,9 @@ formatId <- "eml://ecoinformatics.org/eml-2.1.1"
 formatId <- format_eml()
 ```
 
-Most objects have registered `formatId`s that can be found on the DataONE website [here](https://cn.dataone.org/cn/v2/formats). Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
+Most objects have registered `formatId`s that can be found on the DataONE Object Format List [here](https://cn.dataone.org/cn/v2/formats). Always use the "Id:" (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
 
-Once you know the `formatId` you can publish your object using these commands:
+Once you know the appropriate `formatId` you can publish an object using these commands:
 
 ```{r, eval = FALSE}
 path <- "path/to/your/file"
