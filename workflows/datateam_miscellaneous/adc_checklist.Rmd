@@ -1,4 +1,4 @@
-## Final checklist before notifying submitter (PI)
+## Final checklist before notifying submitter
 
 - **Descriptive title:** what, where, when - provides enough information to understand the contents at a general scientific level (please use sentence case so that only the first word and proper nouns are capitalized, as in a journal article title; do not add a period at the end, it will auto-populate). Be sure to fully spell out all terms and avoid abbreviations, initialisms, or acronyms unless they are only generally known as such.
     - Ex: "Active layer soil bulk density, moisture, carbon and nitrogen concentrations, and stable isotope data from borehole sites, Toolik Lake Field Station, Alaska, 2015"
