@@ -11,7 +11,7 @@ There are several reasons why using the arctic-data GitHub repository is helpful
 
 * **Versioning**: Did you accidentally make a change to your code and can't figure out why it broke? Do you wish you could go back to the version that worked? If you add your code to the GitHub repo you can do this!
 * **Reproducibility**: Being able to reproduce how you accomplished something is incredibly important. We should be able to tell anyone exactly how data have been reformatted, how metadata have been altered, and how packages have been created. As a data center, this is especially important for us with data team members that stay for 6-12 months because we may need to go back and figure out how something was done after the intern or fellow who wrote the code left the team.
-* **Troubleshooting**: If you are building a particularly complicated EML, or doing some other advanced task, it is much easier for Jesse, Dom, Jeanette, or Bryce to troubleshoot your code if it is on the GitHub repo. We can view, troubleshoot, and fix bugs very easily when code is on the GitHub repo, with the added bonus of being able to go back a version if something should break.
+* **Troubleshooting**: If you are building a particularly complicated EML, or doing some other advanced task, it is much easier for others to help you troubleshoot your code if it is on the GitHub repo. We can view, troubleshoot, and fix bugs very easily when code is on the GitHub repo, with the added bonus of being able to go back a version if something should break.
 * **Solve future problems**: Some of the issues we see in ADC submissions come up over and over again. When all of our code is on GitHub, we can easily reference code built for other submissions, instead of trying to solve the same problems over and over again from scratch.
 
 ## Setting up Git
@@ -44,7 +44,7 @@ If you have been working on a script that you want to put in the arctic-data Git
 * **Workspaces/.RData**: If you are in the habit of saving your R workspace, you shouldn't save it in this directory.
 * **Plots/Graphics**: For the same reasons as data files.
 
-Note: Do not EVER make a commit that you don't understand. If something unexpected (like a file you have never worked on) shows up in your Git tab, ask Dom, Jesse, or Jeanette before committing.
+Note: Do not EVER make a commit that you don't understand. If something unexpected (like a file you have never worked on) shows up in your Git tab, ask for help before committing.
 
 After you save your script in the appropriate place within the arctic-data folder, it will show up in your Git tab looking like this:
 ![](images/unstaged.jpeg)
@@ -67,7 +67,7 @@ One final note, you can make multiple commits before you push to the repo. If yo
 
 ### Where do I commit?
 
-The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom, Jesse, or Jeanette first so we can try and maintain some semblance of order in the file structure. 
+The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure. 
 
 ## My Git tab disappeared
 

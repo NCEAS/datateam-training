@@ -1,12 +1,12 @@
 # Create data packages in R
 
-This chapter will teach you how to create and submit a data package to a DataONE node in R.
+This chapter will teach you how to create and submit a data package to a DataONE MN via R. But first, please read [this paper](https://nceas.github.io/datateam-training/training/data/eml-principles.pdf) on the value of structured metadata, namely the Ecological Metadata Language (EML).
 
 ## What is in a package?
 
 A data package generally consists of at least 3 "objects" or files. 
 
-1. Metadata: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata are information that describe data (e.g. who made the data, how were the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML (Ecological Metadata Language), which is the metadata standard that it uses.
+1. Metadata: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata are information that describe data (e.g. who made the data, how were the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML, which is the metadata standard that it uses.
 
 2. Data: Other objects in a package are the data files themselves. Most commonly these are data tables (`.csv`), but they can also be audio files, NetCDF files, plain text files, PDF documents, image files, etc. 
 

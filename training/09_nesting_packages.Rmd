@@ -59,7 +59,7 @@ To create a new parent, you will need to:
 3. **Create a resource map** to link the parent and childs together using `create_resource_map` and the `child_pids` argument.
 
 ```{block, type = "warning"}
-Make sure you use the childs' *resource map* `PID`s when you create the resource map! If you forgot to do so, consult Dom, Jesse, or Jeanette for help fixing it.
+Make sure you use the childs' *resource map* `PID`s when you create the resource map! If you forgot to do so, consult Dom or Jesse for help fixing it.
 ```
  
 ## Creating a new Parent package example
