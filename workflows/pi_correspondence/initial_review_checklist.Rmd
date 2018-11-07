@@ -2,26 +2,39 @@
 
 Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the [initial email template](https://nceas.github.io/datateam-training/reference/email-templates.html) and insert comments and modify as needed.
 
-- Title
-    - Is descriptive of the work (provides enough information to understand the contents at a general scientific level)
-    - Provides a location of the work
+* Title
+  + WHAT, WHERE, and WHEN:  
+    - Is descriptive of the work (provides enough information to understand the contents at a general scientific level), AND includes temp
+    - Provides a location of the work from the local to state or country level
     - Provides a time frame of the work
-- Abstract
-    - Describes the DATA
-- Data
-    - At least one data file
-    - No xls/xlsx files (or other proprietary files)
-    - File contents and relationships among files are clear
-    - All attributes are clearly defined. [Quality control any `dimensionless` units](https://nceas.github.io/datateam-training/reference/assess-attributes.html).
-    - Column names do not use spaces or special characters
-    - NA's are explained
-- Funding
-    - At least one funding number
-    - If there are multiple submissions with the same funding number/creators, check about nesting
-- Methods
-    - Enough detail is provided in metadata
-- Contacts
-    - At least one contact with email and ORCiD
-- Temporal/geographic coverage
-    - Includes coverage that makes sense
-
+    - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
+* Abstract
+  + Describes the DATA as well as:
+    - The motivation (purpose) of the study
+    - Where and when the research took place
+    - At least one sentence summarizing general methodolgies
+    - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
+    - At least 100 words total
+* Keywords
+  + Some keywords are included
+* Data
+  + At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)
+  + No xls/xlsx files (or other proprietary files)
+  + File contents and relationships among files are clear
+  + Each file is well NAMEd and DESCRIBEd and clearly differntiated from all others
+  + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. [Quality control all `dimensionless` units](https://nceas.github.io/datateam-training/reference/assess-attributes.html).
+  + Missing value codes are explained (WHY are the data absent?)
+* People & Parties
+  + At least one contact and one creator with a name, email address, and ORCID iD
+* Coverages
+  + Includes coverages that make sense
+    - Start date BEFORE end date
+    - Temporal coverage matches geographic description (check hemispheres)
+    - Geographic description is from the local to state or country level, at the least
+* Project Information
+  + At least one FUNDING number
+  + Title, personnel, and abstract match information from the AWARD (not from the data package)
+  + If there are multiple submissions with the same funding number, check about nesting
+* Methods
+  + This section is REQUIRED for ALL NSF-FUNDED data packages
+  + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resouces
