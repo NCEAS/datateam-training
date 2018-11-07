@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Important! If you have never used Git before, or only used it a little, or have no idea what is is, check out this [intro to Git](https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf) put together by the ecodatascience group at UCSB. 
+Important! If you have never used Git before, or only used it a little, or have no idea what is is, check out this <a href = 'https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf' target='_blank'>intro to Git</a> put together by the ecodatascience group at UCSB. 
 Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.
 
 ### So why do I need to use this again?

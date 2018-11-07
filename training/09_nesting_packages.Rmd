@@ -8,7 +8,7 @@ knitr::opts_chunk$set(eval = F, collapse = TRUE)
 
 Data packages on member nodes can exist as independent packages or in groups (nested data packages). Much like we can group multiple data files together with a common metadata file, we can group related data packages together with a common "parent" data package.
 
-The structure of nested data packages resembles a pyramid. There is one top level, or "parent", with one or more data packages, or "childs", nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceed 3 levels. [This "grandparent"](https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3) has has 5+ childs (nested datasets), all of which have child packages of their own.   
+The structure of nested data packages resembles a pyramid. There is one top level, or "parent", with one or more data packages, or "child packages", nested beneath it. There is no limit to how many nested levels can be created, but packages do not generally exceed 3 levels. <a href = 'https://arcticdata.io/catalog/#view/urn:uuid:b0eef8b3-5f8a-4799-b823-eebcbee047e3' target='_blank'>This "grandparent"</a> has 5 child packages (nested datasets), all of which have child packages of their own.   
 
 Here are some common uses for nesting:  
 
@@ -48,7 +48,7 @@ To create a new parent, you will need to:
 
 1. **Create parent metadata.** It's often easiest to start with a child's metadata and generalize them.
 
-    - *Abstract/title:* Remove dates and other details that are specific to the child package. Sometimes the [NSF award](https://www.nsf.gov/awardsearch/) abstract/ title will work.
+    - *Abstract/title:* Remove dates and other details that are specific to the child package. Sometimes the <a href = 'https://www.nsf.gov/awardsearch/' target='_blank'>NSF award</a> abstract/ title will work.
     - *Data tables/other entities:* Generally, top-level parents do not include data objects, so these sections can be removed.
     - *Geographic coverage:* Expand to include geographic coverage of all childs, if needed.
     - *Temporal coverage:* Expand to include temporal ranges of all childs, if needed. If the study is ongoing, include the most recent end date; the parent can be updated when additional childs are added.

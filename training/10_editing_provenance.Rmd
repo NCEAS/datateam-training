@@ -10,13 +10,13 @@ The first step towards addressing these issues is to be able to evaluate the dat
 
 And yet, this is easily remedied. Researchers can achieve computational reproducibility through open science approaches, including straightforward steps for archiving data and code openly along with the scientific workflows describing the provenance of scientific results (e.g., Hampton et al. (2015), Munafò et al. (2017)).
 
-At NCEAS and in the datateam, not only do we archive data and code openly, but we also describe the workflows that involve that data and code using provenance, formalizing the provenance trace for a workflow that might look like this ![](images/workflow.png) into an easily understandable trace including archived data objects, such as what is shown [here](https://goa.nceas.ucsb.edu/#view/urn:uuid:3249ada0-afe3-4dd6-875e-0f7928a4c171).
+At NCEAS and in the datateam, not only do we archive data and code openly, but we also describe the workflows that involve that data and code using provenance, formalizing the provenance trace for a workflow that might look like this ![](images/workflow.png) into an easily understandable trace including archived data objects, such as what is shown <a href = 'https://goa.nceas.ucsb.edu/#view/urn:uuid:3249ada0-afe3-4dd6-875e-0f7928a4c171' target='_blank'>here</a>.
 
 There are two ways that we add provenance in the datateam - the prov editor and the R `datapack` package.
 
 ## The Prov Editor
 
-Provenance can easily be added to production Arctic Data Center packages using the provenance editor on [beta.arcticdata.io](https://beta.arcticdata.io/catalog/#data). On the landing page of a data package within beta, in the `dataTable` or `otherEntity` section where you would like to add a provenance relationship, you can choose to add either a "source" or a "derivation", to the left or right of the object pane, respectively. 
+Provenance can easily be added to production Arctic Data Center packages using the provenance editor on the Arctic Data Center. On the landing page of a data package within beta, in the `dataTable` or `otherEntity` section where you would like to add a provenance relationship, you can choose to add either a "source" or a "derivation", to the left or right of the object pane, respectively. 
 
 ![](images/add_prov.png)
 
@@ -24,24 +24,24 @@ To add a source data file, click on the circle with the "+ add" text. Similarly,
 
 A data package with an object that has multiple sources added will look like this. ![](images/prov_sources.png)
 
-For simple packages on the Arctic Data Center, adding prov through the prov editor at [beta.arcticdata.io](https://beta.arcticdata.io/catalog/#data) is super easy!
+For simple packages on the Arctic Data Center, adding prov through the prov editor is super easy!
 
 ## Understanding resource maps
 
 Before we dive further into constructing prov in R, we need to talk more about resource maps (or "resmaps").
 
-All data packages have a single resource map. But what is a resource map and how do we use one to find out what objects are in a particular data package? This document is a short introduction but a more complete guide can be found [here](https://releases.dataone.org/online/api-documentation-v2.0/design/DataPackage.html?highlight=resource%20map).
+All data packages have a single resource map. But what is a resource map and how do we use one to find out what objects are in a particular data package? This document is a short introduction but a more complete guide can be found <a href = 'https://releases.dataone.org/online/api-documentation-v2.0/design/DataPackage.html?highlight=resource%20map' target='_blank'>here</a>.
 
 A resource map is a special kind of XML document that describes (among other things) an "aggregation". The aggregation describes the members of a data package (metadata and data, usually). We can use the `dataone` R package to download a resource map if we know its `PID`:
 
 ```{r, eval = F}
 library(dataone)
 
-mnT <- MNode("https://test.arcticdata.io/metacat/d1/mn/v2")
+adc_test <- MNode("https://test.arcticdata.io/metacat/d1/mn/v2")
 pid <- "urn:uuid:82bd7d7f-9e18-4fd2-8bda-99b1fddab556" # A resource map PID
 
 path <- tempfile(fileext = ".xml") # We're saving to a temporary file but you can save elsewhere
-writeLines(rawToChar(getObject(mnT, pid)), path) # Write the object to `path`
+writeLines(rawToChar(getObject(adc_test, pid)), path) # Write the object to `path`
 ```
 
 If we open that file up in a text editor, we see this:
@@ -109,8 +109,8 @@ This line says "The aggregation aggregates `urn:uuid:c59b7505-39e6-4def-bc82-b67
 Now we know *which* objects are in our data package but we don't know which one contains metadata and which one contains data. For that, we need to get a copy of the system metadata for each object:
 
 ```{r, eval=FALSE}
-getSystemMetadata(mnT, "urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5")@formatId
-getSystemMetadata(mnT, "urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27")@formatId
+getSystemMetadata(adc_test, "urn:uuid:c59b7505-39e6-4def-bc82-b67a8d117ce5")@formatId
+getSystemMetadata(adc_test, "urn:uuid:61b48e72-ea29-4ba5-8131-4f59a9ebcd27")@formatId
 ```
 
 From the `formatId`s, we can see the first `PID` is the EML (`formatId`: `[1]"eml://ecoinformatics.org/eml-2.1.1"`) and the second `PID` is a data object (`formatId`: `[1]"application/octet-stream"`). Now we know enough to know what's in the data package:
