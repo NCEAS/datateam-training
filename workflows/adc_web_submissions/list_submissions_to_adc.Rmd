@@ -1,0 +1,19 @@
+## List submissions to the Arctic Data Center 
+
+If the arctic bot fails to pick up a new submission, due to an invalid token or another error, we can check for submissions using a solr query.  The `list_submissions` function in the `arcticdatautils` package is a convenience wrapper around the solr query.  If the function doesn't specifically fit your needs it's fairly straight-forward to modify the source code.  *Note:* the function can be applied to any node, although it filters out results if the submitter is in the Arctic Data Center Admins group.  Refer to the function documentation for more information.  
+
++ View submissions to the Arctic Data Center from 10/1/18 to 10/7/18
+```{r, eval=FALSE}
+cn <- dataone::CNode('PROD')
+adc <- dataone::getMNode(cn,'urn:node:ARCTIC')
+View(arcticdatautils::list_submissions(adc, '2018-10-01', '2018-10-07'))
+```
+
++ The following code shows the underlying solr query
+```{r, eval=FALSE}
+  q = paste0('dateUploaded:["2018-10-01T00:00:00Z" TO "2018-10-08T00:00:00Z"] AND formatType:*')
+  results <- dataone::query(adc, list(q = q,
+                                     fl = "identifier AND submitter AND dateUploaded AND formatType AND fileName",
+                                     rows = 10000),
+                            as = "data.frame")
+```
