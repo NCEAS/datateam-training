@@ -27,16 +27,18 @@ favicon: "favicon.ico"
 
 * [LDAP - NCEAS](https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account) - this should be set up prior to your start date in order to help get other accounts set. This account and password control your access to:
     + arcticdata [RT queue](https://support.nceas.ucsb.edu/rt/)
-    + GitHub Enterprise - [arctic-data](https://github.nceas.ucsb.edu/KNB/arctic-data/) and [sasap-data](https://github.nceas.ucsb.edu/NCEAS/sasap-data/)
+    + GitHub Enterprise - [arctic-data](https://github.nceas.ucsb.edu/KNB/arctic-data/)
 * Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal
 * [ORCiD](https://orcid.org/register) - create an account
+    + Login to <a href="https://test.arcticdata.io" target="_blank">test.arcticdata.io</a> with your ORCID iD
 * [NCEAS Slack](http://nceas.slack.com) - get an invite from [slack.nceas.ucsb.edu](http://slack.nceas.ucsb.edu)
-    + Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam, #sasap, #social
+    + Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam, #social
+    + Introduce yourself in #datateam and then use that channel to ask Jesse or Dom to make you an administrator on test.arcticdata.io
 * Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Dom or Jesse in Slack
 * GitHub - if you do not have a public GitHub account already, please register for one [here](https://github.com/join?source=header-home)
 * [Schedule](https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118) - fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
 * [Electronic Timekeeping](https://timekeeping.ucsb.edu/) - make sure you can log on to electronic timekeeping 
-via your UCSBNetID and password.  Log your hours for you first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  [Detailed instructions](https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf)
+via your UCSBNetID and password. Log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  [Detailed instructions](https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf)
 
 
 ## NCEAS Events {-}
