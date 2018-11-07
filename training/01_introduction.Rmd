@@ -6,14 +6,14 @@ These materials are meant to introduce you to the principles of open science, ef
 
 Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC. We encourage you to follow the links within these pages to gain a deeper understanding.
 
-* [about](https://arcticdata.io/about/)
-* [submission](https://arcticdata.io/submit/)
-* [preservation](https://arcticdata.io/preservation/)
-* [history](https://arcticdata.io/history/)
+* <a href = 'https://arcticdata.io/about/' target='_blank'>about</a>
+* <a href = 'https://arcticdata.io/submit/' target='_blank'>submission</a>
+* <a href = 'https://arcticdata.io/preservation/' target='_blank'>preservation</a>
+* <a href = 'https://arcticdata.io/history/' target='_blank'>history</a>
 
 ## Effective data management
 
-Read Matt Jones et al.'s paper on [effective data management](data/simple-guidelines-datamgmt.pdf) to learn how we will be organizing datasets prior to archival.
+Read Matt Jones et al.'s paper on <a href = 'data/simple-guidelines-datamgmt.pdf' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
@@ -21,13 +21,13 @@ Read Matt Jones et al.'s paper on [effective data management](data/simple-guidel
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is [here](https://www.dataone.org/what-dataone) and about DataONE member node (MN) guidelines [here](https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf). Please feel free to ask Dom or Jesse any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Dom or Jesse any questions you have about DataONE.
 
 ## Working on a remote server
 
 All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
 
-We access RStudio on our server through this [link.](https://datateam.nceas.ucsb.edu/rstudio/) To transfer files on and off of the server we often use a secure FTP client, Cyberduck.
+We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> To transfer files on and off of the server we often use a secure FTP client, Cyberduck.
 
 ```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
 ```
@@ -40,12 +40,12 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 ## Exercise 1 {.exercise}
 
-* Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from [this paper.](http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta)
+* Download the <a href = 'data/Loranty_2016_Environ._Res._Lett._11_095008.csv' target='_blank'>csv</a> of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.
     + While we prefer you use R (a scripted environment) to perform these tasks in your job, for the purposes of this training feel free to do it however you can if you are not confident data wrangling in R.
-    + If you need an R refresher, go over the [data carpentry guide.](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html).
-    + You may also find the data carpentry [lesson on `dplyr`](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) and OHI's [data wrangling chapters](http://ohi-science.org/data-science-training/dplyr.html) helpful.
-* Go to [test.arcticdata.io](https://test.arcticdata.io/#data) and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
+    + If you need an R refresher, go over the <a href = 'http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html' target='_blank'>data carpentry guide.</a>
+    + You may also find the data carpentry <a href = 'http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html' target='_blank'>lesson on `dplyr`</a> and OHI's <a href = 'http://ohi-science.org/data-science-training/dplyr.html' target='_blank'>data wrangling chapters</a> helpful.
+* Go to "<a href = 'https://test.arcticdata.io/#data' target='_blank'>test.arcticdata.io</a>" and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
     + list yourself as the first 'Creator' so your test submission can easily be found,
     + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,
     + directly copying and pasting sections from the paper (abstract, methods, etc.) is also fine,
