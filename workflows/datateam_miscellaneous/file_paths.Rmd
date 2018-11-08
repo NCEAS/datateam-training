@@ -1,0 +1,17 @@
+##File Paths
+
+This section contains some basic tips about file paths.
+
+Using `.` in a file path refers to your current working directory. You can print your working directory with the call: `getwd()`.  If we assume that my current working directory is `home/dmullen`, then the following two calls are equivalent: 
+```{r, eval=FALSE}
+file.exists('/home/dmullen/myFile.R')
+file.exists('./myFile.R')
+```
+
+Using `~` in a file path does not **always** refer to your current working directory.  This is a common misconception.  It is actually set to the global R USER path.  You can print this with the call: `Sys.getenv('USER')`.  Let's assume that I'm working on the `arcticdatautils` package which I open using a `.RProj` file.  This will update my current working directory to: `/home/dmullen/arcticdatautils`.  Now the following calls are equivalent: 
+```{r, eval=FALSE}
+file.exists('/home/dmullen/arcticdatautils/myFile.R')
+file.exists('~/arcticdatautils/myFile.R')
+file.exists('./myFile.R')
+```
+
