@@ -40,7 +40,7 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 ## Exercise 1 {.exercise}
 
-* Download the <a href = 'data/Loranty_2016_Environ._Res._Lett._11_095008.csv' target='_blank'>csv</a> of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
+* Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.
     + While we prefer you use R (a scripted environment) to perform these tasks in your job, for the purposes of this training feel free to do it however you can if you are not confident data wrangling in R.
     + If you need an R refresher, go over the <a href = 'http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html' target='_blank'>data carpentry guide.</a>
