@@ -1,6 +1,6 @@
 # Create data packages in R
 
-This chapter will teach you how to create and submit a data package to a DataONE MN via R. But first, please read <a href = 'https://nceas.github.io/datateam-training/training/data/eml-principles.pdf' target='_blank'>this paper</a> on the value of structured metadata, namely the Ecological Metadata Language (EML).
+This chapter will teach you how to create and submit a data package to a DataONE MN via R. But first, please read [this paper](data/eml-principles.pdf) on the value of structured metadata, namely the Ecological Metadata Language (EML).
 
 ## What is in a package?
 
