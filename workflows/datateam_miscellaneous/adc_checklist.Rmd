@@ -1,5 +1,11 @@
 ## Final checklist before notifying submitter
 
+Before checking the data package manually, click on the "Quality report" button in the upper right corner of the landing page to review those automated checks for any potential issues, and remedy them as necessary.
+
+Also, be sure to run `datamgmt::qa_package()` and then to correct all applicable issues the function returns.
+
+Next, run through the manual checklist below. Once all these checks are satisfied, share the package for peer review in Slack #datateam prior to publication.
+
 - **Descriptive title:** what, where, when - provides enough information to understand the contents at a general scientific level (please use sentence case so that only the first word and proper nouns are capitalized, as in a journal article title; do not add a period at the end, it will auto-populate). Be sure to fully spell out all terms and avoid abbreviations, initialisms, or acronyms unless they are only generally known as such.
     - Ex: "Active layer soil bulk density, moisture, carbon and nitrogen concentrations, and stable isotope data from borehole sites, Toolik Lake Field Station, Alaska, 2015"
 
@@ -12,6 +18,10 @@
     Good example:
 
       - In this study, the locations of 193 old aerial photographs of northern Alaskan landscapes were re-photographed and assessed for changes in vegetation. The original photographs were taken over northern Alaska between 1948 and 1951, and the new photographs were taken between 1999 and 2003. The region covered by the original and repeat photographs stretches from the southern extent of the Brooks Range in the south to the Coastal Plain in the north, and from the Chukchi Sea in the west to the Canning River in the east. The original photographs were taken by the U.S. military as part of geologic reconnaissance and exploration, and the method used to acquire them was to fly both sides of a river valley while photographing the river and the facing valley slopes. Of the several thousand original photographs, only a fraction were repeated for the purpose of assessing vegetation change. Repeat photographs were selected for geographic coverage and to produce the greatest likelihood of detecting vegetation change. The original and repeat photographs were then scanned and stored in TIFF format. Individual image file sizes range from 5 to 60 MB each, and the total file size for the data set is approximately 11 GB.
+
+- **Keywords** some keywords are included
+
+- **Publication Date** is included (the EML has a `pubDate` that is at least the current four-digit year)
 
 - **Data file types** are registered DataONE formats and properly set in the EML (`formatName`) and the system metadata for ALL DATA OBJECTS
     - See registered DataOne formats [here](https://cn.dataone.org/cn/v2/formats)
