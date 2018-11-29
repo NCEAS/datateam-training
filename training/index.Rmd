@@ -8,7 +8,7 @@ output:
     highlight: tango
     css: ../styles.css
 documentclass: book
-github-repo: rstudio/datateam-training
+github-repo: NCEAS/datateam-training
 description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects"
 favicon: "favicon.ico"
 ---
@@ -42,7 +42,7 @@ via your UCSBNetID and password. Log your hours for your first day! Under today'
 <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
 
 
-## NCEAS Events {-}
+## NCEAS events {-}
 
 NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the recurring events are:
 

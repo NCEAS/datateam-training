@@ -21,7 +21,7 @@ attributes <- attributeList$attributes
 print(attributes)
 ```
 
-### Edit Attributes
+### Edit attributes
 
 Attribute information should be stored in a `data.frame` with the following columns:
 
@@ -84,9 +84,9 @@ datamgmt::create_attributes_table()
 
 Once you are done editing a table in the app, click the `Print` button to print text of a code that will build a data.frame in R. Copy that code and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`).
 
-For simple attribute corrections, `datamgmt::edit_attribute` allows you to edit the slots of a single attribute within an attribute list.
+For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list.
 
-### Edit Custom Units
+### Edit custom units
 
 EML has a set list of units that can be added to an EML file. These can be seen by using the following code:
 
@@ -104,15 +104,15 @@ If you have units that are not in the standard EML unit list, you will need to b
 * **name**: Unit abbreviation (e.g. for kilometer `name` = "km")
 * **description**: Text defining the unit (e.g. for kilometer `description` = "1000 meters")
 
-Additionally, `datamgmt::create_attributes_table` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit:
+Additionally, `datamgmt::create_attributes_table()` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit:
 
 ``` {r, eval = FALSE}
 datamgmt::return_eml_units("your_unit")
 ```
 
-Note that `datamgmt::create_attributes_table` calls `datamgmt::return_eml_units` for you! `datamgmt::return_eml_units` will auto-generate many of these fields for you (**but don't just assume the auto-generation will be perfect; always ensure the auto-generation correctly handles your unit**.)
+Note that `datamgmt::create_attributes_table()` calls `datamgmt::return_eml_units()` for you! `datamgmt::return_eml_units()` will auto-generate many of these fields for you (**but don't just assume the auto-generation will be perfect; always ensure the auto-generation correctly handles your unit**.)
 
-### Edit Factors
+### Edit factors
 
 For attributes that are `enumeratedDomains`, a table is needed with three columns: `attributeName`, `code`, and `definition`.
 
@@ -120,10 +120,9 @@ For attributes that are `enumeratedDomains`, a table is needed with three column
 * **code** should contain all unique values of the given `attributeName` that exist within the actual data.
 * **definition** should contain a plain text definition that describes each code.
 
-There is a tab in the `datamgmt::create_attributes_table` app that will help you build factors.
+There is a tab in the `datamgmt::create_attributes_table()` app that will help you build factors.
 
-If you need to build factors by hand, you can use named character vectors and then convert them to a data.frame as shown in the example below.
-In this example, there are two enumerated domains in the attribute list - "Location" and "Region".
+If you need to build factors by hand, you can use named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - "Location" and "Region".
 
 ```{r, eval = FALSE}
 Location <- c(CASC = 'Cascade Lake', CHIK = 'Chikumunik Lake', HEAR = 'Heart Lake', NISH = 'Nishlik Lake' )

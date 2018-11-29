@@ -2,7 +2,7 @@
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
 
-## Open science background reading
+## Background reading
 
 Read the content on the Arctic Data Center (ADC) webpage to learn more about data submission, preservation, and the history of the ADC. We encourage you to follow the links within these pages to gain a deeper understanding.
 
@@ -17,6 +17,8 @@ Read Matt Jones et al.'s paper on <a href = 'data/simple-guidelines-datamgmt.pdf
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
+You may also want to explore the DataONE <a href='https://www.dataone.org/Education' target='_blank'>education resources</a> related to data management.
+
 ## Using DataONE
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
@@ -29,7 +31,7 @@ All of the work that we do at NCEAS is done on our remote server, datateam.nceas
 
 We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> To transfer files on and off of the server we often use a secure FTP client, Cyberduck.
 
-```{r, child = '../workflows/datateam_miscellaneous/cyberduck_instructions.Rmd'}
+```{r, child = '../workflows/miscellaneous/cyberduck_instructions.Rmd'}
 ```
 
 ## A note on paths

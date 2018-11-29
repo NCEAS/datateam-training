@@ -1,4 +1,5 @@
 ## Clean column names
+
 You might have [read](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/0012-9623-90.2.205) that column names should not include spaces or special characters. Inevitably, you'll encounter data that are not so tidy. For example:
 
 ```{r echo = FALSE}

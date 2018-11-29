@@ -1,7 +1,6 @@
 ## Navigate through EML
 
-The first task when editing an EML file is navigating the EML file. An EML file is organized in a structure that contains many lists nested within other lists. 
-The function `EML::eml_view` (make sure to install and load the `listviewer` package if you don't have it already) allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.
+The first task when editing an EML file is navigating the EML file. An EML file is organized in a structure that contains many lists nested within other lists. The function `EML::eml_view()` (make sure to install and load the `listviewer` package if you don't have it already) allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.
 
 ```{r echo=FALSE, message = FALSE, error = FALSE}
 library(dataone)

@@ -1,10 +1,17 @@
-# Datateam miscellaneous
+--- 
+title: "NCEAS Data Team Reference Guide"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    highlight: tango
+    css: ../styles.css
+documentclass: book
+github-repo: NCEAS/datateam-training
+description: "This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects"
+favicon: "favicon.ico"
+---
 
-```{r, echo = FALSE}
-chapter <- "../workflows/datateam_miscellaneous/"
-sections <- dir(path = chapter, pattern = ".Rmd$")
-children <- paste0(chapter, sections)
-```
+# About
 
-```{r, child = children}
-```
+This reference guide documents various workflows and related issues for processing data packages.

@@ -1,3 +1,14 @@
+# Miscellaneous
+
+```{r, echo = FALSE}
+chapter <- "../workflows/miscellaneous/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
 # Edit data packages
 
 ```{r, echo = FALSE}
@@ -90,7 +101,7 @@ children <- paste0(chapter, sections)
 ```{r, child = children}
 ```
 
-# ADC Web Submissions
+# ADC web submissions
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/adc_web_submissions/"
@@ -100,4 +111,3 @@ children <- paste0(chapter, sections)
 
 ```{r, child = children}
 ```
-

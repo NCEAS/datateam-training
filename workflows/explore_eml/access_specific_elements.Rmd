@@ -1,5 +1,6 @@
 ## Access specific elements
-The `eml_get` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
+
+The `eml_get()` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
 
 ```{r "creator", eval = FALSE}
 eml <- read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
@@ -18,7 +19,6 @@ An object of class "ListOfcreator"
 </creator>
 ```
 
-
 ```{r "boundingCoords", eval = FALSE}
 eml_get(eml, "boundingCoordinates")
 ```
@@ -31,7 +31,6 @@ eml_get(eml, "boundingCoordinates")
 </boundingCoordinates>
 ```
 
-
 ```{r "url", eval = FALSE}
 eml_get(eml, "url")
 ```
@@ -39,7 +38,7 @@ eml_get(eml, "url")
 [1] "ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456"
 ```
 
-You can also use the `which_in_eml` function from the `datamgmt` package to get indices within an EML list. Here are some examples:
+You can also use the `which_in_eml()` function from the `datamgmt` package to get indices within an EML list. Here are some examples:
 
 ```{r "which_in_eml", eval = FALSE}
 # Question: Which creators have a surName "Mecum"?

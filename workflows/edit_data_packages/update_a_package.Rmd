@@ -1,8 +1,8 @@
 ## Update a package with a new data object
 
-Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update`.
+Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update()`.
 
-Make sure you have the package you want to update, [loaded into R](#get-package-and-eml) using `get_package`.
+Make sure you have the package you want to update, [loaded into R](#get-package-and-eml) using `get_package()`.
 
 ### Publish update
 
@@ -23,7 +23,7 @@ update <- publish_update(adc_test,
                          public = FALSE)
 ```
 
-If a package is ready to be public, you can change the `public` argument in the `publish_update` call to `TRUE`.
+If a package is ready to be public, you can change the `public` argument in the `publish_update()` call to `TRUE`.
 
 If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the `use_doi` argument to `TRUE`. **This should only be done after the package is finalized and has been thoroughly reviewed!**
 

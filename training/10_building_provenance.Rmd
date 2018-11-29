@@ -1,6 +1,4 @@
-# Building Provenance
-
-## Introduction
+# Building provenance
 
 The provenance chain describes the origin and processing history of data. Provenance (or "prov") can exist on a continuum, ranging from prose descriptions of the history, to formal provenance traces, to fully executable environments. In this section we will describe how to build provenance using formal provenance traces in DataONE.
 
@@ -14,7 +12,7 @@ At NCEAS and in the datateam, not only do we archive data and code openly, but w
 
 There are two ways that we add provenance in the datateam - the prov editor and the R `datapack` package.
 
-## The Prov Editor
+## Using the prov editor
 
 Provenance can easily be added to production Arctic Data Center packages using the provenance editor on the Arctic Data Center. On the landing page of a data package within beta, in the `dataTable` or `otherEntity` section where you would like to add a provenance relationship, you can choose to add either a "source" or a "derivation", to the left or right of the object pane, respectively. 
 
@@ -121,11 +119,11 @@ From the `formatId`s, we can see the first `PID` is the EML (`formatId`: `[1]"em
 
 Now that you've actually seen a resource map, we can dive further into prov.
 
-## `datapack`
+## Using the `datapack` package
 
 For packages not on the ADC, or packages that are extremely complicated, it may be best to upload prov relationships using R. The `datapack` package has several functions which help add relationships in a very simple way. These relationships are stored in the resource map. When you update a package to only add prov, the package will not be assigned any new identifiers **with the exception of the resource map**.
 
-First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function `D1Client` sets the DataONE client with the coordinating node instance as the first argument, and membernode as the second argument.
+First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function `D1Client()` sets the DataONE client with the coordinating node instance as the first argument, and member node as the second argument.
 
 ```{r, warning=F, message = F}
 library(dataone)
@@ -133,7 +131,7 @@ library(datapack)
 d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")
 ```
 
-Next, get the `PID` of the resource map of the data package you are adding prov to, and load that package into R using the `getDataPackage` function.
+Next, get the `PID` of the resource map of the data package you are adding prov to, and load that package into R using the `getDataPackage()` function.
 
 ```{r, eval = F}
 resmapId <- "urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b"
@@ -156,7 +154,6 @@ Package identifier: resource_map_urn:uuid:8f501606-2c13-4454-b22d-050a4176a97b
 RightsHolder: http://orcid.org/0000-0002-2192-403X
 ```
 
-
 It will also show the existing relationships in the resource map, which in this case are mostly the "documents" relationships that specify that the metadata record is describing all of these data files.
 
 ```
@@ -173,7 +170,7 @@ Relationships:
 9 urn:uuid:8f501606-...4-b22d-050a4176a97b cito:isDocumentedBy urn:uuid:8f501606-...4-b22d-050a4176a97b
 ```
 
-In this example above, the data package has two .csv files, with an R script that converts one to the other. To create our provenance trace, first we need to select the source object, and save the `PID` to a variable. We do this using the `selectMember` function, and we can query part of the system metadata to select the file that we want. This function takes the data package (`pkg`), the name of the sysmeta field to query (in this case we use the `fileName`), and the value that you want to match that field to (in this case, 'PWS_Weir_Tower_export.csv').
+In this example above, the data package has two .csv files, with an R script that converts one to the other. To create our provenance trace, first we need to select the source object, and save the `PID` to a variable. We do this using the `selectMember()` function, and we can query part of the system metadata to select the file that we want. This function takes the data package (`pkg`), the name of the sysmeta field to query (in this case we use the `fileName`), and the value that you want to match that field to (in this case, 'PWS_Weir_Tower_export.csv').
 
 ```{r, eval = F}
 sourceObjId <- selectMember(pkg, name="sysmeta@fileName", value='PWS_Weir_Tower_export.csv')
@@ -186,7 +183,7 @@ This returns a list of the source object `PID`s that match the query (in this ca
 [1] "knb.92051.1"
 ```
 
-Now we need to select our output object. Here, we use the `selectMember` function again, and save the result to a new variable.
+Now we need to select our output object. Here, we use the `selectMember()` function again, and save the result to a new variable.
 
 ```{r, eval=F}
 outputObjId <- selectMember(pkg, name="sysmeta@fileName", value='PWS_weirTower.csv')
@@ -198,7 +195,7 @@ Now we query for the R script. In this case, we query based on the value of the 
 programObjId <- selectMember(pkg, name="sysmeta@formatId", value="application/R")
 ```
 
-Next, you use these lists of `PID`s and a function called `describeWorkflow` to add these relationships to the data package. Note that if you do not have a program in the workflow, or a source file, you can simply leave those arguments blank.
+Next, you use these lists of `PID`s and a function called `describeWorkflow()` to add these relationships to the data package. Note that if you do not have a program in the workflow, or a source file, you can simply leave those arguments blank.
 
 ```{r, eval = F}
 pkg <- describeWorkflow(pkg, sources=sourceObjId, program=programObjId, derivations=outputObjId)
@@ -232,20 +229,19 @@ Relationships (updated):
 7  urn:uuid:8f50160...b22d-050a4176a97b       cito:isDocumentedBy urn:uuid:8f50160...b22d-050a4176a97b
 ```
 
-Finally, you can upload the data package using the `uploadDataPackage` function, which takes the DataONE client `d1c` we set in the beginning, the updated `pkg` variable, some options for public read, and whether or not informational messages are printed during the upload process. **First, you will need to run a token obtained from https://dev.nceas.ucsb.edu/ to publish to that node.**
+Finally, you can upload the data package using the `uploadDataPackage()` function, which takes the DataONE client `d1c` we set in the beginning, the updated `pkg` variable, some options for public read, and whether or not informational messages are printed during the upload process. **First, you will need to run a token obtained from https://dev.nceas.ucsb.edu/ to publish to that node.**
 
-```{r, eval = F}
-resmapId_new <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE)
+```{r, eval = FALSE}
+resmapId_new <- uploadDataPackage(d1c, pkg, public = TRUE, quiet = FALSE)
 ```
 
 If successful you should be able to navigate to the landing page of your dataset, and icons should show up where the sources and derivations are, such as in this example: ![](images/prov_inputoutput.png)
 
 ### Fixing mistakes
 
-If you messed up updating a data package using `datapack`, there unfortunately isn't a great way to undo your work, as the `describeWorkflow` only adds prov relationships, it does not replace them. If you messed up, the best course of action is to update the resource map with a clean version that does not have prov using `update_resource_map`, and then go through the steps outlined above again.
+If you messed up updating a data package using `datapack`, there unfortunately isn't a great way to undo your work, as the `describeWorkflow()` only adds prov relationships, it does not replace them. If you messed up, the best course of action is to update the resource map with a clean version that does not have prov using `update_resource_map()`, and then go through the steps outlined above again.
 
-Note: this has not been thorougly tested, and more extreme actions may be necessary to fully nuke the prov relationships. Consult Dom, Jesse, or Peter if things do not work as expected.
-
+Note: this has not been thoroughly tested, and more extreme actions may be necessary to fully nuke the prov relationships. Consult Dom, Jesse, or Peter if things do not work as expected.
 
 ## References
 

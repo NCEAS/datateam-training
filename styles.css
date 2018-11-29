@@ -8,8 +8,11 @@ body,
 
 /* link colour */
 .book .book-summary ul.summary li a:hover, .book .book-summary ul.summary li.active>a,
-.book .book-body .page-wrapper .page-inner section.normal a {
-    color: #da0a5d;
+.book .book-body .page-wrapper .page-inner section.normal a:link {
+    color: #0074d9;
+}
+.book .book-body .page-wrapper .page-inner section.normal a:visited {
+  color: #b10dc9;
 }
 
 /*  exercise boxes */

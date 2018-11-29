@@ -1,12 +1,11 @@
-## Query Solr through R
+## Query Solr via R
 
 Though it's possible to [query Solr directly through its HTTP API](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html), we typically run our queries through R, for two main reasons: 
 
 1. The result is returned in a more useful way to R without extra work on your part
 2. We can more easily pass our authentication token with the query
 
-Why does #2 matter?
-Well by default, all of those URLs above only return publicly-readable Solr documents.
+Why does #2 matter? Well by default, all of those URLs above only return publicly-readable Solr documents.
 If a private document matches any of those queries, Solr won't tell you that. It will act like the non-public-readable documents don't exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you'll very often want to use R instead of visiting those URLs in a web browser.
 
 ```{r}
@@ -17,15 +16,15 @@ adc <- getMNode(cn, "urn:node:ARCTIC")
 #string your parameters together like this: dataone::query(mn, "q=title:*soil*&fl=title&rows=10")
 #or alternatively, list them out:
 query(adc, list(q="title:*soil*",
-                     fl="title",
-                     rows="10"))
+                fl="title",
+                rows="10"))
 ```
 
 By default, `query` returns the result as a `list`, but a `data.frame` can be a more useful way to work with the result. To get a `data.frame` instead, just set the `as` argument to 'data.frame' to get a `data.frame`:
 
 ```{r eval = TRUE}
 query(adc, list(q="title:*soil*",
-                     fl="title",
-                     rows="10"),
+                fl="title",
+                rows="10"),
       as = "data.frame")
 ```

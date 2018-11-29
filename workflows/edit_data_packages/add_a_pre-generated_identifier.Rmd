@@ -1,7 +1,7 @@
-
 ## Add a pre-generated identifier to the EML
 
 When you pre-generate a UUID or DOI, the change is not automatically reflected in the `packageId` section of the EML. Use the code below to ensure that the EML lines up with the desired identifier: 
+
 ```{r, eval = FALSE}
 ## Generate DOI and add to EML
 # Note that you cannot generate a DOI on test nodes
