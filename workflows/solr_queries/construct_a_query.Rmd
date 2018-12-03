@@ -4,7 +4,7 @@ Each Solr query is comprised of a number of parameters. These are like arguments
 
 The most common parameters are:
 
-- `q`: The query. This is like `subset` or `dplyr::filter` in R.
+- `q`: The query. This is like `subset()` or `dplyr::filter()` in R.
 - `fl`: What fields are returned for the documents that match your query (`q`). If not set, all fields are returned.
 - `rows`: The maximum number of documents to return. Solr will truncate your result if the result size is greater than `rows`.
 - `sort`: Sorts the result by the values in the given Solr field (e.g., sort by date uploaded).

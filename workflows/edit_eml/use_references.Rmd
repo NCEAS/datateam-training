@@ -6,7 +6,6 @@ library(EML)
 library(magrittr)
 ```
 
-### Introduction
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
     
 -   Making it clear that two things are the same (e.g., the creator is the same person as the contact, two entities have the exact same attributes)
@@ -19,6 +18,7 @@ You may want to use EML references if you have the following scenarios (not exha
 -   One or more entities shares all or some attributes
 
 ### Example with parties
+
 It's very common to see the contact and creator referring to the same person with XML like this:
     
 ``` {r eval = TRUE, echo = FALSE}
@@ -42,7 +42,7 @@ print(eml)
 The reference `id` needs to be unique within the EML record but doesn't need to have meaning outside of that.
 ```
 
-The above result can also be achieved by using `arcticdatautils::eml_set_reference`. 
+The above result can also be achieved by using `arcticdatautils::eml_set_reference()`. 
 
 ```{r, eval = FALSE}
 eml@dataset@contact[[1]] <- eml_set_reference(element_to_reference = eml@dataset@creator[[1]],
@@ -50,6 +50,7 @@ eml@dataset@contact[[1]] <- eml_set_reference(element_to_reference = eml@dataset
 ```
 
 ### Example with attributes
+
 To use references with attributes:
 
 1. Add an attribute list to a data table
@@ -68,7 +69,7 @@ for (i in 2:length(eml@dataset@dataTable)) {
 }
 ```
 
-The above result can also be achieved by using `arcticdatautils::eml_set_shared_attributes`. This function will replicate an `attributeList` to all of the `dataTable` or `otherEntity` elements in an EML document. For more specific information consult the documentation. 
+The above result can also be achieved by using `arcticdatautils::eml_set_shared_attributes()`. This function will replicate an `attributeList` to all of the `dataTable` or `otherEntity` elements in an EML document. For more specific information consult the documentation. 
 
 ```{r, eval = FALSE}
 eml <- eml_set_shared_attributes(eml, attributeList = attribute_list, type = 'dataTable')
@@ -95,6 +96,6 @@ eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "bryce"
 ```{block, type = "note"}
 Updated creator information cannot be used as a reference for `associatedParties` because the extra "role" field is required. Also, the function does not (yet) account for cases in which multiple creators have the same surname.
 
-Check out the help file for `add_creator_id` for more information: 
+Check out the help file for `add_creator_id()` for more information: 
 `?datamgmt::add_creator_id`
 ```

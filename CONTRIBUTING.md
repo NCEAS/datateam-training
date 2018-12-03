@@ -18,4 +18,6 @@ If you would like to contribute to the repo, please follow these conventions:
 
 * Use the root form of verbs in filenames (e.g., edit not editing).
 
+* Hyperlinks to external sites should open in a new tab or window. Use the HTML code `<a href="https://..." target="_blank">text</a>`.
+
 * Use the custom 'styles.css' to format exercises, notes, and warnings (see existing chapters for examples).

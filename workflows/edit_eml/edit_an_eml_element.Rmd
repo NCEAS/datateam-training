@@ -3,6 +3,7 @@
 There are multiple ways to edit an EML element. 
 
 ### Edit EML with strings
+
 The most basic way to edit an EML element would be to go into the EML schema to the location of a character string and then replace that character string with a new one.
 
 For example, to change the title one could use the following commands:
@@ -15,7 +16,7 @@ eml@dataset@title[[1]]@.Data <- new_title
 However, this isn't the best method to edit the EML (unless you are an expert in both S4 objects and the EML schema) since the nesting and lists of elements can get very complex. 
 
 ### Edit EML with the "EML" package
-For editing simple text sections, a better option is to use `EML::read_eml`. To use this function, one would first run the slot that is in need of editing. For example, for a title this would involve calling
+For editing simple text sections, a better option is to use `EML::read_eml()`. To use this function, one would first run the slot that is in need of editing. For example, for a title this would involve calling
 
 ``` {r, eval = FALSE}
 eml@dataset@title[[1]]

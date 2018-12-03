@@ -1,4 +1,4 @@
-## Metacat Version
+## Metacat version
 
 Check which version of metacat is currently deployed to
 - **arcticdata.io** <a href="https://arcticdata.io/metacat/metacat?action=getversion" target="_blank">here</a>,  

@@ -2,9 +2,9 @@
 
 If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).
 
-Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you've only run `publish_object` on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.
+Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you've only run `publish_object()` on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.
 
-Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the varibales you saved the PIDs to) via the `arcticdatautils::create_resource_map()` function, like so:
+Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the `arcticdatautils::create_resource_map()` function, like so:
 
 ```{r create resource map, eval = FALSE}
 resource_map_pid <- create_resource_map(adc_test,

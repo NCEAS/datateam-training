@@ -6,7 +6,6 @@ DataONE is a network of data repositories that is structured with coordinating n
 
 At the top level is DataONE itself. Within DataONE there are several coordinating nodes, including nodes for both production material and testing material. Within these coordinating nodes are many member nodes, including ones for both the Arctic Data Center and the KNB. To set the environment in which you want to publish data, you need to set both the coordinating node and the member node. For example, if you are publishing to the Arctic Data Center test site, you would want to set the coordinating node to STAGING and the member node to mnTestArctic.
 
-
 ```{block, type = "warning"}
 A note on nodes - be very careful about what you publish on production nodes (`PROD`, or arcticdata.io). These nodes should NEVER be used to publish test or training data sets.
 ```
@@ -14,6 +13,7 @@ A note on nodes - be very careful about what you publish on production nodes (`P
 The primary nodes we work on, and how to set them in R, are below:
 
 ### Staging (Test) nodes
+
 ```{r, eval = F}
 # ADC (test.arcticdata.io)
 cn_staging <- CNode('STAGING')
@@ -25,6 +25,7 @@ knb_test <- getMNode(cn_staging2, "urn:node:mnTestKNB")
 ```
 
 ### Production nodes
+
 ```{r, eval = F}
 # ADC (arcticdata.io)
 cn <- CNode('PROD')

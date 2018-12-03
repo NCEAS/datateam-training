@@ -1,4 +1,4 @@
-# Edit EML in R
+# Editing EML
 
 This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the <a href = 'https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd' target='_blank'>EML package</a>).
 
@@ -34,7 +34,7 @@ This chapter is a practical tutorial for using R to read, edit, write, and valid
 
 ## Validate EML and update package
 
-To make sure that your edited EML is valid against the EML schema, run `eml_validate` on your EML. Fix any errors that you see, and then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
+To make sure that your edited EML is valid against the EML schema, run `eml_validate()` on your EML. Fix any errors that you see, and then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
 
 ```{r, eval = F}
 eml_validate(eml)
@@ -42,7 +42,7 @@ eml_path <- "path/to/save/eml.xml"
 write_eml(eml, eml_path)
 ```
 
-To update a package with the newly edited EML, use `arcticdatautils::publish_update`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
+To update a package with the newly edited EML, use `arcticdatautils::publish_update()`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
 
 ```{r, eval = FALSE}
 update <- publish_update(adc_test, 
@@ -53,9 +53,10 @@ update <- publish_update(adc_test,
                          public = FALSE)
 ```
 
-Note that there are other arguments to `publish_update` you may need.
+Note that there are other arguments to `publish_update()` you may need.
 
 ## SASAP package workflows
+
 Sometimes many data sets are associated with a larger project, such as the State of Alaska Salmon and People (SASAP) project. These data sets should be given additional project-specific information using `eml@dataset@project`. This will add pre-defined information including the project title, funding sources, and key personnel. You will also want to set access permissions to the project as well. If you are working on a SASAP data set, prior to writing the EML and publishing the data set you will set the project with this code:
 
 ```{r, eval=FALSE}
@@ -63,14 +64,14 @@ source('/home/eodean/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
 eml@dataset@project <- sasap_project()
 ```
 
-Next you should add SASAP-specific taxonomic coverage to the EML using the `add_sasap_taxa` function.  This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. 
+Next you should add SASAP-specific taxonomic coverage to the EML using the `add_sasap_taxa()` function.  This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. 
   
 ```{r, eval=FALSE}
 source('/home/dmullen/sasap-helpers/add_sasap_taxa.R')
 eml <- add_sasap_taxa(mn, eml)
 ```
 
-Then, update the access permissions in the system metadata using `set_rights_and_access`.
+Then, update the access permissions in the system metadata using `set_rights_and_access()`.
 
 ```{r, eval=FALSE}
 pkg <- get_package(mn, resource_map_pid)
@@ -89,7 +90,7 @@ qa_package <- function(node, pid, readAllData = TRUE,
                        check_access = FALSE)
 ```
 
-By default, `qa_package` checks for:
+By default, `qa_package()` checks for:
 
 * Correctness of distribution URLs for each data object (URLs must match the EML physical section for the object)
 * Congruence of metadata and data
@@ -99,12 +100,13 @@ The `check_creators` and `check_access` flags can be set to `TRUE` to check:
 * Correctness of ORCIDs of creators in a given EML
 * Rights and access are set for creators in the system metadata
 
-In most cases, `qa_package` will be run just by passing in a member node and the resource map PID.
+In most cases, `qa_package()` will be run just by passing in a member node and the resource map PID.
 ```{r, eval=FALSE}
 qa_package(mn, resource_map_pid)
 ```
 
 ## Exercise 3 {.exercise}
+
 * Make sure your package from [before](#exercise-2) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
 * Then write, validate, and update your package.

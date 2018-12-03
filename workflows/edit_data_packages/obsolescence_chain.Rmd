@@ -1,7 +1,6 @@
-
 ## Obsolescence chain
 
-You can obosolete a dataset using the function `datamgmt::obsolete_package`.  Use the documentation for instructions on using the function.  The following workflow explains how the functions operates: 
+You can obsolete a dataset using the function `datamgmt::obsolete_package()`. Use the documentation for instructions on using the function. The following workflow explains how the functions operate.
   
 This chunk is to obsolete one data set. If there are more to add to the chain, more steps can be added. Be very careful. Make sure to fill in `obsoletes` and `obsoletedBy` slots for each one.  The `obsoletes` and `obsoletedBy` fields must be `NA`, once they are populated they can't be modified.  
 
@@ -23,7 +22,7 @@ updateSystemMetadata(mn, "doi:10.example_doi", sysmeta0)
 
 ```
 
-The following code is equivalent to the code chunk above. This method is recommended, however it is necessary to read the function documenation first. 
+The following code is equivalent to the code chunk above. This method is recommended, however it is necessary to read the function documentation first. 
 
 ```{r, eval = FALSE}
 datamgmt::obsolete_package(mn, metadata_obsolete = "doi:10.example_doi", 
