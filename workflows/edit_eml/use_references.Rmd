@@ -7,6 +7,7 @@ library(magrittr)
 library(datamgmt)
 ```
 
+
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
     
 -   Making it clear that two things are the same (e.g., the creator is the same person as the contact, two entities have the exact same attributes)
