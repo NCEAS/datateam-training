@@ -12,7 +12,7 @@ Before responding to a new submission use this checklist to review the submissio
   + Describes the DATA as well as:
     - The motivation (purpose) of the study
     - Where and when the research took place
-    - At least one sentence summarizing general methodolgies
+    - At least one sentence summarizing general methodologies
     - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
     - At least 100 words total
 * Keywords
@@ -21,7 +21,7 @@ Before responding to a new submission use this checklist to review the submissio
   + At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)
   + No xls/xlsx files (or other proprietary files)
   + File contents and relationships among files are clear
-  + Each file is well NAMEd and DESCRIBEd and clearly differntiated from all others
+  + Each file is well NAMEd and DESCRIBEd and clearly differentiated from all others
   + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. [Quality control all `dimensionless` units](https://nceas.github.io/datateam-training/reference/assess-attributes.html).
   + Missing value codes are explained (WHY are the data absent?)
 * People & Parties
@@ -37,4 +37,4 @@ Before responding to a new submission use this checklist to review the submissio
   + If there are multiple submissions with the same funding number, check about nesting
 * Methods
   + This section is REQUIRED for ALL NSF-FUNDED data packages
-  + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resouces
+  + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resources

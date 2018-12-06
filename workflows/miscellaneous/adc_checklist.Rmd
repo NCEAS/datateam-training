@@ -25,7 +25,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - **Data file types** are registered DataONE formats and properly set in the EML (`formatName`) and the system metadata for ALL DATA OBJECTS
     - See registered DataOne formats [here](https://cn.dataone.org/cn/v2/formats)
-    - Data files stored using proprietary software could disappear or no longer be accessible when the software is no longer available. Preserving data in text-based, open-source file formats ensures preservation of data for, theoretically, all time (ex: CSV instead of XLS). These transferrable file formats also reduce the possibility of information being "lost in translation".
+    - Data files stored using proprietary software could disappear or no longer be accessible when the software is no longer available. Preserving data in text-based, open-source file formats ensures preservation of data for, theoretically, all time (ex: CSV instead of XLS). These transferable file formats also reduce the possibility of information being "lost in translation".
 
 - `fileName` is properly set (including extension) in the system metadata for all objects (besides resource map) - do this by using `set_file_name()`
 
@@ -60,7 +60,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
       - Use the `references` tag to copy information for the same individual to multiple party types (`creator`, `contact`, `associatedParty`), [like so](https://nceas.github.io/datateam-training/reference/use-references.html)  
       - Emails are important, phone #s and addresses are less critical
 
-- **Geographic and temporal ranges** are sensible (start date preceeds end date) and appropriate to the study site and period; geographic description is accurate and includes commonly understood context
+- **Geographic and temporal ranges** are sensible (start date precedes end date) and appropriate to the study site and period; geographic description is accurate and includes commonly understood context
 
     Bad examples:
 
@@ -79,7 +79,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - Ensure that the `project` section of the EML matches the information from the NSF award as opposed to only being specific to this one data package
 
-- Double check for garbled symbols, spelling, and gramatical errors
+- Double check for garbled symbols, spelling, and grammatical errors
 
 - If the data set is still private and awaiting PI and/or submitter review, be sure that the `accessPolicy`s on ALL OBJECTS (metadata, resource map, data objects) grants `read`, `write`, and `changePermission` privileges to the PI's and/or submitter's ORCID iDs (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") - do this using `set_access()`. **Make sure to OMIT the "s" after "http" in the ORCiD for this sysmeta field. This is different than how we want ORCiDs formatted in EMLs**
 
@@ -88,4 +88,3 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 - After approval and DOI'ing, ensure all versions (of all objects) following a public version, are also public. Use `arcticdatautils::set_public_read_all_versions()` if needed.
 
 - Ensure that the https://doi.org/10.18739/XXXXXXXXX redirect works before emailing the Requestor with that URL. Occasionally, it takes almost 24 hours, but usually it only takes from 1 to 30 minutes. If the redirect does not happen, tell Jesse. If you assigned an SID, tell Jesse right away as he likely needs to manually set up the redirect.
-

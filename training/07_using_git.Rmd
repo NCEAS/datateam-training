@@ -1,9 +1,10 @@
-# Using Git in RStudio
+# Using Git
 
-## Introduction
+## What is Git?
 
-Important! If you have never used Git before, or only used it a little, or have no idea what is is, check out this <a href = 'https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf' target='_blank'>intro to Git</a> put together by the ecodatascience group at UCSB. 
-Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.
+<a href="https://git-scm.com/" target = "_blank">Git</a> is a distributed version control system.
+
+Important! If you have never used Git before, or only used it a little, or have no idea what it is, check out this <a href = 'https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf' target='_blank'>intro to Git</a> put together by the ecodatascience group at UCSB. Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.
 
 ### So why do I need to use this again?
 
@@ -71,4 +72,4 @@ The default right now is to save data-processing scripts in the `arctic-data/dat
 
 ## My Git tab disappeared
 
-Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your "project" and all you need to do is reopen it. If your git tab has dissapeared, in the top right of your RStudio session, you should see a little R logo with "Project: (None)" next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select "arctic-data" or "sasap-data." Once you have opened your project, the git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.
+Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your "project" and all you need to do is reopen it. If your Git tab has disappeared, in the top right of your RStudio session, you should see a little R logo with "Project: (None)" next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select "arctic-data" or "sasap-data." Once you have opened your project, the Git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.

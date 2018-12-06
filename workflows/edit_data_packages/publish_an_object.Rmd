@@ -1,7 +1,6 @@
-## Publish objects
+## Publish an object
 
-Objects (data files, xml metadata files) can be published to a DataONE node using the function `publish_object` from the `arcticdatautils` R Package. 
-To publish an object, you must first get the `formatId` of the object you want to publish. A few common `formatId`s are listed below.
+Objects (data files, xml metadata files) can be published to a DataONE node using the function `publish_object()` from the `arcticdatautils` R Package. To publish an object, you must first get the `formatId` of the object you want to publish. A few common `formatId`s are listed below.
 
 ```{r, eval = FALSE}
 # .csv file
@@ -29,5 +28,4 @@ pid <- publish_object(adc_test,
                       format_id = formatId) # note that the output of this function is the PID of the newly published object
 ```
 
-After publishing the object, the `PID` will need to be added to a resource map by [updating](#update-a-package) or [creating](#create-a-resource-map) a resource map. Additionally, the [rights and access](#set-rights-and-access) for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don't need to do this.   
-
+After publishing the object, the `PID` will need to be added to a resource map by [updating](#update-a-package) or [creating](#create-a-resource-map) a resource map. Additionally, the [rights and access](#set-rights-and-access) for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don't need to do this.

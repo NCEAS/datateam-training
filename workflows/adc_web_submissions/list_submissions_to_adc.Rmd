@@ -1,6 +1,6 @@
 ## List submissions to the Arctic Data Center 
 
-If the arctic bot fails to pick up a new submission, due to an invalid token or another error, we can check for submissions using a solr query.  The `list_submissions` function in the `arcticdatautils` package is a convenience wrapper around the solr query.  If the function doesn't specifically fit your needs it's fairly straight-forward to modify the source code.  *Note:* the function can be applied to any node, although it filters out results if the submitter is in the Arctic Data Center Admins group.  Refer to the function documentation for more information.  
+If the arctic bot fails to pick up a new submission, due to an invalid token or another error, we can check for submissions using a solr query.  The `list_submissions()` function in the `arcticdatautils` package is a convenience wrapper around the solr query.  If the function doesn't specifically fit your needs it's fairly straight-forward to modify the source code.  *Note:* the function can be applied to any node, although it filters out results if the submitter is in the Arctic Data Center Admins group.  Refer to the function documentation for more information.  
 
 + View submissions to the Arctic Data Center from 10/1/18 to 10/7/18
 ```{r, eval=FALSE}

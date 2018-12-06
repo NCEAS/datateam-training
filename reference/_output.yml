@@ -6,6 +6,6 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Data Team Reference</a></li>
+        <li><a href="./">Data Team Reference Guide</a></li>
       after: |
         <li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>

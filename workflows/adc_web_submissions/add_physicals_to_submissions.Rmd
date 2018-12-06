@@ -1,4 +1,4 @@
-## Add Physicals to Submissions
+## Add physicals to submissions
 
 New submissions made through the web editor will not have any `physical` sections within the `otherEntity`s. Add them to the EML with the following script:
     

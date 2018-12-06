@@ -1,13 +1,13 @@
 ## Spatial data
 
-Shapefiles and their associated files can be kept in a single grouping using *.zip (or another similar format). To extract meatadata, simply run:
+Shapefiles and their associated files can be kept in a single grouping using *.zip (or another similar format). To extract metadata, simply run:
 
 ```{r eval = FALSE}
 library(rgdal)
 folder_path <- "/folder/path/dir1/dir2/"
 folder_name <- "folder_name" #name of folder containing shapefiles and associated data
 spatial_obj <- readOGR(dsn = paste0(folder_path, folder_name),
-              layer = folder_name)
+                       layer = folder_name)
 spatial_df <- spatial_obj@data #save data as a dataframe
 spatial_obj@proj4string #get coordinate unit information
 ```

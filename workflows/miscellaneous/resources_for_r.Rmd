@@ -1,0 +1,47 @@
+## Resources for R
+
+### Packages
+
+The data team uses and develops a number of R packages. Here is a listing and description of the main packages:
+
+- dataone
+    - reading and writing data at DataONE member nodes
+    - <a href="http://doi.org/10.5063/F1M61H5X" target="_blank">http://doi.org/10.5063/F1M61H5X</a>
+- datapack
+    - creating and managing data packages
+    - <a href="https://github.com/ropensci/datapack" target="_blank">https://github.com/ropensci/datapack</a>
+- EML
+    - creating and editing EML metadata documents
+    - <a href="https://ropensci.github.io/EML" target="_blank">https://ropensci.github.io/EML</a>
+- arcticdatautils
+    - utility functions for processing data for the Arctic Data Center
+    - <a href="https://nceas.github.io/arcticdatautils/" target="_blank">https://nceas.github.io/arcticdatautils/</a>
+- datamgmt
+    - data management utilities for curating, documenting, and publishing data (sandbox package)
+    - <a href="https://nceas.github.io/datamgmt/" target="_blank">https://nceas.github.io/datamgmt/</a>
+- metadig
+    - authoring MetaDIG quality checks
+    - <a href="https://github.com/NCEAS/metadig-r" target="_blank">https://github.com/NCEAS/metadig-r</a>
+- metajam
+    - downloading and reading data and metadata from DataONE member nodes
+    - <a href="https://nceas.github.io/metajam/" target="_blank">https://nceas.github.io/metajam/</a>
+
+
+### Learning
+
+The following online books are useful for expanding your R knowledge and skills:
+
+- <a href="https://rstudio-education.github.io/hopr/" target="_blank">Hands-On Programming with R</a>
+- <a href="https://bookdown.org/rdpeng/rprogdatascience/" target="_blank">R Programming for Data Science</a>
+- <a href="https://bookdown.org/rdpeng/exdata/" target="_blank">Exploratory Data Analysis with R</a>
+- <a href="https://r4ds.had.co.nz/" target="_blank">R for Data Science</a>
+- <a href="http://adv-r.had.co.nz/" target="_blank">Advanced R</a>
+- <a href="https://csgillespie.github.io/efficientR/" target="_blank">Efficient R Programming</a>
+- <a href="http://r-pkgs.had.co.nz/" target="_blank">R Packages</a>
+- <a href="https://bookdown.org/rdpeng/RProgDA/" target="_blank">Mastering Software Development in R</a>
+- <a href="https://geocompr.robinlovelace.net/" target="_blank">Geocomputation with R</a>
+- <a href="https://bookdown.org/yihui/rmarkdown/" target="_blank">R Markdown: The Definitive Guide</a>
+- <a href="https://bookdown.org/yihui/bookdown/" target="_blank">bookdown: Authoring Books and Technical Documents with R Markdown</a>
+- <a href="https://style.tidyverse.org/" target="_blank">The Tidyverse Style Guide</a>
+
+The RStudio <a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">cheatsheets</a> are also useful references for functions in <a href="https://www.tidyverse.org/" target="_blank">tidyverse</a> and other packages.

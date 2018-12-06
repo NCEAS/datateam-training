@@ -1,4 +1,4 @@
-# Create data packages in R
+# Creating a data package
 
 This chapter will teach you how to create and submit a data package to a DataONE MN via R. But first, please read [this paper](data/eml-principles.pdf) on the value of structured metadata, namely the Ecological Metadata Language (EML).
 
@@ -20,19 +20,20 @@ Each object (metadata files, data files, resource maps) on the ADC or the KNB (a
 ![](images/PIDs.png)
 
 
-Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the `arcticdatautils::update_object` or `arcticdatautils::publish_update` commands on the *latest versions* of all objects to ensure that the version chain is maintained.
+Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the `arcticdatautils::update_object()` or `arcticdatautils::publish_update()` commands on the *latest versions* of all objects to ensure that the version chain is maintained.
 
-## Uploading packages using R
+## Upload a package
 
 We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your R console.
 
-**This token is your identity on these sites, please treat it as you would a password** (ie. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
+**This token is your identity on these sites, please treat it as you would a password** (i.e. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 
 ```{r token, message=FALSE, eval=FALSE}
 options(dataone_test_token = "...")
 ```
 
 Next, please be sure these packages are loaded:
+
 ```{r load libraries, message=FALSE}
 library(devtools)
 library(dataone)
@@ -49,6 +50,7 @@ install.packages("package_name")
 ```
 
 Now install a couple of packages:
+
 ```{r, eval = F}
 remotes::install_github("nceas/arcticdatautils")
 library(arcticdatautils)
@@ -56,7 +58,7 @@ remotes::install_github("nceas/datamgmt")
 library(datamgmt)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node."  In many of the functions you will use this will be the first argument.  It is often referred to in documentation as `mn`, short for member node. Set the node to the test Arctic node:
+For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. Set the node to the test Arctic node:
 
 ``` {r, eval = F, class.source = 'exercise'}
 cn_staging <- CNode('STAGING')
