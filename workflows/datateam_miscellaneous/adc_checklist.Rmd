@@ -85,7 +85,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - `rightsHolder` is properly set (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") to PIs on ALL OBJECTS (metadata, resource map, data objects) - do this using `set_rights_holder()` - **this should be a last step**
 
-- After approval and DOI'ing, ensure all versions (of all objects) following a public version, are also public. Use `arcticdatautils::set_public_read()` if needed.
+- After approval and DOI'ing, ensure all versions (of all objects) following a public version, are also public. Use `arcticdatautils::set_public_read_all_versions()` if needed.
 
 - Ensure that the https://doi.org/10.18739/XXXXXXXXX redirect works before emailing the Requestor with that URL. Occasionally, it takes almost 24 hours, but usually it only takes from 1 to 30 minutes. If the redirect does not happen, tell Jesse. If you assigned an SID, tell Jesse right away as he likely needs to manually set up the redirect.
 
