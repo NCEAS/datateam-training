@@ -4,6 +4,7 @@
 library(methods)
 library(EML)
 library(magrittr)
+library(datamgmt)
 ```
 
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
