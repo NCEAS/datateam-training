@@ -1,11 +1,5 @@
 ## Use references
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
-library(methods)
-library(EML)
-library(magrittr)
-```
-
 References are a way to avoid repeating the same information multiple times in the same EML record. There are a few benefits to doing this, including:
     
 -   Making it clear that two things are the same (e.g., the creator is the same person as the contact, two entities have the exact same attributes)
@@ -21,22 +15,49 @@ You may want to use EML references if you have the following scenarios (not exha
 
 It's very common to see the contact and creator referring to the same person with XML like this:
     
-``` {r eval = TRUE, echo = FALSE}
-eml <- new("eml")
-eml@packageId <- new("xml_attribute", "my_test_doc")
-eml@system <- new("xml_attribute", "my_system")
-eml@dataset@creator  <- c(arcticdatautils::eml_creator("Bryce", "Mecum"))
-eml@dataset@contact <- c(arcticdatautils::eml_contact("Bryce", "Mecum"))
-print(eml)
+```
+<eml packageId="my_test_doc" system="my_system" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <dataset>
+    <creator>
+      <individualName>
+        <givenName>Bryce</givenName>
+        <surName>Mecum</surName>
+      </individualName>
+    </creator>
+    <contact>
+      <individualName>
+        <givenName>Bryce</givenName>
+        <surName>Mecum</surName>
+      </individualName>
+    </contact>
+  </dataset>
+</eml>
 ```
 
 So you see those two times Bryce Mecum is referenced there? If you mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there's some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.
 
-``` {r eval = TRUE}
+``` {r eval = F}
 eml@dataset@creator[[1]]@id  <- new("xml_attribute", "reference_id")
 eml@dataset@contact[[1]] <- new("contact", reference = "reference_id")
 print(eml)
 ```
+
+```
+<eml packageId="my_test_doc" system="my_system" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <dataset>
+    <creator id="reference_id">
+      <individualName>
+        <givenName>Bryce</givenName>
+        <surName>Mecum</surName>
+      </individualName>
+    </creator>
+    <contact>
+      <references>reference_id</references>
+    </contact>
+  </dataset>
+</eml>
+```
+
 
 ```{block, type = "note"}
 The reference `id` needs to be unique within the EML record but doesn't need to have meaning outside of that.
@@ -82,15 +103,25 @@ The `datamgmt::add_creator_id()` function is a shortcut for one of our most comm
 1. Add the ORCID to a creator (usually the first creator). You can look up ORCIDs [here](https://orcid.org/orcid-search/search). 
 2. Update the contact information for that individual's other roles
 
-```{r eval = TRUE}
+```{r eval = F}
 eml <- eml %>%
     datamgmt::add_creator_id(surname = "mecum",
                    orcid = "https://orcid.org/0000-1234-5678-4321",
                    id = "bryce")
 
-# Use references to add updated contact info to Henrietta's other roles
+# Use references to add updated contact info to Bryce's other roles
 eml@dataset@contact[[1]] <- new('contact', reference = "bryce")
 eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "bryce")
+```
+
+```
+The following entry has been changed:<creator id="bryce" system="uuid">
+  <individualName>
+    <givenName>Bryce</givenName>
+    <surName>Mecum</surName>
+  </individualName>
+  <userId directory="https://orcid.org">https://orcid.org/0000-1234-5678-4321</userId>
+</creator>
 ```
 
 ```{block, type = "note"}
@@ -99,3 +130,5 @@ Updated creator information cannot be used as a reference for `associatedParties
 Check out the help file for `add_creator_id()` for more information: 
 `?datamgmt::add_creator_id`
 ```
+
+
