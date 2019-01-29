@@ -41,6 +41,8 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - `entityName`s are properly set in all `dataTable`s and `otherEntity`s
 
+- `entityDescription`s are set in all `dataTable`s and `otherEntity`s
+
 - Download buttons in `dataTable`s and `otherEntity`s download correct data files
 
 - `dataTable`s and `otherEntity`s must include `physical` - all `physical` sections match the information for the respective data object: `objectName` (including extension), `size` (including units), `authentication` (checksum), `formatName` (file format), and `url` (online distribution info links end in correct PID)
