@@ -13,6 +13,7 @@ description: "This is a training guide and reference resource for NCEAS data tea
 favicon: "favicon.ico"
 ---
 
+
 # Welcome to NCEAS! {-}
 
 ## First day to-dos {-}
@@ -55,3 +56,9 @@ NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on
 * Salad Potluck
     + potluck salad and socializing, bring a topping or side to share!
     + second Tuesday of the month, 12:15 in the lounge
+    
+## Citation Information
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean. 2019 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
