@@ -19,7 +19,7 @@ Possible Answer #3: The data package is still private and we accidentally failed
 > A: We recommend instead that the student set up their own ORCiD account at https://ORCiD.org/register and submit data packages from that account. Submissions are processed by our team and, at that point, we can grant you full rights to the metadata and data files even though another person submitted them.
 
 *Issue: Web form not cooperating.*  
-> A: I apologize that you are experiencing difficulties while attempting to submit your data package. We are happy to attempt to troubleshoot this for you. Which operating system (including the version) and browser (with version #) are you using? At which exact step did the issue arise? What error message did you receive? Please provide us with any relevant screenshots. Do you have any rason to believe that you may be using a slow internet connection?
+> A: I apologize that you are experiencing difficulties while attempting to submit your data package. We are happy to attempt to troubleshoot this for you. Which operating system (including the version) and browser (with version #) are you using? At which exact step did the issue arise? What error message did you receive? Please provide us with any relevant screenshots. Do you have any reason to believe that you may be using a slow internet connection?
 
 *Q: May I submit a non-NSF-funded data package?*  
 > A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
