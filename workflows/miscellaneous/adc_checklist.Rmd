@@ -85,8 +85,10 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - If the data set is still private and awaiting PI and/or submitter review, be sure that the `accessPolicy`s on ALL OBJECTS (metadata, resource map, data objects) grants `read`, `write`, and `changePermission` privileges to the PI's and/or submitter's ORCID iDs (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") - do this using `set_access()`. **Make sure to OMIT the "s" after "http" in the ORCiD for this sysmeta field. This is different than how we want ORCiDs formatted in EMLs**
 
-- `rightsHolder` is properly set (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") to PIs on ALL OBJECTS (metadata, resource map, data objects) - do this using `set_rights_holder()` - **this should be a last step**
+- `rightsHolder` is properly set (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") to PIs on ALL OBJECTS (metadata, resource map, data objects) - do this using `set_rights_holder()` - **this should be one of the last steps**
 
 - After approval and DOI'ing, ensure all versions (of all objects) preceeding a public version, are also public. Use `arcticdatautils::set_public_read_all_versions()` if needed.
+
+- Add back in any provenance relationships **after** publishing with a DOI - they may have gotten wiped by your last update
 
 - Ensure that the https://doi.org/10.18739/XXXXXXXXX redirect works before emailing the Requestor with that URL. Occasionally, it takes almost 24 hours, but usually it only takes from 1 to 30 minutes. If the redirect does not happen, tell Jesse. If you assigned an SID, tell Jesse right away as he likely needs to manually set up the redirect.
