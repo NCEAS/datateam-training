@@ -1,0 +1,38 @@
+# Series Identifier (SID)
+A series identifier is a system metadata field that represents a persistent identifier for a data package.  These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future.  
+
+
+## Adding a SID to a package
+Adding a series identifier should be the last step.  In most cases the SID will be in `DOI` format.  Once the data package is complete (peer-reviewd and approved by the PI) the series identifier can be added by updating the `seriesId` field of the system metadata of the metadata object. 
+
+```{r, eval=F}
+# The metadata identifier we're assigning an SID to
+metadata_pid <- 'metadata_pid'
+
+sys <- getSystemMetadata(mn, metadata_pid)
+sys@seriesId <- generateIdentifier(mn, scheme = 'DOI') #update the scheme argument if it should not be a DOI
+updateSystemMetadata(mn, metadata_pid, sys)
+```
+
+
+## Updating the child packages of a parent package with a SID
+When updating a parent package with a series identifier you need to use `update_resource_map` rather than `publish_update`.  In this case our goal is add nested data packages to an existing parent package. 
+
+```{r, eval=F}
+# Call get_package on the parent package that has a `seriesId` in its system metadata 
+parent_package <- get_package(mn, 'resource_map_pid')
+# The resource map of the package we want to add to the 'child_pids' of the parent
+resource_map_new_child <- '' 
+
+update_resource_map(mn, parent_package$resource_map, parent_package$metadata, parent_package$data,
+                    c(parent_package$child_packages, resource_map_new_child))
+
+```
+
+## Updating the metadata of a package with a SID 
+When updating the metadata (xml) of a package with a series identifier use `publish_update`.  It's important that you pass the metadata pid to the `metadata_pid` argument rather than `seriesId`.  The metadata pid will usually have the text "version: " ahead of it, however it's best to use `get_package` first to avoid mistakes. 
+```{r, eval=F}
+pkg <- get_package(adc, 'resource_map_pid')
+pkg <- publish_update(adc, pkg$metadata, pkg$resource_map, pkg$data, 
+                      child_pids = pkg$child_pids) # + any additional arguments to "publish_update"
+```
