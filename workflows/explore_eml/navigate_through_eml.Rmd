@@ -12,7 +12,9 @@ adc <- dataone::getMNode(cn, 'urn:node:ARCTIC')
 
 ```{r}
 doc <- read_eml(getObject(adc, "doi:10.18739/A2FS1H"))
+```
 
+```{r, eval = FALSE}
 View(doc)
 ```
 
