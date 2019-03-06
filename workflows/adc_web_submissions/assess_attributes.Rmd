@@ -2,17 +2,17 @@
 
 New submissions made through the web editor should have attributes created by the `submitter`. If there are no attributes, or if they are incomplete, please use the [email template](https://nceas.github.io/datateam-training/reference/email-templates.html) to correspond with the `submitter` to ask for attributes.
 
-Additionally, the web editor will not allow for the creation of custom units. `submitter`s should select `other/none` in the editor unit dropdown if they cannot find their desired unit. In the EML document, these will result in `dimensionless` units. Accordingly, new submissions should be checked for `dimensionless` units. This can be done with the following code.
+Additionally, the web editor will not allow for the creation of custom units. `submitter`s should select `other/none` in the editor unit dropdown if they cannot find their desired unit. In the EML document, these will result in `dimensionless` units. Accordingly, new submissions should be checked for `dimensionless` units. This can be done with the following code. Note that this only applies if there is more than one `otherEntity`.
     
 ```{r, eval = FALSE}
-dim_units <- sapply(eml@dataset@otherEntity, function(x) {
-      i <- datamgmt::which_in_eml(x@attributeList@attribute, "standardUnit", as("dimensionless", "standardUnit"))
+dim_units <- sapply(doc$dataset$otherEntity, function(x) {
+      i <- datamgmt::which_in_eml(x$attributeList$attribute, "standardUnit", as("dimensionless", "standardUnit"))
       
       out <- sapply(i, function(j){
-         list(entityName = x@entityName,
-               attributeName = x@attributeList@attribute[[j]]@attributeName,
-               attributeLabel = x@attributeList@attribute[[j]]@attributeLabel,
-               attributeDefinition = x@attributeList@attribute[[j]]@attributeDefinition)
+         list(entityName = x$entityName,
+               attributeName = x$attributeList$attribute[[j]]$attributeName,
+               attributeLabel = x$attributeList$attribute[[j]]$attributeLabel,
+               attributeDefinition = x$attributeList$attribute[[j]]$attributeDefinition)
       })
       
   return(out)  

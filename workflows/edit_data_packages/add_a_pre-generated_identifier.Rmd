@@ -6,8 +6,7 @@ When you pre-generate a UUID or DOI, the change is not automatically reflected i
 ## Generate DOI and add to EML
 # Note that you cannot generate a DOI on test nodes
 doiPid <- generateIdentifier(mn, "DOI")
-eml@packageId <- new("xml_attribute",
-                      .Data = doiPid)
+doc$packageId <- doiPid
 ```
 
 Be sure to include the `identifier=` argument in your [publish update](#publish-update) command so the pre-generated identifier is applied.

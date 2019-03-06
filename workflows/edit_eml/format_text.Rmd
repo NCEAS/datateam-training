@@ -2,10 +2,15 @@
 
 Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this [demo](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml) for a full example. Additional info is also available [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html).
 
-Also note, you will need to [edit an EML section with EML](#edit-eml-with-eml) in order to use these workflows.
-
 ```{block, type="note"}
 Many of these formatting functions only work when enclosed by `<para></para>`
+```
+
+You can insert these tags directly into the EML document using syntax that looks like this:
+
+
+```{r, eval = FALSE}
+doc$dataset$abstract <- eml$abstract(para = "Some abstracts require subscripts like CO<subscript>2</subscript>")
 ```
 
 ### Type-setting

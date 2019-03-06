@@ -16,7 +16,7 @@ After loading the package, you can also load the EML file into R using the follo
 doc <- read_eml(getObject(adc_test, pkg$metadata))
 ```
 
-Note that we called the object `doc`. This is a good generic name to use for EML documents. The generic name `eml` should not be used - as the EML package ships with an `eml` function, which can cause namespace issues in your environment if you have an object also called `eml`.
+Note that we named the object `doc`. This is a good generic name to use for EML documents. The generic name `eml` should not be used - as the EML package ships with an `eml` function, which can cause namespace issues in your environment if you have an object also called `eml`.
 
 ```{block, type = 'note'}
 **Tip to always have the most recent resource map.**

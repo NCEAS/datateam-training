@@ -113,20 +113,20 @@ eml_parent@dataset@title
 The title of this child contains "2012-2013". This is too specific for the parent, as the temporal range of both childs is 2012-2014. The parent should encompass this larger time range. 
   
 ```{r, eval = FALSE}
-eml_parent@dataset@title <- read_eml('<title>Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014</title>')
+eml_parent$dataset$title <- 'Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014'
 ```
   
 Like the title, the temporal coverage elements in this EML need to be adjusted. 
 
 ```{r, eval = FALSE}
-new_end_date <- new("calendarDate", "2014-09-20")
-eml_parent@dataset@coverage@temporalCoverage@.Data[[1]]@rangeOfDates@endDate@calendarDate <- new_end_date
+new_end_date <- "2014-09-20"
+eml_parent$dataset$coverage$temporalCoverage$rangeOfDates$endDate$calendarDate <- new_end_date
 ```
 
 Remove `dataTable`s and `otherEntity`s from the metadata. If you recall from previous chapters, `dataTable`s contain metadata associated with data files (generally CSVs) and `otherEntity`s contain metadata about any other files in the data package (for instance a README or coding script). Because the parent does not contain any data objects, we want to remove `dataTable`s and `otherEntity`s from the metdata file. In this instance, the E1 2013 metadata only contain `dataTable`s. We can remove these by setting the `dataTable` element in the EML to a new blank object.
   
 ```{r, eval = FALSE}
-eml_parent@dataset@dataTable <- new("ListOfdataTable")
+eml_parent$dataset$dataTable <- NULL
 ```
 
 In this case, the `abstract`, `contact`s, `creator`s, `geographicDescription`, and `methods` are already generalized and do not require changes. 

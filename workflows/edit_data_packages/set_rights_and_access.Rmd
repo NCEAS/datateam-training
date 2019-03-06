@@ -9,7 +9,11 @@ To set the rights and access for all of the objects in a [package](#get-package-
  subject <- 'http://orcid.org/PUT0-YOUR-ORCD-HERE'
 
 # Set ORCiD from EML creator
- subject <- eml@dataset@creator[[1]]@userId[[1]]@.Data
+# if only 1 creator exists
+ subject <- doc$dataset$creator$userId$userId
+ # if more than 1 creator exists and you want the first one
+ subject <- doc$dataset$creator[[1]]$userId$userId
+ 
  # As a convention we use `http:` instead of `https:` in our system metadata
  subject <- sub("^https://", "http://", subject)
 ```
