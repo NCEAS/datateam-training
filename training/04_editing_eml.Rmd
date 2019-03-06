@@ -55,31 +55,6 @@ update <- publish_update(adc_test,
 
 Note that there are other arguments to `publish_update()` you may need.
 
-## SASAP package workflows
-
-Sometimes many data sets are associated with a larger project, such as the State of Alaska Salmon and People (SASAP) project. These data sets should be given additional project-specific information using `eml@dataset@project`. This will add pre-defined information including the project title, funding sources, and key personnel. You will also want to set access permissions to the project as well. If you are working on a SASAP data set, prior to writing the EML and publishing the data set you will set the project with this code:
-
-```{r, eval=FALSE}
-source('/home/eodean/sasap-data/data-submission/Helpers/SasapProjectCreator.R')
-eml@dataset@project <- sasap_project()
-```
-
-Next you should add SASAP-specific taxonomic coverage to the EML using the `add_sasap_taxa()` function.  This will ensure that any salmon species present in the dataset have their Latin and common names listed in the coverage and can be easily searched for. 
-  
-```{r, eval=FALSE}
-source('/home/dmullen/sasap-helpers/add_sasap_taxa.R')
-eml <- add_sasap_taxa(mn, eml)
-```
-
-Then, update the access permissions in the system metadata using `set_rights_and_access()`.
-
-```{r, eval=FALSE}
-pkg <- get_package(mn, resource_map_pid)
-set_rights_and_access(mn, unlist(pkg), 'CN=SASAP,DC=dataone,DC=org', permissions = c('read', 'write', 'changePermission'))
-```
-
-Finally, go through the <a href = 'https://github.nceas.ucsb.edu/NCEAS/sasap-data/blob/master/data-submission/checklist.Rmd' target='_blank'>SASAP checklist</a> to ensure that the package meets all of the project-specific requirements for publishing.
-
 After your package is published, run the `qa_package()` function from the `datamgmt` package. 
 
 The function arguments are as follows:
