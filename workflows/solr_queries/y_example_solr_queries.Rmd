@@ -109,6 +109,23 @@ result <- query(cn, list(q="title:soil* AND origin:Ludwig",
                 as = "data.frame")
 ```
 
+### Query for EMLs that document a specific data pid 
+
+```{r, eval = FALSE}
+# Wrap the pid in escaped quotation marks if it contains special characters 
+query(adc, list(q = paste0('documents:', '\"', 'urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9', '\"'),
+                fl = "identifier",
+                rows="20"),
+      as = "data.frame")
+
+# Alternatively we can use a wildcard expression in place of "urn:uuid:"
+# This way we don't need to escape the colon special characters 
+query(adc, list(q = paste0("documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9"),
+                fl = "identifier",
+                rows="20"),
+      as = "data.frame")
+```
+
 ### Use facets
 
 All resource maps with > 100 data objects that are _not_ on the Arctic Data Center:
