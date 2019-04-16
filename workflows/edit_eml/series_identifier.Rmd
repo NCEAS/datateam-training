@@ -1,5 +1,5 @@
 # Series Identifier (SID)
-A series identifier is a system metadata field that represents a persistent identifier for a data package.  These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future.  
+A series identifier is a system metadata field that represents a single identifier across multiple versions of a data package, a feature often requested by submitters.  These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future.  
 
 
 ## Adding a SID to a package
