@@ -84,6 +84,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 - Double check for garbled symbols, spelling, and grammatical errors
 
 - Mention parent or childs when key EML fields are otherwise left empty. (e.g.: If an abstract or methods section is absent or very terse because these sections are robust and sufficient on a different level of nesting, be sure to explicitly mention that in the sparse EML's appropriate section so users know where to look.)
+Here's an example: `Terse methods section. See [child citation] for more information.`
 
 - If the data set is still private and awaiting PI and/or submitter review, be sure that the `accessPolicy`s on ALL OBJECTS (metadata, resource map, data objects) grants `read`, `write`, and `changePermission` privileges to the PI's and/or submitter's ORCID iDs (in this format: "http://orcid.org/XXXX-XXXX-XXXX-XXXX") - do this using `set_access()`. **Make sure to OMIT the "s" after "http" in the ORCiD for this sysmeta field. This is different than how we want ORCiDs formatted in EMLs**
 
