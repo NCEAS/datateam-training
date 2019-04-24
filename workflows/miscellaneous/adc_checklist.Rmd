@@ -92,4 +92,6 @@ Here's an example: `Terse methods section. See [child citation] for more informa
 
 - Add back in any provenance relationships **after** publishing with a DOI - they may have gotten wiped by your last update
 
+- Set any versions that are in the middle of a [PublicDOI] -> [PrivateUUID] -> [PublicDOI] sandwich, to public. This goes for XML, resource maps, and data objects.
+
 - Ensure that the https://doi.org/10.18739/XXXXXXXXX redirect works before emailing the Requestor with that URL. Occasionally, it takes almost 24 hours, but usually it only takes from 1 to 30 minutes. If the redirect does not happen, tell Jesse. If you assigned an SID, tell Jesse right away as he likely needs to manually set up the redirect.
