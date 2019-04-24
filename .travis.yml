@@ -24,3 +24,4 @@ addons:
       - libnetcdf-dev
       - r-cran-ncdf4
       - libjq-dev
+      - libv8-dev
