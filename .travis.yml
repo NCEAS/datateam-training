@@ -16,7 +16,7 @@ deploy:
   local_dir: docs
 addons:
   apt:
-   sources:
+    sources:
       - sourceline: 'ppa:opencpu/jq'
     packages:
       - librdf0-dev
