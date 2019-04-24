@@ -21,5 +21,3 @@ addons:
       - libudunits2-dev
       - libnetcdf-dev
       - r-cran-ncdf4
-      - libv8-dev
-      - libjq-dev
