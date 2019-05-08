@@ -16,8 +16,12 @@ deploy:
   local_dir: docs
 addons:
   apt:
+    sources:
+      - sourceline: 'ppa:opencpu/jq'
     packages:
       - librdf0-dev
       - libudunits2-dev
       - libnetcdf-dev
       - r-cran-ncdf4
+      - libjq-dev
+      - libv8-dev
