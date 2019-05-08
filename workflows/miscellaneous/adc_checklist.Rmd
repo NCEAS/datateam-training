@@ -24,7 +24,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 - **Publication Date** is included (the EML has a `pubDate` that is at least the current four-digit year)
 
 - **Data file types** are registered DataONE formats and properly set in the EML (`formatName`) and the system metadata for ALL DATA OBJECTS
-    - See registered DataOne formats [here](https://cn.dataone.org/cn/v2/formats)
+    - See registered DataONE formats [here](https://cn.dataone.org/cn/v2/formats)
     - Data files stored using proprietary software could disappear or no longer be accessible when the software is no longer available. Preserving data in text-based, open-source file formats ensures preservation of data for, theoretically, all time (ex: CSV instead of XLS). These transferable file formats also reduce the possibility of information being "lost in translation".
 
 - `fileName` is properly set (including extension) in the system metadata for all objects (besides resource map) - do this by using `set_file_name()`
