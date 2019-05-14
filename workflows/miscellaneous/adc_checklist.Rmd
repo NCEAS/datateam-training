@@ -29,7 +29,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - `fileName` is properly set (including extension) in the system metadata for all objects (besides resource map) - do this by using `set_file_name()`
 
-- **Data file names:** clear, but short descriptions without blank spaces (include extension)
+- **Data file names:** clear, but short names without blank spaces nor special characters (include extension)
 - Ex: “Corvallis_VegBiodiv_2007.csv”
 
 - **Column headers** (within data files): no spaces (use underscore or camelCase), `attributeList` adequately defines ALL column headers (including units)
@@ -41,7 +41,7 @@ Next, run through the manual checklist below. Once all these checks are satisfie
 
 - `entityName`s are properly set in all `dataTable`s and `otherEntity`s
 
-- `entityDescription`s are set in all `dataTable`s and `otherEntity`s
+- `entityDescription`s are set in all `dataTable`s and `otherEntity`s and EACH ONE IS UNIQUE so that they can be easily differentiated
 
 - Download buttons in `dataTable`s and `otherEntity`s download correct data files
 
