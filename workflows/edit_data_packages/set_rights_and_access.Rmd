@@ -30,3 +30,8 @@ If you ever need to remove/add public access to your package or object, you can 
 ```{r eval = FALSE}
 remove_public_read(adc_test, c(pkg$metadata, pkg$data, pkg$resource_map))
 ```
+
+### My profile
+The datasets that render under a users profile page (https://arcticdata.io/catalog/profile/http://orcid.org/0000-0003-3644-7237) are added if one of the following three System Metadata fields exists.  The subject is the `rightsHolder` or the subject has one of either `write` or `changePermission` in the `accessPolicy`.  
+
+If you ever need to remove a subject from the `accessPolicy` or update the `rightsHolder` you can use `arcticdatautils::remove_access` and `arcticdatautils::set_rightsHolder`, respectively. 
