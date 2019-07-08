@@ -36,3 +36,6 @@ For larger data packages, we would likely need to charge a one-time archival fee
 
 [ONLY SAY THIS NEXT PART IF THE REQUESTOR CONTINUES TO INSIST and then USE PROV TO POINT FROM THE XLS TO THE CSVs]
 > I understand that having the plots in the same file as the data they are built from simplifies organization. If you definitely prefer to have the Excel workbook included, we ask that you allow us to document the data in both formats and include a note in the metadata clarifying that the data are indeed duplicated (but in different formats).
+
+*Issue: Can't log in to the Arctic Data Center*   
+> A: Please accept our apologies that you are experiencing difficulty loggin in.  Please try a different internet browser (Chrome, firefox, internet explorer etc.).  If the problem persists please try clearing your cache and then re-logging in with orcid Id, Finally,privacy blockers (like EFF's privacy badger https://www.eff.org/privacybadger) block the cookies needed for the login to work. To enable the cookies you need to disable your privacy tracker for arcticdata.io.
