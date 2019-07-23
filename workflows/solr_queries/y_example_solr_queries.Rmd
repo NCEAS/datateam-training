@@ -53,6 +53,22 @@ result <- query(adc, list(q="title:soil* OR origin:Ludwig",
 You can use either spaces or `+` to separate query parameters. When typing queries in R, it's often easier to read if you use spaces. However, when using the browser, you may want to use `+` to keep the query clean. (The browser will replace spaces with `%20`.)
 ```
 
+### Query by formatType
+Objects are queryable via their `formatType` which is one of DATA, METADATA, or RESOURCE.  
+```{r, eval=FALSE}
+result <- query(adc, list(q = 'formatType:RESOURCE AND submitter:"http://orcid.org/0000-0002-2561-5840"',
+                          fl = 'identifier,submitter,fileName',
+                          sort = 'dateUploaded+desc',
+                          rows='10'),
+                as = "data.frame")
+
+result <- query(adc, list(q = 'formatType:METADATA AND title:*Toolik*',
+                          fl = 'identifier,submitter,fileName',
+                          sort = 'dateUploaded+desc',
+                          rows='10'),
+                as = "data.frame")
+```
+
 ### Query pids by a specific submitter
 
 ```{r, eval = FALSE}
@@ -107,6 +123,23 @@ result <- query(adc, list(q="title:(soil AND -carbon)",
 result <- query(cn, list(q="title:soil* AND origin:Ludwig",
                               rows="5000"),
                 as = "data.frame")
+```
+
+### Query for EMLs that document a specific data pid 
+
+```{r, eval = FALSE}
+# Wrap the pid in escaped quotation marks if it contains special characters 
+query(adc, list(q = paste0('documents:', '\"', 'urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9', '\"'),
+                fl = "identifier",
+                rows="20"),
+      as = "data.frame")
+
+# Alternatively we can use a wildcard expression in place of "urn:uuid:"
+# This way we don't need to escape the colon special characters 
+query(adc, list(q = paste0("documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9"),
+                fl = "identifier",
+                rows="20"),
+      as = "data.frame")
 ```
 
 ### Use facets

@@ -8,7 +8,7 @@ Imports:
   arcticdatautils,
   bookdown,
   DT,
-  EML, 
+  EML (>=2.0), 
   dataone,
   janitor,
   listviewer,

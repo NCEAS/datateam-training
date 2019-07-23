@@ -34,7 +34,7 @@ options(dataone_test_token = "...")
 
 Next, please be sure these packages are loaded:
 
-```{r load libraries, message=FALSE}
+```{r load libraries, message=FALSE, eval=FALSE}
 library(devtools)
 library(dataone)
 library(datapack)
@@ -45,13 +45,13 @@ library(XML)
 
 If any package could not be loaded, use the following command (replacing package_name with the actual package name) to install the package, then load them.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 install.packages("package_name")
 ```
 
 Now install a couple of packages:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 remotes::install_github("nceas/arcticdatautils")
 library(arcticdatautils)
 remotes::install_github("nceas/datamgmt")
@@ -60,7 +60,7 @@ library(datamgmt)
 
 For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. Set the node to the test Arctic node:
 
-``` {r, eval = F, class.source = 'exercise'}
+``` {r, eval = FALSE, class.source = 'exercise'}
 cn_staging <- CNode('STAGING')
 adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 ```
