@@ -6,53 +6,34 @@ Sometimes EML documents may lack coverage information describing the temporal, g
 coverage <- EML::set_coverage(beginDate = '2012-01-01', 
                               endDate = '2012-01-10', 
                               sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'),
-                              geographicDescription = "The geographic region covers the lake region near Eagle Mountain.",
+                              geographicDescription = "The geographic region covers the lake region near Eagle Mountain, Alaska.",
                               west = -154.6192, 
                               east = -154.5753, 
                               north = 68.3831, 
                               south = 68.3619)
-eml@dataset@coverage <- coverage
+doc$dataset$coverage <- coverage
 ```
 
-You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages:
+You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages. Note that we use nested `eml` function helpers in this construction.
 
 ```{r, eval = FALSE}
-geocov1 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 1",
-               boundingCoordinates = new("boundingCoordinates", 
-                                         northBoundingCoordinate = new("northBoundingCoordinate", 68),
-                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -154),
-                                         southBoundingCoordinate = new("southBoundingCoordinate", 67),
-                                         westBoundingCoordinate =  new("westBoundingCoordinate", -155)))
+geocov1 <- eml$geographicCoverage(geographicDescription = "The geographich region covers area 1",
+                                  boundingCoordinates = eml$boundingCoordinates(
+                                         northBoundingCoordinate = 68,
+                                         eastBoundingCoordinate = -154,
+                                         southBoundingCoordinate = 67,
+                                         westBoundingCoordinate = -155))
 
-geocov2 <- new("geographicCoverage", geographicDescription = "The geographich region covers area 2",
-               boundingCoordinates = new("boundingCoordinates",
-                                         northBoundingCoordinate = new("northBoundingCoordinate", 65),
-                                         eastBoundingCoordinate = new("eastBoundingCoordinate", -155),
-                                         southBoundingCoordinate = new("southBoundingCoordinate", 64),
-                                         westBoundingCoordinate =  new("westBoundingCoordinate", -156)))
+geocov2 <- eml$geographicCoverage(geographicDescription = "The geographich region covers area 2",
+                                  boundingCoordinates = eml$boundingCoordinates(
+                                         northBoundingCoordinate = 65,
+                                         eastBoundingCoordinate = -151,
+                                         southBoundingCoordinate = 62,
+                                         westBoundingCoordinate = -153))
 
 coverage <- EML::set_coverage(beginDate = '2012-01-01', 
                               endDate = '2012-01-10', 
-                              sci_names = c('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'))
-eml@dataset@coverage@geographicCoverage <- c(geocov1, geocov2)
-```
+                              sci_names = list('exampleGenus exampleSpecies1', 'exampleGenus ExampleSpecies2'))
 
-To set taxonomic coverage:
-
-```{r, eval = FALSE}
-# add each new element as a tax object
-tax1 <- new("taxonomicClassification",
-            taxonRankName = new("taxonRankName", "Species"),
-            taxonRankValue = new("taxonRankValue", "Calamagrostis deschampsioides"))
-
-tax2 <- new("taxonomicClassification", 
-            taxonRankName = new("taxonRankName", "Species"),
-            taxonRankValue = new("taxonRankValue", "Carex aquatilis"))
-
-# combine all tax elements into taxonomic coverage object
-taxcov <- new("taxonomicCoverage",
-               taxonomicClassification = c(tax1, tax2))
-
-eml@dataset@coverage@taxonomicCoverage <- c(taxcov)
-
+doc$dataset$coverage$geographicCoverage <- list(geocov1, geocov2)
 ```

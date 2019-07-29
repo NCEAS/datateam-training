@@ -3,9 +3,9 @@
 New submissions made through the web editor will not have any `physical` sections within the `otherEntity`s. Add them to the EML with the following script:
     
 ```{r, eval = FALSE}
-for (i in seq_along(eml@dataset@otherEntity)) {
-    otherEntity <- eml@dataset@otherEntity[[i]]
-    id <- otherEntity@id
+for (i in seq_along(doc$dataset$otherEntity)) {
+    otherEntity <- doc$dataset$otherEntity[[i]]
+    id <- otherEntity$id
     
     if (!grepl("urn-uuid-", id)) {
         warning("otherEntity ", i, " is not a pid")
@@ -13,7 +13,7 @@ for (i in seq_along(eml@dataset@otherEntity)) {
     } else {
         id <- gsub("urn-uuid-", "urn:uuid:", id)
         physical <- arcticdatautils::pid_to_eml_physical(mn, id)
-        eml@dataset@otherEntity[[i]]@physical[[1]] <- physical[[1]]
+        doc$dataset$otherEntity[[i]]$physical <- physical
     }
 }
 ```

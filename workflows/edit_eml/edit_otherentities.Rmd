@@ -5,7 +5,7 @@
 To remove an `otherEntity` use the following command. This may be useful if a data object is originally listed as an `otherEntity` and then transferred to a `dataTable`.
 
 ```{r, eval = FALSE}
-eml@dataset@otherEntity[[i]] <- NULL
+doc$dataset$otherEntity[[i]] <- NULL
 ```
 
 ### Create otherEntities
@@ -25,13 +25,20 @@ otherEntity <- arcticdatautils::pid_to_eml_entity(mn, "your_data_pid", entityTyp
 The `otherEntity` must then be set to the EML, like so: 
 
 ``` {r, eval = FALSE}
-eml@dataset@otherEntity <- otherEntity
+doc$dataset$otherEntity <- otherEntity
 ```
 
-If you have additional `otherEntity` objects in the EML already, you will need to add the new one like this:
+If you have more than one `otherEntity` object in the EML already, you can add the new one like this:
 
 ```{r, eval = FALSE}
-eml@dataset@otherEntity[[i]] <- otherEntity
+doc$dataset$otherEntity[[i]] <- otherEntity
 ```
 
 Where `i` is set to the number of existing entities plus one.
+
+Remember the warning from the last section, however. If you only have one `otherEntity`, and you are trying to add another, you have to run:
+
+``` {r, eval = FALSE}
+doc$dataset$otherEntity <- list(otherEntity, doc$dataset$otherEntity)
+```
+

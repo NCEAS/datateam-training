@@ -8,15 +8,16 @@ Attributes are stored in an [attributeList](https://github.com/NCEAS/eml/blob/ma
 
 Attributes can exist in EML for `dataTable`, `otherEntity`, and `spatialVector` data objects. Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
 
-To edit or examine an existing attribute table already in an EML file, you can use the following commands: 
+To edit or examine an existing attribute table already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
 
 ```{r, eval = FALSE}
 # If they are stored in an otherEntity (submitted from the website by default)
-attributeList <- EML::get_attributes(eml@dataset@otherEntity[[i]]@attributeList)
+attributeList <- EML::get_attributes(doc$dataset$otherEntity[[i]]$attributeList)
 # Or if they are stored in a dataTable (usually created by a datateam member)
-attributeList <- EML::get_attributes(eml@dataset@dataTable[[i]]@attributeList)
+attributeList <- EML::get_attributes(doc$dataset$dataTable[[i]]$attributeList)
 # Or if they are stored in a spatialVector (usually created by a datateam member)
-attributeList <- EML::get_attributes(eml@dataset@spatialVector[[i]]@attributeList)
+attributeList <- EML::get_attributes(doc$dataset$spatialVector[[i]]$attributeList)
+
 attributes <- attributeList$attributes
 print(attributes)
 ```
@@ -149,5 +150,5 @@ This `attributeList` must then be [added to a `dataTable`](#edit-datatables). Cu
 
 ```{r, eval = FALSE}
 unitlist <- set_unitList(custom_units)
-eml@additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
 ```

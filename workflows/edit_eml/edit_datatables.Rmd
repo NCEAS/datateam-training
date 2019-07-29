@@ -1,14 +1,31 @@
 ## Edit dataTables
 
 To edit a `dataTable`, first [edit/create an `attributeList`](#edit-attributelists) and [set the physical](#set-physical). 
-Then create a new `dataTable` with the `new()` command as follows:
+Then create a new `dataTable` using the `eml$dataTable()` helper function as below:
 
 ```{r, eval = FALSE}
-dataTable <- new("dataTable",
-                 entityName = "A descriptive name for the data (does not need to be the same as the data file)",
+dataTable <- eml$dataTable(entityName = "A descriptive name for the data (does not need to be the same as the data file)",
                  entityDescription = "A description of the data",
                  physical = physical,
                  attributeList = attributeList)
 ```
 
-The `dataTable` must then be set to the EML (i.e.: `eml@dataset@dataTable[[i]] <- dataTable`).
+The `dataTable` must then be added to the EML. How exactly you do this will depend on whether there are `dataTable` elements in your EML, and how many there are. To replace whatever dataTable elements already exist, you could write:
+
+```{r, eval = FALSE}
+doc$dataset$dataTable <- dataTable
+```
+
+If there is only one `dataTable` in your dataset, the EML package will usually "unpack" these, so that it is not contained within a list of length 1 - this means that to add a second `dataTable`, you cannot use the syntax `doc$dataset$dataTable[[2]]`, since when unpacked this will contain the `entityDescription` as opposed to pointing to the second in a series of `dataTable` elements. Confusing - I know. Not to fear though - this syntax will get you on your way, should you be trying to add a second `dataTable`.
+
+```{r, eval = FALSE}
+doc$dataset$dataTable <- list(doc$dataset$dataTable, dataTable)
+```
+
+If there is more than one `dataTable` in your dataset, you can return to the more straightforward construction of:
+
+```{r, eval = FALSE}
+doc$dataset$dataTable[[i]] <- dataTable 
+```
+
+Where `i` is the index that you wish insert your `dataTable` into.

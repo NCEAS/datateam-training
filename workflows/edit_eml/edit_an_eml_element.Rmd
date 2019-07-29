@@ -4,66 +4,90 @@ There are multiple ways to edit an EML element.
 
 ### Edit EML with strings
 
-The most basic way to edit an EML element would be to go into the EML schema to the location of a character string and then replace that character string with a new one.
+The most basic way to edit an EML element would be to navigate to the element and replace it with something else. Easy!
 
-For example, to change the title one could use the following commands:
+For example, to change the title one could use the following command:
 
-``` {r, eval = FALSE}
-new_title <- "New Title"
-eml@dataset@title[[1]]@.Data <- new_title
+```{r, eval = FALSE}
+doc$dataset$title <- "New Title"
 ```
 
-However, this isn't the best method to edit the EML (unless you are an expert in both S4 objects and the EML schema) since the nesting and lists of elements can get very complex. 
+If the element you are editing allows for multiple values, you can pass it a list of character strings. Since a dataset can have multiple titles, we can do this:
+
+```{r, eval = FALSE}
+doc$dataset$title <- list("New Title", "Second New Title")
+```
+
+
+However, this isn't always the best method to edit the EML, particularly if the element has sub-elements.
 
 ### Edit EML with the "EML" package
-For editing simple text sections, a better option is to use `EML::read_eml()`. To use this function, one would first run the slot that is in need of editing. For example, for a title this would involve calling
 
-``` {r, eval = FALSE}
-eml@dataset@title[[1]]
+To edit a section where you are not 100% sure of the sub-elements, using the `eml$elementName()` helper functions from the EML package will pre-populate the options for you if you utilize the RStudio autocomplete functionality. The arguments in these functions show the available slots for any given EML element. For example, typing `doc$dataset$abstract <- eml$abstract()<TAB>` will show you that the `abstract` element can take either the `section` or `para` sub-elements. 
+
+![](../images/eml_function_autocomplete.png)
+
+
+```{r, eval = FALSE}
+doc$dataset$abstract <- eml$abstract(para = "A concise but thorough description of the who, what, where, when, why, and how of a dataset.")
 ```
 
-and then copying the result. In this case, the result will be of the form `<title>Title Text Here</title>`. To make a new title, one would replace the text between the `<title></title>` tags using a similar workflow as below.
+This inserts the abstract with a `para` element in our dataset, which we know from the EML [schema](https://knb.ecoinformatics.org/external//emlparser/docs/eml-2.1.1/index.html) is valid.
 
-``` {r, eval = FALSE}
-new_title <- EML::read_eml("<title>New Title 2</title>")
-eml@dataset@title[[1]] <- new_title
+Note that the above is equivalent to the following generic construction:
+
+```{r, eval = FALSE}
+doc$dataset$abstract <- list(para = "A concise but thorough description of the who, what, where, when, why, and how of a dataset.")
 ```
 
-Note, without specifying which title with `[[1]]`, the following code will give you the error `Error in (function (cl, name, valueClass) : assignment of an object of class “title” is not valid for @‘title’ in an object of class “dataset”; is(value, "ListOftitle") is not TRUE`.
+The `eml()` family of functions provides the sub-elements as arguments, which is extremely helpful, but functionally all it is doing is creating a named list, which you can also do using the `list` function.
 
-``` {r, eval = FALSE}
-# Bad Example
-new_title <- EML::read_eml("<title>New Title 2</title>")
-eml@dataset@title <- new_title
-```
-
-The above gives an error because `eml@dataset@title` is a slot for a list and `new_title` is a single object. Therefore you must either specify which title you want to replace as was done above by specifying the first title in the list with `[[1]]` or turn `new_title` into a list/vector utilizing the `c()` command as follows.
-
-``` {r, eval = FALSE}
-new_title <- EML::read_eml("<title>New Title 2</title>")
-eml@dataset@title <- c(new_title)
-```
-
-However, if there were multiple titles, the above would replace all the titles with the single title. This behavior may or may not be desirable so be careful.
-
-One final note, a benefit of this method to edit EML objects is that advanced text features can be easily added using [this workflow](https://nceas.github.io/datateam-training/reference/format-text-in-eml.html).
 
 ### Edit EML with objects
 
-A final way to edit an EML element would be to build a new object to replace the old object. To begin, you must determine the class of the object you want to edit (generally this is just the schema name of the object). The function `class()` is helpful here. For example, if you want to edit `eml@dataset@title[[1]]` use the following command to find the class:
+A final way to edit an EML element would be to build a new object to replace the old object. To begin, you might create an object using an `eml` helper function. Let's take keywords as an example. Sometimes keyword lists in a metadata record will come from different thesauruses, which you can then add in series (similar to the way we added multiple titles) to the element `keywordSet`.
 
-``` {r, eval = FALSE}
-class(eml@dataset@title[[1]])
+We start by creating our first set of keywords and saving it to an object.
+
+```{r, eval = FALSE}
+kw_list_1 <- eml$keywordSet(keywordThesaurus = "LTER controlled vocabulary",
+                            keyword = list("bacteria", "carnivorous plants", "genetics", "thresholds"))
 ```
 
-The result shows that this object has a class `title`. Therefore you must replace it with an object of class `title`. To do so, use `as()`. To use `as()`, input the desired string followed by the desired `class`.
+Which returns:
 
-``` {r, eval = FALSE}
-new_title <- as("New Title 3", "title")
+```
+$keyword
+$keyword[[1]]
+[1] "bacteria"
 
-eml@dataset@title[[1]] <- new_title
-#or
-eml@dataset@title <- c(new_title)
+$keyword[[2]]
+[1] "carnivorous plants"
+
+$keyword[[3]]
+[1] "genetics"
+
+$keyword[[4]]
+[1] "thresholds"
+
+
+$keywordThesaurus
+[1] "LTER controlled vocabulary"
 ```
 
-Note that if you want to create an object with nested objects, you may have to use the command `new()` which is similar to `as()` but with the order of specifying values and class switched. See help on [editing datatables](#edit-datatables) for an example of when to use `new()`.
+We create the second keyword list similarly:
+
+```{r, eval = FALSE}
+kw_list_2 <- eml$keywordSet(keywordThesaurus = "LTER core area", 
+                            keyword =  list("populations", "inorganic nutrients", "disturbance"))
+```
+
+Finally, we can insert our two keyword lists into our EML document just like we did with the title example above, but rather than passing character strings into `list()`, we will pass our two keyword set objects.
+
+```{r, eval = FALSE}
+doc$dataset$keywordSet <- list(kw_list_1, kw_list_2)
+```
+
+Note that you **must** use the function `list` here and not the `c()` function. The reasons for this are complex, and due to some technical subtlety in R - but the gist of the issue is that the `c()` function can behave in unexpected ways with nested lists, and frequently will collapse the nesting into a single level, resulting in invalid EML.
+
+

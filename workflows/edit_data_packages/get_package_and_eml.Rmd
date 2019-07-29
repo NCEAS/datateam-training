@@ -2,7 +2,7 @@
 
 Before we look more in depth at EML, we first need to load your data package into R. After [setting your node](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html), use the following commands to load the package:
 
-``` {r, eval = FALSE}
+```{r, eval = FALSE}
 rm_pid <- "your_resource_map_pid"
 
 pkg <- get_package(adc_test,
@@ -12,9 +12,11 @@ pkg <- get_package(adc_test,
 
 After loading the package, you can also load the EML file into R using the following command:
 
-``` {r, eval = FALSE}
-eml <- read_eml(getObject(adc_test, pkg$metadata))
+```{r, eval = FALSE}
+doc <- read_eml(getObject(adc_test, pkg$metadata))
 ```
+
+Note that we named the object `doc`. This is a good generic name to use for EML documents. The generic name `eml` should not be used - as the EML package ships with an `eml` function, which can cause namespace issues in your environment if you have an object also called `eml`.
 
 ```{block, type = 'note'}
 **Tip to always have the most recent resource map.**
@@ -27,7 +29,7 @@ rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</sp
 print(rm_pid)</code></pre>
 ```
 
-``` {r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 # Code used to generate HTML in note above
 rm_pid_original <- "your_original_resource_map_pid"
 all_rm_versions <- get_all_versions(adc_test, rm_pid_original)

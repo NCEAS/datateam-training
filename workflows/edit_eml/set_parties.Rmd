@@ -3,7 +3,7 @@
 To add people, with their addresses, you need to add addresses as their own object class, which you then add to the `contact`, `creator`, or `associatedParty` classes.
 
 ```{r, eval = FALSE}
-NCEASadd <- new("address", 
+NCEASadd <- eml$address( 
                 deliveryPoint = "735 State St #300", 
                 city = "Santa Barbara", 
                 administrativeArea = 'CA', 
@@ -20,7 +20,7 @@ JC_creator <- arcticdatautils::eml_creator(given_names = "Jeanette",
                                            phone = "123-456-7890", 
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
-eml@dataset@creator <- c(JC_creator)
+doc$dataset$creator <- JC_creator
 ```
 
 Similarly, we can set the `contact`s. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
@@ -33,6 +33,7 @@ JC_contact <- arcticdatautils::eml_contact(given_names = "Jeanette",
                                            phone = "123-456-7890",  
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
+
 JG_contact <- arcticdatautils::eml_contact(given_names = "Jesse", 
                                            sur_name = "Goldstein", 
                                            organization = "NCEAS", 
@@ -40,7 +41,8 @@ JG_contact <- arcticdatautils::eml_contact(given_names = "Jesse",
                                            phone = "123-456-7890",  
                                            userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                            address = NCEASadd)
-eml@dataset@contact <- c(JC_contact, JG_contact)
+
+doc$dataset$contact <- list(JC_contact, JG_contact)
 ```
 
 Finally, the `associatedParty`s are set. Note that `associatedParty`s MUST have a role defined, unlike `creator` or `contact`.
@@ -54,5 +56,5 @@ JG_ap <- arcticdatautils::eml_associated_party(given_names = "Jesse",
                                                address = NCEASadd, 
                                                userId = "https://orcid.org/WWWW-XXXX-YYYY-ZZZZ",
                                                role = "metaataProvider")
-eml@dataset@associatedParty <- c(JG_ap)
+doc$dataset$associatedParty <- JG_ap
 ```

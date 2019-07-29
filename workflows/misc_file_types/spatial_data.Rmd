@@ -3,11 +3,13 @@
 Shapefiles and their associated files can be kept in a single grouping using *.zip (or another similar format). To extract metadata, simply run:
 
 ```{r eval = FALSE}
-library(rgdal)
-folder_path <- "/folder/path/dir1/dir2/"
-folder_name <- "folder_name" #name of folder containing shapefiles and associated data
-spatial_obj <- readOGR(dsn = paste0(folder_path, folder_name),
-                       layer = folder_name)
-spatial_df <- spatial_obj@data #save data as a dataframe
-spatial_obj@proj4string #get coordinate unit information
+library(sf)
+
+pid <- "pid of a zipped shapefile on the ADC"
+
+spatial_obj <- arcticdatautils::read_zip_shapefile(adc, pid)
+
+st_geometry(spatial_obj)
 ```
+
+This will return the shapefile as an `sf` style `data.frame` so that you can examine the attributes, and print the projection and geometry information. Note that the column `geometry` should not be considered an attribute for documentation purposes. This information is represented in the `spatialVector$geometry` element.
