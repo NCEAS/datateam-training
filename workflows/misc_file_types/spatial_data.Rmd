@@ -7,7 +7,7 @@ library(sf)
 
 pid <- "pid of a zipped shapefile on the ADC"
 
-spatial_obj <- read_zip_shapefile(adc, pid)
+spatial_obj <- arcticdatautils::read_zip_shapefile(adc, pid)
 
 st_geometry(spatial_obj)
 ```

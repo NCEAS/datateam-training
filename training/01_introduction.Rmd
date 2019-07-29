@@ -40,6 +40,12 @@ On the servers, paths to files in your folder always start with `/home/yourusern
 
 When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
 
+## A note on R
+
+This training assumes basic knowledge of R and RStudio. If you want a quick R refresher, walk through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html).
+
+Throughout this training we will occasionally use the syntax `package_name::function_name()`. This training covers several different R packages, so although you are not required to use the `package_name::` when calling a function, this syntax is used at times to make it clear which package a function comes from.
+
 ## Exercise 1 {.exercise}
 
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
