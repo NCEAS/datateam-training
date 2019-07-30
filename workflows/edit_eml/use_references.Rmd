@@ -37,14 +37,16 @@ It's very common to see the contact and creator referring to the same person wit
 So you see those two times Bryce Mecum is referenced there? If you mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there's some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.
 
 ``` {r eval = F}
-eml@dataset@creator[[1]]@id  <- new("xml_attribute", "reference_id")
-eml@dataset@contact[[1]] <- new("contact", reference = "reference_id")
-print(eml)
+doc$dataset$creator[[1]]$id  <- "reference_id"
+doc$dataset$contact <- list(references = "reference_id") 
+print(doc)
 ```
 
 ```
-<eml packageId="my_test_doc" system="my_system" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="id" system="system" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1/ eml.xsd">
   <dataset>
+    <title>A Minimal Valid EML Dataset</title>
     <creator id="reference_id">
       <individualName>
         <givenName>Bryce</givenName>
@@ -55,7 +57,7 @@ print(eml)
       <references>reference_id</references>
     </contact>
   </dataset>
-</eml>
+</eml:eml>
 ```
 
 
@@ -66,8 +68,8 @@ The reference `id` needs to be unique within the EML record but doesn't need to 
 The above result can also be achieved by using `arcticdatautils::eml_set_reference()`. 
 
 ```{r, eval = FALSE}
-eml@dataset@contact[[1]] <- eml_set_reference(element_to_reference = eml@dataset@creator[[1]],
-                                              element_to_replace = eml@dataset@contact[[1]])
+doc$dataset$contact[[1]] <- eml_set_reference(element_to_reference = doc$dataset$creator[[1]],
+                                              element_to_replace = doc$dataset$contact[[1]])
 ```
 
 ### Example with attributes
@@ -81,19 +83,18 @@ To use references with attributes:
 For example, if all the data tables in our data package have the same attributes, we can set the attribute list for the first one, and use references for the rest:
 
 ``` {r eval = FALSE}
-eml@dataset@dataTable[[1]]@attributeList <- attribute_list
-eml@dataset@dataTable[[1]]@attributeList@id <- new("xml_attribute", "shared_attributes")
+doc$dataset$dataTable[[1]]$attributeList <- attribute_list
+doc$dataset$dataTable[[1]]$attributeList$id <- "shared_attributes"
 
-for (i in 2:length(eml@dataset@dataTable)) {
-  ref <- new("references", "shared_attributes")
-  eml@dataset@dataTable[[i]]@attributeList@references <- ref
+for (i in 2:length(doc$dataset$dataTable)) {
+  doc$dataset$dataTable[[i]]$attributeList$references <- "shared_attributes"
 }
 ```
 
 The above result can also be achieved by using `arcticdatautils::eml_set_shared_attributes()`. This function will replicate an `attributeList` to all of the `dataTable` or `otherEntity` elements in an EML document. For more specific information consult the documentation. 
 
 ```{r, eval = FALSE}
-eml <- eml_set_shared_attributes(eml, attributeList = attribute_list, type = 'dataTable')
+doc <- eml_set_shared_attributes(doc, attributeList = attribute_list, type = 'dataTable')
 ```
 
 ### Add creator IDs
@@ -104,14 +105,14 @@ The `datamgmt::add_creator_id()` function is a shortcut for one of our most comm
 2. Update the contact information for that individual's other roles
 
 ```{r eval = F}
-eml <- eml %>%
+doc <- doc %>%
     datamgmt::add_creator_id(surname = "mecum",
                    orcid = "https://orcid.org/0000-1234-5678-4321",
                    id = "bryce")
 
 # Use references to add updated contact info to Bryce's other roles
-eml@dataset@contact[[1]] <- new('contact', reference = "bryce")
-eml@dataset@metadataProvider[[1]] <- new('metadataProvider', reference = "bryce")
+doc$dataset$contact[[1]] <- list(references = "bryce")
+doc$dataset$metadataProvider[[1]] <- list(references = "bryce")
 ```
 
 ```

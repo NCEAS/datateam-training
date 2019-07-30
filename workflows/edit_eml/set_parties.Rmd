@@ -23,7 +23,7 @@ JC_creator <- arcticdatautils::eml_creator(given_names = "Jeanette",
 doc$dataset$creator <- JC_creator
 ```
 
-Similarly, we can set the `contact`s. In this case, there are two, so we set `eml@dataset@contact` as a `ListOfcontact`, which contains both of them.
+Similarly, we can set the `contact`s. In this case, there are two, so we set `doc$dataset$contact` as a list containing both of them.
 
 ```{r, eval = FALSE}
 JC_contact <- arcticdatautils::eml_contact(given_names = "Jeanette", 
