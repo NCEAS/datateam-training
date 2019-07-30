@@ -107,7 +107,7 @@ doc_parent <- read_eml(getObject(adc_test, child_pkg_1$metadata))
 
 ```{r, strip.white = TRUE}
 ## View the title 
-doc_parent@dataset@title
+doc_parent$dataset$title
 ```
 
 The title of this child contains "2012-2013". This is too specific for the parent, as the temporal range of both childs is 2012-2014. The parent should encompass this larger time range. 
