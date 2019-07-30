@@ -38,5 +38,5 @@ You can also use the `which_in_eml()` function from the `datamgmt` package to ge
 ```{r "which_in_eml", eval = FALSE}
 # Question: Which creators have a surName "Mecum"?
 n <- which_in_eml(doc$dataset$creator, "surName", "Mecum")
-# Answer: eml@dataset@creator[n]
+# Answer: eml$dataset$creator[[n]]
 ```
