@@ -21,7 +21,6 @@ Imports:
   xfun
 Remotes:
   rstudio/bookdown,
-  ropensci/EML@1b3d0a2bd63e01a3af99c77aa6a0784c3da3ea06,
   NCEAS/arcticdatautils@*release,
   NCEAS/datamgmt
 License: Apache License (== 2.0)
