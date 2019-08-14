@@ -1,0 +1,47 @@
+## Distributed Biological Observatory (DBO) submissions
+
+DBO packages are organized under a project page (viewable [here](https://arcticdata.io/catalog/projects/DBO)). In order to make sure that DBO datasets appear in the special DBO data search correctly, there are a few additional metadata requirements.
+
+* give `read` and `write` access to the entire data package (using `set_access`) to the group: `"CN=DBO,DC=dataone,DC=org"`
+    * eg: `set_access(mn, pkg, "CN=DBO,DC=dataone,DC=org", permissions = c("read", "write", "changePermission"))
+    
+* ensure that the name of the ship the data was collected from appears in the metadata record. This will likely be one of the following ship names. If the ship name is not in that list, let Jeanette or Dominic know
+    * Annika Marie
+    * Fairweather
+    * Healy
+    * Kromov
+    * Mirai
+    * Oscar Dyson
+    * Oshoro-Maru
+    * Sir Wilfrid Laurier
+    * Westward Wind
+    * Xue Long
+    
+* the geographic coverage should be one coverage per DBO transect sampled. The geographicDescription and bounding coordinates should be from the controlled vocabulary given in the code snippet below, which will create a data.frame with these values in your R environment
+
+```{r, eval = F}
+geo_locs <- dplyr::tribble(~siteNew, ~westBoundingCoordinate, ~eastBoundingCoordinate, ~northBoundingCoordinate,~ southBoundingCoordinate,
+"DBO 1 - South of St. Lawrence Island, Bering Sea",	-176.147,	-172.187,	63.769,	61.847,
+"DBO 2 - Chirikov Basin, Northern Bering Sea",	-170.492,	-167.86,	65.111,	64.482,
+"DBO 3 - Southern Chukchi Sea",	-171.419,	-166.481,	68.609,	66.752,
+"DBO 4 - Northeast Chukchi Sea",	-164.553,	-160.507,	71.867,	70.682,
+"DBO 5 - Barrow Canyon, Chukchi Sea",	-158.848,	-155.931,	71.808,	71.111,
+"DBO 6 - Beaufort Sea - 152 W",	-153.865,	-150.976,	72.119,	70.89)
+```
+
+* one of the following key phrases referencing the data type should exist in the dataset. If the dataset doesn't seem to fit in one of these categories, ask Jeanette or Dominic
+    * ADCP
+    * benthic macroinfaunal
+    * chlorophyll
+    * CTD
+    * CPUE (referencing fish catch per unit effort)
+    * marine mammal
+    * nutrient
+    * sediment
+    * zooplankton
+    
+    
+   
+After you have updated your dataset, navigate to [https://arcticdata.io/catalog/projects/DBO/data](https://arcticdata.io/catalog/projects/DBO/data) and make sure that the different filters work as expected. Your dataset should be discoverable in some way through all of the filters.
+              
+        
