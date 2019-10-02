@@ -44,15 +44,19 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 This training assumes basic knowledge of R and RStudio. If you want a quick R refresher, walk through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html).
 
-Throughout this training we will occasionally use the syntax `package_name::function_name()`. This training covers several different R packages, so although you are not required to use the `package_name::` when calling a function, this syntax is used at times to make it clear which package a function comes from.
+Throughout this training we will occasionally use the namespace syntax `package_name::function_name()` when writing a function. This syntax denotes which package a function came from.  For example `dataone::getSystemMetadata` selects the `getSystemMetadata` function from the `dataone` R package. More detailed information on namespaces can be found [here](http://r-pkgs.had.co.nz/namespace.html).
 
 ## Exercise 1 {.exercise}
 
+### Part 1
+If you are comfortable programming in R please complete this section of the exercise.  If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1) and then proceed to Part 2.
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.
     + While we prefer you use R (a scripted environment) to perform these tasks in your job, for the purposes of this training feel free to do it however you can if you are not confident data wrangling in R.
     + If you need an R refresher, go over the <a href = 'http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html' target='_blank'>data carpentry guide.</a>
     + You may also find the data carpentry <a href = 'http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html' target='_blank'>lesson on `dplyr`</a> and OHI's <a href = 'http://ohi-science.org/data-science-training/dplyr.html' target='_blank'>data wrangling chapters</a> helpful.
+    
+### Part 2
 * Go to "<a href = 'https://test.arcticdata.io/#data' target='_blank'>test.arcticdata.io</a>" and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
     + list yourself as the first 'Creator' so your test submission can easily be found,
     + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,
