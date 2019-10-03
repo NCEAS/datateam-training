@@ -43,3 +43,6 @@ Please read our software submission guidelines for more detailed information: ht
 
 *Issue: Can't log in to the Arctic Data Center*   
 > A: Please accept our apologies that you are experiencing difficulty loggin in.  Please try a different internet browser (Chrome, firefox, internet explorer etc.).  If the problem persists please try clearing your cache and then re-logging in with orcid Id, Finally,privacy blockers (like EFF's privacy badger https://www.eff.org/privacybadger) block the cookies needed for the login to work. To enable the cookies you need to disable your privacy tracker for arcticdata.io.
+
+*Issue: Can I submit a non-NSF funded dataset?*
+> The Arctic Data Center is open to all arctic-related data.  For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment.  Please let us know the size of your dataset in terms of total number and total size of all files.  We look forward to receiving your submission!
