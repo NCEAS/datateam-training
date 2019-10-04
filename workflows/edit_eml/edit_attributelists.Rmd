@@ -1,6 +1,6 @@
 ## Edit attributeLists
 
-Attributes are stored in an [attributeList](https://github.com/NCEAS/eml/blob/master/eml-attribute.png). When editing attributes in R, you need to create one to three objects:
+Attributes are stored in an [attributeList](https://eml.ecoinformatics.org/images/eml-attribute.png). When editing attributes in R, you need to create one to three objects:
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)

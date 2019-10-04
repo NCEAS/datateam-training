@@ -14,6 +14,6 @@ You will also see icons linking the EML slots together, which indicate the order
 
 ![](../images/eml-party.png)
 
-The eml schema sections you may find particularly helpful include [eml-party](https://github.com/NCEAS/eml/blob/master/eml-party.png), [eml-attribute](https://github.com/NCEAS/eml/blob/master/eml-attribute.png), and [eml-physical](https://github.com/NCEAS/eml/blob/master/eml-physical.png). (Click "Download" to zoom in.)
+The eml schema sections you may find particularly helpful include [eml-party](https://eml.ecoinformatics.org/images/eml-party.png), [eml-attribute](https://eml.ecoinformatics.org/images/eml-attribute.png), and [eml-physical](https://eml.ecoinformatics.org/images/eml-physical.png). 
 
 For a more detailed description of the EML schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).

@@ -1,6 +1,6 @@
 ## Access specific elements
 
-The `eml_get()` function is a powerful tool for exploring EML (more on that [here](https://cran.rstudio.com/web/packages/EML/vignettes/parsing-EML.html)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
+The `eml_get()` function is a powerful tool for exploring EML (more on that [here](https://ropensci.github.io/EML/)). It takes any chunk of EML and returns _all instances_ of the element you specify. _Note:_ you'll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:
 
 ```{r "creator", eval = FALSE}
 doc <- read_eml(system.file("example-eml.xml", package = "arcticdatautils"))
