@@ -1,0 +1,19 @@
+## Set the Project section 
+
+The project section in an EML document is automatically filled out by the metacatUI editor. It sets the project title and project personell to the submission's title and creators.  Most of the time at least some of this information is incorrect and we need to update it.  
+
+Start by searching for the funding information using [NSF's award search](https://www.nsf.gov/awardsearch/).  This will give us the project title, abstract, and personell - along with some additional metadata.  
+
+Using this information we will set the title, personell, and funding number. For NSF funded projects prepend the funding number with "NSF". If there are multiple awards associated with one dataset then additional `funding`, `title`, and `personell` elements should be added to reflect the additional awards.    
+
+```
+doc$dataset$project$funding$para[[1]] <- 'NSF 1503846'
+
+doc$dataset$project$title[[1]] <- 'Collaborative Research: Reconciling conflicting Arctic temperature and fire reconstructions using multi-proxy records from lake sediments north of the Brooks Range, Alaska
+
+doc$dataset$project$personnel[[1]] <- eml$personnel(individualName = eml$individualName(givenName = 'Yongsong', surName = 'Huang'),
+                                                    role = 'Principal Investigator')
+doc$dataset$project$personnel[[2]] <- eml$personnel(individualName = eml$individualName(givenName = 'James', surName = 'Russell'),
+                                                    role = 'co Principal Investigator')
+```
+
