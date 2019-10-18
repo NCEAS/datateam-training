@@ -37,9 +37,9 @@ This chapter is a practical tutorial for using R to read, edit, write, and valid
 To make sure that your edited EML is valid against the EML schema, run `eml_validate()` on your EML. Fix any errors that you see, and then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
 
 ```{r, eval = F}
-eml_validate(eml)
+eml_validate(doc)
 eml_path <- "path/to/save/eml.xml"
-write_eml(eml, eml_path)
+write_eml(doc, eml_path)
 ```
 
 To update a package with the newly edited EML, use `arcticdatautils::publish_update()`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
