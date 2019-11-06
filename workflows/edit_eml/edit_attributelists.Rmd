@@ -70,23 +70,31 @@ attributes <- data.frame(
     stringsAsFactors = FALSE)
 ```
 
-However, typing this out in R can be a major pain. Luckily, there is a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you), to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
+However, typing this out in R can be a major pain. Luckily, there is a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
 
 ```{r, eval = FALSE}
 # From data (recommended)
-datamgmt::create_attributes_table(data = data)
+EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-datamgmt::create_attributes_table(attributes_table = attributes_table)
+EML::shiny_attributes(attributes_table = attributes_table)
 
 # From scratch
-datamgmt::create_attributes_table()
+EML::shiny_attributes()
 ```
 
 Once you are done editing a table in the app, click the `Print` button to print text of a code that will build a data.frame in R. Copy that code and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`).
 
-For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list.
 
+For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through `datamgmt::edit_attribute()` and fill out the parameters you wish to edit/update. An example is provided below where we are changing `attributeName`, `domain`, and `measurementScale` in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.
+
+```{r, eval = FALSE}
+
+new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeList$attribute[[1]], attributeName = 'date_and_time', domain = 'dateTimeDomain', measurementScale = 'dateTime')
+doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
+
+```
+ 
 ### Edit custom units
 
 EML has a set list of units that can be added to an EML file. These can be seen by using the following code:
@@ -105,13 +113,29 @@ If you have units that are not in the standard EML unit list, you will need to b
 * **name**: Unit abbreviation (e.g. for kilometer `name` = "km")
 * **description**: Text defining the unit (e.g. for kilometer `description` = "1000 meters")
 
-Additionally, `datamgmt::create_attributes_table()` will tell you if each of your units are standard or not. If your unit is not standard, you should use the following code to help auto-generate a custom unit:
+To manually generate the custom units list, create a dataframe with the fields mentioned above. An example is provided below that can be used as a template:
 
-``` {r, eval = FALSE}
-datamgmt::return_eml_units("your_unit")
+```{r, eval = FALSE}
+custom_units <- data.frame(
+    
+  id = c('siemensPerMeter', 'decibar'),
+  unitType = c('resistivity', 'pressure'),
+  parentSI = c('ohmMeter', 'pascal'),
+  multiplierToSI = c('1','10000'),
+  abbreviation = c('S/m','decibar'),
+  description = c('siemens per meter', 'decibar'),
+  
+  stringsAsFactors = FALSE)
 ```
 
-Note that `datamgmt::create_attributes_table()` calls `datamgmt::return_eml_units()` for you! `datamgmt::return_eml_units()` will auto-generate many of these fields for you (**but don't just assume the auto-generation will be perfect; always ensure the auto-generation correctly handles your unit**.)
+Using `EML::get_unit_id` for custom units will also generate valid EML unit ids. 
+
+Custom units are then added to `additionalMetadata` using the following command:
+
+```{r, eval = FALSE}
+unitlist <- set_unitList(custom_units)
+doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+```
 
 ### Edit factors
 
@@ -121,9 +145,7 @@ For attributes that are `enumeratedDomains`, a table is needed with three column
 * **code** should contain all unique values of the given `attributeName` that exist within the actual data.
 * **definition** should contain a plain text definition that describes each code.
 
-There is a tab in the `datamgmt::create_attributes_table()` app that will help you build factors.
-
-If you need to build factors by hand, you can use named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - "Location" and "Region".
+To build factors by hand, you use the named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - "Location" and "Region".
 
 ```{r, eval = FALSE}
 Location <- c(CASC = 'Cascade Lake', CHIK = 'Chikumunik Lake', HEAR = 'Heart Lake', NISH = 'Nishlik Lake' )
@@ -146,9 +168,4 @@ attributeList <- EML::set_attributes(attributes = attributes,
                                      factors = factors) 
 ```
 
-This `attributeList` must then be [added to a `dataTable`](#edit-datatables). Custom units are added to `additionalMetadata` using the following command:
-
-```{r, eval = FALSE}
-unitlist <- set_unitList(custom_units)
-doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
-```
+This `attributeList` must then be [added to a `dataTable`](#edit-datatables).
