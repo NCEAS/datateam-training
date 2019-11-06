@@ -130,6 +130,13 @@ custom_units <- data.frame(
 
 Using `EML::get_unit_id` for custom units will also generate valid EML unit ids. 
 
+Custom units are then added to `additionalMetadata` using the following command:
+
+```{r, eval = FALSE}
+unitlist <- set_unitList(custom_units)
+doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+```
+
 ### Edit factors
 
 For attributes that are `enumeratedDomains`, a table is needed with three columns: `attributeName`, `code`, and `definition`.
@@ -161,9 +168,4 @@ attributeList <- EML::set_attributes(attributes = attributes,
                                      factors = factors) 
 ```
 
-This `attributeList` must then be [added to a `dataTable`](#edit-datatables). Custom units are added to `additionalMetadata` using the following command:
-
-```{r, eval = FALSE}
-unitlist <- set_unitList(custom_units)
-doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
-```
+This `attributeList` must then be [added to a `dataTable`](#edit-datatables).

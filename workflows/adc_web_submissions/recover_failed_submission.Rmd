@@ -1,0 +1,19 @@
+## Recover failed submissions
+
+A submission may result in an error when the EML cannot be validated through `EML::eml_validate`, preventing it from being written to an indicated path. This usually occurs when the metacatUI detects a submission error and uploads the EML as a data object instead of text. When this happens, `arcticdatautils::recover_failed_submission` can be used to retrieve the original EML file. The function removes the error message to get a valid EML document. 
+
+For the example below, `pid` is the metadata `pid` containing the failed submission. The `path` parameter indicates where you want to write the recovered EML version to on your server's local working directory.
+
+```{r, eval = FALSE}
+
+path <- "path/to/save/eml.xml"
+
+pid <- "your_metadata_pid"
+
+arcticdatautils::recover_failed_submission(adc, pid, path)
+
+```
+
+The output of this function is a valid EML file written to your chosen path. After recovering the document, make sure to set the rights and access to the correct submitter.
+
+Note that `arcticdatautils::recover_failed_submission` may not always work. Its functionality depends on the error message since they can vary.
