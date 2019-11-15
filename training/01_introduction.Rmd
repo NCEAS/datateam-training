@@ -13,7 +13,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones et al.'s paper on <a href = 'data/simple-guidelines-datamgmt.pdf' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
+Read Matt Jones et al.'s paper on <a href = 'https://github.com/NCEAS/datateam-training/blob/master/training/data/simple-guidelines-datamgmt.pdf' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
