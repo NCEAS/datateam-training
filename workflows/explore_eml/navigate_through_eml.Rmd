@@ -5,12 +5,13 @@ The first task when editing an EML file is navigating the EML file. An EML file 
 ```{r echo=FALSE, message = FALSE, error = FALSE}
 library(dataone)
 library(EML)
-
-cn <- CNode('PROD')
-adc <- dataone::getMNode(cn, 'urn:node:ARCTIC')
 ```
 
 ```{r}
+# Need to be in this member node to explore file
+cn <- CNode('PROD')
+adc <- dataone::getMNode(cn, 'urn:node:ARCTIC')
+
 doc <- read_eml(getObject(adc, "doi:10.18739/A2FS1H"))
 ```
 
