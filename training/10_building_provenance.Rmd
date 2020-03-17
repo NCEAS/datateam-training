@@ -241,7 +241,7 @@ If successful you should be able to navigate to the landing page of your dataset
 
 If you messed up updating a data package using `datapack`, there unfortunately isn't a great way to undo your work, as the `describeWorkflow()` only adds prov relationships, it does not replace them. If you messed up, the best course of action is to update the resource map with a clean version that does not have prov using `update_resource_map()`, and then go through the steps outlined above again.
 
-Note: this has not been thoroughly tested, and more extreme actions may be necessary to fully nuke the prov relationships. Consult Dom, Jesse, or Peter if things do not work as expected.
+Note: this has not been thoroughly tested, and more extreme actions may be necessary to fully nuke the prov relationships. Consult Peter or Jeanette if things do not work as expected.
 
 ## References
 
