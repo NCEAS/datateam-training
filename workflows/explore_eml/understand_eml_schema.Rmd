@@ -4,15 +4,13 @@ Another great resource for navigating the EML structure is looking at the [schem
 
 For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements have bolded lines leading to them.
 
-<img src="../images/eml-party.png" alt="solid";"/>  
+![](../images/eml-party.png)
 
 A bold line indicates that the element is _required_ if the element above it (to the left in the schema) is used, otherwise the element is _optional_.
 
 Notice also that below the `givenName` element it says "0..infinity". This means that the element is unbounded &mdash; a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the `surName` element &mdash; a party can have only one surname.
 
 You will also see icons linking the EML slots together, which indicate the ordering of subsequent slots. These can indicate either a "sequence" or a "choice". In our example from `eml-party`, a "choice" icon indicates that either an `individualName`, `organizationName`, or `positionName` is required, but you do not need all three. However, the "sequence" icon tells us that if you use an `individualName`, you must include the `surName` as a child element. If you include the optional child elements `salutation` and `givenName`, they must be written in the order presented in the schema.
-
-![](../images/eml-party.png)
 
 The eml schema sections you may find particularly helpful include [eml-party](https://eml.ecoinformatics.org/images/eml-party.png), [eml-attribute](https://eml.ecoinformatics.org/images/eml-attribute.png), and [eml-physical](https://eml.ecoinformatics.org/images/eml-physical.png). 
 
