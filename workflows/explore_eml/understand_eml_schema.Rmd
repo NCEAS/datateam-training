@@ -4,7 +4,7 @@ Another great resource for navigating the EML structure is looking at the [schem
 
 For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements have bolded lines leading to them.
 
-<img src="../images/eml-party.png" alt="solid" style="width: 150px;"/>  <img src="../images/eml-givenname.png" alt="dashed" style="width: 150px;"/>
+<img src="../images/eml-party.png" alt="solid";"/>  
 
 A bold line indicates that the element is _required_ if the element above it (to the left in the schema) is used, otherwise the element is _optional_.
 
