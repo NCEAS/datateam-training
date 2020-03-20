@@ -1,6 +1,6 @@
 ## Understand the EML schema
 
-Another great resource for navigating the EML structure is looking at the [schema](https://eml.ecoinformatics.org/schema/) which defines the structure. The schema diagrams on this page are interactive. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). Further explanations of the symbology can be found [here](https://manual.altova.com/xmlspy/spyenterprise/index.html?xseditingviews_schv_cmview_objects.htm). The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the EML structure is looking at the [schema](https://eml.ecoinformatics.org/schema/) which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found [here](https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols). The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
 For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements have bolded lines leading to them.
 
