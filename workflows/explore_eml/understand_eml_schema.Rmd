@@ -1,12 +1,12 @@
 ## Understand the EML schema
 
-Another great resource for navigating the EML structure is looking at the [schema](https://github.com/NCEAS/eml) which defines the structure. The .png files on this page show the schema as a diagram. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). Further explanations of the symbology can be found [here](https://manual.altova.com/xmlspy/spyenterprise/index.html?xseditingviews_schv_cmview_objects.htm). The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the EML structure is looking at the [schema](https://eml.ecoinformatics.org/schema/) which defines the structure. The schema diagrams on this page are interactive. Additional information on the schema and how different elements (or "slots") are defined can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html)). Further explanations of the symbology can be found [here](https://manual.altova.com/xmlspy/spyenterprise/index.html?xseditingviews_schv_cmview_objects.htm). The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
-For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements are in solid boxes, whereas others are in dashed boxes.
+For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements have bolded lines leading to them.
 
-<img src="../images/eml-surname.png" alt="solid" style="width: 150px;"/>  <img src="../images/eml-givenname.png" alt="dashed" style="width: 150px;"/>
+<img src="../images/eml-party.png" alt="solid" style="width: 150px;"/>  <img src="../images/eml-givenname.png" alt="dashed" style="width: 150px;"/>
 
-A solid box indicates that the element is _required_ if the element above it (to the left in the schema) is used, whereas a dashed box indicates that the element is _optional_.
+A bold line indicates that the element is _required_ if the element above it (to the left in the schema) is used, otherwise the element is _optional_.
 
 Notice also that below the `givenName` element it says "0..infinity". This means that the element is unbounded &mdash; a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the `surName` element &mdash; a party can have only one surname.
 
