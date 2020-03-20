@@ -23,7 +23,7 @@ You may also want to explore the DataONE <a href='https://www.dataone.org/Educat
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jesse any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
 
 ## Working on a remote server
 
