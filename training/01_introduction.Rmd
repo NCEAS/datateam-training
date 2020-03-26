@@ -13,7 +13,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones et al.'s paper on <a href = 'data/simple-guidelines-datamgmt.pdf' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
+Read Matt Jones et al.'s paper on <a href = 'https://esajournals.onlinelibrary.wiley.com/doi/epdf/10.1890/0012-9623-90.2.205' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
@@ -23,7 +23,7 @@ You may also want to explore the DataONE <a href='https://www.dataone.org/Educat
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Dom or Jesse any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
 
 ## Working on a remote server
 

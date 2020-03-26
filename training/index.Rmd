@@ -18,7 +18,7 @@ favicon: "favicon.ico"
 
 ## First day to-dos {-}
 
-* Get a tour of the office from Ginger, Jesse, or Dom
+* Get a tour of the office from Ginger
 * Fill out required paperwork from Ana (room 309)
 * Have Gabriella take your picture (room 309)
 * Set up the remainder of your accounts
@@ -34,12 +34,12 @@ favicon: "favicon.ico"
     + Login to <a href="https://test.arcticdata.io" target="_blank">test.arcticdata.io</a> with your ORCID iD
 * <a href="http://nceas.slack.com" target="_blank">NCEAS Slack</a> - get an invite from <a href="http://slack.nceas.ucsb.edu" target="_blank">slack.nceas.ucsb.edu</a>
     + Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam, #social
-    + Introduce yourself in #datateam and then use that channel to ask Jesse or Dom to make you an administrator on test.arcticdata.io
-* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Dom or Jesse in Slack
+    + Introduce yourself in #datateam and then use that channel to ask Jeanette to make you an administrator on test.arcticdata.io
+* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Jeanette in Slack
 * GitHub - if you do not have a public GitHub account already, please register for one <a href="https://github.com/join?source=header-home" target="_blank">here</a>
-* <a href="https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118" target="_blank">Schedule</a> - fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
+* <a href="https://docs.google.com/spreadsheets/d/1Jf7IkSf8Vqu51xv1DDaTNCrTAZd0RMNH9ExZw0eyH4I/edit#gid=948090118" target="_blank">Schedule</a> - if you are an intern, fill out anticipated quarterly schedule. Note there are separate tabs for each week AND a general schedule tab for the quarter.
 * <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping
-via your UCSBNetID and password. Log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
+via your UCSBNetID and password. If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
 <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
 
 
