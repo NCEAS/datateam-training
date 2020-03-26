@@ -12,7 +12,7 @@ library(EML)
 cn_staging <- CNode('STAGING')
 adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 
-doc <- read_eml(getObject(adc_test, "doi:10.18739/A2FS1H"))
+doc <- read_eml(getObject(adc_test, "resource_map_urn:uuid:fb842b02-a052-4dbf-968e-365e8ae4fa8d"))
 ```
 
 ```{r, eval = FALSE}
