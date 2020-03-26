@@ -10,7 +10,7 @@ library(EML)
 ```{r}
 # Need to be in this member node to explore file
 cn_staging <- CNode('STAGING')
-adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
+adc <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 
 doc <- read_eml(getObject(adc, "doi:10.18739/A2FS1H"))
 ```
