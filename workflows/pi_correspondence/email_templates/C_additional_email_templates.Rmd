@@ -8,33 +8,34 @@ If the PI is checking about dates/timing:
 #### Pre-assigned DOI
 If the PI needs a DOI right away:
 
-> We can provide you with a pre-assigned DOI that you can reference in your paper. However, please note that it will not become active until after we have finished processing your submission and the package is published. 
+> We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could send us the DOI of your published paper. We are working to build our catalog of dataset citations in the Arctic Data Center.
 
 #### Best practices
 
 >We noticed that the data files submitted are in _____ format. We recommend conversion of these files into a plain text/csv (OR ANOTHER APPROPRIATE OPEN-SOURCE) format in order to facilitate an accurate transfer of information to future researchers and ensure preservation of the data in perpetuity. Below are some linked articles about data science best practices that the Arctic Data Center adheres to:  
-DataONE - https://www.dataone.org/best-practices  
-"Some Simple Guidelines for Effective Data Management" -  http://onlinelibrary.wiley.com/doi/10.1890/0012-9623-90.2.205/full  
 "Good Enough Practices in Scientific Computing" - http://arxiv.org/pdf/1609.00037v1.pdf  
+
+Zip files
+
+>Except for very specific file types, we do not recommend that data are archived in zip format. Data that are zipped together can present a barrier to reuse since it is difficult to accurately document each file within the zip file in a machine readable way.
 
 #### Adding metadata via R
 
 >KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R!
 
->[Here](https://nceas.github.io/sasap-training/materials/reproducible-analysis-in-r/data-documentation-and-publishing.html#publishing-data-from-r) are some training materials we have that use both the `dataone` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
+>[Here](http://training.arcticdata.io/materials/arctic-data-center-training/programming-metadata-and-data-publishing.html) are some training materials we have that use both the `EML` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
 
 >If you prefer, there are Java, Python, MATLAB, and Bash/cURL clients as well.
 
 
-####  Nesting
+####  Portal Pages
 
->Nesting data packages under a common "parent" is beneficial so that all data packages funded by the same award can be found in one place. This way additional data packages can be added to the group without altering existing ones. Once we process all the "child" data packages you upload, we can group them under the same "parent". The parent will not contain any data files itself, but will be populated with metadata only. Please view an example of a parent data package [here](https://arcticdata.io/catalog/#view/doi:10.18739/A2G95H). Would you like your submission(s) grouped with the other data packages funded by the same award? If so, we are happy to do all this grouping for you.
-
+>It looks like you have several related submissions. If you are interested I can group these datasets under a new "portal" feature we are rolling out. Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, I can get one started for you that you can then edit in our portal web editor.
 
 #### Finding multiple data packages
 
 >If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
-	e.g.: https://arcticdata.io/catalog/#profile/http://orcid.org/0000-0002-2604-4533
+	e.g.: https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533
 	
 	
 #### NSF ARC data submission policy
