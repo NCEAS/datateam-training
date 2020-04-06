@@ -63,7 +63,7 @@ Submissions should:
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
 
-> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you nor any other resources. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
+> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you or any other resources. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
 
 > Comprehensive methods information ought to be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
 

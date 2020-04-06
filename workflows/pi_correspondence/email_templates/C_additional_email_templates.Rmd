@@ -8,7 +8,7 @@ If the PI is checking about dates/timing:
 #### Pre-assigned DOI
 If the PI needs a DOI right away:
 
-> We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could send us the citation to your paper. We are working to build our catalog of dataset citations in the Arctic Data Center.
+> We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could send us the DOI of your published paper. We are working to build our catalog of dataset citations in the Arctic Data Center.
 
 #### Best practices
 
