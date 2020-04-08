@@ -45,7 +45,9 @@ If you have been working on a script that you want to put in the arctic-data Git
 * **Workspaces/.RData**: If you are in the habit of saving your R workspace, you shouldn't save it in this directory.
 * **Plots/Graphics**: For the same reasons as data files.
 
+```{block, type = "note"}
 Note: Do not EVER make a commit that you don't understand. If something unexpected (like a file you have never worked on) shows up in your Git tab, ask for help before committing.
+```
 
 After you save your script in the appropriate place within the arctic-data folder, it will show up in your Git tab looking like this:
 ![](images/unstaged.jpeg)

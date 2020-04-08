@@ -88,6 +88,7 @@ Finally, we can insert our two keyword lists into our EML document just like we 
 doc$dataset$keywordSet <- list(kw_list_1, kw_list_2)
 ```
 
+```{block, type = 'note'}
 Note that you **must** use the function `list` here and not the `c()` function. The reasons for this are complex, and due to some technical subtlety in R - but the gist of the issue is that the `c()` function can behave in unexpected ways with nested lists, and frequently will collapse the nesting into a single level, resulting in invalid EML.
-
+```
 
