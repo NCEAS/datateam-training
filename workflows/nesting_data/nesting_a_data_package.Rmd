@@ -98,7 +98,7 @@ These two packages correspond to data from the same study, varying only by year;
 Now, let's create a parent metadata file. Read in one of the childs' metadata files (EML). We can download object from a node in binary format using `dataone::getObject()`.  Once it's downloaded we just need to convert to it to the proper format: in this case to EML format using `EML::read_eml()`. 
   
 ```{r, include = FALSE}
-doc_parent <- read_eml("data/E1_2013metadata.xml")
+doc_parent <- read_eml("../../training/data/E1_2013metadata.xml")
 ```
 
 ```{r, eval = FALSE, strip.white = TRUE}
