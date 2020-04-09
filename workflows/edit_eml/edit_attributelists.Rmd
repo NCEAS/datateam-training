@@ -80,7 +80,7 @@ EML::shiny_attributes(data = data)
 EML::shiny_attributes(attributes_table = attributes_table)
 
 # From scratch
-EML::shiny_attributes()
+atts <- EML::shiny_attributes()
 ```
 
 Once you are done editing a table in the app, quit the app and the tables will be assigned to the `atts` variable as a list of data frames (one for attributes, factors, and units). Alternatively, each table can be to exported to a csv file by clicking the `Download` button.
