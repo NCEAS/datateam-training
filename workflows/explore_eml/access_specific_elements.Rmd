@@ -33,10 +33,26 @@ eml_get(doc, "url")
 '': ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456
 ```
 
-You can also use the `which_in_eml()` function from the `datamgmt` package to get indices within an EML list. Here is an example:
+`eml_get_simple()` is a simplified alternative to `eml_get()`. Produces a list of the desired EML element.
+
+```{r "eml_get_simple", eval = FALSE}
+eml_get_simple(doc$dataset$otherEntity, "entityName")
+```
+
+To find an eml element you can use either a combination of `which_in_eml`from the `datamgmt` package or `eml_get_simple` and `which` to find the index in an EML list. Use which ever workflow you see 
+fit.
+
+Example using `which_in_eml`:
 
 ```{r "which_in_eml", eval = FALSE}
 # Question: Which creators have a surName "Mecum"?
 n <- which_in_eml(doc$dataset$creator, "surName", "Mecum")
 # Answer: doc$dataset$creator[[n]]
+```
+
+Example using `eml_get_simple` and `which`:
+
+```{r "getting index using eml_get_simple" eval = FALSE}
+ent_names <- eml_get_simple(doc$dataset$creator, "surName")
+i <- which(ent_names == "Mecum")
 ```
