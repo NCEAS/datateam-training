@@ -12,6 +12,7 @@ pkg <- get_package(adc_test,
 
 ```{block, type = "note"}
 **Keeping track of PIDs**
+
 In all subsequent sections, if they ask for the `pid` of the metadata, reasource map or data you can refer to the object from `get_package()`. 
 
 For example, if you assigned the value from `get_package()` as above as `pkg` then you can refer to the following by using the corresponding commands:
