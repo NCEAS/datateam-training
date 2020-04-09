@@ -28,6 +28,7 @@ This chapter will be longest of all 10 sections! This is a reminder to take freq
 
 * Make sure your package from [before](#exercise-2) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
+* We will continue using the objects created and updated in this exercise in 3b
 
 ```{r, child = '../workflows/edit_eml/edit_spatialvectors.Rmd'}
 ```
@@ -43,13 +44,25 @@ This chapter will be longest of all 10 sections! This is a reminder to take freq
 
 ## Validate EML and update package
 
-To make sure that your edited EML is valid against the EML schema, run `eml_validate()` on your EML. Fix any errors that you see, and then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
+To make sure that your edited EML is valid against the EML schema, run `eml_validate()` on your EML. Fix any errors that you see.
 
 ```{r, eval = F}
 eml_validate(doc)
+```
+
+You should see something like if everything passes:
+>[1] TRUE
+>attr(,"errors")
+>character(0)
+
+Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
+
+```{r, eval = F}
 eml_path <- "path/to/save/eml.xml"
 write_eml(doc, eml_path)
 ```
+
+
 
 To update a package with the newly edited EML, use `arcticdatautils::publish_update()`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
 
@@ -91,7 +104,7 @@ qa_package(mn, resource_map_pid)
 
 ## Exercise 3b {.exercise}
 
-* Make sure your package from [before](#exercise-3a) is loaded into R.
-* Write, validate, and update your package.
+* Make sure you have everything from [before](#exercise-3a) in R.
+* Validate, write and update your package using the respective functions.
 * Use the <a href = 'https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter.html' target='_blank'>checklist</a> to review your submission.
 * Make edits where necessary, and publish updates as needed.
