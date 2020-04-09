@@ -85,7 +85,7 @@ atts <- EML::shiny_attributes()
 
 Once you are done editing a table in the app, quit the app and the tables will be assigned to the `atts` variable as a list of data frames (one for attributes, factors, and units). Alternatively, each table can be to exported to a csv file by clicking the `Download` button.
 
-Read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`).
+If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`), or just use the variable that `shiny_attributes` returned.
 
 For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through `datamgmt::edit_attribute()` and fill out the parameters you wish to edit/update. An example is provided below where we are changing `attributeName`, `domain`, and `measurementScale` in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.
 
