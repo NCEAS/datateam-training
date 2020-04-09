@@ -64,8 +64,8 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 ### New data submission
 When notified by Arcticbot about a new data submission, here are the typical steps:
 
-1. Update the Requestor under the People section based on the email given in the submission (usually the user/ PI/ `submitter`)
-2. Take the ticket
+1. Update the Requestor under the People section based on the email given in the submission (usually the user/ PI/ `submitter`). You may have to google for the e-mail address if the PI did not include it in the metadata record.
+2. Take the ticket (Actions > Take)
 3. Review the submission based on the [checklist](https://nceas.github.io/datateam-training/reference/initial-review-checklist.html)
 4. Draft an email using the [template](https://nceas.github.io/datateam-training/reference/email-templates.html) and let others review it via Slack
 5. Send your reply via Actions
