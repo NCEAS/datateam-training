@@ -13,6 +13,6 @@ print(df)
 
 To tidy it up, you can use the `clean_names()` function from the `janitor` package:
     
-```{r}
+```{r eval = FALSE}
 janitor::clean_names(df)
 ```
