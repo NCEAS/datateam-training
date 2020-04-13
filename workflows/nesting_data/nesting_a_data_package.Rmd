@@ -1,4 +1,4 @@
-# Nesting a data package
+## Nesting a data package
 
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
