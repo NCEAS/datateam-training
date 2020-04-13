@@ -39,7 +39,7 @@ eml_get(doc, "url")
 eml_get_simple(doc$dataset$otherEntity, "entityName")
 ```
 
-To find an eml element you can use either a combination of `which_in_eml`from the `datamgmt` package or `eml_get_simple` and `which` to find the index in an EML list. Use which ever workflow you see 
+To find an eml element you can use either a combination of `which_in_eml`from the `arcticdatautils` package or `eml_get_simple` and `which` to find the index in an EML list. Use which ever workflow you see 
 fit.
 
 **An example question you may have:** *Which creators have a surName "Mecum"?*
