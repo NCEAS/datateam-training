@@ -134,8 +134,8 @@ Using `EML::get_unit_id` for custom units will also generate valid EML unit ids.
 Custom units are then added to `additionalMetadata` using the following command:
 
 ```{r, eval = FALSE}
-unitlist <- set_unitList(custom_units)
-doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+unitlist <- set_unitList(custom_units, as_metadata = TRUE)
+doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
 
 ### Edit factors
