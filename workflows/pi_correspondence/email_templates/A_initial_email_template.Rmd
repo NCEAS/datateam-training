@@ -1,7 +1,7 @@
 ### Initial email template
 
 > Hello _____,
-> Thank you for your recent submission to the NSF Arctic Data Center! We will review your data package and get back to you with any suggestions.
+> Thank you for your recent submission to the NSF Arctic Data Center!
 > 
 > From my preliminary examination of your submission I have noticed a few items that I would like to bring to your attention. We are here to help you publish your submission, but your continued assistance is needed to do so. See comments below:
 > 
@@ -35,9 +35,10 @@ At least one data file
 
 Open formats
 
-> We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format) in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.
+*Example using xlsx. Tailor this reponse to the format in question.*
 
-> We noticed you submitted your data as a .fig file. While the Arctic Data Center supports the upload of any data file format, sharing data can be greatly enhanced if you use ubiquitous, easy-to-read formats. We recommend conversion of your data to txt or csv (or other open) formats for better archival.
+> We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
+
 
 File contents and relationships among files are clear
 
@@ -45,19 +46,15 @@ File contents and relationships among files are clear
 
 Missing value codes
 
-> What do the NA's in your measurements represent? (instrument failure, site not found, etc.)
+> What do the missing values in your measurements represent? (instrument failure, site not found, etc.)
 
 > We noticed that the data files contain blank cells. What do these represent? 
 
 #### Funding
 
-* If there are multiple data packages with the same funding number, check about nesting
+All NSF funded datasets need a funding number. Non-NSF funded datasets might not have funding numbers, depending on the funding organization.
 
-> Thank you for your submission to the Arctic Data Center! Based on the NSF awards, your most recent submission and the [PACKAGE NAME] package appear to be related. Would you like your submission(s) grouped with the other data packages funded by the same award? If so, we are happy to do all this grouping for you.
-
-> Thank you for your submission to the Arctic Data Center! Based on the NSF awards, your most recent submission and the [PACKAGE NAME] parent package seem like disparate projects, is that correct?
-
-> Nesting data packages under a common “parent” is beneficial so that all packages funded by the same award can be found in one place. This way additional packages can be added to the group without altering existing ones. Once we process all the “child” data packages you upload, we can group them under the same “parent”. The parent does not need to contain any data files itself, but will be populated with metadata only.
+> We noticed that your dataset does not appear to contain a funding number. Is this dataset funded by NSF? If so, please provide the funding number. If it is funded by a different organization, please provide the organization and funding number (if it exists).
 
 #### Methods
 
@@ -66,7 +63,7 @@ Submissions should:
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
 
-> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you nor any other resources. This should hold true today, or even decades from now. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
+> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you or any other resources. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
 
 > Comprehensive methods information ought to be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
 
@@ -74,14 +71,14 @@ Submissions should:
 
 > I noticed that your data package has incomplete attribute/variable information. Please add attribute/variable information to each of your data files. You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
 
-> For data packages with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (attributes may also be known as variables and in tabular data are arranged in either columns or rows). Note, storage of data in a long versus wide format will allow for much more succinct metadata. Also, please note that tabular data stored within structured formats such as zip, NetCDF, or ESRI spatial files should also comply with these guidelines.
+> For data packages with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (variable). Also, please note that tabular data stored within structured formats such as NetCDF, or shapefiles files should also comply with these guidelines.
 
-> - A name (often the column or row header in the file). As with file names, only letters, numbers, hyphens (“-“), and underscores (“_”) should be used in attribute names. Always avoid using spaces and specialized ASCII characters when naming attributes.
+> - A name (often the column or row header in the file).
 > - A complete definition.
 > - Any missing value codes along with explanations for those codes.
 > - For all numeric data, unit information is needed.
 > - For all date-time data, a date-time format is needed (e.g. "DD-MM-YYYY").
-> - For text data, full descriptions for all patterns/codes are needed if the text is constrained to a list of patterns or codes (e.g. a phone number would be constrained to a certain pattern and abbreviations for site locations may be constrained to a list of codes).
+> - For text data, full descriptions for all patterns or code/definition pairs are needed if the text is constrained to a list of patterns or codes.
 
 > Could you describe ____? 
 > Please define “XYZ”, including the unit of measure. 

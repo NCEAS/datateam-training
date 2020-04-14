@@ -13,7 +13,7 @@ Read the content on the Arctic Data Center (ADC) webpage to learn more about dat
 
 ## Effective data management
 
-Read Matt Jones et al.'s paper on <a href = 'https://github.com/NCEAS/datateam-training/blob/master/training/data/simple-guidelines-datamgmt.pdf' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
+Read Matt Jones et al.'s paper on <a href = 'https://esajournals.onlinelibrary.wiley.com/doi/epdf/10.1890/0012-9623-90.2.205' target='_blank'>effective data management</a> to learn how we will be organizing datasets prior to archival.
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
@@ -23,7 +23,7 @@ You may also want to explore the DataONE <a href='https://www.dataone.org/Educat
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Dom or Jesse any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
 
 ## Working on a remote server
 
@@ -38,6 +38,8 @@ We access RStudio on our server through this <a href = 'https://datateam.nceas.u
 
 On the servers, paths to files in your folder always start with `/home/yourusername/...`.
 
+**Note** - if you are a more advanced user, you may use the method you prefer as long as it is evident where your file is from.
+
 When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
 
 ## A note on R
@@ -50,6 +52,7 @@ Throughout this training we will occasionally use the namespace syntax `package_
 
 ### Part 1
 If you are comfortable programming in R please complete this section of the exercise.  If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
+
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.
     + While we prefer you use R (a scripted environment) to perform these tasks in your job, for the purposes of this training feel free to do it however you can if you are not confident data wrangling in R.

@@ -31,10 +31,10 @@ Before responding to a new submission use this checklist to review the submissio
     - Start date BEFORE end date
     - Temporal coverage matches geographic description (check hemispheres)
     - Geographic description is from the local to state or country level, at the least
+    - Taxonomic coverage if appropriate
 * Project Information
   + At least one FUNDING number
   + Title, personnel, and abstract match information from the AWARD (not from the data package)
-  + If there are multiple submissions with the same funding number, check about nesting
 * Methods
   + This section is REQUIRED for ALL NSF-FUNDED data packages
   + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resources

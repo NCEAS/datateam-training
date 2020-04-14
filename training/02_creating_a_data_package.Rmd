@@ -75,6 +75,7 @@ adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 
 * Locate the data package you published in [Exercise 1](#exercise-1) by navigating to the "My Profile > My Data" section on <a href = 'https://test.arcticdata.io' target='_blank'>test.arcticdata.io</a>.
 * Download the metadata and data files and transfer them to the Datateam server.
+* Obtain a token and **please note** that for this exercise please make sure you grab the token from the <a href = 'https://test.arcticdata.io' target='_blank'> arcticdata test site</a>
 * Using the functions described in the section above, publish your metadata record and data file to the site. (When you do so, make sure you save the `PID`s to different variables in R...) i.e.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}

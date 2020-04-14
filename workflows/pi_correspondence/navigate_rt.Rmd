@@ -47,6 +47,12 @@ This is the queue interface from number 6 of the Front page
 4. Basics - edit the title, status, and ownership here  
 5. People - option to add more people to the watch list for a given ticket conversation. Note that user/ PI/ `submitter` email addresses should be listed as "Requestors". Requestors are only emailed on "Replys", not "Comments". Ensure your ticket has a Requestor before attempting to contact users/ PIs/ `submitter`s   
 6. Links - option to "Merge into" another ticket number if this is part of a larger conversation. Also option to add a reference to another ticket number  
+
+```{block, type = "warning"}
+Verify that this is indeed the two tickets you want to merge. It is non-reversible.
+```
+
+
 7. Actions  
  + Reply - message the `submitter`/ PI/ all watchers  
  + Comment - attach internal message (no `submitter`s, only Data Teamers)  
@@ -54,3 +60,12 @@ This is the queue interface from number 6 of the Front page
  + Stall - `submitter` has not responded in greater than 1 month  
  + Resolve - ticket completed  
 8. History - message history and option to reply (to `submitter` and beyond) or comment (internal message)
+
+### New data submission
+When notified by Arcticbot about a new data submission, here are the typical steps:
+
+1. Update the Requestor under the People section based on the email given in the submission (usually the user/ PI/ `submitter`). You may have to google for the e-mail address if the PI did not include it in the metadata record.
+2. Take the ticket (Actions > Take)
+3. Review the submission based on the [checklist](https://nceas.github.io/datateam-training/reference/initial-review-checklist.html)
+4. Draft an email using the [template](https://nceas.github.io/datateam-training/reference/email-templates.html) and let others review it via Slack
+5. Send your reply via Actions
