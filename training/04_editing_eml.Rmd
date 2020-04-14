@@ -102,13 +102,6 @@ In most cases, `qa_package()` will be run just by passing in a member node and t
 qa_package(mn, resource_map_pid)
 ```
 
-## Exercise 3b {.exercise}
-
-* Make sure you have everything from [before](#exercise-3a) in R.
-* Validate, write and update your package using the respective functions.
-* Use the <a href = 'https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter.html' target='_blank'>checklist</a> to review your submission.
-* Make edits where necessary, and publish updates as needed.
-
 
 ## General tips for dealing with data packages
 
