@@ -77,7 +77,7 @@ However, typing this out in R can be a major pain. Luckily, there is a Shiny app
 EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-EML::shiny_attributes(attributes_table = attributes_table)
+EML::shiny_attributes(attribute = attributes_table)
 
 # From scratch
 atts <- EML::shiny_attributes()
