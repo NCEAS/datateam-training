@@ -46,7 +46,7 @@ for(i in seq_along(tables_you_need)){
 ```
 
 After getting a list of `dataTables`, assign the resulting list to `dataTable` EML
-```{r}
+```{r, eval = FALSE}
 doc$dataset$dataTable <- dts
 ```
 
