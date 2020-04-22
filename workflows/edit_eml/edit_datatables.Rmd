@@ -50,3 +50,10 @@ After getting a list of `dataTables`, assign the resulting list to `dataTable` E
 doc$dataset$dataTable <- dts
 ```
 
+Sometimes the metadata intended for `dataTable` ends up in `otherEntity`. You can use `eml_otherEntity_to_dataTable` to easily move items in `otherEntity` over to `dataTable`. 
+```{r, eval = FALSE}
+eml_otherEntity_to_dataTable(doc, 
+                             1, # which otherEntities you want to convert, for multiple use - 1:5
+                             validate_eml = F) # set this to False if the physical or attributes are not added
+```
+
