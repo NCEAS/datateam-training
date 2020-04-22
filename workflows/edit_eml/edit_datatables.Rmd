@@ -29,3 +29,24 @@ doc$dataset$dataTable[[i]] <- dataTable
 ```
 
 Where `i` is the index that you wish insert your `dataTable` into.
+
+To add a list of `dataTables` to avoid the unpacking problem above you will need to create a list of `dataTables`
+
+```{r, eval = FALSE}
+dts <- list() # create an empty list
+for(i in seq_along(tables_you_need)){
+  # your code modifying/creating the dataTable here
+  dataTable <- eml$dataTable(entityName = dataTable$entityName,
+                             entityDescription = dataTable$entityDescription,
+                             physical = physical,
+                             attributeList = attributeList)
+  
+  dts[[i]] <- dataTable # add to the list
+}
+```
+
+After getting a list of `dataTables`, assign the resulting list to `dataTable` EML
+```{r}
+doc$dataset$dataTable <- dts
+```
+
