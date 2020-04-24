@@ -102,21 +102,8 @@ In most cases, `qa_package()` will be run just by passing in a member node and t
 qa_package(mn, resource_map_pid)
 ```
 
-
-## General tips for dealing with data packages
-
-In this section, we'll be discussing the general guidelines when dealing with data packages - specifically, when to touch a PI's data, what constitutes as a robust and comprehensive methods/abstract section, and when it is necessary to followup with PIs about dataset and metadata inquiries.
-
-One of the biggest dilemmas when handling data packages is deciding when it's appropriate to touch a PI's data. As a rule of thumb, data entries themselves should always be fixed. Our goal is to clean-up the files, not to revise the data. 
-
-Data file conversions are generally alright. Conversions are needed when the existing file format may become unavailable in the future. In the case of Excel sheets, since they are stored in a proprietary software, the files may eventually become inaccessible. Storing them in a non-proprietary software, such as a csv or text file, prevents it from becoming extinct. 
-
-Data files should also be revised if there are formatting issues. For instance, column headers should be fixed if there exists special characters, spaces, etc. Similarly, if there exists blank entries without missing value codes, they should be filled in with `NA` values with their respective explanations. These changes should be documented somewhere in the description or in an attribute definition.
-
-Finally, altered data files should be linked to the originals through provenance. 
-
-When it comes to methods, the information is sufficient when a reasonable scientist can interpret the data and replicate the study without consulting the PI nor any other resources. Enough information should be provided such that users can understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. The abstract should provide an overview of the scientific project, how the data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. 
-
-If either of these sections are insufficient, the PI should be contacted for revisions. In the case that the project is funded by an NSF grant, a missing/insufficient abstract can be replaced by the abstract provided on the NSF funding page.
-
-An exception to the methods/abstract guidelines would be if the data package has a parent that it will eventually be nested under. If the parent contains a comprehensive abstract and methods, then the individual data packages can have more brief information.
+## Exercise 3b {.exercise}
+* Make sure you have everything from [before](#exercise-3a) in R.
+* Validate, write and update your package using the respective functions.
+* Use the <a href = 'https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter.html' target='_blank'>checklist</a> to review your submission.
+* Make edits where necessary, and publish updates as needed.
