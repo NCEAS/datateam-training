@@ -70,14 +70,14 @@ attributes <- data.frame(
     stringsAsFactors = FALSE)
 ```
 
-However, typing this out in R can be a major pain. Luckily, there is a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
+However, typing this out in R can be a major pain. Luckily, there's a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
 
 ```{r, eval = FALSE}
 # From data (recommended)
 EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-EML::shiny_attributes(attribute = attributes_table)
+EML::shiny_attributes(attributes_table = attributes_table)
 
 # From scratch
 atts <- EML::shiny_attributes()
@@ -134,8 +134,8 @@ Using `EML::get_unit_id` for custom units will also generate valid EML unit ids.
 Custom units are then added to `additionalMetadata` using the following command:
 
 ```{r, eval = FALSE}
-unitlist <- set_unitList(custom_units)
-doc$additionalMetadata <- c(as(unitlist, "additionalMetadata"))
+unitlist <- set_unitList(custom_units, as_metadata = TRUE)
+doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
 
 ### Edit factors
