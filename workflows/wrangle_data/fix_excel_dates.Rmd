@@ -2,7 +2,7 @@
 
 Do you see something that looks like `43134, 43135, 43136` even though the column header is `Dates`? You may have encountered an **Excel date/time** problem. To fix it, the `janitor` package has a handy function:
     
-```{r}
+```{r, eval=FALSE}
 janitor::excel_numeric_to_date(c(43134, 43135, 43136))
 ```
 
