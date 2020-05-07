@@ -38,7 +38,7 @@ Multiple datasets under the same project
 
 At least one data file
 
-> We noticed that no data files were submitted. With the exception of sensitive social science data, we seek to include all data products prior to publication. We wanted to check in if additional files will be submitted before we move forward with the submission process.
+> We noticed that no data files were submitted. With the exception of sensitive social science data, we seek to include all data products prior to publication. We wanted to check if additional files will be submitted before we move forward with the submission process.
 
 Open formats
 
