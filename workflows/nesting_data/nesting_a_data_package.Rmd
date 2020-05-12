@@ -163,5 +163,3 @@ resource_map_parent <- create_resource_map(adc_test,
 ```
   
 The child packages are now nested underneath the parent.
-
-Remember to go back and update the 
