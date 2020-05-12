@@ -1,6 +1,9 @@
-## Edit spatialVectors
+## Edit spatial data
 
-Occasionally, you may encounter a third type of data object: `spatialVector`. This object contains spatial data, such as a shapefile or geodatabase. Editing a `spatialVector` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'.
+Occasionally, you may encounter a third type of data object: `spatialVector` and `spatialRaster`. These objects contains spatial data (ie maps), such as a shapefile or geodatabase. Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. 
+
+### spatialVector
+One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'.
 
 To add a `geometry` slot use:
 
@@ -62,4 +65,15 @@ Here is an example of what `spatialVector` metadata should look like, including 
   </attributeList>
   <geometry>Polygon</geometry>
 </spatialVector>
+```
+
+### spatialRasters
+
+Most often these come in GeoTiff or Tiff files. The data is presented as a grid of "pixels". For more information ESRI has a indepth article [here](https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm).
+
+To use the helper function get:
+1. the path of your raster file
+2. an attribute table
+```
+eml_get_raster_metadata(path, attributes)
 ```

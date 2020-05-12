@@ -12,6 +12,16 @@ This chapter will be longest of all the sections! This is a reminder to take fre
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
 
+## FAIR data practices
+
+To make sure our EML has a publisher and entity system associated
+
+Add the following lines to all of your data processing scripts.
+```{r, eval= FALSE}
+  doc <- eml_add_publisher(doc)
+  doc <- eml_add_entity_system(doc)
+```
+
 ```{r, child = '../workflows/edit_eml/edit_attributelists.Rmd'}
 ```
 
@@ -30,7 +40,7 @@ This chapter will be longest of all the sections! This is a reminder to take fre
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
 * We will continue using the objects created and updated in this exercise in 3b
 
-```{r, child = '../workflows/edit_eml/edit_spatialvectors.Rmd'}
+```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
 ```
 
 ```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
