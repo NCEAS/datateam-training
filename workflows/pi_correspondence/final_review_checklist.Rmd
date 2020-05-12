@@ -1,0 +1,52 @@
+
+## Final Checklist
+
+You can click on the  assessment report on the website to for a general check. Fix anything you see there.
+
+Send the link over slack for peer review by your fellow datateam members. Usually we look for the following (the list is not exhaustive):
+
+### System Metadata
+the format ids are correct
+
+### General EML
+Included lines for FAIR:
+```{r eval=F}
+  doc <- eml_add_publisher(doc)
+  doc <- eml_add_entity_system(doc)
+```
+  
+### Abstract
+- longer than 100 words
+- no abbreviations or garbled text
+
+### DataTable / OtherEntity / SpatialVectors
+- in the correct one: **DataTable / OtherEntity / SpatialVectors** for the file type
+- **entityDescription** - longer than 5 words and unique
+- **physical** present and format correct
+
+#### Attribute Table
+- complete
+- Definition longer than 5 words
+- **Variables** match what is in the file
+- **Measurement domain** - if appropirate (ie dateTime correct)
+- **Missing Value Code** - accounted for if applicable
+
+### People
+- complete information for each person in each section
+
+### Geographic region
+- the map looks correctand matches the geographic description
+- check if negatives (-) are missing
+
+### Project
+- if it is an NSF award you have run `eml_nsf_to_project(awards)`
+
+### Methods
+- present
+- no abbreviations
+- no garbled text
+
+### Access
+- Granted access to PI using `rights_and_access`
+
+
