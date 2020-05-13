@@ -1,6 +1,14 @@
 ## Edit spatial data
 
-Occasionally, you may encounter a third type of data object: `spatialVector` and `spatialRaster`. These objects contains spatial data (ie maps), such as a shapefile or geodatabase. Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. 
+Occasionally, you may encounter a third type of data object: `spatialVector` and `spatialRaster`. These objects contains spatial data (ie maps), such as a shapefile or geodatabase.
+
+Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. 
+
+#### File types
+
+File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .dbf, .shp, and .shx
+
+Additionally, spatial data should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
 
 ### spatialVector
 One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'.
@@ -10,8 +18,6 @@ To add a `geometry` slot use:
 ```{r, eval = FALSE}
 doc$dataset$spatialVector[[1]]$geometry <- "Polygon"
 ```
-
-Additionally, spatial data should typically be archived within a .zip file to ensure all related and interdependent files stay together. For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
 
 Here is an example of what `spatialVector` metadata should look like, including `physical`, `attributeList`, and `geometry` slots:
 
@@ -75,6 +81,7 @@ To use the helper function get:
 
 1. the path of your raster file
 2. an attribute table
+
 ```
 eml_get_raster_metadata(path, attributes)
 ```

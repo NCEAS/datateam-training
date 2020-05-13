@@ -17,9 +17,8 @@
 
 **Spatial data**
 
-**Nested data**
-
-**Provenance**
+* Vector
+* Raster
 
 **Portals**
 
