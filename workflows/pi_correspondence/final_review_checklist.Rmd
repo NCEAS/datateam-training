@@ -48,5 +48,4 @@ Included lines for FAIR:
 - no garbled text
 
 ### Access
-- Granted access to PI using `rights_and_access`
-
+- Granted access to PI using `set_rights_and_access()`
