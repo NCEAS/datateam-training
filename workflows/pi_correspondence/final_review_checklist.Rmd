@@ -40,6 +40,7 @@ Included lines for FAIR:
 
 ### Project
 - if it is an NSF award you have run `eml_nsf_to_project(awards)`
+    + NSF award numbers should be listed as "NSF 1234567"
 
 ### Methods
 - present
@@ -48,5 +49,4 @@ Included lines for FAIR:
 
 ### Access
 - Granted access to PI using `rights_and_access`
-
 
