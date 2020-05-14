@@ -18,7 +18,7 @@
 
 Provides the *what, where, and when* of the data
 
-> We would like to add some more context to your data package title. A descriptive title that provides context about the what, where, and when. I would like to suggest: ‘OUR SUGGESTION HERE, WHERE, WHEN’.
+> We would like to add some more context to your data package title. I would like to suggest: ‘OUR SUGGESTION HERE, WHERE, WHEN’.
 
 Does not use acronyms
 
@@ -34,7 +34,7 @@ Describes DATA in package (ideally > 100 words)
 
 Multiple datasets under the same project
 > Suggest to use the portals feature
-> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here:[link to create].
+> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
 
 At least one data file
 
@@ -46,6 +46,9 @@ Open formats
 
 > We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
 
+Zip files
+
+>Except for very specific file types, we do not recommend that data are archived in zip format. Data that are zipped together can present a barrier to reuse since it is difficult to accurately document each file within the zip file in a machine readable way.
 
 File contents and relationships among files are clear
 

@@ -2,7 +2,7 @@
 
 Please think critically when using these canned replies rather than just blindly sending them. Typically, content should be adjusted/ customized for each response to be as relevant, complete, and precise as possible.  
 
-In your first few months, please run email drafts by Jeanette via Slack and get approval before sending.
+In your first few months, please run email drafts by the #datateam Slack and get approval before sending.
 
 Remember to consult the [submission guidelines](https://arcticdata.io/submit/) for details of what is expected.  
 
