@@ -3,14 +3,14 @@
 **Modeling**
 
 * Model with output:
-  + https://arcticdata.io/catalog/view/doi:10.18739/A24J09X55
+  + https://doi.org/10.18739/A24J09X55
 
 * Model code archived as a zip if preverving directory structure is important
-  + https://arcticdata.io/catalog/view/doi:10.18739/A2JS9H795
+  + https://doi.org/10.18739/A2JS9H795
 
 * Code and output:
   + **Note:** We can only archive the code if the submitter has the rights to redistribute it (like if they wrote it themselves, or if the code has a license that allows for that)
-  + https://arcticdata.io/catalog/view/doi:10.18739/A2XS5JH4N
+  + https://doi.org/0.18739/A2XS5JH4N
 
 * Guidelines for large outputs:
   + https://arcticdata.io/submit/#guidelines-for-large-models
