@@ -46,7 +46,6 @@ Included lines for FAIR:
 
 ### Methods
 - present
-- no abbreviations
 - no garbled text
 
 ### Access
