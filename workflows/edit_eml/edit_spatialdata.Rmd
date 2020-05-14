@@ -8,7 +8,7 @@ Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable`
 
 File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .dbf, .shp, and .shx
 
-Additionally, spatial data should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data.
+Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren't sure whether to unzip a file, ask Jasmine or Jeanette.
 
 ### spatialVector
 One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'.
