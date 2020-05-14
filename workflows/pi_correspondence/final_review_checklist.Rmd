@@ -14,7 +14,9 @@ Included lines for FAIR:
   doc <- eml_add_publisher(doc)
   doc <- eml_add_entity_system(doc)
 ```
-  
+### Title
+
+- No abbreviations, should include geographic and temporal coverage
 ### Abstract
 - longer than 100 words
 - no abbreviations or garbled text
