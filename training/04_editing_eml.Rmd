@@ -14,7 +14,7 @@ This chapter will be longest of all the sections! This is a reminder to take fre
 
 ## FAIR data practices
 
-The result won't show up on the webpage but it should add a publisher element to the dataset element and a system to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable). 
+The result of these function calls won't show up on the webpage but they will add a `publisher` element to the `dataset` element and a `system` to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable). 
 
 Add the following lines to all of your data processing scripts.
 ```{r, eval= FALSE}
