@@ -65,7 +65,9 @@ To use the helper function get:
 1. the path of your raster file
 2. an attribute table
 3. coordinate system
+3. a coordinate system name
 
+To get a coordinate system name, you can use the output of the function on your first try (which will print the coordinate reference system, if it is defined). You can use the return value of `get_coord_list()` (a large `data.frame`) to find the correct coordinate system name.
 ```
 eml_get_raster_metadata(path, attributes)
 ```
