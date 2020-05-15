@@ -7,7 +7,7 @@
 > 
 > [COMMENTS HERE]
 >
-> After we recieve your responses, we can make the edits on your behalf.
+> After we receive your responses, we can make the edits on your behalf, or you are welcome to make them yourself using our user interface.
 >
 > Best,
 > 
@@ -76,7 +76,7 @@ Checklist for the datateam in reviewing attributes (NetCDF, CSV, shapefiles, or 
 
 Missing value codes
 
-> What do the missing values in your measurements represent? Something such as a short description (instrument failure, site not found, etc.) will suffice.
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
 
 > We noticed that the data files contain [blank cells - replace with missing values found]. What do these represent? 
 
@@ -84,12 +84,12 @@ Missing value codes
 
 All NSF funded datasets need a funding number. Non-NSF funded datasets might not have funding numbers, depending on the funding organization.
 
-> We noticed that your dataset does not appear to contain a funding number. The field accepts NSF numbers as well as other numbers by different organizations.
+> We noticed that your dataset does not appear to contain a funding number. The field accepts NSF funding numbers as well as other numbers by different organizations.
 
 #### Methods
 
 Submissions should:
-- provide instrument names
+- provide instrument names (if applicable)
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
 - this includes software submissions as well (see https://arcticdata.io/submit/#metadata-guidelines-for-software)

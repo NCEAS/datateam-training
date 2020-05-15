@@ -18,8 +18,11 @@
 **Spatial data**
 
 * Vector
+    + https://doi.org/10.18739/A2TB0XV89
 * Raster
+    + https://doi.org/10.18739/A2GT5FG0B
 
 **Portals**
 
 * https://arcticdata.io/catalog/portals/DBO
+* https://arcticdata.io/catalog/portals/CALM
