@@ -10,67 +10,50 @@ File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .
 
 Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren't sure whether to unzip a file, ask Jasmine or Jeanette.
 
-### spatialVector
-One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'. You will likely have to open the file itself within QGIS or R to get the correct geometry value.
+### Reading Spatial Files
+```
+library(sf)
+spatial_file <- sf::read_sf("example.kml")
+```
 
-To add a `geometry` slot use:
+#### Coordinate Systems
+All latitudes and longitude coordinates should have a coordinate system (like a frame of reference). There are horizontal coordinate systems (earth's surface) and vertical coordinate systems (depth). More information can be found [here](https://pro.arcgis.com/en/pro-app/help/mapping/properties/coordinate-systems-and-projections.htm).
+
+To find the `horizCoordSysName` you can use:
+
+```
+sf::st_crs(spatial_file)
+```
+
+Take the Datum and add GCS (Geographic Coordinate System) in front. For example: "GCS_WGS_1984"
+
+### spatialVector
+
+#### Adding Geometry
+One important difference is that a `spatialVector` object should also have a `geometry` slot that describes the geometry features of the data. The possible values include one or more (in a list) of 'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', or 'MultiGeometry'. You will likely have to open the file itself within QGIS or R (ie . the `sf` package) to get the correct geometry value.
+
+To add just a `geometry` slot use:
 
 ```{r, eval = FALSE}
 doc$dataset$spatialVector[[1]]$geometry <- "Polygon"
 ```
 
-Here is an example of what `spatialVector` metadata should look like, including `physical`, `attributeList`, and `geometry` slots:
-
+To add it using the data pid:
+1. Get the geometry and spatialReference
+2. Use `pid_to_eml_entity()` to generate the spatialVector 
 ```
-<spatialVector system="uuid">
-  <entityName>sasap_regions.zip</entityName>
-  <entityDescription>Contains the shapefile depicting the SASAP regions. Zip contains .cpg, .dbf, .prj, .shp, and .shx files.</entityDescription>
-  <physical scope="document">
-    <objectName>sasap_regions.zip</objectName>
-    <size unit="bytes">2533992</size>
-    <authentication method="SHA1">2d199f6f1f5f5b36525d1cf1019c0a4551b98762</authentication>
-    <dataFormat>
-      <externallyDefinedFormat>
-        <formatName>application/zip</formatName>
-      </externallyDefinedFormat>
-    </dataFormat>
-    <distribution scope="document">
-      <online>
-        <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:f6ab206b-312c-4caf-89c8-89eb9d031aac</url>
-      </online>
-    </distribution>
-  </physical>
-  <attributeList>
-    <attribute>
-      <attributeName>region_id</attributeName>
-      <attributeDefinition>SASAP region ID</attributeDefinition>
-      <measurementScale>
-        <interval>
-          <unit>
-            <standardUnit>dimensionless</standardUnit>
-          </unit>
-          <numericDomain>
-            <numberType>natural</numberType>
-          </numericDomain>
-        </interval>
-      </measurementScale>
-    </attribute>
-    <attribute>
-      <attributeName>region</attributeName>
-      <attributeDefinition>SASAP region name</attributeDefinition>
-      <measurementScale>
-        <nominal>
-          <nonNumericDomain>
-            <textDomain>
-              <definition>SASAP region name</definition>
-            </textDomain>
-          </nonNumericDomain>
-        </nominal>
-      </measurementScale>
-    </attribute>
-  </attributeList>
-  <geometry>Polygon</geometry>
-</spatialVector>
+ spatialVector <- pid_to_eml_entity(adc, 
+                                    pkg$data[n], 
+                                    entity_type = "spatialVector",
+                                    entityName = "filename.kml",
+                                    entityDescription = "some desciption",
+                                    attributeList = attributeList,
+                                    geometry = "Point",
+                                    spatialReference = list(horizCoordSysName = "GCS_WGS_1984"))
+```
+3. Add the spatialVector to the `doc`
+```
+doc$dataset$spatialVector[[1]] <- spatialVector
 ```
 
 ### spatialRasters
@@ -81,6 +64,7 @@ To use the helper function get:
 
 1. the path of your raster file
 2. an attribute table
+3. coordinate system
 
 ```
 eml_get_raster_metadata(path, attributes)
