@@ -63,6 +63,30 @@ How to generate a reprex:
 For more information and examples check out more of Jenny Bryan's [slides](https://speakerdeck.com/jennybc/reprex-help-me-help-you)
 or watch the [video](https://vimeo.com/208749032) starting at about the 10 min mark.
 
+**Note for EML related MREs:**
+- Generating a reprex for these situations (ie. tokens) might be complicated but you can should still follow the MRE principles even if the reprex won't render fully
+- You can include a minimal EML to avoid some `get_package` issues:
+```
+me <- list(individualName = list(givenName = "Jeanette", surName = "Clark"))
+
+attributes <- data.frame(attributeName = 'length_1',
+                         attributeDefinition = 'def1',
+                         measurementScale = 'ratio',
+                         domain = 'numericDomain',
+                         unit = 'meter',
+                         numberType = 'real',
+                         stringsAsFactors = FALSE)
+
+att_list <- set_attributes(attributes)
+
+
+doc_ex <- list(packageId = "id", system = "system", 
+            dataset = list(title = "A Mimimal Valid EML Dataset",
+                           creator = me,
+                           contact = me,
+                           dataTable = list(entityName = "data table", attributeList = att_list))
+)
+```
 ## Exercise 1 {.exercise}
 
 ### Part 1
