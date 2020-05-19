@@ -6,6 +6,7 @@ Start by searching for the funding information using [NSF's award search](https:
 
 Using this information we will set the title, personell, and funding number. For NSF funded projects prepend the funding number with "NSF". If there are multiple awards associated with one dataset then additional `funding`, `title`, and `personell` elements should be added to reflect the additional awards.    
 
+
 ```
 doc$dataset$project$funding$para[[1]] <- 'NSF 1503846'
 
@@ -17,3 +18,11 @@ doc$dataset$project$personnel[[2]] <- eml$personnel(individualName = eml$individ
                                                     role = 'co Principal Investigator')
 ```
 
+There is also a helper function `eml_nsf_to_project()` that can help do the searching for you. Just verify that the information retrieved is correct.
+```
+# update NSF awards data
+awards <- c("1311655", "1417987", "1417993") # list of award numbers
+proj <- eml_nsf_to_project(awards) #helper function
+
+doc$dataset$project <- proj
+```

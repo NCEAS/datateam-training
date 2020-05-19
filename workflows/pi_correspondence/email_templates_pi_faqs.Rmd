@@ -1,48 +1,78 @@
 ## PI FAQ email templates
 
-*Q: Can I replace data that have already been uploaded and keep the DOI?*  
+### Data
+*Q: Can I replace data that have already been uploaded and keep the DOI?* 
+
 > A: Once you have published your data with the Arctic Data Center, it can still be updated by providing an additional version which can replace the original, while still preserving the original and making it available to anyone who might have cited it. To update your data, return to the data submission tool used to submit it, and provide an update.
 
 > Any update to a data package qualifies as a new version and therefore requires a new DOI. This is because each DOI represents a unique, immutable version, just like for a journal article. DOIs and URLs for previous versions of data packages remain active on the Arctic Data Center (will continue to resolve to the data package landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to the latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data package that was cited, while pointing users to the newest version if one exists.
 
 *Q: Why don't I see my data package on the ADC?*   
+
 > Possible Answer #1: The data package is still private because we are processing it or awaiting your approval to publish it. Please login with your ORCID iD to view private data packages.
 Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
 Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
-> A: Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: https://help.nceas.ucsb.edu/remote_file_access. Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
+
+> A: Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
+
+>Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: https://help.nceas.ucsb.edu/remote_file_access. Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
 
 > If you have files to transfer to us that total several terabytes it may be best to arrange a shipment of an external hard drive.
 
-*Q: May another person (e.g. my student) submit data using my ORCID iD so that it is linked to me?*
-> A: We recommend instead that the student set up their own ORCiD account at https://ORCiD.org/register and submit data packages from that account. Submissions are processed by our team and, at that point, we can grant you full rights to the metadata and data files even though another person submitted them.
-
-*Issue: Web form not cooperating.*  
-> A: I apologize that you are experiencing difficulties while attempting to submit your data package. We are happy to attempt to troubleshoot this for you. Which operating system (including the version) and browser (with version #) are you using? At which exact step did the issue arise? What error message did you receive? Please provide us with any relevant screenshots. Do you have any reason to believe that you may be using a slow internet connection?
-
-*Q: May I submit a non-NSF-funded data package?*  
-> A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
-For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment. Also, please note that NSF-funded projects take priority when it comes to processing. Information on best practices for data and metadata organization is available here: https://arcticdata.io/submit/#organizing-your-data.
-
 *Q: Can I add another data file to an existing submission without having to fill out another metadata form?*  
+
 > A: Yes. Navigate to the data package after being sure to login. Then click the green "Edit" button. The form will populate with the already existing metadata so there is no need to fill it out again. Click "Add Files" and browse to the file you wish to add.
 
 > Be aware that the DOI will change after you add this file (or make any changes to a data package) as, just like for a journal article, a DOI represents a unique and immutable version. The original URL and DOI will remain functional and valid, but clearly display a message at the top of that page stating that "A newer version of this dataset exists" with a link to the latest version. Only the newest version wil be discoverable via a search.
 
 *Q: Can we submit data as an Excel file?*   
+
 > A: While the Arctic Data Center supports the upload of any data file format, sharing data can be greatly enhanced if you use ubiquitous, easy-to-read formats. For instance, while Microsoft Excel files are commonplace, it is better to export these spreadsheets to Comma Separated Values (CSV) text files, which can be read on any computer without needing to have Microsoft products installed. 
 > So, yes, you are free to submit an Excel workbook, however we strongly recommend converting each sheet to a CSV. The goal is not only for users to be able to read data files, but to be able to analyze them with software, such as R Studio. Typically, we would extract any plots and include them as separate image files.
 
 [ONLY SAY THIS NEXT PART IF THE REQUESTOR CONTINUES TO INSIST and then USE PROV TO POINT FROM THE XLS TO THE CSVs]
+
 > I understand that having the plots in the same file as the data they are built from simplifies organization. If you definitely prefer to have the Excel workbook included, we ask that you allow us to document the data in both formats and include a note in the metadata clarifying that the data are indeed duplicated (but in different formats).
 
 *Q: Can we submit model output?*
+
 > A: Yes you can submit your model output to the Arctic Data Center.  We also recommend including model source code directly in the dataset as it is critical to understand the model output dataset and will allow other researchers to re-produce your output.  If the model is complex or it's important to maintain file structure then it can submitted as a zip file.  We also recommend included a detailed readme file that documents: version information, licensing information, a list of software/hardware used in development, a list of software/hardware dependencies needed to run the software, information detailing source data for models, any mathematical/physical explanations needed to understand models, any methods used to evaluate models, and instructions how to run the model if not including in the source code as comments.  
 Please read our software submission guidelines for more detailed information: https://arcticdata.io/submit/#metadata-guidelines-for-software
 
-*Issue: Can't log in to the Arctic Data Center*   
-> A: Please accept our apologies that you are experiencing difficulty loggin in.  Please try a different internet browser (Chrome, firefox, internet explorer etc.).  If the problem persists please try clearing your cache and then re-logging in with orcid Id, Finally,privacy blockers (like EFF's privacy badger https://www.eff.org/privacybadger) block the cookies needed for the login to work. To enable the cookies you need to disable your privacy tracker for arcticdata.io.
+### Access
+*Q: May another person (e.g. my student) submit data using my ORCID iD so that it is linked to me?*
 
+> A: We recommend instead that the student set up their own ORCiD account at https://ORCiD.org/register and submit data packages from that account. Submissions are processed by our team and, at that point, we can grant you full rights to the metadata and data files even though another person submitted them.
+
+*Issue: Web form not cooperating.*  
+
+> A: To help us diagnose the problem, could you let us know the following:
+
+- Which operating system (including the version) and browser (with version #) are you using?
+- At which exact step did the issue arise?
+- What error message did you receive?
+- Do you have any reason to believe that you may be using a slow internet connection?
+
+> Please provide us with any relevant screenshots and we will troubleshoot from there.
+
+*Issue: Can't log in to the Arctic Data Center*   
+
+> A: Please accept our apologies that you are experiencing difficulty logging in. We suggest trying these troubleshooting steps:
+
+- Try a different internet browser (Chrome, Firefox, Internet Explorer etc.)
+- Try clearing your cache and then re-logging in with orcid Id
+- Privacy blockers (like EFF's privacy badger https://www.eff.org/privacybadger) block the cookies needed for the login to work. To enable the cookies you need to disable your privacy tracker for arcticdata.io.
+
+> If the problem persists please let us know what step the error occured or if there were error messages you have recieved.
+
+### non-NSF
 *Issue: Can I submit a non-NSF funded dataset?*
+
 > The Arctic Data Center is open to all arctic-related data.  For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment.  Please let us know the size of your dataset in terms of total number and total size of all files.  We look forward to receiving your submission!
+
+*Q: May I submit a non-NSF-funded data package?*  
+
+> A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
+For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment. Also, please note that NSF-funded projects take priority when it comes to processing. Information on best practices for data and metadata organization is available here: https://arcticdata.io/submit/#organizing-your-data.

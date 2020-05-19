@@ -1,37 +1,44 @@
 ### Initial email template
 
-> Hello _____,
+> Hello [NAME OF REQUESTOR],
 > Thank you for your recent submission to the NSF Arctic Data Center!
 > 
 > From my preliminary examination of your submission I have noticed a few items that I would like to bring to your attention. We are here to help you publish your submission, but your continued assistance is needed to do so. See comments below:
 > 
 > [COMMENTS HERE]
-> 
+>
+> After we receive your responses, we can make the edits on your behalf, or you are welcome to make them yourself using our user interface.
+>
 > Best,
 > 
 > [YOUR NAME]
 
+### Comment templates based on what is missing
 #### Title
 
 Provides the *what, where, and when* of the data
 
-> We would like to add some more context to your data package title. A descriptive title that provides context about the what, where, and when of a data package is often far more useful in search results. Something like: ‘OUR SUGGESTION HERE, WHERE, WHEN’ might be an option.
+> We would like to add some more context to your data package title. I would like to suggest: ‘OUR SUGGESTION HERE, WHERE, WHEN’.
 
 Does not use acronyms
 
-> We noticed that your title contains several acronyms or abbreviations. In order to increase discoverability of your title, please spell out all acronyms and abbreviations.
+> We wanted to clairify a couple of abbreviations. Could you help us in defining some of these: [LIST OF ACRONYMS TO DEFINE HERE]
 
 #### Abstract
 
 Describes DATA in package (ideally > 100 words)
 
-> Your abstract appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].
+> We would like to add some additional context to your abstract. [ADJUST THE SENTENCE DEPENDING ON WHAT IS MISSING - It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents.] If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].
 
 #### Data
 
+Multiple datasets under the same project
+> Suggest to use the portals feature
+> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
+
 At least one data file
 
-> We noticed that no data files were submitted. With the exception of sensitive social science data, we seek to  include all data products prior to publication. Do you intend to submit data files?
+> We noticed that no data files were submitted. With the exception of sensitive social science data, we seek to include all data products prior to publication. We wanted to check if additional files will be submitted before we move forward with the submission process.
 
 Open formats
 
@@ -39,40 +46,23 @@ Open formats
 
 > We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
 
+Zip files
+
+>Except for very specific file types, we do not recommend that data are archived in zip format. Data that are zipped together can present a barrier to reuse since it is difficult to accurately document each file within the zip file in a machine readable way.
 
 File contents and relationships among files are clear
 
-> Could you provide a short description of the files submitted? Information about how each file was generated (what software, source files, etc.) allows other scientists to reproduce your work.
+> Could you provide a short description of the files submitted? Information about how each file was generated (what software, source files, etc.) will help us create more robust metadata for long term use.
 
-Missing value codes
+We try not to prescribe a way the researchers must format their data as long as reasonable. However, in extreme cases (for example Excel spreadsheets with data and charts all in one sheet) we will want to kindly ask them to reformat.
 
-> What do the missing values in your measurements represent? (instrument failure, site not found, etc.)
-
-> We noticed that the data files contain blank cells. What do these represent? 
-
-#### Funding
-
-All NSF funded datasets need a funding number. Non-NSF funded datasets might not have funding numbers, depending on the funding organization.
-
-> We noticed that your dataset does not appear to contain a funding number. Is this dataset funded by NSF? If so, please provide the funding number. If it is funded by a different organization, please provide the organization and funding number (if it exists).
-
-#### Methods
-
-Submissions should:
-- provide instrument names
-- specify how sampling locations were chosen
-- provide citations for sampling methods that are not explained in detail
-
-> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you or any other resources. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section.
-
-> Comprehensive methods information ought to be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
+> We would like to suggest a couple of modifications to the structure of your data. This will others to re-use it most effectively. [DESCRIBE WHAT MAY NEED TO BE CHANGED IN THE DATA SET]. Our data submission guidelines page (https://arcticdata.io/submit/) outlines what are best practices for data submissions to the Arctic Data Center. Let us know if you have any questions or if we can be of any help.
 
 #### Attributes
 
-> I noticed that your data package has incomplete attribute/variable information. Please add attribute/variable information to each of your data files. You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
+> I noticed that your data package has incomplete attribute/variable information. [SPECIFY WHAT YOU WANT ADDED] You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
 
-> For data packages with tabular data (e.g. CSV files), submitted metadata should contain the following components for every attribute (variable). Also, please note that tabular data stored within structured formats such as NetCDF, or shapefiles files should also comply with these guidelines.
-
+Checklist for the datateam in reviewing attributes (NetCDF, CSV, shapefiles, or any other tabular datasets):
 > - A name (often the column or row header in the file).
 > - A complete definition.
 > - Any missing value codes along with explanations for those codes.
@@ -84,3 +74,26 @@ Submissions should:
 > Please define “XYZ”, including the unit of measure. 
 > What are the units of measurement for the columns labeled “ABC” and “XYZ”?
 
+Missing value codes
+
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
+
+> We noticed that the data files contain [blank cells - replace with missing values found]. What do these represent? 
+
+#### Funding
+
+All NSF funded datasets need a funding number. Non-NSF funded datasets might not have funding numbers, depending on the funding organization.
+
+> We noticed that your dataset does not appear to contain a funding number. The field accepts NSF funding numbers as well as other numbers by different organizations.
+
+#### Methods
+
+Submissions should:
+- provide instrument names (if applicable)
+- specify how sampling locations were chosen
+- provide citations for sampling methods that are not explained in detail
+- this includes software submissions as well (see https://arcticdata.io/submit/#metadata-guidelines-for-software)
+
+> Your methods section appears to be missing some information. [ADJUST THIS DEPENDING ON WHAT IS MISSING - Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files.]
+
+> Comprehensive methods information should be included directly in the metadata record. Pointers or URLs to other sites are unstable.

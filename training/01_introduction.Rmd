@@ -48,6 +48,45 @@ This training assumes basic knowledge of R and RStudio. If you want a quick R re
 
 Throughout this training we will occasionally use the namespace syntax `package_name::function_name()` when writing a function. This syntax denotes which package a function came from.  For example `dataone::getSystemMetadata` selects the `getSystemMetadata` function from the `dataone` R package. More detailed information on namespaces can be found [here](http://r-pkgs.had.co.nz/namespace.html).
 
+## A note on effective troubleshooting in R
+We suggest using a combination of **m**inimal **r**eproducible **e**xamples (MRE) and the package `reprex` to create **rep**roducible **ex**amples. This will allow others to better help you if we can run the code on our own computers.
+
+A MRE is stripping down your code to only the parts that cause the bug.
+
+How to generate a reprex:
+
+1. copy the code you want to ask about
+2. call `reprex()` 
+3. fix until everything runs smoothly
+4. copy the result to ask your question
+
+For more information and examples check out more of Jenny Bryan's [slides](https://speakerdeck.com/jennybc/reprex-help-me-help-you)
+or watch the [video](https://vimeo.com/208749032) starting at about the 10 min mark.
+
+**Note for EML related MREs:**
+- Generating a reprex for these situations (ie. tokens) might be complicated but you can should still follow the MRE principles even if the reprex won't render fully
+- You can include a minimal EML to avoid some `get_package` issues:
+```
+me <- list(individualName = list(givenName = "Jeanette", surName = "Clark"))
+
+attributes <- data.frame(attributeName = 'length_1',
+                         attributeDefinition = 'def1',
+                         measurementScale = 'ratio',
+                         domain = 'numericDomain',
+                         unit = 'meter',
+                         numberType = 'real',
+                         stringsAsFactors = FALSE)
+
+att_list <- set_attributes(attributes)
+
+
+doc_ex <- list(packageId = "id", system = "system", 
+            dataset = list(title = "A Mimimal Valid EML Dataset",
+                           creator = me,
+                           contact = me,
+                           dataTable = list(entityName = "data table", attributeList = att_list))
+)
+```
 ## Exercise 1 {.exercise}
 
 ### Part 1

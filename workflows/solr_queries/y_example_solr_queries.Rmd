@@ -142,6 +142,15 @@ query(adc, list(q = paste0("documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9"),
       as = "data.frame")
 ```
 
+### Query for files uploaded during a specific time
+```{r}
+query(adc, list(q="dateUploaded:[2020-05-06T00:00:00Z TO NOW]",
+                fl="title,identifier,resourceMap,dateUploaded,dateModified",
+                sort = "dateUploaded+desc",
+                rows="200"), 
+      as = "data.frame")
+```
+
 ### Use facets
 
 All resource maps with > 100 data objects that are _not_ on the Arctic Data Center:
