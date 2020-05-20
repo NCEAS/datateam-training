@@ -51,10 +51,11 @@ Included lines for FAIR:
 - no garbled text
 
 ### Check EML Version
-- currently using: 2.1.1
+- currently using: `eml-2.1.1`
 - review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.1.1 under eml 
 - Re-run your code again and have the line`emld::eml_version("eml-2.1.1")` at the top
 
 ### Access
 - Granted access to PI using `set_rights_and_access()`
-- **note** if it is a part of portals there might be specific access requirements for it to be visible at the Data tab
+  + make sure it is `http://` (no s)
+- **note** if it is a part of portals there might be specific access requirements for it to be visible using `set_access()`
