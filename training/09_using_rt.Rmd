@@ -1,0 +1,33 @@
+# First Ticket
+
+After completing the training
+* Jasmine or Jeanette will assign a ticket from RT
+* 
+
+## Using RT
+
+```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
+```
+
+## PI correspondence
+```{r, echo = FALSE}
+chapter <- "../workflows/pi_correspondence/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+## Processing dataset
+!! an example of a rscript processing
+
+## Categorize datasets
+We will grant you access to the google sheet (https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118)
+
+Definition of the themes can be found here: https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118
+
+```{r}
+datamgmt::categorize_dataset(doi, themes, coder, test = F)
+```
+
