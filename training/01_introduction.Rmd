@@ -98,10 +98,12 @@ doc_ex <- list(packageId = "id", system = "system",
 ## A note on Exercises
 The rest of the training has a series of exercises. These are meant to take you through the process as someone submitting a dataset from scratch. This is slightly different than the usual workflow but important in understanding the underlying system beind the Arctic Data Center.
 
+Please note that you will be completing everything on the  <a href = 'test.arcticdata.io' target='_blank'> site for the training. In the future if you are unsure about doing anything with a dataset. The test site is a good place to try things out!
+
 ## Exercise 1 {.exercise}
 
 ### Part 1
-If you are comfortable programming in R please complete this section of the exercise.  If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
+If you are comfortable programming in R please complete this section of the exercise. If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
 
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.
