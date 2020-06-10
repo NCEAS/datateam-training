@@ -1,0 +1,58 @@
+# First Ticket
+
+After completing the training:
+
+* Jasmine or Jeanette will assign a ticket from RT
+* Login using your LDAP credentials
+* Take the ticket
+* Take a moment to read over any corresponence there might be
+* If there isn't already a requestor email add it
+
+```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
+```
+
+## Processing dataset
+
+Before opening a R script first look over the initial checklist first to identify what you will need to update in the metadata.
+
+```{r, child = '../workflows/pi_correspondence/initial_review_checklist.Rmd'}
+```
+
+## R templates
+
+We have developed some partially filled R scripts to help you out on working on your first dataset. You can use this  [fill in the blanks example](data/dataset_processing_example_blanks.R) to get familiar with the function we use and work flow first. We also have a more minimal example [A filled example](dadataset_processing_example_skeleton.R_.R) for a intermediate step. You can look at the [filled example](data/dataset_processing_example_filled.R) if you get stuck or message the #datateam slack channel.
+
+## Review
+
+Once you have updated the dataset to your satisfaction, post the link to the dataset on #datateam for peer review.
+
+```{r, child = '../workflows/pi_correspondence/final_review_checklist.Rmd'}
+```
+
+After all the revisions send the link to the PI in an email through RT. Send the draft of the email to Jasmine or Jeanette on Slack.
+```{r, child = '../workflows/pi_correspondence/A_email_templates.Rmd'}
+```
+
+Once the dataset is approved by the PI and there are no further changes, publish the dataset with a doi.
+```{r, eval=F}
+update <- publish_update(adc,
+                         metadata_pid = pkg$metadata,
+                         data_pids = pkg$data,
+                         resource_map_pid = pkg$resource_map,
+                         metadata_path = eml_path,
+                         public = T,
+                         use_doi = T)
+```
+
+## Categorize datasets
+
+As a final step we will categorize the dataset you processed. We are trying to categorize datasets so we can have a rough idea of what kinds of datasets we have at the Arctic Data Center. We will grant you access to the google sheet that has all of the categories: (https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118)
+
+We will categorize each dataset into one of the predefined themes (ie. biology, ecology etc.). Definition of the themes can be found here: https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118
+
+Run the following line with your doi and themes as a list.
+
+```{r, eval=F}
+datamgmt::categorize_dataset(doi, themes, coder)
+```
+
