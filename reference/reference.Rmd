@@ -122,3 +122,13 @@ children <- paste0(chapter, sections)
 
 ```{r, child = children}
 ```
+
+# Data Portals
+```{r, echo = FALSE}
+chapter <- "../workflows/data_portals/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```

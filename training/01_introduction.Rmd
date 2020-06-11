@@ -1,6 +1,9 @@
 # Introduction to open science
 
-These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository.
+These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training.
+
+If you see anything that needs fixing, submit a issue here:
+<a href = 'https://github.com/NCEAS/datateam-training/issues' target='_blank'>
 
 ## Background reading
 
@@ -25,11 +28,15 @@ You may also want to explore the DataONE <a href='https://www.dataone.org/Educat
 
 Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
 
+We will be applying these concepts in the next chapter. 
+
 ## Working on a remote server
 
 All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
 
-We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> To transfer files on and off of the server we often use a secure FTP client, Cyberduck.
+We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> This is the same as your desktop version of RStudio with one main difference is that files are on the server. Please do all your work here. This way you can share your code with the rest of us.
+
+To transfer files on and off of the server we often use a secure FTP (sFTP) client, Cyberduck. This will be used when researchers have many files to upload or size of the files are very large.
 
 ```{r, child = '../workflows/miscellaneous/cyberduck_instructions.Rmd'}
 ```
@@ -87,10 +94,16 @@ doc_ex <- list(packageId = "id", system = "system",
                            dataTable = list(entityName = "data table", attributeList = att_list))
 )
 ```
+
+## A note on Exercises
+The rest of the training has a series of exercises. These are meant to take you through the process as someone submitting a dataset from scratch. This is slightly different than the usual workflow but important in understanding the underlying system beind the Arctic Data Center.
+
+Please note that you will be completing everything on the  <a href = 'test.arcticdata.io' target='_blank'> site for the training. In the future if you are unsure about doing anything with a dataset. The test site is a good place to try things out!
+
 ## Exercise 1 {.exercise}
 
 ### Part 1
-If you are comfortable programming in R please complete this section of the exercise.  If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
+If you are comfortable programming in R please complete this section of the exercise. If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
 
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management.

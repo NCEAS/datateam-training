@@ -17,9 +17,11 @@ Included lines for FAIR:
 ### Title
 
 - No abbreviations, should include geographic and temporal coverage
+
 ### Abstract
 - longer than 100 words
 - no abbreviations or garbled text
+- tags such as  `<superscript>2</superscript>` and `<subscript>2</subscript>` can be used for nicer formatting
 
 ### DataTable / OtherEntity / SpatialVectors
 - in the correct one: **DataTable / OtherEntity / SpatialVector / SpatialRaster** for the file type

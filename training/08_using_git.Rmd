@@ -1,5 +1,8 @@
 # Using Git
 
+## Usage in the datateam
+We use git and Github to manage our packages (ie datamgmt, arcticdatautils) and even this document!
+
 ## What is Git?
 
 <a href="https://git-scm.com/" target = "_blank">Git</a> is a distributed version control system.

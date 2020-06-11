@@ -1,4 +1,4 @@
-## Good Examples of data packages:
+## Good Examples of data packages
 
 **Modeling**
 
