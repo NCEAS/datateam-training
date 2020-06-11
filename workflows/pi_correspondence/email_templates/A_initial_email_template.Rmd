@@ -32,8 +32,7 @@ Describes DATA in package (ideally > 100 words)
 
 #### Data
 
-Multiple datasets under the same project
-> Suggest to use the portals feature
+Multiple datasets under the same project - suggest data portal feature
 > Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
 
 At least one data file
