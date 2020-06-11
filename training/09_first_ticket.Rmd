@@ -1,30 +1,20 @@
 # First Ticket
 
-After completing the training:
-
-* Jasmine or Jeanette will assign a ticket from RT
-* Login using your LDAP credentials
-* Take the ticket
-* Take a moment to read over any corresponence there might be
-* If there isn't already a requestor email add it
+After completing the training, Jasmine or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
 
 ```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
 ```
-
-## Processing dataset
 
 Before opening a R script first look over the initial checklist first to identify what you will need to update in the metadata.
 
 ```{r, child = '../workflows/pi_correspondence/initial_review_checklist.Rmd'}
 ```
 
-## R templates
+## Processing templates
 
-We have developed some partially filled R scripts to help you out on working on your first dataset. You can use this  [fill in the blanks example](data/dataset_processing_example_blanks.R) to get familiar with the function we use and work flow first. We also have a more minimal example [A filled example](dadataset_processing_example_skeleton.R_.R) for a intermediate step. You can look at the [filled example](data/dataset_processing_example_filled.R) if you get stuck or message the #datateam slack channel.
+We have developed some partially filled R scripts to get you started on working on your first dataset. You can use this template where you can [fill in the blanks](data/dataset_processing_example_blanks.R) to get familiar with the functions we use and workflow at first. We also have a more minimal example [A filled example](dadataset_processing_example_skeleton.R_.R) as a intermediate step. You can look at the [filled example](data/dataset_processing_example_filled.R) if you get stuck or message the #datateam.
 
-## Review
-
-Once you have updated the dataset to your satisfaction, post the link to the dataset on #datateam for peer review.
+Once you have updated the dataset to your satisfaction and reviewed the Final Checklist, post the link to the dataset on #datateam for peer review.
 
 ```{r, child = '../workflows/pi_correspondence/final_review_checklist.Rmd'}
 ```
