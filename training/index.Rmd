@@ -1,6 +1,6 @@
 --- 
 title: "NCEAS Data Team Training"
-author: "Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean"
+author: "Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
@@ -61,4 +61,4 @@ NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean. 2019 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
+Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai. 2019 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
