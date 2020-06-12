@@ -2,8 +2,8 @@
 
 These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training.
 
-If you see anything that needs fixing, submit a issue here:
-<a href = 'https://github.com/NCEAS/datateam-training/issues' target='_blank'>
+If you see anything that needs fixing, submit a issue in the 
+<a href = 'https://github.com/NCEAS/datateam-training/issues' target='_blank'> github issues </a>
 
 ## Background reading
 
