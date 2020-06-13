@@ -14,7 +14,7 @@ A data package generally consists of at least 3 components.
 
 ## Packages on the Website
 
-All of this information is represented when you go to the landing page for a dataset. When you make changes through R those published changes will be reflected here. Although you can edit the metadata directly here but it is recommended to use R.
+All of the package information is represented when you go to the landing page for a dataset. When you make changes through R those published changes will be reflected here. Although you can edit the metadata directly from the webpage but we recommend to use R in most cases.
 
 ![](images/arctic_data_center_web.png)
 
@@ -68,7 +68,7 @@ remotes::install_github("nceas/datamgmt")
 library(datamgmt)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. For more information on the other nodes can be found in the reference section under [Set DataONE nodes]
+For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. For more information on the other nodes can be found in the reference section under [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/edit-data-packages.html)
 
 For example, if we are using the test site, set the node to the test Arctic node:
 
@@ -77,7 +77,7 @@ cn_staging <- CNode('STAGING')
 adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 ```
 
-Once all set up you can first publish an object (dat)
+Once all set up you can first publish an object (data)
 
 ```{r, child = '../workflows/edit_data_packages/publish_an_object.Rmd'}
 ```
