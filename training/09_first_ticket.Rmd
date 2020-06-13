@@ -1,6 +1,6 @@
 # First Ticket
 
-After completing the training, Jasmine or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
+After completing the previous chapters, Jasmine or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
 
 ```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
 ```
@@ -38,13 +38,16 @@ update <- publish_update(adc,
 
 ## Categorize datasets
 
-As a final step we will categorize the dataset you processed. We are trying to categorize datasets so we can have a rough idea of what kinds of datasets we have at the Arctic Data Center. We will grant you access to the google sheet that has all of the categories: (https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118)
+As a final step we will categorize the dataset you processed. We are trying to categorize datasets so we can have a rough idea of what kinds of datasets we have at the Arctic Data Center. We will grant you access to the google sheet that has all of the [categorized  datasets](https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118)
 
-We will categorize each dataset into one of the predefined themes (ie. biology, ecology etc.). Definition of the themes can be found here: https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118
+We will categorize each dataset into one of the predefined themes (ie. biology, ecology etc.). Definition of the themes can be found in the [google sheet](https://docs.google.com/document/d/1rqHk9SCH9JvdSnIJovYVE1YF4IF4_yNxFfCOJMI8xjk/edit)
 
 Run the following line with your doi and themes as a list.
 
 ```{r, eval=F}
-datamgmt::categorize_dataset(doi, themes, coder)
+datamgmt::categorize_dataset("you_doi", c("list", "of", "themes"), "your name")
 ```
 
+## Congrats!
+
+Congratulations on finishing your first ticket! 
