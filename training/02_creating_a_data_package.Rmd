@@ -87,6 +87,11 @@ Once all set up you can first publish an object (data)
 
 ## Exercise 2 {.exercise}
 
+If you are comfortable programming in R please complete this section of the exercise. If not please read through some of Jenny Bryan's materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) (at least up to section 2.1), and then complete part 1 using excel or a different text editor of your choice. 
+    + While we prefer you use R (a scripted environment) to perform these tasks in your job, for the purposes of this training feel free to do it however you can if you are not confident data wrangling in R.
+    + If you need an R refresher, go over the <a href = 'http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html' target='_blank'>data carpentry guide.</a>
+    + You may also find the data carpentry <a href = 'http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html' target='_blank'>lesson on `dplyr`</a> and OHI's <a href = 'http://ohi-science.org/data-science-training/dplyr.html' target='_blank'>data wrangling chapters</a> helpful.
+
 * Locate the data package you published in [Exercise 1](#exercise-1) by navigating to the "My Profile > My Data" section on <a href = 'https://test.arcticdata.io' target='_blank'>test.arcticdata.io</a>.
 * Download the metadata and data files and transfer them to the Datateam server.
 * Obtain a token and **please note** that for this exercise please make sure you grab the token from the <a href = 'https://test.arcticdata.io' target='_blank'> arcticdata test site</a>
