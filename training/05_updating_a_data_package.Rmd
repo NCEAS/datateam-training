@@ -10,10 +10,20 @@ This chapter will teach you how to edit and update an existing data package in R
 
 ## Exercise 4 {.exercise}
 
-* Locate the data package you published in the [previous exercise](#exercise-2) by navigating to the URL test.arcticdata.io/#view/...
+What if the researcher notices that some information needed to be updated in the data file? We can use `update_object` to do just that!
+
+If you haven't already:
+
+* Locate the data package you published in the [previous exercise](#exercise-3b) by navigating to the URL test.arcticdata.io/#view/...
 * Load the package and EML into R using the above commands.
+
+Make a slightly different data file to upload to `test.arcticdata.io` for this exercise:
+
 * Load the data file associated with the package into R as a `data.frame`. (Hint: use `read.csv()` to upload the data file from your computer/the server.)
 * Make an edit to the data in R (e.g. change one of the colnames to `"TEST"`).
 * Save the edited data. (Hint: use `write.csv(data, row.names = FALSE)`.)
-* Update the data file in the package with the edited data file using the above commands.
-* Update your package using the above commands.
+
+Upload the new csv file, get a new pid and publish those updates:
+
+* Update the data file in the package with the edited data file using `update_object`.
+* Update your package using `publish_update`.
