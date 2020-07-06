@@ -1,6 +1,6 @@
 ## Set methods
 
-The methods tree in the EML section has many different options, visible in the [schema](https://knb.ecoinformatics.org/emlparser/docs/eml-2.1.1/eml-methods.png). You can create new elements in the methods tree by following the schema and using the `eml` helpers.
+The methods tree in the EML section has many different options, visible in the [schema](https://eml.ecoinformatics.org/schema/index.html). You can create new elements in the methods tree by following the schema and using the `eml` helpers.
 
 Another simple and potentially useful way to add methods to an EML that has no methods at all is by adding them via a MS Word document. An example is shown below:
 

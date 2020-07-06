@@ -106,6 +106,7 @@ This part of the exercise walks you through submitting data through the web form
 ### Part 1
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
 * Reformat the table to meet the guidelines outlined in the journal article on effective data management (this might be easier to do in an interactive environment like Excel).
+* Note - we usually don't edit the content in data submissions so don't stress over this part too much
     
 ### Part 2
 * Go to "<a href = 'https://test.arcticdata.io/#data' target='_blank'>test.arcticdata.io</a>" and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
