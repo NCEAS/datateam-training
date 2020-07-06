@@ -96,7 +96,7 @@ doc_ex <- list(packageId = "id", system = "system",
 ```
 
 ## A note on Exercises
-The rest of the training has a series of exercises. These are meant to take you through the process as someone submitting a dataset from scratch. This is slightly different than the usual workflow but important in understanding the underlying system beind the Arctic Data Center.
+The rest of the training has a series of exercises. These are meant to take you through the process as someone submitting a dataset from scratch. This is slightly different than the usual workflow but important in understanding the underlying system behind the Arctic Data Center.
 
 Please note that you will be completing everything on the  <a href = 'test.arcticdata.io' target='_blank'> site for the training. In the future if you are unsure about doing anything with a dataset. The test site is a good place to try things out!
 

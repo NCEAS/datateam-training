@@ -21,7 +21,7 @@ For example, if you assigned the value from `get_package()` as above as `pkg` th
 ```{r, eval= FALSE}
 metadata_pid <-  pkg$metadata
 data_pid <-  pkg$data
-reasource_pid <-  pkg$reasource_map
+reasource_pid <-  pkg$resource_map
 ```
 
 After loading the package, you can also load the EML file into R using the following command:

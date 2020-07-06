@@ -68,7 +68,7 @@ remotes::install_github("nceas/datamgmt")
 library(datamgmt)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. For more information on the other nodes can be found in the reference section under [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/edit-data-packages.html)
+For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. More information on the other nodes can be found in the reference section under Set DataONE nodes [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html)
 
 For example, if we are using the test site, set the node to the test Arctic node:
 
