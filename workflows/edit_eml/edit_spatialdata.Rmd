@@ -84,5 +84,5 @@ To use the helper function get:
 
 To get a coordinate system name, you can use the output of the function on your first try (which will print the coordinate reference system, if it is defined). You can use the return value of `get_coord_list()` (a large `data.frame`) to find the correct coordinate system name.
 ```
-eml_get_raster_metadata(path, attributes)
+eml_get_raster_metadata(path, coord_name, attributes)
 ```
