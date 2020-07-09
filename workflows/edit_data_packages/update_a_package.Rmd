@@ -18,7 +18,7 @@ pkg <- get_package(adc_test, "resource_map_pid")
 update <- publish_update(adc_test, 
                          metadata_pid = pkg$metadata,
                          resource_map_pid = pkg$resource_map,
-                         data_pids = c(pkg$data, id_new),
+                         data_pids = c(pkg$data, id_new), # delete existing pid to be updated and add new pid
                          metadata_path = eml_path, 
                          public = FALSE)
 ```
