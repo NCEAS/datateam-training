@@ -105,6 +105,8 @@ standardUnits <- EML::get_unitList()
 View(standardUnits$units)
 ```
 
+Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit ie `meters` in the table to see if there are any matches.
+
 If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:
 
 * **id**: The `unit id` (ids are camelCased)
