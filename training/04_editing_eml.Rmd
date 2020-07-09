@@ -12,6 +12,16 @@ This chapter will be longest of all the sections! This is a reminder to take fre
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
 
+## FAIR data practices
+
+The result of these function calls won't show up on the webpage but they will add a `publisher` element to the `dataset` element and a `system` to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable). 
+
+Add the following lines to all of your data processing scripts.
+```{r, eval= FALSE}
+  doc <- eml_add_publisher(doc)
+  doc <- eml_add_entity_system(doc)
+```
+
 ```{r, child = '../workflows/edit_eml/edit_attributelists.Rmd'}
 ```
 
@@ -26,11 +36,13 @@ This chapter will be longest of all the sections! This is a reminder to take fre
 
 ## Exercise 3a {.exercise}
 
+The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).
+
 * Make sure your package from [before](#exercise-2) is loaded into R.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
 * We will continue using the objects created and updated in this exercise in 3b
 
-```{r, child = '../workflows/edit_eml/edit_spatialvectors.Rmd'}
+```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
 ```
 
 ```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
@@ -103,7 +115,13 @@ qa_package(mn, resource_map_pid)
 ```
 
 ## Exercise 3b {.exercise}
+
 * Make sure you have everything from [before](#exercise-3a) in R.
-* Validate, write and update your package using the respective functions.
+
+After adding more metadata, we want to publish the dataset onto `test.arcticdata.io`. Before we publish updates we need to do a couple checks before doing so.
+
+* Validate your metadata using `eml_validate`.
 * Use the <a href = 'https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter.html' target='_blank'>checklist</a> to review your submission.
-* Make edits where necessary, and publish updates as needed.
+* Make edits where necessary
+
+Once `eml_validate` returns `TRUE` go ahead and run `write_eml` and `publish_update`. There might be a small lag for your changes to appear on the website. 

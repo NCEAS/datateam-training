@@ -7,7 +7,7 @@
 > 
 > [COMMENTS HERE]
 >
-> After we recieve your responses, we can make the edits on your behalf.
+> After we receive your responses, we can make the edits on your behalf, or you are welcome to make them yourself using our user interface.
 >
 > Best,
 > 
@@ -18,7 +18,7 @@
 
 Provides the *what, where, and when* of the data
 
-> We would like to add some more context to your data package title. A descriptive title that provides context about the what, where, and when. I would like to suggest: ‘OUR SUGGESTION HERE, WHERE, WHEN’.
+> We would like to add some more context to your data package title. I would like to suggest: ‘OUR SUGGESTION HERE, WHERE, WHEN’.
 
 Does not use acronyms
 
@@ -32,9 +32,8 @@ Describes DATA in package (ideally > 100 words)
 
 #### Data
 
-Multiple datasets under the same project
-> Suggest to use the portals feature
-> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here:[link to create].
+Multiple datasets under the same project - suggest data portal feature
+> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
 
 At least one data file
 
@@ -46,6 +45,9 @@ Open formats
 
 > We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
 
+Zip files
+
+>Except for very specific file types, we do not recommend that data are archived in zip format. Data that are zipped together can present a barrier to reuse since it is difficult to accurately document each file within the zip file in a machine readable way.
 
 File contents and relationships among files are clear
 
@@ -73,7 +75,7 @@ Checklist for the datateam in reviewing attributes (NetCDF, CSV, shapefiles, or 
 
 Missing value codes
 
-> What do the missing values in your measurements represent? Something such as a short description (instrument failure, site not found, etc.) will suffice.
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
 
 > We noticed that the data files contain [blank cells - replace with missing values found]. What do these represent? 
 
@@ -81,12 +83,12 @@ Missing value codes
 
 All NSF funded datasets need a funding number. Non-NSF funded datasets might not have funding numbers, depending on the funding organization.
 
-> We noticed that your dataset does not appear to contain a funding number. The field accepts NSF numbers as well as other numbers by different organizations.
+> We noticed that your dataset does not appear to contain a funding number. The field accepts NSF funding numbers as well as other numbers by different organizations.
 
 #### Methods
 
 Submissions should:
-- provide instrument names
+- provide instrument names (if applicable)
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
 - this includes software submissions as well (see https://arcticdata.io/submit/#metadata-guidelines-for-software)

@@ -42,7 +42,7 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *numericDomain*: attributes that are numbers (either `ratio` or `interval`)
 * **formatString**: Required for `dateTime`, NA otherwise. Format string for dates, e.g. "DD/MM/YYYY".
 * **definition**: Required for `textDomain`, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.
-* **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html#StandardUnitDictionary).
+* **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: `standardUnits <- EML::get_unitList()` then running `View(standardUnits$units)`.
 * **numberType**: Required for `numericDomain`, NA otherwise. Options are `real`, `natural`, `whole`, and `integer`.
     + *real*: positive and negative fractions and integers (...-1,-0.25,0,0.25,1...)
     + *natural*: non-zero positive integers (1,2,3...)
@@ -95,6 +95,7 @@ new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeLi
 doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
 
 ```
+<<<<<<< HEAD
  
 ### Edit custom units
 
@@ -139,6 +140,8 @@ Custom units are then added to `additionalMetadata` using the following command:
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
 doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
+=======
+>>>>>>> 9f923bd81a51f2f7215cd9e1881ac8d79c60ad24
 
 ### Edit factors
 
