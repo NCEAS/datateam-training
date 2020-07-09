@@ -42,7 +42,7 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *numericDomain*: attributes that are numbers (either `ratio` or `interval`)
 * **formatString**: Required for `dateTime`, NA otherwise. Format string for dates, e.g. "DD/MM/YYYY".
 * **definition**: Required for `textDomain`, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.
-* **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html#StandardUnitDictionary).
+* **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: `standardUnits <- EML::get_unitList()` then running `View(standardUnits$units)`.
 * **numberType**: Required for `numericDomain`, NA otherwise. Options are `real`, `natural`, `whole`, and `integer`.
     + *real*: positive and negative fractions and integers (...-1,-0.25,0,0.25,1...)
     + *natural*: non-zero positive integers (1,2,3...)
@@ -94,48 +94,6 @@ For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edi
 new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeList$attribute[[1]], attributeName = 'date_and_time', domain = 'dateTimeDomain', measurementScale = 'dateTime')
 doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
 
-```
- 
-### Edit custom units
-
-EML has a set list of units that can be added to an EML file. These can be seen by using the following code:
-
-```{r, eval = FALSE}
-standardUnits <- EML::get_unitList()
-View(standardUnits$units)
-```
-
-If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:
-
-* **id**: The `unit id` (ids are camelCased)
-* **unitType**: The `unitType` (run `View(standardUnits$unitTypes)` to see standard `unitType`s)
-* **parentSI**: The `parentSI` unit (e.g. for kilometer `parentSI` = "meter")
-* **multiplierToSI**: Multiplier to the `parentSI` unit (e.g. for kilometer `multiplierToSI` = 1000)
-* **name**: Unit abbreviation (e.g. for kilometer `name` = "km")
-* **description**: Text defining the unit (e.g. for kilometer `description` = "1000 meters")
-
-To manually generate the custom units list, create a dataframe with the fields mentioned above. An example is provided below that can be used as a template:
-
-```{r, eval = FALSE}
-custom_units <- data.frame(
-    
-  id = c('siemensPerMeter', 'decibar'),
-  unitType = c('resistivity', 'pressure'),
-  parentSI = c('ohmMeter', 'pascal'),
-  multiplierToSI = c('1','10000'),
-  abbreviation = c('S/m','decibar'),
-  description = c('siemens per meter', 'decibar'),
-  
-  stringsAsFactors = FALSE)
-```
-
-Using `EML::get_unit_id` for custom units will also generate valid EML unit ids. 
-
-Custom units are then added to `additionalMetadata` using the following command:
-
-```{r, eval = FALSE}
-unitlist <- set_unitList(custom_units, as_metadata = TRUE)
-doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
 
 ### Edit factors

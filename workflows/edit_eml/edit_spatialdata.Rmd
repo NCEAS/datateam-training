@@ -2,22 +2,37 @@
 
 Occasionally, you may encounter a third type of data object: `spatialVector` and `spatialRaster`. These objects contains spatial data (ie maps), such as a shapefile or geodatabase.
 
-Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. 
+Editing a `spatialVector` or `spatialRaster` is similar to editing a `dataTable` or an `otherEntity`. A `physical` and `attributeList` should be present. We will focus on how to get the information unique to spatialData and how to create the `spatialVector/spatialRaster` 
 
 #### File types
 
 File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .dbf, .shp, and .shx
 
-Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren't sure whether to unzip a file, ask Jasmine or Jeanette.
+Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). This is one of the exceptions to our rule regarding .zip files.
+
+For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren't sure whether to unzip a file, ask Jasmine or Jeanette.
 
 ### Reading Spatial Files
+
+Read in the files to (1) help you in creating your attributes table and (2) sometimes also figure out the coordinate reference system.
+
 ```
 library(sf)
 spatial_file <- sf::read_sf("example.kml")
 ```
 
+If it is a zipped shapefile there is a handy function you can use
+```
+arcticdatautils::read_zip_shapefile(mn, pid)
+```
+
 #### Coordinate Systems
-All latitudes and longitude coordinates should have a coordinate system (like a frame of reference). There are horizontal coordinate systems (earth's surface) and vertical coordinate systems (depth). More information can be found [here](https://pro.arcgis.com/en/pro-app/help/mapping/properties/coordinate-systems-and-projections.htm).
+The coordinate system allow to work with spatial data using the same frame of reference (a Datum). A common coordinate system is "`GCS_WGS_1984` (used in Google Maps!) which is suitable for plotting points distributed globally. There are many others that may be better suited for certain areas in the world. 
+
+All latitudes and longitude coordinates should have a coordinate system (like a frame of reference). 
+
+
+There are horizontal coordinate systems (earth's surface) and vertical coordinate systems (depth). More information can be found [here](https://pro.arcgis.com/en/pro-app/help/mapping/properties/coordinate-systems-and-projections.htm).
 
 To find the `horizCoordSysName` you can use:
 
@@ -69,5 +84,5 @@ To use the helper function get:
 
 To get a coordinate system name, you can use the output of the function on your first try (which will print the coordinate reference system, if it is defined). You can use the return value of `get_coord_list()` (a large `data.frame`) to find the correct coordinate system name.
 ```
-eml_get_raster_metadata(path, attributes)
+eml_get_raster_metadata(path, coord_name, attributes)
 ```

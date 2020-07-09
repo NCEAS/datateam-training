@@ -32,7 +32,7 @@ To edit a section where you are not 100% sure of the sub-elements, using the `em
 doc$dataset$abstract <- eml$abstract(para = "A concise but thorough description of the who, what, where, when, why, and how of a dataset.")
 ```
 
-This inserts the abstract with a `para` element in our dataset, which we know from the EML [schema](https://knb.ecoinformatics.org/external//emlparser/docs/eml-2.1.1/index.html) is valid.
+This inserts the abstract with a `para` element in our dataset, which we know from the EML [schema](https://eml.ecoinformatics.org/schema/index.html) is valid.
 
 Note that the above is equivalent to the following generic construction:
 

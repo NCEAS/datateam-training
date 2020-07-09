@@ -9,7 +9,7 @@ Select reference material has additionally been curated into a training document
 
 https://nceas.github.io/datateam-training/training
 
-# Contirbuting
+# Contributing
 This is written using bookdown. On more information on style conventions please see `CONTRIBUTING.md`. 
 
 To render the book:
