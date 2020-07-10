@@ -1,6 +1,6 @@
 ## Example Solr queries
 
-For additional examples and explanations, check out the Apache Lucene [Query Parser Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) page.
+For additional examples and explanations, check out the Apache Lucene <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>Query Parser Syntax</a> page.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(magrittr)

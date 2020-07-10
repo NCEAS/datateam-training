@@ -15,7 +15,7 @@ formatId <- "eml://ecoinformatics.org/eml-2.1.1"
 formatId <- format_eml()
 ```
 
-Most objects have registered `formatId`s that can be found on the DataONE Object Format List [here](https://cn.dataone.org/cn/v2/formats). Always use the "Id:" (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
+Most objects have registered `formatId`s that can be found on the DataONE Object Format List <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>. Always use the "Id:" (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
 
 Once you know the appropriate `formatId` you can publish an object using these commands:
 
@@ -28,4 +28,4 @@ pid <- publish_object(adc_test,
                       format_id = formatId) # note that the output of this function is the PID of the newly published object
 ```
 
-After publishing the object, the `PID` will need to be added to a resource map by [updating](#update-a-package) or [creating](#create-a-resource-map) a resource map. Additionally, the [rights and access](#set-rights-and-access) for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don't need to do this.
+After publishing the object, the `PID` will need to be added to a resource map by <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#update-a-package' target='_blank'>updating</a> or <a href = 'https://nceas.github.io/datateam-training/reference/create-a-resource-map.html#create-a-resource-map' target='_blank'>creating</a> a resource map. Additionally, the <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'>rights and access</a> for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don't need to do this.

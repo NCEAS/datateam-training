@@ -10,7 +10,7 @@ doc$dataset$otherEntity[[i]] <- NULL
 
 ### Create otherEntities
 
-If you need to create/update an `otherEntity`, make sure to [publish](#publish-an-object) or [update](#update-a-data-file) your data object first (if it is not already on the DataONE MN). Then build your `otherEntity`.
+If you need to create/update an `otherEntity`, make sure to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/edit-otherentities.html#update-a-data-file' target='_blank'>update</a> your data object first (if it is not already on the DataONE MN). Then build your `otherEntity`.
 
 ```{r, eval = FALSE}
 otherEntity <- arcticdatautils::pid_to_eml_entity(mn, pkg$data[[i]])

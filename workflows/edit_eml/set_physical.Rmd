@@ -1,6 +1,6 @@
 ## Set physical
 
-To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to [set the member node](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html) to test.arcticdata.io !**
+To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!**
 
 ```{r, eval = FALSE}
 physical <- arcticdatautils::pid_to_eml_physical(mn, pkg$data[[i]])
@@ -14,7 +14,7 @@ physical <- arcticdatautils::pid_to_eml_physical(mn, "your_data_pid")
 
 The `physical` must then be assigned to the data object.
 
-A final, but not recommended option, is to set the `physical` by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to [publish](#publish-an-object) or [update](#update-a-data-file) your data first and then use `pid_to_eml_physical()` to set the `physical`.
+A final, but not recommended option, is to set the `physical` by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html' target='_blank'>update</a> your data first and then use `pid_to_eml_physical()` to set the `physical`.
 
 ```{r, eval = FALSE}
 id <- 'your_data_pid' # this should be an actual PID

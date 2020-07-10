@@ -2,7 +2,7 @@
 
 One final step when creating/updating packages is to make sure that the rights and access on all the objects that were uploaded are set correctly within the sysmeta. The function `arcticdatautils::set_rights_and_access()` will set both, and `arcticdatautils::set_access()` will just set access. There are two functions for this because a `rightsHolder` should always have access, but not all people who need access are `rightsHolder`s. The `rightsHolder` of the data package is typically the `submitter` (if the data set is submitted through the web form ("editor")), but if a data team member is publishing objects for a PI, the `rightsHolder` should be the main point of contact for the data set (i.e. the person who requested that we upload the data for them). 
 
-To set the rights and access for all of the objects in a [package](#get-package-and-eml), first get the ORCiD of the person to whom you are giving rights and access. You can set this manually, or grab it from one of the creators in an EML file. You can look up ORCID iDs [here](https://orcid.org/orcid-search/search). 
+To set the rights and access for all of the objects in a <a href = 'https://nceas.github.io/datateam-training/reference/get-package-and-eml.html#get-package-and-eml' target='_blank'>package</a>, first get the ORCiD of the person to whom you are giving rights and access. You can set this manually, or grab it from one of the creators in an EML file. You can look up ORCID iDs <a href = 'https://orcid.org/orcid-search/search' target='_blank'>here</a>
 
 ```{r, eval = FALSE}
 # Manually set ORCiD
@@ -36,6 +36,6 @@ remove_public_read(adc_test, c(pkg$metadata, pkg$data, pkg$resource_map))
 ```
 
 ### My profile
-The datasets that render under a user's profile page (https://arcticdata.io/catalog/profile/http://orcid.org/0000-0003-3644-7237) are added if one of the following three System Metadata fields exists.  The subject is the `rightsHolder` or the subject has one of either `write` or `changePermission` in the `accessPolicy`.  
+The datasets that render under a user's profile page like <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-0003-3644-7237' target='_blank'>here</a> are added if one of the following three System Metadata fields exists.  The subject is the `rightsHolder` or the subject has one of either `write` or `changePermission` in the `accessPolicy`.  
 
 If you ever need to remove a subject from the `accessPolicy` or update the `rightsHolder` you can use `arcticdatautils::remove_access` and `arcticdatautils::set_rightsHolder`, respectively. 

@@ -33,7 +33,7 @@ Describes DATA in package (ideally > 100 words)
 #### Data
 
 Multiple datasets under the same project - suggest data portal feature
-> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory:https://arcticdata.io/catalog/portals/DBO. If you are interested in creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
+> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: <a href = 'https://arcticdata.io/catalog/portals/DBO' target='_blank'>https://arcticdata.io/catalog/portals/DBO</a>. If you are interested in creating a portal for your datasets, you can get one started here: <a href = 'https://arcticdata.io/catalog/edit/portals/new/Settings' target='_blank'>https://arcticdata.io/catalog/edit/portals/new/Settings</a>. More information on how to set up can be found here: <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a>, but as always we are here to help over email.
 
 At least one data file
 
@@ -55,7 +55,7 @@ File contents and relationships among files are clear
 
 We try not to prescribe a way the researchers must format their data as long as reasonable. However, in extreme cases (for example Excel spreadsheets with data and charts all in one sheet) we will want to kindly ask them to reformat.
 
-> We would like to suggest a couple of modifications to the structure of your data. This will others to re-use it most effectively. [DESCRIBE WHAT MAY NEED TO BE CHANGED IN THE DATA SET]. Our data submission guidelines page (https://arcticdata.io/submit/) outlines what are best practices for data submissions to the Arctic Data Center. Let us know if you have any questions or if we can be of any help.
+> We would like to suggest a couple of modifications to the structure of your data. This will others to re-use it most effectively. [DESCRIBE WHAT MAY NEED TO BE CHANGED IN THE DATA SET]. Our data submission guidelines page (<a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>) outlines what are best practices for data submissions to the Arctic Data Center. Let us know if you have any questions or if we can be of any help.
 
 #### Attributes
 
@@ -91,7 +91,7 @@ Submissions should:
 - provide instrument names (if applicable)
 - specify how sampling locations were chosen
 - provide citations for sampling methods that are not explained in detail
-- this includes software submissions as well (see https://arcticdata.io/submit/#metadata-guidelines-for-software)
+- this includes software submissions as well (see <a href = 'https://arcticdata.io/submit/#metadata-guidelines-for-software' target='_blank'>https://arcticdata.io/submit/#metadata-guidelines-for-software</a>)
 
 > Your methods section appears to be missing some information. [ADJUST THIS DEPENDING ON WHAT IS MISSING - Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files.]
 

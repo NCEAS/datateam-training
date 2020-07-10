@@ -1,5 +1,5 @@
 ## More resources
 
-- Solr's [The Standard Query Parser](https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser) docs (high level of detail)
-- Another quick reference: https://wiki.apache.org/solr/SolrQuerySyntax
-- http://www.solrtutorial.com/
+- Solr's <a href = 'https://cwiki.apache.org/confluence/display/solr/The+Standard+Query+Parser' target='_blank'>The Standard Query Parser</a> docs (high level of detail)
+- Another quick reference: <a href = 'https://wiki.apache.org/solr/SolrQuerySyntax' target='_blank'>https://wiki.apache.org/solr/SolrQuerySyntax</a> 
+- <a href = 'http://www.solrtutorial.com/' target='_blank'>http://www.solrtutorial.com/</a> 

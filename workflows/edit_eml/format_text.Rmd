@@ -1,6 +1,6 @@
 ## Format text in EML
 
-Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this [demo](https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml) for a full example. Additional info is also available [here](https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html).
+Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this <a href = 'https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml' target='_blank'>demo</a> for a full example. Additional info is also available <a href = 'https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html' target='_blank'>here</a>.
 
 ```{block, type="note"}
 Many of these formatting functions only work when enclosed by `<para></para>`

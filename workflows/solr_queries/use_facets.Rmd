@@ -1,8 +1,8 @@
 ## Use facets
 
-We can also summarize what's in Solr with [faceting](https://lucene.apache.org/solr/guide/7_3/faceting.html), which lets us **group** Solr documents together and **count** them. This is like `table` in R. Faceting can do a query within a query, but more commonly it's used to summarize unique values in a field. For example, we can find the unique `formatId`s on data objects:
+We can also summarize what's in Solr with <a href = 'https://lucene.apache.org/solr/guide/7_3/faceting.html' target='_blank'>faceting</a>, which lets us **group** Solr documents together and **count** them. This is like `table` in R. Faceting can do a query within a query, but more commonly it's used to summarize unique values in a field. For example, we can find the unique `formatId`s on data objects:
 
-- https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&fq=formatType:DATA&facet=true&facet.field=formatId&rows=0
+- <a href = 'https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&fq=formatType:DATA&facet=true&facet.field=formatId&rows=0' target='_blank'>https://arcticdata.io/metacat/d1/mn/v2/query/solr/?q=*:*&fq=formatType:DATA&facet=true&facet.field=formatId&rows=0</a>
 
 To facet, we usually do a few things:
 
@@ -14,5 +14,5 @@ To facet, we usually do a few things:
 ```{block, type = "note"}
 Currently, the `dataone::query()` function does not support faceting, so you'll have to run your queries as a URL. 
 
-For additional ways to use faceting (such as [pivot faceting](https://lucene.apache.org/solr/guide/7_3/faceting.html#combining-stats-component-with-pivots)), check out the [Solr documentation](https://lucene.apache.org/solr/guide/7_3/faceting.html).
+For additional ways to use faceting (such as <a href = 'https://lucene.apache.org/solr/guide/7_3/faceting.html#combining-stats-component-with-pivots' target='_blank'>pivot faceting</a>), check out the <a href = 'https://lucene.apache.org/solr/guide/7_3/faceting.html' target='_blank'>Solr documentation</a>.
 ```
