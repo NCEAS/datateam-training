@@ -18,10 +18,12 @@ pkg <- get_package(adc_test, "resource_map_pid")
 update <- publish_update(adc_test, 
                          metadata_pid = pkg$metadata,
                          resource_map_pid = pkg$resource_map,
-                         data_pids = c(pkg$data, id_new), # delete existing pid to be updated and add new pid
+                         data_pids = c(pkg$data, id_new), # add new pid
                          metadata_path = eml_path, 
                          public = FALSE)
 ```
+
+If you want to delete the existing old pid to be published and replace it with new pid, make sure you delete the existing pid from `pkg$data` and then combine `id_new` together as argument for `data_pids`in the `publish_update()`.
 
 If a package is ready to be public, you can change the `public` argument in the `publish_update()` call to `TRUE`.
 

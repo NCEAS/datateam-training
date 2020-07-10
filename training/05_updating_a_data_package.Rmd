@@ -15,7 +15,7 @@ What if the researcher notices that some information needed to be updated in the
 If you haven't already:
 
 * Locate the data package you published in the [previous exercise](#exercise-3b) by navigating to the URL test.arcticdata.io/#view/...
-* Load the package and EML into R using the above commands (chapter 5.21).
+* Load the package and EML into R using the [above commands](#publish-update).
 
 Make a slightly different data file to upload to `test.arcticdata.io` for this exercise:
 
