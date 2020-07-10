@@ -76,7 +76,7 @@ One final note, you can make multiple commits before you push to the repo. If yo
 The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure. 
 
 The following workflow diagram shows each step and their functions explicitly. 
-![](images/github-workflow-diagram.png)
+![](images/github-workflow.png)
 
 ## My Git tab disappeared
 
