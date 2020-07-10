@@ -19,11 +19,11 @@ id_new <- update_object(adc_test,
 
 
 ```{block, type = "note"}
-You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found [here](https://cn.dataone.org/cn/v2/formats) on the DataONE website.
+You will need to be explicit about your `format_id` here based on the file type. A list of format IDs can be found <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a> on the DataONE website.
 Use line 2 (Id:) exactly, character for character.
 ```
 
 
-To accomplish the second task, you will need to update the metadata using the EML package. This is covered in [Chapter 4](#editing-eml). After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
+To accomplish the second task, you will need to update the metadata using the EML package. This is covered in <a href = 'https://nceas.github.io/datateam-training/training/editing-eml.html' target='_blank'>Chapter 4</a>. After you update a file, you will always need to update the metadata because parts of the `physical` section (such as the file size, checksum) will be different, and it may also require different attribute information.
 
 Once you have updated your metadata and saved it, you can update the package itself.

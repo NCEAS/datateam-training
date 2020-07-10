@@ -9,4 +9,4 @@ doiPid <- generateIdentifier(mn, "DOI")
 doc$packageId <- doiPid
 ```
 
-Be sure to include the `identifier=` argument in your [publish update](#publish-update) command so the pre-generated identifier is applied.
+Be sure to include the `identifier=` argument in your <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html#publish-update' target='_blank'>publish update</a> command so the pre-generated identifier is applied.

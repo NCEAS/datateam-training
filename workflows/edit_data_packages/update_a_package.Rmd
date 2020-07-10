@@ -2,7 +2,7 @@
 
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update()`.
 
-Make sure you have the package you want to update, [loaded into R](#get-package-and-eml) using `get_package()`.
+Make sure you have the package you want to update, <a href = 'https://nceas.github.io/datateam-training/reference/get-package-and-eml.html#get-package-and-eml' target='_blank'>loaded into R</a> using `get_package()`.
 
 ### Publish update
 
@@ -18,10 +18,12 @@ pkg <- get_package(adc_test, "resource_map_pid")
 update <- publish_update(adc_test, 
                          metadata_pid = pkg$metadata,
                          resource_map_pid = pkg$resource_map,
-                         data_pids = c(pkg$data, id_new),
+                         data_pids = c(pkg$data, id_new), # add new pid
                          metadata_path = eml_path, 
                          public = FALSE)
 ```
+
+If you want to delete the existing old pid to be published and replace it with new pid, make sure you delete the existing pid from `pkg$data` and then combine `id_new` together as argument for `data_pids`in the `publish_update()`.
 
 If a package is ready to be public, you can change the `public` argument in the `publish_update()` call to `TRUE`.
 

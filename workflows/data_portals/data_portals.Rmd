@@ -2,7 +2,7 @@
 
 > Create a custom, branded portal for your research topic or lab group that spans datasets in the Arctic Data Center – available for all users. Branded portals provide a convenient, readily customized way to communicate your science, your team, your data, and related data from within the Arctic Data Center. The portals feature makes highlighting and sharing related datasets easy for researchers.
 
-General information on data portals can be found on the main page:  https://arcticdata.io/data-portals/
+General information on data portals can be found on the main page:  <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a> 
  
  ## My portals
   My portals allows members of the Arctic Data Center Team to view all the portals currently created. This can be found in `Settings` under the `My Portals` section.

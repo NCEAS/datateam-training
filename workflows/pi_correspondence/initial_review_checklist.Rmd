@@ -1,6 +1,6 @@
 ## Initial review checklist
 
-Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the [initial email template](https://nceas.github.io/datateam-training/reference/email-templates.html) and insert comments and modify as needed.
+Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>initial email template</a> and insert comments and modify as needed.
 
 * Title
   + WHAT, WHERE, and WHEN:  
@@ -23,7 +23,7 @@ Before responding to a new submission use this checklist to review the submissio
   + No xls/xlsx files (or other proprietary files)
   + File contents and relationships among files are clear
   + Each file is well NAMEd and DESCRIBEd and clearly differentiated from all others
-  + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. [Quality control all `dimensionless` units](https://nceas.github.io/datateam-training/reference/assess-attributes.html).
+  + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. <a href = 'https://nceas.github.io/datateam-training/reference/assess-attributes.html' target='_blank'>Quality control all `dimensionless` units</a>.
   + Missing value codes are explained (WHY are the data absent?)
 * People & Parties
   + At least one contact and one creator with a name, email address, and ORCID iD

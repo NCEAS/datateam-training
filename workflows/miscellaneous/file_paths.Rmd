@@ -4,7 +4,7 @@ This section contains some basic tips about file paths.
 
 ### Remote files vs. local files
 
-If you're working on the datateam server ([RStudio](https://datateam.nceas.ucsb.edu/rstudio/auth-sign-in) in an internet browser), you're usually working in the home directory under your username.  File paths generally follow this pattern: `/home/dmullen/folder/file`. **Note:** These files are not stored on your local machine, they are on a remote server.  You can access them through remote SFTP software like Cyberduck.  
+If you're working on the datateam server (<a href = 'https://datateam.nceas.ucsb.edu/rstudio/auth-sign-in' target='_blank'>RStudio</a> in an internet browser), you're usually working in the home directory under your username.  File paths generally follow this pattern: `/home/dmullen/folder/file`. **Note:** These files are not stored on your local machine, they are on a remote server.  You can access them through remote SFTP software like Cyberduck.  
 
 If you're working with your local RStudio app then your file paths generally follow this pattern: `/Users/datateam/folder/file`. These files are stored on your local machine and you can access them with Finder. 
 

@@ -1,6 +1,6 @@
 ## Get package and EML
 
-Before we look more in depth at EML, we first need to load your data package into R. After [setting your node](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html), use the following commands to load the package:
+Before we look more in depth at EML, we first need to load your data package into R. After <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>setting your node</a>, use the following commands to load the package:
 
 ```{r, eval = FALSE}
 rm_pid <- "your_resource_map_pid"

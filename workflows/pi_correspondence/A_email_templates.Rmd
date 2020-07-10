@@ -4,7 +4,7 @@ Please think critically when using these canned replies rather than just blindly
 
 In your first few months, please run email drafts by the #datateam Slack and get approval before sending.
 
-Remember to consult the [submission guidelines](https://arcticdata.io/submit/) for details of what is expected.  
+Remember to consult the <a href = 'https://arcticdata.io/submit/' target='_blank'>submission guidelines</a> for details of what is expected.  
 
 ```{r, echo = FALSE}
 chapter <- "email_templates/"

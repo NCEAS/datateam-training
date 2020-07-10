@@ -12,7 +12,7 @@ Then edit the sysmeta slots by using `@` functionality. For example, to change t
 sysmeta@fileName <- 'NewFileName.csv'
 ```
 
-Note that some slots cannot be changed by simple text replace (particularly the `accessPolicy`). There are various helper functions for changing the `accessPolicy` and `rightsHolder` such as `datapack::addAccessRule()` (which takes the sysmeta as an input) or [`arcticdatautils::set_rights_and_access()`](#set-rights-and-access), which only requires a `PID`. In general, you most frequently need to use `dataone::getSystemMetadata()` to change either the `formatId` or `fileName` slots (see [the DataONE list of format ids](https://cn.dataone.org/cn/v2/formats)) for acceptable formats.
+Note that some slots cannot be changed by simple text replace (particularly the `accessPolicy`). There are various helper functions for changing the `accessPolicy` and `rightsHolder` such as `datapack::addAccessRule()` (which takes the sysmeta as an input) or <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'>`arcticdatautils::set_rights_and_access()`</a>, which only requires a `PID`. In general, you most frequently need to use `dataone::getSystemMetadata()` to change either the `formatId` or `fileName` slots (see <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>the DataONE list of format ids</a>) for acceptable formats.
 
 ```{r, eval = FALSE}
 # Example of setting the formatId slot
@@ -33,5 +33,5 @@ Importantly, changing the system metadata does NOT necessitate a change in the `
 
 For a more in-depth (and technical) guide to sysmeta, check out the DataONE documentation: 
 
-- [System Metadata](https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html)
-- [Data Types in CICore](https://releases.dataone.org/online/api-documentation-v2.0.1/apis/Types2.html)
+- <a href = 'https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html' target='_blank'>System Metadata</a>
+- <a href = 'https://releases.dataone.org/online/api-documentation-v2.0.1/apis/Types2.html' target='_blank'>Data Types in CICore</a>

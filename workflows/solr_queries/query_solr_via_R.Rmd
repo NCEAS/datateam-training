@@ -1,6 +1,6 @@
 ## Query Solr via R
 
-Though it's possible to [query Solr directly through its HTTP API](https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html), we typically run our queries through R, for two main reasons: 
+Though it's possible to <a href = 'https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html' target='_blank'>query Solr directly through its HTTP API</a>, we typically run our queries through R, for two main reasons: 
 
 1. The result is returned in a more useful way to R without extra work on your part
 2. We can more easily pass our authentication token with the query

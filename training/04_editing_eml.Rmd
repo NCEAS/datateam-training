@@ -121,7 +121,7 @@ qa_package(mn, resource_map_pid)
 After adding more metadata, we want to publish the dataset onto `test.arcticdata.io`. Before we publish updates we need to do a couple checks before doing so.
 
 * Validate your metadata using `eml_validate`.
-* Use the <a href = 'https://nceas.github.io/datateam-training/reference/final-checklist-before-notifying-submitter.html' target='_blank'>checklist</a> to review your submission.
+* Use the [checklist](#final-checklist) to review your submission.
 * Make edits where necessary
 
 Once `eml_validate` returns `TRUE` go ahead and run `write_eml` and `publish_update`. There might be a small lag for your changes to appear on the website. 
