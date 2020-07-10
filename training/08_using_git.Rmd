@@ -26,7 +26,7 @@ Now you need to set up your Git global options, and tell it who you are. At the 
 `git config --global user.email myemail@domain.com`
 
 After running these commands, the shell prompt should look like this:
-![global config](images/shell_git_config.jpeg)
+![global config](images/shell_config.jpeg)
 
 ### Cloning the arctic-data repo
 
