@@ -75,6 +75,10 @@ One final note, you can make multiple commits before you push to the repo. If yo
 
 The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure. 
 
+The Github workflow diagram from <a href = 'https://www.reddit.com/r/git/comments/99ul9f/git_workflow_diagram_showcasing_the_role_of/' target='_blank'>stamminator</a> shows each step and their functions explicitly. 
+
+![](images/github-workflow.png)
+
 ## My Git tab disappeared
 
 Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your "project" and all you need to do is reopen it. If your Git tab has disappeared, in the top right of your RStudio session, you should see a little R logo with "Project: (None)" next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select "arctic-data" or "sasap-data." Once you have opened your project, the Git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.
