@@ -36,7 +36,7 @@ You should see a prompt asking you for a URL. Fill it out as shown in the image 
 
 ![](images/clone_repo.jpeg)
 
-You will be prompted for your username and password, and then Git will clone the directory. The username/password you use should be the same one you use to log in when you go to http://github.nceas.ucsb.edu/KNB/arctic-data. Now you should have a directory called arctic-data in your RStudio files window.
+You will be prompted for your username and password, and then Git will clone the directory. The username/password you use should be the enterprise account you use to log in when you go to http://github.nceas.ucsb.edu/KNB/arctic-data or RT. Now you should have a directory called arctic-data in your RStudio files window.
 
 ## Working with the repository
 
@@ -74,6 +74,10 @@ One final note, you can make multiple commits before you push to the repo. If yo
 ### Where do I commit?
 
 The default right now is to save data-processing scripts in the `arctic-data/datateam/data-processing/` directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure. 
+
+The Github workflow diagram from <a href = 'https://www.reddit.com/r/git/comments/99ul9f/git_workflow_diagram_showcasing_the_role_of/' target='_blank'>stamminator</a> shows each step and their functions explicitly. 
+
+![](images/github-workflow.png)
 
 ## My Git tab disappeared
 

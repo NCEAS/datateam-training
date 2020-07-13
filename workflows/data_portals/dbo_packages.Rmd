@@ -1,6 +1,6 @@
 ## Distributed Biological Observatory (DBO) submissions
 
-DBO packages are organized under a project page (viewable [here](https://arcticdata.io/catalog/projects/DBO)). In order to make sure that DBO datasets appear in the special DBO data search correctly, there are a few additional metadata requirements.
+DBO packages are organized under a project page (viewable <a href = 'https://arcticdata.io/catalog/projects/DBO' target='_blank'>here</a>). In order to make sure that DBO datasets appear in the special DBO data search correctly, there are a few additional metadata requirements.
 
 * give `read` and `write` access to the entire data package (using `set_access`) to the group: `"CN=DBO,DC=dataone,DC=org"`
     * eg: `set_access(mn, pkg, "CN=DBO,DC=dataone,DC=org", permissions = c("read", "write", "changePermission"))
@@ -42,6 +42,4 @@ geo_locs <- dplyr::tribble(~siteNew, ~westBoundingCoordinate, ~eastBoundingCoord
     
     
    
-After you have updated your dataset, navigate to [https://arcticdata.io/catalog/projects/DBO/data](https://arcticdata.io/catalog/projects/DBO/data) and make sure that the different filters work as expected. Your dataset should be discoverable in some way through all of the filters.
-              
-        
+After you have updated your dataset, navigate to <a href = 'https://arcticdata.io/catalog/projects/DBO/data' target='_blank'>https://arcticdata.io/catalog/projects/DBO/data</a> and make sure that the different filters work as expected. Your dataset should be discoverable in some way through all of the filters.

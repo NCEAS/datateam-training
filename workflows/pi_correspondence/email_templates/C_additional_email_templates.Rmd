@@ -14,26 +14,25 @@ If the PI needs a DOI right away:
 
 >KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R.
 
->[Here](http://training.arcticdata.io/materials/arctic-data-center-training/programming-metadata-and-data-publishing.html) are some training materials we have that use both the `EML` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
+><a href = 'http://training.arcticdata.io/materials/arctic-data-center-training/programming-metadata-and-data-publishing.html' target='_blank'>Here</a> are some training materials we have that use both the `EML` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
 
 >If you prefer, there are Java, Python, MATLAB, and Bash/cURL clients as well.
 
 #### Finding multiple data packages
 
 >If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
-	e.g.: https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533
-	
+	e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533' target='_blank'>https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533</a> 
 	
 #### NSF ARC data submission policy
 
->Please find an overview of our submission guidelines here: https://arcticdata.io/submit/ , and NSF Office of Polar Programs policy information here: https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp .
+>Please find an overview of our submission guidelines here: <a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>, and NSF Office of Polar Programs policy information here: <a href = 'https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp' target='_blank'>https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp</a>.
 
->Investigators should upload their data to the Arctic Data Center (https://arcticdata.io), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
+>Investigators should upload their data to the Arctic Data Center (<a href = 'https://arcticdata.io' target='_blank'>https://arcticdata.io</a>), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
 
 
 #### Linking ORCiD and LDAP accounts
 
-> First create an account at orcid.org/register if you have not already. After that account registration is complete, login to the KNB with your ORCID iD here: https://knb.ecoinformatics.org/#share. Next, hover over the icon on the top right and choose "My Profile". Then, click the "Settings" tab and scroll down to "Add Another Account". Enter your name or username from your Morpho account and select yourself (your name should populate as an option). Click the "+". You will then need to log out of knb.ecoinformatics.org and then log back in with your old LDAP account (click "have an existing account", and enter your Morpho credentials with the organization set to "unaffiliated") to finalize the linkage between the two accounts. Navigate to "My Profile" and "Settings" to confirm the linkage.
+> First create an account at orcid.org/register if you have not already. After that account registration is complete, login to the KNB with your ORCID iD here: <a href = 'https://knb.ecoinformatics.org/#share' target='_blank'>https://knb.ecoinformatics.org/#share</a>. Next, hover over the icon on the top right and choose "My Profile". Then, click the "Settings" tab and scroll down to "Add Another Account". Enter your name or username from your Morpho account and select yourself (your name should populate as an option). Click the "+". You will then need to log out of knb.ecoinformatics.org and then log back in with your old LDAP account (click "have an existing account", and enter your Morpho credentials with the organization set to "unaffiliated") to finalize the linkage between the two accounts. Navigate to "My Profile" and "Settings" to confirm the linkage.
 
 > After completing this, all of your previously submitted data pacakges should show up on your KNB "My Profile" page, whether you are logged in using your ORCiD or Morpho account, and you will be able to submit data either using Morpho or our web interface.
 

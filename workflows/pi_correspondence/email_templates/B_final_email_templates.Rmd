@@ -23,7 +23,7 @@
 [NOTE: the URL format is very specific here, please try to follow it exactly (but substitute in the actual DOI of interest)]  
 > Here is the link to your finalized data package:
 
-> https://doi.org/10.18739/A20X0X
+> <a href = 'https://doi.org/10.18739/A20X0X' target='_blank'>https://doi.org/10.18739/A20X0X</a>
 
 > Please let us know if you need any further assistance.
 

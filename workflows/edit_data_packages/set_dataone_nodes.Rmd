@@ -42,5 +42,5 @@ goa <- getMNode(cn, "urn:node:GOA")
 dryad <- datamgmt::guess_member_node('https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00')
 ```
 
-More DataONE STAGING nodes can be found [here](https://cn-stage.test.dataone.org/cn/v2/node).
-More DataONE PROD nodes can be found [here](https://cn.dataone.org/cn/v2/node).
+More DataONE STAGING nodes can be found <a href = 'https://cn-stage.test.dataone.org/cn/v2/node' target='_blank'>here</a>
+More DataONE PROD nodes can be found <a href = 'https://cn.dataone.org/cn/v2/node' target='_blank'>here</a>

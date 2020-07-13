@@ -2,4 +2,4 @@
 
 .hobo files are raw data files offloaded from a sensor, and can include real-time graphs of measured variables, such as temperature and soil moisture conditions.
 
-.hobo files can be opened using HOBOware, which can be downloaded from [here](http://www.onsetcomp.com/hoboware-free-download). 
+.hobo files can be opened using HOBOware, which can be downloaded from <a href = 'http://www.onsetcomp.com/hoboware-free-download' target='_blank'>here</a>.

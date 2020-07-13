@@ -13,11 +13,11 @@ The query (`q`) parameter uses a syntax that looks like `field:value`, where `fi
 
 
 ```{block, type = "note"}
-In the second example, the DOI `PID` is surrounded in double quotes. This is because Solr has [reserved characters](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html), of which `:` is one, so we have to help Solr by surrounding values with reserved characters in them in quotes or by escaping them.
+In the second example, the DOI `PID` is surrounded in double quotes. This is because Solr has <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>reserved characters</a>, of which `:` is one, so we have to help Solr by surrounding values with reserved characters in them in quotes or by escaping them.
 ```
 
 
-To view the list of query-able parameters on the Arctic Data Center and their descriptions, you can visit https://arcticdata.io/metacat/d1/mn/v2/query/solr. The list of parameters is also provided below:
+To view the list of query-able parameters on the Arctic Data Center and their descriptions, you can visit <a href = 'https://arcticdata.io/metacat/d1/mn/v2/query/solr' target='_blank'>https://arcticdata.io/metacat/d1/mn/v2/query/solr</a>. The list of parameters is also provided below:
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(magrittr)

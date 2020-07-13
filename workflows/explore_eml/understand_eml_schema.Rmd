@@ -1,8 +1,8 @@
 ## Understand the EML schema
 
-Another great resource for navigating the EML structure is looking at the [schema](https://eml.ecoinformatics.org/schema/) which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found [here](https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols). The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
 
-For example, let's take a look at [eml-party](https://eml.ecoinformatics.org/images/eml-party.png). To start off, notice that some elements have bolded lines leading to them.
+For example, let's take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.
 
 ![](../images/eml-party.png)
 
@@ -12,6 +12,6 @@ Notice also that next to the `givenName` element it says "0..infinity". This mea
 
 You will also see icons linking the EML slots together, which indicate the ordering of subsequent slots. These can indicate either a "sequence" or a "choice". In our example from `eml-party`, a "choice" icon indicates that either an `individualName`, `organizationName`, or `positionName` is required, but you do not need all three. However, the "sequence" icon tells us that if you use an `individualName`, you must include the `surName` as a child element. If you include the optional child elements `salutation` and `givenName`, they must be written in the order presented in the schema.
 
-The eml schema sections you may find particularly helpful include [eml-party](https://eml.ecoinformatics.org/images/eml-party.png), [eml-attribute](https://eml.ecoinformatics.org/images/eml-attribute.png), and [eml-physical](https://eml.ecoinformatics.org/images/eml-physical.png). 
+The eml schema sections you may find particularly helpful include <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>, <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>eml-attribute</a> and <a href = 'https://eml.ecoinformatics.org/images/eml-physical.png' target='_blank'>eml-physical</a>.
 
-For a more detailed description of the EML schema, see the [reference section on exploring EML](https://nceas.github.io/datateam-training/reference/explore-eml.html).
+For a more detailed description of the EML schema, see the <a href = 'https://nceas.github.io/datateam-training/reference/explore-eml.html' target='_blank'>reference section on exploring EML</a>.
