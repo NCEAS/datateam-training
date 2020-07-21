@@ -12,6 +12,12 @@ atts[1:10,]
 
 ![](https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netCDF_full_att_preview.png)
 
+The "long_name" can be used to build a definition.
+
+The "units" can be used for either units or the enumerated domain codes.
+
+The "_FillValue" is a missing value code it looks like
+
 ```{r, eval=FALSE}
 # returns the actual values for a specified attribute
 t <- ncdf4::nc_open(filepath)
