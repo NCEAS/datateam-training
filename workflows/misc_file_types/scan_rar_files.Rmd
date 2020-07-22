@@ -1,0 +1,20 @@
+## Scan rar files
+
+This section is for rar files which support data compression and file scanning. Here is how to scan rar files:
+
+1. Download the rar file to datateam
+
+2. In the terminal run the following on your files:
+
+```{r eval=FALSE, error=FALSE}
+mkdir to-scan && mv <file.rar> to-scan && cd to-scan
+unrar e <file.rar>
+```
+
+That should scan the compressed file and each individual file it contains:
+
+```{r eval=FALSE, error=FALSE}
+clamscan *
+```
+
+Clean up by deleting the to-scan folder - 'rm -r to-scan`.
