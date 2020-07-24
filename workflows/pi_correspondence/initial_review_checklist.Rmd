@@ -22,9 +22,10 @@ Before responding to a new submission use this checklist to review the submissio
   + At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)
   + No xls/xlsx files (or other proprietary files)
   + File contents and relationships among files are clear
-  + Each file is well NAMEd and DESCRIBEd and clearly differentiated from all others
+  + Each file is well NAMED and DESCRIBED and clearly differentiated from all others
   + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. <a href = 'https://nceas.github.io/datateam-training/reference/assess-attributes.html' target='_blank'>Quality control all `dimensionless` units</a>.
   + Missing value codes are explained (WHY are the data absent?)
+  + If it is a `.rar` file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'>scan the file</a>
 * People & Parties
   + At least one contact and one creator with a name, email address, and ORCID iD
 * Coverages
@@ -39,3 +40,6 @@ Before responding to a new submission use this checklist to review the submissio
 * Methods
   + This section is REQUIRED for ALL NSF-FUNDED data packages
   + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resources
+* Portals
+  + If there are multiple submissions from the same people/project let them know about the portals feature
+  + If this is part of a portal make sure this dataset can be found there. Additional steps might be needed to get that to work. Please consult Jeanette or Jasmine for more information on how to do that.

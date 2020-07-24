@@ -4,7 +4,6 @@ Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)
-3. A data.frame of factors (if applicable)
 
 Attributes can exist in EML for `dataTable`, `otherEntity`, and `spatialVector` data objects. Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
 
