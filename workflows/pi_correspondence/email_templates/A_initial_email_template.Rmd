@@ -41,6 +41,7 @@ Offer this if submitter is reluctant to change:
 #### Data
 
 Multiple datasets under the same project - suggest data portal feature
+
 > Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: <a href = 'https://arcticdata.io/catalog/portals/DBO' target='_blank'>https://arcticdata.io/catalog/portals/DBO</a>. If you are interested in creating a portal for your datasets, you can get one started here: <a href = 'https://arcticdata.io/catalog/edit/portals/new/Settings' target='_blank'>https://arcticdata.io/catalog/edit/portals/new/Settings</a>. More information on how to set up can be found here: <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a>, but as always we are here to help over email.
 
 At least one data file
