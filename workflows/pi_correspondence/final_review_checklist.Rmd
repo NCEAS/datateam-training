@@ -46,7 +46,7 @@ Included lines for FAIR:
 - check if negatives (-) are missing
 
 ### Project
-- if it is an NSF award you have run `eml_nsf_to_project(awards, eml_version = "2.2.0")`
+- if it is an NSF award you have run `eml_nsf_to_project(awards)`
     + NSF award numbers should be listed as "NSF 1234567"
 
 ### Methods
