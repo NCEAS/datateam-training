@@ -45,7 +45,7 @@ Included lines for FAIR:
 - check if negatives (-) are missing
 
 ### Project
-- if it is an NSF award you have run `eml_nsf_to_project(awards)`
+- if it is an NSF award you have run `eml_nsf_to_project(awards, eml_version = "2.2.0")`
     + NSF award numbers should be listed as "NSF 1234567"
 
 ### Methods
@@ -53,9 +53,9 @@ Included lines for FAIR:
 - no garbled text
 
 ### Check EML Version
-- currently using: `eml-2.1.1`
-- review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.1.1 under eml 
-- Re-run your code again and have the line`emld::eml_version("eml-2.1.1")` at the top
+- currently using: `eml-2.2.0` (as of July 30 2020)
+- review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.2.0 under eml 
+- Re-run your code again and have the line`emld::eml_version("eml-2.2.0")` at the top
 
 ### Access
 - Granted access to PI using `set_rights_and_access()`
