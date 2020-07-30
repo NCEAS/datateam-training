@@ -1,0 +1,61 @@
+# Semantic annotations
+
+The training will cover an overview of what areas we usually will need to update. For more information on how to add semantic annotations to EML 2.2.0 can be found [here](https://eml.ecoinformatics.org/semantic-annotation-primer.html)
+
+## How annotations are used
+
+This is a [dataset](https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q) that have semantic annotations included.
+
+On the website you can see annotations in each of the attributes.
+![]("../images/anotations_web.png")
+
+You can click on any one of them to search for more datasets with that same annotation.
+![]("../images/anotations_web_use.png")
+
+## Entity-level annotations
+
+To add annotations to the `attributeList` you will need information about the `propertyURI` and `valueURI`
+```{r eval=FALSE}
+doc$dataset$dataTable[[i]]$attributeList$attribute[[i]]$annotation
+```
+
+```
+$id
+[1] "ODBcOyaTsg"
+
+$propertyURI
+$propertyURI$label
+[1] "contains measurements of type"
+
+$propertyURI$propertyURI
+[1] "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+
+
+$valueURI
+$valueURI$label
+[1] "Distributed Biological Observatory region identifier"
+
+$valueURI$valueURI
+[1] "http://purl.dataone.org/odo/ECSO_00002617"
+```
+
+```{r}
+doc$dataset$dataTable[[1]]$attributeList$attribute[[3]]$annotation$propertyURI
+
+doc$dataset$dataTable[[1]]$attributeList$attribute[[3]]$annotation$valueURI
+```
+
+## Ontologies used
+
+### [OBOE: The Extensible Observation Ontology](https://github.com/NCEAS/oboe)
+
+This ontology covers the following:
+
+- **Observation**: an event in which one or more measurements are taken
+Measurement: the measured value of a property for a specific object or phenomenon (e.g., 3.2)
+- **Entity**: an object or phenomenon on which measurements are made (e.g., Quercus rubrum)
+- **Characteristic**: the property being measured (e.g., VolumetricDensity)
+Standard: units and controlled vocabularies for interpreting measured values (e.g., g/cm^3)
+- **Protocol**: the procedures followed to obtain measurements (e.g., DensityProtocol2014)
+
+All the classes can be found [on bioPortal](https://bioportal.bioontology.org/ontologies/OBOE/?p=classes). You will need the ID (`propertyURI`) and the label from the relevant entry. If you are unsure, ask Jasmine or Jeanette about what appropriate annotations to use.
