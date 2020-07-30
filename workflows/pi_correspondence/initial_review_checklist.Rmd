@@ -16,6 +16,7 @@ Before responding to a new submission use this checklist to review the submissio
     - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
     - At least 100 words total
     - - tags such as  `<superscript>2</superscript>` and `<subscript>2</subscript>` can be used for nicer formatting
+    - Any citations to papers can be registered with us
 * Keywords
   + Some keywords are included
 * Data
