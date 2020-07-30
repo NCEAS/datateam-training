@@ -1,9 +1,9 @@
-# Semantic annotations
+## Semantic annotations
 
 The training will cover an overview of what areas we usually will need to update. For more information on how to add semantic annotations to EML 2.2.0 can be found
  <a href = 'https://eml.ecoinformatics.org/semantic-annotation-primer.html'>here</a>. Currently metacatUI does not support the editing of semantic annotations on the website so all changes will have to be done in R.
 
-## How annotations are used
+### How annotations are used
 
 This is a  <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that have semantic annotations included.
 
@@ -13,7 +13,7 @@ On the website you can see annotations in each of the attributes.
 You can click on any one of them to search for more datasets with that same annotation.
 ![]("../images/anotations_web_use.png")
 
-## Entity-level annotations
+### Entity-level annotations
 
 To add annotations to the `attributeList` you will need information about the `propertyURI` and `valueURI`
 ```{r eval=FALSE}
@@ -39,9 +39,9 @@ $valueURI$valueURI
 [1] "http://purl.dataone.org/odo/ECSO_00002617"
 ```
 
-## Ontologies used
+### Ontologies used
 
-### OBOE: The Extensible Observation Ontology
+#### OBOE: The Extensible Observation Ontology
 
 This <a href = 'https://github.com/NCEAS/oboe'>OBOE ontology</a> covers the following:
 
