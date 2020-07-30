@@ -8,10 +8,10 @@ The training will cover an overview of what areas we usually will need to update
 This is a  <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that have semantic annotations included.
 
 On the website you can see annotations in each of the attributes.
-![]("../images/anotations_web.png")
+![](../images/anotations_web.png)
 
 You can click on any one of them to search for more datasets with that same annotation.
-![]("../images/anotations_web_use.png")
+![](../images/anotations_web_use.png)
 
 ### Entity-level annotations
 
