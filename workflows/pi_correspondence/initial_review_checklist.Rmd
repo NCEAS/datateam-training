@@ -26,6 +26,7 @@ Before responding to a new submission use this checklist to review the submissio
   + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. <a href = 'https://nceas.github.io/datateam-training/reference/assess-attributes.html' target='_blank'>Quality control all `dimensionless` units</a>.
   + Missing value codes are explained (WHY are the data absent?)
   + If it is a `.rar` file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'>scan the file</a>
+  + If there is the unit tons make sure to ask if it is metric tons or imperical tons if not clarified already
 * People & Parties
   + At least one contact and one creator with a name, email address, and ORCID iD
 * Coverages

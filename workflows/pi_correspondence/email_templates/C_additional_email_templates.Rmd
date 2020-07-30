@@ -12,7 +12,7 @@ If the PI needs a DOI right away:
 
 #### Replacing data files
 The data files can be replaced by going to the green Edit button > Click the black triangle by the Describe button for the data file > Select Replace (attached is also a screenshot on how to get there).
-![]("../../images/replace_file.png")
+![]("../images/replace_file.png")
 
 #### Recovering Dataset submissions
 To recover dataset submissions that were not successful please do the following:
