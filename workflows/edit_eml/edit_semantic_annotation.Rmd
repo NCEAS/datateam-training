@@ -37,7 +37,7 @@ $valueURI$label
 
 $valueURI$valueURI
 [1] "http://purl.dataone.org/odo/ECSO_00002617"
-```ß
+```
 
 ## Ontologies used
 
