@@ -34,6 +34,7 @@ Included lines for FAIR:
 - **Variables** match what is in the file
 - **Measurement domain** - if appropirate (ie dateTime correct)
 - **Missing Value Code** - accounted for if applicable
+- appropriate semantic annotations added
 
 ### People
 - complete information for each person in each section
