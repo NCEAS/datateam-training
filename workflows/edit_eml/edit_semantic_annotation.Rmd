@@ -1,11 +1,21 @@
 ## Semantic annotations
 
-The training will cover an overview of what areas we usually will need to update. For more information on how to add semantic annotations to EML 2.2.0 can be found
+For a brief overview of what a semantic annotation is, and why we use them check out [this video.](https://drive.google.com/file/d/1Err-fL8O21kd1NzHJ9HJkK_B2fpt4sQW/view?usp=sharing)
+
+Even more information on how to add semantic annotations to EML 2.2.0 can be found
  <a href = 'https://eml.ecoinformatics.org/semantic-annotation-primer.html'>here</a>. Currently metacatUI does not support the editing of semantic annotations on the website so all changes will have to be done in R.
+ 
+There are several elements in the EML 2.2.0 schema that can be annotated:
+
+* `dataset`
+* entity (eg: `otherEntity` or `dataTable`)
+* `attribute`
+
+On the datateam, we will only be adding annotations to attributes for now.
 
 ### How annotations are used
 
-This is a  <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that have semantic annotations included.
+This is a  <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that has semantic annotations included.
 
 On the website you can see annotations in each of the attributes.
 ![](../images/annotations_web.png)
@@ -13,9 +23,15 @@ On the website you can see annotations in each of the attributes.
 You can click on any one of them to search for more datasets with that same annotation.
 ![](../images/annotations_web_use.png)
 
-### Entity-level annotations
+#### Attribute-level annotations
 
 To add annotations to the `attributeList` you will need information about the `propertyURI` and `valueURI`
+
+Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (`propertyURI`),
+and object (`valueURI`). Because of the way our search interface is built, for now we will be using attribute annotations that have a `propertyURI` label of "contains measurements of type". 
+
+Here is what an annotation for an attribute looks like in R. Note that both the `propertyURI` and `valueURI` have both a label, and the URI itself.
+
 ```{r eval=FALSE}
 doc$dataset$dataTable[[i]]$attributeList$attribute[[i]]$annotation
 ```
@@ -39,17 +55,68 @@ $valueURI$valueURI
 [1] "http://purl.dataone.org/odo/ECSO_00002617"
 ```
 
-### Ontologies used
+### How to add an annotation
 
-#### OBOE: The Extensible Observation Ontology
+**1. Decide which variable to annotate**
 
-This <a href = 'https://github.com/NCEAS/oboe'>OBOE ontology</a> covers the following:
+The goal for the datateam is to start annotating every dataset that comes in. Practically, we cannot annotate
+every single variable in every single dataset - this would take forever! Typically, there are a few key variables
+that are measured in any particular dataset. These key variables are the ones we want to prioritize. Although having annotations on 
+variables like date, longitude, or site name would be helpful, they shouldn't be our primary focus.
 
-- **Observation**: an event in which one or more measurements are taken
-Measurement: the measured value of a property for a specific object or phenomenon (e.g., 3.2)
-- **Entity**: an object or phenomenon on which measurements are made (e.g., Quercus rubrum)
-- **Characteristic**: the property being measured (e.g., VolumetricDensity)
-Standard: units and controlled vocabularies for interpreting measured values (e.g., g/cm^3)
-- **Protocol**: the procedures followed to obtain measurements (e.g., DensityProtocol2014)
 
-All the classes can be found <a href = 'https://bioportal.bioontology.org/ontologies/OBOE/?p=classes'>on bioPortal</a>. You will need the ID (`propertyURI`) and the label from the relevant entry. If you are unsure, ask Jasmine or Jeanette about what appropriate annotations to use.
+**2. Find an appropriate `valueURI`**
+
+The next step is to find an appropriate value to fill in the blank of the sentence: "this attribute contains measurements of _____."
+
+There are several ontologies to search in. In order of most to least likely to be relevant to the Arctic Data Center they are:
+
+* [The Ecosystem Ontology (ECSO)](http://bioportal.bioontology.org/ontologies/ECSO/?p=classes&conceptid=http://purl.dataone.org/odo/ECSO_00002925)  
+    - this was developed at NCEAS, and has many terms that are relevant to ecosystem processes, especially those involving carbon and nutrient cycling
+* [The Environment Ontology (EnVO)](http://bioportal.bioontology.org/ontologies/ENVO/?p=classes&conceptid=root)
+    - this is an ontology for the concise, controlled description of environments
+* [National Center for Biotechnology Information (NCBI) Organismal Classification (NCBITAXON)](http://bioportal.bioontology.org/ontologies/NCBITAXON/?p=classes&conceptid=root)
+    - The NCBI Taxonomy Database is a curated classification and nomenclature for all of the organisms in the public sequence databases.
+* [Information Artifact Ontology (IAO)](http://bioportal.bioontology.org/ontologies/IAO/?p=summary)
+    - this ontology contains terms related to information entities (eg: journals, articles, datasets, identifiers)
+
+To search, navigate through the "classes" until you find an appropriate term.
+
+**3. Build the annotation in R**
+
+We will have helper functions for this in the coming months, but for now it will be a bit of a manual process.
+
+First you need to figure out the index of the attribute you want to annotate.
+
+```{r, eval = F}
+eml_get_simple(doc$dataset$dataTable[[3]]$attributeList, "attributeName")
+```
+
+```
+ [1] "prdM"         "t090C"        "t190C"        "c0mS/cm"      "c1mS/cm"      "sal00"        "sal11"        "sbeox0V"      "flECO-AFL"
+[10] "CStarTr0"     "cpar"         "v0"           "v4"           "v6"           "v7"           "svCM"         "altM"         "depSM"    
+[19] "scan"         "sbeox0ML/L"   "sbeox0dOV/dT" "flag"    
+```
+
+Next, assign an `id` to the attribute. It should be unique within the document, and it's nice if it is human readable and related to the attribute it is describing.
+
+```{r, eval = F}
+doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$id <- "salinity_var"
+```
+
+Now, assign the `propertyURI` information. This will be the same for every annotation you build.
+
+```{r, eval = F}
+doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$propertyURI <- list(label = "contains measurements of type",
+                                                                                       propertyURI = "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType")
+```
+
+Finally, add the `valueURI` information from your search. 
+
+![](../images/bioportal_term.png)
+You should see an ID on the Bioportal page that looks like a URL - this is the `valueURI`. Use the value to populate the label element.
+
+```{r, eval = F}
+doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- list(label = "Water Salinity",
+                                                                                       valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
+```
