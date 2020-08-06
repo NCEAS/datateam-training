@@ -82,7 +82,7 @@ There are several ontologies to search in. In order of most to least likely to b
 
 To search, navigate through the "classes" until you find an appropriate term. When we are picking terms, it is important that we not just pick a similar term or a term that seems close -  we want a term that is totally "right". For example, if you have an attribute for carbon tetroxide flux and an ontology with a class hierarchy like this:
 
--- carbon flux
+-- carbon flux  
   |---- carbon dioxide flux
 
 Our exact attribute, carbon tetroxide flux is not listed. In this case, we should pick "carbon flux" as it's completely correct and not "carbon dioxide flux" because it's more specific but not quite right.
