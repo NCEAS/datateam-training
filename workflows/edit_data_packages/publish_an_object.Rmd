@@ -10,7 +10,7 @@ formatId <- "text/csv"
 formatId <- "text/plain"
 
 # metadata file
-formatId <- "eml://ecoinformatics.org/eml-2.2.0"
+formatId <- "https://eml.ecoinformatics.org/eml-2.2.0"
 # OR
 formatId <- format_eml("2.2.0")
 ```
