@@ -106,7 +106,7 @@ eml_get_simple(doc$dataset$dataTable[[3]]$attributeList, "attributeName")
 Next, assign an `id` to the attribute. It should be unique within the document, and it's nice if it is human readable and related to the attribute it is describing. One format you could use is `entity_x_attribute_y` which should be unique in scope, and is nice and descriptive.
 
 ```{r, eval = F}
-doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$id <- "salinity_var"
+doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$id <- "entity_ctd_attribute_salinity"
 ```
 
 Now, assign the `propertyURI` information. This will be the same for every annotation you build.
