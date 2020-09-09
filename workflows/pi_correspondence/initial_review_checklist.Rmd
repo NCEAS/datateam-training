@@ -4,7 +4,7 @@ Before responding to a new submission use this checklist to review the submissio
 
 * Title
   + WHAT, WHERE, and WHEN:  
-    - Is descriptive of the work (provides enough information to understand the contents at a general scientific level), AND includes temp
+    - Is descriptive of the work (provides enough information to understand the contents at a general scientific level), AND includes temporal coverage
     - Provides a location of the work from the local to state or country level
     - Provides a time frame of the work
     - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
