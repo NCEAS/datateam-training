@@ -64,7 +64,7 @@ We can start by creating two data packages on the test node to nest beneath a pa
 
 First, load the Arctic Data Center Test Node and libraries.
   
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 library(dataone)
 library(arcticdatautils)
 library(EML)
@@ -105,7 +105,7 @@ doc_parent <- read_eml("../../training/data/E1_2013metadata.xml")
 doc_parent <- read_eml(getObject(adc_test, child_pkg_1$metadata))
 ```
 
-```{r, strip.white = TRUE}
+```{r, strip.white = FALSE}
 ## View the title 
 doc_parent$dataset$title
 ```
