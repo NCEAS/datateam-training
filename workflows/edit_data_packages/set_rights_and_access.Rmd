@@ -22,7 +22,7 @@ Note, when setting metadata, the ORCiD must start with `http://`. ORCiDs in EML 
 
 Next, set the rights and access using the following command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 set_rights_and_access(adc_test, 
                       pids = c(pkg$metadata, pkg$data, pkg$resource_map),
                       subject = subject,
