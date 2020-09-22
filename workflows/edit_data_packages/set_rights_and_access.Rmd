@@ -31,7 +31,7 @@ set_rights_and_access(adc_test,
 
 If you ever need to remove/add public access to your package or object, you can use `remove_public_read()` or `set_public_read()`, respectively.
 
-```{r eval = FALSE}
+```{r, eval = FALSE}
 remove_public_read(adc_test, c(pkg$metadata, pkg$data, pkg$resource_map))
 ```
 
