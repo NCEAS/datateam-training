@@ -61,3 +61,6 @@ Included lines for FAIR:
 - Granted access to PI using `set_rights_and_access()`
   + make sure it is `http://` (no s)
 - **note** if it is a part of portals there might be specific access requirements for it to be visible using `set_access()`
+
+### SFTP Files
+- if there are files transferred to us via SFTP, delete those files when the ticket is resolved
