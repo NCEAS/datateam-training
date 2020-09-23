@@ -30,7 +30,7 @@ Before responding to a new submission use this checklist to review the submissio
 * Coverages
   + Includes coverages that make sense
     - Start date BEFORE end date
-    - Temporal coverage matches geographic description (check hemispheres)
+    - Spatial coverage matches geographic description (check hemispheres)
     - Geographic description is from the local to state or country level, at the least
     - Taxonomic coverage if appropriate
 * Project Information
