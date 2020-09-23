@@ -95,7 +95,6 @@ new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeLi
 doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
 
 ```
-<<<<<<< HEAD
  
 ### Edit custom units
 
@@ -140,8 +139,6 @@ Custom units are then added to `additionalMetadata` using the following command:
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
 doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
-=======
->>>>>>> 9f923bd81a51f2f7215cd9e1881ac8d79c60ad24
 
 ### Edit factors
 
