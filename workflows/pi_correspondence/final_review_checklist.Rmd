@@ -11,8 +11,8 @@ the format ids are correct
 ### General EML
 Included lines for FAIR:
 ```{r eval=F}
-  doc <- eml_add_publisher(doc)
-  doc <- eml_add_entity_system(doc)
+doc <- eml_add_publisher(doc)
+doc <- eml_add_entity_system(doc)
 ```
 ### Title
 
