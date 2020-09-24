@@ -50,4 +50,4 @@ datamgmt::categorize_dataset("you_doi", c("list", "of", "themes"), "your name")
 
 ## Congrats!
 
-Congratulations on finishing your first ticket! 
+Congratulations on finishing your first ticket! You can head over to the the repository, [data-processing](https://github.com/NCEAS/data-processing) to get your ticket processing code reviewed by the team so we can learn from each other!

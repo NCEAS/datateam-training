@@ -1,4 +1,4 @@
-### Edit custom units
+## Edit custom units
 
 EML has a set list of units that can be added to an EML file. These can be seen by using the following code:
 

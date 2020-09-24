@@ -4,7 +4,6 @@ Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)
-3. A data.frame of factors (if applicable)
 
 Attributes can exist in EML for `dataTable`, `otherEntity`, and `spatialVector` data objects. Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
 
@@ -73,11 +72,16 @@ attributes <- data.frame(
 However, typing this out in R can be a major pain. Luckily, there's a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
 
 ```{r, eval = FALSE}
+#first download the CSV in your data package from Exercise #2
+data <- read.csv(text=rawToChar(getObject(adc_test, pkg$data)))
+```
+
+```{r, eval = FALSE}
 # From data (recommended)
 EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-EML::shiny_attributes(attributes_table = attributes_table)
+EML::shiny_attributes(attributes = attributes)
 
 # From scratch
 atts <- EML::shiny_attributes()
