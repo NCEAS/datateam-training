@@ -21,12 +21,12 @@ To manually generate the custom units list, create a dataframe with the fields m
 ```{r, eval = FALSE}
 custom_units <- data.frame(
     
-  id = c('siemensPerMeter', 'decibar'),
-  unitType = c('resistivity', 'pressure'),
-  parentSI = c('ohmMeter', 'pascal'),
-  multiplierToSI = c('1','10000'),
-  abbreviation = c('S/m','decibar'),
-  description = c('siemens per meter', 'decibar'),
+  id = c('partsPerThousand', 'decibar', 'wattsPerSquareMeter', 'micromolesPerGram', 'practicalSalinityUnit'),
+  unitType = c('dimensionless', 'pressure', 'power', 'amountOfSubstanceWeight'， 'dimensionless'),
+  parentSI = c(NA, 'pascal', 'watt', 'molesPerKilogram'， NA),
+  multiplierToSI = c(NA, '10000', '1', '1000000000', NA),
+  abbreviation = c('ppt', 'decibar', 'W/m^2', 'umol/g', 'PSU'),
+  description = c('parts per thousand', 'decibar', 'watts per square meter', 'micro moles per gram', 'used to describe the concentration of dissolved salts in water, the UNESCO Practical Salinity Scale of 1978 (PSS78) defines salinity in terms of a conductivity ratio'),
   
   stringsAsFactors = FALSE)
 ```
