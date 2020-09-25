@@ -34,6 +34,9 @@ Add the following lines to all of your data processing scripts.
 ```{r, child = '../workflows/edit_eml/edit_otherentities.Rmd'}
 ```
 
+```{r, child = '../workflows/edit_eml/edit_semantic_annotation.Rmd'}
+```
+
 ## Exercise 3a {.exercise}
 
 The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).

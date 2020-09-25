@@ -34,7 +34,7 @@ doc <- eml_add_entity_system(doc)
 - **Variables** match what is in the file
 - **Measurement domain** - if appropirate (ie dateTime correct)
 - **Missing Value Code** - accounted for if applicable
-- **Semantic Annotation** - if applicable
+- **Semantic Annotation** - appropriate semantic annotations added
 
 ### People
 - complete information for each person in each section
@@ -54,9 +54,9 @@ doc <- eml_add_entity_system(doc)
 - no garbled text
 
 ### Check EML Version
-- currently using: `eml-2.1.1`
-- review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.1.1 under eml 
-- Re-run your code again and have the line`emld::eml_version("eml-2.1.1")` at the top
+- currently using: `eml-2.2.0` (as of July 30 2020)
+- review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.2.0 under eml 
+- Re-run your code again and have the line`emld::eml_version("eml-2.2.0")` at the top
 
 ### Access
 - Granted access to PI using `set_rights_and_access()`

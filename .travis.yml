@@ -1,3 +1,4 @@
+dist: bionic
 language: r
 pandoc_version: 2.1.1
 sudo: false
@@ -16,8 +17,8 @@ deploy:
   local_dir: docs
 addons:
   apt:
-    sources:
-      - sourceline: 'ppa:opencpu/jq'
+#    sources:
+#      - sourceline: 'ppa:opencpu/jq'
     packages:
       - librdf0-dev
       - libudunits2-dev
