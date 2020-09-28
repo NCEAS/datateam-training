@@ -38,4 +38,4 @@ coverage <- EML::set_coverage(beginDate = '2012-01-01',
 doc$dataset$coverage$geographicCoverage <- list(geocov1, geocov2)
 ```
 
-For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage. 
+For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage. 

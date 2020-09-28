@@ -7,7 +7,11 @@ library(dataone)
 library(EML)
 ```
 
+<<<<<<< HEAD
 ```{r, error = FALSE, eval = FALSE}
+=======
+```{r, eval = F}
+>>>>>>> 05602734cd1df7c11fc8dd1c129285cfba5f393c
 # Need to be in this member node to explore file
 cn_staging <- CNode('STAGING')
 adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')

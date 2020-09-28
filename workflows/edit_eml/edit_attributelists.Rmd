@@ -81,7 +81,8 @@ data <- read.csv(text=rawToChar(getObject(adc_test, pkg$data)))
 EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-EML::shiny_attributes(attributes = attributes)
+attributeList <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
+EML::shiny_attributes(data = NULL, attributes = attributeList$attributes)
 
 # From scratch
 atts <- EML::shiny_attributes()
@@ -99,7 +100,6 @@ new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeLi
 doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
 
 ```
-<<<<<<< HEAD
  
 ### Edit custom units
 
@@ -144,8 +144,6 @@ Custom units are then added to `additionalMetadata` using the following command:
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
 doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
-=======
->>>>>>> 9f923bd81a51f2f7215cd9e1881ac8d79c60ad24
 
 ### Edit factors
 

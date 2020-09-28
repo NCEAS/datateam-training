@@ -67,6 +67,8 @@ How to generate a reprex:
 3. fix until everything runs smoothly
 4. copy the result to ask your question
 
+When copy and paste code slack message or github issues, use three backticks for code blocks and two backticks for a small piece of code will prevent issues with slack formats quotation.
+
 For more information and examples check out more of Jenny Bryan's [slides](https://speakerdeck.com/jennybc/reprex-help-me-help-you)
 or watch the [video](https://vimeo.com/208749032) starting at about the 10 min mark.
 
