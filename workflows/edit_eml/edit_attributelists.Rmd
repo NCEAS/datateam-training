@@ -81,7 +81,8 @@ data <- read.csv(text=rawToChar(getObject(adc_test, pkg$data)))
 EML::shiny_attributes(data = data)
 
 # From an existing attribute table
-EML::shiny_attributes(attributes = attributes)
+attributeList <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
+EML::shiny_attributes(data = NULL, attributes = attributeList$attributes)
 
 # From scratch
 atts <- EML::shiny_attributes()
