@@ -42,8 +42,10 @@ Add the following lines to all of your data processing scripts.
 The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).
 
 * Make sure your package from [before](#exercise-2) is loaded into R.
+* Convert `otherEntity` into `dataTable`.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
-* We will continue using the objects created and updated in this exercise in 3b
+* Add semantic annotations for attribute area.
+* We will continue using the objects created and updated in this exercise in 3b.
 
 ```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
 ```

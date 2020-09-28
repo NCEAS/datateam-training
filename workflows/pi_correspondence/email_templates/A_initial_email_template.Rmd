@@ -62,6 +62,10 @@ File contents and relationships among files are clear
 
 > Could you provide a short description of the files submitted? Information about how each file was generated (what software, source files, etc.) will help us create more robust metadata for long term use.
 
+Data layout
+
+> Would you be able to clarify how the data in your files is laid out? Specifically, what do the rows and columns represent?
+
 We try not to prescribe a way the researchers must format their data as long as reasonable. However, in extreme cases (for example Excel spreadsheets with data and charts all in one sheet) we will want to kindly ask them to reformat.
 
 > We would like to suggest a couple of modifications to the structure of your data. This will others to re-use it most effectively. [DESCRIBE WHAT MAY NEED TO BE CHANGED IN THE DATA SET]. Our data submission guidelines page (<a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>) outlines what are best practices for data submissions to the Arctic Data Center. Let us know if you have any questions or if we can be of any help.
