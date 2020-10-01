@@ -6,8 +6,11 @@
 
 > I have updated your data package and you can view it here after logging in: [URL]
 
-> Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing.
+> Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing with a DOI.
 
+> After publishing with a DOI, any further changes to the dataset will result in a new DOI. However, any previous DOIs will still resolve and point the user to the newest version. If you would like to maintain the same DOI please let us know. 
+
+> Please let us know if you have any questions.
 
 #### DOI and data package finalization comments
 
@@ -25,7 +28,7 @@
 
 > <a href = 'https://doi.org/10.18739/A20X0X' target='_blank'>https://doi.org/10.18739/A20X0X</a>
 
-> Please let us know if you need any further assistance. However, any further changes to the dataset will result in a new DOI. If you would like to maintain the same DOI please let us know.
+> Please let us know if you need any further assistance. 
 
 *New Submission: Abstract, methods, excel to csv, and attributes*
 > Thank you for your submission to the Arctic Data Center.  From my preliminary examination of your dataset a few fields need to be updated before we can assign a DOI. 
