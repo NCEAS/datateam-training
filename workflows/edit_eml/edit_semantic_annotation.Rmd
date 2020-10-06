@@ -125,3 +125,5 @@ You should see an ID on the Bioportal page that looks like a URL - this is the `
 doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- list(label = "Water Salinity",
                                                                                        valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
 ```
+
+Note that always making sure to add semantic annotations to spatial and temporal features such as lat, lon and date.
