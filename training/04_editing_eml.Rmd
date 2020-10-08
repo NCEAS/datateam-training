@@ -125,6 +125,15 @@ In most cases, `qa_package()` will be run just by passing in a member node and t
 qa_package(mn, resource_map_pid)
 ```
 
+Note that there is a bug existing for qa_package() which will show you the following error message when you run the function.
+```
+The distribution URL for object urn:uuid:......(your resource map pid) is missing or incongruent in the physical section of the EML.
+Error in dl_and_read_all_data(mn, package, doc, read_all_data) : 
+All distribution URLs for data objects must match the data PIDs to continue.
+```
+
+The bug will be fixed later so please ignore this error message for now. 
+
 ## Exercise 3b {.exercise}
 
 * Make sure you have everything from [before](#exercise-3a) in R.
