@@ -45,7 +45,7 @@ We will categorize each dataset into one of the predefined themes (ie. biology, 
 Run the following line with your doi and themes as a list.
 
 ```{r, eval=F}
-datamgmt::categorize_dataset("you_doi", c("list", "of", "themes"), "your name")
+datamgmt::categorize_dataset("your_doi", c("list", "of", "themes"), "your name")
 ```
 
 ## Congrats!
