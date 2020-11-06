@@ -59,11 +59,7 @@ $valueURI$valueURI
 
 **1. Decide which variable to annotate**
 
-The goal for the datateam is to start annotating every dataset that comes in. Practically, we cannot annotate
-every single variable in every single dataset - this would take forever! Typically, there are a few key variables
-that are measured in any particular dataset. These key variables are the ones we want to prioritize. Although having annotations on 
-variables like date, longitude, or site name would be helpful, they shouldn't be our primary focus.
-
+The goal for the datateam is to start annotating every dataset that comes in. Please make sure to add semantic annotations to spatial and temporal features such as latitude, longitude, site name and date and aim to annotate as many attributes as possible.
 
 **2. Find an appropriate `valueURI`**
 
@@ -125,5 +121,3 @@ You should see an ID on the Bioportal page that looks like a URL - this is the `
 doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- list(label = "Water Salinity",
                                                                                        valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
 ```
-
-Note that always making sure to add semantic annotations to spatial and temporal features such as lat, lon and date.
