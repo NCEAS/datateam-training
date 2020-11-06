@@ -21,11 +21,15 @@ library(sf)
 spatial_file <- sf::read_sf("example.kml")
 ```
 
-Note that when read kml files, read_sf() sometimes can generate columns which do not exist in the original files. Be aware of this and always open kml files in text editor to check the existence of columns.
 
-If it is a zipped shapefile there is a handy function you can use
+```{block, type = "note"}
+When you read kml files, `read_sf()` sometimes shows additional columns that aren't in the actual file. Always open kml files in text editor to check if the columns actually exist.
 ```
-arcticdatautils::read_zip_shapefile(mn, pid)
+
+
+```{block, type = "note"}
+If it is a zipped shapefile there is a handy function you can use
+`arcticdatautils::read_zip_shapefile(mn, pid)`
 ```
 
 #### Coordinate Systems
