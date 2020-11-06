@@ -94,12 +94,6 @@ update <- publish_update(adc_test,
 
 Note that there are other arguments to `publish_update()` you may need.
 
-The diagrams from the DataOne Community Meeting (Session 7) illustrate the dataset submission workflow explicitly.
-
-![](images/data-submission-workflow1.png)
-
-![](images/data-submission-workflow2.png)
-
 After your package is published, run the `qa_package()` function from the `datamgmt` package. 
 
 The function arguments are as follows:
@@ -125,14 +119,13 @@ In most cases, `qa_package()` will be run just by passing in a member node and t
 qa_package(mn, resource_map_pid)
 ```
 
-Note that there is a bug existing for `qa_package()` in test web which will show you the following error message when you run the function.
+Note that there is a bug in for `qa_package()` for datasets in test.arcticdata.io:
 ```
 The distribution URL for object urn:uuid:......(your resource map pid) is missing or incongruent in the physical section of the EML.
 Error in dl_and_read_all_data(mn, package, doc, read_all_data) : 
 All distribution URLs for data objects must match the data PIDs to continue.
 ```
-
-This is normal for now becasue of the existing bug. It will be fixed later so please ignore this error message for now. 
+Please ignore this error message for now. 
 
 ## Exercise 3b {.exercise}
 
