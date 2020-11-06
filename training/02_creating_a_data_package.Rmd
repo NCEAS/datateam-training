@@ -12,6 +12,8 @@ A data package generally consists of at least 3 components.
 
 3. Resource Map: The final object is the resource map. This object is a plain text file with the extension `.rdf` (<a href = 'https://www.w3.org/RDF/' target='_blank'>Resource Description Framework</a>) that defines the relationships between all of the other objects in the data package. It says things like "this metadata file describes this data file," and is critical to making a data package render correctly on the website with the metadata file and all of the data files together in the correct place. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using tools in R.
 
+![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow2.png)
+
 ## Packages on the Website
 
 All of the package information is represented when you go to the landing page for a dataset. When you make changes through R those published changes will be reflected here. Although you can edit the metadata directly from the webpage but we recommend to use R in most cases.
@@ -78,6 +80,10 @@ adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
 ```
 
 Once all set up you can first publish an object (data)
+
+If you are curious how everything magically works, here is a handy diagram:
+
+![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow1.png)
 
 ```{r, child = '../workflows/edit_data_packages/publish_an_object.Rmd'}
 ```
