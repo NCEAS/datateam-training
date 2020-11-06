@@ -119,13 +119,15 @@ In most cases, `qa_package()` will be run just by passing in a member node and t
 qa_package(mn, resource_map_pid)
 ```
 
-Note that there is a bug in for `qa_package()` for datasets in test.arcticdata.io:
+```{block, type = "note"}
+There is a bug in for `qa_package()` for datasets in test.arcticdata.io that should be ignored:
+```
 ```
 The distribution URL for object urn:uuid:......(your resource map pid) is missing or incongruent in the physical section of the EML.
 Error in dl_and_read_all_data(mn, package, doc, read_all_data) : 
 All distribution URLs for data objects must match the data PIDs to continue.
 ```
-Please ignore this error message for now. 
+
 
 ## Exercise 3b {.exercise}
 
