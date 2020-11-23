@@ -39,3 +39,20 @@ Custom units are then added to `additionalMetadata` using the following command:
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
 doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
+
+If units that should be `standardUnit` are added as `customUnit`, you can use the following code to fix this issue:
+```{r, eval = FALSE}
+# add standard unit
+doc$dataset$dataTable[[i]]$attributeList$attribute[[i]]$measurementScale$ratio$unit$standardUnit <- "your standard unit"
+
+# get rid of custom unit
+doc$dataset$dataTable[[i]]$attributeList$attribute[[i]]$measurementScale$ratio$unit$customUnit <- NULL
+```
+
+If you want to find all of the positions of a certain custom unit that should be standard, try this code:
+```{r, eval = FALSE}
+ls <- purrr::map(doc$dataset$dataTable[[i]]$attributeList$attribute, 
+                  ~str_detect(.x$measurementScale$ratio$unit$customUnit, "your standard unit"))
+                  
+which(ls == TRUE)
+```

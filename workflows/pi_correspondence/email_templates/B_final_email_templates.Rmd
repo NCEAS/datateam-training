@@ -28,7 +28,8 @@
 
 > <a href = 'https://doi.org/10.18739/A20X0X' target='_blank'>https://doi.org/10.18739/A20X0X</a>
 
-> Please let us know if you need any further assistance. 
+> Please let us know if you need any further assistance. However, any further changes to the dataset will result in a new DOI and then a link to updated version will appear at the top of webpage of the old DOI. If you would like to maintain the same DOI please let us know.
+
 
 *New Submission: Abstract, methods, excel to csv, and attributes*
 > Thank you for your submission to the Arctic Data Center.  From my preliminary examination of your dataset a few fields need to be updated before we can assign a DOI. 

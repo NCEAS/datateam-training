@@ -34,7 +34,7 @@ doc <- eml_add_entity_system(doc)
 - **Variables** match what is in the file
 - **Measurement domain** - if appropirate (ie dateTime correct)
 - **Missing Value Code** - accounted for if applicable
-- **Semantic Annotation** - appropriate semantic annotations added
+- **Semantic Annotation** - appropriate semantic annotations added, especially for spatial and temporal variables: lat, lon, date etc.
 
 ### People
 - complete information for each person in each section
