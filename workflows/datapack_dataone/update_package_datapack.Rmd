@@ -2,26 +2,29 @@
 
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `datapack::updateDataObject()`.
 
-*NOTE* - you must use these R packages for data packages that have provenance or folder hierarchy (arcticdatatutils does not support those features)
+*NOTE* - you must use these R packages for data packages that have provenance or folder hierarchy (`arcticdatatutils` does not support those features)
 
 ### Get the package
-setting the node is done slightly differently
+
+Setting the node is done slightly differently:
 ```{r}
-d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
+Get a pre-existing package:
 ```{r, eval = F}
 packageId <- "the resource map"
 
 pkg <- getDataPackage(d1c, identifier=packageId, lazyLoad=TRUE, quiet=FALSE)
 ```
 
-### Get the metadata identifier
-```{rr, eval = F}
+### Update the metadata
+
+Get the metadata identifier
+```{r, eval = F}
 metadataId <- selectMember(pkg, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 ```
 
-### Publish update
 Now we can update your data package to include the new metadata file
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
@@ -30,18 +33,20 @@ write_eml(doc, eml_path)
 pkg <- replaceMember(pkg, metadataId, replacement=eml_path)
 ```
 
+### Publish update
+
+Publishing a DOI with a UUID
 ```{r, eval = FALSE}
 newPackageId <- uploadDataPackage(d1c, pkg, public=FALSE, quiet=FALSE)
 ```
 
-## Using a Digital Object Identifier with a package.
-**note has not been tested officially**
-A Digital Object Identifier (DOI) may be assigned to the metadata *DataObject*, using the *generateIdentifier* method:
+Using a Digital Object Identifier with a package.
+A Digital Object Identifier (DOI) may be assigned to the metadata **DataObject**, using the `generateIdentifier`:
 ```{r, eval=FALSE}
 doi <- dataone::generateIdentifier(d1c@mn, "DOI")
 pkg <- replaceMember(pkg, metadataId, replacement=eml_path, newId = doi)
 
-newPackageId <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE, packageId = doi)
+newPackageId <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE)
 ``` 
 
 If a package is ready to be public, you can change the `public` argument in the `uploadDataPackage()` call to `TRUE`.
