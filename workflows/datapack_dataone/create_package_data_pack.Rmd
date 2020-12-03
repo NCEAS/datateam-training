@@ -7,44 +7,63 @@ library(datapack)
 library(uuid)
 ```
 
-get necessary token from test.arcticdata.io to upload the dataset
-
 create a new data package
 ```{r}
 dp <- new("DataPackage")
 ```
 
-create a metadata file
+### Upload data files
+
+#### Create and add a metadata file
+
+In this example we will use this file from dataone.
 ```{r}
-emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone") # example file
+emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone")
+```
+
+Create a new `DataObject` and add it to the package.
+```{r}
 metadataObj <- new("DataObject", format="https://eml.ecoinformatics.org/eml-2.2.0", filename=emlFile)
 dp <- addMember(dp, metadataObj)
 ```
 
-add some additional files (optional)
+Check the dp object to see if the `DataObject` was added correctly.
+```{r}
+dp
+```
+
+#### Add some additional data files
 ```{r}
 sourceData <- system.file("extdata/OwlNightj.csv", package="dataone")
 sourceObj <- new("DataObject", format="text/csv", filename=sourceData)
 dp <- addMember(dp, sourceObj, metadataObj)
+```
+
+#### Add additional files with structure
+
+In this example adding the csv files to a folder named data and scripts
+```{r}
+outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
+outputObj <- new("DataObject", format="text/csv", filename=outputData, targetPath = "data")
+dp <- addMember(dp, outputObj, metadataObj)
 
 progFile <- system.file("extdata/filterObs.R", package="dataone")
-progObj <- new("DataObject", format="application/R", filename=progFile, mediaType="text/x-rsrc")
+progObj <- new("DataObject", format="application/R", filename=progFile, targetPath = "scripts",
+               mediaType="text/x-rsrc")
 dp <- addMember(dp, progObj, metadataObj)
-
-outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
-outputObj <- new("DataObject", format="text/csv", filename=outputData)
-dp <- addMember(dp, outputObj, metadataObj)
 ```
 
 ```{block, type = "note"}
 If you want to change the formatId please use `updateSystemMetadata`
 ```
 
-#upload to test.arcticdata.io
+# Upload the package
 
 ```{r}
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
+
+get necessary token from test.arcticdata.io to upload the dataset prior to running these lines
 
 ```{r, eval = F}
 myAccessRules <- data.frame(subject="http://orcid.org/0000-0001-8888-547X", permission="changePermission") 
