@@ -21,9 +21,15 @@ library(sf)
 spatial_file <- sf::read_sf("example.kml")
 ```
 
-If it is a zipped shapefile there is a handy function you can use
+
+```{block, type = "note"}
+When you read kml files, `read_sf()` sometimes shows additional columns that aren't in the actual file. Always open kml files in text editor to check if the columns actually exist.
 ```
-arcticdatautils::read_zip_shapefile(mn, pid)
+
+
+```{block, type = "note"}
+If it is a zipped shapefile there is a handy function you can use
+`arcticdatautils::read_zip_shapefile(mn, pid)`
 ```
 
 #### Coordinate Systems
@@ -79,10 +85,14 @@ To use the helper function get:
 
 1. the path of your raster file
 2. an attribute table
-3. coordinate system
-3. a coordinate system name
+3. a coordinate system
 
 To get a coordinate system name, you can use the output of the function on your first try (which will print the coordinate reference system, if it is defined). You can use the return value of `get_coord_list()` (a large `data.frame`) to find the correct coordinate system name.
+
+Another way to get the coordinate system name is using `rgdal::GDALinfo(path)`. This function can provide many details for your GeoTiff or Tiff files including the coordinate system name. More information can be found here <a href = 'https://www.earthdatascience.org/courses/earth-analytics/lidar-raster-data-r/introduction-to-spatial-metadata-r/' target='_blank'>here</a>. 
+
 ```
+rgdal::GDALinfo(path)
+
 eml_get_raster_metadata(path, coord_name, attributes)
 ```

@@ -17,3 +17,17 @@ for (i in seq_along(doc$dataset$otherEntity)) {
     }
 }
 ```
+
+As you can see from code above, we use a for loop here to add `physical` sections. The for loop is a very useful tool to iterate over a list of elements. With for loop, you can repeat a specific block of code without copying and pasting the code over and over again. When processing datasets in Arctic Data Center, there are many places where for loop can be used, such as publishing a bunch of objects with pids, updating formatID for pkg$data, adding `physical` section like above code, etc.
+
+A loop is composed of two parts: the sequence and the body. The sequence usually generates indices to locate elements and the body contains the code that you want to iterate for each element. 
+
+Here is an example of adding the same `attributeList` for all the `dataTable`s in the metadata using for loop. 
+```{r, eval=F}
+attributes <- read.csv('attributes.csv')  # attribute table in csv format
+attributeList <- EML::set_attributes(attributes = attributes)
+
+for (i in 1:length(doc$dataset$dataTable)) { # sequence part
+    doc$dataset$dataTable[[i]]$attributeList <- attributeList # body part
+}
+```
