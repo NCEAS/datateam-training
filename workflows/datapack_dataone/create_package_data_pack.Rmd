@@ -1,0 +1,53 @@
+## Create a new data package with datapack
+*adapted from the dataone and datapack vingettes*
+
+```{r}
+library(dataone)
+library(datapack)
+library(uuid)
+```
+
+get necessary token from test.arcticdata.io to upload the dataset
+
+create a new data package
+```{r}
+dp <- new("DataPackage")
+```
+
+create a metadata file
+```{r}
+emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone") # example file
+metadataObj <- new("DataObject", format="https://eml.ecoinformatics.org/eml-2.2.0", filename=emlFile)
+dp <- addMember(dp, metadataObj)
+```
+
+add some additional files (optional)
+```{r}
+sourceData <- system.file("extdata/OwlNightj.csv", package="dataone")
+sourceObj <- new("DataObject", format="text/csv", filename=sourceData)
+dp <- addMember(dp, sourceObj, metadataObj)
+
+progFile <- system.file("extdata/filterObs.R", package="dataone")
+progObj <- new("DataObject", format="application/R", filename=progFile, mediaType="text/x-rsrc")
+dp <- addMember(dp, progObj, metadataObj)
+
+outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
+outputObj <- new("DataObject", format="text/csv", filename=outputData)
+dp <- addMember(dp, outputObj, metadataObj)
+```
+
+```{block, type = "note"}
+If you want to change the formatId please use `updateSystemMetadata`
+```
+
+#upload to test.arcticdata.io
+
+```{r}
+d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
+```
+
+```{r, eval = F}
+myAccessRules <- data.frame(subject="http://orcid.org/0000-0001-8888-547X", permission="changePermission") 
+packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
+```
+
