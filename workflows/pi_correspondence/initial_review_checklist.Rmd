@@ -22,6 +22,7 @@ Before responding to a new submission use this checklist to review the submissio
 * Keywords
   + Some keywords are included
 * Data
+  + Data is normalized (if not suggest to convert the data if possible)
   + At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)
   + No xls/xlsx files (or other proprietary files)
   + File contents and relationships among files are clear
@@ -34,7 +35,7 @@ Before responding to a new submission use this checklist to review the submissio
   + At least one contact and one creator with a name, email address, and ORCID iD
 * Coverages
   + Includes coverages that make sense
-    - Start date BEFORE end date
+    - Temporal coverage - Start date BEFORE end date and geologic time scales are displayed properly
     - Spatial coverage matches geographic description (check hemispheres)
     - Geographic description is from the local to state or country level, at the least
     - Taxonomic coverage if appropriate
