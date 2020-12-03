@@ -1,3 +1,14 @@
+# datapack dataone workflow
+
+```{r, echo = FALSE}
+chapter <- "../workflows/datapack_dataone/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
 # Miscellaneous
 
 ```{r, echo = FALSE}
