@@ -7,7 +7,8 @@ library(dataone)
 library(EML)
 ```
 
-```{r, eval = F}
+
+```{r, error = FALSE, eval = FALSE}
 # Need to be in this member node to explore file
 cn_staging <- CNode('STAGING')
 adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')

@@ -1,7 +1,9 @@
 ## Initial review checklist
 
 Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>initial email template</a> and insert comments and modify as needed.
-
+* Check for citations
+    + If the dataset appears to be in a publication please (might be in the abstract)
+    + Make sure that those citations are registered at the ADC
 * Title
   + WHAT, WHERE, and WHEN:  
     - Is descriptive of the work (provides enough information to understand the contents at a general scientific level), AND includes temporal coverage

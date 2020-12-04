@@ -64,7 +64,7 @@ We can start by creating two data packages on the test node to nest beneath a pa
 
 First, load the Arctic Data Center Test Node and libraries.
   
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 library(dataone)
 library(arcticdatautils)
 library(EML)
@@ -97,7 +97,7 @@ These two packages correspond to data from the same study, varying only by year;
 
 Now, let's create a parent metadata file. Read in one of the childs' metadata files (EML). We can download object from a node in binary format using `dataone::getObject()`.  Once it's downloaded we just need to convert to it to the proper format: in this case to EML format using `EML::read_eml()`. 
   
-```{r, include = FALSE}
+```{r, eval = FALSE, include = FALSE}
 doc_parent <- read_eml("../../training/data/E1_2013metadata.xml")
 ```
 
@@ -105,7 +105,7 @@ doc_parent <- read_eml("../../training/data/E1_2013metadata.xml")
 doc_parent <- read_eml(getObject(adc_test, child_pkg_1$metadata))
 ```
 
-```{r, strip.white = TRUE}
+```{r, eval = FALSE, strip.white = FALSE}
 ## View the title 
 doc_parent$dataset$title
 ```
