@@ -39,3 +39,17 @@ doc$dataset$coverage$geographicCoverage <- list(geocov1, geocov2)
 ```
 
 For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage. 
+
+Set geologic dates
+
+Example: https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q
+```{r, eval = FALSE}
+
+geo_time_start <- EML::eml$alternativeTimeScale(timeScaleName = "Absolute",
+                                                timeScaleAgeEstimate = "7.5 Myr")
+
+coverage <- EML::set_coverage(beginDate = '2012-01-01', 
+                              endDate = '2012-01-10', 
+doc$dataset$coverage <- coverage
+```
+
