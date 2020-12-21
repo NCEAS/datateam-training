@@ -1,14 +1,14 @@
 ## Create a new data package with datapack
 *adapted from the dataone and datapack vingettes*
 
-```{r}
+```{r , eval = F}
 library(dataone)
 library(datapack)
 library(uuid)
 ```
 
 create a new data package
-```{r}
+```{r, eval = F}
 dp <- new("DataPackage")
 ```
 
@@ -16,24 +16,24 @@ dp <- new("DataPackage")
 
 #### Create and add a metadata file
 
-In this example we will use this file from dataone.
-```{r}
+In this example we will use this previously written EML metadata. Here we are getting the file path from the dataone package and saving that as the object `emlFile`.
+```{r, eval = F}
 emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone")
 ```
 
 Create a new `DataObject` and add it to the package.
-```{r}
+```{r, eval = F}
 metadataObj <- new("DataObject", format="https://eml.ecoinformatics.org/eml-2.2.0", filename=emlFile)
 dp <- addMember(dp, metadataObj)
 ```
 
 Check the dp object to see if the `DataObject` was added correctly.
-```{r}
+```{r, eval = F}
 dp
 ```
 
 #### Add some additional data files
-```{r}
+```{r, eval = F}
 sourceData <- system.file("extdata/OwlNightj.csv", package="dataone")
 sourceObj <- new("DataObject", format="text/csv", filename=sourceData)
 dp <- addMember(dp, sourceObj, metadataObj)
@@ -42,7 +42,7 @@ dp <- addMember(dp, sourceObj, metadataObj)
 #### Add additional files with structure
 
 In this example adding the csv files to a folder named data and scripts
-```{r}
+```{r, eval = F}
 outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
 outputObj <- new("DataObject", format="text/csv", filename=outputData, targetPath = "data")
 dp <- addMember(dp, outputObj, metadataObj)
@@ -59,7 +59,7 @@ If you want to change the formatId please use `updateSystemMetadata`
 
 # Upload the package
 
-```{r}
+```{r, eval = F}
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
@@ -69,4 +69,3 @@ get necessary token from test.arcticdata.io to upload the dataset prior to runni
 myAccessRules <- data.frame(subject="http://orcid.org/0000-0001-8888-547X", permission="changePermission") 
 packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
 ```
-
