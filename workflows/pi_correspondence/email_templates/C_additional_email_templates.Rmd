@@ -8,7 +8,7 @@ If the PI is checking about dates/timing:
 #### Pre-assigned DOI
 If the PI needs a DOI right away:
 
-> We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could send us the DOI of your published paper. We are working to build our catalog of dataset citations in the Arctic Data Center.
+> We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could register the DOI of your published paper with us by using the citations button beside the orange lock icon. We are working to build our catalog of dataset citations in the Arctic Data Center.
 
 #### Replacing data files
 The data files can be replaced by going to the green Edit button > Click the black triangle by the Describe button for the data file > Select Replace (attached is also a screenshot on how to get there).
@@ -28,20 +28,20 @@ for example: https://arcticdata.io/catalog/data/query=Beaufort%20Lagoon%20Ecosys
 
 #### Adding metadata via R
 
->KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R.
+> KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R.
 
 ><a href = 'http://training.arcticdata.io/materials/arctic-data-center-training/programming-metadata-and-data-publishing.html' target='_blank'>Here</a> are some training materials we have that use both the `EML` and `datapack` packages. It explains how to set your authentication token, build a package from metadata and data files, and publish the package to one of our test sites. I definitely recommend practicing on a test site prior to publishing to the production site your first time through. You can point to the KNB test node (dev.nceas.ucsb.edu) using this command: `d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")`
 
->If you prefer, there are Java, Python, MATLAB, and Bash/cURL clients as well.
+> If you prefer, there are Java, Python, MATLAB, and Bash/cURL clients as well.
 
 #### Finding multiple data packages
 
->If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
+> If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
 	e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533' target='_blank'>https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533</a> 
 	
 #### NSF ARC data submission policy
 
->Please find an overview of our submission guidelines here: <a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>, and NSF Office of Polar Programs policy information here: <a href = 'https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp' target='_blank'>https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp</a>.
+> Please find an overview of our submission guidelines here: <a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>, and NSF Office of Polar Programs policy information here: <a href = 'https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp' target='_blank'>https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp</a>.
 
 >Investigators should upload their data to the Arctic Data Center (<a href = 'https://arcticdata.io' target='_blank'>https://arcticdata.io</a>), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
 

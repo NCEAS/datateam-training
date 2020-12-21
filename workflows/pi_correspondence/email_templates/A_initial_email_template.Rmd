@@ -15,6 +15,16 @@
 
 ### Comment templates based on what is missing
 
+#### Portals
+
+Multiple datasets under the same project - suggest data portal feature
+
+> I would like to highlight the Data Portals feature that would enhance the ability of your datasets to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: https://arcticdata.io/catalog/portals/DBO. We highly suggest considering creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/.
+
+If they ask to nest the dataset
+
+> We are no longer supporting new nested datasets. We recommend to create a data portal instead. Portals will allow more control and has the same functionality as a nested dataset. You can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/, but as always we are here to help over email.
+
 #### Dataset citations
 
 > If there is a publication associated with this dataset, we would appreciate it if you could register the DOI of your published paper with us by using the Citations button right below the title at the dataset landing page. We are working to build our catalog of dataset citations in the Arctic Data Center.
@@ -34,20 +44,25 @@ Does not use acronyms
 Describes DATA in package (ideally > 100 words)
 
 > We would like to add some additional context to your abstract. We hope to add the following: [ADJUST THE DEPENDING ON WHAT IS MISSING]
-    - The motivation (purpose) of the study
+    - The motivation of the study
     - Where and when the research took place
     - At least one sentence summarizing general methodologies
     - All acronyms are defined
+    - At least 100 words long
 
 Offer this if submitter is reluctant to change:
 
 > If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].
 
+#### Keywords
+
+> We noticed that there were not keywords for this dataset. Adding keywords will help your dataset be discovered by others. 
+
 #### Data
 
-Multiple datasets under the same project - suggest data portal feature
+Adding provenance
 
-> Data portals enable related datasets, such as those that are part of a larger research project or organization, to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: <a href = 'https://arcticdata.io/catalog/portals/DBO' target='_blank'>https://arcticdata.io/catalog/portals/DBO</a>. If you are interested in creating a portal for your datasets, you can get one started here: <a href = 'https://arcticdata.io/catalog/edit/portals/new/Settings' target='_blank'>https://arcticdata.io/catalog/edit/portals/new/Settings</a>. More information on how to set up can be found here: <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a>, but as always we are here to help over email.
+> Is the [mention the file names here] files related? If so we can add provenance to show the relationship between the files. Here is an example of how that is displayed: https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2WS8HM6C#urn%3Auuid%3Af00c4d71-0242-4e9d-9745-8999776fa2f2
 
 At least one data file
 
