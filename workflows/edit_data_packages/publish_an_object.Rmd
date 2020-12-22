@@ -17,6 +17,10 @@ formatId <- format_eml("2.2.0")
 
 Most objects have registered `formatId`s that can be found on the DataONE Object Format List <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>. Always use the "Id:" (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the `formatId`. If the `formatId` is not listed at the DataONE website, you can set `formatId <- "application/octet-stream"`.
 
+```{block, type = "note"}
+If you want to change the formatId please use `updateSystemMetadata` instead.
+```
+
 Once you know the appropriate `formatId` you can publish an object using these commands:
 
 ```{r, eval = FALSE}
