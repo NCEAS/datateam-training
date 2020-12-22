@@ -7,7 +7,7 @@ Once you have updated the data objects and saved the metadata to a file, we can 
 ### Get the package
 
 Setting the node is done slightly differently:
-```{r}
+```{r, eval = F}
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
