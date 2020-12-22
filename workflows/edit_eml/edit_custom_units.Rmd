@@ -37,7 +37,7 @@ Custom units are then added to `additionalMetadata` using the following command:
 
 ```{r, eval = FALSE}
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
-doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
+doc$additionalMetadata <- unitlist
 ```
 
 If units that should be `standardUnit` are added as `customUnit`, you can use the following code to fix this issue:
