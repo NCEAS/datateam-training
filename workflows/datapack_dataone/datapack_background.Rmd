@@ -36,12 +36,12 @@ Get the file name:
 dp@objects$`urn:uuid:e6390181-85e9-46a2-b2ba-e352ece51cc6`@sysmeta@fileName
 ```
 
-
-The provenance relations is a dataTable. 
+View the provenance as a dataTable. 
 
 ```{r}
 dp@relations$relations
 ```
+
 
 ### Exercise
 ```
