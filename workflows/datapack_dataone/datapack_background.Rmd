@@ -1,0 +1,20 @@
+## Datapack Background
+*adapted from the dataone and datapack vingettes*
+
+```{r , eval = F}
+library(dataone)
+library(datapack)
+library(uuid)
+```
+
+### Data packages
+
+Data packages are a class that has slots for `relations` (provenance), `objects`(the metadata and data file(s)) and `systemMetadata`.
+
+### Navigating data packages
+
+Using this example
+```{r}
+
+```
+
