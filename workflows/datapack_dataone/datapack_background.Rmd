@@ -20,12 +20,30 @@ d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC")
 dp <- dataone::getDataPackage(d1c, "resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28")
 ```
 
-```{r}
+Check out the `objects` slot
+```{r, eval=F}
 dp@objects
 ```
 
+Get the number for data and metadata files associated with this data package:
+```{r}
+length(dp@objects)
+```
+
+
+Get the file name:
+```{r}
+dp@objects$`urn:uuid:e6390181-85e9-46a2-b2ba-e352ece51cc6`@sysmeta@fileName
+```
+
+
+The provenance relations is a dataTable. 
 
 ```{r}
 dp@relations$relations
 ```
 
+### Exercise
+```
+Select a dataset from the catalog on arcticdata.io and checkout the number of files and provencance relationships in the dataset.
+```
