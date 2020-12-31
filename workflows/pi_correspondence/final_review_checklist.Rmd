@@ -45,7 +45,8 @@ doc <- eml_add_entity_system(doc)
 - check if negatives (-) are missing
 
 ### Project
-- if it is an NSF award you have run `eml_nsf_to_project(awards)`
+- if it is an NSF award you can use the helper function:
+    + `doc$dataset$project <- eml_nsf_to_project(awards)`
     + NSF award numbers should be listed as "NSF 1234567"
 
 ### Methods
