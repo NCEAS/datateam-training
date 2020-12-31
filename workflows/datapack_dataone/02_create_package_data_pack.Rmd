@@ -58,7 +58,7 @@ dp <- addMember(dp, progObj, metadataObj)
 If you want to change the formatId please use `updateSystemMetadata`
 ```
 
-## Upload the package
+### Upload the package
 
 ```{r, eval = F}
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
