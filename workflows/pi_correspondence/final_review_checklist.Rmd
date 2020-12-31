@@ -45,8 +45,20 @@ doc <- eml_add_entity_system(doc)
 - check if negatives (-) are missing
 
 ### Project
-- if it is an NSF award you have run `eml_nsf_to_project(awards)`
+- if it is an NSF award you can use the helper function:
+    + `doc$dataset$project <- eml_nsf_to_project(awards)`
     + NSF award numbers should be listed as "NSF 1234567"
+    
+- On the web form right now only fills in the funding field. We need instructions on how to convert that to the new awards formatting until the form is updated to include these fields:
+
+```
+project$award$funderName # required
+project$award$title # required
+project$award$awardNumber
+project$award$funderIdentifier
+```
+
+- Information can be found in using the [Open Funder Registry](https://gitlab.com/crossref/open_funder_registry/-/tree/master) 
 
 ### Methods
 - present
