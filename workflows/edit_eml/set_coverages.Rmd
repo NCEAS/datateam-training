@@ -14,6 +14,7 @@ coverage <- EML::set_coverage(beginDate = '2012-01-01',
 doc$dataset$coverage <- coverage
 ```
 
+### Set multiple coverages
 You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages. Note that we use nested `eml` function helpers in this construction.
 
 ```{r, eval = FALSE}
@@ -38,11 +39,14 @@ coverage <- EML::set_coverage(beginDate = '2012-01-01',
 doc$dataset$coverage$geographicCoverage <- list(geocov1, geocov2)
 ```
 
+### Special coverages
+
+#### Arctic Circle
 For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage. 
 
-Set geologic dates
+#### Geologic dates
 
-Example: https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q
+<a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q' target='_blank'>Example dataset</a> with geologic coverages set using the following:
 ```{r, eval = FALSE}
 
 geo_time_start <- EML::eml$alternativeTimeScale(timeScaleName = "Absolute",
