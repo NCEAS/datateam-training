@@ -32,6 +32,10 @@ Get the metadata identifier
 metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 ```
 
+```{block, type = "note"}
+Take note of the EML version. If it is EML 2.1.1 the value needs to be changed to -`"eml://ecoinformatics.org/eml-2.1.1"`
+```
+
 Read the EML doc
 ```{r}
 doc <- read_eml(getObject(d1c@mn, metadataId))
