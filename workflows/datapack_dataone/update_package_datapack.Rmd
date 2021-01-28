@@ -2,7 +2,14 @@
 
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `datapack::updateDataObject()`.
 
-*NOTE* - you must use these R packages for data packages that have provenance or folder hierarchy (`arcticdatatutils` does not support those features)
+```{block, type = "note"}
+This part of the training assumes that you have an EML file created from earlier parts of the training
+```
+
+
+```{block, type = "warning"}
+You must use these R packages for data packages that have provenance or folder hierarchy (`arcticdatatutils` does not support those features)
+```
 
 ### Get the package
 
@@ -54,12 +61,17 @@ If you want to change the formatId please use `updateSystemMetadata`
 
 ### Publish update
 
-Publishing a DOI with a UUID
+Publishing with a UUID
 ```{r, eval = FALSE}
 newPackageId <- uploadDataPackage(d1c, pkg, public=FALSE, quiet=FALSE)
 ```
+If a package is ready to be public, you can change the `public` argument in the `uploadDataPackage()` call to `TRUE`.
 
-Using a Digital Object Identifier with a package.
+
+#### Using a Digital Object Identifier (DOI)
+
+**This should only be done after the package is finalized and has been thoroughly reviewed!**
+
 A Digital Object Identifier (DOI) may be assigned to the metadata **DataObject**, using the `generateIdentifier`:
 ```{r, eval=FALSE}
 doi <- dataone::generateIdentifier(d1c@mn, "DOI")
@@ -68,8 +80,6 @@ pkg <- replaceMember(pkg, metadataId, replacement=eml_path, newId = doi)
 newPackageId <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE)
 ``` 
 
-If a package is ready to be public, you can change the `public` argument in the `uploadDataPackage()` call to `TRUE`.
 
-If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you can change the `use_doi` argument to `TRUE`. **This should only be done after the package is finalized and has been thoroughly reviewed!**
 
 Refresh the landing page at test.arcticdata.io/#view/... for this package and then follow the "newer version" link to view the latest.

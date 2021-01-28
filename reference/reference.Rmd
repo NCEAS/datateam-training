@@ -1,4 +1,4 @@
-# datapack dataone workflow
+# Datapackand Dataone workflow
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/datapack_dataone/"

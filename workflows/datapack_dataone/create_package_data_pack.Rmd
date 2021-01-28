@@ -57,15 +57,18 @@ dp <- addMember(dp, progObj, metadataObj)
 If you want to change the formatId please use `updateSystemMetadata`
 ```
 
-# Upload the package
+### Upload the package
 
 ```{r, eval = F}
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
-get necessary token from test.arcticdata.io to upload the dataset prior to running these lines
+Make sure to give access privlidges to the ADC admins:
+```{r}
+myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission") 
+```
 
+Get necessary token from test.arcticdata.io to upload the dataset prior uploading the datapackage:
 ```{r, eval = F}
-myAccessRules <- data.frame(subject="http://orcid.org/0000-0001-8888-547X", permission="changePermission") 
 packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
 ```
