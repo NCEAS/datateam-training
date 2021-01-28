@@ -32,7 +32,14 @@ Get the metadata identifier
 metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 ```
 
-Now we can update your data package to include the new metadata file using `replaceMember`
+Read the EML doc
+```{r}
+doc <- read_eml(getObject(d1c@mn, metadataId))
+```
+
+Edit the EML as usual - see the documents in Edit EML for details
+
+Once you are happy with your changes, you can update your data package to include the new metadata file using `replaceMember`
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
 write_eml(doc, eml_path)
