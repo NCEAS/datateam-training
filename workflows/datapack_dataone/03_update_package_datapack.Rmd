@@ -15,29 +15,29 @@ You must use these R packages for data packages that have provenance or folder h
 
 Setting the node is done slightly differently:
 ```{r, eval = F}
-d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
+d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
 Get a pre-existing package:
 ```{r, eval = F}
 packageId <- "the resource map"
 
-pkg <- getDataPackage(d1c, identifier=packageId, lazyLoad=TRUE, quiet=FALSE)
+dp <- getDataPackage(d1c_test, identifier=packageId, lazyLoad=TRUE, quiet=FALSE)
 ```
 
 ### Update the metadata
 
 Get the metadata identifier
 ```{r, eval = F}
-metadataId <- selectMember(pkg, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 ```
 
-Now we can update your data package to include the new metadata file
+Now we can update your data package to include the new metadata file using `replaceMember`
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
 write_eml(doc, eml_path)
 
-pkg <- replaceMember(pkg, metadataId, replacement=eml_path)
+dp <- replaceMember(dp, metadataId, replacement=eml_path)
 ```
 
 ### Modify the data files
@@ -51,7 +51,7 @@ removeMember(dp, zipId, removeRelationships = T)
 add an existing data object
 
 ```{r, eval = F}
-dataObj <- getDataObject(d1c, id="urn:uuid: here", lazyLoad=T, limit="1TB")
+dataObj <- getDataObject(d1c_test, id="urn:uuid: here", lazyLoad=T, limit="1TB")
 dp <- addMember(dp, dataObj, mo=metadataId)
 ```
 
@@ -61,25 +61,28 @@ If you want to change the formatId please use `updateSystemMetadata`
 
 ### Publish update
 
-Publishing with a UUID
-```{r, eval = FALSE}
-newPackageId <- uploadDataPackage(d1c, pkg, public=FALSE, quiet=FALSE)
-```
-If a package is ready to be public, you can change the `public` argument in the `uploadDataPackage()` call to `TRUE`.
+##### Using a DOI
 
-
-#### Using a Digital Object Identifier (DOI)
+If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), (a) you need to change the `public` argument to `TRUE` and generate a DOI identifier. 
 
 **This should only be done after the package is finalized and has been thoroughly reviewed!**
 
+(1) Updating a package with a new DOI:
+
 A Digital Object Identifier (DOI) may be assigned to the metadata **DataObject**, using the `generateIdentifier`:
 ```{r, eval=FALSE}
-doi <- dataone::generateIdentifier(d1c@mn, "DOI")
-pkg <- replaceMember(pkg, metadataId, replacement=eml_path, newId = doi)
+doi <- dataone::generateIdentifier(d1c_test@mn, "DOI")
+dp <- replaceMember(dp, metadataId, replacement=eml_path, newId=doi)
 
-newPackageId <- uploadDataPackage(d1c, pkg, public=TRUE, quiet=FALSE)
+newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
 ``` 
 
+(2) Updating a package with a pre-issued DOI
+```{r, eval=FALSE}
+dp <- replaceMember(dp, metadataId, replacement=eml_path, newId="your pre-issued doi previously generated")
+
+newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
+``` 
 
 
 Refresh the landing page at test.arcticdata.io/#view/... for this package and then follow the "newer version" link to view the latest.

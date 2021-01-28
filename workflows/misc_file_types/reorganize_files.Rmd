@@ -1,0 +1,93 @@
+## Reorganize files
+
+Useful commands to use when reorganizing large datasets to be prepped to be uploaded using `datapack`
+
+```{block, type = "note"}
+This is run in the terminal
+```
+
+### Basics
+
+Moving around
+```{bash, eval = F}
+cd directory_name
+```
+
+Go up one directory using `..`
+```{bash, eval = F}
+cd ..
+```
+
+Get the contents of the current directory
+```{bash, eval = F}
+ls
+```
+
+Get the directory structure for this folder
+
+- `-d` flag shows only the directories
+```{bash, eval = F}
+tree
+
+tree -d
+```
+
+### Rename file based on file path
+For example you have some files organized like this:
+```
+../../visitor/Lastname
+└── RU_ALN_TR1_FL007R
+│   └── rgb_images
+|       └──image.png
+└── RU_ALN_TR1_FL008B 
+    └── micasense_preflight_calibration_images
+        └──image.png
+```
+
+We want to rename the files.
+
+1. Find all the files with the same file name
+```{bash, eval = F}
+find . -name 'image.png' 
+```
+
+2. First extract the file name in parts (`(.*)/(.*)/(.*)/(.*)`) by using the. `/` as a separator.
+
+- Each part is represented by `$#`. If you want the last part of the file name:`$4`. Rearrange this section as needed:`$2/$3/$2-$3-$4`
+- Set the flag as `-n` while testing to see the result of the renaming first before committing to it using `-v`
+```{bash, eval = F}
+rename -n -- 's|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|'
+
+rename -v -- 's|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|'
+```
+
+3. Putting it together by taking the results from find and renaming those files
+
+- `|` the pipe is like the `%>%` in R
+```{bash, eval = F}
+find . -name 'image.png' | rename -v -- 's|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|'
+```
+
+### Unzip files
+```{bash, eval = F}
+unzip '*zip'
+```
+
+### Zip shapefiles
+
+1. For all the files in a directory, create a folder and move those files 
+```{bash, eval = F}
+for file in *; do dir=$(echo $file | cut -d. -f1); mkdir -p $dir; mv $file $dir; done
+```
+
+2. Zip the folders
+```{bash, eval = F}
+for file in *;do zip -r $file $file; done
+```
+
+3. Remove the directories after zipping
+
+`-r` means to recursively remove files
+```{bash, eval = F}
+rm -r */
+```
