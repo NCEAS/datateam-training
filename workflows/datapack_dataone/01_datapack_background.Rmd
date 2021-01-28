@@ -62,7 +62,7 @@ dp@relations$relations
 ```
 
 ##### Search
-You can search by any of the `sysmeta` slots such as `fileName`, `formatId` and `identifier`:
+You can search by any of the `sysmeta` slots such as `fileName` and `formatId` and get the corresponding identifier(s):
 ```{r, eval = F}
 metadataId <- selectMember(dp, name="sysmeta@ADD THE NAME OF THE SLOT", value="PATTERN TO SEARCH BY")
 ```
