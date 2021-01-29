@@ -36,6 +36,10 @@ All of the work that we do at NCEAS is done on our remote server, datateam.nceas
 
 We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> This is the same as your desktop version of RStudio with one main difference is that files are on the server. Please do all your work here. This way you can share your code with the rest of us.
 
+```{block, type = "note"}
+If you R session is frozen and unresponsive check out [the guide](https://help.nceas.ucsb.edu/NCEAS/Computing/rstudio_server.html) on how to fix it.
+```
+
 To transfer files on and off of the server we often use a secure FTP (sFTP) client, Cyberduck. This will be used when researchers have many files to upload or size of the files are very large.
 
 ```{r, child = '../workflows/miscellaneous/cyberduck_instructions.Rmd'}
