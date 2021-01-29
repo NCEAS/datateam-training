@@ -20,7 +20,7 @@ d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC")
 ```
 
 To use the member node information, use the `mn` slot
-```{r}
+```{r, eval = F}
 d1c@mn
 ```
 
@@ -61,7 +61,7 @@ View the provenance as a dataTable.
 dp@relations$relations
 ```
 
-##### Search
+##### Get identifiers
 You can search by any of the `sysmeta` slots such as `fileName` and `formatId` and get the corresponding identifier(s):
 ```{r, eval = F}
 metadataId <- selectMember(dp, name="sysmeta@ADD THE NAME OF THE SLOT", value="PATTERN TO SEARCH BY")

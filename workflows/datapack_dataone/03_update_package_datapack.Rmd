@@ -37,7 +37,7 @@ Take note of the EML version. If it is EML 2.1.1 the value needs to be changed t
 ```
 
 Read the EML doc
-```{r}
+```{r, eval=F}
 doc <- read_eml(getObject(d1c@mn, metadataId))
 ```
 
