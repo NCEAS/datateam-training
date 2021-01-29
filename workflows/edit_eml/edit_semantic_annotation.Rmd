@@ -55,6 +55,10 @@ $valueURI$valueURI
 [1] "http://purl.dataone.org/odo/ECSO_00002617"
 ```
 
+```{block, type = "note"}
+Semantic attribute annotations can be applied to spatialRasters, spatialVectors and dataTables
+```
+
 ### How to add an annotation
 
 **1. Decide which variable to annotate**
@@ -82,6 +86,12 @@ To search, navigate through the "classes" until you find an appropriate term. Wh
   |---- carbon dioxide flux
 
 Our exact attribute, carbon tetroxide flux is not listed. In this case, we should pick "carbon flux" as it's completely correct and not "carbon dioxide flux" because it's more specific but not quite right.
+
+```{block, type = "note"}
+For general attributes (such as ones named depth or length), it is important to be as specific as possible about what is being measured. 
+
+e.g. selecting the lake area annotation for the [area attribute](https://arcticdata.io/catalog/view/urn%3Auuid%3A64a3a75b-0630-44d2-a7e7-519029a48d9d#urn%3Auuid%3Ab8c29251-e628-405a-8e66-a5fa55703904) in this dataset
+```
 
 **3. Build the annotation in R**
 

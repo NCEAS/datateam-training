@@ -19,11 +19,11 @@ A final, but not recommended option, is to set the `physical` by hand. To do so,
 ```{r, eval = FALSE}
 id <- 'your_data_pid' # this should be an actual PID
 path <- '~/your/data/path' # path to data table
-physical <- EML::set_physical(objectName = 'your_file_name',
+physical <- set_physical(objectName = path,
                               size = as.character(file.size(path)),
                               sizeUnit = 'bytes',
-                              authentication = digest(path, algo="sha1", serialize=FALSE, file=TRUE),
-                              authMethod = 'SHA-1',
+                              authentication = digest(fpath, algo="sha256", serialize=FALSE, file=TRUE),
+                              authMethod = 'SHA-256',
                               numHeaderLines = '1',
                               fieldDelimiter = ',',
                               url = paste0('https://cn.dataone.org/cn/v2/resolve/', id))

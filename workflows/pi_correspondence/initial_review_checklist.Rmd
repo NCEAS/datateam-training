@@ -36,7 +36,8 @@ Before responding to a new submission use this checklist to review the submissio
   + At least one contact and one creator with a name, email address, and ORCID iD
 * Coverages
   + Includes coverages that make sense
-    - Temporal coverage - Start date BEFORE end date and geologic time scales are displayed properly
+    - Temporal coverage - Start date BEFORE end date
+    - Geologic time scales <a href = 'https://nceas.github.io/datateam-training/reference/set-coverages.html' target='_blank'>are added/a> if mentioned in metadata (e.g. 8 Million Years or a name of a time period like Jurassic)
     - Spatial coverage matches geographic description (check hemispheres)
     - Geographic description is from the local to state or country level, at the least
     - Taxonomic coverage if appropriate

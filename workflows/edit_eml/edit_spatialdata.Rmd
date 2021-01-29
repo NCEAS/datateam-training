@@ -12,6 +12,10 @@ Additionally, spatial data that involve multiple files should typically be archi
 
 For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren't sure whether to unzip a file, ask Jasmine or Jeanette.
 
+```{block, type = "note"}
+There are specific `formatIds` for these kinds of zipped files: `	application/vnd.shp+zip` `image/geotiff+zip`. Remember to check that the files have the correct `formatId`
+```
+
 ### Reading Spatial Files
 
 Read in the files to (1) help you in creating your attributes table and (2) sometimes also figure out the coordinate reference system.

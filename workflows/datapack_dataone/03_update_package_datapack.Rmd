@@ -2,7 +2,14 @@
 
 Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `datapack::updateDataObject()`.
 
-*NOTE* - you must use these R packages for data packages that have provenance or folder hierarchy (`arcticdatatutils` does not support those features)
+```{block, type = "note"}
+This part of the training assumes that you have an EML file created from earlier parts of the training
+```
+
+
+```{block, type = "warning"}
+You must use these R packages for data packages that have provenance or folder hierarchy (`arcticdatatutils` does not support those features)
+```
 
 ### Get the package
 
@@ -25,7 +32,18 @@ Get the metadata identifier
 metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 ```
 
-Now we can update your data package to include the new metadata file using `replaceMember`
+```{block, type = "note"}
+Take note of the EML version. If it is EML 2.1.1 the value needs to be changed to -`"eml://ecoinformatics.org/eml-2.1.1"`
+```
+
+Read the EML doc
+```{r, eval=F}
+doc <- read_eml(getObject(d1c@mn, metadataId))
+```
+
+Edit the EML as usual - see the documents in Edit EML for details
+
+Once you are happy with your changes, you can update your data package to include the new metadata file using `replaceMember`
 ```{r, eval = F}
 eml_path <- "path/to/your/saved/eml.xml"
 write_eml(doc, eml_path)
@@ -54,13 +72,6 @@ If you want to change the formatId please use `updateSystemMetadata`
 
 ### Publish update
 
-Once you are happy with your changes you can publish the package by using a UUID or DOI.
-
-##### Using a UUID:
-```{r, eval = FALSE}
-newPackageId <- uploadDataPackage(d1c_test, dp, public=FALSE, quiet=FALSE)
-```
-
 ##### Using a DOI
 
 If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), (a) you need to change the `public` argument to `TRUE` and generate a DOI identifier. 
@@ -83,5 +94,6 @@ dp <- replaceMember(dp, metadataId, replacement=eml_path, newId="your pre-issued
 
 newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
 ``` 
+
 
 Refresh the landing page at test.arcticdata.io/#view/... for this package and then follow the "newer version" link to view the latest.
