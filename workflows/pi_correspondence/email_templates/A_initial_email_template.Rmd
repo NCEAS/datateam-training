@@ -37,13 +37,14 @@ Provides the *what, where, and when* of the data
 
 Does not use acronyms
 
-> We wanted to clairify a couple of abbreviations. Could you help us in defining some of these: [LIST OF ACRONYMS TO DEFINE HERE]
+> We wanted to clarify a couple of abbreviations. Could you help us in defining some of these: [LIST OF ACRONYMS TO DEFINE HERE]
 
 #### Abstract
 
 Describes DATA in package (ideally > 100 words)
 
 > We would like to add some additional context to your abstract. We hope to add the following: [ADJUST THE DEPENDING ON WHAT IS MISSING]
+
     - The motivation of the study
     - Where and when the research took place
     - At least one sentence summarizing general methodologies
@@ -92,7 +93,7 @@ We try not to prescribe a way the researchers must format their data as long as 
 
 #### Attributes
 
-> I noticed that your data package has incomplete attribute/variable information. [SPECIFY WHAT YOU WANT ADDED] You can do so by navigating to your dataset [INSERT URL HERE], clicking the green "Edit" button, clicking the "Describe" button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the "Attributes" tab. Please see the guidance below for what attribute/variable information should contain.
+Identify which attributes need additional information. If they are common attributes like date and time we do not need further clarification.
 
 Checklist for the datateam in reviewing attributes (NetCDF, CSV, shapefiles, or any other tabular datasets):
 
@@ -103,6 +104,8 @@ Checklist for the datateam in reviewing attributes (NetCDF, CSV, shapefiles, or 
 - For all date-time data, a date-time format is needed (e.g. "DD-MM-YYYY").
 - For text data, full descriptions for all patterns or code/definition pairs are needed if the text is constrained to a list of patterns or codes.
 
+Helpful templates:
+> We would like your help in defining some of the attributes. Could you write a short description or units for the attributes listed? [Provide a the attribute names in list form]
 > Could you describe ____? 
 > Please define “XYZ”, including the unit of measure. 
 > What are the units of measurement for the columns labeled “ABC” and “XYZ”?
