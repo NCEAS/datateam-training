@@ -13,7 +13,7 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN #set in travis-ci dashboard
   on:
-    branch: master
+    branch: main
   local_dir: docs
 addons:
   apt:
