@@ -7,6 +7,7 @@ In your first few months, please run email drafts by the #datateam Slack and get
 Remember to consult the <a href = 'https://arcticdata.io/submit/' target='_blank'>submission guidelines</a> for details of what is expected.  
 
 Quick reference:
+
 - [Initial email template](https://nceas.github.io/datateam-training/reference/email-templates.html#initial-email-template)
 - [Final email templates](https://nceas.github.io/datateam-training/reference/email-templates.html#final-email-templates)
 - [Additional email template](https://nceas.github.io/datateam-training/reference/email-templates.html#additional-email-templates)
