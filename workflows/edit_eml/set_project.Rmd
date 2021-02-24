@@ -36,6 +36,4 @@ project$award$awardNumber
 project$award$funderIdentifier
 ```
 
-If a award title cannot be found you can use the dataset title.
-
-Information can be found in using the  <a href = 'https://gitlab.com/crossref/open_funder_registry/-/tree/master' target='_blank'>Open Funder Registry</a>
+Information can be found in using the  <a href = 'https://gitlab.com/crossref/open_funder_registry/-/tree/master' target='_blank'>Open Funder Registry</a>. If a award title cannot be found you can use the dataset title.
