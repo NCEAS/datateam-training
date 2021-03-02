@@ -1,4 +1,4 @@
-## Set the Project section 
+## Set the project section 
 
 The project section in an EML document is automatically filled out by the metacatUI editor. It sets the project title and project personnel to the submission's title and creators.  Most of the time at least some of this information is incorrect and we need to update it.  
 
@@ -26,3 +26,14 @@ proj <- eml_nsf_to_project(awards) #helper function
 
 doc$dataset$project <- proj
 ```
+
+On the web form right now only fills in the funding field. We need instructions on how to convert that to the new awards formatting until the form is updated to include these fields:
+
+```
+project$award$funderName # required
+project$award$title # required
+project$award$awardNumber
+project$award$funderIdentifier
+```
+
+Information can be found in using the  <a href = 'https://gitlab.com/crossref/open_funder_registry/-/tree/master' target='_blank'>Open Funder Registry</a>. If a award title cannot be found you can use the dataset title.
