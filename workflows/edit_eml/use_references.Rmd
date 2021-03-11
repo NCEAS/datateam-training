@@ -84,10 +84,10 @@ For example, if all the data tables in our data package have the same attributes
 
 ``` {r eval = FALSE}
 doc$dataset$dataTable[[1]]$attributeList <- attribute_list
-doc$dataset$dataTable[[1]]$attributeList$id <- "shared_attributes"
+doc$dataset$dataTable[[1]]$attributeList$id <- "shared_attributes" # use any unique name for your id
 
 for (i in 2:length(doc$dataset$dataTable)) {
-  doc$dataset$dataTable[[i]]$attributeList$references <- "shared_attributes"
+  doc$dataset$dataTable[[i]]$attributeList <- list(references = "shared_attributes") # use the id you set above
 }
 ```
 
