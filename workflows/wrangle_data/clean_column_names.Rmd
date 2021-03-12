@@ -6,8 +6,8 @@ You might have <a href = 'https://esajournals.onlinelibrary.wiley.com/doi/full/1
 df <- data.frame(`First Name` = c("Homer", "Marge", "Ned"),
 `Last Name` = c("Simpson", "Simpson", "Flanders"),
 `date of birth` = c("1/1/1960", "10/20/1965", "3/22/1961"),
-stringsAsFactors = FALSE,
 check.names = FALSE)
+
 print(df)
 ```
 

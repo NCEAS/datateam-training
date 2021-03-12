@@ -26,9 +26,7 @@ custom_units <- data.frame(
   parentSI = c(NA, 'pascal', 'watt', 'molesPerKilogram'， NA),
   multiplierToSI = c(NA, '10000', '1', '1000000000', NA),
   abbreviation = c('ppt', 'decibar', 'W/m^2', 'umol/g', 'PSU'),
-  description = c('parts per thousand', 'decibar', 'watts per square meter', 'micro moles per gram', 'used to describe the concentration of dissolved salts in water, the UNESCO Practical Salinity Scale of 1978 (PSS78) defines salinity in terms of a conductivity ratio'),
-  
-  stringsAsFactors = FALSE)
+  description = c('parts per thousand', 'decibar', 'watts per square meter', 'micro moles per gram', 'used to describe the concentration of dissolved salts in water, the UNESCO Practical Salinity Scale of 1978 (PSS78) defines salinity in terms of a conductivity ratio'))
 ```
 
 Using `EML::get_unit_id` for custom units will also generate valid EML unit ids. 
