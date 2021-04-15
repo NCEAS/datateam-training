@@ -87,8 +87,7 @@ attributes <- data.frame(attributeName = 'length_1',
                          measurementScale = 'ratio',
                          domain = 'numericDomain',
                          unit = 'meter',
-                         numberType = 'real',
-                         stringsAsFactors = FALSE)
+                         numberType = 'real')
 
 att_list <- set_attributes(attributes)
 
