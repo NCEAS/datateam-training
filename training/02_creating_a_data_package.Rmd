@@ -24,27 +24,35 @@ All of the package information is represented when you go to the landing page fo
 
 Each object (metadata files, data files, resource maps) on the ADC or the KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a dataset, for example <a href = 'https://arcticdata.io/catalog/#view/doi:10.18739/A2836Z' target='_blank'>here</a>, you can find the resource map identifier listed under the title in the gray bar after the words "Files in this dataset Package:" (`resource_map_doi:10.18739/A2836Z`), the metadata identifier in the "General > Identifier" section of the metadata record or after the title with blue font (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
 
-Note, all datasets submitted are given a temporary identifier. When the dataset is finalized, a doi will be issued.
+Note, all datasets submitted are given a temporary identifier (usually starting with `urn:uuid:`). When the dataset is finalized, a doi will be issued.
 
 
 ![](images/PIDs.png)
 
 
-Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use the `arcticdatautils::update_object()` for adding new files or `arcticdatautils::publish_update()` for updating the entire package on the *latest versions* of all objects to ensure that the version chain is maintained.
+Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use `datapack::uploadDataPackage()` for updating the entire package on the *latest versions* of all objects to ensure that the version chain is maintained.
 
 ## Upload a package
 
-We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your R console.
+We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your *R console*.
+
+```{block, type = "warning"}
+**This token is your identity on these sites, please treat it as you would a password** (i.e. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway.
+```
 
 You will need to retrieve a new one after it either expires or you quit your R session.
 
-**This token is your identity on these sites, please treat it as you would a password** (i.e. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway. Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
+Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 
 ```{r token, message=FALSE, eval=FALSE}
 options(dataone_test_token = "...")
 ```
 
-Next, please be sure these packages are loaded:
+```{block, type = "note"}
+Since we will be working on the test site and not the production site, please remember to get your token from test.arcticdata.io
+```
+
+Next, please be sure these packages are loaded for the training (these should already exist if you are working on the server):
 
 ```{r load libraries, message=FALSE, eval=FALSE}
 library(devtools)
@@ -53,6 +61,7 @@ library(datapack)
 library(EML)
 library(remotes)
 library(XML)
+library(uuid)
 ```
 
 If any package could not be loaded, use the following command (replacing package_name with the actual package name) to install the package, then load them.
@@ -68,6 +77,14 @@ remotes::install_github("nceas/arcticdatautils")
 library(arcticdatautils)
 remotes::install_github("nceas/datamgmt")
 library(datamgmt)
+```
+
+```{block, type = "note"}
+When you are usually working with data packages you will only need the following:
+library(dataone)
+library(datapack)
+library(EML)
+library(arcticdatautils)
 ```
 
 For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. More information on the other nodes can be found in the reference section under Set DataONE nodes [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html)
@@ -109,15 +126,23 @@ Now we want to publish the metadata and data files we downloaded again to `test.
 * Publish your metadata and data file to the site.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
-data_pid <- publish_object(...)
-metadata_pid <- publish_object(...)
+#set the node
+d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
+
+dp <- new("DataPackage")
+
+#add your metadata
+metadataObj <- new(...)
+dp <- addMember(...)
+
+#add your data files
+sourceObj <- new(...)
+dp <- addMember(...)
+
+#upload your package
+myAccessRules <- data.frame(...) 
+packageId <- uploadDataPackage(...)
 ```
 
-* Create a resource map to connect your data and metadata.
-```
-resource_map_pid <- create_resource_map(adc_test,
-                                        metadata_pid = metadata_pid,
-                                        data_pids = data_pids)
-```
 * View your new data set by appending the metadata PID to the end of the URL test.arcticdata.io/#view/... 
 * If you are successful it should look the same as the dataset you created in exercise 1
