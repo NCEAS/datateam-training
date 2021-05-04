@@ -13,6 +13,8 @@ You may want to use EML references if you have the following scenarios (not exha
 
 ### Example with parties
 
+*Note: Do not use references for creators as it is used for the citation information.* The creators will not show up on the top of the dataset if it is a reference. Until this issue is resolved  in NCEAS/metacat#926 we will need to keep this in account.
+
 It's very common to see the contact and creator referring to the same person with XML like this:
     
 ```
