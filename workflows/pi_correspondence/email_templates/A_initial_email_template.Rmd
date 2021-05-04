@@ -61,6 +61,12 @@ Offer this if submitter is reluctant to change:
 
 #### Data
 
+Sensitive Data
+
+*Example response. Tailor this reponse to the format in question.*
+
+> We wanted to check with you to make sure there is no sensitive data that could potentially be de-anonymized (eg. would there be small enough populations where the data could be disaggregated).
+
 Adding provenance
 
 > Is the [mention the file names here] files related? If so we can add provenance to show the relationship between the files. Here is an example of how that is displayed: https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2WS8HM6C#urn%3Auuid%3Af00c4d71-0242-4e9d-9745-8999776fa2f2

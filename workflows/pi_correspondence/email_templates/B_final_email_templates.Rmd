@@ -14,16 +14,20 @@
 
 #### DOI and data package finalization comments
 
-*Replying to questions about DOIs*  
+*Replying to questions about DOIs*
+
 > We attribute DOIs to data packages as one might give a DOI to a citable publication. Thus, a DOI is permanently associated with a unique and immutable version of a data package. If the data package changes, a new DOI will be created and the old DOI will be preserved with the original version.
 
 > DOIs and URLs for previous versions of data packages remain active on the Arctic Data Center (will continue to resolve to the data package landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to that latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data package that was cited, while pointing users to the newest version if one exists.
 
-*Clarification of updating with a DOI and version control*  
+*Clarification of updating with a DOI and version control*
+
 > We definitely support updating a data package that has already been assigned a DOI, but when we do so we mark it as a new revision that replaces the original and give it its own DOI. We do that so that any citations of the original version of the data package remain valid (i.e.: after the update, people still know exactly which data were used in the work citing it).
 
 *Sending finalized URL before resolving ticket*
-[NOTE: the URL format is very specific here, please try to follow it exactly (but substitute in the actual DOI of interest)]  
+
+[NOTE: the URL format is very specific here, please try to follow it exactly (but substitute in the actual DOI of interest)] 
+
 > Here is the link to your finalized data package:
 
 > <a href = 'https://doi.org/10.18739/A20X0X' target='_blank'>https://doi.org/10.18739/A20X0X</a>
@@ -33,6 +37,7 @@
 > Please let us know if you need any further assistance.
 
 *New Submission: Abstract, methods, excel to csv, and attributes*
+
 > Thank you for your submission to the Arctic Data Center.  From my preliminary examination of your dataset a few fields need to be updated before we can assign a DOI. 
  
 > Your abstract appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [INSERT URL]
