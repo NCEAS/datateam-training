@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Example Solr queries | NCEAS Data Team Reference Guide</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Example Solr queries | NCEAS Data Team Reference Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="github-repo" content="NCEAS/datateam-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Example Solr queries | NCEAS Data Team Reference Guide" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  
+
+
+
+<meta name="date" content="2021-05-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="use-stats.html"/>
+<link rel="next" href="more-resources.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="../styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Team Reference Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="datapack-and-dataone-workflow.html"><a href="datapack-and-dataone-workflow.html"><i class="fa fa-check"></i>Datapack and Dataone workflow</a><ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>Datapack Background</a><ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html"><i class="fa fa-check"></i>Create a new data package with datapack</a><ul>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html#upload-new-data-files"><i class="fa fa-check"></i>Upload new data files</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html#upload-the-package"><i class="fa fa-check"></i>Upload the package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html"><i class="fa fa-check"></i>Update packages with datapack</a><ul>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#get-the-package"><i class="fa fa-check"></i>Get the package</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#update-the-metadata"><i class="fa fa-check"></i>Update the metadata</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#modify-the-data-files"><i class="fa fa-check"></i>Modify the data files</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#publish-update"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i>Miscellaneous</a><ul>
+<li class="chapter" data-level="" data-path="code-snippets.html"><a href="code-snippets.html"><i class="fa fa-check"></i>Code Snippets</a></li>
+<li class="chapter" data-level="" data-path="cyberduck-instructions.html"><a href="cyberduck-instructions.html"><i class="fa fa-check"></i>Cyberduck instructions</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html"><i class="fa fa-check"></i>File paths</a><ul>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#remote-files-vs.local-files"><i class="fa fa-check"></i>Remote files vs. local files</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#file-path-shortcuts"><i class="fa fa-check"></i>File path shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a><ul>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a><ul>
+<li class="chapter" data-level="" data-path="add-a-pre-generated-identifier-to-the-eml.html"><a href="add-a-pre-generated-identifier-to-the-eml.html"><i class="fa fa-check"></i>Add a pre-generated identifier to the EML</a></li>
+<li class="chapter" data-level="" data-path="create-a-resource-map.html"><a href="create-a-resource-map.html"><i class="fa fa-check"></i>Create a resource map</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html"><i class="fa fa-check"></i>Edit sysmeta</a><ul>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#identifiers-and-sysmeta"><i class="fa fa-check"></i>Identifiers and sysmeta</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#additional-resources"><i class="fa fa-check"></i>Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
+<li class="chapter" data-level="" data-path="obsolescence-chain.html"><a href="obsolescence-chain.html"><i class="fa fa-check"></i>Obsolescence chain</a></li>
+<li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html"><i class="fa fa-check"></i>Set DataONE nodes</a><ul>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#staging-test-nodes"><i class="fa fa-check"></i>Staging (Test) nodes</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#production-nodes"><i class="fa fa-check"></i>Production nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html"><i class="fa fa-check"></i>Set rights and access</a><ul>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html#my-profile"><i class="fa fa-check"></i>My profile</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="show-indexing-status.html"><a href="show-indexing-status.html"><i class="fa fa-check"></i>Show indexing status</a></li>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a><ul>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a><ul>
+<li class="chapter" data-level="" data-path="access-specific-elements.html"><a href="access-specific-elements.html"><i class="fa fa-check"></i>Access specific elements</a></li>
+<li class="chapter" data-level="" data-path="navigate-through-eml.html"><a href="navigate-through-eml.html"><i class="fa fa-check"></i>Navigate through EML</a></li>
+<li class="chapter" data-level="" data-path="understand-the-eml-schema.html"><a href="understand-the-eml-schema.html"><i class="fa fa-check"></i>Understand the EML schema</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-eml.html"><a href="edit-eml.html"><i class="fa fa-check"></i>Edit EML</a><ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html"><i class="fa fa-check"></i>Edit an EML element</a><ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-strings"><i class="fa fa-check"></i>Edit EML with strings</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-the-eml-package"><i class="fa fa-check"></i>Edit EML with the “EML” package</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-objects"><i class="fa fa-check"></i>Edit EML with objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html"><i class="fa fa-check"></i>Edit attributeLists</a><ul>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-attributes"><i class="fa fa-check"></i>Edit attributes</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-custom-units"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-factors"><i class="fa fa-check"></i>Edit factors</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#finalize-attributelist"><i class="fa fa-check"></i>Finalize attributeList</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-custom-units-1.html"><a href="edit-custom-units-1.html"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-datatables.html"><a href="edit-datatables.html"><i class="fa fa-check"></i>Edit dataTables</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html"><i class="fa fa-check"></i>Edit otherEntities</a><ul>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#remove-otherentities"><i class="fa fa-check"></i>Remove otherEntities</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#create-otherentities"><i class="fa fa-check"></i>Create otherEntities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html"><i class="fa fa-check"></i>Semantic annotations</a><ul>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a><ul>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#reading-spatial-files"><i class="fa fa-check"></i>Reading Spatial Files</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialvector"><i class="fa fa-check"></i>spatialVector</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialrasters"><i class="fa fa-check"></i>spatialRasters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html"><i class="fa fa-check"></i>Format text in EML</a><ul>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#type-setting"><i class="fa fa-check"></i>Type-setting</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#links"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html"><i class="fa fa-check"></i>Series Identifier (SID)</a><ul>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#adding-a-sid-to-a-package"><i class="fa fa-check"></i>Adding a SID to a package</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-child-packages-of-a-parent-package-with-a-sid"><i class="fa fa-check"></i>Updating the child packages of a parent package with a SID</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-metadata-of-a-package-with-a-sid"><i class="fa fa-check"></i>Updating the metadata of a package with a SID</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html"><i class="fa fa-check"></i>Set coverages</a><ul>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#set-multiple-coverages"><i class="fa fa-check"></i>Set multiple coverages</a></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#special-coverages"><i class="fa fa-check"></i>Special coverages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html"><i class="fa fa-check"></i>Set methods</a><ul>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i>Adding sampling info to methods section</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-parties.html"><a href="set-parties.html"><i class="fa fa-check"></i>Set parties</a></li>
+<li class="chapter" data-level="" data-path="set-physical.html"><a href="set-physical.html"><i class="fa fa-check"></i>Set physical</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html"><i class="fa fa-check"></i>Use references</a><ul>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-parties"><i class="fa fa-check"></i>Example with parties</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-attributes"><i class="fa fa-check"></i>Example with attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a><ul>
+<li class="chapter" data-level="" data-path="nesting-a-data-package.html"><a href="nesting-a-data-package.html"><i class="fa fa-check"></i>Nesting a data package</a></li>
+<li class="chapter" data-level="" data-path="add-children-to-an-existing-parent.html"><a href="add-children-to-an-existing-parent.html"><i class="fa fa-check"></i>Add children to an existing parent</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-parent-package.html"><a href="create-a-new-parent-package.html"><i class="fa fa-check"></i>Create a new parent package</a></li>
+<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-correspondence.html"><a href="pi-correspondence.html"><i class="fa fa-check"></i>PI correspondence</a><ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html"><i class="fa fa-check"></i>Email templates</a><ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#initial-email-template"><i class="fa fa-check"></i>Initial email template</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#comment-templates-based-on-what-is-missing"><i class="fa fa-check"></i>Comment templates based on what is missing</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#final-email-templates"><i class="fa fa-check"></i>Final email templates</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#additional-email-templates"><i class="fa fa-check"></i>Additional email templates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a><ul>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a><ul>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#system-metadata"><i class="fa fa-check"></i>System Metadata</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#general-eml"><i class="fa fa-check"></i>General EML</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#title-1"><i class="fa fa-check"></i>Title</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#abstract-1"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#datatable-otherentity-spatialvectors"><i class="fa fa-check"></i>DataTable / OtherEntity / SpatialVectors</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#people"><i class="fa fa-check"></i>People</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#geographic-region"><i class="fa fa-check"></i>Geographic region</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#project"><i class="fa fa-check"></i>Project</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html"><i class="fa fa-check"></i>Navigate RT</a><ul>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#front-page"><i class="fa fa-check"></i>Front page</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#all-tickets"><i class="fa fa-check"></i>All tickets</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#example-ticket"><i class="fa fa-check"></i>Example ticket</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#new-data-submission"><i class="fa fa-check"></i>New data submission</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous-file-types.html"><a href="miscellaneous-file-types.html"><i class="fa fa-check"></i>Miscellaneous file types</a><ul>
+<li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
+<li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
+<li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a><ul>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
+<li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a><ul>
+<li class="chapter" data-level="" data-path="clean-column-names.html"><a href="clean-column-names.html"><i class="fa fa-check"></i>Clean column names</a></li>
+<li class="chapter" data-level="" data-path="fix-excel-dates.html"><a href="fix-excel-dates.html"><i class="fa fa-check"></i>Fix Excel dates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="solr-queries.html"><a href="solr-queries.html"><i class="fa fa-check"></i>Solr queries</a><ul>
+<li class="chapter" data-level="" data-path="construct-a-query.html"><a href="construct-a-query.html"><i class="fa fa-check"></i>Construct a query</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-a-browser.html"><a href="query-solr-via-a-browser.html"><i class="fa fa-check"></i>Query Solr via a browser</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-r.html"><a href="query-solr-via-r.html"><i class="fa fa-check"></i>Query Solr via R</a></li>
+<li class="chapter" data-level="" data-path="use-facets.html"><a href="use-facets.html"><i class="fa fa-check"></i>Use facets</a></li>
+<li class="chapter" data-level="" data-path="use-stats.html"><a href="use-stats.html"><i class="fa fa-check"></i>Use stats</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html"><i class="fa fa-check"></i>Example Solr queries</a><ul>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#find-everything"><i class="fa fa-check"></i>Find everything</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-wildcard-expression"><i class="fa fa-check"></i>Query a wildcard expression</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-fields"><i class="fa fa-check"></i>Query multiple fields</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-by-formattype"><i class="fa fa-check"></i>Query by formatType</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-by-a-specific-submitter"><i class="fa fa-check"></i>Query pids by a specific submitter</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-with-special-characters"><i class="fa fa-check"></i>Query pids with special characters</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-conditions-within-one-field"><i class="fa fa-check"></i>Query multiple conditions within one field</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-latest-versions-only"><i class="fa fa-check"></i>Query for latest versions only</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-not-in-a-query"><i class="fa fa-check"></i>Use NOT in a query</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-coordinating-node"><i class="fa fa-check"></i>Query a coordinating node</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid"><i class="fa fa-check"></i>Query for EMLs that document a specific data pid</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time"><i class="fa fa-check"></i>Query for files uploaded during a specific time</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-facets-1"><i class="fa fa-check"></i>Use facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="more-resources.html"><a href="more-resources.html"><i class="fa fa-check"></i>More resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="adc-web-submissions.html"><a href="adc-web-submissions.html"><i class="fa fa-check"></i>ADC web submissions</a><ul>
+<li class="chapter" data-level="" data-path="add-physicals-to-submissions.html"><a href="add-physicals-to-submissions.html"><i class="fa fa-check"></i>Add physicals to submissions</a></li>
+<li class="chapter" data-level="" data-path="assess-attributes.html"><a href="assess-attributes.html"><i class="fa fa-check"></i>Assess attributes</a></li>
+<li class="chapter" data-level="" data-path="list-submissions-to-the-arctic-data-center.html"><a href="list-submissions-to-the-arctic-data-center.html"><i class="fa fa-check"></i>List submissions to the Arctic Data Center</a></li>
+<li class="chapter" data-level="" data-path="recover-failed-submissions.html"><a href="recover-failed-submissions.html"><i class="fa fa-check"></i>Recover failed submissions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a><ul>
+<li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
+<li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Data Team Reference Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="example-solr-queries" class="section level2">
+<h2>Example Solr queries</h2>
+<p>For additional examples and explanations, check out the Apache Lucene <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>Query Parser Syntax</a> page.</p>
+<div id="find-everything" class="section level3">
+<h3>Find everything</h3>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;*:*&quot;</span>,</a>
+<a class="sourceLine" id="cb201-2" data-line-number="2">                               <span class="dt">fl=</span><span class="st">&quot;*&quot;</span>,</a>
+<a class="sourceLine" id="cb201-3" data-line-number="3">                               <span class="dt">rows=</span><span class="st">&quot;20&quot;</span>),</a>
+<a class="sourceLine" id="cb201-4" data-line-number="4">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-a-wildcard-expression" class="section level3">
+<h3>Query a wildcard expression</h3>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="co">#find any id that starts with arctic-data.6</span></a>
+<a class="sourceLine" id="cb202-2" data-line-number="2">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;id:arctic-data.6*&quot;</span>,</a>
+<a class="sourceLine" id="cb202-3" data-line-number="3">                               <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb202-4" data-line-number="4">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-multiple-fields" class="section level3">
+<h3>Query multiple fields</h3>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:soil*+AND+origin:Ludwig&quot;</span>,</a>
+<a class="sourceLine" id="cb203-2" data-line-number="2">                               <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb203-3" data-line-number="3">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:soil* OR origin:Ludwig&quot;</span>,</a>
+<a class="sourceLine" id="cb204-2" data-line-number="2">                               <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb204-3" data-line-number="3">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+<div class="note">
+<p>
+You can use either spaces or <code>+</code> to separate query parameters. When typing queries in R, it’s often easier to read if you use spaces. However, when using the browser, you may want to use <code>+</code> to keep the query clean. (The browser will replace spaces with <code>%20</code>.)
+</p>
+</div>
+</div>
+<div id="query-by-formattype" class="section level3">
+<h3>Query by formatType</h3>
+<p>Objects are queryable via their <code>formatType</code> which is one of DATA, METADATA, or RESOURCE.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="st">&#39;formatType:RESOURCE AND submitter:&quot;http://orcid.org/0000-0002-2561-5840&quot;&#39;</span>,</a>
+<a class="sourceLine" id="cb205-2" data-line-number="2">                          <span class="dt">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</a>
+<a class="sourceLine" id="cb205-3" data-line-number="3">                          <span class="dt">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</a>
+<a class="sourceLine" id="cb205-4" data-line-number="4">                          <span class="dt">rows=</span><span class="st">&#39;10&#39;</span>),</a>
+<a class="sourceLine" id="cb205-5" data-line-number="5">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a>
+<a class="sourceLine" id="cb205-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb205-7" data-line-number="7">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="st">&#39;formatType:METADATA AND title:*Toolik*&#39;</span>,</a>
+<a class="sourceLine" id="cb205-8" data-line-number="8">                          <span class="dt">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</a>
+<a class="sourceLine" id="cb205-9" data-line-number="9">                          <span class="dt">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</a>
+<a class="sourceLine" id="cb205-10" data-line-number="10">                          <span class="dt">rows=</span><span class="st">&#39;10&#39;</span>),</a>
+<a class="sourceLine" id="cb205-11" data-line-number="11">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-pids-by-a-specific-submitter" class="section level3">
+<h3>Query pids by a specific submitter</h3>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="st">&#39;submitter:&quot;http://orcid.org/0000-0003-4703-1974&quot;&#39;</span>,</a>
+<a class="sourceLine" id="cb206-2" data-line-number="2">               <span class="dt">fl =</span> <span class="st">&#39;identifier,submitter,fileName, size&#39;</span>,</a>
+<a class="sourceLine" id="cb206-3" data-line-number="3">               <span class="dt">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</a>
+<a class="sourceLine" id="cb206-4" data-line-number="4">               <span class="dt">rows=</span><span class="st">&#39;1000&#39;</span>),</a>
+<a class="sourceLine" id="cb206-5" data-line-number="5">      <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-pids-with-special-characters" class="section level3">
+<h3>Query pids with special characters</h3>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="co"># Wrap the pid with special characters with escaped backslashes</span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2">dataone<span class="op">::</span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="kw">paste0</span>(<span class="st">&#39;id:&#39;</span>, <span class="st">&#39;</span><span class="ch">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;doi:10.18739/A20R9M36V&#39;</span>, <span class="st">&#39;</span><span class="ch">\&quot;</span><span class="st">&#39;</span>),</a>
+<a class="sourceLine" id="cb207-3" data-line-number="3">                         <span class="dt">fl =</span> <span class="st">&#39;dateUploaded AND identifier&#39;</span>,</a>
+<a class="sourceLine" id="cb207-4" data-line-number="4">                         <span class="dt">rows =</span> <span class="dv">5000</span>),</a>
+<a class="sourceLine" id="cb207-5" data-line-number="5">               <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-multiple-conditions-within-one-field" class="section level3">
+<h3>Query multiple conditions within one field</h3>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:(soil* AND carbo*)&quot;</span>,</a>
+<a class="sourceLine" id="cb208-2" data-line-number="2">                               <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb208-3" data-line-number="3">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>) </a></code></pre></div>
+</div>
+<div id="query-for-latest-versions-only" class="section level3">
+<h3>Query for latest versions only</h3>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</a>
+<a class="sourceLine" id="cb209-2" data-line-number="2">                          <span class="dt">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId&quot;</span>,</a>
+<a class="sourceLine" id="cb209-3" data-line-number="3">                          <span class="dt">start =</span><span class="st">&quot;0&quot;</span>,</a>
+<a class="sourceLine" id="cb209-4" data-line-number="4">                          <span class="dt">rows =</span> <span class="st">&quot;1500&quot;</span>),</a>
+<a class="sourceLine" id="cb209-5" data-line-number="5">                     <span class="dt">as=</span><span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="use-not-in-a-query" class="section level3">
+<h3>Use NOT in a query</h3>
+<p>Just add <code>-</code> before a query parameter!</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:(soil AND -carbon)&quot;</span>,</a>
+<a class="sourceLine" id="cb210-2" data-line-number="2">                               <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb210-3" data-line-number="3">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-a-coordinating-node" class="section level3">
+<h3>Query a coordinating node</h3>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">query</span>(cn, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;title:soil* AND origin:Ludwig&quot;</span>,</a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">                              <span class="dt">rows=</span><span class="st">&quot;5000&quot;</span>),</a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">                <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-for-emls-that-document-a-specific-data-pid" class="section level3">
+<h3>Query for EMLs that document a specific data pid</h3>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="co"># Wrap the pid in escaped quotation marks if it contains special characters </span></a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="kw">paste0</span>(<span class="st">&#39;documents:&#39;</span>, <span class="st">&#39;</span><span class="ch">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&#39;</span>, <span class="st">&#39;</span><span class="ch">\&quot;</span><span class="st">&#39;</span>),</a>
+<a class="sourceLine" id="cb212-3" data-line-number="3">                <span class="dt">fl =</span> <span class="st">&quot;identifier&quot;</span>,</a>
+<a class="sourceLine" id="cb212-4" data-line-number="4">                <span class="dt">rows=</span><span class="st">&quot;20&quot;</span>),</a>
+<a class="sourceLine" id="cb212-5" data-line-number="5">      <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a>
+<a class="sourceLine" id="cb212-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb212-7" data-line-number="7"><span class="co"># Alternatively we can use a wildcard expression in place of &quot;urn:uuid:&quot;</span></a>
+<a class="sourceLine" id="cb212-8" data-line-number="8"><span class="co"># This way we don&#39;t need to escape the colon special characters </span></a>
+<a class="sourceLine" id="cb212-9" data-line-number="9"><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q =</span> <span class="kw">paste0</span>(<span class="st">&quot;documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&quot;</span>),</a>
+<a class="sourceLine" id="cb212-10" data-line-number="10">                <span class="dt">fl =</span> <span class="st">&quot;identifier&quot;</span>,</a>
+<a class="sourceLine" id="cb212-11" data-line-number="11">                <span class="dt">rows=</span><span class="st">&quot;20&quot;</span>),</a>
+<a class="sourceLine" id="cb212-12" data-line-number="12">      <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+</div>
+<div id="query-for-files-uploaded-during-a-specific-time" class="section level3">
+<h3>Query for files uploaded during a specific time</h3>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">query</span>(adc, <span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;dateUploaded:[2020-05-06T00:00:00Z TO NOW]&quot;</span>,</a>
+<a class="sourceLine" id="cb213-2" data-line-number="2">                <span class="dt">fl=</span><span class="st">&quot;title,identifier,resourceMap,dateUploaded,dateModified&quot;</span>,</a>
+<a class="sourceLine" id="cb213-3" data-line-number="3">                <span class="dt">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</a>
+<a class="sourceLine" id="cb213-4" data-line-number="4">                <span class="dt">rows=</span><span class="st">&quot;200&quot;</span>), </a>
+<a class="sourceLine" id="cb213-5" data-line-number="5">      <span class="dt">as =</span> <span class="st">&quot;data.frame&quot;</span>)</a>
+<a class="sourceLine" id="cb213-6" data-line-number="6">##                                                     identifier</a>
+<a class="sourceLine" id="cb213-7" data-line-number="7">## 1   resource_map_urn:uuid:1aa33809-ceeb-4be1-9a7b-308bebc0fff1</a>
+<a class="sourceLine" id="cb213-8" data-line-number="8">## 2   resource_map_urn:uuid:f3b43e66-42ac-4bdf-a144-04d253522ac2</a>
+<a class="sourceLine" id="cb213-9" data-line-number="9">## 3                urn:uuid:f3b43e66-42ac-4bdf-a144-04d253522ac2</a>
+<a class="sourceLine" id="cb213-10" data-line-number="10">## 4   resource_map_urn:uuid:aec0a4e8-97b6-4d6d-9f09-f8ba36d6f569</a>
+<a class="sourceLine" id="cb213-11" data-line-number="11">## 5                urn:uuid:aec0a4e8-97b6-4d6d-9f09-f8ba36d6f569</a>
+<a class="sourceLine" id="cb213-12" data-line-number="12">## 6                urn:uuid:30ffdcfb-6c0a-4fc1-939e-5d138ebaf8de</a>
+<a class="sourceLine" id="cb213-13" data-line-number="13">## 7                urn:uuid:92e8b384-733b-4f8a-aa1f-9019531e2177</a>
+<a class="sourceLine" id="cb213-14" data-line-number="14">## 8                urn:uuid:d5041bdf-23ea-4ad3-9c5a-973385245eb0</a>
+<a class="sourceLine" id="cb213-15" data-line-number="15">## 9                urn:uuid:4166a8fe-fdcf-4166-ab3c-759d029d56bb</a>
+<a class="sourceLine" id="cb213-16" data-line-number="16">## 10               urn:uuid:9533fc4e-1e94-475a-a5af-4b4605993690</a>
+<a class="sourceLine" id="cb213-17" data-line-number="17">## 11               urn:uuid:267a1fe3-5627-4048-9883-e8bcf12974a9</a>
+<a class="sourceLine" id="cb213-18" data-line-number="18">## 12               urn:uuid:4193e22b-d546-45e4-993c-fb99f8eab8a9</a>
+<a class="sourceLine" id="cb213-19" data-line-number="19">## 13               urn:uuid:436f009a-c553-49c7-a64e-b9f4e3a6797e</a>
+<a class="sourceLine" id="cb213-20" data-line-number="20">## 14               urn:uuid:6bd562f2-9211-4c54-8f02-3996301c3aff</a>
+<a class="sourceLine" id="cb213-21" data-line-number="21">## 15  resource_map_urn:uuid:692d412e-41bc-4069-a0df-3849607e9825</a>
+<a class="sourceLine" id="cb213-22" data-line-number="22">## 16               urn:uuid:9c8e932c-c842-4410-99db-c31e7b9e5eec</a>
+<a class="sourceLine" id="cb213-23" data-line-number="23">## 17               urn:uuid:9aa57941-3ee8-497c-9a2f-da6a1abc1968</a>
+<a class="sourceLine" id="cb213-24" data-line-number="24">## 18               urn:uuid:949a4115-9bb4-496c-8a2c-bcdac6bddd06</a>
+<a class="sourceLine" id="cb213-25" data-line-number="25">## 19               urn:uuid:aa9ac556-239f-43e1-a492-c434b2b0ee67</a>
+<a class="sourceLine" id="cb213-26" data-line-number="26">## 20               urn:uuid:ab606d6a-c603-479d-9e74-95d39a35a3ab</a>
+<a class="sourceLine" id="cb213-27" data-line-number="27">## 21               urn:uuid:ad4f6baf-2182-46ae-a34c-53c69c45bdd8</a>
+<a class="sourceLine" id="cb213-28" data-line-number="28">## 22               urn:uuid:21d76847-b58d-40e0-9266-4fd47f351510</a>
+<a class="sourceLine" id="cb213-29" data-line-number="29">## 23               urn:uuid:24181e5e-17a8-4bdf-8417-5ff4ee1535c5</a>
+<a class="sourceLine" id="cb213-30" data-line-number="30">## 24  resource_map_urn:uuid:d1578aa3-d36f-45cf-b36e-46466d305728</a>
+<a class="sourceLine" id="cb213-31" data-line-number="31">## 25               urn:uuid:3f192af6-d699-42e4-b903-de21adf984fd</a>
+<a class="sourceLine" id="cb213-32" data-line-number="32">## 26               urn:uuid:f3d7d4cd-3745-4774-95e5-3763c704d489</a>
+<a class="sourceLine" id="cb213-33" data-line-number="33">## 27               urn:uuid:5deb6533-31a4-4a64-badf-adbead88f402</a>
+<a class="sourceLine" id="cb213-34" data-line-number="34">## 28  resource_map_urn:uuid:345ce403-3933-47b3-acf8-f30a1747a113</a>
+<a class="sourceLine" id="cb213-35" data-line-number="35">## 29               urn:uuid:da0d96a0-2241-45f2-b43b-45411f74f7f8</a>
+<a class="sourceLine" id="cb213-36" data-line-number="36">## 30               urn:uuid:fb1a97fd-5e3d-4ea3-a2f2-cff1b7c43ce4</a>
+<a class="sourceLine" id="cb213-37" data-line-number="37">## 31               urn:uuid:a92c684d-6a46-469f-9d6a-753d5c1ae2c2</a>
+<a class="sourceLine" id="cb213-38" data-line-number="38">## 32               urn:uuid:5580cef1-936b-4078-9e8b-24f6b286a71e</a>
+<a class="sourceLine" id="cb213-39" data-line-number="39">## 33               urn:uuid:35c18c5b-6b8d-444e-be21-0f38cbb5cb42</a>
+<a class="sourceLine" id="cb213-40" data-line-number="40">## 34               urn:uuid:be4039de-3255-451e-af2e-0ab801caf687</a>
+<a class="sourceLine" id="cb213-41" data-line-number="41">## 35               urn:uuid:3f17d5f0-d493-494a-81bb-e4eddba150aa</a>
+<a class="sourceLine" id="cb213-42" data-line-number="42">## 36               urn:uuid:e0fdff67-8efa-4ff4-a363-af05a55542fc</a>
+<a class="sourceLine" id="cb213-43" data-line-number="43">## 37               urn:uuid:40f31a06-a1ef-4901-a521-a2e712f164af</a>
+<a class="sourceLine" id="cb213-44" data-line-number="44">## 38               urn:uuid:b032034b-6dff-49af-8165-d17b8db415d8</a>
+<a class="sourceLine" id="cb213-45" data-line-number="45">## 39               urn:uuid:b5ded3d4-0f0f-4232-a73e-ce559e1df242</a>
+<a class="sourceLine" id="cb213-46" data-line-number="46">## 40               urn:uuid:6722e2c1-ab35-4e31-bf6f-dd8037df8782</a>
+<a class="sourceLine" id="cb213-47" data-line-number="47">## 41               urn:uuid:0109355c-2414-4dc8-8259-2e56282640ed</a>
+<a class="sourceLine" id="cb213-48" data-line-number="48">## 42               urn:uuid:9be63495-9924-4645-856a-04f25d3aa2e7</a>
+<a class="sourceLine" id="cb213-49" data-line-number="49">## 43               urn:uuid:f800e4c3-4ee8-46ad-8d4b-1abb33c045b6</a>
+<a class="sourceLine" id="cb213-50" data-line-number="50">## 44               urn:uuid:4b309d95-b99d-4451-929a-9f5faba3d9e7</a>
+<a class="sourceLine" id="cb213-51" data-line-number="51">## 45               urn:uuid:3296280f-30ea-4e01-a726-5e78385d5e49</a>
+<a class="sourceLine" id="cb213-52" data-line-number="52">## 46               urn:uuid:2a35c1e4-deee-49eb-8974-c0822d2b7615</a>
+<a class="sourceLine" id="cb213-53" data-line-number="53">## 47               urn:uuid:761bea4b-e997-4caf-8be3-a23190571a95</a>
+<a class="sourceLine" id="cb213-54" data-line-number="54">## 48               urn:uuid:1265ad11-3682-4a2a-9b1c-73131cbd4a32</a>
+<a class="sourceLine" id="cb213-55" data-line-number="55">## 49               urn:uuid:1d6fe679-c6cc-454c-a470-b9624d11e73e</a>
+<a class="sourceLine" id="cb213-56" data-line-number="56">## 50               urn:uuid:1dc7a186-a0e5-493d-9c6e-79c4fe162ce1</a>
+<a class="sourceLine" id="cb213-57" data-line-number="57">## 51               urn:uuid:4897072d-eb80-4651-a021-09f3e5ae9254</a>
+<a class="sourceLine" id="cb213-58" data-line-number="58">## 52               urn:uuid:64e76837-9fc9-4990-9b13-7770195eecb3</a>
+<a class="sourceLine" id="cb213-59" data-line-number="59">## 53               urn:uuid:4a3a1168-5523-4293-9231-8e24c4fe9145</a>
+<a class="sourceLine" id="cb213-60" data-line-number="60">## 54               urn:uuid:29ebaa0f-901f-41d1-be6a-5403771bc64e</a>
+<a class="sourceLine" id="cb213-61" data-line-number="61">## 55               urn:uuid:450d350a-7f79-40a1-97f6-f92812a024af</a>
+<a class="sourceLine" id="cb213-62" data-line-number="62">## 56               urn:uuid:d8a4a4a8-1d0c-4bf2-ad31-afe5c0fdb741</a>
+<a class="sourceLine" id="cb213-63" data-line-number="63">## 57               urn:uuid:1e438de2-6e01-4c5c-beab-71d122ad19a2</a>
+<a class="sourceLine" id="cb213-64" data-line-number="64">## 58               urn:uuid:b9f95beb-5ed8-4a0f-8f28-649838ca1784</a>
+<a class="sourceLine" id="cb213-65" data-line-number="65">## 59               urn:uuid:4ba15e15-4e8b-4850-b06e-4cc783c57afa</a>
+<a class="sourceLine" id="cb213-66" data-line-number="66">## 60               urn:uuid:47c5a039-77dd-42ef-aa0b-68dd1e2e6300</a>
+<a class="sourceLine" id="cb213-67" data-line-number="67">## 61               urn:uuid:72b00866-f853-4e10-a64c-a1d8d5ff9d5a</a>
+<a class="sourceLine" id="cb213-68" data-line-number="68">## 62               urn:uuid:7cfe4760-ecf3-40f3-a36b-a1c7c4a06334</a>
+<a class="sourceLine" id="cb213-69" data-line-number="69">## 63               urn:uuid:98ad3aa0-2579-4eab-9650-739d38911616</a>
+<a class="sourceLine" id="cb213-70" data-line-number="70">## 64               urn:uuid:501b3450-3217-4144-a1da-e9bbbea6c8b8</a>
+<a class="sourceLine" id="cb213-71" data-line-number="71">## 65               urn:uuid:df7d31f3-84fb-4a4e-8521-3629934dd128</a>
+<a class="sourceLine" id="cb213-72" data-line-number="72">## 66               urn:uuid:a5b82d6b-08a3-4314-b97d-57ac32beb1b6</a>
+<a class="sourceLine" id="cb213-73" data-line-number="73">## 67               urn:uuid:708d62d9-062f-4475-81f6-d3e9b5c6647b</a>
+<a class="sourceLine" id="cb213-74" data-line-number="74">## 68               urn:uuid:0bb7f13f-6668-420b-9c6f-f71ee62d7834</a>
+<a class="sourceLine" id="cb213-75" data-line-number="75">## 69               urn:uuid:8a1094dd-1cf0-43ef-8d48-9575ddc8f2c9</a>
+<a class="sourceLine" id="cb213-76" data-line-number="76">## 70               urn:uuid:c618c041-67dd-4b4f-b314-28b4786328a6</a>
+<a class="sourceLine" id="cb213-77" data-line-number="77">## 71               urn:uuid:3ff54b37-d0e9-400a-bc6d-3c676d5f8d82</a>
+<a class="sourceLine" id="cb213-78" data-line-number="78">## 72               urn:uuid:467a7a3f-eace-4aee-a15c-a9050148e26f</a>
+<a class="sourceLine" id="cb213-79" data-line-number="79">## 73                         resource_map_doi:10.18739/A22V2CB44</a>
+<a class="sourceLine" id="cb213-80" data-line-number="80">## 74                                      doi:10.18739/A22V2CB44</a>
+<a class="sourceLine" id="cb213-81" data-line-number="81">## 75                         resource_map_doi:10.18739/A26H4CR5J</a>
+<a class="sourceLine" id="cb213-82" data-line-number="82">## 76                                      doi:10.18739/A26H4CR5J</a>
+<a class="sourceLine" id="cb213-83" data-line-number="83">## 77                         resource_map_doi:10.18739/A2B853J86</a>
+<a class="sourceLine" id="cb213-84" data-line-number="84">## 78                                      doi:10.18739/A2B853J86</a>
+<a class="sourceLine" id="cb213-85" data-line-number="85">## 79                         resource_map_doi:10.18739/A2G15TC2K</a>
+<a class="sourceLine" id="cb213-86" data-line-number="86">## 80                                      doi:10.18739/A2G15TC2K</a>
+<a class="sourceLine" id="cb213-87" data-line-number="87">## 81                         resource_map_doi:10.18739/A2KS6J56D</a>
+<a class="sourceLine" id="cb213-88" data-line-number="88">## 82                                      doi:10.18739/A2KS6J56D</a>
+<a class="sourceLine" id="cb213-89" data-line-number="89">## 83                         resource_map_doi:10.18739/A2QJ7801N</a>
+<a class="sourceLine" id="cb213-90" data-line-number="90">## 84                                      doi:10.18739/A2QJ7801N</a>
+<a class="sourceLine" id="cb213-91" data-line-number="91">## 85                         resource_map_doi:10.18739/A2JW86P0K</a>
+<a class="sourceLine" id="cb213-92" data-line-number="92">## 86                                      doi:10.18739/A2JW86P0K</a>
+<a class="sourceLine" id="cb213-93" data-line-number="93">## 87                         resource_map_doi:10.18739/A2V97ZS6G</a>
+<a class="sourceLine" id="cb213-94" data-line-number="94">## 88                                      doi:10.18739/A2V97ZS6G</a>
+<a class="sourceLine" id="cb213-95" data-line-number="95">## 89                         resource_map_doi:10.18739/A2028PF00</a>
+<a class="sourceLine" id="cb213-96" data-line-number="96">## 90                                      doi:10.18739/A2028PF00</a>
+<a class="sourceLine" id="cb213-97" data-line-number="97">## 91                         resource_map_doi:10.18739/A2X63B62J</a>
+<a class="sourceLine" id="cb213-98" data-line-number="98">## 92                                      doi:10.18739/A2X63B62J</a>
+<a class="sourceLine" id="cb213-99" data-line-number="99">## 93                         resource_map_doi:10.18739/A23R0PV24</a>
+<a class="sourceLine" id="cb213-100" data-line-number="100">## 94                                      doi:10.18739/A23R0PV24</a>
+<a class="sourceLine" id="cb213-101" data-line-number="101">## 95  resource_map_urn:uuid:6d5f8378-c826-4a00-b6c6-70e073d5650f</a>
+<a class="sourceLine" id="cb213-102" data-line-number="102">## 96               urn:uuid:802cd158-0609-4283-a4db-d179d3c4f052</a>
+<a class="sourceLine" id="cb213-103" data-line-number="103">## 97               urn:uuid:ac1385b8-76d6-4c0d-86e4-4b8e13845c5f</a>
+<a class="sourceLine" id="cb213-104" data-line-number="104">## 98               urn:uuid:994d4d49-7015-4574-a014-8c638f17152f</a>
+<a class="sourceLine" id="cb213-105" data-line-number="105">## 99               urn:uuid:1a75bdfa-3fd7-4073-a47b-cb96bc9354a3</a>
+<a class="sourceLine" id="cb213-106" data-line-number="106">## 100              urn:uuid:a028fff3-15b0-4ad0-915b-ecb9f7a33657</a>
+<a class="sourceLine" id="cb213-107" data-line-number="107">## 101              urn:uuid:d1d53cd6-7ac7-4c1c-bca2-1feff9da50c8</a>
+<a class="sourceLine" id="cb213-108" data-line-number="108">## 102              urn:uuid:6d7aa393-f00b-4c86-8b60-6d83256ad194</a>
+<a class="sourceLine" id="cb213-109" data-line-number="109">## 103              urn:uuid:8456dbfd-e594-4422-bfd2-afeb8781ed09</a>
+<a class="sourceLine" id="cb213-110" data-line-number="110">## 104              urn:uuid:193e48b2-88df-41ef-95a7-c42cd5028c7c</a>
+<a class="sourceLine" id="cb213-111" data-line-number="111">## 105              urn:uuid:a13b7376-c0b7-44e1-823d-64ac7ecf48cf</a>
+<a class="sourceLine" id="cb213-112" data-line-number="112">## 106              urn:uuid:2a0cadbf-2f60-4b0e-bb68-56e3758ab143</a>
+<a class="sourceLine" id="cb213-113" data-line-number="113">## 107              urn:uuid:598a6520-632b-4630-a729-c4f4e0e2a53f</a>
+<a class="sourceLine" id="cb213-114" data-line-number="114">## 108                        resource_map_doi:10.18739/A27H1DN5S</a>
+<a class="sourceLine" id="cb213-115" data-line-number="115">## 109                                     doi:10.18739/A27H1DN5S</a>
+<a class="sourceLine" id="cb213-116" data-line-number="116">## 110                        resource_map_doi:10.18739/A2C824F9X</a>
+<a class="sourceLine" id="cb213-117" data-line-number="117">## 111                                     doi:10.18739/A2C824F9X</a>
+<a class="sourceLine" id="cb213-118" data-line-number="118">## 112              urn:uuid:ffcec0f8-a058-4832-8297-2598e3cdc1ea</a>
+<a class="sourceLine" id="cb213-119" data-line-number="119">## 113              urn:uuid:cbaf9703-67d5-4b6c-9a09-d9185477e624</a>
+<a class="sourceLine" id="cb213-120" data-line-number="120">## 114              urn:uuid:8c8126ce-5328-407c-bd96-dc226eb08d3e</a>
+<a class="sourceLine" id="cb213-121" data-line-number="121">## 115              urn:uuid:6538b8ae-cfc1-4adf-8818-4671c69c5583</a>
+<a class="sourceLine" id="cb213-122" data-line-number="122">## 116              urn:uuid:720c1484-72e0-4c18-8d4e-1e8e16fd3d8e</a>
+<a class="sourceLine" id="cb213-123" data-line-number="123">## 117              urn:uuid:836a4a88-a7ad-4c44-a5aa-0c148751783a</a>
+<a class="sourceLine" id="cb213-124" data-line-number="124">## 118              urn:uuid:4bf9d836-2d43-445e-abf2-a25f5c3d513c</a>
+<a class="sourceLine" id="cb213-125" data-line-number="125">## 119              urn:uuid:7e4ad213-aaf8-4d04-af7c-3ea7e4e22cc4</a>
+<a class="sourceLine" id="cb213-126" data-line-number="126">## 120              urn:uuid:b8436ea9-3961-44c8-8b52-afadb0b373e2</a>
+<a class="sourceLine" id="cb213-127" data-line-number="127">## 121              urn:uuid:35c31252-cb18-4da1-bf5b-89f4ad429e9f</a>
+<a class="sourceLine" id="cb213-128" data-line-number="128">## 122              urn:uuid:f9b82d61-c9f5-464d-9db1-06e97536bbc7</a>
+<a class="sourceLine" id="cb213-129" data-line-number="129">## 123              urn:uuid:824359c3-b626-49af-87f2-995132c65fcf</a>
+<a class="sourceLine" id="cb213-130" data-line-number="130">## 124              urn:uuid:d30af0da-7c5f-4203-ada5-87e9d64310aa</a>
+<a class="sourceLine" id="cb213-131" data-line-number="131">## 125              urn:uuid:88e49616-868c-44c3-bda5-fab129e8c893</a>
+<a class="sourceLine" id="cb213-132" data-line-number="132">## 126              urn:uuid:c8055131-8a3c-4021-a3d3-4b4a8541abbd</a>
+<a class="sourceLine" id="cb213-133" data-line-number="133">## 127              urn:uuid:09cad754-7cd9-4643-aa11-946d7be96072</a>
+<a class="sourceLine" id="cb213-134" data-line-number="134">## 128              urn:uuid:914028dd-ccbc-42c5-9145-83b936d542e0</a>
+<a class="sourceLine" id="cb213-135" data-line-number="135">## 129              urn:uuid:d4262f59-e88e-4280-8b71-fa8e086408c0</a>
+<a class="sourceLine" id="cb213-136" data-line-number="136">## 130              urn:uuid:185a72d5-7135-4c3a-815c-24b676a95e0e</a>
+<a class="sourceLine" id="cb213-137" data-line-number="137">## 131              urn:uuid:77937a62-c08e-45e2-a01d-acabd41dbb68</a>
+<a class="sourceLine" id="cb213-138" data-line-number="138">## 132              urn:uuid:475d4d50-55a8-498e-8ccf-609cc4799634</a>
+<a class="sourceLine" id="cb213-139" data-line-number="139">## 133              urn:uuid:5987b8f8-98b9-4bb1-a199-2a7fbe69f6a5</a>
+<a class="sourceLine" id="cb213-140" data-line-number="140">## 134              urn:uuid:39c5508d-e3e2-4a31-9537-674f398b32d0</a>
+<a class="sourceLine" id="cb213-141" data-line-number="141">## 135              urn:uuid:e94248e7-325f-4996-98d4-fadb595a9042</a>
+<a class="sourceLine" id="cb213-142" data-line-number="142">## 136              urn:uuid:70952e9b-aa00-4808-a661-d512b68fb9f3</a>
+<a class="sourceLine" id="cb213-143" data-line-number="143">## 137              urn:uuid:f37686b3-b444-4f86-825b-913dabc6203a</a>
+<a class="sourceLine" id="cb213-144" data-line-number="144">## 138              urn:uuid:17985185-bdaa-4ceb-b015-83814cef0d3c</a>
+<a class="sourceLine" id="cb213-145" data-line-number="145">## 139              urn:uuid:5b4c365d-ca09-4786-b15d-dffadef4605b</a>
+<a class="sourceLine" id="cb213-146" data-line-number="146">## 140              urn:uuid:1e5fb20d-5b14-40d2-a06c-fea128f1a76a</a>
+<a class="sourceLine" id="cb213-147" data-line-number="147">## 141              urn:uuid:7252b730-8eaa-42f6-99c1-7fd7a4ca0db8</a>
+<a class="sourceLine" id="cb213-148" data-line-number="148">## 142              urn:uuid:7402240e-70ad-497b-90fc-a9c1c0a5ad66</a>
+<a class="sourceLine" id="cb213-149" data-line-number="149">## 143              urn:uuid:d0687521-85c9-4f27-95cf-d0d0695d4e6b</a>
+<a class="sourceLine" id="cb213-150" data-line-number="150">## 144              urn:uuid:86a4ba67-ad7a-473a-bb1b-67f253ea586f</a>
+<a class="sourceLine" id="cb213-151" data-line-number="151">## 145              urn:uuid:f10a74f3-45fe-41aa-a2a6-2e75a11d7889</a>
+<a class="sourceLine" id="cb213-152" data-line-number="152">## 146              urn:uuid:398b9b40-d261-4901-8309-5c6cbb620b27</a>
+<a class="sourceLine" id="cb213-153" data-line-number="153">## 147              urn:uuid:747459d7-9d14-4ab1-b2dc-28445a0546b6</a>
+<a class="sourceLine" id="cb213-154" data-line-number="154">## 148              urn:uuid:b76b7a06-6a1a-41ee-ad78-7cb7e6180ddb</a>
+<a class="sourceLine" id="cb213-155" data-line-number="155">## 149              urn:uuid:5fb9e9d7-8fac-4abd-a2a7-6686913df10b</a>
+<a class="sourceLine" id="cb213-156" data-line-number="156">## 150              urn:uuid:a2aa0227-87c5-4644-859c-441e9149621b</a>
+<a class="sourceLine" id="cb213-157" data-line-number="157">## 151              urn:uuid:1e53e5e1-0dc8-442c-ad6d-bbd022c246ee</a>
+<a class="sourceLine" id="cb213-158" data-line-number="158">## 152              urn:uuid:6a73427a-80c1-40d3-9976-63c645d299e3</a>
+<a class="sourceLine" id="cb213-159" data-line-number="159">## 153              urn:uuid:87018f98-a311-4ca6-b149-4d272cf0c11c</a>
+<a class="sourceLine" id="cb213-160" data-line-number="160">## 154              urn:uuid:bd745599-33dc-4a36-89f9-0548b787a199</a>
+<a class="sourceLine" id="cb213-161" data-line-number="161">## 155              urn:uuid:631dac02-423b-4872-9d44-d3f6041bf347</a>
+<a class="sourceLine" id="cb213-162" data-line-number="162">## 156              urn:uuid:0be5be0c-6b63-4c6d-a991-f8338e6f64e6</a>
+<a class="sourceLine" id="cb213-163" data-line-number="163">## 157              urn:uuid:8f7c1949-da04-42da-9eb0-7d99c4c3b31d</a>
+<a class="sourceLine" id="cb213-164" data-line-number="164">## 158              urn:uuid:25b88f8b-d950-49cc-b8f7-ae3c2c5f45f3</a>
+<a class="sourceLine" id="cb213-165" data-line-number="165">## 159              urn:uuid:1c125bdf-b99f-41c0-b242-9c430b7f8a86</a>
+<a class="sourceLine" id="cb213-166" data-line-number="166">## 160              urn:uuid:78aaaa72-8ec2-437b-add0-52a381e1af37</a>
+<a class="sourceLine" id="cb213-167" data-line-number="167">## 161              urn:uuid:5c60f619-8122-429d-8910-c60301c7d874</a>
+<a class="sourceLine" id="cb213-168" data-line-number="168">## 162              urn:uuid:3a06727a-593a-43bd-81fd-a8d9bea47b62</a>
+<a class="sourceLine" id="cb213-169" data-line-number="169">## 163              urn:uuid:3c596c0b-9444-4c60-ba2f-0bcd3836d1a5</a>
+<a class="sourceLine" id="cb213-170" data-line-number="170">## 164              urn:uuid:b49a03e0-d772-43f3-a20f-cbe26f98213a</a>
+<a class="sourceLine" id="cb213-171" data-line-number="171">## 165              urn:uuid:f8be4cc0-2008-4425-84f5-89e8e8947c6b</a>
+<a class="sourceLine" id="cb213-172" data-line-number="172">## 166              urn:uuid:26a8a742-c265-4d80-970e-26a20f873642</a>
+<a class="sourceLine" id="cb213-173" data-line-number="173">## 167              urn:uuid:0f4fb2f6-c0e6-4644-ae4c-a0e23a882b31</a>
+<a class="sourceLine" id="cb213-174" data-line-number="174">## 168              urn:uuid:9fbd52f9-b246-4061-8145-2c4f51d7e161</a>
+<a class="sourceLine" id="cb213-175" data-line-number="175">## 169              urn:uuid:af50a5f2-bc8c-4743-ac69-45281234efcd</a>
+<a class="sourceLine" id="cb213-176" data-line-number="176">## 170              urn:uuid:65a824e0-61f1-4407-bb64-213f308ed554</a>
+<a class="sourceLine" id="cb213-177" data-line-number="177">## 171              urn:uuid:481f367c-fcea-4bd2-8f46-cec4c35e1238</a>
+<a class="sourceLine" id="cb213-178" data-line-number="178">## 172              urn:uuid:871acf22-b36e-402b-9885-0bf03769ee14</a>
+<a class="sourceLine" id="cb213-179" data-line-number="179">## 173              urn:uuid:b297c312-f174-41d9-8374-05089b8ad7ef</a>
+<a class="sourceLine" id="cb213-180" data-line-number="180">## 174              urn:uuid:83a42b68-f6c0-4590-ad1b-fbe2b3b77a0f</a>
+<a class="sourceLine" id="cb213-181" data-line-number="181">## 175              urn:uuid:59c404a5-39ed-4819-8b73-4673683e180f</a>
+<a class="sourceLine" id="cb213-182" data-line-number="182">## 176              urn:uuid:7f16256e-2ad3-4e4a-9b84-c8f6dc324292</a>
+<a class="sourceLine" id="cb213-183" data-line-number="183">## 177              urn:uuid:83e76997-c5b5-4aca-a057-1d496e37b1d9</a>
+<a class="sourceLine" id="cb213-184" data-line-number="184">## 178              urn:uuid:60445b79-f833-4e41-afd4-b9ce69d91bf4</a>
+<a class="sourceLine" id="cb213-185" data-line-number="185">## 179              urn:uuid:16f9d8a9-0f81-4a4c-848e-4658a3adaa25</a>
+<a class="sourceLine" id="cb213-186" data-line-number="186">## 180              urn:uuid:1b16466d-c727-4070-b0dd-2764873faef0</a>
+<a class="sourceLine" id="cb213-187" data-line-number="187">## 181              urn:uuid:263fb97a-0297-457e-a8be-0dd5ca7c4e9b</a>
+<a class="sourceLine" id="cb213-188" data-line-number="188">## 182              urn:uuid:a13748ad-175e-406a-a3f0-29f3e2884605</a>
+<a class="sourceLine" id="cb213-189" data-line-number="189">## 183              urn:uuid:dcd8f071-fe6c-49bd-a35d-664e10a3e583</a>
+<a class="sourceLine" id="cb213-190" data-line-number="190">## 184              urn:uuid:7e7d9991-e065-4481-a45c-6c04bab33ffe</a>
+<a class="sourceLine" id="cb213-191" data-line-number="191">## 185              urn:uuid:42946877-bb86-49d9-b7a4-6e4a3f8fd363</a>
+<a class="sourceLine" id="cb213-192" data-line-number="192">## 186              urn:uuid:f071ff50-a747-449a-9ff3-162fea872815</a>
+<a class="sourceLine" id="cb213-193" data-line-number="193">## 187              urn:uuid:047245b8-fe4a-446b-a99a-1a35c075c130</a>
+<a class="sourceLine" id="cb213-194" data-line-number="194">## 188              urn:uuid:d19a7ffe-c791-40c3-b531-23e8476e5957</a>
+<a class="sourceLine" id="cb213-195" data-line-number="195">## 189              urn:uuid:8fe35552-8083-4755-b3ad-1cb5c9bdd71b</a>
+<a class="sourceLine" id="cb213-196" data-line-number="196">## 190              urn:uuid:f55b5898-7be9-4d2a-8a54-d467c4916851</a>
+<a class="sourceLine" id="cb213-197" data-line-number="197">## 191              urn:uuid:b5e6e4fc-ab94-4487-b6d3-ab6d9c3a51cb</a>
+<a class="sourceLine" id="cb213-198" data-line-number="198">## 192              urn:uuid:10b8deef-c398-41bd-94c9-79375393d361</a>
+<a class="sourceLine" id="cb213-199" data-line-number="199">## 193              urn:uuid:44b6eb7d-3f9a-44ed-8068-bd815152b49c</a>
+<a class="sourceLine" id="cb213-200" data-line-number="200">## 194              urn:uuid:6daca7ca-a423-47fe-a1fb-68631253e3bf</a>
+<a class="sourceLine" id="cb213-201" data-line-number="201">## 195              urn:uuid:e21020d8-eb5d-4018-9f02-a6af60fa9113</a>
+<a class="sourceLine" id="cb213-202" data-line-number="202">## 196              urn:uuid:17cc0ce9-ca39-487b-963f-ba3ce9cd2b7b</a>
+<a class="sourceLine" id="cb213-203" data-line-number="203">## 197              urn:uuid:00170061-ec09-45ef-8950-baa4939474f3</a>
+<a class="sourceLine" id="cb213-204" data-line-number="204">## 198              urn:uuid:c74f0614-feeb-47d2-b227-b64340f40908</a>
+<a class="sourceLine" id="cb213-205" data-line-number="205">## 199              urn:uuid:80397d3f-bc76-4f73-b569-20c2a38234ec</a>
+<a class="sourceLine" id="cb213-206" data-line-number="206">## 200              urn:uuid:59409a37-c9e6-427b-b9f5-a562c939343e</a>
+<a class="sourceLine" id="cb213-207" data-line-number="207">##            dateUploaded        dateModified</a>
+<a class="sourceLine" id="cb213-208" data-line-number="208">## 1   2021-05-03 23:24:14 2021-05-03 23:24:14</a>
+<a class="sourceLine" id="cb213-209" data-line-number="209">## 2   2021-05-03 21:27:48 2021-05-03 21:27:48</a>
+<a class="sourceLine" id="cb213-210" data-line-number="210">## 3   2021-05-03 21:27:05 2021-05-03 21:27:38</a>
+<a class="sourceLine" id="cb213-211" data-line-number="211">## 4   2021-05-03 20:32:59 2021-05-03 20:33:02</a>
+<a class="sourceLine" id="cb213-212" data-line-number="212">## 5   2021-05-03 20:31:08 2021-05-03 20:32:14</a>
+<a class="sourceLine" id="cb213-213" data-line-number="213">## 6   2021-05-03 18:39:53 2021-05-03 18:39:53</a>
+<a class="sourceLine" id="cb213-214" data-line-number="214">## 7   2021-05-03 18:14:39 2021-05-03 18:14:39</a>
+<a class="sourceLine" id="cb213-215" data-line-number="215">## 8   2021-05-03 18:14:37 2021-05-03 18:14:37</a>
+<a class="sourceLine" id="cb213-216" data-line-number="216">## 9   2021-05-03 18:14:31 2021-05-03 18:14:31</a>
+<a class="sourceLine" id="cb213-217" data-line-number="217">## 10  2021-05-03 18:13:21 2021-05-03 18:13:21</a>
+<a class="sourceLine" id="cb213-218" data-line-number="218">## 11  2021-05-03 18:11:12 2021-05-03 18:11:12</a>
+<a class="sourceLine" id="cb213-219" data-line-number="219">## 12  2021-05-03 18:08:06 2021-05-03 18:08:06</a>
+<a class="sourceLine" id="cb213-220" data-line-number="220">## 13  2021-05-03 17:50:44 2021-05-03 17:50:44</a>
+<a class="sourceLine" id="cb213-221" data-line-number="221">## 14  2021-05-03 17:48:17 2021-05-03 17:48:17</a>
+<a class="sourceLine" id="cb213-222" data-line-number="222">## 15  2021-04-30 23:49:33 2021-04-30 23:49:36</a>
+<a class="sourceLine" id="cb213-223" data-line-number="223">## 16  2021-04-30 23:49:19 2021-04-30 23:49:31</a>
+<a class="sourceLine" id="cb213-224" data-line-number="224">## 17  2021-04-30 23:48:12 2021-04-30 23:48:12</a>
+<a class="sourceLine" id="cb213-225" data-line-number="225">## 18  2021-04-30 23:48:12 2021-04-30 23:48:12</a>
+<a class="sourceLine" id="cb213-226" data-line-number="226">## 19  2021-04-30 23:40:34 2021-04-30 23:40:34</a>
+<a class="sourceLine" id="cb213-227" data-line-number="227">## 20  2021-04-30 23:40:34 2021-04-30 23:40:34</a>
+<a class="sourceLine" id="cb213-228" data-line-number="228">## 21  2021-04-30 23:15:26 2021-04-30 23:15:26</a>
+<a class="sourceLine" id="cb213-229" data-line-number="229">## 22  2021-04-30 23:11:51 2021-04-30 23:11:51</a>
+<a class="sourceLine" id="cb213-230" data-line-number="230">## 23  2021-04-30 23:11:51 2021-04-30 23:11:51</a>
+<a class="sourceLine" id="cb213-231" data-line-number="231">## 24  2021-04-30 20:45:04 2021-04-30 23:49:33</a>
+<a class="sourceLine" id="cb213-232" data-line-number="232">## 25  2021-04-30 20:44:22 2021-04-30 23:49:29</a>
+<a class="sourceLine" id="cb213-233" data-line-number="233">## 26  2021-04-30 20:42:15 2021-04-30 20:42:15</a>
+<a class="sourceLine" id="cb213-234" data-line-number="234">## 27  2021-04-30 20:39:04 2021-04-30 20:39:04</a>
+<a class="sourceLine" id="cb213-235" data-line-number="235">## 28  2021-04-29 18:56:28 2021-04-30 20:29:17</a>
+<a class="sourceLine" id="cb213-236" data-line-number="236">## 29  2021-04-29 18:52:18 2021-04-30 20:27:11</a>
+<a class="sourceLine" id="cb213-237" data-line-number="237">## 30  2021-04-29 18:52:18 2021-04-30 20:27:08</a>
+<a class="sourceLine" id="cb213-238" data-line-number="238">## 31  2021-04-29 18:52:18 2021-04-30 20:27:02</a>
+<a class="sourceLine" id="cb213-239" data-line-number="239">## 32  2021-04-29 18:52:17 2021-04-30 20:27:02</a>
+<a class="sourceLine" id="cb213-240" data-line-number="240">## 33  2021-04-29 18:52:17 2021-04-30 20:27:04</a>
+<a class="sourceLine" id="cb213-241" data-line-number="241">## 34  2021-04-29 18:52:17 2021-04-30 20:26:58</a>
+<a class="sourceLine" id="cb213-242" data-line-number="242">## 35  2021-04-29 18:52:16 2021-04-30 20:27:09</a>
+<a class="sourceLine" id="cb213-243" data-line-number="243">## 36  2021-04-29 18:52:16 2021-04-30 20:26:57</a>
+<a class="sourceLine" id="cb213-244" data-line-number="244">## 37  2021-04-29 18:52:15 2021-04-30 20:26:55</a>
+<a class="sourceLine" id="cb213-245" data-line-number="245">## 38  2021-04-29 18:52:15 2021-04-30 20:27:13</a>
+<a class="sourceLine" id="cb213-246" data-line-number="246">## 39  2021-04-29 18:52:15 2021-04-30 20:27:03</a>
+<a class="sourceLine" id="cb213-247" data-line-number="247">## 40  2021-04-29 18:52:14 2021-04-30 20:27:07</a>
+<a class="sourceLine" id="cb213-248" data-line-number="248">## 41  2021-04-29 18:52:13 2021-04-30 20:27:15</a>
+<a class="sourceLine" id="cb213-249" data-line-number="249">## 42  2021-04-29 18:52:13 2021-04-30 20:27:12</a>
+<a class="sourceLine" id="cb213-250" data-line-number="250">## 43  2021-04-29 18:52:12 2021-04-30 20:26:54</a>
+<a class="sourceLine" id="cb213-251" data-line-number="251">## 44  2021-04-29 18:52:11 2021-04-30 20:26:55</a>
+<a class="sourceLine" id="cb213-252" data-line-number="252">## 45  2021-04-29 18:52:11 2021-04-30 20:27:11</a>
+<a class="sourceLine" id="cb213-253" data-line-number="253">## 46  2021-04-29 18:52:11 2021-04-30 20:27:08</a>
+<a class="sourceLine" id="cb213-254" data-line-number="254">## 47  2021-04-29 18:52:10 2021-04-30 20:27:00</a>
+<a class="sourceLine" id="cb213-255" data-line-number="255">## 48  2021-04-29 18:52:10 2021-04-30 20:27:10</a>
+<a class="sourceLine" id="cb213-256" data-line-number="256">## 49  2021-04-29 18:52:10 2021-04-30 20:27:08</a>
+<a class="sourceLine" id="cb213-257" data-line-number="257">## 50  2021-04-29 18:52:09 2021-04-30 20:26:58</a>
+<a class="sourceLine" id="cb213-258" data-line-number="258">## 51  2021-04-29 18:52:09 2021-04-30 20:27:04</a>
+<a class="sourceLine" id="cb213-259" data-line-number="259">## 52  2021-04-29 18:52:08 2021-04-30 20:27:15</a>
+<a class="sourceLine" id="cb213-260" data-line-number="260">## 53  2021-04-29 18:52:07 2021-04-30 20:26:57</a>
+<a class="sourceLine" id="cb213-261" data-line-number="261">## 54  2021-04-29 18:52:07 2021-04-30 20:27:03</a>
+<a class="sourceLine" id="cb213-262" data-line-number="262">## 55  2021-04-29 18:52:07 2021-04-30 20:27:00</a>
+<a class="sourceLine" id="cb213-263" data-line-number="263">## 56  2021-04-29 18:52:06 2021-04-30 20:27:06</a>
+<a class="sourceLine" id="cb213-264" data-line-number="264">## 57  2021-04-29 18:52:06 2021-04-30 20:27:05</a>
+<a class="sourceLine" id="cb213-265" data-line-number="265">## 58  2021-04-29 18:52:05 2021-04-30 20:27:14</a>
+<a class="sourceLine" id="cb213-266" data-line-number="266">## 59  2021-04-29 18:52:05 2021-04-30 20:27:06</a>
+<a class="sourceLine" id="cb213-267" data-line-number="267">## 60  2021-04-29 18:52:05 2021-04-30 20:26:56</a>
+<a class="sourceLine" id="cb213-268" data-line-number="268">## 61  2021-04-29 18:52:04 2021-04-30 20:27:01</a>
+<a class="sourceLine" id="cb213-269" data-line-number="269">## 62  2021-04-29 18:52:03 2021-04-30 20:26:59</a>
+<a class="sourceLine" id="cb213-270" data-line-number="270">## 63  2021-04-29 18:52:03 2021-04-30 20:26:54</a>
+<a class="sourceLine" id="cb213-271" data-line-number="271">## 64  2021-04-29 18:52:02 2021-04-30 20:27:14</a>
+<a class="sourceLine" id="cb213-272" data-line-number="272">## 65  2021-04-29 18:52:02 2021-04-30 20:26:59</a>
+<a class="sourceLine" id="cb213-273" data-line-number="273">## 66  2021-04-29 18:52:01 2021-04-30 20:27:10</a>
+<a class="sourceLine" id="cb213-274" data-line-number="274">## 67  2021-04-29 18:51:59 2021-04-30 20:27:12</a>
+<a class="sourceLine" id="cb213-275" data-line-number="275">## 68  2021-04-29 18:51:59 2021-04-30 20:27:05</a>
+<a class="sourceLine" id="cb213-276" data-line-number="276">## 69  2021-04-29 18:51:59 2021-04-30 20:27:09</a>
+<a class="sourceLine" id="cb213-277" data-line-number="277">## 70  2021-04-29 18:51:58 2021-04-30 20:26:56</a>
+<a class="sourceLine" id="cb213-278" data-line-number="278">## 71  2021-04-29 18:51:58 2021-04-30 20:27:01</a>
+<a class="sourceLine" id="cb213-279" data-line-number="279">## 72  2021-04-29 18:51:57 2021-04-30 20:27:07</a>
+<a class="sourceLine" id="cb213-280" data-line-number="280">## 73  2021-04-29 17:45:12 2021-04-29 17:45:13</a>
+<a class="sourceLine" id="cb213-281" data-line-number="281">## 74  2021-04-29 17:45:08 2021-04-29 17:45:11</a>
+<a class="sourceLine" id="cb213-282" data-line-number="282">## 75  2021-04-28 21:38:36 2021-04-28 21:38:37</a>
+<a class="sourceLine" id="cb213-283" data-line-number="283">## 76  2021-04-28 21:38:33 2021-04-28 21:38:34</a>
+<a class="sourceLine" id="cb213-284" data-line-number="284">## 77  2021-04-28 21:37:58 2021-04-28 21:37:58</a>
+<a class="sourceLine" id="cb213-285" data-line-number="285">## 78  2021-04-28 21:37:51 2021-04-28 21:37:52</a>
+<a class="sourceLine" id="cb213-286" data-line-number="286">## 79  2021-04-27 23:18:07 2021-04-28 21:37:58</a>
+<a class="sourceLine" id="cb213-287" data-line-number="287">## 80  2021-04-27 23:17:59 2021-04-28 21:37:52</a>
+<a class="sourceLine" id="cb213-288" data-line-number="288">## 81  2021-04-27 23:14:01 2021-04-28 21:38:36</a>
+<a class="sourceLine" id="cb213-289" data-line-number="289">## 82  2021-04-27 23:13:57 2021-04-28 21:38:34</a>
+<a class="sourceLine" id="cb213-290" data-line-number="290">## 83  2021-04-27 21:14:55 2021-04-27 21:14:56</a>
+<a class="sourceLine" id="cb213-291" data-line-number="291">## 84  2021-04-27 21:14:51 2021-04-27 21:14:51</a>
+<a class="sourceLine" id="cb213-292" data-line-number="292">## 85  2021-04-27 21:05:01 2021-04-27 21:05:03</a>
+<a class="sourceLine" id="cb213-293" data-line-number="293">## 86  2021-04-27 21:04:39 2021-04-27 21:04:51</a>
+<a class="sourceLine" id="cb213-294" data-line-number="294">## 87  2021-04-27 19:38:36 2021-04-27 19:38:38</a>
+<a class="sourceLine" id="cb213-295" data-line-number="295">## 88  2021-04-27 19:38:30 2021-04-27 19:38:34</a>
+<a class="sourceLine" id="cb213-296" data-line-number="296">## 89  2021-04-27 18:39:56 2021-04-27 21:14:56</a>
+<a class="sourceLine" id="cb213-297" data-line-number="297">## 90  2021-04-27 18:39:54 2021-04-27 21:14:52</a>
+<a class="sourceLine" id="cb213-298" data-line-number="298">## 91  2021-04-27 18:33:53 2021-04-27 18:33:53</a>
+<a class="sourceLine" id="cb213-299" data-line-number="299">## 92  2021-04-27 18:33:49 2021-04-27 18:33:51</a>
+<a class="sourceLine" id="cb213-300" data-line-number="300">## 93  2021-04-27 18:14:29 2021-04-27 21:05:02</a>
+<a class="sourceLine" id="cb213-301" data-line-number="301">## 94  2021-04-27 18:14:07 2021-04-27 21:04:50</a>
+<a class="sourceLine" id="cb213-302" data-line-number="302">## 95  2021-04-27 03:42:28 2021-04-27 03:42:30</a>
+<a class="sourceLine" id="cb213-303" data-line-number="303">## 96  2021-04-27 03:42:24 2021-04-27 03:42:24</a>
+<a class="sourceLine" id="cb213-304" data-line-number="304">## 97  2021-04-27 03:42:24 2021-04-27 03:42:24</a>
+<a class="sourceLine" id="cb213-305" data-line-number="305">## 98  2021-04-27 03:42:23 2021-04-27 03:42:23</a>
+<a class="sourceLine" id="cb213-306" data-line-number="306">## 99  2021-04-27 03:42:23 2021-04-27 03:42:23</a>
+<a class="sourceLine" id="cb213-307" data-line-number="307">## 100 2021-04-27 03:42:22 2021-04-27 03:42:28</a>
+<a class="sourceLine" id="cb213-308" data-line-number="308">## 101 2021-04-27 03:42:22 2021-04-27 03:42:22</a>
+<a class="sourceLine" id="cb213-309" data-line-number="309">## 102 2021-04-27 03:42:22 2021-04-27 03:42:22</a>
+<a class="sourceLine" id="cb213-310" data-line-number="310">## 103 2021-04-27 03:42:22 2021-04-27 03:42:22</a>
+<a class="sourceLine" id="cb213-311" data-line-number="311">## 104 2021-04-27 03:42:22 2021-04-27 03:42:22</a>
+<a class="sourceLine" id="cb213-312" data-line-number="312">## 105 2021-04-27 03:36:45 2021-04-27 03:36:45</a>
+<a class="sourceLine" id="cb213-313" data-line-number="313">## 106 2021-04-27 03:36:45 2021-04-27 03:36:45</a>
+<a class="sourceLine" id="cb213-314" data-line-number="314">## 107 2021-04-27 03:36:45 2021-04-27 03:36:45</a>
+<a class="sourceLine" id="cb213-315" data-line-number="315">## 108 2021-04-23 16:09:14 2021-04-23 16:09:15</a>
+<a class="sourceLine" id="cb213-316" data-line-number="316">## 109 2021-04-23 16:09:09 2021-04-23 16:09:12</a>
+<a class="sourceLine" id="cb213-317" data-line-number="317">## 110 2021-04-22 22:11:48 2021-04-22 22:11:49</a>
+<a class="sourceLine" id="cb213-318" data-line-number="318">## 111 2021-04-22 22:11:43 2021-04-22 22:11:46</a>
+<a class="sourceLine" id="cb213-319" data-line-number="319">## 112 2021-04-21 22:56:07 2021-04-29 17:52:34</a>
+<a class="sourceLine" id="cb213-320" data-line-number="320">## 113 2021-04-21 22:56:06 2021-04-29 17:52:28</a>
+<a class="sourceLine" id="cb213-321" data-line-number="321">## 114 2021-04-21 22:56:06 2021-04-29 17:51:54</a>
+<a class="sourceLine" id="cb213-322" data-line-number="322">## 115 2021-04-21 22:56:06 2021-04-29 17:52:13</a>
+<a class="sourceLine" id="cb213-323" data-line-number="323">## 116 2021-04-21 22:56:05 2021-04-29 17:52:27</a>
+<a class="sourceLine" id="cb213-324" data-line-number="324">## 117 2021-04-21 22:56:05 2021-04-29 17:52:31</a>
+<a class="sourceLine" id="cb213-325" data-line-number="325">## 118 2021-04-21 22:56:05 2021-04-29 17:52:31</a>
+<a class="sourceLine" id="cb213-326" data-line-number="326">## 119 2021-04-21 22:56:04 2021-04-29 17:52:00</a>
+<a class="sourceLine" id="cb213-327" data-line-number="327">## 120 2021-04-21 22:56:04 2021-04-29 17:52:12</a>
+<a class="sourceLine" id="cb213-328" data-line-number="328">## 121 2021-04-21 22:56:04 2021-04-29 17:52:29</a>
+<a class="sourceLine" id="cb213-329" data-line-number="329">## 122 2021-04-21 22:56:03 2021-04-29 17:52:03</a>
+<a class="sourceLine" id="cb213-330" data-line-number="330">## 123 2021-04-21 22:56:03 2021-04-29 17:52:07</a>
+<a class="sourceLine" id="cb213-331" data-line-number="331">## 124 2021-04-21 22:56:03 2021-04-29 17:52:04</a>
+<a class="sourceLine" id="cb213-332" data-line-number="332">## 125 2021-04-21 22:56:01 2021-04-29 17:52:16</a>
+<a class="sourceLine" id="cb213-333" data-line-number="333">## 126 2021-04-21 22:56:00 2021-04-29 17:52:15</a>
+<a class="sourceLine" id="cb213-334" data-line-number="334">## 127 2021-04-21 22:56:00 2021-04-29 17:52:17</a>
+<a class="sourceLine" id="cb213-335" data-line-number="335">## 128 2021-04-21 22:56:00 2021-04-29 17:52:18</a>
+<a class="sourceLine" id="cb213-336" data-line-number="336">## 129 2021-04-21 22:55:59 2021-04-29 17:52:09</a>
+<a class="sourceLine" id="cb213-337" data-line-number="337">## 130 2021-04-21 22:55:59 2021-04-29 17:52:23</a>
+<a class="sourceLine" id="cb213-338" data-line-number="338">## 131 2021-04-21 22:55:59 2021-04-29 17:52:24</a>
+<a class="sourceLine" id="cb213-339" data-line-number="339">## 132 2021-04-21 22:55:58 2021-04-29 17:52:21</a>
+<a class="sourceLine" id="cb213-340" data-line-number="340">## 133 2021-04-21 22:55:58 2021-04-29 17:52:01</a>
+<a class="sourceLine" id="cb213-341" data-line-number="341">## 134 2021-04-21 22:55:58 2021-04-29 17:51:58</a>
+<a class="sourceLine" id="cb213-342" data-line-number="342">## 135 2021-04-21 22:55:57 2021-04-29 17:52:20</a>
+<a class="sourceLine" id="cb213-343" data-line-number="343">## 136 2021-04-21 22:55:57 2021-04-29 17:52:28</a>
+<a class="sourceLine" id="cb213-344" data-line-number="344">## 137 2021-04-21 22:55:45 2021-04-29 17:52:32</a>
+<a class="sourceLine" id="cb213-345" data-line-number="345">## 138 2021-04-21 22:55:45 2021-04-29 17:51:51</a>
+<a class="sourceLine" id="cb213-346" data-line-number="346">## 139 2021-04-21 22:55:44 2021-04-29 17:52:14</a>
+<a class="sourceLine" id="cb213-347" data-line-number="347">## 140 2021-04-21 22:55:44 2021-04-29 17:52:26</a>
+<a class="sourceLine" id="cb213-348" data-line-number="348">## 141 2021-04-21 22:55:44 2021-04-29 17:52:02</a>
+<a class="sourceLine" id="cb213-349" data-line-number="349">## 142 2021-04-21 22:55:43 2021-04-29 17:51:50</a>
+<a class="sourceLine" id="cb213-350" data-line-number="350">## 143 2021-04-21 22:55:43 2021-04-29 17:52:05</a>
+<a class="sourceLine" id="cb213-351" data-line-number="351">## 144 2021-04-21 22:55:43 2021-04-29 17:52:12</a>
+<a class="sourceLine" id="cb213-352" data-line-number="352">## 145 2021-04-21 22:55:42 2021-04-29 17:52:00</a>
+<a class="sourceLine" id="cb213-353" data-line-number="353">## 146 2021-04-21 22:55:42 2021-04-29 17:52:15</a>
+<a class="sourceLine" id="cb213-354" data-line-number="354">## 147 2021-04-21 22:55:41 2021-04-29 17:52:19</a>
+<a class="sourceLine" id="cb213-355" data-line-number="355">## 148 2021-04-21 22:55:41 2021-04-29 17:51:57</a>
+<a class="sourceLine" id="cb213-356" data-line-number="356">## 149 2021-04-21 22:55:41 2021-04-29 17:52:09</a>
+<a class="sourceLine" id="cb213-357" data-line-number="357">## 150 2021-04-21 22:55:40 2021-04-29 17:52:14</a>
+<a class="sourceLine" id="cb213-358" data-line-number="358">## 151 2021-04-21 22:55:40 2021-04-29 17:51:50</a>
+<a class="sourceLine" id="cb213-359" data-line-number="359">## 152 2021-04-21 22:55:40 2021-04-29 17:51:53</a>
+<a class="sourceLine" id="cb213-360" data-line-number="360">## 153 2021-04-21 22:55:39 2021-04-29 17:51:59</a>
+<a class="sourceLine" id="cb213-361" data-line-number="361">## 154 2021-04-21 22:55:39 2021-04-29 17:51:58</a>
+<a class="sourceLine" id="cb213-362" data-line-number="362">## 155 2021-04-21 22:55:38 2021-04-29 17:52:12</a>
+<a class="sourceLine" id="cb213-363" data-line-number="363">## 156 2021-04-21 22:55:38 2021-04-29 17:52:11</a>
+<a class="sourceLine" id="cb213-364" data-line-number="364">## 157 2021-04-21 22:55:38 2021-04-29 17:52:26</a>
+<a class="sourceLine" id="cb213-365" data-line-number="365">## 158 2021-04-21 22:55:37 2021-04-29 17:52:04</a>
+<a class="sourceLine" id="cb213-366" data-line-number="366">## 159 2021-04-21 22:55:37 2021-04-29 17:51:52</a>
+<a class="sourceLine" id="cb213-367" data-line-number="367">## 160 2021-04-21 22:55:37 2021-04-29 17:52:03</a>
+<a class="sourceLine" id="cb213-368" data-line-number="368">## 161 2021-04-21 22:55:36 2021-04-29 17:52:18</a>
+<a class="sourceLine" id="cb213-369" data-line-number="369">## 162 2021-04-21 22:55:36 2021-04-29 17:51:48</a>
+<a class="sourceLine" id="cb213-370" data-line-number="370">## 163 2021-04-21 22:55:35 2021-04-29 17:51:52</a>
+<a class="sourceLine" id="cb213-371" data-line-number="371">## 164 2021-04-21 22:55:35 2021-04-29 17:52:27</a>
+<a class="sourceLine" id="cb213-372" data-line-number="372">## 165 2021-04-21 22:55:35 2021-04-29 17:52:26</a>
+<a class="sourceLine" id="cb213-373" data-line-number="373">## 166 2021-04-21 22:55:34 2021-04-29 17:52:10</a>
+<a class="sourceLine" id="cb213-374" data-line-number="374">## 167 2021-04-21 22:55:34 2021-04-29 17:52:33</a>
+<a class="sourceLine" id="cb213-375" data-line-number="375">## 168 2021-04-21 22:55:34 2021-04-29 17:52:05</a>
+<a class="sourceLine" id="cb213-376" data-line-number="376">## 169 2021-04-21 22:55:33 2021-04-29 17:52:02</a>
+<a class="sourceLine" id="cb213-377" data-line-number="377">## 170 2021-04-21 22:55:33 2021-04-29 17:52:19</a>
+<a class="sourceLine" id="cb213-378" data-line-number="378">## 171 2021-04-21 22:55:33 2021-04-29 17:52:31</a>
+<a class="sourceLine" id="cb213-379" data-line-number="379">## 172 2021-04-21 22:55:32 2021-04-29 17:52:03</a>
+<a class="sourceLine" id="cb213-380" data-line-number="380">## 173 2021-04-21 22:55:32 2021-04-29 17:52:23</a>
+<a class="sourceLine" id="cb213-381" data-line-number="381">## 174 2021-04-21 22:55:32 2021-04-29 17:52:18</a>
+<a class="sourceLine" id="cb213-382" data-line-number="382">## 175 2021-04-21 22:55:31 2021-04-29 17:52:24</a>
+<a class="sourceLine" id="cb213-383" data-line-number="383">## 176 2021-04-21 22:55:31 2021-04-29 17:51:57</a>
+<a class="sourceLine" id="cb213-384" data-line-number="384">## 177 2021-04-21 22:55:31 2021-04-29 17:52:22</a>
+<a class="sourceLine" id="cb213-385" data-line-number="385">## 178 2021-04-21 22:55:30 2021-04-29 17:51:52</a>
+<a class="sourceLine" id="cb213-386" data-line-number="386">## 179 2021-04-21 22:55:30 2021-04-29 17:52:01</a>
+<a class="sourceLine" id="cb213-387" data-line-number="387">## 180 2021-04-21 22:55:30 2021-04-29 17:52:14</a>
+<a class="sourceLine" id="cb213-388" data-line-number="388">## 181 2021-04-21 22:55:29 2021-04-29 17:51:48</a>
+<a class="sourceLine" id="cb213-389" data-line-number="389">## 182 2021-04-21 22:55:29 2021-04-29 17:52:19</a>
+<a class="sourceLine" id="cb213-390" data-line-number="390">## 183 2021-04-21 22:55:29 2021-04-29 17:51:51</a>
+<a class="sourceLine" id="cb213-391" data-line-number="391">## 184 2021-04-21 22:55:28 2021-04-29 17:51:53</a>
+<a class="sourceLine" id="cb213-392" data-line-number="392">## 185 2021-04-21 22:55:28 2021-04-29 17:51:48</a>
+<a class="sourceLine" id="cb213-393" data-line-number="393">## 186 2021-04-21 22:55:28 2021-04-29 17:52:35</a>
+<a class="sourceLine" id="cb213-394" data-line-number="394">## 187 2021-04-21 22:55:27 2021-04-29 17:52:30</a>
+<a class="sourceLine" id="cb213-395" data-line-number="395">## 188 2021-04-21 22:55:27 2021-04-29 17:51:47</a>
+<a class="sourceLine" id="cb213-396" data-line-number="396">## 189 2021-04-21 22:55:27 2021-04-29 17:51:59</a>
+<a class="sourceLine" id="cb213-397" data-line-number="397">## 190 2021-04-21 22:55:26 2021-04-29 17:52:08</a>
+<a class="sourceLine" id="cb213-398" data-line-number="398">## 191 2021-04-21 22:55:24 2021-04-29 17:52:29</a>
+<a class="sourceLine" id="cb213-399" data-line-number="399">## 192 2021-04-21 22:55:24 2021-04-29 17:52:21</a>
+<a class="sourceLine" id="cb213-400" data-line-number="400">## 193 2021-04-21 22:55:23 2021-04-29 17:51:54</a>
+<a class="sourceLine" id="cb213-401" data-line-number="401">## 194 2021-04-21 22:55:23 2021-04-29 17:52:25</a>
+<a class="sourceLine" id="cb213-402" data-line-number="402">## 195 2021-04-21 22:55:22 2021-04-29 17:52:02</a>
+<a class="sourceLine" id="cb213-403" data-line-number="403">## 196 2021-04-21 22:55:09 2021-04-29 17:51:57</a>
+<a class="sourceLine" id="cb213-404" data-line-number="404">## 197 2021-04-21 22:55:09 2021-04-29 17:52:17</a>
+<a class="sourceLine" id="cb213-405" data-line-number="405">## 198 2021-04-21 22:55:08 2021-04-29 17:51:55</a>
+<a class="sourceLine" id="cb213-406" data-line-number="406">## 199 2021-04-21 22:55:06 2021-04-29 17:52:06</a>
+<a class="sourceLine" id="cb213-407" data-line-number="407">## 200 2021-04-21 22:55:05 2021-04-29 17:52:20</a>
+<a class="sourceLine" id="cb213-408" data-line-number="408">##                                                                                                                                                                                                 title</a>
+<a class="sourceLine" id="cb213-409" data-line-number="409">## 1                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-410" data-line-number="410">## 2                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-411" data-line-number="411">## 3   Conductivity-Temperature-Depth (CTD) data from the 2019 Distributed Biological Observatory - Northern Chukchi Integrated Study (DBO-NCIS) cruise on US Coast Guard Cutter (USCGC) Healy (HLY1901)</a>
+<a class="sourceLine" id="cb213-412" data-line-number="412">## 4                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-413" data-line-number="413">## 5   Conductivity-Temperature-Depth (CTD) data from the 2018 Distributed Biological Observatory - Northern Chukchi Integrated Study (DBO-NCIS) cruise on USCGC (US Coast Guard Cutter) Healy (HLY1801)</a>
+<a class="sourceLine" id="cb213-414" data-line-number="414">## 6                                                                                                                                         Past Climate at the Norse Settlements of southern Greenland</a>
+<a class="sourceLine" id="cb213-415" data-line-number="415">## 7                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-416" data-line-number="416">## 8                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-417" data-line-number="417">## 9                                                                                                                                                                                                &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-418" data-line-number="418">## 10                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-419" data-line-number="419">## 11                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-420" data-line-number="420">## 12                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-421" data-line-number="421">## 13                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-422" data-line-number="422">## 14                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-423" data-line-number="423">## 15                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-424" data-line-number="424">## 16                                                              In-situ snow accumulation, melt, and firn density records using ground penetrating radar and firn cores, western Greenland, 1955-2017</a>
+<a class="sourceLine" id="cb213-425" data-line-number="425">## 17                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-426" data-line-number="426">## 18                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-427" data-line-number="427">## 19                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-428" data-line-number="428">## 20                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-429" data-line-number="429">## 21                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-430" data-line-number="430">## 22                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-431" data-line-number="431">## 23                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-432" data-line-number="432">## 24                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-433" data-line-number="433">## 25                                                              In-situ snow accumulation, melt, and firn density records using ground penetrating radar and firn cores, western Greenland, 1955-2017</a>
+<a class="sourceLine" id="cb213-434" data-line-number="434">## 26                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-435" data-line-number="435">## 27                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-436" data-line-number="436">## 28                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-437" data-line-number="437">## 29                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-438" data-line-number="438">## 30                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-439" data-line-number="439">## 31                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-440" data-line-number="440">## 32                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-441" data-line-number="441">## 33                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-442" data-line-number="442">## 34                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-443" data-line-number="443">## 35                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-444" data-line-number="444">## 36                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-445" data-line-number="445">## 37                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-446" data-line-number="446">## 38                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-447" data-line-number="447">## 39                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-448" data-line-number="448">## 40                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-449" data-line-number="449">## 41                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-450" data-line-number="450">## 42                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-451" data-line-number="451">## 43                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-452" data-line-number="452">## 44                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-453" data-line-number="453">## 45                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-454" data-line-number="454">## 46                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-455" data-line-number="455">## 47                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-456" data-line-number="456">## 48                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-457" data-line-number="457">## 49                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-458" data-line-number="458">## 50                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-459" data-line-number="459">## 51                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-460" data-line-number="460">## 52                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-461" data-line-number="461">## 53                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-462" data-line-number="462">## 54                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-463" data-line-number="463">## 55                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-464" data-line-number="464">## 56                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-465" data-line-number="465">## 57                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-466" data-line-number="466">## 58                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-467" data-line-number="467">## 59                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-468" data-line-number="468">## 60                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-469" data-line-number="469">## 61                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-470" data-line-number="470">## 62                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-471" data-line-number="471">## 63                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-472" data-line-number="472">## 64                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-473" data-line-number="473">## 65                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-474" data-line-number="474">## 66                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-475" data-line-number="475">## 67                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-476" data-line-number="476">## 68                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-477" data-line-number="477">## 69                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-478" data-line-number="478">## 70                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-479" data-line-number="479">## 71                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-480" data-line-number="480">## 72                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-481" data-line-number="481">## 73                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-482" data-line-number="482">## 74                                                                                                                                     Stable water isotope data from Arctic Alaska snow pits in 2019</a>
+<a class="sourceLine" id="cb213-483" data-line-number="483">## 75                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-484" data-line-number="484">## 76                                                              Meteorological, Radiation, and Soil Temperature Data, Kuparuk River and Nearby Watersheds: Putuligayuk Basin (PB) station, 2015-2018.</a>
+<a class="sourceLine" id="cb213-485" data-line-number="485">## 77                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-486" data-line-number="486">## 78                                                                 Meteorological, Radiation, and Soil Temperature Data, Kuparuk River and Nearby Watersheds: Roche Moutonnée Creek (RMC), 2015-2018.</a>
+<a class="sourceLine" id="cb213-487" data-line-number="487">## 79                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-488" data-line-number="488">## 80                                                                 Meteorological, Radiation, and Soil Temperature Data, Kuparuk River and Nearby Watersheds: Roche Moutonnée Creek (RMC), 2015-2018.</a>
+<a class="sourceLine" id="cb213-489" data-line-number="489">## 81                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-490" data-line-number="490">## 82                                                              Meteorological, Radiation, and Soil Temperature Data, Kuparuk River and Nearby Watersheds: Putuligayuk Basin (PB) station, 2015-2018.</a>
+<a class="sourceLine" id="cb213-491" data-line-number="491">## 83                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-492" data-line-number="492">## 84                                                                                              Processes controlling thaw lake methane emission from lake to watershed scales in Alaska, 2015 - 2019</a>
+<a class="sourceLine" id="cb213-493" data-line-number="493">## 85                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-494" data-line-number="494">## 86                                                                           Airborne electromagnetic and magnetic survey, Goldstream Creek watershed, interior Alaska, March 6th to March 17th, 2016</a>
+<a class="sourceLine" id="cb213-495" data-line-number="495">## 87                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-496" data-line-number="496">## 88                                                                                         Surface meltwater production timeseries for Sermeq Avannarleq, western Greenland Ice Sheet from 2017-2018.</a>
+<a class="sourceLine" id="cb213-497" data-line-number="497">## 89                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-498" data-line-number="498">## 90                                                                                              Processes controlling thaw lake methane emission from lake to watershed scales in Alaska, 2015 - 2019</a>
+<a class="sourceLine" id="cb213-499" data-line-number="499">## 91                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-500" data-line-number="500">## 92                                                                                                                                                    Historical Fairbanks lake shorelines, 1949-2009</a>
+<a class="sourceLine" id="cb213-501" data-line-number="501">## 93                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-502" data-line-number="502">## 94                                                                           Airborne electromagnetic and magnetic survey, Goldstream Creek watershed, interior Alaska, March 6th to March 17th, 2016</a>
+<a class="sourceLine" id="cb213-503" data-line-number="503">## 95                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-504" data-line-number="504">## 96                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-505" data-line-number="505">## 97                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-506" data-line-number="506">## 98                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-507" data-line-number="507">## 99                                                                                                                                                                                               &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-508" data-line-number="508">## 100                                              Simultaneous Heat and Water (SHAW) input and outputs for four parameterizations of upland deciduous boreal forest at Bonanza Creek, Alaska 2003-2015</a>
+<a class="sourceLine" id="cb213-509" data-line-number="509">## 101                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-510" data-line-number="510">## 102                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-511" data-line-number="511">## 103                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-512" data-line-number="512">## 104                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-513" data-line-number="513">## 105                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-514" data-line-number="514">## 106                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-515" data-line-number="515">## 107                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-516" data-line-number="516">## 108                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-517" data-line-number="517">## 109                                                                                                                                       BAWLD-CH4: Methane Fluxes from Boreal and Arctic Ecosystems</a>
+<a class="sourceLine" id="cb213-518" data-line-number="518">## 110                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-519" data-line-number="519">## 111                                                                                                The fractional land cover estimates from the Boreal-Arctic Wetland and Lake Dataset (BAWLD), 2021.</a>
+<a class="sourceLine" id="cb213-520" data-line-number="520">## 112                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-521" data-line-number="521">## 113                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-522" data-line-number="522">## 114                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-523" data-line-number="523">## 115                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-524" data-line-number="524">## 116                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-525" data-line-number="525">## 117                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-526" data-line-number="526">## 118                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-527" data-line-number="527">## 119                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-528" data-line-number="528">## 120                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-529" data-line-number="529">## 121                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-530" data-line-number="530">## 122                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-531" data-line-number="531">## 123                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-532" data-line-number="532">## 124                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-533" data-line-number="533">## 125                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-534" data-line-number="534">## 126                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-535" data-line-number="535">## 127                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-536" data-line-number="536">## 128                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-537" data-line-number="537">## 129                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-538" data-line-number="538">## 130                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-539" data-line-number="539">## 131                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-540" data-line-number="540">## 132                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-541" data-line-number="541">## 133                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-542" data-line-number="542">## 134                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-543" data-line-number="543">## 135                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-544" data-line-number="544">## 136                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-545" data-line-number="545">## 137                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-546" data-line-number="546">## 138                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-547" data-line-number="547">## 139                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-548" data-line-number="548">## 140                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-549" data-line-number="549">## 141                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-550" data-line-number="550">## 142                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-551" data-line-number="551">## 143                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-552" data-line-number="552">## 144                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-553" data-line-number="553">## 145                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-554" data-line-number="554">## 146                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-555" data-line-number="555">## 147                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-556" data-line-number="556">## 148                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-557" data-line-number="557">## 149                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-558" data-line-number="558">## 150                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-559" data-line-number="559">## 151                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-560" data-line-number="560">## 152                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-561" data-line-number="561">## 153                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-562" data-line-number="562">## 154                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-563" data-line-number="563">## 155                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-564" data-line-number="564">## 156                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-565" data-line-number="565">## 157                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-566" data-line-number="566">## 158                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-567" data-line-number="567">## 159                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-568" data-line-number="568">## 160                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-569" data-line-number="569">## 161                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-570" data-line-number="570">## 162                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-571" data-line-number="571">## 163                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-572" data-line-number="572">## 164                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-573" data-line-number="573">## 165                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-574" data-line-number="574">## 166                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-575" data-line-number="575">## 167                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-576" data-line-number="576">## 168                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-577" data-line-number="577">## 169                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-578" data-line-number="578">## 170                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-579" data-line-number="579">## 171                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-580" data-line-number="580">## 172                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-581" data-line-number="581">## 173                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-582" data-line-number="582">## 174                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-583" data-line-number="583">## 175                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-584" data-line-number="584">## 176                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-585" data-line-number="585">## 177                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-586" data-line-number="586">## 178                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-587" data-line-number="587">## 179                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-588" data-line-number="588">## 180                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-589" data-line-number="589">## 181                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-590" data-line-number="590">## 182                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-591" data-line-number="591">## 183                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-592" data-line-number="592">## 184                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-593" data-line-number="593">## 185                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-594" data-line-number="594">## 186                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-595" data-line-number="595">## 187                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-596" data-line-number="596">## 188                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-597" data-line-number="597">## 189                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-598" data-line-number="598">## 190                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-599" data-line-number="599">## 191                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-600" data-line-number="600">## 192                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-601" data-line-number="601">## 193                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-602" data-line-number="602">## 194                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-603" data-line-number="603">## 195                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-604" data-line-number="604">## 196                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-605" data-line-number="605">## 197                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-606" data-line-number="606">## 198                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-607" data-line-number="607">## 199                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-608" data-line-number="608">## 200                                                                                                                                                                                              &lt;NA&gt;</a>
+<a class="sourceLine" id="cb213-609" data-line-number="609">##      resourceMap</a>
+<a class="sourceLine" id="cb213-610" data-line-number="610">## 1               </a>
+<a class="sourceLine" id="cb213-611" data-line-number="611">## 2               </a>
+<a class="sourceLine" id="cb213-612" data-line-number="612">## 3   resource....</a>
+<a class="sourceLine" id="cb213-613" data-line-number="613">## 4               </a>
+<a class="sourceLine" id="cb213-614" data-line-number="614">## 5   resource....</a>
+<a class="sourceLine" id="cb213-615" data-line-number="615">## 6               </a>
+<a class="sourceLine" id="cb213-616" data-line-number="616">## 7               </a>
+<a class="sourceLine" id="cb213-617" data-line-number="617">## 8               </a>
+<a class="sourceLine" id="cb213-618" data-line-number="618">## 9               </a>
+<a class="sourceLine" id="cb213-619" data-line-number="619">## 10              </a>
+<a class="sourceLine" id="cb213-620" data-line-number="620">## 11              </a>
+<a class="sourceLine" id="cb213-621" data-line-number="621">## 12              </a>
+<a class="sourceLine" id="cb213-622" data-line-number="622">## 13              </a>
+<a class="sourceLine" id="cb213-623" data-line-number="623">## 14              </a>
+<a class="sourceLine" id="cb213-624" data-line-number="624">## 15              </a>
+<a class="sourceLine" id="cb213-625" data-line-number="625">## 16  resource....</a>
+<a class="sourceLine" id="cb213-626" data-line-number="626">## 17  resource....</a>
+<a class="sourceLine" id="cb213-627" data-line-number="627">## 18  resource....</a>
+<a class="sourceLine" id="cb213-628" data-line-number="628">## 19  resource....</a>
+<a class="sourceLine" id="cb213-629" data-line-number="629">## 20  resource....</a>
+<a class="sourceLine" id="cb213-630" data-line-number="630">## 21  resource....</a>
+<a class="sourceLine" id="cb213-631" data-line-number="631">## 22  resource....</a>
+<a class="sourceLine" id="cb213-632" data-line-number="632">## 23  resource....</a>
+<a class="sourceLine" id="cb213-633" data-line-number="633">## 24              </a>
+<a class="sourceLine" id="cb213-634" data-line-number="634">## 25  resource....</a>
+<a class="sourceLine" id="cb213-635" data-line-number="635">## 26  resource....</a>
+<a class="sourceLine" id="cb213-636" data-line-number="636">## 27  resource....</a>
+<a class="sourceLine" id="cb213-637" data-line-number="637">## 28              </a>
+<a class="sourceLine" id="cb213-638" data-line-number="638">## 29  resource....</a>
+<a class="sourceLine" id="cb213-639" data-line-number="639">## 30  resource....</a>
+<a class="sourceLine" id="cb213-640" data-line-number="640">## 31  resource....</a>
+<a class="sourceLine" id="cb213-641" data-line-number="641">## 32  resource....</a>
+<a class="sourceLine" id="cb213-642" data-line-number="642">## 33  resource....</a>
+<a class="sourceLine" id="cb213-643" data-line-number="643">## 34  resource....</a>
+<a class="sourceLine" id="cb213-644" data-line-number="644">## 35  resource....</a>
+<a class="sourceLine" id="cb213-645" data-line-number="645">## 36  resource....</a>
+<a class="sourceLine" id="cb213-646" data-line-number="646">## 37  resource....</a>
+<a class="sourceLine" id="cb213-647" data-line-number="647">## 38  resource....</a>
+<a class="sourceLine" id="cb213-648" data-line-number="648">## 39  resource....</a>
+<a class="sourceLine" id="cb213-649" data-line-number="649">## 40  resource....</a>
+<a class="sourceLine" id="cb213-650" data-line-number="650">## 41  resource....</a>
+<a class="sourceLine" id="cb213-651" data-line-number="651">## 42  resource....</a>
+<a class="sourceLine" id="cb213-652" data-line-number="652">## 43  resource....</a>
+<a class="sourceLine" id="cb213-653" data-line-number="653">## 44  resource....</a>
+<a class="sourceLine" id="cb213-654" data-line-number="654">## 45  resource....</a>
+<a class="sourceLine" id="cb213-655" data-line-number="655">## 46  resource....</a>
+<a class="sourceLine" id="cb213-656" data-line-number="656">## 47  resource....</a>
+<a class="sourceLine" id="cb213-657" data-line-number="657">## 48  resource....</a>
+<a class="sourceLine" id="cb213-658" data-line-number="658">## 49  resource....</a>
+<a class="sourceLine" id="cb213-659" data-line-number="659">## 50  resource....</a>
+<a class="sourceLine" id="cb213-660" data-line-number="660">## 51  resource....</a>
+<a class="sourceLine" id="cb213-661" data-line-number="661">## 52  resource....</a>
+<a class="sourceLine" id="cb213-662" data-line-number="662">## 53  resource....</a>
+<a class="sourceLine" id="cb213-663" data-line-number="663">## 54  resource....</a>
+<a class="sourceLine" id="cb213-664" data-line-number="664">## 55  resource....</a>
+<a class="sourceLine" id="cb213-665" data-line-number="665">## 56  resource....</a>
+<a class="sourceLine" id="cb213-666" data-line-number="666">## 57  resource....</a>
+<a class="sourceLine" id="cb213-667" data-line-number="667">## 58  resource....</a>
+<a class="sourceLine" id="cb213-668" data-line-number="668">## 59  resource....</a>
+<a class="sourceLine" id="cb213-669" data-line-number="669">## 60  resource....</a>
+<a class="sourceLine" id="cb213-670" data-line-number="670">## 61  resource....</a>
+<a class="sourceLine" id="cb213-671" data-line-number="671">## 62  resource....</a>
+<a class="sourceLine" id="cb213-672" data-line-number="672">## 63  resource....</a>
+<a class="sourceLine" id="cb213-673" data-line-number="673">## 64  resource....</a>
+<a class="sourceLine" id="cb213-674" data-line-number="674">## 65  resource....</a>
+<a class="sourceLine" id="cb213-675" data-line-number="675">## 66  resource....</a>
+<a class="sourceLine" id="cb213-676" data-line-number="676">## 67  resource....</a>
+<a class="sourceLine" id="cb213-677" data-line-number="677">## 68  resource....</a>
+<a class="sourceLine" id="cb213-678" data-line-number="678">## 69  resource....</a>
+<a class="sourceLine" id="cb213-679" data-line-number="679">## 70  resource....</a>
+<a class="sourceLine" id="cb213-680" data-line-number="680">## 71  resource....</a>
+<a class="sourceLine" id="cb213-681" data-line-number="681">## 72  resource....</a>
+<a class="sourceLine" id="cb213-682" data-line-number="682">## 73              </a>
+<a class="sourceLine" id="cb213-683" data-line-number="683">## 74  resource....</a>
+<a class="sourceLine" id="cb213-684" data-line-number="684">## 75              </a>
+<a class="sourceLine" id="cb213-685" data-line-number="685">## 76  resource....</a>
+<a class="sourceLine" id="cb213-686" data-line-number="686">## 77              </a>
+<a class="sourceLine" id="cb213-687" data-line-number="687">## 78  resource....</a>
+<a class="sourceLine" id="cb213-688" data-line-number="688">## 79              </a>
+<a class="sourceLine" id="cb213-689" data-line-number="689">## 80  resource....</a>
+<a class="sourceLine" id="cb213-690" data-line-number="690">## 81              </a>
+<a class="sourceLine" id="cb213-691" data-line-number="691">## 82  resource....</a>
+<a class="sourceLine" id="cb213-692" data-line-number="692">## 83              </a>
+<a class="sourceLine" id="cb213-693" data-line-number="693">## 84  resource....</a>
+<a class="sourceLine" id="cb213-694" data-line-number="694">## 85  resource....</a>
+<a class="sourceLine" id="cb213-695" data-line-number="695">## 86  resource....</a>
+<a class="sourceLine" id="cb213-696" data-line-number="696">## 87              </a>
+<a class="sourceLine" id="cb213-697" data-line-number="697">## 88  resource....</a>
+<a class="sourceLine" id="cb213-698" data-line-number="698">## 89              </a>
+<a class="sourceLine" id="cb213-699" data-line-number="699">## 90  resource....</a>
+<a class="sourceLine" id="cb213-700" data-line-number="700">## 91  resource....</a>
+<a class="sourceLine" id="cb213-701" data-line-number="701">## 92  resource....</a>
+<a class="sourceLine" id="cb213-702" data-line-number="702">## 93              </a>
+<a class="sourceLine" id="cb213-703" data-line-number="703">## 94  resource....</a>
+<a class="sourceLine" id="cb213-704" data-line-number="704">## 95              </a>
+<a class="sourceLine" id="cb213-705" data-line-number="705">## 96  resource....</a>
+<a class="sourceLine" id="cb213-706" data-line-number="706">## 97  resource....</a>
+<a class="sourceLine" id="cb213-707" data-line-number="707">## 98  resource....</a>
+<a class="sourceLine" id="cb213-708" data-line-number="708">## 99  resource....</a>
+<a class="sourceLine" id="cb213-709" data-line-number="709">## 100 resource....</a>
+<a class="sourceLine" id="cb213-710" data-line-number="710">## 101 resource....</a>
+<a class="sourceLine" id="cb213-711" data-line-number="711">## 102 resource....</a>
+<a class="sourceLine" id="cb213-712" data-line-number="712">## 103 resource....</a>
+<a class="sourceLine" id="cb213-713" data-line-number="713">## 104 resource....</a>
+<a class="sourceLine" id="cb213-714" data-line-number="714">## 105 resource....</a>
+<a class="sourceLine" id="cb213-715" data-line-number="715">## 106 resource....</a>
+<a class="sourceLine" id="cb213-716" data-line-number="716">## 107 resource....</a>
+<a class="sourceLine" id="cb213-717" data-line-number="717">## 108             </a>
+<a class="sourceLine" id="cb213-718" data-line-number="718">## 109 resource....</a>
+<a class="sourceLine" id="cb213-719" data-line-number="719">## 110             </a>
+<a class="sourceLine" id="cb213-720" data-line-number="720">## 111 resource....</a>
+<a class="sourceLine" id="cb213-721" data-line-number="721">## 112 resource....</a>
+<a class="sourceLine" id="cb213-722" data-line-number="722">## 113 resource....</a>
+<a class="sourceLine" id="cb213-723" data-line-number="723">## 114 resource....</a>
+<a class="sourceLine" id="cb213-724" data-line-number="724">## 115 resource....</a>
+<a class="sourceLine" id="cb213-725" data-line-number="725">## 116 resource....</a>
+<a class="sourceLine" id="cb213-726" data-line-number="726">## 117 resource....</a>
+<a class="sourceLine" id="cb213-727" data-line-number="727">## 118 resource....</a>
+<a class="sourceLine" id="cb213-728" data-line-number="728">## 119 resource....</a>
+<a class="sourceLine" id="cb213-729" data-line-number="729">## 120 resource....</a>
+<a class="sourceLine" id="cb213-730" data-line-number="730">## 121 resource....</a>
+<a class="sourceLine" id="cb213-731" data-line-number="731">## 122 resource....</a>
+<a class="sourceLine" id="cb213-732" data-line-number="732">## 123 resource....</a>
+<a class="sourceLine" id="cb213-733" data-line-number="733">## 124 resource....</a>
+<a class="sourceLine" id="cb213-734" data-line-number="734">## 125 resource....</a>
+<a class="sourceLine" id="cb213-735" data-line-number="735">## 126 resource....</a>
+<a class="sourceLine" id="cb213-736" data-line-number="736">## 127 resource....</a>
+<a class="sourceLine" id="cb213-737" data-line-number="737">## 128 resource....</a>
+<a class="sourceLine" id="cb213-738" data-line-number="738">## 129 resource....</a>
+<a class="sourceLine" id="cb213-739" data-line-number="739">## 130 resource....</a>
+<a class="sourceLine" id="cb213-740" data-line-number="740">## 131 resource....</a>
+<a class="sourceLine" id="cb213-741" data-line-number="741">## 132 resource....</a>
+<a class="sourceLine" id="cb213-742" data-line-number="742">## 133 resource....</a>
+<a class="sourceLine" id="cb213-743" data-line-number="743">## 134 resource....</a>
+<a class="sourceLine" id="cb213-744" data-line-number="744">## 135 resource....</a>
+<a class="sourceLine" id="cb213-745" data-line-number="745">## 136 resource....</a>
+<a class="sourceLine" id="cb213-746" data-line-number="746">## 137 resource....</a>
+<a class="sourceLine" id="cb213-747" data-line-number="747">## 138 resource....</a>
+<a class="sourceLine" id="cb213-748" data-line-number="748">## 139 resource....</a>
+<a class="sourceLine" id="cb213-749" data-line-number="749">## 140 resource....</a>
+<a class="sourceLine" id="cb213-750" data-line-number="750">## 141 resource....</a>
+<a class="sourceLine" id="cb213-751" data-line-number="751">## 142 resource....</a>
+<a class="sourceLine" id="cb213-752" data-line-number="752">## 143 resource....</a>
+<a class="sourceLine" id="cb213-753" data-line-number="753">## 144 resource....</a>
+<a class="sourceLine" id="cb213-754" data-line-number="754">## 145 resource....</a>
+<a class="sourceLine" id="cb213-755" data-line-number="755">## 146 resource....</a>
+<a class="sourceLine" id="cb213-756" data-line-number="756">## 147 resource....</a>
+<a class="sourceLine" id="cb213-757" data-line-number="757">## 148 resource....</a>
+<a class="sourceLine" id="cb213-758" data-line-number="758">## 149 resource....</a>
+<a class="sourceLine" id="cb213-759" data-line-number="759">## 150 resource....</a>
+<a class="sourceLine" id="cb213-760" data-line-number="760">## 151 resource....</a>
+<a class="sourceLine" id="cb213-761" data-line-number="761">## 152 resource....</a>
+<a class="sourceLine" id="cb213-762" data-line-number="762">## 153 resource....</a>
+<a class="sourceLine" id="cb213-763" data-line-number="763">## 154 resource....</a>
+<a class="sourceLine" id="cb213-764" data-line-number="764">## 155 resource....</a>
+<a class="sourceLine" id="cb213-765" data-line-number="765">## 156 resource....</a>
+<a class="sourceLine" id="cb213-766" data-line-number="766">## 157 resource....</a>
+<a class="sourceLine" id="cb213-767" data-line-number="767">## 158 resource....</a>
+<a class="sourceLine" id="cb213-768" data-line-number="768">## 159 resource....</a>
+<a class="sourceLine" id="cb213-769" data-line-number="769">## 160 resource....</a>
+<a class="sourceLine" id="cb213-770" data-line-number="770">## 161 resource....</a>
+<a class="sourceLine" id="cb213-771" data-line-number="771">## 162 resource....</a>
+<a class="sourceLine" id="cb213-772" data-line-number="772">## 163 resource....</a>
+<a class="sourceLine" id="cb213-773" data-line-number="773">## 164 resource....</a>
+<a class="sourceLine" id="cb213-774" data-line-number="774">## 165 resource....</a>
+<a class="sourceLine" id="cb213-775" data-line-number="775">## 166 resource....</a>
+<a class="sourceLine" id="cb213-776" data-line-number="776">## 167 resource....</a>
+<a class="sourceLine" id="cb213-777" data-line-number="777">## 168 resource....</a>
+<a class="sourceLine" id="cb213-778" data-line-number="778">## 169 resource....</a>
+<a class="sourceLine" id="cb213-779" data-line-number="779">## 170 resource....</a>
+<a class="sourceLine" id="cb213-780" data-line-number="780">## 171 resource....</a>
+<a class="sourceLine" id="cb213-781" data-line-number="781">## 172 resource....</a>
+<a class="sourceLine" id="cb213-782" data-line-number="782">## 173 resource....</a>
+<a class="sourceLine" id="cb213-783" data-line-number="783">## 174 resource....</a>
+<a class="sourceLine" id="cb213-784" data-line-number="784">## 175 resource....</a>
+<a class="sourceLine" id="cb213-785" data-line-number="785">## 176 resource....</a>
+<a class="sourceLine" id="cb213-786" data-line-number="786">## 177 resource....</a>
+<a class="sourceLine" id="cb213-787" data-line-number="787">## 178 resource....</a>
+<a class="sourceLine" id="cb213-788" data-line-number="788">## 179 resource....</a>
+<a class="sourceLine" id="cb213-789" data-line-number="789">## 180 resource....</a>
+<a class="sourceLine" id="cb213-790" data-line-number="790">## 181 resource....</a>
+<a class="sourceLine" id="cb213-791" data-line-number="791">## 182 resource....</a>
+<a class="sourceLine" id="cb213-792" data-line-number="792">## 183 resource....</a>
+<a class="sourceLine" id="cb213-793" data-line-number="793">## 184 resource....</a>
+<a class="sourceLine" id="cb213-794" data-line-number="794">## 185 resource....</a>
+<a class="sourceLine" id="cb213-795" data-line-number="795">## 186 resource....</a>
+<a class="sourceLine" id="cb213-796" data-line-number="796">## 187 resource....</a>
+<a class="sourceLine" id="cb213-797" data-line-number="797">## 188 resource....</a>
+<a class="sourceLine" id="cb213-798" data-line-number="798">## 189 resource....</a>
+<a class="sourceLine" id="cb213-799" data-line-number="799">## 190 resource....</a>
+<a class="sourceLine" id="cb213-800" data-line-number="800">## 191 resource....</a>
+<a class="sourceLine" id="cb213-801" data-line-number="801">## 192 resource....</a>
+<a class="sourceLine" id="cb213-802" data-line-number="802">## 193 resource....</a>
+<a class="sourceLine" id="cb213-803" data-line-number="803">## 194 resource....</a>
+<a class="sourceLine" id="cb213-804" data-line-number="804">## 195 resource....</a>
+<a class="sourceLine" id="cb213-805" data-line-number="805">## 196 resource....</a>
+<a class="sourceLine" id="cb213-806" data-line-number="806">## 197 resource....</a>
+<a class="sourceLine" id="cb213-807" data-line-number="807">## 198 resource....</a>
+<a class="sourceLine" id="cb213-808" data-line-number="808">## 199 resource....</a>
+<a class="sourceLine" id="cb213-809" data-line-number="809">## 200 resource....</a></code></pre></div>
+</div>
+<div id="use-facets-1" class="section level3">
+<h3>Use facets</h3>
+<p>All resource maps with &gt; 100 data objects that are <em>not</em> on the Arctic Data Center:</p>
+<pre><code>https://cn.dataone.org/cn/v2/query/solr/?q=resourceMap:*+AND+-datasource:*ARCTIC*&amp;rows=0&amp;facet=true&amp;facet.field=resourceMap&amp;facet.mincount=100</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="use-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="more-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

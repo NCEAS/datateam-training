@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Edit attributeLists | NCEAS Data Team Reference Guide</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Edit attributeLists | NCEAS Data Team Reference Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="github-repo" content="NCEAS/datateam-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Edit attributeLists | NCEAS Data Team Reference Guide" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  
+
+
+
+<meta name="date" content="2021-05-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="edit-an-eml-element.html"/>
+<link rel="next" href="edit-custom-units-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="../styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Team Reference Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="datapack-and-dataone-workflow.html"><a href="datapack-and-dataone-workflow.html"><i class="fa fa-check"></i>Datapack and Dataone workflow</a><ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>Datapack Background</a><ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html"><i class="fa fa-check"></i>Create a new data package with datapack</a><ul>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html#upload-new-data-files"><i class="fa fa-check"></i>Upload new data files</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package-with-datapack.html"><a href="create-a-new-data-package-with-datapack.html#upload-the-package"><i class="fa fa-check"></i>Upload the package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html"><i class="fa fa-check"></i>Update packages with datapack</a><ul>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#get-the-package"><i class="fa fa-check"></i>Get the package</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#update-the-metadata"><i class="fa fa-check"></i>Update the metadata</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#modify-the-data-files"><i class="fa fa-check"></i>Modify the data files</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#publish-update"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i>Miscellaneous</a><ul>
+<li class="chapter" data-level="" data-path="code-snippets.html"><a href="code-snippets.html"><i class="fa fa-check"></i>Code Snippets</a></li>
+<li class="chapter" data-level="" data-path="cyberduck-instructions.html"><a href="cyberduck-instructions.html"><i class="fa fa-check"></i>Cyberduck instructions</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html"><i class="fa fa-check"></i>File paths</a><ul>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#remote-files-vs.local-files"><i class="fa fa-check"></i>Remote files vs. local files</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#file-path-shortcuts"><i class="fa fa-check"></i>File path shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a><ul>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a><ul>
+<li class="chapter" data-level="" data-path="add-a-pre-generated-identifier-to-the-eml.html"><a href="add-a-pre-generated-identifier-to-the-eml.html"><i class="fa fa-check"></i>Add a pre-generated identifier to the EML</a></li>
+<li class="chapter" data-level="" data-path="create-a-resource-map.html"><a href="create-a-resource-map.html"><i class="fa fa-check"></i>Create a resource map</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html"><i class="fa fa-check"></i>Edit sysmeta</a><ul>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#identifiers-and-sysmeta"><i class="fa fa-check"></i>Identifiers and sysmeta</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#additional-resources"><i class="fa fa-check"></i>Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
+<li class="chapter" data-level="" data-path="obsolescence-chain.html"><a href="obsolescence-chain.html"><i class="fa fa-check"></i>Obsolescence chain</a></li>
+<li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html"><i class="fa fa-check"></i>Set DataONE nodes</a><ul>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#staging-test-nodes"><i class="fa fa-check"></i>Staging (Test) nodes</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#production-nodes"><i class="fa fa-check"></i>Production nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html"><i class="fa fa-check"></i>Set rights and access</a><ul>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html#my-profile"><i class="fa fa-check"></i>My profile</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="show-indexing-status.html"><a href="show-indexing-status.html"><i class="fa fa-check"></i>Show indexing status</a></li>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a><ul>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a><ul>
+<li class="chapter" data-level="" data-path="access-specific-elements.html"><a href="access-specific-elements.html"><i class="fa fa-check"></i>Access specific elements</a></li>
+<li class="chapter" data-level="" data-path="navigate-through-eml.html"><a href="navigate-through-eml.html"><i class="fa fa-check"></i>Navigate through EML</a></li>
+<li class="chapter" data-level="" data-path="understand-the-eml-schema.html"><a href="understand-the-eml-schema.html"><i class="fa fa-check"></i>Understand the EML schema</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-eml.html"><a href="edit-eml.html"><i class="fa fa-check"></i>Edit EML</a><ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html"><i class="fa fa-check"></i>Edit an EML element</a><ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-strings"><i class="fa fa-check"></i>Edit EML with strings</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-the-eml-package"><i class="fa fa-check"></i>Edit EML with the “EML” package</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-objects"><i class="fa fa-check"></i>Edit EML with objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html"><i class="fa fa-check"></i>Edit attributeLists</a><ul>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-attributes"><i class="fa fa-check"></i>Edit attributes</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-custom-units"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-factors"><i class="fa fa-check"></i>Edit factors</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#finalize-attributelist"><i class="fa fa-check"></i>Finalize attributeList</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-custom-units-1.html"><a href="edit-custom-units-1.html"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-datatables.html"><a href="edit-datatables.html"><i class="fa fa-check"></i>Edit dataTables</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html"><i class="fa fa-check"></i>Edit otherEntities</a><ul>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#remove-otherentities"><i class="fa fa-check"></i>Remove otherEntities</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#create-otherentities"><i class="fa fa-check"></i>Create otherEntities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html"><i class="fa fa-check"></i>Semantic annotations</a><ul>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a><ul>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#reading-spatial-files"><i class="fa fa-check"></i>Reading Spatial Files</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialvector"><i class="fa fa-check"></i>spatialVector</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialrasters"><i class="fa fa-check"></i>spatialRasters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html"><i class="fa fa-check"></i>Format text in EML</a><ul>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#type-setting"><i class="fa fa-check"></i>Type-setting</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#links"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html"><i class="fa fa-check"></i>Series Identifier (SID)</a><ul>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#adding-a-sid-to-a-package"><i class="fa fa-check"></i>Adding a SID to a package</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-child-packages-of-a-parent-package-with-a-sid"><i class="fa fa-check"></i>Updating the child packages of a parent package with a SID</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-metadata-of-a-package-with-a-sid"><i class="fa fa-check"></i>Updating the metadata of a package with a SID</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html"><i class="fa fa-check"></i>Set coverages</a><ul>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#set-multiple-coverages"><i class="fa fa-check"></i>Set multiple coverages</a></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#special-coverages"><i class="fa fa-check"></i>Special coverages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html"><i class="fa fa-check"></i>Set methods</a><ul>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i>Adding sampling info to methods section</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-parties.html"><a href="set-parties.html"><i class="fa fa-check"></i>Set parties</a></li>
+<li class="chapter" data-level="" data-path="set-physical.html"><a href="set-physical.html"><i class="fa fa-check"></i>Set physical</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html"><i class="fa fa-check"></i>Use references</a><ul>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-parties"><i class="fa fa-check"></i>Example with parties</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-attributes"><i class="fa fa-check"></i>Example with attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a><ul>
+<li class="chapter" data-level="" data-path="nesting-a-data-package.html"><a href="nesting-a-data-package.html"><i class="fa fa-check"></i>Nesting a data package</a></li>
+<li class="chapter" data-level="" data-path="add-children-to-an-existing-parent.html"><a href="add-children-to-an-existing-parent.html"><i class="fa fa-check"></i>Add children to an existing parent</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-parent-package.html"><a href="create-a-new-parent-package.html"><i class="fa fa-check"></i>Create a new parent package</a></li>
+<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-correspondence.html"><a href="pi-correspondence.html"><i class="fa fa-check"></i>PI correspondence</a><ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html"><i class="fa fa-check"></i>Email templates</a><ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#initial-email-template"><i class="fa fa-check"></i>Initial email template</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#comment-templates-based-on-what-is-missing"><i class="fa fa-check"></i>Comment templates based on what is missing</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#final-email-templates"><i class="fa fa-check"></i>Final email templates</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#additional-email-templates"><i class="fa fa-check"></i>Additional email templates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a><ul>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a><ul>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#system-metadata"><i class="fa fa-check"></i>System Metadata</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#general-eml"><i class="fa fa-check"></i>General EML</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#title-1"><i class="fa fa-check"></i>Title</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#abstract-1"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#datatable-otherentity-spatialvectors"><i class="fa fa-check"></i>DataTable / OtherEntity / SpatialVectors</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#people"><i class="fa fa-check"></i>People</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#geographic-region"><i class="fa fa-check"></i>Geographic region</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#project"><i class="fa fa-check"></i>Project</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html"><i class="fa fa-check"></i>Navigate RT</a><ul>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#front-page"><i class="fa fa-check"></i>Front page</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#all-tickets"><i class="fa fa-check"></i>All tickets</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#example-ticket"><i class="fa fa-check"></i>Example ticket</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#new-data-submission"><i class="fa fa-check"></i>New data submission</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous-file-types.html"><a href="miscellaneous-file-types.html"><i class="fa fa-check"></i>Miscellaneous file types</a><ul>
+<li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
+<li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
+<li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a><ul>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
+<li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a><ul>
+<li class="chapter" data-level="" data-path="clean-column-names.html"><a href="clean-column-names.html"><i class="fa fa-check"></i>Clean column names</a></li>
+<li class="chapter" data-level="" data-path="fix-excel-dates.html"><a href="fix-excel-dates.html"><i class="fa fa-check"></i>Fix Excel dates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="solr-queries.html"><a href="solr-queries.html"><i class="fa fa-check"></i>Solr queries</a><ul>
+<li class="chapter" data-level="" data-path="construct-a-query.html"><a href="construct-a-query.html"><i class="fa fa-check"></i>Construct a query</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-a-browser.html"><a href="query-solr-via-a-browser.html"><i class="fa fa-check"></i>Query Solr via a browser</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-r.html"><a href="query-solr-via-r.html"><i class="fa fa-check"></i>Query Solr via R</a></li>
+<li class="chapter" data-level="" data-path="use-facets.html"><a href="use-facets.html"><i class="fa fa-check"></i>Use facets</a></li>
+<li class="chapter" data-level="" data-path="use-stats.html"><a href="use-stats.html"><i class="fa fa-check"></i>Use stats</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html"><i class="fa fa-check"></i>Example Solr queries</a><ul>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#find-everything"><i class="fa fa-check"></i>Find everything</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-wildcard-expression"><i class="fa fa-check"></i>Query a wildcard expression</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-fields"><i class="fa fa-check"></i>Query multiple fields</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-by-formattype"><i class="fa fa-check"></i>Query by formatType</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-by-a-specific-submitter"><i class="fa fa-check"></i>Query pids by a specific submitter</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-with-special-characters"><i class="fa fa-check"></i>Query pids with special characters</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-conditions-within-one-field"><i class="fa fa-check"></i>Query multiple conditions within one field</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-latest-versions-only"><i class="fa fa-check"></i>Query for latest versions only</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-not-in-a-query"><i class="fa fa-check"></i>Use NOT in a query</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-coordinating-node"><i class="fa fa-check"></i>Query a coordinating node</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid"><i class="fa fa-check"></i>Query for EMLs that document a specific data pid</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time"><i class="fa fa-check"></i>Query for files uploaded during a specific time</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-facets-1"><i class="fa fa-check"></i>Use facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="more-resources.html"><a href="more-resources.html"><i class="fa fa-check"></i>More resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="adc-web-submissions.html"><a href="adc-web-submissions.html"><i class="fa fa-check"></i>ADC web submissions</a><ul>
+<li class="chapter" data-level="" data-path="add-physicals-to-submissions.html"><a href="add-physicals-to-submissions.html"><i class="fa fa-check"></i>Add physicals to submissions</a></li>
+<li class="chapter" data-level="" data-path="assess-attributes.html"><a href="assess-attributes.html"><i class="fa fa-check"></i>Assess attributes</a></li>
+<li class="chapter" data-level="" data-path="list-submissions-to-the-arctic-data-center.html"><a href="list-submissions-to-the-arctic-data-center.html"><i class="fa fa-check"></i>List submissions to the Arctic Data Center</a></li>
+<li class="chapter" data-level="" data-path="recover-failed-submissions.html"><a href="recover-failed-submissions.html"><i class="fa fa-check"></i>Recover failed submissions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a><ul>
+<li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
+<li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Data Team Reference Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="edit-attributelists" class="section level2">
+<h2>Edit attributeLists</h2>
+<p>Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:</p>
+<ol style="list-style-type: decimal">
+<li>A data.frame of attributes</li>
+<li>A data.frame of custom units (if applicable)</li>
+</ol>
+<p>Attributes can exist in EML for <code>dataTable</code>, <code>otherEntity</code>, and <code>spatialVector</code> data objects. Please note that submitting attribute information through the website will store them in an <code>otherEntity</code> object by default. We prefer to store them in a <code>dataTable</code> object for tabular data or a <code>spatialVector</code> object for spatial data.</p>
+<p>To edit or examine an existing attribute table already in an EML file, you can use the following commands, where <code>i</code> represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one <code>dataTable</code>), you should just call <code>doc$dataset$dataTable</code>, as in this case <code>doc$dataset$dataTable[[1]]</code> will return the first sub-element of the <code>dataTable</code> (the <code>entityName</code>)</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co"># If they are stored in an otherEntity (submitted from the website by default)</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity[[i]]<span class="op">$</span>attributeList)</a>
+<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="co"># Or if they are stored in a dataTable (usually created by a datateam member)</span></a>
+<a class="sourceLine" id="cb83-4" data-line-number="4">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]]<span class="op">$</span>attributeList)</a>
+<a class="sourceLine" id="cb83-5" data-line-number="5"><span class="co"># Or if they are stored in a spatialVector (usually created by a datateam member)</span></a>
+<a class="sourceLine" id="cb83-6" data-line-number="6">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>spatialVector[[i]]<span class="op">$</span>attributeList)</a>
+<a class="sourceLine" id="cb83-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb83-8" data-line-number="8">attributes &lt;-<span class="st"> </span>attributeList<span class="op">$</span>attributes</a>
+<a class="sourceLine" id="cb83-9" data-line-number="9"><span class="kw">print</span>(attributes)</a></code></pre></div>
+<div id="edit-attributes" class="section level3">
+<h3>Edit attributes</h3>
+<p>Attribute information should be stored in a <code>data.frame</code> with the following columns:</p>
+<ul>
+<li><strong>attributeName</strong>: The name of the attribute as listed in the csv. Required. e.g.: “c_temp”</li>
+<li><strong>attributeLabel</strong>: A descriptive label that can be used to display the name of an attribute. It is not constrained by system limitations on length or special characters. Optional. e.g.: “Temperature (Celsius)”</li>
+<li><strong>attributeDefinition</strong>: Longer description of the attribute, including the required context for interpreting the <code>attributeName</code>. Required. e.g.: “The near shore water temperature in the upper inter-tidal zone, measured in degrees Celsius.”</li>
+<li><strong>measurementScale</strong>: One of: nominal, ordinal, dateTime, ratio, interval. Required.
+<ul>
+<li><em>nominal</em>: unordered categories or text. e.g.: (Male, Female) or (Yukon River, Kuskokwim River)</li>
+<li><em>ordinal</em>: ordered categories. e.g.: Low, Medium, High</li>
+<li><em>dateTime</em>: date or time values from the Gregorian calendar. e.g.: 01-01-2001</li>
+<li><em>ratio</em>: measurement scale with a meaningful zero point in nature. Ratios are proportional to the measured variable. e.g.: 0 Kelvin represents a complete absence of heat. 200 Kelvin is half as hot as 400 Kelvin. 1.2 meters per second is twice as fast as 0.6 meters per second.</li>
+<li><em>interval</em>: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or latitude and longitude coordinates, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius.</li>
+</ul></li>
+<li><strong>domain</strong>: One of: <code>textDomain</code>, <code>enumeratedDomain</code>, <code>numericDomain</code>, <code>dateTime</code>. Required.
+<ul>
+<li><em>textDomain</em>: text that is free-form, or matches a pattern</li>
+<li><em>enumeratedDomain</em>: text that belongs to a defined list of codes and definitions. e.g.: CASC = Cascade Lake, HEAR = Heart Lake</li>
+<li><em>dateTimeDomain</em>: <code>dateTime</code> attributes</li>
+<li><em>numericDomain</em>: attributes that are numbers (either <code>ratio</code> or <code>interval</code>)</li>
+</ul></li>
+<li><strong>formatString</strong>: Required for <code>dateTime</code>, NA otherwise. Format string for dates, e.g. “DD/MM/YYYY”.</li>
+<li><strong>definition</strong>: Required for <code>textDomain</code>, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.</li>
+<li><strong>unit</strong>: Required for <code>numericDomain</code>, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: <code>standardUnits &lt;- EML::get_unitList()</code> then running <code>View(standardUnits$units)</code>.</li>
+<li><strong>numberType</strong>: Required for <code>numericDomain</code>, NA otherwise. Options are <code>real</code>, <code>natural</code>, <code>whole</code>, and <code>integer</code>.
+<ul>
+<li><em>real</em>: positive and negative fractions and integers (…-1,-0.25,0,0.25,1…)</li>
+<li><em>natural</em>: non-zero positive integers (1,2,3…)</li>
+<li><em>whole</em>: positive integers and zero (0,1,2,3…)</li>
+<li><em>integer</em>: positive and negative integers and zero (…-2,-1,0,1,2…)</li>
+</ul></li>
+<li><strong>missingValueCode</strong>: Code for missing values (e.g.: ‘-999’, ‘NA’, ‘NaN’). NA otherwise. Note that an NA missing value code should be a string, ‘NA’, and numbers should also be strings, ‘-999.’</li>
+<li><strong>missingValueCodeExplanation</strong>: Explanation for missing values, NA if no missing value code exists.</li>
+</ul>
+<p>You can create attributes manually by typing them out in R following a workflow similar to the one below:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">attributes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb84-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb84-3" data-line-number="3">    <span class="dt">attributeName =</span> <span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Location&#39;</span>, <span class="st">&#39;Region&#39;</span>,<span class="st">&#39;Sample_No&#39;</span>, <span class="st">&#39;Sample_vol&#39;</span>, <span class="st">&#39;Salinity&#39;</span>, <span class="st">&#39;Temperature&#39;</span>, <span class="st">&#39;sampling_comments&#39;</span>),</a>
+<a class="sourceLine" id="cb84-4" data-line-number="4">    <span class="dt">attributeDefinition =</span> <span class="kw">c</span>(<span class="st">&#39;Date sample was taken on&#39;</span>, <span class="st">&#39;Location code representing location where sample was taken&#39;</span>,<span class="st">&#39;Region where sample was taken&#39;</span>, <span class="st">&#39;Sample number&#39;</span>, <span class="st">&#39;Sample volume&#39;</span>, <span class="st">&#39;Salinity of sample in PSU&#39;</span>, <span class="st">&#39;Temperature of sample&#39;</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</a>
+<a class="sourceLine" id="cb84-5" data-line-number="5">    <span class="dt">measurementScale =</span> <span class="kw">c</span>(<span class="st">&#39;dateTime&#39;</span>, <span class="st">&#39;nominal&#39;</span>,<span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;interval&#39;</span>, <span class="st">&#39;nominal&#39;</span>),</a>
+<a class="sourceLine" id="cb84-6" data-line-number="6">    <span class="dt">domain =</span> <span class="kw">c</span>(<span class="st">&#39;dateTimeDomain&#39;</span>, <span class="st">&#39;enumeratedDomain&#39;</span>,<span class="st">&#39;enumeratedDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>),</a>
+<a class="sourceLine" id="cb84-7" data-line-number="7">    <span class="dt">formatString =</span> <span class="kw">c</span>(<span class="st">&#39;MM-DD-YYYY&#39;</span>, <span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb84-8" data-line-number="8">    <span class="dt">definition =</span> <span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="st">&#39;Sample number&#39;</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</a>
+<a class="sourceLine" id="cb84-9" data-line-number="9">    <span class="dt">unit =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="st">&#39;milliliter&#39;</span>, <span class="st">&#39;dimensionless&#39;</span>, <span class="st">&#39;celsius&#39;</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb84-10" data-line-number="10">    <span class="dt">numberType =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb84-11" data-line-number="11">    <span class="dt">missingValueCode =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;NA&#39;</span>),</a>
+<a class="sourceLine" id="cb84-12" data-line-number="12">    <span class="dt">missingValueCodeExplanation =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;no sampling comments&#39;</span>))</a></code></pre></div>
+<p>However, typing this out in R can be a major pain. Luckily, there’s a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co">#first download the CSV in your data package from Exercise #2</span></a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text=</span><span class="kw">rawToChar</span>(<span class="kw">getObject</span>(adc_test, pkg<span class="op">$</span>data)))</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="co"># From data (recommended)</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2">EML<span class="op">::</span><span class="kw">shiny_attributes</span>(<span class="dt">data =</span> data)</a>
+<a class="sourceLine" id="cb86-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="co"># From an existing attribute table</span></a>
+<a class="sourceLine" id="cb86-5" data-line-number="5">attributeList &lt;-<span class="st"> </span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]]<span class="op">$</span>attributeList)</a>
+<a class="sourceLine" id="cb86-6" data-line-number="6">EML<span class="op">::</span><span class="kw">shiny_attributes</span>(<span class="dt">data =</span> <span class="ot">NULL</span>, <span class="dt">attributes =</span> attributeList<span class="op">$</span>attributes)</a>
+<a class="sourceLine" id="cb86-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb86-8" data-line-number="8"><span class="co"># From scratch</span></a>
+<a class="sourceLine" id="cb86-9" data-line-number="9">atts &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">shiny_attributes</span>()</a></code></pre></div>
+<p>Once you are done editing a table in the app, quit the app and the tables will be assigned to the <code>atts</code> variable as a list of data frames (one for attributes, factors, and units). Alternatively, each table can be to exported to a csv file by clicking the <code>Download</code> button.</p>
+<p>If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. <code>attributes &lt;- data.frame(...)</code>), or just use the variable that <code>shiny_attributes</code> returned.</p>
+<p>For simple attribute corrections, <code>datamgmt::edit_attribute()</code> allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through <code>datamgmt::edit_attribute()</code> and fill out the parameters you wish to edit/update. An example is provided below where we are changing <code>attributeName</code>, <code>domain</code>, and <code>measurementScale</code> in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">new_attribute &lt;-<span class="st"> </span>datamgmt<span class="op">::</span><span class="kw">edit_attribute</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">1</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">1</span>]], <span class="dt">attributeName =</span> <span class="st">&#39;date_and_time&#39;</span>, <span class="dt">domain =</span> <span class="st">&#39;dateTimeDomain&#39;</span>, <span class="dt">measurementScale =</span> <span class="st">&#39;dateTime&#39;</span>)</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">1</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>new_attribute</a></code></pre></div>
+</div>
+<div id="edit-custom-units" class="section level3">
+<h3>Edit custom units</h3>
+<p>EML has a set list of units that can be added to an EML file. These can be seen by using the following code:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">standardUnits &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_unitList</span>()</a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="kw">View</span>(standardUnits<span class="op">$</span>units)</a></code></pre></div>
+<p>Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit ie <code>meters</code> in the table to see if there are any matches.</p>
+<p>If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:</p>
+<ul>
+<li><strong>id</strong>: The <code>unit id</code> (ids are camelCased)</li>
+<li><strong>unitType</strong>: The <code>unitType</code> (run <code>View(standardUnits$unitTypes)</code> to see standard <code>unitType</code>s)</li>
+<li><strong>parentSI</strong>: The <code>parentSI</code> unit (e.g. for kilometer <code>parentSI</code> = “meter”)</li>
+<li><strong>multiplierToSI</strong>: Multiplier to the <code>parentSI</code> unit (e.g. for kilometer <code>multiplierToSI</code> = 1000)</li>
+<li><strong>name</strong>: Unit abbreviation (e.g. for kilometer <code>name</code> = “km”)</li>
+<li><strong>description</strong>: Text defining the unit (e.g. for kilometer <code>description</code> = “1000 meters”)</li>
+</ul>
+<p>To manually generate the custom units list, create a dataframe with the fields mentioned above. An example is provided below that can be used as a template:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">custom_units &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb89-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb89-3" data-line-number="3">  <span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;siemensPerMeter&#39;</span>, <span class="st">&#39;decibar&#39;</span>),</a>
+<a class="sourceLine" id="cb89-4" data-line-number="4">  <span class="dt">unitType =</span> <span class="kw">c</span>(<span class="st">&#39;resistivity&#39;</span>, <span class="st">&#39;pressure&#39;</span>),</a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">  <span class="dt">parentSI =</span> <span class="kw">c</span>(<span class="st">&#39;ohmMeter&#39;</span>, <span class="st">&#39;pascal&#39;</span>),</a>
+<a class="sourceLine" id="cb89-6" data-line-number="6">  <span class="dt">multiplierToSI =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;10000&#39;</span>),</a>
+<a class="sourceLine" id="cb89-7" data-line-number="7">  <span class="dt">abbreviation =</span> <span class="kw">c</span>(<span class="st">&#39;S/m&#39;</span>,<span class="st">&#39;decibar&#39;</span>),</a>
+<a class="sourceLine" id="cb89-8" data-line-number="8">  <span class="dt">description =</span> <span class="kw">c</span>(<span class="st">&#39;siemens per meter&#39;</span>, <span class="st">&#39;decibar&#39;</span>))</a></code></pre></div>
+<p>Using <code>EML::get_unit_id</code> for custom units will also generate valid EML unit ids.</p>
+<p>Custom units are then added to <code>additionalMetadata</code> using the following command:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">unitlist &lt;-<span class="st"> </span><span class="kw">set_unitList</span>(custom_units, <span class="dt">as_metadata =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">doc<span class="op">$</span>additionalMetadata &lt;-<span class="st">  </span><span class="kw">list</span>(<span class="dt">metadata =</span> <span class="kw">list</span>(<span class="dt">unitList =</span> unitlist))</a></code></pre></div>
+</div>
+<div id="edit-factors" class="section level3">
+<h3>Edit factors</h3>
+<p>For attributes that are <code>enumeratedDomains</code>, a table is needed with three columns: <code>attributeName</code>, <code>code</code>, and <code>definition</code>.</p>
+<ul>
+<li><strong>attributeName</strong> should be the same as the <code>attributeName</code> within the attribute table and repeated for all codes belonging to a common attribute.</li>
+<li><strong>code</strong> should contain all unique values of the given <code>attributeName</code> that exist within the actual data.</li>
+<li><strong>definition</strong> should contain a plain text definition that describes each code.</li>
+</ul>
+<p>To build factors by hand, you use the named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - “Location” and “Region”.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">Location &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">CASC =</span> <span class="st">&#39;Cascade Lake&#39;</span>, <span class="dt">CHIK =</span> <span class="st">&#39;Chikumunik Lake&#39;</span>, <span class="dt">HEAR =</span> <span class="st">&#39;Heart Lake&#39;</span>, <span class="dt">NISH =</span> <span class="st">&#39;Nishlik Lake&#39;</span> )</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">Region &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">W_MTN =</span> <span class="st">&#39;West region, locations West of Eagle Mountain&#39;</span>, <span class="dt">E_MTN =</span> <span class="st">&#39;East region, locations East of Eagle Mountain&#39;</span>)</a></code></pre></div>
+<p>The definitions are then written into a data.frame using the names of the named character vectors and their definitions.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">factors &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">data.frame</span>(<span class="dt">attributeName =</span> <span class="st">&#39;Location&#39;</span>, <span class="dt">code =</span> <span class="kw">names</span>(Location), <span class="dt">definition =</span> <span class="kw">unname</span>(Location)),</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">                  <span class="kw">data.frame</span>(<span class="dt">attributeName =</span> <span class="st">&#39;Region&#39;</span>, <span class="dt">code =</span> <span class="kw">names</span>(Region), <span class="dt">definition =</span> <span class="kw">unname</span>(Region)))</a></code></pre></div>
+</div>
+<div id="finalize-attributelist" class="section level3">
+<h3>Finalize attributeList</h3>
+<p>Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an <code>attributeList</code> using the following command:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">set_attributes</span>(<span class="dt">attributes =</span> attributes,</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">                                     <span class="dt">factors =</span> factors) </a></code></pre></div>
+<p>This <code>attributeList</code> must then be <a href="edit-datatables.html#edit-datatables">added to a <code>dataTable</code></a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="edit-an-eml-element.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="edit-custom-units-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+/*  fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body,
+.book.font-family-1 {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+/* link colour */
+.book .book-summary ul.summary li a:hover, .book .book-summary ul.summary li.active>a,
+.book .book-body .page-wrapper .page-inner section.normal a:link {
+    color: #0074d9;
+}
+.book .book-body .page-wrapper .page-inner section.normal a:visited {
+  color: #b10dc9;
+}
+
+/*  exercise boxes */
+.exercise {
+  background-color: #bbf7f5 !important;
+}
+
+.exercise h2 {
+    padding-left: 25px;
+}
+
+/* tip and warning boxes */
+.note, .warning {
+  padding: 1em 1em 1em 6em;
+  background: #dededd 1em center/4em no-repeat;
+  border-radius: 2px;
+}
+
+.note {
+  background-image: url("images/note.png");
+}
+
+.warning {
+  background-image: url("images/warning.png");
+}
+
+/* code boxes */
+pre {
+    border-radius: 3px;
+}
