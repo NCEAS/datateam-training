@@ -10,7 +10,7 @@ This chapter will teach you how to edit and update an existing data package in R
 
 ## Exercise 4 {.exercise}
 
-What if the researcher notices that some information needed to be updated in the data file? We can use `update_object` to do just that!
+What if the researcher notices that some information needed to be updated in the data file? We can use `replaceMember` to do just that!
 
 If you haven't already:
 
@@ -25,5 +25,5 @@ Make a slightly different data file to upload to `test.arcticdata.io` for this e
 
 Upload the new csv file, get a new pid and publish those updates:
 
-* Update the data file in the package with the edited data file using `update_object`.
-* Update your package using `publish_update`.
+* Update the data file in the package with the edited data file using `replaceMember`.
+* Update your package using `uploadDataPackage`.
