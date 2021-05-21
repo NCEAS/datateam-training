@@ -16,12 +16,12 @@ Data packages are a class that has slots for `relations` (provenance), `objects`
 #### Nodes
 Using this example on arcticdata.io
 ```{r}
-d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC")
+d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
 To use the member node information, use the `mn` slot
 ```{r, eval = F}
-d1c@mn
+d1c_test@mn
 ```
 
 ```{block, type = "note"}
@@ -72,7 +72,7 @@ For example:
 selectMember(dp, name="sysmeta@formatId", value="image/tiff")
 ```
 
-### Exercise
-```
+### Exercise 2a {.exercise}
+
 Select a dataset from the catalog on arcticdata.io and checkout the number of files and provencance relationships in the dataset.
-```
+

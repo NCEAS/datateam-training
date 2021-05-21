@@ -92,8 +92,7 @@ For this training, we will be working exclusively on the Arctic test site, or "n
 For example, if we are using the test site, set the node to the test Arctic node:
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
-cn_staging <- CNode('STAGING')
-adc_test <- getMNode(cn_staging,'urn:node:mnTestARCTIC')
+d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
 Once all set up you can first publish an object (data)
@@ -102,13 +101,13 @@ If you are curious how everything magically works, here is a handy diagram:
 
 ![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow1.png)
 
-```{r, child = '../workflows/edit_data_packages/publish_an_object.Rmd'}
+```{r, child = '../workflows/datapack_dataone/01_datapack_background.Rmd'}
 ```
 
-```{r, child = '../workflows/edit_data_packages/create_a_resource_map.Rmd'}
+```{r, child = '../workflows/datapack_dataone/02_create_package_data_pack.Rmd'}
 ```
 
-## Exercise 2 {.exercise}
+## Exercise 2b {.exercise}
 This exercise will take you through how to do the submission process through R instead of the webform (exercise 1).
 
 ### Part 1 - Gather your data files
@@ -127,7 +126,7 @@ Now we want to publish the metadata and data files we downloaded again to `test.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
 #set the node
-d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
+d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 
 dp <- new("DataPackage")
 
