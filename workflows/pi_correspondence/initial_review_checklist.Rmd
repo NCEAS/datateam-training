@@ -2,6 +2,10 @@
 
 Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>initial email template</a> and insert comments and modify as needed.
 
+* Social Science Data
+    + Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)
+    + Check if there is any sensitive information or personal identifying information in the data (eg. Names)
+    + Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)
 * Check for citations
     + If the dataset appears to be in a publication please (might be in the abstract)
     + Make sure that those citations are registered at the ADC

@@ -95,7 +95,9 @@ e.g. selecting the lake area annotation for the [area attribute](https://arcticd
 
 **3. Build the annotation in R**
 
-We will have helper functions for this in the coming months, but for now it will be a bit of a manual process.
+#### Manually Annotating
+
+*this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists*
 
 First you need to figure out the index of the attribute you want to annotate.
 
@@ -131,3 +133,11 @@ You should see an ID on the Bioportal page that looks like a URL - this is the `
 doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- list(label = "Water Salinity",
                                                                                        valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
 ```
+
+#### Shiny Attributes
+
+*this method is great for when you are updating many attributes*
+
+On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `propertyURI`, `propertyLabel`, `valueURI`, `valueLabel` that can be filled out.
+
+
