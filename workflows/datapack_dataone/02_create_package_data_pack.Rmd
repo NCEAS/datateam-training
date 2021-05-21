@@ -1,4 +1,4 @@
-## Create a new data package with datapack
+## Create a new data package
 *adapted from the dataone and datapack vingettes*
 
 ```{r , eval = F}
