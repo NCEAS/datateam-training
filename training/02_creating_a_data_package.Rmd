@@ -101,10 +101,10 @@ If you are curious how everything magically works, here is a handy diagram:
 
 ![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow1.png)
 
-```{r, child = '../workflows/datapack_dataone/01_datapack_background.Rmd'}
+```{r, child = '../workflows/edit_data_packages/01_datapack_background.Rmd'}
 ```
 
-```{r, child = '../workflows/datapack_dataone/02_create_package_data_pack.Rmd'}
+```{r, child = '../workflows/edit_data_packages/02_create_package_data_pack.Rmd'}
 ```
 
 ## Exercise 2b {.exercise}

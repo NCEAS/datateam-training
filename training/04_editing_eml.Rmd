@@ -8,9 +8,6 @@ Most of the functions you will see in this chapter will use the `arcticdatautils
 This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.
 ```
 
-```{r, child = '../workflows/edit_data_packages/get_package_and_eml.Rmd'}
-```
-
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
 
