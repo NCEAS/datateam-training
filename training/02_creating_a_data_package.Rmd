@@ -24,7 +24,7 @@ All of the package information is represented when you go to the landing page fo
 
 Each object (metadata files, data files, resource maps) on the ADC or the KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a dataset, for example <a href = 'https://arcticdata.io/catalog/#view/doi:10.18739/A2836Z' target='_blank'>here</a>, you can find the resource map identifier listed under the title in the gray bar after the words "Files in this dataset Package:" (`resource_map_doi:10.18739/A2836Z`), the metadata identifier in the "General > Identifier" section of the metadata record or after the title with blue font (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
 
-Note, all datasets submitted are given a temporary identifier (usually starting with `urn:uuid:`). When the dataset is finalized, a doi will be issued.
+Note, all datasets submitted are given a preliminary identifier (usually starting with `urn:uuid:`). When the dataset is finalized, a doi will be issued.
 
 
 ![](images/PIDs.png)

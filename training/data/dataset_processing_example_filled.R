@@ -30,7 +30,7 @@ doc$dataset$project <- eml_nsf_to_project("nsf id here")
 
 #check and save the metadata
 eml_validate(doc)
-eml_path <- paste0(str_replace_all(word(doc$dataset$title, end = 6), " ", "_"), ".xml")
+eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
 write_eml(doc, eml_path)
 
 dp <- replaceMember(dp, metadataId, replacement=eml_path)

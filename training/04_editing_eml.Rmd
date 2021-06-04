@@ -2,7 +2,7 @@
 
 This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the <a href = 'https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd' target='_blank'>EML package</a>). 
 
-Most of the functions you will see in this chapter will use the `arcticdatautils` package.
+Most of the functions you will see in this chapter will use the `arcticdatautils` and `EML` packages.
 
 ```{block, type = "note"}
 This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.

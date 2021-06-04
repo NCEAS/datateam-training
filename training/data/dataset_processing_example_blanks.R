@@ -29,7 +29,7 @@ doc$dataset$project <- ____________("____________")
 
 #check and save the metadata
 ____________(____________)
-eml_path <- paste0(str_replace_all(word(doc$dataset$title, end = 6), " ", "_"), ".xml")
+eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
 ____________(doc, ____________h)
 
 dp <- replaceMember(____________, ____________, replacement=____________)
