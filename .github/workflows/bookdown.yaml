@@ -35,10 +35,12 @@ jobs:
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
 
-      - name: Install packages
+      - name: Query dependencies
         run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
 
       - name: Build training site
         run: Rscript -e "xfun::in_dir('training', bookdown::render_book('index.Rmd', 'bookdown::gitbook'))"
@@ -51,9 +53,6 @@ jobs:
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-
-      - name: Install npm
-        uses: actions/setup-node@v1
 
        - name: Deploy to Github pages
         uses: NCEAS/datateam-training
