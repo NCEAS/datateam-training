@@ -4,19 +4,18 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 name: R-CMD-check
 
+name: renderbook
+
 jobs:
-  R-CMD-check:
+  bookdown:
+    name: Render-Book
     runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -48,14 +47,32 @@ jobs:
       - name: Build reference site
         run: Rscript -e "xfun::in_dir('reference', bookdown::render_book('index.Rmd', 'bookdown::gitbook'))"
 
-      - name: Check
-        run: |
-          options(crayon.enabled = TRUE)
-          rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
-        shell: Rscript {0}
-
-      - name: Deploy to Github pages
-        uses: NCEAS/datateam-training
+      - uses: actions/upload-artifact@v1
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs # The folder the action should deploy.
+          name: docs
+          path: docs/
+
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GH_PAT and EMAIL to the repository
+# gh-action from Cecilapp/GitHub-Pages-deploy
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: bookdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         # Artifact name
+         name: docs # optional
+         # Destination path
+         path: docs # optional
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@v3
+       env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+          build_dir: docs/ # "_site/" by default
+          email: ${{ secrets.EMAIL }}  # must be a verified email
