@@ -39,8 +39,8 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Install xfun
-        run: Rscript -e 'install.packages(c("xfun"))'
+      - name: Install xfun and bookdown
+        run: Rscript -e 'install.packages(c("xfun", "bookdown"))'
 
       - name: Build training site
         run: Rscript -e "xfun::in_dir('training', bookdown::render_book('index.Rmd', 'bookdown::gitbook'))"
