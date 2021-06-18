@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Exploring EML | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Exploring EML | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-05-04" />
+<meta name="date" content="2021-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="creating-a-data-package.html"/>
 <link rel="next" href="editing-eml.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,27 +56,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -84,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -119,7 +120,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<link rel="stylesheet" href="../styles.css" type="text/css" />
+<link rel="stylesheet" href="/Users/runner/work/datateam-training/datateam-training/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -135,7 +136,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Data Team Training</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to NCEAS!</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to NCEAS!</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#first-day-to-dos"><i class="fa fa-check"></i>First day to-dos</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#account-information"><i class="fa fa-check"></i>Account information</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#nceas-events"><i class="fa fa-check"></i>NCEAS events</a></li>
@@ -143,7 +145,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation-information"><i class="fa fa-check"></i>Citation Information</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html"><i class="fa fa-check"></i><b>1</b> Introduction to open science</a><ul>
+<li class="chapter" data-level="1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html"><i class="fa fa-check"></i><b>1</b> Introduction to open science</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#background-reading"><i class="fa fa-check"></i><b>1.1</b> Background reading</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#effective-data-management"><i class="fa fa-check"></i><b>1.2</b> Effective data management</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#using-dataone"><i class="fa fa-check"></i><b>1.3</b> Using DataONE</a></li>
@@ -153,37 +156,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-r"><i class="fa fa-check"></i><b>1.7</b> A note on R</a></li>
 <li class="chapter" data-level="1.8" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-effective-troubleshooting-in-r"><i class="fa fa-check"></i><b>1.8</b> A note on effective troubleshooting in R</a></li>
 <li class="chapter" data-level="1.9" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-exercises"><i class="fa fa-check"></i><b>1.9</b> A note on Exercises</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>1.10</b> Exercise 1</a><ul>
+<li class="chapter" data-level="1.10" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>1.10</b> Exercise 1</a>
+<ul>
 <li class="chapter" data-level="1.10.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#part-1"><i class="fa fa-check"></i><b>1.10.1</b> Part 1</a></li>
 <li class="chapter" data-level="1.10.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#part-2"><i class="fa fa-check"></i><b>1.10.2</b> Part 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html"><i class="fa fa-check"></i><b>2</b> Creating a data package</a><ul>
+<li class="chapter" data-level="2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html"><i class="fa fa-check"></i><b>2</b> Creating a data package</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#what-is-in-a-package"><i class="fa fa-check"></i><b>2.1</b> What is in a package?</a></li>
 <li class="chapter" data-level="2.2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#packages-on-the-website"><i class="fa fa-check"></i><b>2.2</b> Packages on the Website</a></li>
 <li class="chapter" data-level="2.3" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#about-identifiers"><i class="fa fa-check"></i><b>2.3</b> About identifiers</a></li>
 <li class="chapter" data-level="2.4" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#upload-a-package"><i class="fa fa-check"></i><b>2.4</b> Upload a package</a></li>
 <li class="chapter" data-level="2.5" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#publish-an-object"><i class="fa fa-check"></i><b>2.5</b> Publish an object</a></li>
 <li class="chapter" data-level="2.6" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#create-a-resource-map"><i class="fa fa-check"></i><b>2.6</b> Create a resource map</a></li>
-<li class="chapter" data-level="2.7" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#exercise-2"><i class="fa fa-check"></i><b>2.7</b> Exercise 2</a><ul>
+<li class="chapter" data-level="2.7" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#exercise-2"><i class="fa fa-check"></i><b>2.7</b> Exercise 2</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#part-1---gather-your-data-files"><i class="fa fa-check"></i><b>2.7.1</b> Part 1 - Gather your data files</a></li>
 <li class="chapter" data-level="2.7.2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#part-2---working-in-r"><i class="fa fa-check"></i><b>2.7.2</b> Part 2 - Working in R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="exploring-eml.html"><a href="exploring-eml.html"><i class="fa fa-check"></i><b>3</b> Exploring EML</a><ul>
+<li class="chapter" data-level="3" data-path="exploring-eml.html"><a href="exploring-eml.html"><i class="fa fa-check"></i><b>3</b> Exploring EML</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="exploring-eml.html"><a href="exploring-eml.html#navigate-through-eml"><i class="fa fa-check"></i><b>3.1</b> Navigate through EML</a></li>
 <li class="chapter" data-level="3.2" data-path="exploring-eml.html"><a href="exploring-eml.html#understand-the-eml-schema"><i class="fa fa-check"></i><b>3.2</b> Understand the EML schema</a></li>
 <li class="chapter" data-level="3.3" data-path="exploring-eml.html"><a href="exploring-eml.html#access-specific-elements"><i class="fa fa-check"></i><b>3.3</b> Access specific elements</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="editing-eml.html"><a href="editing-eml.html"><i class="fa fa-check"></i><b>4</b> Editing EML</a><ul>
+<li class="chapter" data-level="4" data-path="editing-eml.html"><a href="editing-eml.html"><i class="fa fa-check"></i><b>4</b> Editing EML</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="editing-eml.html"><a href="editing-eml.html#get-package-and-eml"><i class="fa fa-check"></i><b>4.1</b> Get package and EML</a></li>
-<li class="chapter" data-level="4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-an-eml-element"><i class="fa fa-check"></i><b>4.2</b> Edit an EML element</a><ul>
+<li class="chapter" data-level="4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-an-eml-element"><i class="fa fa-check"></i><b>4.2</b> Edit an EML element</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-strings"><i class="fa fa-check"></i><b>4.2.1</b> Edit EML with strings</a></li>
 <li class="chapter" data-level="4.2.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-the-eml-package"><i class="fa fa-check"></i><b>4.2.2</b> Edit EML with the “EML” package</a></li>
 <li class="chapter" data-level="4.2.3" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-objects"><i class="fa fa-check"></i><b>4.2.3</b> Edit EML with objects</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="editing-eml.html"><a href="editing-eml.html#fair-data-practices"><i class="fa fa-check"></i><b>4.3</b> FAIR data practices</a></li>
-<li class="chapter" data-level="4.4" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributelists"><i class="fa fa-check"></i><b>4.4</b> Edit attributeLists</a><ul>
+<li class="chapter" data-level="4.4" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributelists"><i class="fa fa-check"></i><b>4.4</b> Edit attributeLists</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributes"><i class="fa fa-check"></i><b>4.4.1</b> Edit attributes</a></li>
 <li class="chapter" data-level="4.4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-custom-units"><i class="fa fa-check"></i><b>4.4.2</b> Edit custom units</a></li>
 <li class="chapter" data-level="4.4.3" data-path="editing-eml.html"><a href="editing-eml.html#edit-factors"><i class="fa fa-check"></i><b>4.4.3</b> Edit factors</a></li>
@@ -191,73 +201,91 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="editing-eml.html"><a href="editing-eml.html#set-physical"><i class="fa fa-check"></i><b>4.5</b> Set physical</a></li>
 <li class="chapter" data-level="4.6" data-path="editing-eml.html"><a href="editing-eml.html#edit-datatables"><i class="fa fa-check"></i><b>4.6</b> Edit dataTables</a></li>
-<li class="chapter" data-level="4.7" data-path="editing-eml.html"><a href="editing-eml.html#edit-otherentities"><i class="fa fa-check"></i><b>4.7</b> Edit otherEntities</a><ul>
+<li class="chapter" data-level="4.7" data-path="editing-eml.html"><a href="editing-eml.html#edit-otherentities"><i class="fa fa-check"></i><b>4.7</b> Edit otherEntities</a>
+<ul>
 <li class="chapter" data-level="4.7.1" data-path="editing-eml.html"><a href="editing-eml.html#remove-otherentities"><i class="fa fa-check"></i><b>4.7.1</b> Remove otherEntities</a></li>
 <li class="chapter" data-level="4.7.2" data-path="editing-eml.html"><a href="editing-eml.html#create-otherentities"><i class="fa fa-check"></i><b>4.7.2</b> Create otherEntities</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="editing-eml.html"><a href="editing-eml.html#semantic-annotations"><i class="fa fa-check"></i><b>4.8</b> Semantic annotations</a><ul>
+<li class="chapter" data-level="4.8" data-path="editing-eml.html"><a href="editing-eml.html#semantic-annotations"><i class="fa fa-check"></i><b>4.8</b> Semantic annotations</a>
+<ul>
 <li class="chapter" data-level="4.8.1" data-path="editing-eml.html"><a href="editing-eml.html#how-annotations-are-used"><i class="fa fa-check"></i><b>4.8.1</b> How annotations are used</a></li>
 <li class="chapter" data-level="4.8.2" data-path="editing-eml.html"><a href="editing-eml.html#how-to-add-an-annotation"><i class="fa fa-check"></i><b>4.8.2</b> How to add an annotation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3a"><i class="fa fa-check"></i><b>4.9</b> Exercise 3a</a></li>
-<li class="chapter" data-level="4.10" data-path="editing-eml.html"><a href="editing-eml.html#edit-spatial-data"><i class="fa fa-check"></i><b>4.10</b> Edit spatial data</a><ul>
+<li class="chapter" data-level="4.10" data-path="editing-eml.html"><a href="editing-eml.html#edit-spatial-data"><i class="fa fa-check"></i><b>4.10</b> Edit spatial data</a>
+<ul>
 <li class="chapter" data-level="4.10.1" data-path="editing-eml.html"><a href="editing-eml.html#reading-spatial-files"><i class="fa fa-check"></i><b>4.10.1</b> Reading Spatial Files</a></li>
 <li class="chapter" data-level="4.10.2" data-path="editing-eml.html"><a href="editing-eml.html#spatialvector"><i class="fa fa-check"></i><b>4.10.2</b> spatialVector</a></li>
 <li class="chapter" data-level="4.10.3" data-path="editing-eml.html"><a href="editing-eml.html#spatialrasters"><i class="fa fa-check"></i><b>4.10.3</b> spatialRasters</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="editing-eml.html"><a href="editing-eml.html#set-coverages"><i class="fa fa-check"></i><b>4.11</b> Set coverages</a><ul>
+<li class="chapter" data-level="4.11" data-path="editing-eml.html"><a href="editing-eml.html#set-coverages"><i class="fa fa-check"></i><b>4.11</b> Set coverages</a>
+<ul>
 <li class="chapter" data-level="4.11.1" data-path="editing-eml.html"><a href="editing-eml.html#set-multiple-coverages"><i class="fa fa-check"></i><b>4.11.1</b> Set multiple coverages</a></li>
 <li class="chapter" data-level="4.11.2" data-path="editing-eml.html"><a href="editing-eml.html#special-coverages"><i class="fa fa-check"></i><b>4.11.2</b> Special coverages</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="editing-eml.html"><a href="editing-eml.html#set-methods"><i class="fa fa-check"></i><b>4.12</b> Set methods</a><ul>
+<li class="chapter" data-level="4.12" data-path="editing-eml.html"><a href="editing-eml.html#set-methods"><i class="fa fa-check"></i><b>4.12</b> Set methods</a>
+<ul>
 <li class="chapter" data-level="4.12.1" data-path="editing-eml.html"><a href="editing-eml.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i><b>4.12.1</b> Adding sampling info to methods section</a></li>
 </ul></li>
 <li class="chapter" data-level="4.13" data-path="editing-eml.html"><a href="editing-eml.html#set-parties"><i class="fa fa-check"></i><b>4.13</b> Set parties</a></li>
 <li class="chapter" data-level="4.14" data-path="editing-eml.html"><a href="editing-eml.html#validate-eml-and-update-package"><i class="fa fa-check"></i><b>4.14</b> Validate EML and update package</a></li>
 <li class="chapter" data-level="4.15" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3b"><i class="fa fa-check"></i><b>4.15</b> Exercise 3b</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html"><i class="fa fa-check"></i><b>5</b> Updating a data package</a><ul>
+<li class="chapter" data-level="5" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html"><i class="fa fa-check"></i><b>5</b> Updating a data package</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-data-object"><i class="fa fa-check"></i><b>5.1</b> Update a data object</a></li>
-<li class="chapter" data-level="5.2" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-package-with-a-new-data-object"><i class="fa fa-check"></i><b>5.2</b> Update a package with a new data object</a><ul>
+<li class="chapter" data-level="5.2" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-package-with-a-new-data-object"><i class="fa fa-check"></i><b>5.2</b> Update a package with a new data object</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#publish-update"><i class="fa fa-check"></i><b>5.2.1</b> Publish update</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#exercise-4"><i class="fa fa-check"></i><b>5.3</b> Exercise 4</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html"><i class="fa fa-check"></i><b>6</b> Editing system metadata</a><ul>
-<li class="chapter" data-level="6.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#edit-sysmeta"><i class="fa fa-check"></i><b>6.1</b> Edit sysmeta</a><ul>
+<li class="chapter" data-level="6" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html"><i class="fa fa-check"></i><b>6</b> Editing system metadata</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#edit-sysmeta"><i class="fa fa-check"></i><b>6.1</b> Edit sysmeta</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a><ul>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a><ul>
+<li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="building-provenance.html"><a href="building-provenance.html#using-the-prov-editor"><i class="fa fa-check"></i><b>7.1</b> Using the prov editor</a></li>
 <li class="chapter" data-level="7.2" data-path="building-provenance.html"><a href="building-provenance.html#understanding-resource-maps"><i class="fa fa-check"></i><b>7.2</b> Understanding resource maps</a></li>
-<li class="chapter" data-level="7.3" data-path="building-provenance.html"><a href="building-provenance.html#using-the-datapack-package"><i class="fa fa-check"></i><b>7.3</b> Using the <code>datapack</code> package</a><ul>
+<li class="chapter" data-level="7.3" data-path="building-provenance.html"><a href="building-provenance.html#using-the-datapack-package"><i class="fa fa-check"></i><b>7.3</b> Using the <code>datapack</code> package</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="building-provenance.html"><a href="building-provenance.html#fixing-mistakes"><i class="fa fa-check"></i><b>7.3.1</b> Fixing mistakes</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="building-provenance.html"><a href="building-provenance.html#references"><i class="fa fa-check"></i><b>7.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="using-git.html"><a href="using-git.html"><i class="fa fa-check"></i><b>8</b> Using Git</a><ul>
+<li class="chapter" data-level="8" data-path="using-git.html"><a href="using-git.html"><i class="fa fa-check"></i><b>8</b> Using Git</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="using-git.html"><a href="using-git.html#usage-in-the-datateam"><i class="fa fa-check"></i><b>8.1</b> Usage in the datateam</a></li>
-<li class="chapter" data-level="8.2" data-path="using-git.html"><a href="using-git.html#what-is-git"><i class="fa fa-check"></i><b>8.2</b> What is Git?</a><ul>
+<li class="chapter" data-level="8.2" data-path="using-git.html"><a href="using-git.html#what-is-git"><i class="fa fa-check"></i><b>8.2</b> What is Git?</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="using-git.html"><a href="using-git.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>8.2.1</b> So why do I need to use this again?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a><ul>
+<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="using-git.html"><a href="using-git.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>8.3.1</b> Cloning the arctic-data repo</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.4</b> Working with the repository</a><ul>
+<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.4</b> Working with the repository</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="using-git.html"><a href="using-git.html#adding-a-new-script"><i class="fa fa-check"></i><b>8.4.1</b> Adding a new script</a></li>
 <li class="chapter" data-level="8.4.2" data-path="using-git.html"><a href="using-git.html#editing-a-script"><i class="fa fa-check"></i><b>8.4.2</b> Editing a script</a></li>
 <li class="chapter" data-level="8.4.3" data-path="using-git.html"><a href="using-git.html#where-do-i-commit"><i class="fa fa-check"></i><b>8.4.3</b> Where do I commit?</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="using-git.html"><a href="using-git.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>8.5</b> My Git tab disappeared</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="first-ticket.html"><a href="first-ticket.html"><i class="fa fa-check"></i><b>9</b> First Ticket</a><ul>
-<li class="chapter" data-level="9.1" data-path="first-ticket.html"><a href="first-ticket.html#navigate-rt"><i class="fa fa-check"></i><b>9.1</b> Navigate RT</a><ul>
+<li class="chapter" data-level="9" data-path="first-ticket.html"><a href="first-ticket.html"><i class="fa fa-check"></i><b>9</b> First Ticket</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="first-ticket.html"><a href="first-ticket.html#navigate-rt"><i class="fa fa-check"></i><b>9.1</b> Navigate RT</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="first-ticket.html"><a href="first-ticket.html#front-page"><i class="fa fa-check"></i><b>9.1.1</b> Front page</a></li>
 <li class="chapter" data-level="9.1.2" data-path="first-ticket.html"><a href="first-ticket.html#all-tickets"><i class="fa fa-check"></i><b>9.1.2</b> All tickets</a></li>
 <li class="chapter" data-level="9.1.3" data-path="first-ticket.html"><a href="first-ticket.html#example-ticket"><i class="fa fa-check"></i><b>9.1.3</b> Example ticket</a></li>
@@ -265,7 +293,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="first-ticket.html"><a href="first-ticket.html#initial-review-checklist"><i class="fa fa-check"></i><b>9.2</b> Initial review checklist</a></li>
 <li class="chapter" data-level="9.3" data-path="first-ticket.html"><a href="first-ticket.html#processing-templates"><i class="fa fa-check"></i><b>9.3</b> Processing templates</a></li>
-<li class="chapter" data-level="9.4" data-path="first-ticket.html"><a href="first-ticket.html#final-checklist"><i class="fa fa-check"></i><b>9.4</b> Final Checklist</a><ul>
+<li class="chapter" data-level="9.4" data-path="first-ticket.html"><a href="first-ticket.html#final-checklist"><i class="fa fa-check"></i><b>9.4</b> Final Checklist</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="first-ticket.html"><a href="first-ticket.html#system-metadata"><i class="fa fa-check"></i><b>9.4.1</b> System Metadata</a></li>
 <li class="chapter" data-level="9.4.2" data-path="first-ticket.html"><a href="first-ticket.html#general-eml"><i class="fa fa-check"></i><b>9.4.2</b> General EML</a></li>
 <li class="chapter" data-level="9.4.3" data-path="first-ticket.html"><a href="first-ticket.html#title"><i class="fa fa-check"></i><b>9.4.3</b> Title</a></li>
@@ -279,7 +308,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.11" data-path="first-ticket.html"><a href="first-ticket.html#access"><i class="fa fa-check"></i><b>9.4.11</b> Access</a></li>
 <li class="chapter" data-level="9.4.12" data-path="first-ticket.html"><a href="first-ticket.html#sftp-files"><i class="fa fa-check"></i><b>9.4.12</b> SFTP Files</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="first-ticket.html"><a href="first-ticket.html#email-templates"><i class="fa fa-check"></i><b>9.5</b> Email templates</a><ul>
+<li class="chapter" data-level="9.5" data-path="first-ticket.html"><a href="first-ticket.html#email-templates"><i class="fa fa-check"></i><b>9.5</b> Email templates</a>
+<ul>
 <li class="chapter" data-level="9.5.1" data-path="first-ticket.html"><a href="first-ticket.html#initial-email-template"><i class="fa fa-check"></i><b>9.5.1</b> Initial email template</a></li>
 <li class="chapter" data-level="9.5.2" data-path="first-ticket.html"><a href="first-ticket.html#comment-templates-based-on-what-is-missing"><i class="fa fa-check"></i><b>9.5.2</b> Comment templates based on what is missing</a></li>
 <li class="chapter" data-level="9.5.3" data-path="first-ticket.html"><a href="first-ticket.html#final-email-templates"><i class="fa fa-check"></i><b>9.5.3</b> Final email templates</a></li>
@@ -307,21 +337,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploring-eml" class="section level1">
+<div id="exploring-eml" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Exploring EML</h1>
 <p>We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. EML is written in XML (extensible markup language) and functions for building and editing EML are in the <a href = 'https://github.com/ropensci/EML' target='_blank'>EML R package</a>.</p>
 <p>Currently the Arctic Data Center website supports editing EML version 2.1.1 but will move to 2.2.0 in the near future.</p>
 <p>For additional background on EML and principles for metadata creation, check out <a href = 'data/eml-principles.pdf' target='_blank'>this paper</a>.</p>
 <p>If you aren’t too familiar with lists and how to navigate them yet take a look at the relevant sections in the <a href = 'https://stat545.com/r-objects.html#lists-hold-just-about-anything' target='_blank'>Stat 545 class:</a></p>
-<div id="navigate-through-eml" class="section level2">
+<div id="navigate-through-eml" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Navigate through EML</h2>
 <p>The first task when editing an EML file is navigating the EML file. An EML file is organized in a structure that contains many lists nested within other lists. The function <code>View</code> allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Need to be in this member node to explore file</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">cn_staging &lt;-<span class="st"> </span><span class="kw">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">adc_test &lt;-<span class="st"> </span><span class="kw">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">doc &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="kw">getObject</span>(adc_test, <span class="st">&quot;urn:uuid:558eabf1-1e91-4881-8ba3-ef8684d8f6a1&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">View</span>(doc)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="exploring-eml.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to be in this member node to explore file</span></span>
+<span id="cb12-2"><a href="exploring-eml.html#cb12-2" aria-hidden="true" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
+<span id="cb12-3"><a href="exploring-eml.html#cb12-3" aria-hidden="true" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
+<span id="cb12-4"><a href="exploring-eml.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="exploring-eml.html#cb12-5" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, <span class="st">&quot;urn:uuid:558eabf1-1e91-4881-8ba3-ef8684d8f6a1&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="exploring-eml.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(doc)</span></code></pre></div>
 <p><img src="../images/eml_view.png" /></p>
 <p>The complex EML document is represented in R as as series of named, nested lists. We use lists all the time in R! A <code>data.frame</code> is one example of a special kind of list that we use all the time. You may be familiar with the syntax <code>dataframe$column_name</code> which allows us to select a particular column of a <code>data.frame</code>. Under the hood, a <code>data.frame</code> is a named list of vectors with the same length. You select one of those vectors using the <code>$</code> operator, which is called the “list selector operator.”</p>
 <p>Just like you navigate in a <code>data.frame</code>, you can use the <code>$</code> operator to navigate through the EML structure. The <code>$</code> operator allows you to go deeper into the EML structure and to see what elements are nested within other elements. However, you have to tell R where you want to go in the structure when you use the <code>$</code> symbol. For example, if you want to view the dataset element of your EML you would use the command <code>doc$dataset</code>. If you want to view the creators of your data set you would use <code>doc$dataset$creator</code>. Note here that <code>creator</code> is contained within <code>dataset</code>. If you aren’t sure where you want to go, hit the tab button on your keyboard after typing <code>$</code> and a list of available elements in the structure will appear (e.g., <code>doc$&lt;TAB&gt;</code>):</p>
@@ -329,7 +359,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that if you hit tab, and nothing pops up, this most likely implies that you are trying to go into an EML element that can take a series items. For example <code>doc$dataset$creator$&lt;TAB&gt;</code> will not show a pop-up menu. This is because <code>creator</code> is a series-type object (i.e. you can have multiple <code>creator</code>s). If you want to go deeper into <code>creator</code>, you first must tell R which <code>creator</code> you are interested in. Do this by writing <code>[[i]]</code> first where <code>i</code> is the index of the <code>creator</code> you are concerned with. For example, if you want to look at the first <code>creator</code> i = 1. Now <code>doc$dataset$creator[[1]]$&lt;TAB&gt;</code> will give you many more options. Note, an empty autocomplete result sometimes means you have reached the end of a branch in the EML structure.</p>
 <p>At this point stop and take a deep breath. The key takeaway is that EML is a hierarchical tree structure. The best way to get familiar with it is to explore the structure. Try entering <code>doc$dataset</code> into your console, and print it. Now make the search more specific, for instance: <code>doc$dataset$abstract</code>.</p>
 </div>
-<div id="understand-the-eml-schema" class="section level2">
+<div id="understand-the-eml-schema" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Understand the EML schema</h2>
 <p>Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.</p>
 <p>For example, let’s take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.</p>
@@ -340,37 +370,37 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>The eml schema sections you may find particularly helpful include <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>, <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>eml-attribute</a> and <a href = 'https://eml.ecoinformatics.org/images/eml-physical.png' target='_blank'>eml-physical</a>.</p>
 <p>For a more detailed description of the EML schema, see the <a href = 'https://nceas.github.io/datateam-training/reference/explore-eml.html' target='_blank'>reference section on exploring EML</a>.</p>
 </div>
-<div id="access-specific-elements" class="section level2">
+<div id="access-specific-elements" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Access specific elements</h2>
 <p>The <code>eml_get()</code> function is a powerful tool for exploring EML (more on that <a href = 'https://ropensci.github.io/EML/' target='_blank'>here</a> ). It takes any chunk of EML and returns <em>all instances</em> of the element you specify. <em>Note:</em> you’ll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">doc &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="kw">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="exploring-eml.html#cb14-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
+<span id="cb14-2"><a href="exploring-eml.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>
 <pre><code>individualName:
   givenName: Bryce
   surName: Mecum
 organizationName: National Center for Ecological Analysis and Synthesis</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="exploring-eml.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</span></code></pre></div>
 <pre><code>eastBoundingCoordinate: &#39;-134&#39;
 northBoundingCoordinate: &#39;59&#39;
 southBoundingCoordinate: &#39;57&#39;
 westBoundingCoordinate: &#39;-135&#39;</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="exploring-eml.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</span></code></pre></div>
 <pre><code>&#39;&#39;:
   function: download
   url: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456
 &#39;&#39;: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456</code></pre>
 <p><code>eml_get_simple()</code> is a simplified alternative to <code>eml_get()</code> that produces a list of the desired EML element.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">eml_get_simple</span>(doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="exploring-eml.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</span></code></pre></div>
 <p>To find an eml element you can use either a combination of <code>which_in_eml</code>from the <code>arcticdatautils</code> package or <code>eml_get_simple</code> and <code>which</code> to find the index in an EML list. Use which ever workflow you see
 fit.</p>
 <p><strong>An example question you may have:</strong> <em>Which creators have a surName “Mecum”?</em></p>
 <p>Example using <code>which_in_eml</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="kw">which_in_eml</span>(doc<span class="op">$</span>dataset<span class="op">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="co"># Answer: doc$dataset$creator[[n]]</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="exploring-eml.html#cb21-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which_in_eml</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb21-2"><a href="exploring-eml.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[n]]</span></span></code></pre></div>
 <p>Example using <code>eml_get_simple</code> and <code>which</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">ent_names &lt;-<span class="st"> </span><span class="kw">eml_get_simple</span>(doc<span class="op">$</span>dataset<span class="op">$</span>creator, <span class="st">&quot;surName&quot;</span>)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">i &lt;-<span class="st"> </span><span class="kw">which</span>(ent_names <span class="op">==</span><span class="st"> &quot;Mecum&quot;</span>)</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co"># Answer: doc$dataset$creator[[i]]</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="exploring-eml.html#cb22-1" aria-hidden="true" tabindex="-1"></a>ent_names <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>)</span>
+<span id="cb22-2"><a href="exploring-eml.html#cb22-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which</span>(ent_names <span class="sc">==</span> <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb22-3"><a href="exploring-eml.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[i]]</span></span></code></pre></div>
 
 </div>
 </div>

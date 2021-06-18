@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Editing EML | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Editing EML | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-05-04" />
+<meta name="date" content="2021-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="exploring-eml.html"/>
 <link rel="next" href="updating-a-data-package.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,27 +56,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -84,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -119,7 +120,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<link rel="stylesheet" href="../styles.css" type="text/css" />
+<link rel="stylesheet" href="/Users/runner/work/datateam-training/datateam-training/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -135,7 +136,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Data Team Training</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to NCEAS!</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to NCEAS!</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#first-day-to-dos"><i class="fa fa-check"></i>First day to-dos</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#account-information"><i class="fa fa-check"></i>Account information</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#nceas-events"><i class="fa fa-check"></i>NCEAS events</a></li>
@@ -143,7 +145,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation-information"><i class="fa fa-check"></i>Citation Information</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html"><i class="fa fa-check"></i><b>1</b> Introduction to open science</a><ul>
+<li class="chapter" data-level="1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html"><i class="fa fa-check"></i><b>1</b> Introduction to open science</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#background-reading"><i class="fa fa-check"></i><b>1.1</b> Background reading</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#effective-data-management"><i class="fa fa-check"></i><b>1.2</b> Effective data management</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#using-dataone"><i class="fa fa-check"></i><b>1.3</b> Using DataONE</a></li>
@@ -153,37 +156,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-r"><i class="fa fa-check"></i><b>1.7</b> A note on R</a></li>
 <li class="chapter" data-level="1.8" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-effective-troubleshooting-in-r"><i class="fa fa-check"></i><b>1.8</b> A note on effective troubleshooting in R</a></li>
 <li class="chapter" data-level="1.9" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#a-note-on-exercises"><i class="fa fa-check"></i><b>1.9</b> A note on Exercises</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>1.10</b> Exercise 1</a><ul>
+<li class="chapter" data-level="1.10" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#exercise-1"><i class="fa fa-check"></i><b>1.10</b> Exercise 1</a>
+<ul>
 <li class="chapter" data-level="1.10.1" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#part-1"><i class="fa fa-check"></i><b>1.10.1</b> Part 1</a></li>
 <li class="chapter" data-level="1.10.2" data-path="introduction-to-open-science.html"><a href="introduction-to-open-science.html#part-2"><i class="fa fa-check"></i><b>1.10.2</b> Part 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html"><i class="fa fa-check"></i><b>2</b> Creating a data package</a><ul>
+<li class="chapter" data-level="2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html"><i class="fa fa-check"></i><b>2</b> Creating a data package</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#what-is-in-a-package"><i class="fa fa-check"></i><b>2.1</b> What is in a package?</a></li>
 <li class="chapter" data-level="2.2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#packages-on-the-website"><i class="fa fa-check"></i><b>2.2</b> Packages on the Website</a></li>
 <li class="chapter" data-level="2.3" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#about-identifiers"><i class="fa fa-check"></i><b>2.3</b> About identifiers</a></li>
 <li class="chapter" data-level="2.4" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#upload-a-package"><i class="fa fa-check"></i><b>2.4</b> Upload a package</a></li>
 <li class="chapter" data-level="2.5" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#publish-an-object"><i class="fa fa-check"></i><b>2.5</b> Publish an object</a></li>
 <li class="chapter" data-level="2.6" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#create-a-resource-map"><i class="fa fa-check"></i><b>2.6</b> Create a resource map</a></li>
-<li class="chapter" data-level="2.7" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#exercise-2"><i class="fa fa-check"></i><b>2.7</b> Exercise 2</a><ul>
+<li class="chapter" data-level="2.7" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#exercise-2"><i class="fa fa-check"></i><b>2.7</b> Exercise 2</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#part-1---gather-your-data-files"><i class="fa fa-check"></i><b>2.7.1</b> Part 1 - Gather your data files</a></li>
 <li class="chapter" data-level="2.7.2" data-path="creating-a-data-package.html"><a href="creating-a-data-package.html#part-2---working-in-r"><i class="fa fa-check"></i><b>2.7.2</b> Part 2 - Working in R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="exploring-eml.html"><a href="exploring-eml.html"><i class="fa fa-check"></i><b>3</b> Exploring EML</a><ul>
+<li class="chapter" data-level="3" data-path="exploring-eml.html"><a href="exploring-eml.html"><i class="fa fa-check"></i><b>3</b> Exploring EML</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="exploring-eml.html"><a href="exploring-eml.html#navigate-through-eml"><i class="fa fa-check"></i><b>3.1</b> Navigate through EML</a></li>
 <li class="chapter" data-level="3.2" data-path="exploring-eml.html"><a href="exploring-eml.html#understand-the-eml-schema"><i class="fa fa-check"></i><b>3.2</b> Understand the EML schema</a></li>
 <li class="chapter" data-level="3.3" data-path="exploring-eml.html"><a href="exploring-eml.html#access-specific-elements"><i class="fa fa-check"></i><b>3.3</b> Access specific elements</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="editing-eml.html"><a href="editing-eml.html"><i class="fa fa-check"></i><b>4</b> Editing EML</a><ul>
+<li class="chapter" data-level="4" data-path="editing-eml.html"><a href="editing-eml.html"><i class="fa fa-check"></i><b>4</b> Editing EML</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="editing-eml.html"><a href="editing-eml.html#get-package-and-eml"><i class="fa fa-check"></i><b>4.1</b> Get package and EML</a></li>
-<li class="chapter" data-level="4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-an-eml-element"><i class="fa fa-check"></i><b>4.2</b> Edit an EML element</a><ul>
+<li class="chapter" data-level="4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-an-eml-element"><i class="fa fa-check"></i><b>4.2</b> Edit an EML element</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-strings"><i class="fa fa-check"></i><b>4.2.1</b> Edit EML with strings</a></li>
 <li class="chapter" data-level="4.2.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-the-eml-package"><i class="fa fa-check"></i><b>4.2.2</b> Edit EML with the “EML” package</a></li>
 <li class="chapter" data-level="4.2.3" data-path="editing-eml.html"><a href="editing-eml.html#edit-eml-with-objects"><i class="fa fa-check"></i><b>4.2.3</b> Edit EML with objects</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="editing-eml.html"><a href="editing-eml.html#fair-data-practices"><i class="fa fa-check"></i><b>4.3</b> FAIR data practices</a></li>
-<li class="chapter" data-level="4.4" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributelists"><i class="fa fa-check"></i><b>4.4</b> Edit attributeLists</a><ul>
+<li class="chapter" data-level="4.4" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributelists"><i class="fa fa-check"></i><b>4.4</b> Edit attributeLists</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="editing-eml.html"><a href="editing-eml.html#edit-attributes"><i class="fa fa-check"></i><b>4.4.1</b> Edit attributes</a></li>
 <li class="chapter" data-level="4.4.2" data-path="editing-eml.html"><a href="editing-eml.html#edit-custom-units"><i class="fa fa-check"></i><b>4.4.2</b> Edit custom units</a></li>
 <li class="chapter" data-level="4.4.3" data-path="editing-eml.html"><a href="editing-eml.html#edit-factors"><i class="fa fa-check"></i><b>4.4.3</b> Edit factors</a></li>
@@ -191,73 +201,91 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="editing-eml.html"><a href="editing-eml.html#set-physical"><i class="fa fa-check"></i><b>4.5</b> Set physical</a></li>
 <li class="chapter" data-level="4.6" data-path="editing-eml.html"><a href="editing-eml.html#edit-datatables"><i class="fa fa-check"></i><b>4.6</b> Edit dataTables</a></li>
-<li class="chapter" data-level="4.7" data-path="editing-eml.html"><a href="editing-eml.html#edit-otherentities"><i class="fa fa-check"></i><b>4.7</b> Edit otherEntities</a><ul>
+<li class="chapter" data-level="4.7" data-path="editing-eml.html"><a href="editing-eml.html#edit-otherentities"><i class="fa fa-check"></i><b>4.7</b> Edit otherEntities</a>
+<ul>
 <li class="chapter" data-level="4.7.1" data-path="editing-eml.html"><a href="editing-eml.html#remove-otherentities"><i class="fa fa-check"></i><b>4.7.1</b> Remove otherEntities</a></li>
 <li class="chapter" data-level="4.7.2" data-path="editing-eml.html"><a href="editing-eml.html#create-otherentities"><i class="fa fa-check"></i><b>4.7.2</b> Create otherEntities</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="editing-eml.html"><a href="editing-eml.html#semantic-annotations"><i class="fa fa-check"></i><b>4.8</b> Semantic annotations</a><ul>
+<li class="chapter" data-level="4.8" data-path="editing-eml.html"><a href="editing-eml.html#semantic-annotations"><i class="fa fa-check"></i><b>4.8</b> Semantic annotations</a>
+<ul>
 <li class="chapter" data-level="4.8.1" data-path="editing-eml.html"><a href="editing-eml.html#how-annotations-are-used"><i class="fa fa-check"></i><b>4.8.1</b> How annotations are used</a></li>
 <li class="chapter" data-level="4.8.2" data-path="editing-eml.html"><a href="editing-eml.html#how-to-add-an-annotation"><i class="fa fa-check"></i><b>4.8.2</b> How to add an annotation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3a"><i class="fa fa-check"></i><b>4.9</b> Exercise 3a</a></li>
-<li class="chapter" data-level="4.10" data-path="editing-eml.html"><a href="editing-eml.html#edit-spatial-data"><i class="fa fa-check"></i><b>4.10</b> Edit spatial data</a><ul>
+<li class="chapter" data-level="4.10" data-path="editing-eml.html"><a href="editing-eml.html#edit-spatial-data"><i class="fa fa-check"></i><b>4.10</b> Edit spatial data</a>
+<ul>
 <li class="chapter" data-level="4.10.1" data-path="editing-eml.html"><a href="editing-eml.html#reading-spatial-files"><i class="fa fa-check"></i><b>4.10.1</b> Reading Spatial Files</a></li>
 <li class="chapter" data-level="4.10.2" data-path="editing-eml.html"><a href="editing-eml.html#spatialvector"><i class="fa fa-check"></i><b>4.10.2</b> spatialVector</a></li>
 <li class="chapter" data-level="4.10.3" data-path="editing-eml.html"><a href="editing-eml.html#spatialrasters"><i class="fa fa-check"></i><b>4.10.3</b> spatialRasters</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="editing-eml.html"><a href="editing-eml.html#set-coverages"><i class="fa fa-check"></i><b>4.11</b> Set coverages</a><ul>
+<li class="chapter" data-level="4.11" data-path="editing-eml.html"><a href="editing-eml.html#set-coverages"><i class="fa fa-check"></i><b>4.11</b> Set coverages</a>
+<ul>
 <li class="chapter" data-level="4.11.1" data-path="editing-eml.html"><a href="editing-eml.html#set-multiple-coverages"><i class="fa fa-check"></i><b>4.11.1</b> Set multiple coverages</a></li>
 <li class="chapter" data-level="4.11.2" data-path="editing-eml.html"><a href="editing-eml.html#special-coverages"><i class="fa fa-check"></i><b>4.11.2</b> Special coverages</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="editing-eml.html"><a href="editing-eml.html#set-methods"><i class="fa fa-check"></i><b>4.12</b> Set methods</a><ul>
+<li class="chapter" data-level="4.12" data-path="editing-eml.html"><a href="editing-eml.html#set-methods"><i class="fa fa-check"></i><b>4.12</b> Set methods</a>
+<ul>
 <li class="chapter" data-level="4.12.1" data-path="editing-eml.html"><a href="editing-eml.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i><b>4.12.1</b> Adding sampling info to methods section</a></li>
 </ul></li>
 <li class="chapter" data-level="4.13" data-path="editing-eml.html"><a href="editing-eml.html#set-parties"><i class="fa fa-check"></i><b>4.13</b> Set parties</a></li>
 <li class="chapter" data-level="4.14" data-path="editing-eml.html"><a href="editing-eml.html#validate-eml-and-update-package"><i class="fa fa-check"></i><b>4.14</b> Validate EML and update package</a></li>
 <li class="chapter" data-level="4.15" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3b"><i class="fa fa-check"></i><b>4.15</b> Exercise 3b</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html"><i class="fa fa-check"></i><b>5</b> Updating a data package</a><ul>
+<li class="chapter" data-level="5" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html"><i class="fa fa-check"></i><b>5</b> Updating a data package</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-data-object"><i class="fa fa-check"></i><b>5.1</b> Update a data object</a></li>
-<li class="chapter" data-level="5.2" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-package-with-a-new-data-object"><i class="fa fa-check"></i><b>5.2</b> Update a package with a new data object</a><ul>
+<li class="chapter" data-level="5.2" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#update-a-package-with-a-new-data-object"><i class="fa fa-check"></i><b>5.2</b> Update a package with a new data object</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#publish-update"><i class="fa fa-check"></i><b>5.2.1</b> Publish update</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html#exercise-4"><i class="fa fa-check"></i><b>5.3</b> Exercise 4</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html"><i class="fa fa-check"></i><b>6</b> Editing system metadata</a><ul>
-<li class="chapter" data-level="6.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#edit-sysmeta"><i class="fa fa-check"></i><b>6.1</b> Edit sysmeta</a><ul>
+<li class="chapter" data-level="6" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html"><i class="fa fa-check"></i><b>6</b> Editing system metadata</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#edit-sysmeta"><i class="fa fa-check"></i><b>6.1</b> Edit sysmeta</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a><ul>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a><ul>
+<li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="building-provenance.html"><a href="building-provenance.html#using-the-prov-editor"><i class="fa fa-check"></i><b>7.1</b> Using the prov editor</a></li>
 <li class="chapter" data-level="7.2" data-path="building-provenance.html"><a href="building-provenance.html#understanding-resource-maps"><i class="fa fa-check"></i><b>7.2</b> Understanding resource maps</a></li>
-<li class="chapter" data-level="7.3" data-path="building-provenance.html"><a href="building-provenance.html#using-the-datapack-package"><i class="fa fa-check"></i><b>7.3</b> Using the <code>datapack</code> package</a><ul>
+<li class="chapter" data-level="7.3" data-path="building-provenance.html"><a href="building-provenance.html#using-the-datapack-package"><i class="fa fa-check"></i><b>7.3</b> Using the <code>datapack</code> package</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="building-provenance.html"><a href="building-provenance.html#fixing-mistakes"><i class="fa fa-check"></i><b>7.3.1</b> Fixing mistakes</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="building-provenance.html"><a href="building-provenance.html#references"><i class="fa fa-check"></i><b>7.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="using-git.html"><a href="using-git.html"><i class="fa fa-check"></i><b>8</b> Using Git</a><ul>
+<li class="chapter" data-level="8" data-path="using-git.html"><a href="using-git.html"><i class="fa fa-check"></i><b>8</b> Using Git</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="using-git.html"><a href="using-git.html#usage-in-the-datateam"><i class="fa fa-check"></i><b>8.1</b> Usage in the datateam</a></li>
-<li class="chapter" data-level="8.2" data-path="using-git.html"><a href="using-git.html#what-is-git"><i class="fa fa-check"></i><b>8.2</b> What is Git?</a><ul>
+<li class="chapter" data-level="8.2" data-path="using-git.html"><a href="using-git.html#what-is-git"><i class="fa fa-check"></i><b>8.2</b> What is Git?</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="using-git.html"><a href="using-git.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>8.2.1</b> So why do I need to use this again?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a><ul>
+<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="using-git.html"><a href="using-git.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>8.3.1</b> Cloning the arctic-data repo</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.4</b> Working with the repository</a><ul>
+<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.4</b> Working with the repository</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="using-git.html"><a href="using-git.html#adding-a-new-script"><i class="fa fa-check"></i><b>8.4.1</b> Adding a new script</a></li>
 <li class="chapter" data-level="8.4.2" data-path="using-git.html"><a href="using-git.html#editing-a-script"><i class="fa fa-check"></i><b>8.4.2</b> Editing a script</a></li>
 <li class="chapter" data-level="8.4.3" data-path="using-git.html"><a href="using-git.html#where-do-i-commit"><i class="fa fa-check"></i><b>8.4.3</b> Where do I commit?</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="using-git.html"><a href="using-git.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>8.5</b> My Git tab disappeared</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="first-ticket.html"><a href="first-ticket.html"><i class="fa fa-check"></i><b>9</b> First Ticket</a><ul>
-<li class="chapter" data-level="9.1" data-path="first-ticket.html"><a href="first-ticket.html#navigate-rt"><i class="fa fa-check"></i><b>9.1</b> Navigate RT</a><ul>
+<li class="chapter" data-level="9" data-path="first-ticket.html"><a href="first-ticket.html"><i class="fa fa-check"></i><b>9</b> First Ticket</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="first-ticket.html"><a href="first-ticket.html#navigate-rt"><i class="fa fa-check"></i><b>9.1</b> Navigate RT</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="first-ticket.html"><a href="first-ticket.html#front-page"><i class="fa fa-check"></i><b>9.1.1</b> Front page</a></li>
 <li class="chapter" data-level="9.1.2" data-path="first-ticket.html"><a href="first-ticket.html#all-tickets"><i class="fa fa-check"></i><b>9.1.2</b> All tickets</a></li>
 <li class="chapter" data-level="9.1.3" data-path="first-ticket.html"><a href="first-ticket.html#example-ticket"><i class="fa fa-check"></i><b>9.1.3</b> Example ticket</a></li>
@@ -265,7 +293,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="first-ticket.html"><a href="first-ticket.html#initial-review-checklist"><i class="fa fa-check"></i><b>9.2</b> Initial review checklist</a></li>
 <li class="chapter" data-level="9.3" data-path="first-ticket.html"><a href="first-ticket.html#processing-templates"><i class="fa fa-check"></i><b>9.3</b> Processing templates</a></li>
-<li class="chapter" data-level="9.4" data-path="first-ticket.html"><a href="first-ticket.html#final-checklist"><i class="fa fa-check"></i><b>9.4</b> Final Checklist</a><ul>
+<li class="chapter" data-level="9.4" data-path="first-ticket.html"><a href="first-ticket.html#final-checklist"><i class="fa fa-check"></i><b>9.4</b> Final Checklist</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="first-ticket.html"><a href="first-ticket.html#system-metadata"><i class="fa fa-check"></i><b>9.4.1</b> System Metadata</a></li>
 <li class="chapter" data-level="9.4.2" data-path="first-ticket.html"><a href="first-ticket.html#general-eml"><i class="fa fa-check"></i><b>9.4.2</b> General EML</a></li>
 <li class="chapter" data-level="9.4.3" data-path="first-ticket.html"><a href="first-ticket.html#title"><i class="fa fa-check"></i><b>9.4.3</b> Title</a></li>
@@ -279,7 +308,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.11" data-path="first-ticket.html"><a href="first-ticket.html#access"><i class="fa fa-check"></i><b>9.4.11</b> Access</a></li>
 <li class="chapter" data-level="9.4.12" data-path="first-ticket.html"><a href="first-ticket.html#sftp-files"><i class="fa fa-check"></i><b>9.4.12</b> SFTP Files</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="first-ticket.html"><a href="first-ticket.html#email-templates"><i class="fa fa-check"></i><b>9.5</b> Email templates</a><ul>
+<li class="chapter" data-level="9.5" data-path="first-ticket.html"><a href="first-ticket.html#email-templates"><i class="fa fa-check"></i><b>9.5</b> Email templates</a>
+<ul>
 <li class="chapter" data-level="9.5.1" data-path="first-ticket.html"><a href="first-ticket.html#initial-email-template"><i class="fa fa-check"></i><b>9.5.1</b> Initial email template</a></li>
 <li class="chapter" data-level="9.5.2" data-path="first-ticket.html"><a href="first-ticket.html#comment-templates-based-on-what-is-missing"><i class="fa fa-check"></i><b>9.5.2</b> Comment templates based on what is missing</a></li>
 <li class="chapter" data-level="9.5.3" data-path="first-ticket.html"><a href="first-ticket.html#final-email-templates"><i class="fa fa-check"></i><b>9.5.3</b> Final email templates</a></li>
@@ -307,7 +337,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="editing-eml" class="section level1">
+<div id="editing-eml" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Editing EML</h1>
 <p>This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the <a href = 'https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd' target='_blank'>EML package</a>).</p>
 <div class="note">
@@ -315,14 +345,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.
 </p>
 </div>
-<div id="get-package-and-eml" class="section level2">
+<div id="get-package-and-eml" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Get package and EML</h2>
 <p>Before we look more in depth at EML, we first need to load your data package into R. After <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>setting your node</a>, use the following commands to load the package:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">rm_pid &lt;-<span class="st"> &quot;your_resource_map_pid&quot;</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">pkg &lt;-<span class="st"> </span><span class="kw">get_package</span>(adc_test,</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">                   rm_pid,</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">                   <span class="dt">file_names =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="editing-eml.html#cb23-1" aria-hidden="true" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
+<span id="cb23-2"><a href="editing-eml.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="editing-eml.html#cb23-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
+<span id="cb23-4"><a href="editing-eml.html#cb23-4" aria-hidden="true" tabindex="-1"></a>                   rm_pid,</span>
+<span id="cb23-5"><a href="editing-eml.html#cb23-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="note">
 <p>
 <strong>Keeping track of PIDs</strong>
@@ -334,11 +364,11 @@ In all subsequent sections, if they ask for the <code>pid</code> of the metadata
 For example, if you assigned the value from <code>get_package()</code> as above as <code>pkg</code> then you can refer to the following by using the corresponding commands:
 </p>
 </div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">metadata_pid &lt;-<span class="st">  </span>pkg<span class="op">$</span>metadata</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">data_pid &lt;-<span class="st">  </span>pkg<span class="op">$</span>data</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">resource_pid &lt;-<span class="st">  </span>pkg<span class="op">$</span>resource_map</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="editing-eml.html#cb24-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
+<span id="cb24-2"><a href="editing-eml.html#cb24-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
+<span id="cb24-3"><a href="editing-eml.html#cb24-3" aria-hidden="true" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
 <p>After loading the package, you can also load the EML file into R using the following command:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">doc &lt;-<span class="st"> </span><span class="kw">read_eml</span>(<span class="kw">getObject</span>(adc_test, pkg<span class="op">$</span>metadata))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="editing-eml.html#cb25-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
 <p>Note that we named the object <code>doc</code>. This is a good generic name to use for EML documents. The generic name <code>eml</code> should not be used - as the EML package ships with an <code>eml</code> function, which can cause namespace issues in your environment if you have an object also called <code>eml</code>.</p>
 <div class="note">
 <p>
@@ -353,34 +383,34 @@ rm_pid &lt;-<span class="st"> </span>all_rm_versions[<span class="kw">length</sp
 print(rm_pid)</code></pre>
 </div>
 </div>
-<div id="edit-an-eml-element" class="section level2">
+<div id="edit-an-eml-element" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Edit an EML element</h2>
 <p>There are multiple ways to edit an EML element.</p>
-<div id="edit-eml-with-strings" class="section level3">
+<div id="edit-eml-with-strings" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Edit EML with strings</h3>
 <p>The most basic way to edit an EML element would be to navigate to the element and replace it with something else. Easy!</p>
 <p>For example, to change the title one could use the following command:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>title &lt;-<span class="st"> &quot;New Title&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="editing-eml.html#cb26-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="st">&quot;New Title&quot;</span></span></code></pre></div>
 <p>If the element you are editing allows for multiple values, you can pass it a list of character strings. Since a dataset can have multiple titles, we can do this:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>title &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;New Title&quot;</span>, <span class="st">&quot;Second New Title&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="editing-eml.html#cb27-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;New Title&quot;</span>, <span class="st">&quot;Second New Title&quot;</span>)</span></code></pre></div>
 <p>However, this isn’t always the best method to edit the EML, particularly if the element has sub-elements.</p>
 </div>
-<div id="edit-eml-with-the-eml-package" class="section level3">
+<div id="edit-eml-with-the-eml-package" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Edit EML with the “EML” package</h3>
 <p>To edit a section where you are not 100% sure of the sub-elements, using the <code>eml$elementName()</code> helper functions from the EML package will pre-populate the options for you if you utilize the RStudio autocomplete functionality. The arguments in these functions show the available slots for any given EML element. For example, typing <code>doc$dataset$abstract &lt;- eml$abstract()&lt;TAB&gt;</code> will show you that the <code>abstract</code> element can take either the <code>section</code> or <code>para</code> sub-elements.</p>
 <p><img src="../images/eml_function_autocomplete.png" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>abstract &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">abstract</span>(<span class="dt">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="editing-eml.html#cb28-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">abstract</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
 <p>This inserts the abstract with a <code>para</code> element in our dataset, which we know from the EML <a href="https://eml.ecoinformatics.org/schema/index.html">schema</a> is valid.</p>
 <p>Note that the above is equivalent to the following generic construction:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>abstract &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="editing-eml.html#cb29-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
 <p>The <code>eml()</code> family of functions provides the sub-elements as arguments, which is extremely helpful, but functionally all it is doing is creating a named list, which you can also do using the <code>list</code> function.</p>
 </div>
-<div id="edit-eml-with-objects" class="section level3">
+<div id="edit-eml-with-objects" class="section level3" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> Edit EML with objects</h3>
 <p>A final way to edit an EML element would be to build a new object to replace the old object. To begin, you might create an object using an <code>eml</code> helper function. Let’s take keywords as an example. Sometimes keyword lists in a metadata record will come from different thesauruses, which you can then add in series (similar to the way we added multiple titles) to the element <code>keywordSet</code>.</p>
 <p>We start by creating our first set of keywords and saving it to an object.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">kw_list_<span class="dv">1</span> &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">keywordSet</span>(<span class="dt">keywordThesaurus =</span> <span class="st">&quot;LTER controlled vocabulary&quot;</span>,</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">                            <span class="dt">keyword =</span> <span class="kw">list</span>(<span class="st">&quot;bacteria&quot;</span>, <span class="st">&quot;carnivorous plants&quot;</span>, <span class="st">&quot;genetics&quot;</span>, <span class="st">&quot;thresholds&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="editing-eml.html#cb30-1" aria-hidden="true" tabindex="-1"></a>kw_list_1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">keywordSet</span>(<span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER controlled vocabulary&quot;</span>,</span>
+<span id="cb30-2"><a href="editing-eml.html#cb30-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyword =</span> <span class="fu">list</span>(<span class="st">&quot;bacteria&quot;</span>, <span class="st">&quot;carnivorous plants&quot;</span>, <span class="st">&quot;genetics&quot;</span>, <span class="st">&quot;thresholds&quot;</span>))</span></code></pre></div>
 <p>Which returns:</p>
 <pre><code>$keyword
 $keyword[[1]]
@@ -399,10 +429,10 @@ $keyword[[4]]
 $keywordThesaurus
 [1] &quot;LTER controlled vocabulary&quot;</code></pre>
 <p>We create the second keyword list similarly:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">kw_list_<span class="dv">2</span> &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">keywordSet</span>(<span class="dt">keywordThesaurus =</span> <span class="st">&quot;LTER core area&quot;</span>, </a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">                            <span class="dt">keyword =</span>  <span class="kw">list</span>(<span class="st">&quot;populations&quot;</span>, <span class="st">&quot;inorganic nutrients&quot;</span>, <span class="st">&quot;disturbance&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="editing-eml.html#cb32-1" aria-hidden="true" tabindex="-1"></a>kw_list_2 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">keywordSet</span>(<span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER core area&quot;</span>, </span>
+<span id="cb32-2"><a href="editing-eml.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyword =</span>  <span class="fu">list</span>(<span class="st">&quot;populations&quot;</span>, <span class="st">&quot;inorganic nutrients&quot;</span>, <span class="st">&quot;disturbance&quot;</span>))</span></code></pre></div>
 <p>Finally, we can insert our two keyword lists into our EML document just like we did with the title example above, but rather than passing character strings into <code>list()</code>, we will pass our two keyword set objects.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>keywordSet &lt;-<span class="st"> </span><span class="kw">list</span>(kw_list_<span class="dv">1</span>, kw_list_<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="editing-eml.html#cb33-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>keywordSet <span class="ot">&lt;-</span> <span class="fu">list</span>(kw_list_1, kw_list_2)</span></code></pre></div>
 <div class="note">
 <p>
 Note that you <strong>must</strong> use the function <code>list</code> here and not the <code>c()</code> function. The reasons for this are complex, and due to some technical subtlety in R - but the gist of the issue is that the <code>c()</code> function can behave in unexpected ways with nested lists, and frequently will collapse the nesting into a single level, resulting in invalid EML.
@@ -410,14 +440,14 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 </div>
 </div>
 </div>
-<div id="fair-data-practices" class="section level2">
+<div id="fair-data-practices" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> FAIR data practices</h2>
 <p>The result of these function calls won’t show up on the webpage but they will add a <code>publisher</code> element to the <code>dataset</code> element and a <code>system</code> to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable).</p>
 <p>Add the following lines to all of your data processing scripts.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">  doc &lt;-<span class="st"> </span><span class="kw">eml_add_publisher</span>(doc)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">  doc &lt;-<span class="st"> </span><span class="kw">eml_add_entity_system</span>(doc)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="editing-eml.html#cb34-1" aria-hidden="true" tabindex="-1"></a>  doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
+<span id="cb34-2"><a href="editing-eml.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
-<div id="edit-attributelists" class="section level2">
+<div id="edit-attributelists" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Edit attributeLists</h2>
 <p>Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:</p>
 <ol style="list-style-type: decimal">
@@ -426,16 +456,16 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 </ol>
 <p>Attributes can exist in EML for <code>dataTable</code>, <code>otherEntity</code>, and <code>spatialVector</code> data objects. Please note that submitting attribute information through the website will store them in an <code>otherEntity</code> object by default. We prefer to store them in a <code>dataTable</code> object for tabular data or a <code>spatialVector</code> object for spatial data.</p>
 <p>To edit or examine an existing attribute table already in an EML file, you can use the following commands, where <code>i</code> represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one <code>dataTable</code>), you should just call <code>doc$dataset$dataTable</code>, as in this case <code>doc$dataset$dataTable[[1]]</code> will return the first sub-element of the <code>dataTable</code> (the <code>entityName</code>)</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># If they are stored in an otherEntity (submitted from the website by default)</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity[[i]]<span class="op">$</span>attributeList)</a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co"># Or if they are stored in a dataTable (usually created by a datateam member)</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]]<span class="op">$</span>attributeList)</a>
-<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co"># Or if they are stored in a spatialVector (usually created by a datateam member)</span></a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>spatialVector[[i]]<span class="op">$</span>attributeList)</a>
-<a class="sourceLine" id="cb35-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8">attributes &lt;-<span class="st"> </span>attributeList<span class="op">$</span>attributes</a>
-<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="kw">print</span>(attributes)</a></code></pre></div>
-<div id="edit-attributes" class="section level3">
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="editing-eml.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If they are stored in an otherEntity (submitted from the website by default)</span></span>
+<span id="cb35-2"><a href="editing-eml.html#cb35-2" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_attributes</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]<span class="sc">$</span>attributeList)</span>
+<span id="cb35-3"><a href="editing-eml.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Or if they are stored in a dataTable (usually created by a datateam member)</span></span>
+<span id="cb35-4"><a href="editing-eml.html#cb35-4" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_attributes</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList)</span>
+<span id="cb35-5"><a href="editing-eml.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Or if they are stored in a spatialVector (usually created by a datateam member)</span></span>
+<span id="cb35-6"><a href="editing-eml.html#cb35-6" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_attributes</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialVector[[i]]<span class="sc">$</span>attributeList)</span>
+<span id="cb35-7"><a href="editing-eml.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="editing-eml.html#cb35-8" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> attributeList<span class="sc">$</span>attributes</span>
+<span id="cb35-9"><a href="editing-eml.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(attributes)</span></code></pre></div>
+<div id="edit-attributes" class="section level3" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Edit attributes</h3>
 <p>Attribute information should be stored in a <code>data.frame</code> with the following columns:</p>
 <ul>
@@ -457,7 +487,7 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 <li><em>dateTimeDomain</em>: <code>dateTime</code> attributes</li>
 <li><em>numericDomain</em>: attributes that are numbers (either <code>ratio</code> or <code>interval</code>)</li>
 </ul></li>
-<li><strong>formatString</strong>: Required for <code>dateTime</code>, NA otherwise. Format string for dates, e.g. “DD/MM/YYYY”.</li>
+<li><strong>formatString</strong>: Required for <code>dateTime</code>, NA otherwise. Format string for dates, e.g. “DD/MM/YYYY”.</li>
 <li><strong>definition</strong>: Required for <code>textDomain</code>, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.</li>
 <li><strong>unit</strong>: Required for <code>numericDomain</code>, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: <code>standardUnits &lt;- EML::get_unitList()</code> then running <code>View(standardUnits$units)</code>.</li>
 <li><strong>numberType</strong>: Required for <code>numericDomain</code>, NA otherwise. Options are <code>real</code>, <code>natural</code>, <code>whole</code>, and <code>integer</code>.
@@ -471,41 +501,41 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 <li><strong>missingValueCodeExplanation</strong>: Explanation for missing values, NA if no missing value code exists.</li>
 </ul>
 <p>You can create attributes manually by typing them out in R following a workflow similar to the one below:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">attributes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb36-3" data-line-number="3">    <span class="dt">attributeName =</span> <span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Location&#39;</span>, <span class="st">&#39;Region&#39;</span>,<span class="st">&#39;Sample_No&#39;</span>, <span class="st">&#39;Sample_vol&#39;</span>, <span class="st">&#39;Salinity&#39;</span>, <span class="st">&#39;Temperature&#39;</span>, <span class="st">&#39;sampling_comments&#39;</span>),</a>
-<a class="sourceLine" id="cb36-4" data-line-number="4">    <span class="dt">attributeDefinition =</span> <span class="kw">c</span>(<span class="st">&#39;Date sample was taken on&#39;</span>, <span class="st">&#39;Location code representing location where sample was taken&#39;</span>,<span class="st">&#39;Region where sample was taken&#39;</span>, <span class="st">&#39;Sample number&#39;</span>, <span class="st">&#39;Sample volume&#39;</span>, <span class="st">&#39;Salinity of sample in PSU&#39;</span>, <span class="st">&#39;Temperature of sample&#39;</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</a>
-<a class="sourceLine" id="cb36-5" data-line-number="5">    <span class="dt">measurementScale =</span> <span class="kw">c</span>(<span class="st">&#39;dateTime&#39;</span>, <span class="st">&#39;nominal&#39;</span>,<span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;interval&#39;</span>, <span class="st">&#39;nominal&#39;</span>),</a>
-<a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">domain =</span> <span class="kw">c</span>(<span class="st">&#39;dateTimeDomain&#39;</span>, <span class="st">&#39;enumeratedDomain&#39;</span>,<span class="st">&#39;enumeratedDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>),</a>
-<a class="sourceLine" id="cb36-7" data-line-number="7">    <span class="dt">formatString =</span> <span class="kw">c</span>(<span class="st">&#39;MM-DD-YYYY&#39;</span>, <span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>),</a>
-<a class="sourceLine" id="cb36-8" data-line-number="8">    <span class="dt">definition =</span> <span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="st">&#39;Sample number&#39;</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</a>
-<a class="sourceLine" id="cb36-9" data-line-number="9">    <span class="dt">unit =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="st">&#39;milliliter&#39;</span>, <span class="st">&#39;dimensionless&#39;</span>, <span class="st">&#39;celsius&#39;</span>, <span class="ot">NA</span>),</a>
-<a class="sourceLine" id="cb36-10" data-line-number="10">    <span class="dt">numberType =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="ot">NA</span>),</a>
-<a class="sourceLine" id="cb36-11" data-line-number="11">    <span class="dt">missingValueCode =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;NA&#39;</span>),</a>
-<a class="sourceLine" id="cb36-12" data-line-number="12">    <span class="dt">missingValueCodeExplanation =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>,<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&#39;no sampling comments&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="editing-eml.html#cb36-1" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb36-2"><a href="editing-eml.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-3"><a href="editing-eml.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">attributeName =</span> <span class="fu">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Location&#39;</span>, <span class="st">&#39;Region&#39;</span>,<span class="st">&#39;Sample_No&#39;</span>, <span class="st">&#39;Sample_vol&#39;</span>, <span class="st">&#39;Salinity&#39;</span>, <span class="st">&#39;Temperature&#39;</span>, <span class="st">&#39;sampling_comments&#39;</span>),</span>
+<span id="cb36-4"><a href="editing-eml.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">attributeDefinition =</span> <span class="fu">c</span>(<span class="st">&#39;Date sample was taken on&#39;</span>, <span class="st">&#39;Location code representing location where sample was taken&#39;</span>,<span class="st">&#39;Region where sample was taken&#39;</span>, <span class="st">&#39;Sample number&#39;</span>, <span class="st">&#39;Sample volume&#39;</span>, <span class="st">&#39;Salinity of sample in PSU&#39;</span>, <span class="st">&#39;Temperature of sample&#39;</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</span>
+<span id="cb36-5"><a href="editing-eml.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">measurementScale =</span> <span class="fu">c</span>(<span class="st">&#39;dateTime&#39;</span>, <span class="st">&#39;nominal&#39;</span>,<span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;nominal&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;ratio&#39;</span>, <span class="st">&#39;interval&#39;</span>, <span class="st">&#39;nominal&#39;</span>),</span>
+<span id="cb36-6"><a href="editing-eml.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">domain =</span> <span class="fu">c</span>(<span class="st">&#39;dateTimeDomain&#39;</span>, <span class="st">&#39;enumeratedDomain&#39;</span>,<span class="st">&#39;enumeratedDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;numericDomain&#39;</span>, <span class="st">&#39;textDomain&#39;</span>),</span>
+<span id="cb36-7"><a href="editing-eml.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">formatString =</span> <span class="fu">c</span>(<span class="st">&#39;MM-DD-YYYY&#39;</span>, <span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>),</span>
+<span id="cb36-8"><a href="editing-eml.html#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">definition =</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="st">&#39;Sample number&#39;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&#39;comments about sampling process&#39;</span>),</span>
+<span id="cb36-9"><a href="editing-eml.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">unit =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,<span class="st">&#39;milliliter&#39;</span>, <span class="st">&#39;dimensionless&#39;</span>, <span class="st">&#39;celsius&#39;</span>, <span class="cn">NA</span>),</span>
+<span id="cb36-10"><a href="editing-eml.html#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">numberType =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,<span class="cn">NA</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="st">&#39;real&#39;</span>, <span class="cn">NA</span>),</span>
+<span id="cb36-11"><a href="editing-eml.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">missingValueCode =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&#39;NA&#39;</span>),</span>
+<span id="cb36-12"><a href="editing-eml.html#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">missingValueCodeExplanation =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&#39;no sampling comments&#39;</span>))</span></code></pre></div>
 <p>However, typing this out in R can be a major pain. Luckily, there’s a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co">#first download the CSV in your data package from Exercise #2</span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text=</span><span class="kw">rawToChar</span>(<span class="kw">getObject</span>(adc_test, pkg<span class="op">$</span>data)))</a></code></pre></div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># From data (recommended)</span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2">EML<span class="op">::</span><span class="kw">shiny_attributes</span>(<span class="dt">data =</span> data)</a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co"># From an existing attribute table</span></a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">attributeList &lt;-<span class="st"> </span><span class="kw">get_attributes</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]]<span class="op">$</span>attributeList)</a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">EML<span class="op">::</span><span class="kw">shiny_attributes</span>(<span class="dt">data =</span> <span class="ot">NULL</span>, <span class="dt">attributes =</span> attributeList<span class="op">$</span>attributes)</a>
-<a class="sourceLine" id="cb38-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb38-8" data-line-number="8"><span class="co"># From scratch</span></a>
-<a class="sourceLine" id="cb38-9" data-line-number="9">atts &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">shiny_attributes</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="editing-eml.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first download the CSV in your data package from Exercise #2</span></span>
+<span id="cb37-2"><a href="editing-eml.html#cb37-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text=</span><span class="fu">rawToChar</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>data)))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="editing-eml.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From data (recommended)</span></span>
+<span id="cb38-2"><a href="editing-eml.html#cb38-2" aria-hidden="true" tabindex="-1"></a>EML<span class="sc">::</span><span class="fu">shiny_attributes</span>(<span class="at">data =</span> data)</span>
+<span id="cb38-3"><a href="editing-eml.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="editing-eml.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># From an existing attribute table</span></span>
+<span id="cb38-5"><a href="editing-eml.html#cb38-5" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> <span class="fu">get_attributes</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList)</span>
+<span id="cb38-6"><a href="editing-eml.html#cb38-6" aria-hidden="true" tabindex="-1"></a>EML<span class="sc">::</span><span class="fu">shiny_attributes</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="at">attributes =</span> attributeList<span class="sc">$</span>attributes)</span>
+<span id="cb38-7"><a href="editing-eml.html#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="editing-eml.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># From scratch</span></span>
+<span id="cb38-9"><a href="editing-eml.html#cb38-9" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">shiny_attributes</span>()</span></code></pre></div>
 <p>Once you are done editing a table in the app, quit the app and the tables will be assigned to the <code>atts</code> variable as a list of data frames (one for attributes, factors, and units). Alternatively, each table can be to exported to a csv file by clicking the <code>Download</code> button.</p>
-<p>If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. <code>attributes &lt;- data.frame(...)</code>), or just use the variable that <code>shiny_attributes</code> returned.</p>
+<p>If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. <code>attributes &lt;- data.frame(...)</code>), or just use the variable that <code>shiny_attributes</code> returned.</p>
 <p>For simple attribute corrections, <code>datamgmt::edit_attribute()</code> allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through <code>datamgmt::edit_attribute()</code> and fill out the parameters you wish to edit/update. An example is provided below where we are changing <code>attributeName</code>, <code>domain</code>, and <code>measurementScale</code> in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">new_attribute &lt;-<span class="st"> </span>datamgmt<span class="op">::</span><span class="kw">edit_attribute</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">1</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">1</span>]], <span class="dt">attributeName =</span> <span class="st">&#39;date_and_time&#39;</span>, <span class="dt">domain =</span> <span class="st">&#39;dateTimeDomain&#39;</span>, <span class="dt">measurementScale =</span> <span class="st">&#39;dateTime&#39;</span>)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">1</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>new_attribute</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="editing-eml.html#cb39-1" aria-hidden="true" tabindex="-1"></a>new_attribute <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">edit_attribute</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]], <span class="at">attributeName =</span> <span class="st">&#39;date_and_time&#39;</span>, <span class="at">domain =</span> <span class="st">&#39;dateTimeDomain&#39;</span>, <span class="at">measurementScale =</span> <span class="st">&#39;dateTime&#39;</span>)</span>
+<span id="cb39-2"><a href="editing-eml.html#cb39-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> new_attribute</span></code></pre></div>
 </div>
-<div id="edit-custom-units" class="section level3">
+<div id="edit-custom-units" class="section level3" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Edit custom units</h3>
 <p>EML has a set list of units that can be added to an EML file. These can be seen by using the following code:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">standardUnits &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">get_unitList</span>()</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw">View</span>(standardUnits<span class="op">$</span>units)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="editing-eml.html#cb40-1" aria-hidden="true" tabindex="-1"></a>standardUnits <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_unitList</span>()</span>
+<span id="cb40-2"><a href="editing-eml.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(standardUnits<span class="sc">$</span>units)</span></code></pre></div>
 <p>Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit ie <code>meters</code> in the table to see if there are any matches.</p>
 <p>If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:</p>
 <ul>
@@ -517,20 +547,20 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 <li><strong>description</strong>: Text defining the unit (e.g. for kilometer <code>description</code> = “1000 meters”)</li>
 </ul>
 <p>To manually generate the custom units list, create a dataframe with the fields mentioned above. An example is provided below that can be used as a template:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">custom_units &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb41-3" data-line-number="3">  <span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;siemensPerMeter&#39;</span>, <span class="st">&#39;decibar&#39;</span>),</a>
-<a class="sourceLine" id="cb41-4" data-line-number="4">  <span class="dt">unitType =</span> <span class="kw">c</span>(<span class="st">&#39;resistivity&#39;</span>, <span class="st">&#39;pressure&#39;</span>),</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5">  <span class="dt">parentSI =</span> <span class="kw">c</span>(<span class="st">&#39;ohmMeter&#39;</span>, <span class="st">&#39;pascal&#39;</span>),</a>
-<a class="sourceLine" id="cb41-6" data-line-number="6">  <span class="dt">multiplierToSI =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;10000&#39;</span>),</a>
-<a class="sourceLine" id="cb41-7" data-line-number="7">  <span class="dt">abbreviation =</span> <span class="kw">c</span>(<span class="st">&#39;S/m&#39;</span>,<span class="st">&#39;decibar&#39;</span>),</a>
-<a class="sourceLine" id="cb41-8" data-line-number="8">  <span class="dt">description =</span> <span class="kw">c</span>(<span class="st">&#39;siemens per meter&#39;</span>, <span class="st">&#39;decibar&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="editing-eml.html#cb41-1" aria-hidden="true" tabindex="-1"></a>custom_units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-2"><a href="editing-eml.html#cb41-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-3"><a href="editing-eml.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&#39;siemensPerMeter&#39;</span>, <span class="st">&#39;decibar&#39;</span>),</span>
+<span id="cb41-4"><a href="editing-eml.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">unitType =</span> <span class="fu">c</span>(<span class="st">&#39;resistivity&#39;</span>, <span class="st">&#39;pressure&#39;</span>),</span>
+<span id="cb41-5"><a href="editing-eml.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">parentSI =</span> <span class="fu">c</span>(<span class="st">&#39;ohmMeter&#39;</span>, <span class="st">&#39;pascal&#39;</span>),</span>
+<span id="cb41-6"><a href="editing-eml.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">multiplierToSI =</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;10000&#39;</span>),</span>
+<span id="cb41-7"><a href="editing-eml.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">abbreviation =</span> <span class="fu">c</span>(<span class="st">&#39;S/m&#39;</span>,<span class="st">&#39;decibar&#39;</span>),</span>
+<span id="cb41-8"><a href="editing-eml.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">description =</span> <span class="fu">c</span>(<span class="st">&#39;siemens per meter&#39;</span>, <span class="st">&#39;decibar&#39;</span>))</span></code></pre></div>
 <p>Using <code>EML::get_unit_id</code> for custom units will also generate valid EML unit ids.</p>
 <p>Custom units are then added to <code>additionalMetadata</code> using the following command:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">unitlist &lt;-<span class="st"> </span><span class="kw">set_unitList</span>(custom_units, <span class="dt">as_metadata =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2">doc<span class="op">$</span>additionalMetadata &lt;-<span class="st">  </span><span class="kw">list</span>(<span class="dt">metadata =</span> <span class="kw">list</span>(<span class="dt">unitList =</span> unitlist))</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="editing-eml.html#cb42-1" aria-hidden="true" tabindex="-1"></a>unitlist <span class="ot">&lt;-</span> <span class="fu">set_unitList</span>(custom_units, <span class="at">as_metadata =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb42-2"><a href="editing-eml.html#cb42-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>additionalMetadata <span class="ot">&lt;-</span>  <span class="fu">list</span>(<span class="at">metadata =</span> <span class="fu">list</span>(<span class="at">unitList =</span> unitlist))</span></code></pre></div>
 </div>
-<div id="edit-factors" class="section level3">
+<div id="edit-factors" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Edit factors</h3>
 <p>For attributes that are <code>enumeratedDomains</code>, a table is needed with three columns: <code>attributeName</code>, <code>code</code>, and <code>definition</code>.</p>
 <ul>
@@ -539,95 +569,95 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 <li><strong>definition</strong> should contain a plain text definition that describes each code.</li>
 </ul>
 <p>To build factors by hand, you use the named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - “Location” and “Region”.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">Location &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">CASC =</span> <span class="st">&#39;Cascade Lake&#39;</span>, <span class="dt">CHIK =</span> <span class="st">&#39;Chikumunik Lake&#39;</span>, <span class="dt">HEAR =</span> <span class="st">&#39;Heart Lake&#39;</span>, <span class="dt">NISH =</span> <span class="st">&#39;Nishlik Lake&#39;</span> )</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2">Region &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">W_MTN =</span> <span class="st">&#39;West region, locations West of Eagle Mountain&#39;</span>, <span class="dt">E_MTN =</span> <span class="st">&#39;East region, locations East of Eagle Mountain&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="editing-eml.html#cb43-1" aria-hidden="true" tabindex="-1"></a>Location <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">CASC =</span> <span class="st">&#39;Cascade Lake&#39;</span>, <span class="at">CHIK =</span> <span class="st">&#39;Chikumunik Lake&#39;</span>, <span class="at">HEAR =</span> <span class="st">&#39;Heart Lake&#39;</span>, <span class="at">NISH =</span> <span class="st">&#39;Nishlik Lake&#39;</span> )</span>
+<span id="cb43-2"><a href="editing-eml.html#cb43-2" aria-hidden="true" tabindex="-1"></a>Region <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">W_MTN =</span> <span class="st">&#39;West region, locations West of Eagle Mountain&#39;</span>, <span class="at">E_MTN =</span> <span class="st">&#39;East region, locations East of Eagle Mountain&#39;</span>)</span></code></pre></div>
 <p>The definitions are then written into a data.frame using the names of the named character vectors and their definitions.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">factors &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">data.frame</span>(<span class="dt">attributeName =</span> <span class="st">&#39;Location&#39;</span>, <span class="dt">code =</span> <span class="kw">names</span>(Location), <span class="dt">definition =</span> <span class="kw">unname</span>(Location)),</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2">                  <span class="kw">data.frame</span>(<span class="dt">attributeName =</span> <span class="st">&#39;Region&#39;</span>, <span class="dt">code =</span> <span class="kw">names</span>(Region), <span class="dt">definition =</span> <span class="kw">unname</span>(Region)))</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="editing-eml.html#cb44-1" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Location&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Location), <span class="at">definition =</span> <span class="fu">unname</span>(Location)),</span>
+<span id="cb44-2"><a href="editing-eml.html#cb44-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Region&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Region), <span class="at">definition =</span> <span class="fu">unname</span>(Region)))</span></code></pre></div>
 </div>
-<div id="finalize-attributelist" class="section level3">
+<div id="finalize-attributelist" class="section level3" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Finalize attributeList</h3>
 <p>Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an <code>attributeList</code> using the following command:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">attributeList &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">set_attributes</span>(<span class="dt">attributes =</span> attributes,</a>
-<a class="sourceLine" id="cb45-2" data-line-number="2">                                     <span class="dt">factors =</span> factors) </a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="editing-eml.html#cb45-1" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> attributes,</span>
+<span id="cb45-2"><a href="editing-eml.html#cb45-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">factors =</span> factors) </span></code></pre></div>
 <p>This <code>attributeList</code> must then be <a href="editing-eml.html#edit-datatables">added to a <code>dataTable</code></a>.</p>
 </div>
 </div>
-<div id="set-physical" class="section level2">
+<div id="set-physical" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Set physical</h2>
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">physical &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">pid_to_eml_physical</span>(mn, pkg<span class="op">$</span>data[[i]])</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="editing-eml.html#cb46-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
 <p>Alternatively, you can set the <code>physical</code> of a data object not yet in your package by simply inputting the data <code>PID</code>:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">physical &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">pid_to_eml_physical</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="editing-eml.html#cb47-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>)</span></code></pre></div>
 <p>The <code>physical</code> must then be assigned to the data object.</p>
 <p>A final, but not recommended option, is to set the <code>physical</code> by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html' target='_blank'>update</a> your data first and then use <code>pid_to_eml_physical()</code> to set the <code>physical</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">id &lt;-<span class="st"> &#39;your_data_pid&#39;</span> <span class="co"># this should be an actual PID</span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">path &lt;-<span class="st"> &#39;~/your/data/path&#39;</span> <span class="co"># path to data table</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3">physical &lt;-<span class="st"> </span><span class="kw">set_physical</span>(<span class="dt">objectName =</span> path,</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4">                              <span class="dt">size =</span> <span class="kw">as.character</span>(<span class="kw">file.size</span>(path)),</a>
-<a class="sourceLine" id="cb48-5" data-line-number="5">                              <span class="dt">sizeUnit =</span> <span class="st">&#39;bytes&#39;</span>,</a>
-<a class="sourceLine" id="cb48-6" data-line-number="6">                              <span class="dt">authentication =</span> <span class="kw">digest</span>(fpath, <span class="dt">algo=</span><span class="st">&quot;sha256&quot;</span>, <span class="dt">serialize=</span><span class="ot">FALSE</span>, <span class="dt">file=</span><span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb48-7" data-line-number="7">                              <span class="dt">authMethod =</span> <span class="st">&#39;SHA-256&#39;</span>,</a>
-<a class="sourceLine" id="cb48-8" data-line-number="8">                              <span class="dt">numHeaderLines =</span> <span class="st">&#39;1&#39;</span>,</a>
-<a class="sourceLine" id="cb48-9" data-line-number="9">                              <span class="dt">fieldDelimiter =</span> <span class="st">&#39;,&#39;</span>,</a>
-<a class="sourceLine" id="cb48-10" data-line-number="10">                              <span class="dt">url =</span> <span class="kw">paste0</span>(<span class="st">&#39;https://cn.dataone.org/cn/v2/resolve/&#39;</span>, id))</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="editing-eml.html#cb48-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&#39;your_data_pid&#39;</span> <span class="co"># this should be an actual PID</span></span>
+<span id="cb48-2"><a href="editing-eml.html#cb48-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&#39;~/your/data/path&#39;</span> <span class="co"># path to data table</span></span>
+<span id="cb48-3"><a href="editing-eml.html#cb48-3" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> <span class="fu">set_physical</span>(<span class="at">objectName =</span> path,</span>
+<span id="cb48-4"><a href="editing-eml.html#cb48-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">size =</span> <span class="fu">as.character</span>(<span class="fu">file.size</span>(path)),</span>
+<span id="cb48-5"><a href="editing-eml.html#cb48-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sizeUnit =</span> <span class="st">&#39;bytes&#39;</span>,</span>
+<span id="cb48-6"><a href="editing-eml.html#cb48-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authentication =</span> <span class="fu">digest</span>(fpath, <span class="at">algo=</span><span class="st">&quot;sha256&quot;</span>, <span class="at">serialize=</span><span class="cn">FALSE</span>, <span class="at">file=</span><span class="cn">TRUE</span>),</span>
+<span id="cb48-7"><a href="editing-eml.html#cb48-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authMethod =</span> <span class="st">&#39;SHA-256&#39;</span>,</span>
+<span id="cb48-8"><a href="editing-eml.html#cb48-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">numHeaderLines =</span> <span class="st">&#39;1&#39;</span>,</span>
+<span id="cb48-9"><a href="editing-eml.html#cb48-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fieldDelimiter =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb48-10"><a href="editing-eml.html#cb48-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">url =</span> <span class="fu">paste0</span>(<span class="st">&#39;https://cn.dataone.org/cn/v2/resolve/&#39;</span>, id))</span></code></pre></div>
 </div>
-<div id="edit-datatables" class="section level2">
+<div id="edit-datatables" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> Edit dataTables</h2>
 <p>To edit a <code>dataTable</code>, first <a href="editing-eml.html#edit-attributelists">edit/create an <code>attributeList</code></a> and <a href="editing-eml.html#set-physical">set the physical</a>.
 Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> helper function as below:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">dataTable &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">dataTable</span>(<span class="dt">entityName =</span> <span class="st">&quot;A descriptive name for the data (does not need to be the same as the data file)&quot;</span>,</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">                 <span class="dt">entityDescription =</span> <span class="st">&quot;A description of the data&quot;</span>,</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">                 <span class="dt">physical =</span> physical,</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4">                 <span class="dt">attributeList =</span> attributeList)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="editing-eml.html#cb49-1" aria-hidden="true" tabindex="-1"></a>dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;A descriptive name for the data (does not need to be the same as the data file)&quot;</span>,</span>
+<span id="cb49-2"><a href="editing-eml.html#cb49-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">entityDescription =</span> <span class="st">&quot;A description of the data&quot;</span>,</span>
+<span id="cb49-3"><a href="editing-eml.html#cb49-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">physical =</span> physical,</span>
+<span id="cb49-4"><a href="editing-eml.html#cb49-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">attributeList =</span> attributeList)</span></code></pre></div>
 <p>The <code>dataTable</code> must then be added to the EML. How exactly you do this will depend on whether there are <code>dataTable</code> elements in your EML, and how many there are. To replace whatever dataTable elements already exist, you could write:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable &lt;-<span class="st"> </span>dataTable</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="editing-eml.html#cb50-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dataTable</span></code></pre></div>
 <p>If there is only one <code>dataTable</code> in your dataset, the EML package will usually “unpack” these, so that it is not contained within a list of length 1 - this means that to add a second <code>dataTable</code>, you cannot use the syntax <code>doc$dataset$dataTable[[2]]</code>, since when unpacked this will contain the <code>entityDescription</code> as opposed to pointing to the second in a series of <code>dataTable</code> elements. Confusing - I know. Not to fear though - this syntax will get you on your way, should you be trying to add a second <code>dataTable</code>.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable &lt;-<span class="st"> </span><span class="kw">list</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable, dataTable)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="editing-eml.html#cb51-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> <span class="fu">list</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable, dataTable)</span></code></pre></div>
 <p>If there is more than one <code>dataTable</code> in your dataset, you can return to the more straightforward construction of:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]] &lt;-<span class="st"> </span>dataTable </a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="editing-eml.html#cb52-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]] <span class="ot">&lt;-</span> dataTable </span></code></pre></div>
 <p>Where <code>i</code> is the index that you wish insert your <code>dataTable</code> into.</p>
 <p>To add a list of <code>dataTables</code> to avoid the unpacking problem above you will need to create a list of <code>dataTables</code></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">dts &lt;-<span class="st"> </span><span class="kw">list</span>() <span class="co"># create an empty list</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(tables_you_need)){</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">  <span class="co"># your code modifying/creating the dataTable here</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">  dataTable &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">dataTable</span>(<span class="dt">entityName =</span> dataTable<span class="op">$</span>entityName,</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">                             <span class="dt">entityDescription =</span> dataTable<span class="op">$</span>entityDescription,</a>
-<a class="sourceLine" id="cb53-6" data-line-number="6">                             <span class="dt">physical =</span> physical,</a>
-<a class="sourceLine" id="cb53-7" data-line-number="7">                             <span class="dt">attributeList =</span> attributeList)</a>
-<a class="sourceLine" id="cb53-8" data-line-number="8">  </a>
-<a class="sourceLine" id="cb53-9" data-line-number="9">  dts[[i]] &lt;-<span class="st"> </span>dataTable <span class="co"># add to the list</span></a>
-<a class="sourceLine" id="cb53-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="editing-eml.html#cb53-1" aria-hidden="true" tabindex="-1"></a>dts <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># create an empty list</span></span>
+<span id="cb53-2"><a href="editing-eml.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(tables_you_need)){</span>
+<span id="cb53-3"><a href="editing-eml.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code modifying/creating the dataTable here</span></span>
+<span id="cb53-4"><a href="editing-eml.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> dataTable<span class="sc">$</span>entityName,</span>
+<span id="cb53-5"><a href="editing-eml.html#cb53-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">entityDescription =</span> dataTable<span class="sc">$</span>entityDescription,</span>
+<span id="cb53-6"><a href="editing-eml.html#cb53-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">physical =</span> physical,</span>
+<span id="cb53-7"><a href="editing-eml.html#cb53-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">attributeList =</span> attributeList)</span>
+<span id="cb53-8"><a href="editing-eml.html#cb53-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-9"><a href="editing-eml.html#cb53-9" aria-hidden="true" tabindex="-1"></a>  dts[[i]] <span class="ot">&lt;-</span> dataTable <span class="co"># add to the list</span></span>
+<span id="cb53-10"><a href="editing-eml.html#cb53-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>After getting a list of <code>dataTables</code>, assign the resulting list to <code>dataTable</code> EML</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable &lt;-<span class="st"> </span>dts</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="editing-eml.html#cb54-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dts</span></code></pre></div>
 <p>By default, the online submission form adds all entities as <code>otherEntity</code>, even when most should probably be <code>dataTable</code>. You can use <code>eml_otherEntity_to_dataTable</code> to easily move items in <code>otherEntity</code> over to <code>dataTable</code>. Most tabular data or data that contain variables should be listed as a <code>dataTable</code>. Data that do not contain variables (eg: plain text readme files, pdfs, jpegs) should be listed as <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">eml_otherEntity_to_dataTable</span>(doc, </a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">                             <span class="dv">1</span>, <span class="co"># which otherEntities you want to convert, for multiple use - 1:5</span></a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">                             <span class="dt">validate_eml =</span> F) <span class="co"># set this to False if the physical or attributes are not added</span></a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="editing-eml.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_otherEntity_to_dataTable</span>(doc, </span>
+<span id="cb55-2"><a href="editing-eml.html#cb55-2" aria-hidden="true" tabindex="-1"></a>                             <span class="dv">1</span>, <span class="co"># which otherEntities you want to convert, for multiple use - 1:5</span></span>
+<span id="cb55-3"><a href="editing-eml.html#cb55-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">validate_eml =</span> F) <span class="co"># set this to False if the physical or attributes are not added</span></span></code></pre></div>
 </div>
-<div id="edit-otherentities" class="section level2">
+<div id="edit-otherentities" class="section level2" number="4.7">
 <h2><span class="header-section-number">4.7</span> Edit otherEntities</h2>
-<div id="remove-otherentities" class="section level3">
+<div id="remove-otherentities" class="section level3" number="4.7.1">
 <h3><span class="header-section-number">4.7.1</span> Remove otherEntities</h3>
 <p>To remove an <code>otherEntity</code> use the following command. This may be useful if a data object is originally listed as an <code>otherEntity</code> and then transferred to a <code>dataTable</code>.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity[[i]] &lt;-<span class="st"> </span><span class="ot">NULL</span></a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="editing-eml.html#cb56-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
-<div id="create-otherentities" class="section level3">
+<div id="create-otherentities" class="section level3" number="4.7.2">
 <h3><span class="header-section-number">4.7.2</span> Create otherEntities</h3>
 <p>If you need to create/update an <code>otherEntity</code>, make sure to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/edit-otherentities.html#update-a-data-file' target='_blank'>update</a> your data object first (if it is not already on the DataONE MN). Then build your <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">otherEntity &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">pid_to_eml_entity</span>(mn, pkg<span class="op">$</span>data[[i]])</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="editing-eml.html#cb57-1" aria-hidden="true" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
 <p>Alternatively, you can build the <code>otherEntity</code> of a data object not in your package by simply inputting the data <code>PID</code>.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">otherEntity &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">pid_to_eml_entity</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>, <span class="dt">entityType =</span> <span class="st">&quot;otherEntity&quot;</span>, <span class="dt">entityName =</span> <span class="st">&quot;Entity Name&quot;</span>, <span class="dt">entityDescription =</span> <span class="st">&quot;Description about entity&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="editing-eml.html#cb58-1" aria-hidden="true" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>, <span class="at">entityType =</span> <span class="st">&quot;otherEntity&quot;</span>, <span class="at">entityName =</span> <span class="st">&quot;Entity Name&quot;</span>, <span class="at">entityDescription =</span> <span class="st">&quot;Description about entity&quot;</span>)</span></code></pre></div>
 <p>The <code>otherEntity</code> must then be set to the EML, like so:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity &lt;-<span class="st"> </span>otherEntity</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="editing-eml.html#cb59-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
 <p>If you have more than one <code>otherEntity</code> object in the EML already, you can add the new one like this:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity[[i]] &lt;-<span class="st"> </span>otherEntity</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="editing-eml.html#cb60-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
 <p>Where <code>i</code> is set to the number of existing entities plus one.</p>
 <p>Remember the warning from the last section, however. If you only have one <code>otherEntity</code>, and you are trying to add another, you have to run:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity &lt;-<span class="st"> </span><span class="kw">list</span>(otherEntity, doc<span class="op">$</span>dataset<span class="op">$</span>otherEntity)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="editing-eml.html#cb61-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="fu">list</span>(otherEntity, doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)</span></code></pre></div>
 </div>
 </div>
-<div id="semantic-annotations" class="section level2">
+<div id="semantic-annotations" class="section level2" number="4.8">
 <h2><span class="header-section-number">4.8</span> Semantic annotations</h2>
 <p>For a brief overview of what a semantic annotation is, and why we use them check out <a href="https://drive.google.com/file/d/1Err-fL8O21kd1NzHJ9HJkK_B2fpt4sQW/view?usp=sharing">this video.</a></p>
 <p>Even more information on how to add semantic annotations to EML 2.2.0 can be found
@@ -639,20 +669,20 @@ Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> 
 <li><code>attribute</code></li>
 </ul>
 <p>On the datateam, we will only be adding annotations to attributes for now.</p>
-<div id="how-annotations-are-used" class="section level3">
+<div id="how-annotations-are-used" class="section level3" number="4.8.1">
 <h3><span class="header-section-number">4.8.1</span> How annotations are used</h3>
 <p>This is a <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that has semantic annotations included.</p>
 <p>On the website you can see annotations in each of the attributes.
 <img src="../images/annotations_web.png" /></p>
 <p>You can click on any one of them to search for more datasets with that same annotation.
 <img src="../images/annotations_web_use.png" /></p>
-<div id="attribute-level-annotations" class="section level4">
+<div id="attribute-level-annotations" class="section level4" number="4.8.1.1">
 <h4><span class="header-section-number">4.8.1.1</span> Attribute-level annotations</h4>
 <p>To add annotations to the <code>attributeList</code> you will need information about the <code>propertyURI</code> and <code>valueURI</code></p>
 <p>Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (<code>propertyURI</code>),
 and object (<code>valueURI</code>). Because of the way our search interface is built, for now we will be using attribute annotations that have a <code>propertyURI</code> label of “contains measurements of type”.</p>
 <p>Here is what an annotation for an attribute looks like in R. Note that both the <code>propertyURI</code> and <code>valueURI</code> have both a label, and the URI itself.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[i]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[i]]<span class="op">$</span>annotation</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="editing-eml.html#cb62-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span></code></pre></div>
 <pre><code>$id
 [1] &quot;ODBcOyaTsg&quot;
 
@@ -677,7 +707,7 @@ Semantic attribute annotations can be applied to spatialRasters, spatialVectors 
 </div>
 </div>
 </div>
-<div id="how-to-add-an-annotation" class="section level3">
+<div id="how-to-add-an-annotation" class="section level3" number="4.8.2">
 <h3><span class="header-section-number">4.8.2</span> How to add an annotation</h3>
 <p><strong>1. Decide which variable to annotate</strong></p>
 <p>The goal for the datateam is to start annotating every dataset that comes in. Please make sure to add semantic annotations to spatial and temporal features such as latitude, longitude, site name and date and aim to annotate as many attributes as possible.</p>
@@ -715,33 +745,33 @@ e.g. selecting the lake area annotation for the <a href="https://arcticdata.io/
 </p>
 </div>
 <p><strong>3. Build the annotation in R</strong></p>
-<div id="manually-annotating" class="section level4">
+<div id="manually-annotating" class="section level4" number="4.8.2.1">
 <h4><span class="header-section-number">4.8.2.1</span> Manually Annotating</h4>
 <p><em>this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists</em></p>
 <p>First you need to figure out the index of the attribute you want to annotate.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">eml_get_simple</span>(doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">3</span>]]<span class="op">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="editing-eml.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
 <pre><code> [1] &quot;prdM&quot;         &quot;t090C&quot;        &quot;t190C&quot;        &quot;c0mS/cm&quot;      &quot;c1mS/cm&quot;      &quot;sal00&quot;        &quot;sal11&quot;        &quot;sbeox0V&quot;      &quot;flECO-AFL&quot;
 [10] &quot;CStarTr0&quot;     &quot;cpar&quot;         &quot;v0&quot;           &quot;v4&quot;           &quot;v6&quot;           &quot;v7&quot;           &quot;svCM&quot;         &quot;altM&quot;         &quot;depSM&quot;    
 [19] &quot;scan&quot;         &quot;sbeox0ML/L&quot;   &quot;sbeox0dOV/dT&quot; &quot;flag&quot;    </code></pre>
 <p>Next, assign an <code>id</code> to the attribute. It should be unique within the document, and it’s nice if it is human readable and related to the attribute it is describing. One format you could use is <code>entity_x_attribute_y</code> which should be unique in scope, and is nice and descriptive.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">3</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">6</span>]]<span class="op">$</span>id &lt;-<span class="st"> &quot;entity_ctd_attribute_salinity&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="editing-eml.html#cb66-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;entity_ctd_attribute_salinity&quot;</span></span></code></pre></div>
 <p>Now, assign the <code>propertyURI</code> information. This will be the same for every annotation you build.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">3</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">6</span>]]<span class="op">$</span>annotation<span class="op">$</span>propertyURI &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">                                                                                       <span class="dt">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="editing-eml.html#cb67-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>propertyURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</span>
+<span id="cb67-2"><a href="editing-eml.html#cb67-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</span></code></pre></div>
 <p>Finally, add the <code>valueURI</code> information from your search.</p>
 <p><img src="../images/bioportal_term.png" />
 You should see an ID on the Bioportal page that looks like a URL - this is the <code>valueURI</code>. Use the value to populate the label element.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>dataTable[[<span class="dv">3</span>]]<span class="op">$</span>attributeList<span class="op">$</span>attribute[[<span class="dv">6</span>]]<span class="op">$</span>annotation<span class="op">$</span>valueURI &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">                                                                                       <span class="dt">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="editing-eml.html#cb68-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
+<span id="cb68-2"><a href="editing-eml.html#cb68-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
 </div>
-<div id="shiny-attributes" class="section level4">
+<div id="shiny-attributes" class="section level4" number="4.8.2.2">
 <h4><span class="header-section-number">4.8.2.2</span> Shiny Attributes</h4>
 <p><em>this method is great for when you are updating many attributes</em></p>
 <p>On the far right of the table of <code>shiny_attributes</code> there are 4 columns: <code>id</code>, <code>propertyURI</code>, <code>propertyLabel</code>, <code>valueURI</code>, <code>valueLabel</code> that can be filled out.</p>
 </div>
 </div>
 </div>
-<div id="exercise-3a" class="section level2 exercise">
+<div id="exercise-3a" class="section level2 exercise" number="4.9">
 <h2><span class="header-section-number">4.9</span> Exercise 3a</h2>
 <p>The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).</p>
 <ul>
@@ -752,11 +782,11 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <li>We will continue using the objects created and updated in this exercise in 3b.</li>
 </ul>
 </div>
-<div id="edit-spatial-data" class="section level2">
+<div id="edit-spatial-data" class="section level2" number="4.10">
 <h2><span class="header-section-number">4.10</span> Edit spatial data</h2>
 <p>Occasionally, you may encounter a third type of data object: <code>spatialVector</code> and <code>spatialRaster</code>. These objects contains spatial data (ie maps), such as a shapefile or geodatabase.</p>
 <p>Editing a <code>spatialVector</code> or <code>spatialRaster</code> is similar to editing a <code>dataTable</code> or an <code>otherEntity</code>. A <code>physical</code> and <code>attributeList</code> should be present. We will focus on how to get the information unique to spatialData and how to create the <code>spatialVector/spatialRaster</code></p>
-<div id="file-types" class="section level4">
+<div id="file-types" class="section level4" number="4.10.0.1">
 <h4><span class="header-section-number">4.10.0.1</span> File types</h4>
 <p>File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .dbf, .shp, and .shx</p>
 <p>Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). This is one of the exceptions to our rule regarding .zip files.</p>
@@ -767,7 +797,7 @@ There are specific <code>formatIds</code> for these kinds of zipped files: <code
 </p>
 </div>
 </div>
-<div id="reading-spatial-files" class="section level3">
+<div id="reading-spatial-files" class="section level3" number="4.10.1">
 <h3><span class="header-section-number">4.10.1</span> Reading Spatial Files</h3>
 <p>Read in the files to (1) help you in creating your attributes table and (2) sometimes also figure out the coordinate reference system.</p>
 <pre><code>library(sf)
@@ -782,7 +812,7 @@ When you read kml files, <code>read_sf()</code> sometimes shows additional colum
 If it is a zipped shapefile there is a handy function you can use <code>arcticdatautils::read_zip_shapefile(mn, pid)</code>
 </p>
 </div>
-<div id="coordinate-systems" class="section level4">
+<div id="coordinate-systems" class="section level4" number="4.10.1.1">
 <h4><span class="header-section-number">4.10.1.1</span> Coordinate Systems</h4>
 <p>The coordinate system allow to work with spatial data using the same frame of reference (a Datum). A common coordinate system is “<code>GCS_WGS_1984</code> (used in Google Maps!) which is suitable for plotting points distributed globally. There are many others that may be better suited for certain areas in the world.</p>
 <p>All latitudes and longitude coordinates should have a coordinate system (like a frame of reference).</p>
@@ -792,13 +822,13 @@ If it is a zipped shapefile there is a handy function you can use <code>arcticda
 <p>Take the Datum and add GCS (Geographic Coordinate System) in front. For example: “GCS_WGS_1984”</p>
 </div>
 </div>
-<div id="spatialvector" class="section level3">
+<div id="spatialvector" class="section level3" number="4.10.2">
 <h3><span class="header-section-number">4.10.2</span> spatialVector</h3>
-<div id="adding-geometry" class="section level4">
+<div id="adding-geometry" class="section level4" number="4.10.2.1">
 <h4><span class="header-section-number">4.10.2.1</span> Adding Geometry</h4>
 <p>One important difference is that a <code>spatialVector</code> object should also have a <code>geometry</code> slot that describes the geometry features of the data. The possible values include one or more (in a list) of ‘Point’, ‘LineString’, ‘LinearRing’, ‘Polygon’, ‘MultiPoint’, ‘MultiLineString’, ‘MultiPolygon’, or ‘MultiGeometry’. You will likely have to open the file itself within QGIS or R (ie . the <code>sf</code> package) to get the correct geometry value.</p>
 <p>To add just a <code>geometry</code> slot use:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">doc<span class="op">$</span>dataset<span class="op">$</span>spatialVector[[<span class="dv">1</span>]]<span class="op">$</span>geometry &lt;-<span class="st"> &quot;Polygon&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="editing-eml.html#cb71-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialVector[[<span class="dv">1</span>]]<span class="sc">$</span>geometry <span class="ot">&lt;-</span> <span class="st">&quot;Polygon&quot;</span></span></code></pre></div>
 <p>To add it using the data pid:
 1. Get the geometry and spatialReference
 2. Use <code>pid_to_eml_entity()</code> to generate the spatialVector</p>
@@ -816,7 +846,7 @@ If it is a zipped shapefile there is a handy function you can use <code>arcticda
 <pre><code>doc$dataset$spatialVector[[1]] &lt;- spatialVector</code></pre>
 </div>
 </div>
-<div id="spatialrasters" class="section level3">
+<div id="spatialrasters" class="section level3" number="4.10.3">
 <h3><span class="header-section-number">4.10.3</span> spatialRasters</h3>
 <p>Most often these come in GeoTiff or Tiff files. The data is presented as a grid of “pixels”. For more information ESRI has a indepth article <a href = 'https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm' target='_blank'>here</a>.</p>
 <p>To use the helper function get:</p>
@@ -832,155 +862,155 @@ If it is a zipped shapefile there is a handy function you can use <code>arcticda
 eml_get_raster_metadata(path, coord_name, attributes)</code></pre>
 </div>
 </div>
-<div id="set-coverages" class="section level2">
+<div id="set-coverages" class="section level2" number="4.11">
 <h2><span class="header-section-number">4.11</span> Set coverages</h2>
 <p>Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a data set. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering <code>doc$dataset$coverage</code> into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using <code>set_coverage()</code>.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">coverage &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">set_coverage</span>(<span class="dt">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">                              <span class="dt">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">                              <span class="dt">sci_names =</span> <span class="kw">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>),</a>
-<a class="sourceLine" id="cb75-4" data-line-number="4">                              <span class="dt">geographicDescription =</span> <span class="st">&quot;The geographic region covers the lake region near Eagle Mountain, Alaska.&quot;</span>,</a>
-<a class="sourceLine" id="cb75-5" data-line-number="5">                              <span class="dt">west =</span> <span class="fl">-154.6192</span>, </a>
-<a class="sourceLine" id="cb75-6" data-line-number="6">                              <span class="dt">east =</span> <span class="fl">-154.5753</span>, </a>
-<a class="sourceLine" id="cb75-7" data-line-number="7">                              <span class="dt">north =</span> <span class="fl">68.3831</span>, </a>
-<a class="sourceLine" id="cb75-8" data-line-number="8">                              <span class="dt">south =</span> <span class="fl">68.3619</span>)</a>
-<a class="sourceLine" id="cb75-9" data-line-number="9">doc<span class="op">$</span>dataset<span class="op">$</span>coverage &lt;-<span class="st"> </span>coverage</a></code></pre></div>
-<div id="set-multiple-coverages" class="section level3">
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="editing-eml.html#cb75-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb75-2"><a href="editing-eml.html#cb75-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb75-3"><a href="editing-eml.html#cb75-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>),</span>
+<span id="cb75-4"><a href="editing-eml.html#cb75-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">geographicDescription =</span> <span class="st">&quot;The geographic region covers the lake region near Eagle Mountain, Alaska.&quot;</span>,</span>
+<span id="cb75-5"><a href="editing-eml.html#cb75-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">west =</span> <span class="sc">-</span><span class="fl">154.6192</span>, </span>
+<span id="cb75-6"><a href="editing-eml.html#cb75-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">east =</span> <span class="sc">-</span><span class="fl">154.5753</span>, </span>
+<span id="cb75-7"><a href="editing-eml.html#cb75-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">north =</span> <span class="fl">68.3831</span>, </span>
+<span id="cb75-8"><a href="editing-eml.html#cb75-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">south =</span> <span class="fl">68.3619</span>)</span>
+<span id="cb75-9"><a href="editing-eml.html#cb75-9" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
+<div id="set-multiple-coverages" class="section level3" number="4.11.1">
 <h3><span class="header-section-number">4.11.1</span> Set multiple coverages</h3>
 <p>You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages. Note that we use nested <code>eml</code> function helpers in this construction.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">geocov1 &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">geographicCoverage</span>(<span class="dt">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,</a>
-<a class="sourceLine" id="cb76-2" data-line-number="2">                                  <span class="dt">boundingCoordinates =</span> eml<span class="op">$</span><span class="kw">boundingCoordinates</span>(</a>
-<a class="sourceLine" id="cb76-3" data-line-number="3">                                         <span class="dt">northBoundingCoordinate =</span> <span class="dv">68</span>,</a>
-<a class="sourceLine" id="cb76-4" data-line-number="4">                                         <span class="dt">eastBoundingCoordinate =</span> <span class="dv">-154</span>,</a>
-<a class="sourceLine" id="cb76-5" data-line-number="5">                                         <span class="dt">southBoundingCoordinate =</span> <span class="dv">67</span>,</a>
-<a class="sourceLine" id="cb76-6" data-line-number="6">                                         <span class="dt">westBoundingCoordinate =</span> <span class="dv">-155</span>))</a>
-<a class="sourceLine" id="cb76-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb76-8" data-line-number="8">geocov2 &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">geographicCoverage</span>(<span class="dt">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 2&quot;</span>,</a>
-<a class="sourceLine" id="cb76-9" data-line-number="9">                                  <span class="dt">boundingCoordinates =</span> eml<span class="op">$</span><span class="kw">boundingCoordinates</span>(</a>
-<a class="sourceLine" id="cb76-10" data-line-number="10">                                         <span class="dt">northBoundingCoordinate =</span> <span class="dv">65</span>,</a>
-<a class="sourceLine" id="cb76-11" data-line-number="11">                                         <span class="dt">eastBoundingCoordinate =</span> <span class="dv">-151</span>,</a>
-<a class="sourceLine" id="cb76-12" data-line-number="12">                                         <span class="dt">southBoundingCoordinate =</span> <span class="dv">62</span>,</a>
-<a class="sourceLine" id="cb76-13" data-line-number="13">                                         <span class="dt">westBoundingCoordinate =</span> <span class="dv">-153</span>))</a>
-<a class="sourceLine" id="cb76-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb76-15" data-line-number="15">coverage &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">set_coverage</span>(<span class="dt">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </a>
-<a class="sourceLine" id="cb76-16" data-line-number="16">                              <span class="dt">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </a>
-<a class="sourceLine" id="cb76-17" data-line-number="17">                              <span class="dt">sci_names =</span> <span class="kw">list</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>))</a>
-<a class="sourceLine" id="cb76-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb76-19" data-line-number="19">doc<span class="op">$</span>dataset<span class="op">$</span>coverage<span class="op">$</span>geographicCoverage &lt;-<span class="st"> </span><span class="kw">list</span>(geocov1, geocov2)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="editing-eml.html#cb76-1" aria-hidden="true" tabindex="-1"></a>geocov1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,</span>
+<span id="cb76-2"><a href="editing-eml.html#cb76-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
+<span id="cb76-3"><a href="editing-eml.html#cb76-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">68</span>,</span>
+<span id="cb76-4"><a href="editing-eml.html#cb76-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">154</span>,</span>
+<span id="cb76-5"><a href="editing-eml.html#cb76-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">67</span>,</span>
+<span id="cb76-6"><a href="editing-eml.html#cb76-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">155</span>))</span>
+<span id="cb76-7"><a href="editing-eml.html#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="editing-eml.html#cb76-8" aria-hidden="true" tabindex="-1"></a>geocov2 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 2&quot;</span>,</span>
+<span id="cb76-9"><a href="editing-eml.html#cb76-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
+<span id="cb76-10"><a href="editing-eml.html#cb76-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">65</span>,</span>
+<span id="cb76-11"><a href="editing-eml.html#cb76-11" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">151</span>,</span>
+<span id="cb76-12"><a href="editing-eml.html#cb76-12" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">62</span>,</span>
+<span id="cb76-13"><a href="editing-eml.html#cb76-13" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">153</span>))</span>
+<span id="cb76-14"><a href="editing-eml.html#cb76-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-15"><a href="editing-eml.html#cb76-15" aria-hidden="true" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb76-16"><a href="editing-eml.html#cb76-16" aria-hidden="true" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb76-17"><a href="editing-eml.html#cb76-17" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">list</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>))</span>
+<span id="cb76-18"><a href="editing-eml.html#cb76-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-19"><a href="editing-eml.html#cb76-19" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>geographicCoverage <span class="ot">&lt;-</span> <span class="fu">list</span>(geocov1, geocov2)</span></code></pre></div>
 </div>
-<div id="special-coverages" class="section level3">
+<div id="special-coverages" class="section level3" number="4.11.2">
 <h3><span class="header-section-number">4.11.2</span> Special coverages</h3>
-<div id="arctic-circle" class="section level4">
+<div id="arctic-circle" class="section level4" number="4.11.2.1">
 <h4><span class="header-section-number">4.11.2.1</span> Arctic Circle</h4>
 <p>For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage.</p>
 </div>
-<div id="geologic-dates" class="section level4">
+<div id="geologic-dates" class="section level4" number="4.11.2.2">
 <h4><span class="header-section-number">4.11.2.2</span> Geologic dates</h4>
 <p><a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q' target='_blank'>Example dataset</a> with geologic coverages set using the following:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">geo_time_start &lt;-<span class="st"> </span>EML<span class="op">::</span>eml<span class="op">$</span><span class="kw">alternativeTimeScale</span>(<span class="dt">timeScaleName =</span> <span class="st">&quot;Absolute&quot;</span>,</a>
-<a class="sourceLine" id="cb77-2" data-line-number="2">                                                <span class="dt">timeScaleAgeEstimate =</span> <span class="st">&quot;7.5 Myr&quot;</span>)</a>
-<a class="sourceLine" id="cb77-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb77-4" data-line-number="4">coverage &lt;-<span class="st"> </span>EML<span class="op">::</span><span class="kw">set_coverage</span>(<span class="dt">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </a>
-<a class="sourceLine" id="cb77-5" data-line-number="5">                              <span class="dt">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </a>
-<a class="sourceLine" id="cb77-6" data-line-number="6">doc<span class="op">$</span>dataset<span class="op">$</span>coverage &lt;-<span class="st"> </span>coverage</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="editing-eml.html#cb77-1" aria-hidden="true" tabindex="-1"></a>geo_time_start <span class="ot">&lt;-</span> EML<span class="sc">::</span>eml<span class="sc">$</span><span class="fu">alternativeTimeScale</span>(<span class="at">timeScaleName =</span> <span class="st">&quot;Absolute&quot;</span>,</span>
+<span id="cb77-2"><a href="editing-eml.html#cb77-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">timeScaleAgeEstimate =</span> <span class="st">&quot;7.5 Myr&quot;</span>)</span>
+<span id="cb77-3"><a href="editing-eml.html#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="editing-eml.html#cb77-4" aria-hidden="true" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb77-5"><a href="editing-eml.html#cb77-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb77-6"><a href="editing-eml.html#cb77-6" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="set-methods" class="section level2">
+<div id="set-methods" class="section level2" number="4.12">
 <h2><span class="header-section-number">4.12</span> Set methods</h2>
 <p>The methods tree in the EML section has many different options, visible in the <a href = 'https://eml.ecoinformatics.org/schema/index.html' target='_blank'>schema</a>. You can create new elements in the methods tree by following the schema and using the <code>eml</code> helpers.</p>
 <p>Another simple and potentially useful way to add methods to an EML that has no methods at all is by adding them via a MS Word document. An example is shown below:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">methods1 &lt;-<span class="st"> </span><span class="kw">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</a>
-<a class="sourceLine" id="cb78-2" data-line-number="2">doc<span class="op">$</span>dataset<span class="op">$</span>methods &lt;-<span class="st"> </span>methods1</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="editing-eml.html#cb78-1" aria-hidden="true" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</span>
+<span id="cb78-2"><a href="editing-eml.html#cb78-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 <p>If you want to make minor changes to existing methods information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing methods information.</p>
-<div id="adding-sampling-info-to-methods-section" class="section level3">
+<div id="adding-sampling-info-to-methods-section" class="section level3" number="4.12.1">
 <h3><span class="header-section-number">4.12.1</span> Adding sampling info to methods section</h3>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># add method steps as new variables</span></a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">step1 &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">methodStep</span>(<span class="dt">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</a>
-<a class="sourceLine" id="cb79-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb79-4" data-line-number="4">stEx &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">studyExtent</span>(<span class="dt">description =</span> <span class="st">&quot;study extent description&quot;</span>)</a>
-<a class="sourceLine" id="cb79-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb79-6" data-line-number="6">samp &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">sampling</span>(<span class="dt">studyExtent =</span> stEx,</a>
-<a class="sourceLine" id="cb79-7" data-line-number="7">                     <span class="dt">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</a>
-<a class="sourceLine" id="cb79-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb79-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb79-10" data-line-number="10"><span class="co"># combine all methods steps and sampling info </span></a>
-<a class="sourceLine" id="cb79-11" data-line-number="11">methods1 &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">methods</span>(<span class="dt">methodStep =</span> step1, </a>
-<a class="sourceLine" id="cb79-12" data-line-number="12">                        <span class="dt">sampling =</span> samp)</a>
-<a class="sourceLine" id="cb79-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb79-14" data-line-number="14">doc<span class="op">$</span>dataset<span class="op">$</span>methods &lt;-<span class="st"> </span>methods1</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="editing-eml.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add method steps as new variables</span></span>
+<span id="cb79-2"><a href="editing-eml.html#cb79-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methodStep</span>(<span class="at">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</span>
+<span id="cb79-3"><a href="editing-eml.html#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="editing-eml.html#cb79-4" aria-hidden="true" tabindex="-1"></a>stEx <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">studyExtent</span>(<span class="at">description =</span> <span class="st">&quot;study extent description&quot;</span>)</span>
+<span id="cb79-5"><a href="editing-eml.html#cb79-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="editing-eml.html#cb79-6" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">sampling</span>(<span class="at">studyExtent =</span> stEx,</span>
+<span id="cb79-7"><a href="editing-eml.html#cb79-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</span>
+<span id="cb79-8"><a href="editing-eml.html#cb79-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-9"><a href="editing-eml.html#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="editing-eml.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="co"># combine all methods steps and sampling info </span></span>
+<span id="cb79-11"><a href="editing-eml.html#cb79-11" aria-hidden="true" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methods</span>(<span class="at">methodStep =</span> step1, </span>
+<span id="cb79-12"><a href="editing-eml.html#cb79-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sampling =</span> samp)</span>
+<span id="cb79-13"><a href="editing-eml.html#cb79-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-14"><a href="editing-eml.html#cb79-14" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 </div>
 </div>
-<div id="set-parties" class="section level2">
+<div id="set-parties" class="section level2" number="4.13">
 <h2><span class="header-section-number">4.13</span> Set parties</h2>
 <p>To add people, with their addresses, you need to add addresses as their own object class, which you then add to the <code>contact</code>, <code>creator</code>, or <code>associatedParty</code> classes.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">NCEASadd &lt;-<span class="st"> </span>eml<span class="op">$</span><span class="kw">address</span>( </a>
-<a class="sourceLine" id="cb80-2" data-line-number="2">                <span class="dt">deliveryPoint =</span> <span class="st">&quot;735 State St #300&quot;</span>, </a>
-<a class="sourceLine" id="cb80-3" data-line-number="3">                <span class="dt">city =</span> <span class="st">&quot;Santa Barbara&quot;</span>, </a>
-<a class="sourceLine" id="cb80-4" data-line-number="4">                <span class="dt">administrativeArea =</span> <span class="st">&#39;CA&#39;</span>, </a>
-<a class="sourceLine" id="cb80-5" data-line-number="5">                <span class="dt">postalCode =</span> <span class="st">&#39;93101&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="editing-eml.html#cb80-1" aria-hidden="true" tabindex="-1"></a>NCEASadd <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">address</span>( </span>
+<span id="cb80-2"><a href="editing-eml.html#cb80-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">deliveryPoint =</span> <span class="st">&quot;735 State St #300&quot;</span>, </span>
+<span id="cb80-3"><a href="editing-eml.html#cb80-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">city =</span> <span class="st">&quot;Santa Barbara&quot;</span>, </span>
+<span id="cb80-4"><a href="editing-eml.html#cb80-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">administrativeArea =</span> <span class="st">&#39;CA&#39;</span>, </span>
+<span id="cb80-5"><a href="editing-eml.html#cb80-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">postalCode =</span> <span class="st">&#39;93101&#39;</span>)</span></code></pre></div>
 <p>The <code>creator</code>, <code>contact</code>, and <code>associatedParty</code> classes can easily be created using functions from the <code>arcticdatautils</code> package. Here, we use <code>eml_creator()</code> to set our data set <code>creator</code>.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">JC_creator &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">eml_creator</span>(<span class="dt">given_names =</span> <span class="st">&quot;Jeanette&quot;</span>, </a>
-<a class="sourceLine" id="cb81-2" data-line-number="2">                                           <span class="dt">sur_name =</span> <span class="st">&quot;Clark&quot;</span>, </a>
-<a class="sourceLine" id="cb81-3" data-line-number="3">                                           <span class="dt">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </a>
-<a class="sourceLine" id="cb81-4" data-line-number="4">                                           <span class="dt">email =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </a>
-<a class="sourceLine" id="cb81-5" data-line-number="5">                                           <span class="dt">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>, </a>
-<a class="sourceLine" id="cb81-6" data-line-number="6">                                           <span class="dt">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</a>
-<a class="sourceLine" id="cb81-7" data-line-number="7">                                           <span class="dt">address =</span> NCEASadd)</a>
-<a class="sourceLine" id="cb81-8" data-line-number="8">doc<span class="op">$</span>dataset<span class="op">$</span>creator &lt;-<span class="st"> </span>JC_creator</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="editing-eml.html#cb81-1" aria-hidden="true" tabindex="-1"></a>JC_creator <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_creator</span>(<span class="at">given_names =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
+<span id="cb81-2"><a href="editing-eml.html#cb81-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">sur_name =</span> <span class="st">&quot;Clark&quot;</span>, </span>
+<span id="cb81-3"><a href="editing-eml.html#cb81-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb81-4"><a href="editing-eml.html#cb81-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">email =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </span>
+<span id="cb81-5"><a href="editing-eml.html#cb81-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>, </span>
+<span id="cb81-6"><a href="editing-eml.html#cb81-6" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb81-7"><a href="editing-eml.html#cb81-7" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">address =</span> NCEASadd)</span>
+<span id="cb81-8"><a href="editing-eml.html#cb81-8" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator <span class="ot">&lt;-</span> JC_creator</span></code></pre></div>
 <p>Similarly, we can set a single <code>contact</code> or multiple. In this case, there are two, so we set <code>doc$dataset$contact</code> as a list containing both of them.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">JC_contact &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">eml_contact</span>(<span class="dt">given_names =</span> <span class="st">&quot;Jeanette&quot;</span>, </a>
-<a class="sourceLine" id="cb82-2" data-line-number="2">                                           <span class="dt">sur_name =</span> <span class="st">&quot;Clark&quot;</span>, </a>
-<a class="sourceLine" id="cb82-3" data-line-number="3">                                           <span class="dt">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </a>
-<a class="sourceLine" id="cb82-4" data-line-number="4">                                           <span class="dt">email =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </a>
-<a class="sourceLine" id="cb82-5" data-line-number="5">                                           <span class="dt">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </a>
-<a class="sourceLine" id="cb82-6" data-line-number="6">                                           <span class="dt">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</a>
-<a class="sourceLine" id="cb82-7" data-line-number="7">                                           <span class="dt">address =</span> NCEASadd)</a>
-<a class="sourceLine" id="cb82-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb82-9" data-line-number="9">JG_contact &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">eml_contact</span>(<span class="dt">given_names =</span> <span class="st">&quot;Jesse&quot;</span>, </a>
-<a class="sourceLine" id="cb82-10" data-line-number="10">                                           <span class="dt">sur_name =</span> <span class="st">&quot;Goldstein&quot;</span>, </a>
-<a class="sourceLine" id="cb82-11" data-line-number="11">                                           <span class="dt">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </a>
-<a class="sourceLine" id="cb82-12" data-line-number="12">                                           <span class="dt">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>, </a>
-<a class="sourceLine" id="cb82-13" data-line-number="13">                                           <span class="dt">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </a>
-<a class="sourceLine" id="cb82-14" data-line-number="14">                                           <span class="dt">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</a>
-<a class="sourceLine" id="cb82-15" data-line-number="15">                                           <span class="dt">address =</span> NCEASadd)</a>
-<a class="sourceLine" id="cb82-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb82-17" data-line-number="17">doc<span class="op">$</span>dataset<span class="op">$</span>contact &lt;-<span class="st"> </span><span class="kw">list</span>(JC_contact, JG_contact)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="editing-eml.html#cb82-1" aria-hidden="true" tabindex="-1"></a>JC_contact <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_contact</span>(<span class="at">given_names =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
+<span id="cb82-2"><a href="editing-eml.html#cb82-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">sur_name =</span> <span class="st">&quot;Clark&quot;</span>, </span>
+<span id="cb82-3"><a href="editing-eml.html#cb82-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb82-4"><a href="editing-eml.html#cb82-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">email =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </span>
+<span id="cb82-5"><a href="editing-eml.html#cb82-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb82-6"><a href="editing-eml.html#cb82-6" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb82-7"><a href="editing-eml.html#cb82-7" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">address =</span> NCEASadd)</span>
+<span id="cb82-8"><a href="editing-eml.html#cb82-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-9"><a href="editing-eml.html#cb82-9" aria-hidden="true" tabindex="-1"></a>JG_contact <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_contact</span>(<span class="at">given_names =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
+<span id="cb82-10"><a href="editing-eml.html#cb82-10" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">sur_name =</span> <span class="st">&quot;Goldstein&quot;</span>, </span>
+<span id="cb82-11"><a href="editing-eml.html#cb82-11" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb82-12"><a href="editing-eml.html#cb82-12" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>, </span>
+<span id="cb82-13"><a href="editing-eml.html#cb82-13" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb82-14"><a href="editing-eml.html#cb82-14" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb82-15"><a href="editing-eml.html#cb82-15" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">address =</span> NCEASadd)</span>
+<span id="cb82-16"><a href="editing-eml.html#cb82-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-17"><a href="editing-eml.html#cb82-17" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(JC_contact, JG_contact)</span></code></pre></div>
 <p>Finally, the <code>associatedParty</code>s are set. Note that <code>associatedParty</code>s MUST have a role defined, unlike <code>creator</code> or <code>contact</code>.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">JG_ap &lt;-<span class="st"> </span>arcticdatautils<span class="op">::</span><span class="kw">eml_associated_party</span>(<span class="dt">given_names =</span> <span class="st">&quot;Jesse&quot;</span>, </a>
-<a class="sourceLine" id="cb83-2" data-line-number="2">                                               <span class="dt">sur_name =</span> <span class="st">&quot;Goldstein&quot;</span>, </a>
-<a class="sourceLine" id="cb83-3" data-line-number="3">                                               <span class="dt">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </a>
-<a class="sourceLine" id="cb83-4" data-line-number="4">                                               <span class="dt">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>,</a>
-<a class="sourceLine" id="cb83-5" data-line-number="5">                                               <span class="dt">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </a>
-<a class="sourceLine" id="cb83-6" data-line-number="6">                                               <span class="dt">address =</span> NCEASadd, </a>
-<a class="sourceLine" id="cb83-7" data-line-number="7">                                               <span class="dt">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</a>
-<a class="sourceLine" id="cb83-8" data-line-number="8">                                               <span class="dt">role =</span> <span class="st">&quot;metadataProvider&quot;</span>)</a>
-<a class="sourceLine" id="cb83-9" data-line-number="9">doc<span class="op">$</span>dataset<span class="op">$</span>associatedParty &lt;-<span class="st"> </span>JG_ap</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="editing-eml.html#cb83-1" aria-hidden="true" tabindex="-1"></a>JG_ap <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_associated_party</span>(<span class="at">given_names =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
+<span id="cb83-2"><a href="editing-eml.html#cb83-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">sur_name =</span> <span class="st">&quot;Goldstein&quot;</span>, </span>
+<span id="cb83-3"><a href="editing-eml.html#cb83-3" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb83-4"><a href="editing-eml.html#cb83-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>,</span>
+<span id="cb83-5"><a href="editing-eml.html#cb83-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb83-6"><a href="editing-eml.html#cb83-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">address =</span> NCEASadd, </span>
+<span id="cb83-7"><a href="editing-eml.html#cb83-7" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb83-8"><a href="editing-eml.html#cb83-8" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">role =</span> <span class="st">&quot;metadataProvider&quot;</span>)</span>
+<span id="cb83-9"><a href="editing-eml.html#cb83-9" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>associatedParty <span class="ot">&lt;-</span> JG_ap</span></code></pre></div>
 </div>
-<div id="validate-eml-and-update-package" class="section level2">
+<div id="validate-eml-and-update-package" class="section level2" number="4.14">
 <h2><span class="header-section-number">4.14</span> Validate EML and update package</h2>
 <p>To make sure that your edited EML is valid against the EML schema, run <code>eml_validate()</code> on your EML. Fix any errors that you see.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">eml_validate</span>(doc)</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="editing-eml.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
 <p>You should see something like if everything passes:
 &gt;[1] TRUE
 &gt;attr(,“errors”)
 &gt;character(0)</p>
 <p>Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">eml_path &lt;-<span class="st"> &quot;path/to/save/eml.xml&quot;</span></a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="kw">write_eml</span>(doc, eml_path)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="editing-eml.html#cb85-1" aria-hidden="true" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
+<span id="cb85-2"><a href="editing-eml.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span></code></pre></div>
 <p>To update a package with the newly edited EML, use <code>arcticdatautils::publish_update()</code>. This function has an argument for adding data <code>PID</code>s (or otherwise including existing data <code>PID</code>s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in <a href="#update-a-data-package">the following chapter</a>).</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">update &lt;-<span class="st"> </span><span class="kw">publish_update</span>(adc_test, </a>
-<a class="sourceLine" id="cb86-2" data-line-number="2">                         <span class="dt">metadata_pid =</span> pkg<span class="op">$</span>metadata,</a>
-<a class="sourceLine" id="cb86-3" data-line-number="3">                         <span class="dt">resource_map_pid =</span> pkg<span class="op">$</span>resource_map,</a>
-<a class="sourceLine" id="cb86-4" data-line-number="4">                         <span class="dt">data_pids =</span> pkg<span class="op">$</span>data,</a>
-<a class="sourceLine" id="cb86-5" data-line-number="5">                         <span class="dt">metadata_path =</span> eml_path, </a>
-<a class="sourceLine" id="cb86-6" data-line-number="6">                         <span class="dt">public =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="editing-eml.html#cb86-1" aria-hidden="true" tabindex="-1"></a>update <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(adc_test, </span>
+<span id="cb86-2"><a href="editing-eml.html#cb86-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">metadata_pid =</span> pkg<span class="sc">$</span>metadata,</span>
+<span id="cb86-3"><a href="editing-eml.html#cb86-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">resource_map_pid =</span> pkg<span class="sc">$</span>resource_map,</span>
+<span id="cb86-4"><a href="editing-eml.html#cb86-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data_pids =</span> pkg<span class="sc">$</span>data,</span>
+<span id="cb86-5"><a href="editing-eml.html#cb86-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">metadata_path =</span> eml_path, </span>
+<span id="cb86-6"><a href="editing-eml.html#cb86-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">public =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Note that there are other arguments to <code>publish_update()</code> you may need.</p>
 <p>After your package is published, run the <code>qa_package()</code> function from the <code>datamgmt</code> package.</p>
 <p>The function arguments are as follows:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">qa_package &lt;-<span class="st"> </span><span class="cf">function</span>(node, pid, <span class="dt">readAllData =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb87-2" data-line-number="2">                       <span class="dt">check_attributes =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">                       <span class="dt">check_creators =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb87-4" data-line-number="4">                       <span class="dt">check_access =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="editing-eml.html#cb87-1" aria-hidden="true" tabindex="-1"></a>qa_package <span class="ot">&lt;-</span> <span class="cf">function</span>(node, pid, <span class="at">readAllData =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb87-2"><a href="editing-eml.html#cb87-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_attributes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb87-3"><a href="editing-eml.html#cb87-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_creators =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb87-4"><a href="editing-eml.html#cb87-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_access =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>By default, <code>qa_package()</code> checks for:</p>
 <ul>
 <li>Correctness of distribution URLs for each data object (URLs must match the EML physical section for the object)</li>
@@ -992,7 +1022,7 @@ eml_get_raster_metadata(path, coord_name, attributes)</code></pre>
 <li>Rights and access are set for creators in the system metadata</li>
 </ul>
 <p>In most cases, <code>qa_package()</code> will be run just by passing in a member node and the resource map PID.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">qa_package</span>(mn, resource_map_pid)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="editing-eml.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qa_package</span>(mn, resource_map_pid)</span></code></pre></div>
 <div class="note">
 <p>
 There is a bug in for <code>qa_package()</code> for datasets in test.arcticdata.io that should be ignored:
@@ -1002,7 +1032,7 @@ There is a bug in for <code>qa_package()</code> for datasets in test.arcticdata.
 Error in dl_and_read_all_data(mn, package, doc, read_all_data) : 
 All distribution URLs for data objects must match the data PIDs to continue.</code></pre>
 </div>
-<div id="exercise-3b" class="section level2 exercise">
+<div id="exercise-3b" class="section level2 exercise" number="4.15">
 <h2><span class="header-section-number">4.15</span> Exercise 3b</h2>
 <ul>
 <li>Make sure you have everything from <a href="editing-eml.html#exercise-3a">before</a> in R.</li>
