@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/NCEAS/datateam-training.svg?branch=master)](https://travis-ci.org/NCEAS/datateam-training)
-
+ [![R build status](https://github.com/NCEAS/datateam-training/workflows/R-CMD-check/badge.svg)](https://github.com/NCEAS/datateam-training/actions)
+ 
 # Introduction
 This repo stores reference materials for the NCEAS data team. All reference materials can be accessed at the following address.
 
