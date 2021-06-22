@@ -1,4 +1,4 @@
-## Create a resource map
+## Create a resource map using arcticdatautils
 
 If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).
 

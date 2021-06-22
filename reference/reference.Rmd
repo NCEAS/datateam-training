@@ -1,14 +1,3 @@
-# Datapack and Dataone workflow
-
-```{r, echo = FALSE}
-chapter <- "../workflows/datapack_dataone/"
-sections <- dir(path = chapter, pattern = ".Rmd$")
-children <- paste0(chapter, sections)
-```
-
-```{r, child = children}
-```
-
 # Miscellaneous
 
 ```{r, echo = FALSE}
@@ -46,17 +35,6 @@ children <- paste0(chapter, sections)
 
 ```{r, echo = FALSE}
 chapter <- "../workflows/edit_eml/"
-sections <- dir(path = chapter, pattern = ".Rmd$")
-children <- paste0(chapter, sections)
-```
-
-```{r, child = children}
-```
-
-# Nesting Data
-
-```{r, echo = FALSE}
-chapter <- "../workflows/nesting_data/"
 sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```
@@ -137,6 +115,30 @@ children <- paste0(chapter, sections)
 # Data Portals
 ```{r, echo = FALSE}
 chapter <- "../workflows/data_portals/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Using arcticdatautils
+
+Please use `datapack` and `dataone` for regular data processing. This information is kept for troubleshooting and legacy purposes.
+
+```{r, echo = FALSE}
+chapter <- "../workflows/data_packages_arcticdatautils/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
+# Nesting Data
+
+```{r, echo = FALSE}
+chapter <- "../workflows/nesting_data/"
 sections <- dir(path = chapter, pattern = ".Rmd$")
 children <- paste0(chapter, sections)
 ```

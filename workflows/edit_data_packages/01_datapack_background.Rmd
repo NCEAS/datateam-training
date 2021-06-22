@@ -1,5 +1,7 @@
-## Datapack Background
+## datapack Background
 *adapted from the dataone and datapack vingettes*
+
+`datapack` is written differently than most R packages you may have encountered in the past. This is because it uses the [S4](https://adv-r.hadley.nz/s4.html) system instead.
 
 ```{r , eval = F}
 library(dataone)
@@ -15,13 +17,13 @@ Data packages are a class that has slots for `relations` (provenance), `objects`
 
 #### Nodes
 Using this example on arcticdata.io
-```{r}
-d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC")
+```{r, eval = F}
+d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
 To use the member node information, use the `mn` slot
 ```{r, eval = F}
-d1c@mn
+d1c_test@mn
 ```
 
 ```{block, type = "note"}
@@ -29,7 +31,7 @@ To access the various slots using objects created by datapack and dataone (e.g. 
 ```
 
 Get an existing package from the Arctic Data Center
-```{r}
+```{r, eval=F}
 dp <- dataone::getDataPackage(d1c, "resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28")
 ```
 
@@ -41,23 +43,13 @@ dp@objects
 ```
 
 Get the number for data and metadata files associated with this data package:
-```{r}
+```{r, eval=F}
 length(dp@objects)
 ```
 
-Grab only the data pids
-```{r}
-names(dp@objects)
-```
-
-Get the file name:
-```{r}
-dp@objects$`urn:uuid:e6390181-85e9-46a2-b2ba-e352ece51cc6`@sysmeta@fileName
-```
-
 #### Provenance
-View the provenance as a dataTable. 
-```{r}
+View the provenance as a dataTable. We will get into detail in the Building provenance chapter.
+```{r, eval=F}
 dp@relations$relations
 ```
 
@@ -70,9 +62,10 @@ metadataId <- selectMember(dp, name="sysmeta@ADD THE NAME OF THE SLOT", value="P
 For example:
 ```{r, eval = F}
 selectMember(dp, name="sysmeta@formatId", value="image/tiff")
+selectMember(dp, name="sysmeta@fileName", value="filename.csv")
 ```
 
-### Exercise
-```
+### Exercise 2a {.exercise}
+
 Select a dataset from the catalog on arcticdata.io and checkout the number of files and provencance relationships in the dataset.
-```
+

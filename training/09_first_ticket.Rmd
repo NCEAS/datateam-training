@@ -27,13 +27,10 @@ After all the revisions send the link to the PI in an email through RT. Send the
 
 Once the dataset is approved by the PI and there are no further changes, publish the dataset with a doi.
 ```{r, eval=F}
-update <- publish_update(adc,
-                         metadata_pid = pkg$metadata,
-                         data_pids = pkg$data,
-                         resource_map_pid = pkg$resource_map,
-                         metadata_path = eml_path,
-                         public = T,
-                         use_doi = T)
+doi <- dataone::generateIdentifier(d1c_test@mn, "DOI")
+dp <- replaceMember(dp, metadataId, replacement=eml_path, newId=doi)
+
+newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
 ```
 
 ## Categorize datasets

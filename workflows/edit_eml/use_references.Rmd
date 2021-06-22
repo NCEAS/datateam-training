@@ -69,13 +69,6 @@ print(doc)
 The reference `id` needs to be unique within the EML record but doesn't need to have meaning outside of that.
 ```
 
-The above result can also be achieved by using `arcticdatautils::eml_set_reference()`. 
-
-```{r, eval = FALSE}
-doc$dataset$contact[[1]] <- eml_set_reference(element_to_reference = doc$dataset$creator[[1]],
-                                              element_to_replace = doc$dataset$contact[[1]])
-```
-
 ### Example with attributes
 
 To use references with attributes:
@@ -93,10 +86,4 @@ doc$dataset$dataTable[[1]]$attributeList$id <- "shared_attributes" # use any uni
 for (i in 2:length(doc$dataset$dataTable)) {
   doc$dataset$dataTable[[i]]$attributeList <- list(references = "shared_attributes") # use the id you set above
 }
-```
-
-The above result can also be achieved by using `arcticdatautils::eml_set_shared_attributes()`. This function will replicate an `attributeList` to all of the `dataTable` or `otherEntity` elements in an EML document. For more specific information consult the documentation. 
-
-```{r, eval = FALSE}
-doc <- eml_set_shared_attributes(doc, attributeList = attribute_list, type = 'dataTable')
 ```
