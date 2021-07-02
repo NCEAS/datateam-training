@@ -4,11 +4,11 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 ## Data Portal
 
-There the portal is on DataONE here: https://search.dataone.org/portals/mosaic/Data
+The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) shows up in the portal after you add the annotations.
 
 ### Custom Ontology
 
-There is a custom ontology for the datasets (the ontology will be available publicly shortly). 
+There is a custom ontology for the datasets (the ontology will be available publicly shortly - for now ask on #datateam for access to the annotations you need). 
 
 #### Dataset Level Annotations
 
@@ -43,7 +43,7 @@ There are 5 legs in the MOSAiC expedition. They all follow the pattern `PS122/#`
 ```{r}
 leg1 <- list(propertyURI = list(label = "isPartOfCampaign", 
                           propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/2", 
+       valueURI = list(label = "PS122/1", 
                        valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
 
 leg2 <- list(propertyURI = list(label = "isPartOfCampaign", 
