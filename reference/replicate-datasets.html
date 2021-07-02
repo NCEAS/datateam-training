@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Datalogger files | NCEAS Data Team Reference Guide</title>
+  <title>Replicate Datasets | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22.9 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Datalogger files | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Replicate Datasets | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,22 +16,22 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Datalogger files | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Replicate Datasets | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
 
 
 
-<meta name="date" content="2021-06-22" />
+<meta name="date" content="2021-07-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="convert-excel-file-to-csv.html"/>
-<link rel="next" href="netcdfs.html"/>
+<link rel="prev" href="navigate-rt.html"/>
+<link rel="next" href="miscellaneous-file-types.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -296,6 +296,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
+<ul>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html#sftp"><i class="fa fa-check"></i>sFTP</a></li>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html#globus-endpoint"><i class="fa fa-check"></i>Globus Endpoint</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html"><i class="fa fa-check"></i>Navigate RT</a>
 <ul>
 <li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#front-page"><i class="fa fa-check"></i>Front page</a></li>
@@ -303,77 +308,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#example-ticket"><i class="fa fa-check"></i>Example ticket</a></li>
 <li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#new-data-submission"><i class="fa fa-check"></i>New data submission</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="miscellaneous-file-types.html"><a href="miscellaneous-file-types.html"><i class="fa fa-check"></i>Miscellaneous file types</a>
+<li class="chapter" data-level="" data-path="replicate-datasets.html"><a href="replicate-datasets.html"><i class="fa fa-check"></i>Replicate Datasets</a>
 <ul>
-<li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
-<li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
-<li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
-<ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="replicate-datasets.html"><a href="replicate-datasets.html#cloning-the-packages"><i class="fa fa-check"></i>Cloning the packages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
-<li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
-<ul>
-<li class="chapter" data-level="" data-path="clean-column-names.html"><a href="clean-column-names.html"><i class="fa fa-check"></i>Clean column names</a></li>
-<li class="chapter" data-level="" data-path="fix-excel-dates.html"><a href="fix-excel-dates.html"><i class="fa fa-check"></i>Fix Excel dates</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="solr-queries.html"><a href="solr-queries.html"><i class="fa fa-check"></i>Solr queries</a>
-<ul>
-<li class="chapter" data-level="" data-path="construct-a-query.html"><a href="construct-a-query.html"><i class="fa fa-check"></i>Construct a query</a></li>
-<li class="chapter" data-level="" data-path="query-solr-via-a-browser.html"><a href="query-solr-via-a-browser.html"><i class="fa fa-check"></i>Query Solr via a browser</a></li>
-<li class="chapter" data-level="" data-path="query-solr-via-r.html"><a href="query-solr-via-r.html"><i class="fa fa-check"></i>Query Solr via R</a></li>
-<li class="chapter" data-level="" data-path="use-facets.html"><a href="use-facets.html"><i class="fa fa-check"></i>Use facets</a></li>
-<li class="chapter" data-level="" data-path="use-stats.html"><a href="use-stats.html"><i class="fa fa-check"></i>Use stats</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html"><i class="fa fa-check"></i>Example Solr queries</a>
-<ul>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#find-everything"><i class="fa fa-check"></i>Find everything</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-wildcard-expression"><i class="fa fa-check"></i>Query a wildcard expression</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-fields"><i class="fa fa-check"></i>Query multiple fields</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-by-formattype"><i class="fa fa-check"></i>Query by formatType</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-by-a-specific-submitter"><i class="fa fa-check"></i>Query pids by a specific submitter</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-with-special-characters"><i class="fa fa-check"></i>Query pids with special characters</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-conditions-within-one-field"><i class="fa fa-check"></i>Query multiple conditions within one field</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-latest-versions-only"><i class="fa fa-check"></i>Query for latest versions only</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-not-in-a-query"><i class="fa fa-check"></i>Use NOT in a query</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-coordinating-node"><i class="fa fa-check"></i>Query a coordinating node</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid"><i class="fa fa-check"></i>Query for EMLs that document a specific data pid</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time"><i class="fa fa-check"></i>Query for files uploaded during a specific time</a></li>
-<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-facets-1"><i class="fa fa-check"></i>Use facets</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="more-resources.html"><a href="more-resources.html"><i class="fa fa-check"></i>More resources</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="adc-web-submissions.html"><a href="adc-web-submissions.html"><i class="fa fa-check"></i>ADC web submissions</a>
-<ul>
-<li class="chapter" data-level="" data-path="add-physicals-to-submissions.html"><a href="add-physicals-to-submissions.html"><i class="fa fa-check"></i>Add physicals to submissions</a></li>
-<li class="chapter" data-level="" data-path="assess-attributes.html"><a href="assess-attributes.html"><i class="fa fa-check"></i>Assess attributes</a></li>
-<li class="chapter" data-level="" data-path="list-submissions-to-the-arctic-data-center.html"><a href="list-submissions-to-the-arctic-data-center.html"><i class="fa fa-check"></i>List submissions to the Arctic Data Center</a></li>
-<li class="chapter" data-level="" data-path="recover-failed-submissions.html"><a href="recover-failed-submissions.html"><i class="fa fa-check"></i>Recover failed submissions</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
-<li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i>Using arcticdatautils</a>
-<ul>
-<li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
-<li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
-<li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="nesting-a-data-package.html"><a href="nesting-a-data-package.html"><i class="fa fa-check"></i>Nesting a data package</a></li>
-<li class="chapter" data-level="" data-path="add-children-to-an-existing-parent.html"><a href="add-children-to-an-existing-parent.html"><i class="fa fa-check"></i>Add children to an existing parent</a></li>
-<li class="chapter" data-level="" data-path="create-a-new-parent-package.html"><a href="create-a-new-parent-package.html"><i class="fa fa-check"></i>Create a new parent package</a></li>
-<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous-file-types.html"><a href="miscellaneous-file-types.html"><i class="fa fa-check"></i>Miscellaneous file types</a></li>
+<li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a></li>
+<li class="chapter" data-level="" data-path="solr-queries.html"><a href="solr-queries.html"><i class="fa fa-check"></i>Solr queries</a></li>
+<li class="chapter" data-level="" data-path="adc-web-submissions.html"><a href="adc-web-submissions.html"><i class="fa fa-check"></i>ADC web submissions</a></li>
+<li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a></li>
+<li class="chapter" data-level="" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i>Using arcticdatautils</a></li>
+<li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a></li>
 <li class="divider"></li>
 <li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>
 </ul>
@@ -393,18 +339,72 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="datalogger-files" class="section level2">
-<h2>Datalogger files</h2>
-<p>.hobo files are raw data files offloaded from a sensor, and can include real-time graphs of measured variables, such as temperature and soil moisture conditions.</p>
-<p>.hobo files can be opened using HOBOware, which can be downloaded from <a href = 'http://www.onsetcomp.com/hoboware-free-download' target='_blank'>here</a>.</p>
+<div id="replicate-datasets" class="section level2">
+<h2>Replicate Datasets</h2>
+<p>Sometimes we get requests to have their datasets replicated to ADC. Usually it is a <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.20129.1">dataset on EDI</a> where you can ge the <code>Digital Object Identifier:</code> which serves as the resource map on <a href="https://search.dataone.org/view/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fmetadata%2Feml%2Fknb-lter-arc%2F20129%2F1">DataOne</a></p>
+<div class="note">
+<p>
+If a link isn’t given, you can use the package ID (i.e. knb-lter-arc.20129.1) and add it to the end of this link: <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=" class="uri">https://portal.edirepository.org/nis/mapbrowse?packageid=</a>
+</p>
 </div>
+<p>If we are unsure about the identifer you can try querying for it on the <code>CN</code>:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="replicate-datasets.html#cb146-1" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb146-2"><a href="replicate-datasets.html#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="replicate-datasets.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co">#find the DOIs</span></span>
+<span id="cb146-4"><a href="replicate-datasets.html#cb146-4" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;(id:*10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>,<span class="st">&quot;* *:* NOT obsoletedBy:*)&quot;</span>),</span>
+<span id="cb146-5"><a href="replicate-datasets.html#cb146-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId, fileName, dateUploaded, authoritativeMN, replicaMN&quot;</span>,</span>
+<span id="cb146-6"><a href="replicate-datasets.html#cb146-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb146-7"><a href="replicate-datasets.html#cb146-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
+<span id="cb146-8"><a href="replicate-datasets.html#cb146-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
+<span id="cb146-9"><a href="replicate-datasets.html#cb146-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div id="cloning-the-packages" class="section level3">
+<h3>Cloning the packages</h3>
+<ol style="list-style-type: decimal">
+<li>Try cloning to the test node first to see how it will look. Set up your nodes</li>
+</ol>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="replicate-datasets.html#cb147-1" aria-hidden="true" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
+<span id="cb147-2"><a href="replicate-datasets.html#cb147-2" aria-hidden="true" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
+<div class="note">
+<p>
+For LTER datasets on EDI, there are two possibilities for the mn: <code>“<a href="urn:node:LTER" class="uri">urn:node:LTER</a>”</code> and <code>“<a href="urn:node:EDI" class="uri">urn:node:EDI</a>”</code>. Try the other one if one isn’t working
+</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Use <code>clone_package</code> to copy it over to the test node</li>
+</ol>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="replicate-datasets.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>, <span class="co">#example doi to replicate</span></span>
+<span id="cb148-2"><a href="replicate-datasets.html#cb148-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
+<span id="cb148-3"><a href="replicate-datasets.html#cb148-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
+<span id="cb148-4"><a href="replicate-datasets.html#cb148-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
+<span id="cb148-5"><a href="replicate-datasets.html#cb148-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
+<span id="cb148-6"><a href="replicate-datasets.html#cb148-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">new_pid =</span> T)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Once you have verified that it clones properly to the test node, do the same in production but with a couple of minor modifications:</li>
+</ol>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="replicate-datasets.html#cb149-1" aria-hidden="true" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
+<span id="cb149-2"><a href="replicate-datasets.html#cb149-2" aria-hidden="true" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb149-3"><a href="replicate-datasets.html#cb149-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-4"><a href="replicate-datasets.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/0af82d3c3d9d1710775cf9b1464ce70b&quot;</span>,</span>
+<span id="cb149-5"><a href="replicate-datasets.html#cb149-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
+<span id="cb149-6"><a href="replicate-datasets.html#cb149-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
+<span id="cb149-7"><a href="replicate-datasets.html#cb149-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
+<span id="cb149-8"><a href="replicate-datasets.html#cb149-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
+<span id="cb149-9"><a href="replicate-datasets.html#cb149-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">new_pid =</span> F) <span class="co">#uses the same pid</span></span></code></pre></div>
+<div class="note">
+<p>
+make sure the <code>new_pid</code> argument is set to <code>F</code> when you publish to production
+</p>
+</div>
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="convert-excel-file-to-csv.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="netcdfs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="navigate-rt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="miscellaneous-file-types.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -448,6 +448,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
