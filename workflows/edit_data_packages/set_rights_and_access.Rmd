@@ -23,7 +23,7 @@ Note, when setting metadata, the ORCiD must start with `http://`. ORCiDs in EML 
 Next, set the rights and access using the following command:
 
 ```{r, eval = FALSE}
-set_rights_and_access(adc_test, 
+set_rights_and_access(mn, 
                       pids = c(pkg$metadata, pkg$data, pkg$resource_map),
                       subject = subject,
                       permissions = c('read','write','changePermission'))
@@ -32,7 +32,7 @@ set_rights_and_access(adc_test,
 If you ever need to remove/add public access to your package or object, you can use `remove_public_read()` or `set_public_read()`, respectively.
 
 ```{r, eval = FALSE}
-remove_public_read(adc_test, c(pkg$metadata, pkg$data, pkg$resource_map))
+remove_public_read(mn, c(pkg$metadata, pkg$data, pkg$resource_map))
 ```
 
 ### My profile
