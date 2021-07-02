@@ -1,20 +1,32 @@
 ## Update a data object
 
-To update a data file, you need to do three things:
+To update a data file associated with a data package, you need to do three things:
 
 1)  update the object itself, 
-2)  update the metadata that describes that object, and
-3)  update the resource map (which affiliates the object with the metadata).
+2)  update the resource map (which affiliates the object with the metadata), and
+3)  update the metadata that describes that object
 
-The `arcticdatautils::update_object()` function takes care of the first of these tasks. As arguments, update object takes the member node instance you are working in, the `pid` of the object to be updated, the path to the new version of that object on your computer, and the format id of the object.
+The `datapack::replaceMember` function takes care of the first two of these tasks. First you need to get the pid of the file you want to replace by using `datapack::selectMember`
+```{r, eval = F}
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
+```
 
-The code will look like this (very similar to the `publish_object()` function call):
+Then use `replaceMember`:
+```{r, eval = F}
+dp <- replaceMember(dp, metadataId, replacement=file_path)
+```
+
+If the object was previously uploaded, we can use `getDataObject` to retrieve it:
+```{r, eval=F}
+dataObj <- getDataObject(d1c_test, id="urn:uuid: here", lazyLoad=T, limit="1TB")
+dp <- addMember(dp, dataObj, mo=metadataId)
+```
+
+If you want to remove some files from the data package we can use `datapack::removeMember`. In this example, we want to remove all the zip files associated with this data package, we can use `datapack::removeMember`:
 
 ```{r, eval = F}
-id_new <- update_object(adc_test, 
-                        pid = "the data pid you need to update",
-                        path = "path/to/new/file.csv",
-                        format_id = "text/csv")
+zipId <- selectMember(dp, name="sysmeta@formatId", value="application/vnd.shp+zip")
+removeMember(dp, zipId, removeRelationships = T)
 ```
 
 

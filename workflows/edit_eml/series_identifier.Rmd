@@ -32,7 +32,7 @@ update_resource_map(mn, parent_package$resource_map, parent_package$metadata, pa
 ### Updating the metadata of a package with a SID 
 When updating the metadata (xml) of a package with a series identifier use `publish_update`.  It's important that you pass the metadata pid to the `metadata_pid` argument rather than `seriesId`.  The metadata pid will usually have the text "version: " ahead of it, however it's best to use `get_package` first to avoid mistakes. 
 ```{r, eval=F}
-pkg <- get_package(adc, 'resource_map_pid')
-pkg <- publish_update(adc, pkg$metadata, pkg$resource_map, pkg$data, 
+pkg <- get_package(mn, 'resource_map_pid')
+pkg <- publish_update(mn, pkg$metadata, pkg$resource_map, pkg$data, 
                       child_pids = pkg$child_pids) # + any additional arguments to "publish_update"
 ```
