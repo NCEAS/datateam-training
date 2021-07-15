@@ -41,29 +41,10 @@ doc$dataset$annotation <- list(
 
 There are 5 legs in the MOSAiC expedition. They all follow the pattern `PS122/#`. Replace the following for the corresponding leg.
 ```{r}
-leg1 <- list(propertyURI = list(label = "isPartOfCampaign", 
-                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/1", 
-                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
-
-leg2 <- list(propertyURI = list(label = "isPartOfCampaign", 
-                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/2", 
-                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
-leg3 <- list(propertyURI = list(label = "isPartOfCampaign", 
-                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/2", 
-                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
-
-leg4 <- list(propertyURI = list(label = "isPartOfCampaign", 
-                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/2", #*** this changes depending on the leg
-                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
-
-leg5 <- list(propertyURI = list(label = "isPartOfCampaign", 
-                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
-       valueURI = list(label = "PS122/2", #*** this changes depending on the leg
-                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018"))
+list(propertyURI = list(label = "isPartOfCampaign", 
+                        propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
+     valueURI = list(label = "leg label here", 
+                     valueURI = "leg uri here"))
 ```
 
 #### Entity Level Annotations
@@ -99,6 +80,6 @@ n <- which(stringr::str_detect(eml_get_simple(doc$dataset$dataTable$attributeLis
 ```{r, eval = F}
 for(i in n){
   doc$dataset$dataTable$attributeList$attribute[[i]]$annotation <- append(list(doc$dataset$dataTable$attributeList$attribute[[i]]$annotation),
-         event_annotate)
+                                                                          event_annotate)
 }
 ```
