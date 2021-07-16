@@ -1,0 +1,85 @@
+## MOSAiC
+
+Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.
+
+## Data Portal
+
+The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) shows up in the portal after you add the annotations.
+
+### Custom Ontology
+
+There is a custom ontology for the datasets (the ontology will be available publicly shortly - for now ask on #datateam for access to the annotations you need). 
+
+#### Dataset Level Annotations
+
+Majority of the annotations will be the same across all of the datasets. Pay attention to what needs to be changed for the `hasBasis` and `isPartOfCampaign` valueURIs.
+
+More than one `Campaign` and `Basis` might be needed in rare cases.
+
+```{r, eval = F}
+doc$dataset$id <- "your id here"
+doc$dataset$annotation <- NULL #make sure it is empty here
+
+doc$dataset$annotation <- list(
+  #Basis
+  list(propertyURI = list(label = "hasBasis", 
+                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000034"), 
+       valueURI = list(label = "Polarstern", # this depends on your event ID, most of them should be Polarstern
+                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000030")),
+  #Project
+  list(propertyURI = list(label = "hasProjectLabel", 
+                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000025"), 
+       valueURI = list(label = "MOSAiC20192020", 
+                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000023")),
+  #Campaign 
+  list(propertyURI = list(label = "isPartOfCampaign", 
+                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
+       valueURI = list(label = "PS122/2", #*** this changes depending on the leg
+                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00000018")) #*** this changes depending on the leg
+)
+```
+
+There are 5 legs in the MOSAiC expedition. They all follow the pattern `PS122/#`. Replace the following for the corresponding leg.
+```{r}
+list(propertyURI = list(label = "isPartOfCampaign", 
+                        propertyURI = "http://purl.dataone.org/odo/MOSAiC_00000032"), 
+     valueURI = list(label = "leg label here", 
+                     valueURI = "leg uri here"))
+```
+
+#### Entity Level Annotations
+
+Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.
+
+```{r, eval = F}
+event_annotate <- list(
+  #Event Label
+  list(propertyURI = list(label = "wasGeneratedBy", 
+                          propertyURI = "http://www.w3.org/ns/prov#wasGeneratedBy"), 
+       valueURI = list(label = "PS122/2_14-270", 
+                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00004550")),
+  #Method/Device - Use the long name!
+  list(propertyURI = list(label = "deployedSystem", 
+                          propertyURI = "http://purl.dataone.org/odo/MOSAiC_00002201"), 
+       valueURI = list(label = "Ultra-Wideband Software-defined Microwave Radiometer (0.5-2GHZ)", 
+                       valueURI = "http://purl.dataone.org/odo/MOSAiC_00001163"))
+  
+)
+
+doc$dataset$dataTable$attributeList$attribute[[i]]$annotation <- event_annotate
+```
+
+If there are already annotations applied using ECSO, the MOSAiC annotations can be added as so:
+
+1. get the index of all of the attributes we want to add this annotation
+```{r, eval = F}
+n <- which(stringr::str_detect(eml_get_simple(doc$dataset$dataTable$attributeList, "attributeName"),"Brightness"))
+```
+
+2. loop through and add the annotation(s)
+```{r, eval = F}
+for(i in n){
+  doc$dataset$dataTable$attributeList$attribute[[i]]$annotation <- append(list(doc$dataset$dataTable$attributeList$attribute[[i]]$annotation),
+                                                                          event_annotate)
+}
+```
