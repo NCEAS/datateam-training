@@ -10,7 +10,6 @@ Imports:
   DT,
   EML (>= 2.0), 
   dataone,
-  git2r,
   janitor,
   listviewer,
   kableExtra,
