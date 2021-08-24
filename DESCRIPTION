@@ -21,7 +21,7 @@ Imports:
   xfun
 Remotes:
   rstudio/bookdown,
-  NCEAS/arcticdatautils,
+  NCEAS/arcticdatautils@*release,
   NCEAS/datamgmt
 License: Apache License (== 2.0)
 RoxygenNote: 6.1.1
