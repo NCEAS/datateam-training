@@ -7,7 +7,7 @@ Make sure you have the package you want to update, <a href = 'https://nceas.gith
 ### Publish update
 
 Now we can update your data package to include the new data object. Assuming you have updated your data package earlier something like the below: 
-```{r, eval = F}
+```{r, eval = FALSE}
 d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 packageId <- "the resource map"
 
