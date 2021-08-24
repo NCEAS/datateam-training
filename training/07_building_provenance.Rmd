@@ -127,7 +127,7 @@ For packages not on the ADC, or packages that are extremely complicated, it may 
 
 First, we set the environment, in a similar, but slightly different way than what you may be used to. Here the function `D1Client()` sets the DataONE client with the coordinating node instance as the first argument, and member node as the second argument.
 
-```{r, warning=F, message = F}
+```{r, eval = F, warning=F, message = F}
 library(dataone)
 library(datapack)
 d1c <- D1Client("STAGING2", "urn:node:mnTestKNB")

@@ -8,12 +8,19 @@ on:
     branches:
       - main
 
+
+
 name: renderbook
 
 jobs:
   bookdown:
     name: Render-Book
     runs-on: macOS-latest
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2

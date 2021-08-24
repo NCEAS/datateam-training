@@ -1,7 +1,3 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = F)
-```
-
 ## Replicate Datasets
 
 Sometimes we get requests to have their datasets replicated to ADC. Usually it is a [dataset on EDI](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.20129.1) where you can ge the `Digital Object Identifier:` which serves as the resource map on [DataOne](https://search.dataone.org/view/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fmetadata%2Feml%2Fknb-lter-arc%2F20129%2F1)
@@ -12,7 +8,7 @@ If a link isn't given, you can use the package ID (i.e. knb-lter-arc.20129.1) an
 
 If we are unsure about the identifer you can try querying for it on the `CN`:
 
-```{r}
+```{r eval = FALSE}
 cn <- CNode('PROD')
 
 #find the DOIs
@@ -28,7 +24,7 @@ result <- query(cn, list(q = paste0("(id:*10.6073/pasta/d4f567844673857239eec0cb
 ### Cloning the packages
 
 1. Try cloning to the test node first to see how it will look. Set up your nodes
-```{r}
+```{r eval = FALSE}
 from <- dataone::D1Client("PROD", "urn:node:LTER")
 to <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
@@ -39,7 +35,7 @@ For LTER datasets on EDI, there are two possibilities for the mn: `"urn:node:LTE
 
 
 2. Use `clone_package` to copy it over to the test node
-```{r}
+```{r eval = FALSE}
 clone_package("doi:10.6073/pasta/d4f567844673857239eec0cb61c6f543", #example doi to replicate
               from = from,
               to = to,
@@ -49,7 +45,7 @@ clone_package("doi:10.6073/pasta/d4f567844673857239eec0cb61c6f543", #example doi
 ```
 
 3. Once you have verified that it clones properly to the test node, do the same in production but with a couple of minor modifications:
-```{r}
+```{r eval = FALSE}
 from <- dataone::D1Client("PROD", "urn:node:LTER")
 to <- dataone::D1Client("PROD", "urn:node:ARCTIC")
 
