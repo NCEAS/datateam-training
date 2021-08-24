@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide</title>
+  <title>MOSAiC | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="MOSAiC | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="MOSAiC | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="using-arcticdatautils.html"/>
-<link rel="next" href="get-package-and-eml.html"/>
+<link rel="prev" href="distributed-biological-observatory-dbo-submissions.html"/>
+<link rel="next" href="data-portal.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -408,22 +408,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="create-a-resource-map-using-arcticdatautils" class="section level2">
-<h2>Create a resource map using arcticdatautils</h2>
-<p>If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).</p>
-<p>Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you’ve only run <code>publish_object()</code> on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.</p>
-<p>Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the <code>arcticdatautils::create_resource_map()</code> function, like so:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
-<span id="cb211-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
-<span id="cb211-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
+<div id="mosaic" class="section level2">
+<h2>MOSAiC</h2>
+<p>Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="using-arcticdatautils.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="get-package-and-eml.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distributed-biological-observatory-dbo-submissions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-portal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

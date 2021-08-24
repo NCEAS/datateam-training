@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide</title>
+  <title>Data Portal | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Data Portal | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Data Portal | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="using-arcticdatautils.html"/>
-<link rel="next" href="get-package-and-eml.html"/>
+<link rel="prev" href="mosaic.html"/>
+<link rel="next" href="using-arcticdatautils.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -408,22 +408,97 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="create-a-resource-map-using-arcticdatautils" class="section level2">
-<h2>Create a resource map using arcticdatautils</h2>
-<p>If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).</p>
-<p>Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you’ve only run <code>publish_object()</code> on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.</p>
-<p>Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the <code>arcticdatautils::create_resource_map()</code> function, like so:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
-<span id="cb211-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
-<span id="cb211-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb211-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
+<div id="data-portal" class="section level2">
+<h2>Data Portal</h2>
+<p>The <a href="https://search.dataone.org/portals/mosaic/Data">portal</a> is on DataONE. Make sure the dataset(s) shows up in the portal after you add the annotations.</p>
+<div id="custom-ontology" class="section level3">
+<h3>Custom Ontology</h3>
+<p>There is a custom ontology for the datasets (the ontology will be available publicly shortly - for now ask on #datateam for access to the annotations you need).</p>
+<div id="dataset-level-annotations" class="section level4">
+<h4>Dataset Level Annotations</h4>
+<p>Majority of the annotations will be the same across all of the datasets. Pay attention to what needs to be changed for the <code>hasBasis</code> and <code>isPartOfCampaign</code> valueURIs.</p>
+<p>More than one <code>Campaign</code> and <code>Basis</code> might be needed in rare cases.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="data-portal.html#cb205-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
+<span id="cb205-2"><a href="data-portal.html#cb205-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty here</span></span>
+<span id="cb205-3"><a href="data-portal.html#cb205-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-4"><a href="data-portal.html#cb205-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb205-5"><a href="data-portal.html#cb205-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Basis</span></span>
+<span id="cb205-6"><a href="data-portal.html#cb205-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasBasis&quot;</span>, </span>
+<span id="cb205-7"><a href="data-portal.html#cb205-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">propertyURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000034&quot;</span>), </span>
+<span id="cb205-8"><a href="data-portal.html#cb205-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Polarstern&quot;</span>, <span class="co"># this depends on your event ID, most of them should be Polarstern</span></span>
+<span id="cb205-9"><a href="data-portal.html#cb205-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000030&quot;</span>)),</span>
+<span id="cb205-10"><a href="data-portal.html#cb205-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Project</span></span>
+<span id="cb205-11"><a href="data-portal.html#cb205-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasProjectLabel&quot;</span>, </span>
+<span id="cb205-12"><a href="data-portal.html#cb205-12" aria-hidden="true" tabindex="-1"></a>                          <span class="at">propertyURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000025&quot;</span>), </span>
+<span id="cb205-13"><a href="data-portal.html#cb205-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;MOSAiC20192020&quot;</span>, </span>
+<span id="cb205-14"><a href="data-portal.html#cb205-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000023&quot;</span>)),</span>
+<span id="cb205-15"><a href="data-portal.html#cb205-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Campaign </span></span>
+<span id="cb205-16"><a href="data-portal.html#cb205-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;isPartOfCampaign&quot;</span>, </span>
+<span id="cb205-17"><a href="data-portal.html#cb205-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">propertyURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000032&quot;</span>), </span>
+<span id="cb205-18"><a href="data-portal.html#cb205-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2&quot;</span>, <span class="co">#*** this changes depending on the leg</span></span>
+<span id="cb205-19"><a href="data-portal.html#cb205-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000018&quot;</span>)) <span class="co">#*** this changes depending on the leg</span></span>
+<span id="cb205-20"><a href="data-portal.html#cb205-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>There are 5 legs in the MOSAiC expedition. They all follow the pattern <code>PS122/#</code>. Replace the following for the corresponding leg.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-portal.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;isPartOfCampaign&quot;</span>, </span>
+<span id="cb206-2"><a href="data-portal.html#cb206-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">propertyURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00000032&quot;</span>), </span>
+<span id="cb206-3"><a href="data-portal.html#cb206-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;leg label here&quot;</span>, </span>
+<span id="cb206-4"><a href="data-portal.html#cb206-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">valueURI =</span> <span class="st">&quot;leg uri here&quot;</span>))</span></code></pre></div>
+<pre><code>## $propertyURI
+## $propertyURI$label
+## [1] &quot;isPartOfCampaign&quot;
+## 
+## $propertyURI$propertyURI
+## [1] &quot;http://purl.dataone.org/odo/MOSAiC_00000032&quot;
+## 
+## 
+## $valueURI
+## $valueURI$label
+## [1] &quot;leg label here&quot;
+## 
+## $valueURI$valueURI
+## [1] &quot;leg uri here&quot;</code></pre>
 </div>
+<div id="entity-level-annotations" class="section level4">
+<h4>Entity Level Annotations</h4>
+<p>Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-portal.html#cb208-1" aria-hidden="true" tabindex="-1"></a>event_annotate <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb208-2"><a href="data-portal.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Event Label</span></span>
+<span id="cb208-3"><a href="data-portal.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;wasGeneratedBy&quot;</span>, </span>
+<span id="cb208-4"><a href="data-portal.html#cb208-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">propertyURI =</span> <span class="st">&quot;http://www.w3.org/ns/prov#wasGeneratedBy&quot;</span>), </span>
+<span id="cb208-5"><a href="data-portal.html#cb208-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2_14-270&quot;</span>, </span>
+<span id="cb208-6"><a href="data-portal.html#cb208-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00004550&quot;</span>)),</span>
+<span id="cb208-7"><a href="data-portal.html#cb208-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Method/Device - Use the long name!</span></span>
+<span id="cb208-8"><a href="data-portal.html#cb208-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;deployedSystem&quot;</span>, </span>
+<span id="cb208-9"><a href="data-portal.html#cb208-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">propertyURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00002201&quot;</span>), </span>
+<span id="cb208-10"><a href="data-portal.html#cb208-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Ultra-Wideband Software-defined Microwave Radiometer (0.5-2GHZ)&quot;</span>, </span>
+<span id="cb208-11"><a href="data-portal.html#cb208-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/MOSAiC_00001163&quot;</span>))</span>
+<span id="cb208-12"><a href="data-portal.html#cb208-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb208-13"><a href="data-portal.html#cb208-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb208-14"><a href="data-portal.html#cb208-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-15"><a href="data-portal.html#cb208-15" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span> event_annotate</span></code></pre></div>
+<p>If there are already annotations applied using ECSO, the MOSAiC annotations can be added as so:</p>
+<ol style="list-style-type: decimal">
+<li>get the index of all of the attributes we want to add this annotation</li>
+</ol>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="data-portal.html#cb209-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>),<span class="st">&quot;Brightness&quot;</span>))</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>loop through and add the annotation(s)</li>
+</ol>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="data-portal.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> n){</span>
+<span id="cb210-2"><a href="data-portal.html#cb210-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">append</span>(<span class="fu">list</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation),</span>
+<span id="cb210-3"><a href="data-portal.html#cb210-3" aria-hidden="true" tabindex="-1"></a>                                                                          event_annotate)</span>
+<span id="cb210-4"><a href="data-portal.html#cb210-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="using-arcticdatautils.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="get-package-and-eml.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mosaic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-arcticdatautils.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

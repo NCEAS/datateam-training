@@ -282,6 +282,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
 <ul>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#special-datasets"><i class="fa fa-check"></i>Special Datasets</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#system-metadata"><i class="fa fa-check"></i>System Metadata</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#general-eml"><i class="fa fa-check"></i>General EML</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#title-1"><i class="fa fa-check"></i>Title</a></li>
@@ -369,6 +370,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a></li>
+<li class="chapter" data-level="" data-path="data-portal.html"><a href="data-portal.html"><i class="fa fa-check"></i>Data Portal</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-portal.html"><a href="data-portal.html#custom-ontology"><i class="fa fa-check"></i>Custom Ontology</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i>Using arcticdatautils</a>
 <ul>
@@ -406,16 +412,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Add children to an existing parent</h2>
 <p>A new package is published with a DOI and needs to be nested underneath a pre-existing parent.
 Nest the new child using the <code>child_pids</code> argument in <code>publish_update()</code>.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="add-children-to-an-existing-parent.html#cb211-1" aria-hidden="true" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
-<span id="cb211-2"><a href="add-children-to-an-existing-parent.html#cb211-2" aria-hidden="true" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
-<span id="cb211-3"><a href="add-children-to-an-existing-parent.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-4"><a href="add-children-to-an-existing-parent.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
-<span id="cb211-5"><a href="add-children-to-an-existing-parent.html#cb211-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
-<span id="cb211-6"><a href="add-children-to-an-existing-parent.html#cb211-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
-<span id="cb211-7"><a href="add-children-to-an-existing-parent.html#cb211-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
-<span id="cb211-8"><a href="add-children-to-an-existing-parent.html#cb211-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
-<span id="cb211-9"><a href="add-children-to-an-existing-parent.html#cb211-9" aria-hidden="true" tabindex="-1"></a>                              resource_map_child_new))</span>
-<span id="cb211-10"><a href="add-children-to-an-existing-parent.html#cb211-10" aria-hidden="true" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="add-children-to-an-existing-parent.html#cb217-1" aria-hidden="true" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
+<span id="cb217-2"><a href="add-children-to-an-existing-parent.html#cb217-2" aria-hidden="true" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
+<span id="cb217-3"><a href="add-children-to-an-existing-parent.html#cb217-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-4"><a href="add-children-to-an-existing-parent.html#cb217-4" aria-hidden="true" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
+<span id="cb217-5"><a href="add-children-to-an-existing-parent.html#cb217-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
+<span id="cb217-6"><a href="add-children-to-an-existing-parent.html#cb217-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
+<span id="cb217-7"><a href="add-children-to-an-existing-parent.html#cb217-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
+<span id="cb217-8"><a href="add-children-to-an-existing-parent.html#cb217-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
+<span id="cb217-9"><a href="add-children-to-an-existing-parent.html#cb217-9" aria-hidden="true" tabindex="-1"></a>                              resource_map_child_new))</span>
+<span id="cb217-10"><a href="add-children-to-an-existing-parent.html#cb217-10" aria-hidden="true" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
 <div class="warning">
 <p>
 Check through all arguments carefully before you publish to production! Do you need to update the metadata? Does the parent include data objects? Does the parent have a parent?
