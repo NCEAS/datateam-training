@@ -67,12 +67,19 @@ Please read our software submission guidelines for more detailed information: <a
 
 > If the problem persists please let us know what step the error occured or if there were error messages you have recieved.
 
-### non-NSF
-*Issue: Can I submit a non-NSF funded dataset?*
+### Scope
+*Q: Can I submit a non-NSF funded dataset?*
+
+Sample text 1:
 
 > The Arctic Data Center is open to all arctic-related data.  For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment.  Please let us know the size of your dataset in terms of total number and total size of all files.  We look forward to receiving your submission!
 
-*Q: May I submit a non-NSF-funded data package?*  
+Sample text 2:
 
-> A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
+> Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
 For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment. Also, please note that NSF-funded projects take priority when it comes to processing. Information on best practices for data and metadata organization is available here: <a href = 'https://arcticdata.io/submit/#organizing-your-data' target='_blank'>https://arcticdata.io/submit/#organizing-your-data</a>.
+
+*Q: Is ______ considered within the arctic*
+
+> We don't have a precise geographic cutoff. We definitely will preserve any dataset that is funded by the Arctic section of the National Science Foundation, which includes many sub-Arctic studies. So, as long as the dataset is related to Arctic research defined broadly, we would consider it. We will prioritize NSF-funded projects because that is our main mandate, but we will also preserve non-NSF data about the Arctic as time allows. If you send more details about the study, its subject, location, and funding, we could be more definitive about whether we could archive it.
+
