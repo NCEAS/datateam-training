@@ -1,6 +1,15 @@
 ## PI FAQ email templates
 
 ### Data
+*Q: I would like to / have already uploaded data to ____ repository*
+
+Generalist repository
+
+> If your data doesn't require features that only ____ provides, we would encourage you to consider publishing both the data and the metadata at the Arctic Data Center. Some benefits to submitting to us includes:
+- We provide a DOI that can be cited in your published papers
+- We track where datasets are being cited
+- By submitting both the data and metadata to us, you can fulfill your NSF reporting requirements at the same time. This will reduce the work needed on your part to get any additional metadata requirements for NSF.
+
 *Q: Can I replace data that have already been uploaded and keep the DOI?* 
 
 > A: Once you have published your data with the Arctic Data Center, it can still be updated by providing an additional version which can replace the original, while still preserving the original and making it available to anyone who might have cited it. To update your data, return to the data submission tool used to submit it, and provide an update.
