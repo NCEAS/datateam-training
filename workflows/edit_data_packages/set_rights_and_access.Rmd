@@ -6,7 +6,7 @@ To set the rights and access for all of the objects in a <a href = 'https://ncea
 
 ```{r, eval = FALSE}
 # Manually set ORCiD
- subject <- 'http://orcid.org/PUT0-YOUR-ORCD-HERE'
+ subject <- 'http://orcid.org/PUT-YOUR-ORCD-HERE'
 
 # Set ORCiD from EML creator
 # if only 1 creator exists

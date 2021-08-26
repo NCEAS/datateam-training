@@ -142,3 +142,16 @@ We noticed that methods were missing from the submission. Submissions should:
 > Your methods section appears to be missing some information. [ADJUST THIS DEPENDING ON WHAT IS MISSING - Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files.]
 
 > Comprehensive methods information should be included directly in the metadata record. Pointers or URLs to other sites are unstable.
+
+*A full example - New Submission: Abstract, methods, excel to csv, and attributes*
+
+> Thank you for your submission to the Arctic Data Center.  From my preliminary examination of your dataset a few fields need to be updated before we can assign a DOI. 
+ 
+> Your abstract appears to be missing some information. We suggest that the abstract be sufficiently descriptive for a general scientific audience. It should provide an overview of the scientific context/ project/ hypotheses, how this data package fits into the larger project, a synopsis of the experimental or sampling design, and a summary of the data contents. If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [INSERT URL]
+ 
+> Your methods section appears to be missing some information. Enough detail should be included so that a reasonable scientist can interpret the study and data for reuse without consulting you nor any other resources. This should hold true today, or even decades from now. Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files. Please edit the data package to provide a more robust methods section. Comprehensive methods information should be included directly in the metadata record. Pointers or URLs to other sites are unstable and insufficient.
+
+> Your submitted data files are in excel format. Please convert your files to a plain text/csv or another open (non-proprietary) format in order to facilitate an accurate transfer of information to users and to ensure preservation of the data in perpetuity.  We can keep your excel files in the dataset, however we recommend at least one version of each file be stored in an open format.
+ 
+> Please add attribute (column) metadata for your data files.  If any files share the same attributes you only need to enter them once and we will replicate them to the files.  You can add this by navigating to your dataset [INSERT URL], clicking the green “Edit” button, clicking the “Describe” button located to the right of each of your files at the top of the submission page, and in the window that pops up click over to the “Attributes” tab.
+
