@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Series Identifier (SID) | NCEAS Data Team Reference Guide</title>
+  <title>Cyberduck instructions | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Series Identifier (SID) | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Cyberduck instructions | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Series Identifier (SID) | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Cyberduck instructions | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="format-text-in-eml.html"/>
-<link rel="next" href="set-coverages.html"/>
+<link rel="prev" href="code-snippets.html"/>
+<link rel="next" href="file-paths.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -405,45 +405,27 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="series-identifier-sid" class="section level2">
-<h2>Series Identifier (SID)</h2>
-<p>A series identifier is a system metadata field that represents a single identifier across multiple versions of a data package, a feature often requested by submitters. These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future.</p>
-<div id="adding-a-sid-to-a-package" class="section level3">
-<h3>Adding a SID to a package</h3>
-<p>Adding a series identifier should be the last step. In most cases the SID will be in <code>DOI</code> format. Once the data package is complete (peer-reviewd and approved by the PI) the series identifier can be added by updating the <code>seriesId</code> field of the system metadata of the metadata object.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="series-identifier-sid.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The metadata identifier we&#39;re assigning an SID to</span></span>
-<span id="cb122-2"><a href="series-identifier-sid.html#cb122-2" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span> <span class="st">&#39;metadata_pid&#39;</span></span>
-<span id="cb122-3"><a href="series-identifier-sid.html#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-4"><a href="series-identifier-sid.html#cb122-4" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, metadata_pid)</span>
-<span id="cb122-5"><a href="series-identifier-sid.html#cb122-5" aria-hidden="true" tabindex="-1"></a>sys<span class="sc">@</span>seriesId <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="at">scheme =</span> <span class="st">&#39;DOI&#39;</span>) <span class="co">#update the scheme argument if it should not be a DOI</span></span>
-<span id="cb122-6"><a href="series-identifier-sid.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, metadata_pid, sys)</span></code></pre></div>
-</div>
-<div id="updating-the-child-packages-of-a-parent-package-with-a-sid" class="section level3">
-<h3>Updating the child packages of a parent package with a SID</h3>
-<p>When updating a parent package with a series identifier you need to use <code>update_resource_map</code> rather than <code>publish_update</code>. In this case our goal is add nested data packages to an existing parent package.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="series-identifier-sid.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call get_package on the parent package that has a `seriesId` in its system metadata </span></span>
-<span id="cb123-2"><a href="series-identifier-sid.html#cb123-2" aria-hidden="true" tabindex="-1"></a>parent_package <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb123-3"><a href="series-identifier-sid.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The resource map of the package we want to add to the &#39;child_pids&#39; of the parent</span></span>
-<span id="cb123-4"><a href="series-identifier-sid.html#cb123-4" aria-hidden="true" tabindex="-1"></a>resource_map_new_child <span class="ot">&lt;-</span> <span class="st">&#39;&#39;</span> </span>
-<span id="cb123-5"><a href="series-identifier-sid.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-6"><a href="series-identifier-sid.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">update_resource_map</span>(mn, parent_package<span class="sc">$</span>resource_map, parent_package<span class="sc">$</span>metadata, parent_package<span class="sc">$</span>data,</span>
-<span id="cb123-7"><a href="series-identifier-sid.html#cb123-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">c</span>(parent_package<span class="sc">$</span>child_packages, resource_map_new_child))</span></code></pre></div>
-</div>
-<div id="updating-the-metadata-of-a-package-with-a-sid" class="section level3">
-<h3>Updating the metadata of a package with a SID</h3>
-<p>When updating the metadata (xml) of a package with a series identifier use <code>publish_update</code>. It’s important that you pass the metadata pid to the <code>metadata_pid</code> argument rather than <code>seriesId</code>. The metadata pid will usually have the text “version:” ahead of it, however it’s best to use <code>get_package</code> first to avoid mistakes.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="series-identifier-sid.html#cb124-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb124-2"><a href="series-identifier-sid.html#cb124-2" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>resource_map, pkg<span class="sc">$</span>data, </span>
-<span id="cb124-3"><a href="series-identifier-sid.html#cb124-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">child_pids =</span> pkg<span class="sc">$</span>child_pids) <span class="co"># + any additional arguments to &quot;publish_update&quot;</span></span></code></pre></div>
-</div>
+<div id="cyberduck-instructions" class="section level2">
+<h2>Cyberduck instructions</h2>
+<p>To use Cyberduck to transfer local files onto the Datateam server:</p>
+<ol style="list-style-type: decimal">
+<li>Open Cyberduck.</li>
+<li>Check that you have the latest version (Cyberduck -&gt; Check for Update…). If not, download and install the latest (you may need Dom, Jesse, or Jeanette to enter a password).</li>
+<li>Click “Open Connection”.</li>
+<li>From the drop-down, choose “SFTP (Secure File Transfer Protocol)”.</li>
+<li>Enter “datateam.nceas.ucsb.edu” for Server.</li>
+<li>Enter your username and password.</li>
+<li>Connect.</li>
+</ol>
+<p>From here, you can drag and drop files to and from the server.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="format-text-in-eml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="set-coverages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="code-snippets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="file-paths.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
