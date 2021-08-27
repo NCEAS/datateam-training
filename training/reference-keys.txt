@@ -3,7 +3,6 @@ background-reading
 effective-data-management
 using-dataone
 working-on-a-remote-server
-cyberduck-instructions
 a-note-on-paths
 a-note-on-r
 a-note-on-effective-troubleshooting-in-r

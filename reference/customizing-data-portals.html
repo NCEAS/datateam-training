@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="data-portals.html"/>
-<link rel="next" href="advanced-portal-customizations.html"/>
+<link rel="next" href="distributed-biological-observatory-dbo-submissions.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -139,7 +139,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i>Miscellaneous</a>
 <ul>
 <li class="chapter" data-level="" data-path="code-snippets.html"><a href="code-snippets.html"><i class="fa fa-check"></i>Code Snippets</a></li>
-<li class="chapter" data-level="" data-path="cyberduck-instructions.html"><a href="cyberduck-instructions.html"><i class="fa fa-check"></i>Cyberduck instructions</a></li>
 <li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html"><i class="fa fa-check"></i>File paths</a>
 <ul>
 <li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#remote-files-vs.-local-files"><i class="fa fa-check"></i>Remote files vs. local files</a></li>
@@ -372,13 +371,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#my-portals"><i class="fa fa-check"></i>My portals</a></li>
 <li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#creating-data-filters"><i class="fa fa-check"></i>Creating Data Filters</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html"><i class="fa fa-check"></i>Advanced portal customizations</a>
-<ul>
-<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-filters"><i class="fa fa-check"></i>Custom Filters</a></li>
-<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-colour-schemes"><i class="fa fa-check"></i>Custom Colour schemes</a></li>
-<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#people-page"><i class="fa fa-check"></i>People page</a></li>
-<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#advanced-portal-customizations"><i class="fa fa-check"></i>Advanced portal customizations</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a>
@@ -442,6 +436,86 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>### Set Access Permissions
 For some portals such as PerCS portal, will need to be added by running <code>set_access()</code>. Please see the specific portal for the exact arguments to pass.</p>
 </div>
+<div id="advanced-portal-customizations" class="section level3">
+<h3>Advanced portal customizations</h3>
+<p>These requires the manual update of the portal document for features that are not available on the website yet. Please ask Jeanette for more assistance. For an example of a portal with all the features, see the <a href="https://search.dataone.org/portals/SASAP/Data">SASAP Portal</a>.</p>
+<div id="custom-filters" class="section level4">
+<h4>Custom Filters</h4>
+<ul>
+<li>Most os the time copy and pasting desired from the SASAP portal is a good place to start</li>
+<li><strong>Tips</strong> - try to collapse the specific section and copy that to make sure you copy everything is needed</li>
+</ul>
+<p><strong>Filter Groups</strong></p>
+<p>Grouping multiple filters under one tab</p>
+<ul>
+<li><a href="https://fontawesome.com/v3.2/cheatsheet/">Possible fontawesome icons</a></li>
+</ul>
+<pre><code>&lt;filterGroup&gt;
+  &lt;label&gt;MOSAiC Terms&lt;/label&gt;
+  &lt;description&gt;Terms in the MOSAiC ontology&lt;/description&gt;
+  &lt;icon&gt;book&lt;/icon&gt;
+  &lt;choiceFilter&gt;...&lt;/choiceFilter&gt;
+&lt;/filterGroup&gt;</code></pre>
+<p><strong>Individual Filters</strong></p>
+<pre><code>&lt;choiceFilter&gt;
+  &lt;label&gt;Campaign&lt;/label&gt;
+  &lt;!-- ====== equivalent to the fields available in the solr query ====== --&gt;
+  &lt;field&gt;text&lt;/field&gt; 
+  &lt;operator&gt;OR&lt;/operator&gt;
+  &lt;filterOptions&gt;
+      &lt;placeholder&gt;Choose a campaign&lt;/placeholder&gt;&lt;icon&gt;sitemap&lt;/icon&gt;
+      &lt;description&gt;The campaign number&lt;/description&gt;
+  &lt;/filterOptions&gt;
+  &lt;!-- ====== change these for different options ====== --&gt;
+      &lt;choice&gt;&lt;label&gt;AF-MOSAiC-1&lt;/label&gt;&lt;value&gt;https://purl.dataone.org/odo/MOSAIC_00000020&lt;/value&gt;&lt;/choice&gt; 
+      &lt;choice&gt;&lt;label&gt;AT-MOSAiC-1&lt;/label&gt;&lt;value&gt;https://purl.dataone.org/odo/MOSAIC_00011201&lt;/value&gt;&lt;/choice&gt;
+      &lt;chooseMultiple&gt;true&lt;/chooseMultiple&gt;
+&lt;/choiceFilter&gt;</code></pre>
+</div>
+<div id="custom-colour-schemes" class="section level4">
+<h4>Custom Colour schemes</h4>
+<p>Look for this section in the xml and replace the hex codes:</p>
+<pre><code> &lt;option&gt;
+        &lt;optionName&gt;primaryColor&lt;/optionName&gt;
+        &lt;optionValue&gt;#3774b9&lt;/optionValue&gt;
+    &lt;/option&gt;
+    &lt;option&gt;
+        &lt;optionName&gt;secondaryColor&lt;/optionName&gt;
+        &lt;optionValue&gt;#82cdf5&lt;/optionValue&gt;
+    &lt;/option&gt;
+    &lt;option&gt;
+        &lt;optionName&gt;accentColor&lt;/optionName&gt;
+        &lt;optionValue&gt;#EB5638&lt;/optionValue&gt;
+    &lt;/option&gt;</code></pre>
+</div>
+<div id="people-page" class="section level4">
+<h4>People page</h4>
+<ul>
+<li>also a formatted page - see the SASAP portal for details</li>
+</ul>
+</div>
+</div>
+<div id="updating-portals" class="section level3">
+<h3>Updating portals</h3>
+<p>For portals on DataOne - use the ucsb node. Portals made on the ADC use the same node as the datasets.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="customizing-data-portals.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
+<span id="cb207-2"><a href="customizing-data-portals.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
+<span id="cb207-3"><a href="customizing-data-portals.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-4"><a href="customizing-data-portals.html#cb207-4" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb207-5"><a href="customizing-data-portals.html#cb207-5" aria-hidden="true" tabindex="-1"></a>ucsb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:mnUCSB1&quot;</span>)</span></code></pre></div>
+<p>Look for portals using <code>query()</code>so you can get the appropriate seriesID</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="customizing-data-portals.html#cb208-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">query</span>(ucsb, <span class="fu">list</span>(<span class="at">q =</span><span class="st">&quot;formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb208-2"><a href="customizing-data-portals.html#cb208-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">rows =</span> <span class="st">&quot;300&quot;</span>,</span>
+<span id="cb208-3"><a href="customizing-data-portals.html#cb208-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fl =</span> <span class="st">&quot;identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId&quot;</span>,</span>
+<span id="cb208-4"><a href="customizing-data-portals.html#cb208-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>),</span>
+<span id="cb208-5"><a href="customizing-data-portals.html#cb208-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<p>Download the file and open to edit and add the filters and other options.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="customizing-data-portals.html#cb209-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> df[df<span class="sc">$</span>title <span class="sc">==</span> <span class="st">&quot;Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition&quot;</span>, <span class="dv">2</span>] <span class="co">#series ID</span></span>
+<span id="cb209-2"><a href="customizing-data-portals.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(ucsb, id), <span class="st">&quot;file_mosaic.xml&quot;</span>) <span class="co">#download</span></span></code></pre></div>
+<p>Make whatever edits you need and upload the file. The identifier should be updated if successful but if there is an issue with the xml document go back and fix the issue before re-uploading again.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="customizing-data-portals.html#cb210-1" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(ucsb,  id)</span>
+<span id="cb210-2"><a href="customizing-data-portals.html#cb210-2" aria-hidden="true" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">update_object</span>(ucsb, sys<span class="sc">@</span>identifier, <span class="at">path =</span> <span class="st">&quot;file_mosaic.xml&quot;</span>, <span class="at">format_id =</span> sys<span class="sc">@</span>formatId, <span class="at">sid =</span> sys<span class="sc">@</span>seriesId)</span></code></pre></div>
+</div>
 </div>
             </section>
 
@@ -449,7 +523,7 @@ For some portals such as PerCS portal, will need to be added by running <code>se
         </div>
       </div>
 <a href="data-portals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="advanced-portal-customizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distributed-biological-observatory-dbo-submissions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
