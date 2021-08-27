@@ -1,22 +1,113 @@
-## Data Portals
+## Customizing Data Portals
 
 > Create a custom, branded portal for your research topic or lab group that spans datasets in the Arctic Data Center – available for all users. Branded portals provide a convenient, readily customized way to communicate your science, your team, your data, and related data from within the Arctic Data Center. The portals feature makes highlighting and sharing related datasets easy for researchers.
 
 General information on data portals can be found on the main page:  <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a> 
+
+### My portals
+My portals allows members of the Arctic Data Center Team to view all the portals currently created. This can be found in `Settings` under the `My Portals` section.
+
+### Creating Data Filters
+Useful search terms to use:
  
- ## My portals
-  My portals allows members of the Arctic Data Center Team to view all the portals currently created. This can be found in `Settings` under the `My Portals` section.
-  
- ## Creating Data Filters
- Useful search terms to use:
  - NSF award number
  - Geographic Region
  - Keywords
  - Access permissions
  
- ### Custom Filters
- Please ask Jeanette for more assistance
- 
  ### Set Access Permissions
- For some portals such as PerCS portal, will need to be added by running `set_access()`. Please see the specific portal for the exact arguments to pass.
+For some portals such as PerCS portal, will need to be added by running `set_access()`. Please see the specific portal for the exact arguments to pass.
+
+## Advanced portal customizations
+
+These requires the manual update of the portal document for features that are not available on the website yet. Please ask Jeanette for more assistance. For an example of a portal with all the features, see the [SASAP Portal](https://search.dataone.org/portals/SASAP/Data).
+
+### Custom Filters
+- Most os the time copy and pasting desired from the SASAP portal is a good place to start
+- **Tips** - try to collapse the specific section and copy that to make sure you copy everything is needed
+
+**Filter Groups**
+
+Grouping multiple filters under one tab
+
+- [Possible fontawesome icons](https://fontawesome.com/v3.2/cheatsheet/)
+```
+<filterGroup>
+  <label>MOSAiC Terms</label>
+  <description>Terms in the MOSAiC ontology</description>
+  <icon>book</icon>
+  <choiceFilter>...</choiceFilter>
+</filterGroup>
+```
+
+**Individual Filters**
+```
+<choiceFilter>
+  <label>Campaign</label>
+  <!-- ====== equivalent to the fields available in the solr query ====== -->
+  <field>text</field> 
+  <operator>OR</operator>
+  <filterOptions>
+      <placeholder>Choose a campaign</placeholder><icon>sitemap</icon>
+      <description>The campaign number</description>
+  </filterOptions>
+  <!-- ====== change these for different options ====== -->
+      <choice><label>AF-MOSAiC-1</label><value>https://purl.dataone.org/odo/MOSAIC_00000020</value></choice> 
+      <choice><label>AT-MOSAiC-1</label><value>https://purl.dataone.org/odo/MOSAIC_00011201</value></choice>
+      <chooseMultiple>true</chooseMultiple>
+</choiceFilter>
+```
+
+### Custom Colour schemes
+Look for this section in the xml and replace the hex codes:
+```
+ <option>
+        <optionName>primaryColor</optionName>
+        <optionValue>#3774b9</optionValue>
+    </option>
+    <option>
+        <optionName>secondaryColor</optionName>
+        <optionValue>#82cdf5</optionValue>
+    </option>
+    <option>
+        <optionName>accentColor</optionName>
+        <optionValue>#EB5638</optionValue>
+    </option>
+```
+
+### People page
+- also a formatted page - see the SASAP portal for details
+
+### Updating portals
+For portals on DataOne - use the ucsb node. Portals made on the ADC use the same node as the datasets.
+```{r eval = F}
+library(dataone)
+library(EML)
+
+cn <- CNode("PROD")
+ucsb <- getMNode(cn, "urn:node:mnUCSB1")
+```
+
+Look for portals using `query()`so you can get the appropriate seriesID
+```{r eval = F}
+
+df <- query(ucsb, list(q ="formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)",
+                       rows = "300",
+                       fl = "identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId",
+                       sort = 'dateUploaded+desc'),
+            as = "data.frame")
+```
+
+Download the file and open to edit and add the filters and other options.
+```{r eval = F}
+id <- df[df$title == "Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition", 2] #series ID
+writeBin(getObject(ucsb, id), "file_mosaic.xml") #download
+```
+
+Make whatever edits you need and upload the file. The identifier should be updated if successful but if there is an issue with the xml document go back and fix the issue before re-uploading again.
+```{r eval = F}
+sys <- getSystemMetadata(ucsb,  id)
+arcticdatautils::update_object(ucsb, sys@identifier, path = "file_mosaic.xml", format_id = sys@formatId, sid = sys@seriesId)
+```
+
  
