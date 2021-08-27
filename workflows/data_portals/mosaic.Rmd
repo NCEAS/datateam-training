@@ -2,7 +2,7 @@
 
 Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.
 
-**When working MOSAiC datasets:**
+**When working on MOSAiC datasets:**
 
 - Will need to find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `EventId`).
 - There is a custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you shouldn't need to use it directly and copy paste from Protoge if the function works.
@@ -17,11 +17,11 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 The following shows how to add the annotations using `arcticdatautils` and manually in the case the functions fail to work:
 
-#### Dataset Level Annotations
+### Dataset Level Annotations
 
 There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`.
 
-**arcticdatauitls**
+**arcticdatautils**
 ```{r, eval = F}
 doc$dataset$id <- "your id here"
 doc$dataset$annotation <- NULL #make sure it is empty
@@ -64,7 +64,7 @@ doc$dataset$annotation <- list(
 )
 ```
 
-#### Entity Level Annotations
+### Entity Level Annotations
 
 Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.
 
@@ -119,3 +119,15 @@ for(i in n) {
     )
 }
 ```
+
+### Portal updates
+
+The filters are based on the MOSAiC ontology. The `Campaign` and `Basis` filters should remain relatively the same. However there are over 500 Method and Devices. So the decision was made to only show the ones we have annotated.
+
+We can query for all of them and output them formatted as a choice:
+
+```{r eval = F}
+mosaic_portal_filter("Method/Device")
+```
+
+Then update the portal document using the steps outlines in the [advanced data portal customizations](https://nceas.github.io/datateam-training/reference/data-portals-1.html)
