@@ -6,13 +6,13 @@ This is easier to accomplish using `arcticdatautils`
 
 1. Metadata
 
-```{r}
+```{r eval = F}
 doc$dataset$otherEntity <- doc$dataset$otherEntity[order(entity_names)]
 ```
 
 2. Data files
 
-```{r}
+```{r eval = F}
 pkg <- get_package(adc, rm, file_names = T)
 doc <- EML::read_eml(getObject(adc, pkg$metadata))
 reordered <- arcticdatautils::reorder_pids(pkg$data, doc)
