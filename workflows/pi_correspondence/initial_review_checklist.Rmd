@@ -2,20 +2,31 @@
 
 Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>initial email template</a> and insert comments and modify as needed.
 
-* Social Science Data
-    + Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)
-    + Check if there is any sensitive information or personal identifying information in the data (eg. Names)
-    + Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)
-* Check for citations
-    + If the dataset appears to be in a publication please (might be in the abstract)
-    + Make sure that those citations are registered at the ADC
-* Title
+#### Sensitive Data
+
+- [Dryad Human Subject data guidelines](https://datadryad.org/docs/HumanSubjectsData.pdf) can be a good place to start
+
+- Check if there is any sensitive information or personal identifying information in the data (eg. Names)
+- Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)
+    
+Common Cases:
+
+- **Social Science:** Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)
+- **Archaeology:** archaeological site location information, which is protected from public access by law
+- **Biology:** protected species coordinates
+
+#### Data citations
+- If the dataset appears to be in a publication please (might be in the abstract)
+- Make sure that those citations are registered
+
+#### Title
   + WHAT, WHERE, and WHEN:  
     - Is descriptive of the work (provides enough information to understand the contents at a general scientific level), AND includes temporal coverage
     - Provides a location of the work from the local to state or country level
     - Provides a time frame of the work
     - NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out
-* Abstract
+
+#### Abstract
   + Describes the DATA as well as:
     - The motivation (purpose) of the study
     - Where and when the research took place
@@ -24,9 +35,11 @@ Before responding to a new submission use this checklist to review the submissio
     - At least 100 words total
     - - tags such as  `<superscript>2</superscript>` and `<subscript>2</subscript>` can be used for nicer formatting
     - Any citations to papers can be registered with us
-* Keywords
+
+#### Keywords
   + Some keywords are included
-* Data
+
+#### Data
   + Data is normalized (if not suggest to convert the data if possible)
   + At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)
   + No xls/xlsx files (or other proprietary files)
@@ -34,23 +47,28 @@ Before responding to a new submission use this checklist to review the submissio
   + Each file is well NAMED and DESCRIBED and clearly differentiated from all others
   + All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. <a href = 'https://nceas.github.io/datateam-training/reference/assess-attributes.html' target='_blank'>Quality control all `dimensionless` units</a>.
   + Missing value codes are explained (WHY are the data absent?)
-  + If it is a `.rar` file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'>scan the file</a>
+  + If it is a `.rar` file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'> -> scan the file</a>
   + If there is the unit tons make sure to ask if it is metric tons or imperical tons if not clarified already
-* People & Parties
+
+#### People & Parties
   + At least one contact and one creator with a name, email address, and ORCID iD
-* Coverages
+
+#### Coverages
   + Includes coverages that make sense
     - Temporal coverage - Start date BEFORE end date
     - Geologic time scales <a href = 'https://nceas.github.io/datateam-training/reference/set-coverages.html' target='_blank'>are added</a> if mentioned in metadata (e.g. 8 Million Years or a name of a time period like Jurassic)
     - Spatial coverage matches geographic description (check hemispheres)
     - Geographic description is from the local to state or country level, at the least
     - Taxonomic coverage if appropriate
-* Project Information
+
+#### Project Information
   + At least one FUNDING number
   + Title, personnel, and abstract match information from the AWARD (not from the data package)
-* Methods
+
+#### Methods
   + This section is REQUIRED for ALL NSF-FUNDED data packages
   + Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resources
-* Portals
+
+#### Portals
   + If there are multiple submissions from the same people/project let them know about the portals feature
-  + If this is part of a portal make sure this dataset can be found there. Additional steps might be needed to get that to work. Please consult Jeanette or Jasmine for more information on how to do that.
+  + If this is part of a portal make sure this dataset can be found there. Additional steps might be needed to get that to work. Please consult Jeanette and see the [data portals](https://nceas.github.io/datateam-training/reference/data-portals-1.html) section.
