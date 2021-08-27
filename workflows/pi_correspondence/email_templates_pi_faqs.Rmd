@@ -21,6 +21,7 @@ Generalist repository
 > Possible Answer #1: The data package is still private because we are processing it or awaiting your approval to publish it. Please login with your ORCID iD to view private data packages.
 Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
 Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
+POssible Answer #4: The URL was garbled by their email server (eg. [URL Defense](https://support.uidaho.edu/TDClient/40/Portal/KB/ArticleDet?ID=1326) or the url was split into two lines). In this case provide an alternate method of navigating to their dataset via their profile page.
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
 
@@ -35,6 +36,12 @@ Possible Answer #3: The data package is still private and we accidentally failed
 > A: Yes. Navigate to the data package after being sure to login. Then click the green "Edit" button. The form will populate with the already existing metadata so there is no need to fill it out again. Click "Add Files" and browse to the file you wish to add.
 
 > Be aware that the DOI will change after you add this file (or make any changes to a data package) as, just like for a journal article, a DOI represents a unique and immutable version. The original URL and DOI will remain functional and valid, but clearly display a message at the top of that page stating that "A newer version of this dataset exists" with a link to the latest version. Only the newest version wil be discoverable via a search.
+
+*Q: I want to organize the order of the files/metadata entities*
+
+> A: We can reorganize entities within their entities. This is a limitation with our tools (EML). 
+
+> While re-ordering the groups of entities is possible manually, it isn't possible the way write_eml and publish_update is written. We do not recommended reordering entities this way.
 
 *Q: Can we submit data as an Excel file?*   
 
