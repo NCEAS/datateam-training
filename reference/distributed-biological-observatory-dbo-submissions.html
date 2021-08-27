@@ -23,14 +23,14 @@
 
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="data-portals-1.html"/>
+<link rel="prev" href="advanced-portal-customizations.html"/>
 <link rel="next" href="mosaic.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -368,7 +368,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html"><i class="fa fa-check"></i>Customizing Data Portals</a>
+<ul>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#my-portals"><i class="fa fa-check"></i>My portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#creating-data-filters"><i class="fa fa-check"></i>Creating Data Filters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html"><i class="fa fa-check"></i>Advanced portal customizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-filters"><i class="fa fa-check"></i>Custom Filters</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-colour-schemes"><i class="fa fa-check"></i>Custom Colour schemes</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#people-page"><i class="fa fa-check"></i>People page</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a></li>
 </ul></li>
@@ -427,13 +438,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>the geographic coverage should be one coverage per DBO transect sampled. The geographicDescription and bounding coordinates should be from the controlled vocabulary given in the code snippet below, which will create a data.frame with these values in your R environment</li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-1" aria-hidden="true" tabindex="-1"></a>geo_locs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>siteNew, <span class="sc">~</span>westBoundingCoordinate, <span class="sc">~</span>eastBoundingCoordinate, <span class="sc">~</span>northBoundingCoordinate,<span class="sc">~</span> southBoundingCoordinate,</span>
-<span id="cb204-2"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 1 - South of St. Lawrence Island, Bering Sea&quot;</span>, <span class="sc">-</span><span class="fl">176.147</span>,   <span class="sc">-</span><span class="fl">172.187</span>,   <span class="fl">63.769</span>, <span class="fl">61.847</span>,</span>
-<span id="cb204-3"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 2 - Chirikov Basin, Northern Bering Sea&quot;</span>,  <span class="sc">-</span><span class="fl">170.492</span>,   <span class="sc">-</span><span class="fl">167.86</span>,    <span class="fl">65.111</span>, <span class="fl">64.482</span>,</span>
-<span id="cb204-4"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 3 - Southern Chukchi Sea&quot;</span>, <span class="sc">-</span><span class="fl">171.419</span>,   <span class="sc">-</span><span class="fl">166.481</span>,   <span class="fl">68.609</span>, <span class="fl">66.752</span>,</span>
-<span id="cb204-5"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 4 - Northeast Chukchi Sea&quot;</span>,    <span class="sc">-</span><span class="fl">164.553</span>,   <span class="sc">-</span><span class="fl">160.507</span>,   <span class="fl">71.867</span>, <span class="fl">70.682</span>,</span>
-<span id="cb204-6"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 5 - Barrow Canyon, Chukchi Sea&quot;</span>,   <span class="sc">-</span><span class="fl">158.848</span>,   <span class="sc">-</span><span class="fl">155.931</span>,   <span class="fl">71.808</span>, <span class="fl">71.111</span>,</span>
-<span id="cb204-7"><a href="distributed-biological-observatory-dbo-submissions.html#cb204-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 6 - Beaufort Sea - 152 W&quot;</span>, <span class="sc">-</span><span class="fl">153.865</span>,   <span class="sc">-</span><span class="fl">150.976</span>,   <span class="fl">72.119</span>, <span class="fl">70.89</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-1" aria-hidden="true" tabindex="-1"></a>geo_locs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>siteNew, <span class="sc">~</span>westBoundingCoordinate, <span class="sc">~</span>eastBoundingCoordinate, <span class="sc">~</span>northBoundingCoordinate,<span class="sc">~</span> southBoundingCoordinate,</span>
+<span id="cb211-2"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 1 - South of St. Lawrence Island, Bering Sea&quot;</span>, <span class="sc">-</span><span class="fl">176.147</span>,   <span class="sc">-</span><span class="fl">172.187</span>,   <span class="fl">63.769</span>, <span class="fl">61.847</span>,</span>
+<span id="cb211-3"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 2 - Chirikov Basin, Northern Bering Sea&quot;</span>,  <span class="sc">-</span><span class="fl">170.492</span>,   <span class="sc">-</span><span class="fl">167.86</span>,    <span class="fl">65.111</span>, <span class="fl">64.482</span>,</span>
+<span id="cb211-4"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 3 - Southern Chukchi Sea&quot;</span>, <span class="sc">-</span><span class="fl">171.419</span>,   <span class="sc">-</span><span class="fl">166.481</span>,   <span class="fl">68.609</span>, <span class="fl">66.752</span>,</span>
+<span id="cb211-5"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 4 - Northeast Chukchi Sea&quot;</span>,    <span class="sc">-</span><span class="fl">164.553</span>,   <span class="sc">-</span><span class="fl">160.507</span>,   <span class="fl">71.867</span>, <span class="fl">70.682</span>,</span>
+<span id="cb211-6"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 5 - Barrow Canyon, Chukchi Sea&quot;</span>,   <span class="sc">-</span><span class="fl">158.848</span>,   <span class="sc">-</span><span class="fl">155.931</span>,   <span class="fl">71.808</span>, <span class="fl">71.111</span>,</span>
+<span id="cb211-7"><a href="distributed-biological-observatory-dbo-submissions.html#cb211-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;DBO 6 - Beaufort Sea - 152 W&quot;</span>, <span class="sc">-</span><span class="fl">153.865</span>,   <span class="sc">-</span><span class="fl">150.976</span>,   <span class="fl">72.119</span>, <span class="fl">70.89</span>)</span></code></pre></div>
 <ul>
 <li>one of the following key phrases referencing the data type should exist in the dataset. If the dataset doesn’t seem to fit in one of these categories, ask Jeanette or Dominic
 <ul>
@@ -455,7 +466,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="data-portals-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-portal-customizations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="mosaic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

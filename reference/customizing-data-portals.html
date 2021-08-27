@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Solr queries | NCEAS Data Team Reference Guide</title>
+  <title>Customizing Data Portals | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Solr queries | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Customizing Data Portals | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Solr queries | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Customizing Data Portals | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="fix-excel-dates.html"/>
-<link rel="next" href="construct-a-query.html"/>
+<link rel="prev" href="data-portals.html"/>
+<link rel="next" href="advanced-portal-customizations.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -415,29 +415,36 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="solr-queries" class="section level1">
-<h1>Solr queries</h1>
-<p>Solr is what’s known as an index, which helps us keep track of the data, metadata, and resource map objects stored in our metadata catalog, <a href = 'https://www.dataone.org/software-tools/metacat' target='_blank'>Metacat</a>.</p>
-<p>Solr allows you to quickly search through any coordinating or member node. Some more common use-cases include:</p>
+<div id="customizing-data-portals" class="section level2">
+<h2>Customizing Data Portals</h2>
+<blockquote>
+<p>Create a custom, branded portal for your research topic or lab group that spans datasets in the Arctic Data Center – available for all users. Branded portals provide a convenient, readily customized way to communicate your science, your team, your data, and related data from within the Arctic Data Center. The portals feature makes highlighting and sharing related datasets easy for researchers.</p>
+</blockquote>
+<p>General information on data portals can be found on the main page: <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a></p>
+<div id="my-portals" class="section level3">
+<h3>My portals</h3>
+<p>My portals allows members of the Arctic Data Center Team to view all the portals currently created. This can be found in <code>Settings</code> under the <code>My Portals</code> section.</p>
+</div>
+<div id="creating-data-filters" class="section level3">
+<h3>Creating Data Filters</h3>
+<p>Useful search terms to use:</p>
 <ul>
-<li><strong>Recovering lost PIDs</strong> - if you publish new data objects (<a href = 'https://nceas.github.io/datateam-training/reference/update-a-data-object.html' target='_blank'><code>publish_object</code></a>) but forget to save the <code>PID</code>s, you can recover them with a query. For example, you can search for all data objects that are <em>not</em> associated with a resource map <em>and</em> are published using your ORCiD (<code>q=-resourceMap:*+AND+submitter:*XXXX-YYYY-ZZZZ-WWWW</code>)</li>
-<li><strong>Working with groups of packages</strong> - if you want to find all data, metadata, and resource maps associated with a PI, you can use their last name (<code>q=origin:*SURNAME*</code>) or perhaps their ORCiD (<code>q=rightsHolder:*XXXX-YYYY-ZZZZ-WWWW</code>) or both (<code>q=origin:*SURNAME*+OR+rightsHolder:*XXXX-YYYY-ZZZZ-WWWW</code>) to retrieve information about packages associated with them</li>
+<li>NSF award number</li>
+<li>Geographic Region</li>
+<li>Keywords</li>
+<li>Access permissions</li>
 </ul>
-<p>Once you understand the logic of queries, it becomes a flexible and useful tool that you can integrate into your R workflow. You can use queries to answer a variety of interesting questions, for example:</p>
-<ul>
-<li>What are the most recently updated data sets?</li>
-<li>What metadata and data objects are in a given data package?</li>
-<li>What is the total size (in terms of disk space) of all objects stored in Metacat?</li>
-</ul>
-<p>Querying Solr is possible by <a href = 'https://nceas.github.io/datateam-training/reference/query-solr-via-a-browser.html' target='_blank'>adding a query onto the end of a base URL</a> or through the <a href = 'https://nceas.github.io/datateam-training/reference/query-solr-via-r.html' target='_blank'><code>dataone::query()</code> function in R</a>. For now, we’ll just cover the basics of Solr queries in R.</p>
+<p>### Set Access Permissions
+For some portals such as PerCS portal, will need to be added by running <code>set_access()</code>. Please see the specific portal for the exact arguments to pass.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="fix-excel-dates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="construct-a-query.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-portals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-portal-customizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

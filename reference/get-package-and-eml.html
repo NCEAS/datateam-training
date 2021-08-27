@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -368,7 +368,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-portals-1.html"><a href="data-portals-1.html"><i class="fa fa-check"></i>Data Portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html"><i class="fa fa-check"></i>Customizing Data Portals</a>
+<ul>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#my-portals"><i class="fa fa-check"></i>My portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#creating-data-filters"><i class="fa fa-check"></i>Creating Data Filters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html"><i class="fa fa-check"></i>Advanced portal customizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-filters"><i class="fa fa-check"></i>Custom Filters</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#custom-colour-schemes"><i class="fa fa-check"></i>Custom Colour schemes</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#people-page"><i class="fa fa-check"></i>People page</a></li>
+<li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a></li>
 </ul></li>
@@ -407,11 +418,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="get-package-and-eml" class="section level2">
 <h2>Get package and EML</h2>
 <p>Before we look more in depth at EML, we first need to load your data package into R. After <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>setting your node</a>, use the following commands to load the package:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="get-package-and-eml.html#cb212-1" aria-hidden="true" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
-<span id="cb212-2"><a href="get-package-and-eml.html#cb212-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-3"><a href="get-package-and-eml.html#cb212-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
-<span id="cb212-4"><a href="get-package-and-eml.html#cb212-4" aria-hidden="true" tabindex="-1"></a>                   rm_pid,</span>
-<span id="cb212-5"><a href="get-package-and-eml.html#cb212-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="get-package-and-eml.html#cb219-1" aria-hidden="true" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
+<span id="cb219-2"><a href="get-package-and-eml.html#cb219-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-3"><a href="get-package-and-eml.html#cb219-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
+<span id="cb219-4"><a href="get-package-and-eml.html#cb219-4" aria-hidden="true" tabindex="-1"></a>                   rm_pid,</span>
+<span id="cb219-5"><a href="get-package-and-eml.html#cb219-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="note">
 <p>
 <strong>Keeping track of PIDs</strong>
@@ -423,11 +434,11 @@ In all subsequent sections, if they ask for the <code>pid</code> of the metadata
 For example, if you assigned the value from <code>get_package()</code> as above as <code>pkg</code> then you can refer to the following by using the corresponding commands:
 </p>
 </div>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="get-package-and-eml.html#cb213-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
-<span id="cb213-2"><a href="get-package-and-eml.html#cb213-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
-<span id="cb213-3"><a href="get-package-and-eml.html#cb213-3" aria-hidden="true" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="get-package-and-eml.html#cb220-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
+<span id="cb220-2"><a href="get-package-and-eml.html#cb220-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
+<span id="cb220-3"><a href="get-package-and-eml.html#cb220-3" aria-hidden="true" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
 <p>After loading the package, you can also load the EML file into R using the following command:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="get-package-and-eml.html#cb214-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="get-package-and-eml.html#cb221-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
 <p>Note that we named the object <code>doc</code>. This is a good generic name to use for EML documents. The generic name <code>eml</code> should not be used - as the EML package ships with an <code>eml</code> function, which can cause namespace issues in your environment if you have an object also called <code>eml</code>.</p>
 <div class="note">
 <p>
