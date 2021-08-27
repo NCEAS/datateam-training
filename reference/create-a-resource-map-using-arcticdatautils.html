@@ -381,7 +381,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="advanced-portal-customizations.html"><a href="advanced-portal-customizations.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
-<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a>
+<ul>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#entity-level-annotations"><i class="fa fa-check"></i>Entity Level Annotations</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#portal-updates"><i class="fa fa-check"></i>Portal updates</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i>Using arcticdatautils</a>
 <ul>
@@ -420,9 +425,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).</p>
 <p>Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you’ve only run <code>publish_object()</code> on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.</p>
 <p>Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the <code>arcticdatautils::create_resource_map()</code> function, like so:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb218-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
-<span id="cb218-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb218-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
-<span id="cb218-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb218-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
+<span id="cb219-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
+<span id="cb219-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
 </div>
             </section>
 
