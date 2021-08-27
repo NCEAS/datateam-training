@@ -18,11 +18,11 @@ Useful search terms to use:
  ### Set Access Permissions
 For some portals such as PerCS portal, will need to be added by running `set_access()`. Please see the specific portal for the exact arguments to pass.
 
-## Advanced portal customizations
+### Advanced portal customizations
 
 These requires the manual update of the portal document for features that are not available on the website yet. Please ask Jeanette for more assistance. For an example of a portal with all the features, see the [SASAP Portal](https://search.dataone.org/portals/SASAP/Data).
 
-### Custom Filters
+#### Custom Filters
 - Most os the time copy and pasting desired from the SASAP portal is a good place to start
 - **Tips** - try to collapse the specific section and copy that to make sure you copy everything is needed
 
@@ -58,7 +58,7 @@ Grouping multiple filters under one tab
 </choiceFilter>
 ```
 
-### Custom Colour schemes
+#### Custom Colour schemes
 Look for this section in the xml and replace the hex codes:
 ```
  <option>
@@ -75,7 +75,7 @@ Look for this section in the xml and replace the hex codes:
     </option>
 ```
 
-### People page
+#### People page
 - also a formatted page - see the SASAP portal for details
 
 ### Updating portals
