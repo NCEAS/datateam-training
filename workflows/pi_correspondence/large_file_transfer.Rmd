@@ -10,6 +10,23 @@ As a team member for login info.
 
 > After you login, you can add a folder with your last name to add your files. If you need more detailed access instructions, I have included the link here for your convenience: https://help.nceas.ucsb.edu/NCEAS/help/remote_file_access
 
+**Option 1: SSH via the Terminal**
+https://pages.github.nceas.ucsb.edu/NCEAS/help/connecting_to_linux_using_ssh.html
+
+**Option 2: Cyberduck instructions**
+
+To use Cyberduck to transfer local files onto the Datateam server:
+
+1) Open Cyberduck.
+2) Check that you have the latest version (Cyberduck -> Check for Update...). If not, download and install the latest (you may need  Jeanette to enter a password).
+3) Click "Open Connection".
+4) From the drop-down, choose "SFTP (Secure File Transfer Protocol)".
+5) Enter "datateam.nceas.ucsb.edu" for Server.
+6) Enter your username and password.
+7) Connect.
+
+From here, you can drag and drop files to and from the server.
+
 ### Globus Endpoint
 
 1. arctic-data-center
