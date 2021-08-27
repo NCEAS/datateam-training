@@ -15,7 +15,12 @@ If the PI needs a DOI right away:
 
 #### Replacing data files
 > The data files can be replaced by going to the green Edit button > Click the black triangle by the Describe button for the data file > Select Replace (attached is also a screenshot on how to get there).
-![](~/datateam_training/images/replace_file.png)
+![](~/datateam-training/images/replace_file.png)
+
+#### No response from the researcher
+Please email them before resolving a ticket like this:
+
+> We are resolving this ticket for bookkeeping purposes, if you would like to follow up please feel free to respond to this email.
 
 #### Recovering Dataset submissions
 > To recover dataset submissions that were not successful please do the following:
