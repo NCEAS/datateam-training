@@ -316,6 +316,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.11" data-path="first-ticket.html"><a href="first-ticket.html#check-eml-version"><i class="fa fa-check"></i><b>9.4.11</b> Check EML Version</a></li>
 <li class="chapter" data-level="9.4.12" data-path="first-ticket.html"><a href="first-ticket.html#access"><i class="fa fa-check"></i><b>9.4.12</b> Access</a></li>
 <li class="chapter" data-level="9.4.13" data-path="first-ticket.html"><a href="first-ticket.html#sftp-files"><i class="fa fa-check"></i><b>9.4.13</b> SFTP Files</a></li>
+<li class="chapter" data-level="9.4.14" data-path="first-ticket.html"><a href="first-ticket.html#updated-datasets"><i class="fa fa-check"></i><b>9.4.14</b> Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="first-ticket.html"><a href="first-ticket.html#email-templates"><i class="fa fa-check"></i><b>9.5</b> Email templates</a>
 <ul>
@@ -687,6 +688,28 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <h3><span class="header-section-number">9.4.13</span> SFTP Files</h3>
 <ul>
 <li>if there are files transferred to us via SFTP, delete those files when the ticket is resolved</li>
+</ul>
+</div>
+<div id="updated-datasets" class="section level3" number="9.4.14">
+<h3><span class="header-section-number">9.4.14</span> Updated datasets</h3>
+<p>All the above applies. These are some areas to do a closer check when users update with a new file:</p>
+<ul>
+<li>New data was added
+<ul>
+<li>Temporal Coverage and Title</li>
+<li>and follow usual protocols</li>
+</ul></li>
+<li>Files were replaced
+<ul>
+<li>update physical and entityName</li>
+<li>double-check attributes are the same</li>
+<li>check for any new missing value codes that should be accounted for</li>
+</ul></li>
+<li>Was the dataset published before 2021?
+<ul>
+<li>update project info , annotations</li>
+</ul></li>
+<li>Glance over entire page for any small mistakes (ie. repeated additionalMetadata, any missed &amp;amps, typos)</li>
 </ul>
 <p>After all the revisions send the link to the PI in an email through RT. Send the draft of the email to Jasmine or Jeanette on Slack.</p>
 </div>
