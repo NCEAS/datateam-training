@@ -70,3 +70,19 @@ doc <- eml_add_entity_system(doc)
 
 ### SFTP Files
 - if there are files transferred to us via SFTP, delete those files when the ticket is resolved
+
+### Updated datasets
+All the above applies. These are some areas to do a closer check when users update with a new file:
+
+- New data was added
+  + Temporal Coverage and Title
+  + and follow usual protocols
+- Files were replaced
+  + update physical and entityName
+  + double-check attributes are the same
+  + check for any new missing value codes that should be accounted for
+- Was the dataset published before 2021?
+  + update project info , annotations
+- Glance over entire page for any small mistakes (ie. repeated additionalMetadata, any missed &amps, typos)
+
+
