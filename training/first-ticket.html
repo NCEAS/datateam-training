@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -306,13 +306,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="first-ticket.html"><a href="first-ticket.html#special-datasets"><i class="fa fa-check"></i><b>9.4.1</b> Special Datasets</a></li>
 <li class="chapter" data-level="9.4.2" data-path="first-ticket.html"><a href="first-ticket.html#system-metadata"><i class="fa fa-check"></i><b>9.4.2</b> System Metadata</a></li>
 <li class="chapter" data-level="9.4.3" data-path="first-ticket.html"><a href="first-ticket.html#general-eml"><i class="fa fa-check"></i><b>9.4.3</b> General EML</a></li>
-<li class="chapter" data-level="9.4.4" data-path="first-ticket.html"><a href="first-ticket.html#title"><i class="fa fa-check"></i><b>9.4.4</b> Title</a></li>
-<li class="chapter" data-level="9.4.5" data-path="first-ticket.html"><a href="first-ticket.html#abstract"><i class="fa fa-check"></i><b>9.4.5</b> Abstract</a></li>
+<li class="chapter" data-level="9.4.4" data-path="first-ticket.html"><a href="first-ticket.html#title-1"><i class="fa fa-check"></i><b>9.4.4</b> Title</a></li>
+<li class="chapter" data-level="9.4.5" data-path="first-ticket.html"><a href="first-ticket.html#abstract-1"><i class="fa fa-check"></i><b>9.4.5</b> Abstract</a></li>
 <li class="chapter" data-level="9.4.6" data-path="first-ticket.html"><a href="first-ticket.html#datatable-otherentity-spatialvectors"><i class="fa fa-check"></i><b>9.4.6</b> DataTable / OtherEntity / SpatialVectors</a></li>
 <li class="chapter" data-level="9.4.7" data-path="first-ticket.html"><a href="first-ticket.html#people"><i class="fa fa-check"></i><b>9.4.7</b> People</a></li>
 <li class="chapter" data-level="9.4.8" data-path="first-ticket.html"><a href="first-ticket.html#geographic-region"><i class="fa fa-check"></i><b>9.4.8</b> Geographic region</a></li>
 <li class="chapter" data-level="9.4.9" data-path="first-ticket.html"><a href="first-ticket.html#project"><i class="fa fa-check"></i><b>9.4.9</b> Project</a></li>
-<li class="chapter" data-level="9.4.10" data-path="first-ticket.html"><a href="first-ticket.html#methods"><i class="fa fa-check"></i><b>9.4.10</b> Methods</a></li>
+<li class="chapter" data-level="9.4.10" data-path="first-ticket.html"><a href="first-ticket.html#methods-1"><i class="fa fa-check"></i><b>9.4.10</b> Methods</a></li>
 <li class="chapter" data-level="9.4.11" data-path="first-ticket.html"><a href="first-ticket.html#check-eml-version"><i class="fa fa-check"></i><b>9.4.11</b> Check EML Version</a></li>
 <li class="chapter" data-level="9.4.12" data-path="first-ticket.html"><a href="first-ticket.html#access"><i class="fa fa-check"></i><b>9.4.12</b> Access</a></li>
 <li class="chapter" data-level="9.4.13" data-path="first-ticket.html"><a href="first-ticket.html#sftp-files"><i class="fa fa-check"></i><b>9.4.13</b> SFTP Files</a></li>
@@ -459,19 +459,29 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <div id="initial-review-checklist" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Initial review checklist</h2>
 <p>Before responding to a new submission use this checklist to review the submission. When your are ready to respond use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>initial email template</a> and insert comments and modify as needed.</p>
+<div id="sensitive-data" class="section level4" number="9.2.0.1">
+<h4><span class="header-section-number">9.2.0.1</span> Sensitive Data</h4>
 <ul>
-<li>Social Science Data
+<li><p><a href="https://datadryad.org/docs/HumanSubjectsData.pdf">Dryad Human Subject data guidelines</a> can be a good place to start</p></li>
+<li><p>Check if there is any sensitive information or personal identifying information in the data (eg. Names)</p></li>
+<li><p>Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)</p></li>
+</ul>
+<p>Common Cases:</p>
 <ul>
-<li>Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)</li>
-<li>Check if there is any sensitive information or personal identifying information in the data (eg. Names)</li>
-<li>Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)</li>
-</ul></li>
-<li>Check for citations
+<li><strong>Social Science:</strong> Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)</li>
+<li><strong>Archaeology:</strong> archaeological site location information, which is protected from public access by law</li>
+<li><strong>Biology:</strong> protected species coordinates</li>
+</ul>
+</div>
+<div id="data-citations" class="section level4" number="9.2.0.2">
+<h4><span class="header-section-number">9.2.0.2</span> Data citations</h4>
 <ul>
 <li>If the dataset appears to be in a publication please (might be in the abstract)</li>
-<li>Make sure that those citations are registered at the ADC</li>
-</ul></li>
-<li>Title
+<li>Make sure that those citations are registered</li>
+</ul>
+</div>
+<div id="title" class="section level4" number="9.2.0.3">
+<h4><span class="header-section-number">9.2.0.3</span> Title</h4>
 <ul>
 <li>WHAT, WHERE, and WHEN:
 <ul>
@@ -480,8 +490,10 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li>Provides a time frame of the work</li>
 <li>NO UNDEFINED ACRONYMS, ABBREVIATIONS, nor INITIALISMS unless approved of as being more widely-known in that form than spelled out</li>
 </ul></li>
-</ul></li>
-<li>Abstract
+</ul>
+</div>
+<div id="abstract" class="section level4" number="9.2.0.4">
+<h4><span class="header-section-number">9.2.0.4</span> Abstract</h4>
 <ul>
 <li>Describes the DATA as well as:
 <ul>
@@ -495,12 +507,16 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 </ul></li>
 <li>Any citations to papers can be registered with us</li>
 </ul></li>
-</ul></li>
-<li>Keywords
+</ul>
+</div>
+<div id="keywords" class="section level4" number="9.2.0.5">
+<h4><span class="header-section-number">9.2.0.5</span> Keywords</h4>
 <ul>
 <li>Some keywords are included</li>
-</ul></li>
-<li>Data
+</ul>
+</div>
+<div id="data-1" class="section level4" number="9.2.0.6">
+<h4><span class="header-section-number">9.2.0.6</span> Data</h4>
 <ul>
 <li>Data is normalized (if not suggest to convert the data if possible)</li>
 <li>At least one data file, or an identifier to the files at another approved archive, unless funded by ASSP (Arctic Social Sciences Program)</li>
@@ -509,14 +525,18 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li>Each file is well NAMED and DESCRIBED and clearly differentiated from all others</li>
 <li>All attributes in EML match attribute names in respective data files EXACTLY, are clearly defined, have appropriate units, and are in the same order as in the file. <a href = 'https://nceas.github.io/datateam-training/reference/assess-attributes.html' target='_blank'>Quality control all <code>dimensionless</code> units</a>.</li>
 <li>Missing value codes are explained (WHY are the data absent?)</li>
-<li>If it is a <code>.rar</code> file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'>scan the file</a></li>
+<li>If it is a <code>.rar</code> file <a href = 'https://nceas.github.io/datateam-training/reference/scan-rar-files.html' target='_blank'> -&gt; scan the file</a></li>
 <li>If there is the unit tons make sure to ask if it is metric tons or imperical tons if not clarified already</li>
-</ul></li>
-<li>People &amp; Parties
+</ul>
+</div>
+<div id="people-parties" class="section level4" number="9.2.0.7">
+<h4><span class="header-section-number">9.2.0.7</span> People &amp; Parties</h4>
 <ul>
 <li>At least one contact and one creator with a name, email address, and ORCID iD</li>
-</ul></li>
-<li>Coverages
+</ul>
+</div>
+<div id="coverages" class="section level4" number="9.2.0.8">
+<h4><span class="header-section-number">9.2.0.8</span> Coverages</h4>
 <ul>
 <li>Includes coverages that make sense
 <ul>
@@ -526,23 +546,29 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li>Geographic description is from the local to state or country level, at the least</li>
 <li>Taxonomic coverage if appropriate</li>
 </ul></li>
-</ul></li>
-<li>Project Information
+</ul>
+</div>
+<div id="project-information" class="section level4" number="9.2.0.9">
+<h4><span class="header-section-number">9.2.0.9</span> Project Information</h4>
 <ul>
 <li>At least one FUNDING number</li>
 <li>Title, personnel, and abstract match information from the AWARD (not from the data package)</li>
-</ul></li>
-<li>Methods
+</ul>
+</div>
+<div id="methods" class="section level4" number="9.2.0.10">
+<h4><span class="header-section-number">9.2.0.10</span> Methods</h4>
 <ul>
 <li>This section is REQUIRED for ALL NSF-FUNDED data packages</li>
 <li>Enough detail is provided such that a reasonable scientist could interpret the study and data for reuse without needing to consult the researchers, nor any other resources</li>
-</ul></li>
-<li>Portals
+</ul>
+</div>
+<div id="portals" class="section level4" number="9.2.0.11">
+<h4><span class="header-section-number">9.2.0.11</span> Portals</h4>
 <ul>
 <li>If there are multiple submissions from the same people/project let them know about the portals feature</li>
-<li>If this is part of a portal make sure this dataset can be found there. Additional steps might be needed to get that to work. Please consult Jeanette or Jasmine for more information on how to do that.</li>
-</ul></li>
+<li>If this is part of a portal make sure this dataset can be found there. Additional steps might be needed to get that to work. Please consult Jeanette and see the <a href="https://nceas.github.io/datateam-training/reference/data-portals-1.html">data portals</a> section.</li>
 </ul>
+</div>
 </div>
 <div id="processing-templates" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Processing templates</h2>
@@ -570,13 +596,13 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="first-ticket.html#cb132-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
 <span id="cb132-2"><a href="first-ticket.html#cb132-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
-<div id="title" class="section level3" number="9.4.4">
+<div id="title-1" class="section level3" number="9.4.4">
 <h3><span class="header-section-number">9.4.4</span> Title</h3>
 <ul>
 <li>No abbreviations, should include geographic and temporal coverage</li>
 </ul>
 </div>
-<div id="abstract" class="section level3" number="9.4.5">
+<div id="abstract-1" class="section level3" number="9.4.5">
 <h3><span class="header-section-number">9.4.5</span> Abstract</h3>
 <ul>
 <li>longer than 100 words</li>
@@ -630,7 +656,7 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li>for other awards that need to be set manually, see the <a href="https://nceas.github.io/datateam-training/reference/set-the-project-section.html">set project</a> page</li>
 </ul>
 </div>
-<div id="methods" class="section level3" number="9.4.10">
+<div id="methods-1" class="section level3" number="9.4.10">
 <h3><span class="header-section-number">9.4.10</span> Methods</h3>
 <ul>
 <li>present</li>
@@ -688,7 +714,7 @@ Thank you for your recent submission to the NSF Arctic Data Center!</p>
 </div>
 <div id="comment-templates-based-on-what-is-missing" class="section level3" number="9.5.2">
 <h3><span class="header-section-number">9.5.2</span> Comment templates based on what is missing</h3>
-<div id="portals" class="section level4" number="9.5.2.1">
+<div id="portals-1" class="section level4" number="9.5.2.1">
 <h4><span class="header-section-number">9.5.2.1</span> Portals</h4>
 <p>Multiple datasets under the same project - suggest data portal feature</p>
 <blockquote>
@@ -705,7 +731,7 @@ Thank you for your recent submission to the NSF Arctic Data Center!</p>
 <p>If there is a publication associated with this dataset, we would appreciate it if you could register the DOI of your published paper with us by using the Citations button right below the title at the dataset landing page. We are working to build our catalog of dataset citations in the Arctic Data Center.</p>
 </blockquote>
 </div>
-<div id="title-1" class="section level4" number="9.5.2.3">
+<div id="title-2" class="section level4" number="9.5.2.3">
 <h4><span class="header-section-number">9.5.2.3</span> Title</h4>
 <p>Provides the <em>what, where, and when</em> of the data</p>
 <blockquote>
@@ -716,7 +742,7 @@ Thank you for your recent submission to the NSF Arctic Data Center!</p>
 <p>We wanted to clarify a couple of abbreviations. Could you help us in defining some of these: [LIST OF ACRONYMS TO DEFINE HERE]</p>
 </blockquote>
 </div>
-<div id="abstract-1" class="section level4" number="9.5.2.4">
+<div id="abstract-2" class="section level4" number="9.5.2.4">
 <h4><span class="header-section-number">9.5.2.4</span> Abstract</h4>
 <p>Describes DATA in package (ideally &gt; 100 words)</p>
 <blockquote>
@@ -732,13 +758,13 @@ Thank you for your recent submission to the NSF Arctic Data Center!</p>
 <p>If you prefer and it is appropriate, we could add language from the abstract in the NSF Award found here: [NSF AWARD URL].</p>
 </blockquote>
 </div>
-<div id="keywords" class="section level4" number="9.5.2.5">
+<div id="keywords-1" class="section level4" number="9.5.2.5">
 <h4><span class="header-section-number">9.5.2.5</span> Keywords</h4>
 <blockquote>
 <p>We noticed that there were not keywords for this dataset. Adding keywords will help your dataset be discovered by others.</p>
 </blockquote>
 </div>
-<div id="data-1" class="section level4" number="9.5.2.6">
+<div id="data-2" class="section level4" number="9.5.2.6">
 <h4><span class="header-section-number">9.5.2.6</span> Data</h4>
 <p>Sensitive Data</p>
 <p><em>Example response. Tailor this reponse to the format in question.</em></p>
@@ -807,7 +833,7 @@ Thank you for your recent submission to the NSF Arctic Data Center!</p>
 <p>We noticed that your dataset does not appear to contain a funding number. The field accepts NSF funding numbers as well as other numbers by different organizations.</p>
 </blockquote>
 </div>
-<div id="methods-1" class="section level4" number="9.5.2.9">
+<div id="methods-2" class="section level4" number="9.5.2.9">
 <h4><span class="header-section-number">9.5.2.9</span> Methods</h4>
 <p>We noticed that methods were missing from the submission. Submissions should:</p>
 <ul>
