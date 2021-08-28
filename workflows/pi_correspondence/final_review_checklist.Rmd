@@ -1,12 +1,12 @@
-
 ## Final Checklist
 
-You can click on the  assessment report on the website to for a general check. Fix anything you see there.
+You can click on the `assessment report` on the website to for a general check. Fix anything you see there.
 
 Send the link over slack for peer review by your fellow datateam members. Usually we look for the following (the list is not exhaustive):
 
 ### Special Datasets
 Please refer to the dedicated pages for instructions to handle these cases:
+
 - [MOSAiC](https://nceas.github.io/datateam-training/reference/MOSAiC.html)
 - [DBO](https://nceas.github.io/datateam-training/reference/distributed-biological-observatory-dbo-submissions.html) 
 
