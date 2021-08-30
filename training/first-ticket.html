@@ -463,9 +463,9 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <div id="sensitive-data" class="section level4" number="9.2.0.1">
 <h4><span class="header-section-number">9.2.0.1</span> Sensitive Data</h4>
 <ul>
-<li><p><a href="https://datadryad.org/docs/HumanSubjectsData.pdf">Dryad Human Subject data guidelines</a> can be a good place to start</p></li>
-<li><p>Check if there is any sensitive information or personal identifying information in the data (eg. Names)</p></li>
-<li><p>Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)</p></li>
+<li>Check if there is any sensitive information or personal identifying information in the data (eg. Names)</li>
+<li>Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)</li>
+<li><a href="https://datadryad.org/docs/HumanSubjectsData.pdf">Dryad Human Subject data guidelines</a> can be a good place to start</li>
 </ul>
 <p>Common Cases:</p>
 <ul>
@@ -473,12 +473,12 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li><strong>Archaeology:</strong> archaeological site location information, which is protected from public access by law</li>
 <li><strong>Biology:</strong> protected species coordinates</li>
 </ul>
+<p>If any of the above applied to the dataset, please let the rest of the team know before proceeding.</p>
 </div>
 <div id="data-citations" class="section level4" number="9.2.0.2">
 <h4><span class="header-section-number">9.2.0.2</span> Data citations</h4>
 <ul>
-<li>If the dataset appears to be in a publication please (might be in the abstract)</li>
-<li>Make sure that those citations are registered</li>
+<li>If the dataset appears to be in a publication please (might be in the abstract) make sure that those citations are registered.</li>
 </ul>
 </div>
 <div id="title" class="section level4" number="9.2.0.3">
@@ -672,6 +672,7 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <li>currently using: <code>eml-2.2.0</code> (as of July 30 2020)</li>
 <li>review to see if the EML version is set correctly by reviewing the <code>doc$`@context`</code> that it is indeed 2.2.0 under eml</li>
 <li>Re-run your code again and have the line<code>emld::eml_version("eml-2.2.0")</code> at the top</li>
+<li>Make sure the system metadata is also 2.2.0</li>
 </ul>
 </div>
 <div id="access" class="section level3" number="9.4.12">
@@ -716,6 +717,7 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 </div>
 <div id="email-templates" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> Email templates</h2>
+<p>This section covers new data packages submitted. For other inquiries see the PI FAQ templates</p>
 <p>Please think critically when using these canned replies rather than just blindly sending them. Typically, content should be adjusted/ customized for each response to be as relevant, complete, and precise as possible.</p>
 <p>In your first few months, please run email drafts by the #datateam Slack and get approval before sending.</p>
 <p>Remember to consult the <a href = 'https://arcticdata.io/submit/' target='_blank'>submission guidelines</a> for details of what is expected.</p>
