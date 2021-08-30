@@ -121,7 +121,7 @@ Helpful templates:
 
 Missing value codes
 
-> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice. This section is not yet available on our webform so we will add that information on your behalf.
 
 > We noticed that the data files contain [blank cells - replace with missing values found]. What do these represent? 
 
@@ -137,7 +137,7 @@ We noticed that methods were missing from the submission. Submissions should inc
 
 - provide instrument names (if applicable)
 - specify how sampling locations were chosen
-- provide citations for sampling methods that are not explained in detail
+- if citations for sampling methods are used, please provide a brief summary of the methods referenced
 - any software used to process the data
 
 *Note* - this includes software submissions as well (see <a href = 'https://arcticdata.io/submit/#metadata-guidelines-for-software' target='_blank'>https://arcticdata.io/submit/#metadata-guidelines-for-software</a>)
