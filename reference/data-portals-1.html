@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Fix Excel dates | NCEAS Data Team Reference Guide</title>
+  <title>Data Portals | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Fix Excel dates | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Data Portals | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Fix Excel dates | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Data Portals | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="clean-column-names.html"/>
-<link rel="next" href="solr-queries.html"/>
+<link rel="prev" href="data-portals.html"/>
+<link rel="next" href="distributed-biological-observatory-dbo-submissions.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -406,24 +406,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fix-excel-dates" class="section level2">
-<h2>Fix Excel dates</h2>
-<p>Do you see something that looks like <code>43134, 43135, 43136</code> even though the column header is <code>Dates</code>? You may have encountered an <strong>Excel date/time</strong> problem. To fix it, the <code>janitor</code> package has a handy function:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="fix-excel-dates.html#cb177-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">excel_numeric_to_date</span>(<span class="fu">c</span>(<span class="dv">43134</span>, <span class="dv">43135</span>, <span class="dv">43136</span>))</span></code></pre></div>
-<div class="warning">
-<p>
-Make sure you check that the dates make sense!
-</p>
+<div id="data-portals-1" class="section level2">
+<h2>Data Portals</h2>
+<blockquote>
+<p>Create a custom, branded portal for your research topic or lab group that spans datasets in the Arctic Data Center – available for all users. Branded portals provide a convenient, readily customized way to communicate your science, your team, your data, and related data from within the Arctic Data Center. The portals feature makes highlighting and sharing related datasets easy for researchers.</p>
+</blockquote>
+<p>General information on data portals can be found on the main page: <a href = 'https://arcticdata.io/data-portals/' target='_blank'>https://arcticdata.io/data-portals/</a></p>
+<p>## My portals
+My portals allows members of the Arctic Data Center Team to view all the portals currently created. This can be found in <code>Settings</code> under the <code>My Portals</code> section.</p>
+<p>## Creating Data Filters
+Useful search terms to use:
+- NSF award number
+- Geographic Region
+- Keywords
+- Access permissions</p>
+<p>### Custom Filters
+Please ask Jeanette for more assistance</p>
+<p>### Set Access Permissions
+For some portals such as PerCS portal, will need to be added by running <code>set_access()</code>. Please see the specific portal for the exact arguments to pass.</p>
 </div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="clean-column-names.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="solr-queries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-portals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="distributed-biological-observatory-dbo-submissions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
