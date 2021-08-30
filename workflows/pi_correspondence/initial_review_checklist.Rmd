@@ -4,10 +4,9 @@ Before responding to a new submission use this checklist to review the submissio
 
 #### Sensitive Data
 
-- [Dryad Human Subject data guidelines](https://datadryad.org/docs/HumanSubjectsData.pdf) can be a good place to start
-
 - Check if there is any sensitive information or personal identifying information in the data (eg. Names)
 - Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)
+- [Dryad Human Subject data guidelines](https://datadryad.org/docs/HumanSubjectsData.pdf) can be a good place to start
     
 Common Cases:
 
@@ -15,9 +14,10 @@ Common Cases:
 - **Archaeology:** archaeological site location information, which is protected from public access by law
 - **Biology:** protected species coordinates
 
+If any of the above applied to the dataset, please let the rest of the team know before proceeding.
+
 #### Data citations
-- If the dataset appears to be in a publication please (might be in the abstract)
-- Make sure that those citations are registered
+- If the dataset appears to be in a publication please (might be in the abstract) make sure that those citations are registered.
 
 #### Title
   + WHAT, WHERE, and WHEN:  

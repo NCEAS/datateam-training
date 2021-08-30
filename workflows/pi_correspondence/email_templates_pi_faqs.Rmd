@@ -6,6 +6,7 @@
 Generalist repository
 
 > If your data doesn't require features that only ____ provides, we would encourage you to consider publishing both the data and the metadata at the Arctic Data Center. Some benefits to submitting to us includes:
+
 - We provide a DOI that can be cited in your published papers
 - We track where datasets are being cited
 - By submitting both the data and metadata to us, you can fulfill your NSF reporting requirements at the same time. This will reduce the work needed on your part to get any additional metadata requirements for NSF.
@@ -16,16 +17,21 @@ Generalist repository
 
 > Any update to a data package qualifies as a new version and therefore requires a new DOI. This is because each DOI represents a unique, immutable version, just like for a journal article. DOIs and URLs for previous versions of data packages remain active on the Arctic Data Center (will continue to resolve to the data package landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to the latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data package that was cited, while pointing users to the newest version if one exists.
 
+> Datateam: please review this dataset again to make sure it follows current standards
+
 *Q: Why don't I see my data package on the ADC?*   
 
 > Possible Answer #1: The data package is still private because we are processing it or awaiting your approval to publish it. Please login with your ORCID iD to view private data packages.
-Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
-Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
-POssible Answer #4: The URL was garbled by their email server (eg. [URL Defense](https://support.uidaho.edu/TDClient/40/Portal/KB/ArticleDet?ID=1326) or the url was split into two lines). In this case provide an alternate method of navigating to their dataset via their profile page.
+
+> Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
+
+>Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
+
+>Possible Answer #4: The URL was garbled by their email server (eg. [URL Defense](https://support.uidaho.edu/TDClient/40/Portal/KB/ArticleDet?ID=1326) or the url was split into two lines). You can navigate to your dataset by going to your name in the top right and selecting my datasets.
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
 
-> A: Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
+> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
 
 >Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
 
@@ -36,6 +42,8 @@ POssible Answer #4: The URL was garbled by their email server (eg. [URL Defense]
 > A: Yes. Navigate to the data package after being sure to login. Then click the green "Edit" button. The form will populate with the already existing metadata so there is no need to fill it out again. Click "Add Files" and browse to the file you wish to add.
 
 > Be aware that the DOI will change after you add this file (or make any changes to a data package) as, just like for a journal article, a DOI represents a unique and immutable version. The original URL and DOI will remain functional and valid, but clearly display a message at the top of that page stating that "A newer version of this dataset exists" with a link to the latest version. Only the newest version wil be discoverable via a search.
+
+> We can also copy the metadata from existing dataset. Please send us the URL of the dataset you would like to copy and the title of the new dataset and we will be able to do that on your behalf.
 
 *Q: I want to organize the order of the files/metadata entities*
 
