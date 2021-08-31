@@ -1,5 +1,35 @@
 ## Resources for R
 
+### Learning
+
+The following online books are useful for expanding your R knowledge and skills:
+
+- <a href="http://training.arcticdata.io/" target="_blank">the most recent ADC training materials</a>
+    + The cleaning and data manipulation section is useful for working with attribute tables
+- <a href="https://csgillespie.github.io/efficientR/" target="_blank">Efficient R Programming</a>
+    + In particular Chapter 3 Efficient Programming
+- <a href="https://r4ds.had.co.nz/" target="_blank">R for Data Science</a>
+    + Section on Strings
+- <a href="http://r-pkgs.had.co.nz/" target="_blank">R Packages</a>
+    + contributing to `arcticdatatutils`, `datamgmt` and `EML`
+- <a href="http://adv-r.had.co.nz/" target="_blank">Advanced R</a>
+    + Object-oriented programming in R for S4 to understand how `datapack` and `dataone` packages are written
+- <a href="https://bookdown.org/yihui/bookdown/" target="_blank">bookdown: Authoring Books and Technical Documents with R Markdown</a>
+ + formatting, troubleshooting and updating the training document
+ 
+**Others**
+
+- <a href="https://rstudio-education.github.io/hopr/" target="_blank">Hands-On Programming with R</a>
+- <a href="https://bookdown.org/rdpeng/rprogdatascience/" target="_blank">R Programming for Data Science</a>
+- <a href="https://bookdown.org/rdpeng/exdata/" target="_blank">Exploratory Data Analysis with R</a>
+- <a href="https://bookdown.org/rdpeng/RProgDA/" target="_blank">Mastering Software Development in R</a>
+- <a href="https://geocompr.robinlovelace.net/" target="_blank">Geocomputation with R</a>
+- <a href="https://bookdown.org/yihui/rmarkdown/" target="_blank">R Markdown: The Definitive Guide</a>
+- <a href="https://style.tidyverse.org/" target="_blank">The Tidyverse Style Guide</a>
+
+The RStudio <a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">cheatsheets</a> are also useful references for functions in <a href="https://www.tidyverse.org/" target="_blank">tidyverse</a> and other packages.
+
+
 ### Packages
 
 The data team uses and develops a number of R packages. Here is a listing and description of the main packages:
@@ -25,23 +55,3 @@ The data team uses and develops a number of R packages. Here is a listing and de
 - metajam
     - downloading and reading data and metadata from DataONE member nodes
     - <a href="https://nceas.github.io/metajam/" target="_blank">https://nceas.github.io/metajam/</a>
-
-
-### Learning
-
-The following online books are useful for expanding your R knowledge and skills:
-
-- <a href="https://rstudio-education.github.io/hopr/" target="_blank">Hands-On Programming with R</a>
-- <a href="https://bookdown.org/rdpeng/rprogdatascience/" target="_blank">R Programming for Data Science</a>
-- <a href="https://bookdown.org/rdpeng/exdata/" target="_blank">Exploratory Data Analysis with R</a>
-- <a href="https://r4ds.had.co.nz/" target="_blank">R for Data Science</a>
-- <a href="http://adv-r.had.co.nz/" target="_blank">Advanced R</a>
-- <a href="https://csgillespie.github.io/efficientR/" target="_blank">Efficient R Programming</a>
-- <a href="http://r-pkgs.had.co.nz/" target="_blank">R Packages</a>
-- <a href="https://bookdown.org/rdpeng/RProgDA/" target="_blank">Mastering Software Development in R</a>
-- <a href="https://geocompr.robinlovelace.net/" target="_blank">Geocomputation with R</a>
-- <a href="https://bookdown.org/yihui/rmarkdown/" target="_blank">R Markdown: The Definitive Guide</a>
-- <a href="https://bookdown.org/yihui/bookdown/" target="_blank">bookdown: Authoring Books and Technical Documents with R Markdown</a>
-- <a href="https://style.tidyverse.org/" target="_blank">The Tidyverse Style Guide</a>
-
-The RStudio <a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">cheatsheets</a> are also useful references for functions in <a href="https://www.tidyverse.org/" target="_blank">tidyverse</a> and other packages.
