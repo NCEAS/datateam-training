@@ -1,4 +1,4 @@
-## Reorganize files
+## Reorganize files on the server
 
 Useful commands to use when reorganizing large datasets to be prepped to be uploaded using `datapack`
 
