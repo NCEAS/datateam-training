@@ -12,14 +12,15 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 **Here are two fully annotated datasets for reference:**
 
-1. https://doi.org/10.18739/A27S7HT3B
-2. https://doi.org/10.18739/A23F4KP3J
+1. [Simple example](https://doi.org/10.18739/A27S7HT3B)
+2. [Example with MOSAiC and ECSO annotations](https://doi.org/10.18739/A23F4KP3J)
+3. [Example with non-polarstern vessels](https://arcticdata.io/catalog/view/urn%3Auuid%3A679b719b-2feb-4b61-a975-282149995b51)
 
 The following shows how to add the annotations using `arcticdatautils` and manually in the case the functions fail to work:
 
 #### Dataset Level Annotations
 
-There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`.
+There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`. For the full campaign list it is easiest to see on the [PANGAEA website](https://www.pangaea.de/expeditions/byproject/MOSAiC)
 
 **arcticdatauitls**
 ```{r, eval = F}
