@@ -2,7 +2,7 @@
 
 This section is meant to be read after you have processed a couple of tickets and you are comfortable with the workflow with a relatively simple dataset with 1-2 files and want to expand your skills and workflows further.
 
-```{r, child = '../workflows/adc_web_submissions/add_physicals_to_submissions'}
+```{r, child = '../workflows/adc_web_submissions/add_physicals_to_submissions.Rmd'}
 ```
 
 ```{r, child = '../workflows/miscellaneous/code_snippets.Rmd'}
