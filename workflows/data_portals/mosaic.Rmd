@@ -1,0 +1,136 @@
+## MOSAiC
+
+Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.
+
+**When working on MOSAiC datasets:**
+
+- Will need to find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `eventLabel`). Ask for it in your email:
+
+> We would like to ask for the event label associated with this dataset (see https://www.pangaea.de/expeditions/events/PS122%2F4).
+
+- There is a custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you won't need to use it directly if the function works.
+- Use `EML::shiny_attributes` only when no annotations have been added. The function does not work well with multiple annotations
+- There are functions in `arcticdatautils` to help with annotating: `mosaic_annotate_dataset` and `mosaic_annotate_attribute`
+- The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.
+
+**Here are two fully annotated datasets for reference:**
+
+1. https://doi.org/10.18739/A27S7HT3B
+2. https://doi.org/10.18739/A23F4KP3J
+
+The following shows how to add the annotations using `arcticdatautils` and manually in the case the functions fail to work:
+
+### Dataset Level Annotations
+
+There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`.
+
+**arcticdatautils**
+```{r, eval = F}
+doc$dataset$id <- "your id here"
+doc$dataset$annotation <- NULL #make sure it is empty
+
+doc$dataset$annotation <- mosaic_annotate_dataset(c("PS122/1", "PS122/2"))
+```
+
+**Manual**
+
+Majority of the annotations will be the same across all of the datasets. Pay attention to what needs to be changed for the `hasBasis` and `isPartOfCampaign` valueURIs.
+
+More than one `Campaign` and `Basis` might be needed in rare cases.
+
+```{r, eval = F}
+doc$dataset$id <- "your id here"
+doc$dataset$annotation <- NULL #make sure it is empty here
+
+doc$dataset$annotation <- list(
+  #Basis
+  list(
+    propertyURI = list(label = "hasBasis",
+                       propertyURI = "https://purl.dataone.org/odo/MOSAIC_00000034"),
+    valueURI = list(label = "Polarstern", # this depends on your event ID, most of them should be Polarstern
+                    valueURI = "https://purl.dataone.org/odo/MOSAIC_00000030")
+  ),
+  #Project
+  list(
+    propertyURI = list(label = "hasProjectLabel",
+                       propertyURI = "https://purl.dataone.org/odo/MOSAIC_00000025"),
+    valueURI = list(label = "MOSAiC20192020",
+                    valueURI = "https://purl.dataone.org/odo/MOSAIC_00000023")
+  ),
+  #Campaign
+  list(
+    propertyURI = list(label = "isPartOfCampaign",
+                       propertyURI = "https://purl.dataone.org/odo/MOSAIC_00000032"),
+    valueURI = list(label = "PS122/2", #*** this changes depending on the campaign
+                    valueURI = "https://purl.dataone.org/odo/MOSAIC_00000018")
+  ) #*** this changes depending on the campaign
+)
+```
+
+### Entity Level Annotations
+
+Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.
+
+**arcticdatautils**
+
+```{r, eval = F}
+doc$dataset$dataTable[[1]]$attributeList$attribute[[1]]$id <- "some id here"
+doc$dataset$dataTable[[1]]$attributeList$attribute[[1]]$annotation <- mosaic_annotate_attribute("PS122/2_14-270")
+```
+
+**Manual**
+```{r, eval = F}
+event_annotation <- list(#Event Label
+  list(
+    propertyURI = list(label = "wasGeneratedBy",
+                       propertyURI = "http://www.w3.org/ns/prov#wasGeneratedBy"),
+    valueURI = list(label = "PS122/2_14-270",
+                    valueURI = "https://purl.dataone.org/odo/MOSAIC_00004550")
+  ),
+  #Method/Device - Use the long name!
+  list(
+    propertyURI = list(label = "deployedSystem",
+                       propertyURI = "https://purl.dataone.org/odo/MOSAIC_00002201"),
+    valueURI = list(label = "Ultra-Wideband Software-defined Microwave Radiometer (0.5-2GHZ)",
+                    valueURI = "https://purl.dataone.org/odo/MOSAIC_00001163")
+  ))
+
+doc$dataset$dataTable$attributeList$attribute[[1]]$id <- "eventId"
+doc$dataset$dataTable$attributeList$attribute[[1]]$annotation <-
+  event_annotate
+```
+
+
+**Adding annotations**
+
+If there are already annotations applied (ie. using ECSO), the MOSAiC annotations can be added as so:
+
+1. get the index of all of the attributes we want to add this annotation
+```{r, eval = F}
+n <- which(stringr::str_detect(eml_get_simple(doc$dataset$dataTable$attributeList, "attributeName"),"Brightness"))
+```
+
+2. loop through and add the annotation(s)
+```{r, eval = F}
+for(i in n) {
+  doc$dataset$dataTable$attributeList$attribute[[i]]$annotation <-
+    append(
+      list(
+        doc$dataset$dataTable$attributeList$attribute[[i]]$annotation
+      ),
+      event_annotation
+    )
+}
+```
+
+### Portal updates
+
+The filters are based on the MOSAiC ontology. The `Campaign` and `Basis` filters should remain relatively the same. However there are over 500 Method and Devices. So the decision was made to only show the ones we have annotated.
+
+We can query for all of them and output them formatted as a choice:
+
+```{r eval = F}
+mosaic_portal_filter("Method/Device")
+```
+
+Then update the portal document using the steps outlines in the [advanced data portal customizations](https://nceas.github.io/datateam-training/reference/data-portals-1.html)
