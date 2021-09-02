@@ -13,9 +13,10 @@ If the PI needs a DOI right away:
 #### Asking for dataset access
 > As a security measure we ask that we get the approval from the original submitter of the dataset prior to granting edit permissions to all datasets. 
 
-#### Replacing data files
-> The data files can be replaced by going to the green Edit button > Click the black triangle by the Describe button for the data file > Select Replace (attached is also a screenshot on how to get there).
-![](~/datateam_training/images/replace_file.png)
+#### No response from the researcher
+Please email them before resolving a ticket like this:
+
+> We are resolving this ticket for bookkeeping purposes, if you would like to follow up please feel free to respond to this email.
 
 #### Recovering Dataset submissions
 > To recover dataset submissions that were not successful please do the following:
@@ -47,7 +48,6 @@ for example: https://arcticdata.io/catalog/data/query=Beaufort%20Lagoon%20Ecosys
 > Please find an overview of our submission guidelines here: <a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>, and NSF Office of Polar Programs policy information here: <a href = 'https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp' target='_blank'>https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp</a>.
 
 > Investigators should upload their data to the Arctic Data Center (<a href = 'https://arcticdata.io' target='_blank'>https://arcticdata.io</a>), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.
-
 
 #### Linking ORCiD and LDAP accounts
 

@@ -1,5 +1,7 @@
 ## Email templates
 
+This section covers new data packages submitted. For other inquiries see the PI FAQ templates
+
 Please think critically when using these canned replies rather than just blindly sending them. Typically, content should be adjusted/ customized for each response to be as relevant, complete, and precise as possible.  
 
 In your first few months, please run email drafts by the #datateam Slack and get approval before sending.

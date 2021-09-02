@@ -19,7 +19,7 @@
 
 Multiple datasets under the same project - suggest data portal feature
 
-> I would like to highlight the Data Portals feature that would enhance the ability of your datasets to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: https://arcticdata.io/catalog/portals/DBO. We highly suggest considering creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/.
+> I would like to highlight the Data Portals feature that would enhance the ability of your datasets to be discovered together. It also enables some custom branding for the group or project. Here is an example page that we created for the Distributed Biological Observatory: https://arcticdata.io/catalog/portals/DBO. We highly suggest considering creating a portal for your datasets, you can get one started here: https://arcticdata.io/catalog/edit/portals/new/Settings. More information on how to set up can be found here: https://arcticdata.io/data-portals/. Data portals can be set up at any point of your project.
 
 If they ask to nest the dataset
 
@@ -27,7 +27,7 @@ If they ask to nest the dataset
 
 #### Dataset citations
 
-> If there is a publication associated with this dataset, we would appreciate it if you could register the DOI of your published paper with us by using the Citations button right below the title at the dataset landing page. We are working to build our catalog of dataset citations in the Arctic Data Center.
+> If there is a publication associated with this dataset, we would appreciate it if you could register the DOI of your published paper with us by using the Citations button right below the title at the dataset landing page. We are working to build our catalog of dataset citations in the Arctic Data Center. This can be done at any point.
 
 #### Title
 
@@ -45,11 +45,11 @@ Describes DATA in package (ideally > 100 words)
 
 > We would like to add some additional context to your abstract. We hope to add the following: [ADJUST THE DEPENDING ON WHAT IS MISSING]
 
-    - The motivation of the study
-    - Where and when the research took place
-    - At least one sentence summarizing general methodologies
-    - All acronyms are defined
-    - At least 100 words long
+- The motivation of the study
+- Where and when the research took place
+- At least one sentence summarizing general methodologies
+- All acronyms are defined
+- At least 100 words long
 
 Offer this if submitter is reluctant to change:
 
@@ -57,7 +57,7 @@ Offer this if submitter is reluctant to change:
 
 #### Keywords
 
-> We noticed that there were not keywords for this dataset. Adding keywords will help your dataset be discovered by others. 
+> We noticed that there were no keywords for this dataset. Adding keywords will help your dataset be discovered by others. 
 
 #### Data
 
@@ -80,6 +80,9 @@ Open formats
 *Example using xlsx. Tailor this reponse to the format in question.*
 
 > We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
+
+> The data files can be replaced by going to the green Edit button > Click the black triangle by the Describe button for the data file > Select Replace (attached is also a screenshot on how to get there).
+![](~/datateam-training/images/replace_file.png)
 
 Zip files
 
@@ -118,7 +121,7 @@ Helpful templates:
 
 Missing value codes
 
-> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice. This section is not yet available on our webform so we will add that information on your behalf.
 
 > We noticed that the data files contain [blank cells - replace with missing values found]. What do these represent? 
 
@@ -130,11 +133,11 @@ All NSF funded datasets need a funding number. Non-NSF funded datasets might not
 
 #### Methods
 
-We noticed that methods were missing from the submission. Submissions should:
+We noticed that methods were missing from the submission. Submissions should include the following:
 
 - provide instrument names (if applicable)
 - specify how sampling locations were chosen
-- provide citations for sampling methods that are not explained in detail
+- if citations for sampling methods are used, please provide a brief summary of the methods referenced
 - any software used to process the data
 
 *Note* - this includes software submissions as well (see <a href = 'https://arcticdata.io/submit/#metadata-guidelines-for-software' target='_blank'>https://arcticdata.io/submit/#metadata-guidelines-for-software</a>)
@@ -142,3 +145,34 @@ We noticed that methods were missing from the submission. Submissions should:
 > Your methods section appears to be missing some information. [ADJUST THIS DEPENDING ON WHAT IS MISSING - Users should be able to understand how the data were collected, how to interpret the values, and potentially how to use the data in the case of specialized files.]
 
 > Comprehensive methods information should be included directly in the metadata record. Pointers or URLs to other sites are unstable.
+
+*A full example - New Submission: methods, excel to csv, and attributes*
+
+> Thank you for your recent submission to the NSF Arctic Data Center!
+
+>From my preliminary examination of your submission I have noticed a few items that I would like to bring to your attention. We are here to help you publish your submission, but your continued assistance is needed to do so. See comments below:
+ 
+> If there is a publication associated with this dataset, we would appreciate it if you could register the DOI of your published paper with us by using the Citations button right below the title at the dataset landing page. We are working to build our catalog of dataset citations in the Arctic Data Center. This can be added at any point.
+
+> We would like to add some more context to your data package title. I would like to suggest: Holocene lake-based Arctic glacier and ice cap records.
+
+> We noticed that the submitted data files are in xlsx format. Please convert your files to a plain text/csv (or other open format); this helps ensure your data are usable in the long-term.
+ 
+> We also would like to suggest a couple of modifications to the structure of your data. This will others to re-use it most effectively. If the data was in a long rather than wide format, it would be easier to us to document. <some example here>
+
+> Our data submission guidelines page (https://arcticdata.io/submit/) outlines what are best practices for data submissions to the Arctic Data Center. Let us know if you have any questions or if we can be of any help.
+
+> What do the missing values in your measurements represent? A short description of the reason why the values are missing (instrument failure, site not found, etc.) will suffice.
+
+> We noticed that methods were missing from the submission. Submissions should:
+    - provide instrument names (if applicable)
+    - specify how sampling locations were chosen
+    - provide citations for sampling methods that are not explained in detail
+    - any software used to process the data
+
+> After we receive your responses, we can make the edits on your behalf, or you are welcome to make them yourself using our user interface.
+
+> Best,
+
+> Name
+

@@ -1,21 +1,37 @@
 ## PI FAQ email templates
 
 ### Data
+*Q: I would like to / have already uploaded data to ____ repository*
+
+Generalist repository
+
+> If your data doesn't require features that only ____ provides, we would encourage you to consider publishing both the data and the metadata at the Arctic Data Center. Some benefits to submitting to us includes:
+
+- We provide a DOI that can be cited in your published papers
+- We track where datasets are being cited
+- By submitting both the data and metadata to us, you can fulfill your NSF reporting requirements at the same time. This will reduce the work needed on your part to get any additional metadata requirements for NSF.
+
 *Q: Can I replace data that have already been uploaded and keep the DOI?* 
 
 > A: Once you have published your data with the Arctic Data Center, it can still be updated by providing an additional version which can replace the original, while still preserving the original and making it available to anyone who might have cited it. To update your data, return to the data submission tool used to submit it, and provide an update.
 
 > Any update to a data package qualifies as a new version and therefore requires a new DOI. This is because each DOI represents a unique, immutable version, just like for a journal article. DOIs and URLs for previous versions of data packages remain active on the Arctic Data Center (will continue to resolve to the data package landing page for the specific version they are associated with), but a clear message will appear at the top of the page stating that “A newer version of this dataset exists” with a hyperlink to the latest version. With this approach, any past uses of a DOI (such as in a publication) will remain functional and will reference the specific version of the data package that was cited, while pointing users to the newest version if one exists.
 
+> Datateam: please review this dataset again to make sure it follows current standards
+
 *Q: Why don't I see my data package on the ADC?*   
 
 > Possible Answer #1: The data package is still private because we are processing it or awaiting your approval to publish it. Please login with your ORCID iD to view private data packages.
-Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
-Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
+
+> Possible Answer #2: The data package is still private and you do not have access because you were not the submitter. If you need access please have the submitter send us a message from his/her email address confirming this, along with your ORCID iD. Once we receive that confirmation we will be happy to grant you permission to view and edit the data package.
+
+>Possible Answer #3: The data package is still private and we accidentally failed to grant you access. We apologize for the mistake. We have since updated the access policy. Please let us know if you are still having trouble viewing the data package here: [URL]. Remember to login with your ORCID iD.
+
+>Possible Answer #4: The URL was garbled by their email server (eg. [URL Defense](https://support.uidaho.edu/TDClient/40/Portal/KB/ArticleDet?ID=1326) or the url was split into two lines). You can navigate to your dataset by going to your name in the top right and selecting my datasets.
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
 
-> A: Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
+> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
 
 >Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
 
@@ -26,6 +42,14 @@ Possible Answer #3: The data package is still private and we accidentally failed
 > A: Yes. Navigate to the data package after being sure to login. Then click the green "Edit" button. The form will populate with the already existing metadata so there is no need to fill it out again. Click "Add Files" and browse to the file you wish to add.
 
 > Be aware that the DOI will change after you add this file (or make any changes to a data package) as, just like for a journal article, a DOI represents a unique and immutable version. The original URL and DOI will remain functional and valid, but clearly display a message at the top of that page stating that "A newer version of this dataset exists" with a link to the latest version. Only the newest version wil be discoverable via a search.
+
+> We can also copy the metadata from existing dataset. Please send us the URL of the dataset you would like to copy and the title of the new dataset and we will be able to do that on your behalf.
+
+*Q: I want to organize the order of the files/metadata entities*
+
+> A: We can reorganize entities within their entities. This is a limitation with our tools (EML). 
+
+> While re-ordering the groups of entities is possible manually, it isn't possible the way write_eml and publish_update is written. We do not recommended reordering entities this way.
 
 *Q: Can we submit data as an Excel file?*   
 
@@ -67,12 +91,19 @@ Please read our software submission guidelines for more detailed information: <a
 
 > If the problem persists please let us know what step the error occured or if there were error messages you have recieved.
 
-### non-NSF
-*Issue: Can I submit a non-NSF funded dataset?*
+### Scope
+*Q: Can I submit a non-NSF funded dataset?*
+
+Sample text 1:
 
 > The Arctic Data Center is open to all arctic-related data.  For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment.  Please let us know the size of your dataset in terms of total number and total size of all files.  We look forward to receiving your submission!
 
-*Q: May I submit a non-NSF-funded data package?*  
+Sample text 2:
 
-> A: Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
+> Yes, you can submit non-NSF-funded Arctic data if you are willing to submit under the licensing terms of the Arctic Data Center (CC-0 or CC-BY), the data are moderately sized (with exact limits open to discussion), and a lot of support time to curate the submission is not required (i.e., you submit a complete metadata record and well formatted, open format data files).
 For larger data packages, we would likely need to charge a one-time archival fee which amortizes the long-term costs of preservation in a single payment. Also, please note that NSF-funded projects take priority when it comes to processing. Information on best practices for data and metadata organization is available here: <a href = 'https://arcticdata.io/submit/#organizing-your-data' target='_blank'>https://arcticdata.io/submit/#organizing-your-data</a>.
+
+*Q: Is ______ considered within the arctic*
+
+> We don't have a precise geographic cutoff. We definitely will preserve any dataset that is funded by the Arctic section of the National Science Foundation, which includes many sub-Arctic studies. So, as long as the dataset is related to Arctic research defined broadly, we would consider it. We will prioritize NSF-funded projects because that is our main mandate, but we will also preserve non-NSF data about the Arctic as time allows. If you send more details about the study, its subject, location, and funding, we could be more definitive about whether we could archive it.
+
