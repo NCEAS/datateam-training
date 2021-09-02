@@ -65,7 +65,7 @@ doc$dataset$annotation <- list(
 )
 ```
 
-#### Entity Level Annotations
+#### Attribute Level Annotations
 
 Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.
 
