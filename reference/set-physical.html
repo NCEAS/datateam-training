@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -419,21 +419,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="set-physical" class="section level2">
 <h2>Set physical</h2>
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-physical.html#cb134-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="set-physical.html#cb135-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
 <p>Alternatively, you can set the <code>physical</code> of a data object not yet in your package by simply inputting the data <code>PID</code>:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="set-physical.html#cb135-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="set-physical.html#cb136-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>)</span></code></pre></div>
 <p>The <code>physical</code> must then be assigned to the data object.</p>
 <p>A final, but not recommended option, is to set the <code>physical</code> by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html' target='_blank'>update</a> your data first and then use <code>pid_to_eml_physical()</code> to set the <code>physical</code>.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="set-physical.html#cb136-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&#39;your_data_pid&#39;</span> <span class="co"># this should be an actual PID</span></span>
-<span id="cb136-2"><a href="set-physical.html#cb136-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&#39;~/your/data/path&#39;</span> <span class="co"># path to data table</span></span>
-<span id="cb136-3"><a href="set-physical.html#cb136-3" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> <span class="fu">set_physical</span>(<span class="at">objectName =</span> path,</span>
-<span id="cb136-4"><a href="set-physical.html#cb136-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">size =</span> <span class="fu">as.character</span>(<span class="fu">file.size</span>(path)),</span>
-<span id="cb136-5"><a href="set-physical.html#cb136-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sizeUnit =</span> <span class="st">&#39;bytes&#39;</span>,</span>
-<span id="cb136-6"><a href="set-physical.html#cb136-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authentication =</span> <span class="fu">digest</span>(fpath, <span class="at">algo=</span><span class="st">&quot;sha256&quot;</span>, <span class="at">serialize=</span><span class="cn">FALSE</span>, <span class="at">file=</span><span class="cn">TRUE</span>),</span>
-<span id="cb136-7"><a href="set-physical.html#cb136-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authMethod =</span> <span class="st">&#39;SHA-256&#39;</span>,</span>
-<span id="cb136-8"><a href="set-physical.html#cb136-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">numHeaderLines =</span> <span class="st">&#39;1&#39;</span>,</span>
-<span id="cb136-9"><a href="set-physical.html#cb136-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fieldDelimiter =</span> <span class="st">&#39;,&#39;</span>,</span>
-<span id="cb136-10"><a href="set-physical.html#cb136-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">url =</span> <span class="fu">paste0</span>(<span class="st">&#39;https://cn.dataone.org/cn/v2/resolve/&#39;</span>, id))</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="set-physical.html#cb137-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&#39;your_data_pid&#39;</span> <span class="co"># this should be an actual PID</span></span>
+<span id="cb137-2"><a href="set-physical.html#cb137-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&#39;~/your/data/path&#39;</span> <span class="co"># path to data table</span></span>
+<span id="cb137-3"><a href="set-physical.html#cb137-3" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> <span class="fu">set_physical</span>(<span class="at">objectName =</span> path,</span>
+<span id="cb137-4"><a href="set-physical.html#cb137-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">size =</span> <span class="fu">as.character</span>(<span class="fu">file.size</span>(path)),</span>
+<span id="cb137-5"><a href="set-physical.html#cb137-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sizeUnit =</span> <span class="st">&#39;bytes&#39;</span>,</span>
+<span id="cb137-6"><a href="set-physical.html#cb137-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authentication =</span> <span class="fu">digest</span>(fpath, <span class="at">algo=</span><span class="st">&quot;sha256&quot;</span>, <span class="at">serialize=</span><span class="cn">FALSE</span>, <span class="at">file=</span><span class="cn">TRUE</span>),</span>
+<span id="cb137-7"><a href="set-physical.html#cb137-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">authMethod =</span> <span class="st">&#39;SHA-256&#39;</span>,</span>
+<span id="cb137-8"><a href="set-physical.html#cb137-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">numHeaderLines =</span> <span class="st">&#39;1&#39;</span>,</span>
+<span id="cb137-9"><a href="set-physical.html#cb137-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fieldDelimiter =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb137-10"><a href="set-physical.html#cb137-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">url =</span> <span class="fu">paste0</span>(<span class="st">&#39;https://cn.dataone.org/cn/v2/resolve/&#39;</span>, id))</span></code></pre></div>
 </div>
             </section>
 

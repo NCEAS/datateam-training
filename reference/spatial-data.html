@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -419,13 +419,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="spatial-data" class="section level2">
 <h2>Spatial data</h2>
 <p>Shapefiles and their associated files can be kept in a single grouping using *.zip (or another similar format). To extract metadata, simply run:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="spatial-data.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb174-2"><a href="spatial-data.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-3"><a href="spatial-data.html#cb174-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;pid of a zipped shapefile on the ADC&quot;</span></span>
-<span id="cb174-4"><a href="spatial-data.html#cb174-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-5"><a href="spatial-data.html#cb174-5" aria-hidden="true" tabindex="-1"></a>spatial_obj <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">read_zip_shapefile</span>(adc, pid)</span>
-<span id="cb174-6"><a href="spatial-data.html#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-7"><a href="spatial-data.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_geometry</span>(spatial_obj)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="spatial-data.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb175-2"><a href="spatial-data.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="spatial-data.html#cb175-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;pid of a zipped shapefile on the ADC&quot;</span></span>
+<span id="cb175-4"><a href="spatial-data.html#cb175-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-5"><a href="spatial-data.html#cb175-5" aria-hidden="true" tabindex="-1"></a>spatial_obj <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">read_zip_shapefile</span>(adc, pid)</span>
+<span id="cb175-6"><a href="spatial-data.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-7"><a href="spatial-data.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_geometry</span>(spatial_obj)</span></code></pre></div>
 <p>This will return the shapefile as an <code>sf</code> style <code>data.frame</code> so that you can examine the attributes, and print the projection and geometry information. Note that the column <code>geometry</code> should not be considered an attribute for documentation purposes. This information is represented in the <code>spatialVector$geometry</code> element.</p>
 </div>
 <!-- </div> -->

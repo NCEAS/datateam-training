@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -419,34 +419,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="access-specific-elements" class="section level2">
 <h2>Access specific elements</h2>
 <p>The <code>eml_get()</code> function is a powerful tool for exploring EML (more on that <a href = 'https://ropensci.github.io/EML/' target='_blank'>here</a> ). It takes any chunk of EML and returns <em>all instances</em> of the element you specify. <em>Note:</em> you’ll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="access-specific-elements.html#cb56-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
-<span id="cb56-2"><a href="access-specific-elements.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="access-specific-elements.html#cb57-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
+<span id="cb57-2"><a href="access-specific-elements.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>
 <pre><code>individualName:
   givenName: Bryce
   surName: Mecum
 organizationName: National Center for Ecological Analysis and Synthesis</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="access-specific-elements.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="access-specific-elements.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</span></code></pre></div>
 <pre><code>eastBoundingCoordinate: &#39;-134&#39;
 northBoundingCoordinate: &#39;59&#39;
 southBoundingCoordinate: &#39;57&#39;
 westBoundingCoordinate: &#39;-135&#39;</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="access-specific-elements.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="access-specific-elements.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</span></code></pre></div>
 <pre><code>&#39;&#39;:
   function: download
   url: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456
 &#39;&#39;: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456</code></pre>
 <p><code>eml_get_simple()</code> is a simplified alternative to <code>eml_get()</code> that produces a list of the desired EML element.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="access-specific-elements.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="access-specific-elements.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</span></code></pre></div>
 <p>To find an eml element you can use either a combination of <code>which_in_eml</code>from the <code>arcticdatautils</code> package or <code>eml_get_simple</code> and <code>which</code> to find the index in an EML list. Use which ever workflow you see
 fit.</p>
 <p><strong>An example question you may have:</strong> <em>Which creators have a surName “Mecum”?</em></p>
 <p>Example using <code>which_in_eml</code>:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="access-specific-elements.html#cb63-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which_in_eml</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</span>
-<span id="cb63-2"><a href="access-specific-elements.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[n]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="access-specific-elements.html#cb64-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which_in_eml</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb64-2"><a href="access-specific-elements.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[n]]</span></span></code></pre></div>
 <p>Example using <code>eml_get_simple</code> and <code>which</code>:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="access-specific-elements.html#cb64-1" aria-hidden="true" tabindex="-1"></a>ent_names <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>)</span>
-<span id="cb64-2"><a href="access-specific-elements.html#cb64-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which</span>(ent_names <span class="sc">==</span> <span class="st">&quot;Mecum&quot;</span>)</span>
-<span id="cb64-3"><a href="access-specific-elements.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[i]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="access-specific-elements.html#cb65-1" aria-hidden="true" tabindex="-1"></a>ent_names <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>)</span>
+<span id="cb65-2"><a href="access-specific-elements.html#cb65-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which</span>(ent_names <span class="sc">==</span> <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb65-3"><a href="access-specific-elements.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[i]]</span></span></code></pre></div>
 </div>
             </section>
 

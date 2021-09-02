@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -429,29 +429,29 @@ A note on nodes - be very careful about what you publish on production nodes (<c
 <p>The primary nodes we work on, and how to set them in R, are below:</p>
 <div id="staging-test-nodes" class="section level3">
 <h3>Staging (Test) nodes</h3>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="set-dataone-nodes.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (test.arcticdata.io)</span></span>
-<span id="cb42-2"><a href="set-dataone-nodes.html#cb42-2" aria-hidden="true" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
-<span id="cb42-3"><a href="set-dataone-nodes.html#cb42-3" aria-hidden="true" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
-<span id="cb42-4"><a href="set-dataone-nodes.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="set-dataone-nodes.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># KNB (dev.nceas.ucsb.edu)</span></span>
-<span id="cb42-6"><a href="set-dataone-nodes.html#cb42-6" aria-hidden="true" tabindex="-1"></a>cn_staging2 <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;STAGING2&quot;</span>)</span>
-<span id="cb42-7"><a href="set-dataone-nodes.html#cb42-7" aria-hidden="true" tabindex="-1"></a>knb_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging2, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="set-dataone-nodes.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (test.arcticdata.io)</span></span>
+<span id="cb43-2"><a href="set-dataone-nodes.html#cb43-2" aria-hidden="true" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
+<span id="cb43-3"><a href="set-dataone-nodes.html#cb43-3" aria-hidden="true" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
+<span id="cb43-4"><a href="set-dataone-nodes.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="set-dataone-nodes.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># KNB (dev.nceas.ucsb.edu)</span></span>
+<span id="cb43-6"><a href="set-dataone-nodes.html#cb43-6" aria-hidden="true" tabindex="-1"></a>cn_staging2 <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;STAGING2&quot;</span>)</span>
+<span id="cb43-7"><a href="set-dataone-nodes.html#cb43-7" aria-hidden="true" tabindex="-1"></a>knb_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging2, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</span></code></pre></div>
 </div>
 <div id="production-nodes" class="section level3">
 <h3>Production nodes</h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="set-dataone-nodes.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (arcticdata.io)</span></span>
-<span id="cb43-2"><a href="set-dataone-nodes.html#cb43-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb43-3"><a href="set-dataone-nodes.html#cb43-3" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb43-4"><a href="set-dataone-nodes.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="set-dataone-nodes.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># KNB (knb.ecoinformatics.org)</span></span>
-<span id="cb43-6"><a href="set-dataone-nodes.html#cb43-6" aria-hidden="true" tabindex="-1"></a>knb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:KNB&quot;</span>)</span>
-<span id="cb43-7"><a href="set-dataone-nodes.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="set-dataone-nodes.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># GOA </span></span>
-<span id="cb43-9"><a href="set-dataone-nodes.html#cb43-9" aria-hidden="true" tabindex="-1"></a>goa <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:GOA&quot;</span>)</span>
-<span id="cb43-10"><a href="set-dataone-nodes.html#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="set-dataone-nodes.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also use the datamgmt::guess_membernode function to set a member node</span></span>
-<span id="cb43-12"><a href="set-dataone-nodes.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this pid looks like a URL - it&#39;s really a unique identifier</span></span>
-<span id="cb43-13"><a href="set-dataone-nodes.html#cb43-13" aria-hidden="true" tabindex="-1"></a>dryad <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">guess_member_node</span>(<span class="st">&#39;https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="set-dataone-nodes.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (arcticdata.io)</span></span>
+<span id="cb44-2"><a href="set-dataone-nodes.html#cb44-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb44-3"><a href="set-dataone-nodes.html#cb44-3" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb44-4"><a href="set-dataone-nodes.html#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="set-dataone-nodes.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># KNB (knb.ecoinformatics.org)</span></span>
+<span id="cb44-6"><a href="set-dataone-nodes.html#cb44-6" aria-hidden="true" tabindex="-1"></a>knb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:KNB&quot;</span>)</span>
+<span id="cb44-7"><a href="set-dataone-nodes.html#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="set-dataone-nodes.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co"># GOA </span></span>
+<span id="cb44-9"><a href="set-dataone-nodes.html#cb44-9" aria-hidden="true" tabindex="-1"></a>goa <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:GOA&quot;</span>)</span>
+<span id="cb44-10"><a href="set-dataone-nodes.html#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-11"><a href="set-dataone-nodes.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also use the datamgmt::guess_membernode function to set a member node</span></span>
+<span id="cb44-12"><a href="set-dataone-nodes.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this pid looks like a URL - it&#39;s really a unique identifier</span></span>
+<span id="cb44-13"><a href="set-dataone-nodes.html#cb44-13" aria-hidden="true" tabindex="-1"></a>dryad <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">guess_member_node</span>(<span class="st">&#39;https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00&#39;</span>)</span></code></pre></div>
 <p>More DataONE STAGING nodes can be found <a href = 'https://cn-stage.test.dataone.org/cn/v2/node' target='_blank'>here</a>
 More DataONE PROD nodes can be found <a href = 'https://cn.dataone.org/cn/v2/node' target='_blank'>here</a></p>
 </div>

@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="datalogger-files.html"/>
-<link rel="next" href="reorganize-files.html"/>
+<link rel="next" href="reorganize-files-on-the-server.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -419,20 +419,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="netcdfs" class="section level2">
 <h2>NetCDFs</h2>
 <p>This section is for dealing with NetCDF (.nc) files. These files require <em>data tables</em> but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or the R commands. However, notice that not all NetCDF files have the attribute table information.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="netcdfs.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
-<span id="cb158-2"><a href="netcdfs.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
-<span id="cb158-3"><a href="netcdfs.html#cb158-3" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
-<span id="cb158-4"><a href="netcdfs.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
-<span id="cb158-5"><a href="netcdfs.html#cb158-5" aria-hidden="true" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="netcdfs.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
+<span id="cb159-2"><a href="netcdfs.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
+<span id="cb159-3"><a href="netcdfs.html#cb159-3" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
+<span id="cb159-4"><a href="netcdfs.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
+<span id="cb159-5"><a href="netcdfs.html#cb159-5" aria-hidden="true" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netCDF_full_att_preview.png" /></p>
 <p>The “long_name” can be used to build a definition.</p>
 <p>The “units” can be used for either units or the enumerated domain codes.</p>
 <p>The “_FillValue” is a missing value code it looks like.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="netcdfs.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
-<span id="cb159-2"><a href="netcdfs.html#cb159-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
-<span id="cb159-3"><a href="netcdfs.html#cb159-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
-<span id="cb159-4"><a href="netcdfs.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
-<span id="cb159-5"><a href="netcdfs.html#cb159-5" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="netcdfs.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
+<span id="cb160-2"><a href="netcdfs.html#cb160-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
+<span id="cb160-3"><a href="netcdfs.html#cb160-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
+<span id="cb160-4"><a href="netcdfs.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
+<span id="cb160-5"><a href="netcdfs.html#cb160-5" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netcdf_value_preview.png" /></p>
 <p>The <code>formatId</code> in the sysmeta will most likely be <code>netCDF-4</code>, but could be <code>netCDF-3</code>.</p>
 </div>
@@ -442,7 +442,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="datalogger-files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="reorganize-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reorganize-files-on-the-server.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

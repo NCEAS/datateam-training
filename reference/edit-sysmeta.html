@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -419,14 +419,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="edit-sysmeta" class="section level2">
 <h2>Edit sysmeta</h2>
 <p>To edit the sysmeta of an object (data file, EML, or resource map, etc.) with a <code>PID</code>, first load the sysmeta into R using the following command:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="edit-sysmeta.html#cb36-1" aria-hidden="true" tabindex="-1"></a>sysmeta <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, pid)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="edit-sysmeta.html#cb37-1" aria-hidden="true" tabindex="-1"></a>sysmeta <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, pid)</span></code></pre></div>
 <p>Then edit the sysmeta slots by using <code>@</code> functionality. For example, to change the <code>fileName</code> use the following command:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="edit-sysmeta.html#cb37-1" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>fileName <span class="ot">&lt;-</span> <span class="st">&#39;NewFileName.csv&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="edit-sysmeta.html#cb38-1" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>fileName <span class="ot">&lt;-</span> <span class="st">&#39;NewFileName.csv&#39;</span></span></code></pre></div>
 <p>Note that some slots cannot be changed by simple text replace (particularly the <code>accessPolicy</code>). There are various helper functions for changing the <code>accessPolicy</code> and <code>rightsHolder</code> such as <code>datapack::addAccessRule()</code> (which takes the sysmeta as an input) or <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'><code>arcticdatautils::set_rights_and_access()</code></a>, which only requires a <code>PID</code>. In general, you most frequently need to use <code>dataone::getSystemMetadata()</code> to change either the <code>formatId</code> or <code>fileName</code> slots (see <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>the DataONE list of format ids</a>) for acceptable formats.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="edit-sysmeta.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of setting the formatId slot</span></span>
-<span id="cb38-2"><a href="edit-sysmeta.html#cb38-2" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>formatId <span class="ot">&lt;-</span> <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="edit-sysmeta.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of setting the formatId slot</span></span>
+<span id="cb39-2"><a href="edit-sysmeta.html#cb39-2" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>formatId <span class="ot">&lt;-</span> <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span></span></code></pre></div>
 <p>After you have changed the necessary slot, you can update the system metadata using the following command:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="edit-sysmeta.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, pid, sysmeta)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="edit-sysmeta.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, pid, sysmeta)</span></code></pre></div>
 <div id="identifiers-and-sysmeta" class="section level3">
 <h3>Identifiers and sysmeta</h3>
 <p>Importantly, changing the system metadata does NOT necessitate a change in the <code>PID</code> of an object. This is because changes to the system metadata do not change the object itself, they are only changing the description of the object (although ideally the system metadata are accurate when an object is first published).</p>

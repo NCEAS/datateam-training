@@ -147,8 +147,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
 <ul>
-<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 <li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
@@ -319,12 +319,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
 <li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
 <li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html"><i class="fa fa-check"></i>Reorganize files</a>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
 <ul>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#basics"><i class="fa fa-check"></i>Basics</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
-<li class="chapter" data-level="" data-path="reorganize-files.html"><a href="reorganize-files.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
@@ -422,17 +422,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>View submissions to the Arctic Data Center from 10/1/18 to 10/7/18</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="list-submissions-to-the-arctic-data-center.html#cb200-1" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb200-2"><a href="list-submissions-to-the-arctic-data-center.html#cb200-2" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb200-3"><a href="list-submissions-to-the-arctic-data-center.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="list-submissions-to-the-arctic-data-center.html#cb201-1" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb201-2"><a href="list-submissions-to-the-arctic-data-center.html#cb201-2" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb201-3"><a href="list-submissions-to-the-arctic-data-center.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
 <ul>
 <li>The following code shows the underlying solr query</li>
 </ul>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="list-submissions-to-the-arctic-data-center.html#cb201-1" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
-<span id="cb201-2"><a href="list-submissions-to-the-arctic-data-center.html#cb201-2" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
-<span id="cb201-3"><a href="list-submissions-to-the-arctic-data-center.html#cb201-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
-<span id="cb201-4"><a href="list-submissions-to-the-arctic-data-center.html#cb201-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
-<span id="cb201-5"><a href="list-submissions-to-the-arctic-data-center.html#cb201-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="list-submissions-to-the-arctic-data-center.html#cb202-1" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
+<span id="cb202-2"><a href="list-submissions-to-the-arctic-data-center.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
+<span id="cb202-3"><a href="list-submissions-to-the-arctic-data-center.html#cb202-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
+<span id="cb202-4"><a href="list-submissions-to-the-arctic-data-center.html#cb202-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
+<span id="cb202-5"><a href="list-submissions-to-the-arctic-data-center.html#cb202-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
