@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Navigate through EML | NCEAS Data Team Reference Guide</title>
+  <title>Reorder entities | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.23.5 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Navigate through EML | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Reorder entities | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Navigate through EML | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Reorder entities | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="access-specific-elements.html"/>
-<link rel="next" href="understand-the-eml-schema.html"/>
+<link rel="prev" href="publish-an-object.html"/>
+<link rel="next" href="nesting-data.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -416,28 +416,29 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="navigate-through-eml" class="section level2">
-<h2>Navigate through EML</h2>
-<p>The first task when editing an EML file is navigating the EML file. An EML file is organized in a structure that contains many lists nested within other lists. The function <code>View</code> allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="navigate-through-eml.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to be in this member node to explore file</span></span>
-<span id="cb65-2"><a href="navigate-through-eml.html#cb65-2" aria-hidden="true" tabindex="-1"></a>d1c_test <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span>
-<span id="cb65-3"><a href="navigate-through-eml.html#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="navigate-through-eml.html#cb65-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c_test<span class="sc">@</span>mn, <span class="st">&quot;urn:uuid:558eabf1-1e91-4881-8ba3-ef8684d8f6a1&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="navigate-through-eml.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(doc)</span></code></pre></div>
-<p><img src="../images/eml_view.png" /></p>
-<p>The complex EML document is represented in R as as series of named, nested lists. We use lists all the time in R! A <code>data.frame</code> is one example of a special kind of list that we use all the time. You may be familiar with the syntax <code>dataframe$column_name</code> which allows us to select a particular column of a <code>data.frame</code>. Under the hood, a <code>data.frame</code> is a named list of vectors with the same length. You select one of those vectors using the <code>$</code> operator, which is called the “list selector operator.”</p>
-<p>Just like you navigate in a <code>data.frame</code>, you can use the <code>$</code> operator to navigate through the EML structure. The <code>$</code> operator allows you to go deeper into the EML structure and to see what elements are nested within other elements. However, you have to tell R where you want to go in the structure when you use the <code>$</code> symbol. For example, if you want to view the dataset element of your EML you would use the command <code>doc$dataset</code>. If you want to view the creators of your data set you would use <code>doc$dataset$creator</code>. Note here that <code>creator</code> is contained within <code>dataset</code>. If you aren’t sure where you want to go, hit the tab button on your keyboard after typing <code>$</code> and a list of available elements in the structure will appear (e.g., <code>doc$&lt;TAB&gt;</code>):</p>
-<p><img src="../images/rstudio_autocomplete.png" /></p>
-<p>Note that if you hit tab, and nothing pops up, this most likely implies that you are trying to go into an EML element that can take a series items. For example <code>doc$dataset$creator$&lt;TAB&gt;</code> will not show a pop-up menu. This is because <code>creator</code> is a series-type object (i.e. you can have multiple <code>creator</code>s). If you want to go deeper into <code>creator</code>, you first must tell R which <code>creator</code> you are interested in. Do this by writing <code>[[i]]</code> first where <code>i</code> is the index of the <code>creator</code> you are concerned with. For example, if you want to look at the first <code>creator</code> i = 1. Now <code>doc$dataset$creator[[1]]$&lt;TAB&gt;</code> will give you many more options. Note, an empty autocomplete result sometimes means you have reached the end of a branch in the EML structure.</p>
-<p>At this point stop and take a deep breath. The key takeaway is that EML is a hierarchical tree structure. The best way to get familiar with it is to explore the structure. Try entering <code>doc$dataset</code> into your console, and print it. Now make the search more specific, for instance: <code>doc$dataset$abstract</code>.</p>
+<div id="reorder-entities" class="section level2">
+<h2>Reorder entities</h2>
+<p>This is easier to accomplish using <code>arcticdatautils</code></p>
+<p><strong>An example reorganizing alphabetically</strong></p>
+<ol style="list-style-type: decimal">
+<li>Metadata</li>
+</ol>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="reorder-entities.html#cb224-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[<span class="fu">order</span>(entity_names)]</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Data files</li>
+</ol>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="reorder-entities.html#cb225-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm, <span class="at">file_names =</span> T)</span>
+<span id="cb225-2"><a href="reorder-entities.html#cb225-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg<span class="sc">$</span>metadata))</span>
+<span id="cb225-3"><a href="reorder-entities.html#cb225-3" aria-hidden="true" tabindex="-1"></a>reordered <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">reorder_pids</span>(pkg<span class="sc">$</span>data, doc)</span></code></pre></div>
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="access-specific-elements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="understand-the-eml-schema.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="publish-an-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nesting-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

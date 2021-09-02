@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -417,28 +419,28 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="add-physicals-to-submissions" class="section level2">
 <h2>Add physicals to submissions</h2>
 <p>New submissions made through the web editor will not have any <code>physical</code> sections within the <code>otherEntity</code>s. Add them to the EML with the following script:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="add-physicals-to-submissions.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)) {</span>
-<span id="cb198-2"><a href="add-physicals-to-submissions.html#cb198-2" aria-hidden="true" tabindex="-1"></a>    otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]</span>
-<span id="cb198-3"><a href="add-physicals-to-submissions.html#cb198-3" aria-hidden="true" tabindex="-1"></a>    id <span class="ot">&lt;-</span> otherEntity<span class="sc">$</span>id</span>
-<span id="cb198-4"><a href="add-physicals-to-submissions.html#cb198-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb198-5"><a href="add-physicals-to-submissions.html#cb198-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;urn-uuid-&quot;</span>, id)) {</span>
-<span id="cb198-6"><a href="add-physicals-to-submissions.html#cb198-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">warning</span>(<span class="st">&quot;otherEntity &quot;</span>, i, <span class="st">&quot; is not a pid&quot;</span>)</span>
-<span id="cb198-7"><a href="add-physicals-to-submissions.html#cb198-7" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb198-8"><a href="add-physicals-to-submissions.html#cb198-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb198-9"><a href="add-physicals-to-submissions.html#cb198-9" aria-hidden="true" tabindex="-1"></a>        id <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;urn-uuid-&quot;</span>, <span class="st">&quot;urn:uuid:&quot;</span>, id)</span>
-<span id="cb198-10"><a href="add-physicals-to-submissions.html#cb198-10" aria-hidden="true" tabindex="-1"></a>        physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, id)</span>
-<span id="cb198-11"><a href="add-physicals-to-submissions.html#cb198-11" aria-hidden="true" tabindex="-1"></a>        doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]<span class="sc">$</span>physical <span class="ot">&lt;-</span> physical</span>
-<span id="cb198-12"><a href="add-physicals-to-submissions.html#cb198-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb198-13"><a href="add-physicals-to-submissions.html#cb198-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="add-physicals-to-submissions.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)) {</span>
+<span id="cb197-2"><a href="add-physicals-to-submissions.html#cb197-2" aria-hidden="true" tabindex="-1"></a>    otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]</span>
+<span id="cb197-3"><a href="add-physicals-to-submissions.html#cb197-3" aria-hidden="true" tabindex="-1"></a>    id <span class="ot">&lt;-</span> otherEntity<span class="sc">$</span>id</span>
+<span id="cb197-4"><a href="add-physicals-to-submissions.html#cb197-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb197-5"><a href="add-physicals-to-submissions.html#cb197-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;urn-uuid-&quot;</span>, id)) {</span>
+<span id="cb197-6"><a href="add-physicals-to-submissions.html#cb197-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">warning</span>(<span class="st">&quot;otherEntity &quot;</span>, i, <span class="st">&quot; is not a pid&quot;</span>)</span>
+<span id="cb197-7"><a href="add-physicals-to-submissions.html#cb197-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb197-8"><a href="add-physicals-to-submissions.html#cb197-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb197-9"><a href="add-physicals-to-submissions.html#cb197-9" aria-hidden="true" tabindex="-1"></a>        id <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;urn-uuid-&quot;</span>, <span class="st">&quot;urn:uuid:&quot;</span>, id)</span>
+<span id="cb197-10"><a href="add-physicals-to-submissions.html#cb197-10" aria-hidden="true" tabindex="-1"></a>        physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, id)</span>
+<span id="cb197-11"><a href="add-physicals-to-submissions.html#cb197-11" aria-hidden="true" tabindex="-1"></a>        doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]<span class="sc">$</span>physical <span class="ot">&lt;-</span> physical</span>
+<span id="cb197-12"><a href="add-physicals-to-submissions.html#cb197-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb197-13"><a href="add-physicals-to-submissions.html#cb197-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>As you can see from code above, we use a for loop here to add <code>physical</code> sections. The for loop is a very useful tool to iterate over a list of elements. With for loop, you can repeat a specific block of code without copying and pasting the code over and over again. When processing datasets in Arctic Data Center, there are many places where for loop can be used, such as publishing a bunch of objects with pids, updating formatID for pkg$data, adding <code>physical</code> section like above code, etc.</p>
 <p>A loop is composed of two parts: the sequence and the body. The sequence usually generates indices to locate elements and the body contains the code that you want to iterate for each element.</p>
 <p>Here is an example of adding the same <code>attributeList</code> for all the <code>dataTable</code>s in the metadata using for loop.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="add-physicals-to-submissions.html#cb199-1" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;attributes.csv&#39;</span>)  <span class="co"># attribute table in csv format</span></span>
-<span id="cb199-2"><a href="add-physicals-to-submissions.html#cb199-2" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> attributes)</span>
-<span id="cb199-3"><a href="add-physicals-to-submissions.html#cb199-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-4"><a href="add-physicals-to-submissions.html#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) { <span class="co"># sequence part</span></span>
-<span id="cb199-5"><a href="add-physicals-to-submissions.html#cb199-5" aria-hidden="true" tabindex="-1"></a>    doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attributeList <span class="co"># body part</span></span>
-<span id="cb199-6"><a href="add-physicals-to-submissions.html#cb199-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="add-physicals-to-submissions.html#cb198-1" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;attributes.csv&#39;</span>)  <span class="co"># attribute table in csv format</span></span>
+<span id="cb198-2"><a href="add-physicals-to-submissions.html#cb198-2" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> attributes)</span>
+<span id="cb198-3"><a href="add-physicals-to-submissions.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="add-physicals-to-submissions.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) { <span class="co"># sequence part</span></span>
+<span id="cb198-5"><a href="add-physicals-to-submissions.html#cb198-5" aria-hidden="true" tabindex="-1"></a>    doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attributeList <span class="co"># body part</span></span>
+<span id="cb198-6"><a href="add-physicals-to-submissions.html#cb198-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
             </section>
 

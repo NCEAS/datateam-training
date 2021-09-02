@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -423,20 +425,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Why does #2 matter? Well by default, all of those URLs above only return publicly-readable Solr documents.
 If a private document matches any of those queries, Solr won’t tell you that. It will act like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="query-solr-via-r.html#cb181-1" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb181-2"><a href="query-solr-via-r.html#cb181-2" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb181-3"><a href="query-solr-via-r.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
-<span id="cb181-4"><a href="query-solr-via-r.html#cb181-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-5"><a href="query-solr-via-r.html#cb181-5" aria-hidden="true" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
-<span id="cb181-6"><a href="query-solr-via-r.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
-<span id="cb181-7"><a href="query-solr-via-r.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb181-8"><a href="query-solr-via-r.html#cb181-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb181-9"><a href="query-solr-via-r.html#cb181-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="query-solr-via-r.html#cb180-1" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb180-2"><a href="query-solr-via-r.html#cb180-2" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb180-3"><a href="query-solr-via-r.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
+<span id="cb180-4"><a href="query-solr-via-r.html#cb180-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-5"><a href="query-solr-via-r.html#cb180-5" aria-hidden="true" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
+<span id="cb180-6"><a href="query-solr-via-r.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
+<span id="cb180-7"><a href="query-solr-via-r.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb180-8"><a href="query-solr-via-r.html#cb180-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb180-9"><a href="query-solr-via-r.html#cb180-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
 <p>By default, <code>query</code> returns the result as a <code>list</code>, but a <code>data.frame</code> can be a more useful way to work with the result. To get a <code>data.frame</code> instead, just set the <code>as</code> argument to ‘data.frame’ to get a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="query-solr-via-r.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb182-2"><a href="query-solr-via-r.html#cb182-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb182-3"><a href="query-solr-via-r.html#cb182-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
-<span id="cb182-4"><a href="query-solr-via-r.html#cb182-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="query-solr-via-r.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb181-2"><a href="query-solr-via-r.html#cb181-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb181-3"><a href="query-solr-via-r.html#cb181-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
+<span id="cb181-4"><a href="query-solr-via-r.html#cb181-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 

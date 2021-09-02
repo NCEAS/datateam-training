@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="get-package-and-eml.html"/>
-<link rel="next" href="nesting-data.html"/>
+<link rel="next" href="reorder-entities.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -417,16 +419,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="publish-an-object" class="section level2">
 <h2>Publish an object</h2>
 <p>Objects (data files, xml metadata files) can be published to a DataONE node using the function <code>publish_object()</code> from the <code>arcticdatautils</code> R Package. To publish an object, you must first get the <code>formatId</code> of the object you want to publish. A few common <code>formatId</code>s are listed below.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="publish-an-object.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .csv file</span></span>
-<span id="cb223-2"><a href="publish-an-object.html#cb223-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
-<span id="cb223-3"><a href="publish-an-object.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-4"><a href="publish-an-object.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co"># .txt file</span></span>
-<span id="cb223-5"><a href="publish-an-object.html#cb223-5" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
-<span id="cb223-6"><a href="publish-an-object.html#cb223-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-7"><a href="publish-an-object.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co"># metadata file</span></span>
-<span id="cb223-8"><a href="publish-an-object.html#cb223-8" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
-<span id="cb223-9"><a href="publish-an-object.html#cb223-9" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb223-10"><a href="publish-an-object.html#cb223-10" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="publish-an-object.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .csv file</span></span>
+<span id="cb222-2"><a href="publish-an-object.html#cb222-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
+<span id="cb222-3"><a href="publish-an-object.html#cb222-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-4"><a href="publish-an-object.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># .txt file</span></span>
+<span id="cb222-5"><a href="publish-an-object.html#cb222-5" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
+<span id="cb222-6"><a href="publish-an-object.html#cb222-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-7"><a href="publish-an-object.html#cb222-7" aria-hidden="true" tabindex="-1"></a><span class="co"># metadata file</span></span>
+<span id="cb222-8"><a href="publish-an-object.html#cb222-8" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
+<span id="cb222-9"><a href="publish-an-object.html#cb222-9" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb222-10"><a href="publish-an-object.html#cb222-10" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
 <p>Most objects have registered <code>formatId</code>s that can be found on the DataONE Object Format List <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>. Always use the “Id:” (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the <code>formatId</code>. If the <code>formatId</code> is not listed at the DataONE website, you can set <code>formatId &lt;- "application/octet-stream"</code>.</p>
 <div class="note">
 <p>
@@ -434,22 +436,21 @@ If you want to change the formatId please use <code>updateSystemMetadata</code> 
 </p>
 </div>
 <p>Once you know the appropriate <code>formatId</code> you can publish an object using these commands:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="publish-an-object.html#cb224-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
-<span id="cb224-2"><a href="publish-an-object.html#cb224-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
-<span id="cb224-3"><a href="publish-an-object.html#cb224-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb224-4"><a href="publish-an-object.html#cb224-4" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
-<span id="cb224-5"><a href="publish-an-object.html#cb224-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
-<span id="cb224-6"><a href="publish-an-object.html#cb224-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="publish-an-object.html#cb223-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
+<span id="cb223-2"><a href="publish-an-object.html#cb223-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
+<span id="cb223-3"><a href="publish-an-object.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="publish-an-object.html#cb223-4" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
+<span id="cb223-5"><a href="publish-an-object.html#cb223-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
+<span id="cb223-6"><a href="publish-an-object.html#cb223-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
 <p>After publishing the object, the <code>PID</code> will need to be added to a resource map by <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#update-a-package' target='_blank'>updating</a> or <a href = 'https://nceas.github.io/datateam-training/reference/create-a-resource-map.html#create-a-resource-map' target='_blank'>creating</a> a resource map. Additionally, the <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'>rights and access</a> for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don’t need to do this.</p>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="get-package-and-eml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nesting-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reorder-entities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -425,18 +427,18 @@ This is run in the terminal
 <div id="basics" class="section level3">
 <h3>Basics</h3>
 <p>Moving around</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb161-1"><a href="reorganize-files.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> directory_name</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb160-1"><a href="reorganize-files.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> directory_name</span></code></pre></div>
 <p>Go up one directory using <code>..</code></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb162-1"><a href="reorganize-files.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb161-1"><a href="reorganize-files.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 <p>Get the contents of the current directory</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="reorganize-files.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb162-1"><a href="reorganize-files.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 <p>Get the directory structure for this folder</p>
 <ul>
 <li><code>-d</code> flag shows only the directories</li>
 </ul>
-<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb164-1"><a href="reorganize-files.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span></span>
-<span id="cb164-2"><a href="reorganize-files.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="reorganize-files.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="at">-d</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="reorganize-files.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span></span>
+<span id="cb163-2"><a href="reorganize-files.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="reorganize-files.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="at">-d</span></span></code></pre></div>
 </div>
 <div id="rename-file-based-on-file-path" class="section level3">
 <h3>Rename file based on file path</h3>
@@ -452,7 +454,7 @@ This is run in the terminal
 <ol style="list-style-type: decimal">
 <li>Find all the files with the same file name</li>
 </ol>
-<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="reorganize-files.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&#39;image.png&#39;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="reorganize-files.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&#39;image.png&#39;</span> </span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>First extract the file name in parts (<code>(.*)/(.*)/(.*)/(.*)</code>) by using the. <code>/</code> as a separator.</li>
 </ol>
@@ -460,36 +462,36 @@ This is run in the terminal
 <li>Each part is represented by <code>$#</code>. If you want the last part of the file name:<code>$4</code>. Rearrange this section as needed:<code>$2/$3/$2-$3-$4</code></li>
 <li>Set the flag as <code>-n</code> while testing to see the result of the renaming first before committing to it using <code>-v</code></li>
 </ul>
-<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="reorganize-files.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rename</span> <span class="at">-n</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span>
-<span id="cb167-2"><a href="reorganize-files.html#cb167-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="reorganize-files.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rename</span> <span class="at">-v</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="reorganize-files.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rename</span> <span class="at">-n</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span>
+<span id="cb166-2"><a href="reorganize-files.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="reorganize-files.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rename</span> <span class="at">-v</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Putting it together by taking the results from find and renaming those files</li>
 </ol>
 <ul>
 <li><code>|</code> the pipe is like the <code>%&gt;%</code> in R</li>
 </ul>
-<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb168-1"><a href="reorganize-files.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&#39;image.png&#39;</span> <span class="kw">|</span> <span class="ex">rename</span> <span class="at">-v</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="reorganize-files.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&#39;image.png&#39;</span> <span class="kw">|</span> <span class="ex">rename</span> <span class="at">-v</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span></code></pre></div>
 </div>
 <div id="unzip-files" class="section level3">
 <h3>Unzip files</h3>
-<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="reorganize-files.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> <span class="st">&#39;*zip&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb168-1"><a href="reorganize-files.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> <span class="st">&#39;*zip&#39;</span></span></code></pre></div>
 </div>
 <div id="zip-shapefiles" class="section level3">
 <h3>Zip shapefiles</h3>
 <ol style="list-style-type: decimal">
 <li>For all the files in a directory, create a folder and move those files</li>
 </ol>
-<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb170-1"><a href="reorganize-files.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="va">dir</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="va">$file</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d.</span> <span class="at">-f1</span><span class="va">)</span><span class="kw">;</span> <span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$dir</span><span class="kw">;</span> <span class="fu">mv</span> <span class="va">$file</span> <span class="va">$dir</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="reorganize-files.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="va">dir</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="va">$file</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d.</span> <span class="at">-f1</span><span class="va">)</span><span class="kw">;</span> <span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$dir</span><span class="kw">;</span> <span class="fu">mv</span> <span class="va">$file</span> <span class="va">$dir</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Zip the folders</li>
 </ol>
-<div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="reorganize-files.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span><span class="kw">;</span><span class="cf">do</span> <span class="fu">zip</span> <span class="at">-r</span> <span class="va">$file</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb170-1"><a href="reorganize-files.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span><span class="kw">;</span><span class="cf">do</span> <span class="fu">zip</span> <span class="at">-r</span> <span class="va">$file</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Remove the directories after zipping</li>
 </ol>
 <p><code>-r</code> means to recursively remove files</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb172-1"><a href="reorganize-files.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="pp">*</span>/</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="reorganize-files.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="pp">*</span>/</span></code></pre></div>
 </div>
 </div>
             </section>

@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -417,13 +419,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="spatial-data" class="section level2">
 <h2>Spatial data</h2>
 <p>Shapefiles and their associated files can be kept in a single grouping using *.zip (or another similar format). To extract metadata, simply run:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="spatial-data.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb175-2"><a href="spatial-data.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="spatial-data.html#cb175-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;pid of a zipped shapefile on the ADC&quot;</span></span>
-<span id="cb175-4"><a href="spatial-data.html#cb175-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-5"><a href="spatial-data.html#cb175-5" aria-hidden="true" tabindex="-1"></a>spatial_obj <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">read_zip_shapefile</span>(adc, pid)</span>
-<span id="cb175-6"><a href="spatial-data.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-7"><a href="spatial-data.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_geometry</span>(spatial_obj)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="spatial-data.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb174-2"><a href="spatial-data.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="spatial-data.html#cb174-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;pid of a zipped shapefile on the ADC&quot;</span></span>
+<span id="cb174-4"><a href="spatial-data.html#cb174-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="spatial-data.html#cb174-5" aria-hidden="true" tabindex="-1"></a>spatial_obj <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">read_zip_shapefile</span>(adc, pid)</span>
+<span id="cb174-6"><a href="spatial-data.html#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-7"><a href="spatial-data.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_geometry</span>(spatial_obj)</span></code></pre></div>
 <p>This will return the shapefile as an <code>sf</code> style <code>data.frame</code> so that you can examine the attributes, and print the projection and geometry information. Note that the column <code>geometry</code> should not be considered an attribute for documentation purposes. This information is represented in the <code>spatialVector$geometry</code> element.</p>
 </div>
 <!-- </div> -->

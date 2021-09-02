@@ -276,7 +276,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#non-nsf"><i class="fa fa-check"></i>non-NSF</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
@@ -294,6 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
 <li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
@@ -387,6 +388,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
 <li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
 <li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
 <ul>
@@ -498,23 +500,23 @@ For some portals such as PerCS portal, will need to be added by running <code>se
 <div id="updating-portals" class="section level3">
 <h3>Updating portals</h3>
 <p>For portals on DataOne - use the ucsb node. Portals made on the ADC use the same node as the datasets.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="customizing-data-portals.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
-<span id="cb207-2"><a href="customizing-data-portals.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
-<span id="cb207-3"><a href="customizing-data-portals.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="customizing-data-portals.html#cb207-4" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb207-5"><a href="customizing-data-portals.html#cb207-5" aria-hidden="true" tabindex="-1"></a>ucsb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:mnUCSB1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="customizing-data-portals.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
+<span id="cb206-2"><a href="customizing-data-portals.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
+<span id="cb206-3"><a href="customizing-data-portals.html#cb206-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb206-4"><a href="customizing-data-portals.html#cb206-4" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb206-5"><a href="customizing-data-portals.html#cb206-5" aria-hidden="true" tabindex="-1"></a>ucsb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:mnUCSB1&quot;</span>)</span></code></pre></div>
 <p>Look for portals using <code>query()</code>so you can get the appropriate seriesID</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="customizing-data-portals.html#cb208-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">query</span>(ucsb, <span class="fu">list</span>(<span class="at">q =</span><span class="st">&quot;formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
-<span id="cb208-2"><a href="customizing-data-portals.html#cb208-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">rows =</span> <span class="st">&quot;300&quot;</span>,</span>
-<span id="cb208-3"><a href="customizing-data-portals.html#cb208-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fl =</span> <span class="st">&quot;identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId&quot;</span>,</span>
-<span id="cb208-4"><a href="customizing-data-portals.html#cb208-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>),</span>
-<span id="cb208-5"><a href="customizing-data-portals.html#cb208-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="customizing-data-portals.html#cb207-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">query</span>(ucsb, <span class="fu">list</span>(<span class="at">q =</span><span class="st">&quot;formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb207-2"><a href="customizing-data-portals.html#cb207-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">rows =</span> <span class="st">&quot;300&quot;</span>,</span>
+<span id="cb207-3"><a href="customizing-data-portals.html#cb207-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fl =</span> <span class="st">&quot;identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId&quot;</span>,</span>
+<span id="cb207-4"><a href="customizing-data-portals.html#cb207-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>),</span>
+<span id="cb207-5"><a href="customizing-data-portals.html#cb207-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <p>Download the file and open to edit and add the filters and other options.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="customizing-data-portals.html#cb209-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> df[df<span class="sc">$</span>title <span class="sc">==</span> <span class="st">&quot;Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition&quot;</span>, <span class="dv">2</span>] <span class="co">#series ID</span></span>
-<span id="cb209-2"><a href="customizing-data-portals.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(ucsb, id), <span class="st">&quot;file_mosaic.xml&quot;</span>) <span class="co">#download</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="customizing-data-portals.html#cb208-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> df[df<span class="sc">$</span>title <span class="sc">==</span> <span class="st">&quot;Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition&quot;</span>, <span class="dv">2</span>] <span class="co">#series ID</span></span>
+<span id="cb208-2"><a href="customizing-data-portals.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(ucsb, id), <span class="st">&quot;file_mosaic.xml&quot;</span>) <span class="co">#download</span></span></code></pre></div>
 <p>Make whatever edits you need and upload the file. The identifier should be updated if successful but if there is an issue with the xml document go back and fix the issue before re-uploading again.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="customizing-data-portals.html#cb210-1" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(ucsb,  id)</span>
-<span id="cb210-2"><a href="customizing-data-portals.html#cb210-2" aria-hidden="true" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">update_object</span>(ucsb, sys<span class="sc">@</span>identifier, <span class="at">path =</span> <span class="st">&quot;file_mosaic.xml&quot;</span>, <span class="at">format_id =</span> sys<span class="sc">@</span>formatId, <span class="at">sid =</span> sys<span class="sc">@</span>seriesId)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="customizing-data-portals.html#cb209-1" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(ucsb,  id)</span>
+<span id="cb209-2"><a href="customizing-data-portals.html#cb209-2" aria-hidden="true" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">update_object</span>(ucsb, sys<span class="sc">@</span>identifier, <span class="at">path =</span> <span class="st">&quot;file_mosaic.xml&quot;</span>, <span class="at">format_id =</span> sys<span class="sc">@</span>formatId, <span class="at">sid =</span> sys<span class="sc">@</span>seriesId)</span></code></pre></div>
 </div>
 </div>
             </section>
