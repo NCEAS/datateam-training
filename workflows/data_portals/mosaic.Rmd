@@ -2,10 +2,13 @@
 
 Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.
 
-**When working MOSAiC datasets:**
+**When working on MOSAiC datasets:**
 
-- Will need to find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `EventId`).
-- There is a custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you shouldn't need to use it directly and copy paste from Protoge if the function works.
+- Will need to find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `eventLabel`). Ask for it in your email:
+
+> We would like to ask for the event label associated with this dataset (see https://www.pangaea.de/expeditions/events/PS122%2F4).
+
+- There is a custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you won't need to use it directly if the function works.
 - Use `EML::shiny_attributes` only when no annotations have been added. The function does not work well with multiple annotations
 - There are functions in `arcticdatautils` to help with annotating: `mosaic_annotate_dataset` and `mosaic_annotate_attribute`
 - The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.
@@ -18,11 +21,11 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 The following shows how to add the annotations using `arcticdatautils` and manually in the case the functions fail to work:
 
-#### Dataset Level Annotations
+### Dataset Level Annotations
 
 There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`. For the full campaign list it is easiest to see on the [PANGAEA website](https://www.pangaea.de/expeditions/byproject/MOSAiC)
 
-**arcticdatauitls**
+**arcticdatautils**
 ```{r, eval = F}
 doc$dataset$id <- "your id here"
 doc$dataset$annotation <- NULL #make sure it is empty
@@ -120,3 +123,15 @@ for(i in n) {
     )
 }
 ```
+
+### Portal updates
+
+The filters are based on the MOSAiC ontology. The `Campaign` and `Basis` filters should remain relatively the same. However there are over 500 Method and Devices. So the decision was made to only show the ones we have annotated.
+
+We can query for all of them and output them formatted as a choice:
+
+```{r eval = F}
+mosaic_portal_filter("Method/Device")
+```
+
+Then update the portal document using the steps outlines in the [advanced data portal customizations](https://nceas.github.io/datateam-training/reference/data-portals-1.html)
