@@ -4,17 +4,17 @@ Before responding to a new submission use this checklist to review the submissio
 
 #### Sensitive Data
 
+If any of the below is in the dataset, please alert the #arctica team know before proceeding.
+
 - Check if there is any sensitive information or personal identifying information in the data (eg. Names)
 - Can the data be disaggregated and de-anonymized? (eg. a small sample size and individuals could be easily identified by their answers)
 - [Dryad Human Subject data guidelines](https://datadryad.org/docs/HumanSubjectsData.pdf) can be a good place to start
     
 Common Cases:
 
-- **Social Science:** Any dataset involving human subjects (may include awards awarded by ASSP, topics such as COVID-19)
+- **Social Science:** Any dataset involving human subjects (may include awards awarded by ASSP and topics such as COVID-19)
 - **Archaeology:** archaeological site location information, which is protected from public access by law
-- **Biology:** protected species coordinates
-
-If any of the above applied to the dataset, please let the rest of the team know before proceeding.
+- **Biology:** protected species location coordinates
 
 #### Data citations
 - If the dataset appears to be in a publication please (might be in the abstract) make sure that those citations are registered.
