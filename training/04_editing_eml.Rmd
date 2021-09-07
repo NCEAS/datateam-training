@@ -24,6 +24,12 @@ Add the following lines to all of your data processing scripts.
 ```{r, child = '../workflows/edit_eml/edit_attributelists.Rmd'}
 ```
 
+```{block, type = "note"}
+Remember to use:
+`d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")`
+`d1c_test@mn` 
+```
+
 ```{r, child = '../workflows/edit_eml/set_physical.Rmd'}
 ```
 
@@ -83,7 +89,7 @@ write_eml(doc, eml_path)
 To update a package with the newly edited EML, use `arcticdatautils::publish_update()`. This function has an argument for adding data `PID`s (or otherwise including existing data `PID`s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in [the following chapter](#update-a-data-package)).
 
 ```{r, eval = FALSE}
-update <- publish_update(adc_test, 
+update <- publish_update(mn, 
                          metadata_pid = pkg$metadata,
                          resource_map_pid = pkg$resource_map,
                          data_pids = pkg$data,

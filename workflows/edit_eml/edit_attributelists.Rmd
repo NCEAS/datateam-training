@@ -71,7 +71,7 @@ However, typing this out in R can be a major pain. Luckily, there's a Shiny app 
 
 ```{r, eval = FALSE}
 #first download the CSV in your data package from Exercise #2
-data <- read.csv(text=rawToChar(getObject(adc_test, pkg$data)))
+data <- read.csv(text=rawToChar(getObject(mn, pkg$data)))
 ```
 
 ```{r, eval = FALSE}
