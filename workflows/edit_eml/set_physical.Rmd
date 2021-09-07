@@ -2,6 +2,10 @@
 
 To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!**
 
+```{block, type = "note"}
+The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization). so,  we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical.
+```
+
 ```{r, eval = FALSE}
 physical <- arcticdatautils::pid_to_eml_physical(mn, pkg$data[[i]])
 ```
