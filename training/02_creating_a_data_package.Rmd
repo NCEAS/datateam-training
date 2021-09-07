@@ -104,6 +104,10 @@ If you are curious how everything magically works, here is a handy diagram:
 ```{r, child = '../workflows/edit_data_packages/01_datapack_background.Rmd'}
 ```
 
+### Exercise 2a {.exercise}
+
+Select a dataset from the catalog on arcticdata.io and checkout the number of files and provenance relationships in the dataset.
+
 ```{r, child = '../workflows/edit_data_packages/02_create_package_data_pack.Rmd'}
 ```
 

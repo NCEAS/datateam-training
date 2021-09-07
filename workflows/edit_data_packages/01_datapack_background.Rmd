@@ -44,7 +44,7 @@ dp@objects
 
 Get the number for data and metadata files associated with this data package:
 ```{r, eval=F}
-length(dp@objects)
+getSize(dp@objects)
 ```
 
 #### Provenance
@@ -64,8 +64,4 @@ For example:
 selectMember(dp, name="sysmeta@formatId", value="image/tiff")
 selectMember(dp, name="sysmeta@fileName", value="filename.csv")
 ```
-
-### Exercise 2a {.exercise}
-
-Select a dataset from the catalog on arcticdata.io and checkout the number of files and provencance relationships in the dataset.
 
