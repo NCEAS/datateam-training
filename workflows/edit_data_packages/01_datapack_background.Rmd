@@ -44,7 +44,7 @@ dp@objects
 
 Get the number for data and metadata files associated with this data package:
 ```{r, eval=F}
-getSize(dp@objects)
+getSize(dp)
 ```
 
 Get the file names and corresponding pids
