@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -418,10 +418,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="add-a-pre-generated-identifier-to-the-eml" class="section level2">
 <h2>Add a pre-generated identifier to the EML</h2>
 <p>When you pre-generate a UUID or DOI, the change is not automatically reflected in the <code>packageId</code> section of the EML. Use the code below to ensure that the EML lines up with the desired identifier:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate DOI and add to EML</span></span>
-<span id="cb36-2"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that you cannot generate a DOI on test nodes</span></span>
-<span id="cb36-3"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-3" aria-hidden="true" tabindex="-1"></a>doiPid <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="st">&quot;DOI&quot;</span>)</span>
-<span id="cb36-4"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>packageId <span class="ot">&lt;-</span> doiPid</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate DOI and add to EML</span></span>
+<span id="cb37-2"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that you cannot generate a DOI on test nodes</span></span>
+<span id="cb37-3"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-3" aria-hidden="true" tabindex="-1"></a>doiPid <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="st">&quot;DOI&quot;</span>)</span>
+<span id="cb37-4"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>packageId <span class="ot">&lt;-</span> doiPid</span></code></pre></div>
 <p>Be sure to include the <code>identifier=</code> argument in your <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html#publish-update' target='_blank'>publish update</a> command so the pre-generated identifier is applied.</p>
 </div>
             </section>

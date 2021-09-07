@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -419,11 +419,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Recover failed submissions</h2>
 <p>A submission may result in an error when the EML cannot be validated through <code>EML::eml_validate</code>, preventing it from being written to an indicated path. This usually occurs when the metacatUI detects a submission error and uploads the EML as a data object instead of text. When this happens, <code>arcticdatautils::recover_failed_submission</code> can be used to retrieve the original EML file. The function removes the error message to get a valid EML document.</p>
 <p>For the example below, <code>pid</code> is the metadata <code>pid</code> containing the failed submission. The <code>path</code> parameter indicates where you want to write the recovered EML version to on your server’s local working directory.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="recover-failed-submissions.html#cb203-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
-<span id="cb203-2"><a href="recover-failed-submissions.html#cb203-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-3"><a href="recover-failed-submissions.html#cb203-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;your_metadata_pid&quot;</span></span>
-<span id="cb203-4"><a href="recover-failed-submissions.html#cb203-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-5"><a href="recover-failed-submissions.html#cb203-5" aria-hidden="true" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">recover_failed_submission</span>(adc, pid, path)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="recover-failed-submissions.html#cb204-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
+<span id="cb204-2"><a href="recover-failed-submissions.html#cb204-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-3"><a href="recover-failed-submissions.html#cb204-3" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;your_metadata_pid&quot;</span></span>
+<span id="cb204-4"><a href="recover-failed-submissions.html#cb204-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-5"><a href="recover-failed-submissions.html#cb204-5" aria-hidden="true" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">recover_failed_submission</span>(adc, pid, path)</span></code></pre></div>
 <p>The output of this function is a valid EML file written to your chosen path. After recovering the document, make sure to set the rights and access to the correct submitter.</p>
 <p>Note that <code>arcticdatautils::recover_failed_submission</code> may not always work. Its functionality depends on the error message since they can vary.</p>
 </div>

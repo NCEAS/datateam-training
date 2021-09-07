@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -420,9 +420,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).</p>
 <p>Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you’ve only run <code>publish_object()</code> on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.</p>
 <p>Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the <code>arcticdatautils::create_resource_map()</code> function, like so:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
-<span id="cb219-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
-<span id="cb219-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb219-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb220-1" aria-hidden="true" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
+<span id="cb220-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb220-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
+<span id="cb220-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb220-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
 </div>
             </section>
 

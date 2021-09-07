@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -419,34 +419,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Edit dataTables</h2>
 <p>To edit a <code>dataTable</code>, first <a href="edit-attributelists.html#edit-attributelists">edit/create an <code>attributeList</code></a> and <a href="set-physical.html#set-physical">set the physical</a>.
 Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> helper function as below:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="edit-datatables.html#cb92-1" aria-hidden="true" tabindex="-1"></a>dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;A descriptive name for the data (does not need to be the same as the data file)&quot;</span>,</span>
-<span id="cb92-2"><a href="edit-datatables.html#cb92-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">entityDescription =</span> <span class="st">&quot;A description of the data&quot;</span>,</span>
-<span id="cb92-3"><a href="edit-datatables.html#cb92-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">physical =</span> physical,</span>
-<span id="cb92-4"><a href="edit-datatables.html#cb92-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">attributeList =</span> attributeList)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="edit-datatables.html#cb93-1" aria-hidden="true" tabindex="-1"></a>dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;A descriptive name for the data (does not need to be the same as the data file)&quot;</span>,</span>
+<span id="cb93-2"><a href="edit-datatables.html#cb93-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">entityDescription =</span> <span class="st">&quot;A description of the data&quot;</span>,</span>
+<span id="cb93-3"><a href="edit-datatables.html#cb93-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">physical =</span> physical,</span>
+<span id="cb93-4"><a href="edit-datatables.html#cb93-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">attributeList =</span> attributeList)</span></code></pre></div>
 <p>The <code>dataTable</code> must then be added to the EML. How exactly you do this will depend on whether there are <code>dataTable</code> elements in your EML, and how many there are. To replace whatever dataTable elements already exist, you could write:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="edit-datatables.html#cb93-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dataTable</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="edit-datatables.html#cb94-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dataTable</span></code></pre></div>
 <p>If there is only one <code>dataTable</code> in your dataset, the EML package will usually “unpack” these, so that it is not contained within a list of length 1 - this means that to add a second <code>dataTable</code>, you cannot use the syntax <code>doc$dataset$dataTable[[2]]</code>, since when unpacked this will contain the <code>entityDescription</code> as opposed to pointing to the second in a series of <code>dataTable</code> elements. Confusing - I know. Not to fear though - this syntax will get you on your way, should you be trying to add a second <code>dataTable</code>.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="edit-datatables.html#cb94-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> <span class="fu">list</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable, dataTable)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="edit-datatables.html#cb95-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> <span class="fu">list</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable, dataTable)</span></code></pre></div>
 <p>If there is more than one <code>dataTable</code> in your dataset, you can return to the more straightforward construction of:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="edit-datatables.html#cb95-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]] <span class="ot">&lt;-</span> dataTable </span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="edit-datatables.html#cb96-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]] <span class="ot">&lt;-</span> dataTable </span></code></pre></div>
 <p>Where <code>i</code> is the index that you wish insert your <code>dataTable</code> into.</p>
 <p>To add a list of <code>dataTables</code> to avoid the unpacking problem above you will need to create a list of <code>dataTables</code></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="edit-datatables.html#cb96-1" aria-hidden="true" tabindex="-1"></a>dts <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># create an empty list</span></span>
-<span id="cb96-2"><a href="edit-datatables.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(tables_you_need)){</span>
-<span id="cb96-3"><a href="edit-datatables.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code modifying/creating the dataTable here</span></span>
-<span id="cb96-4"><a href="edit-datatables.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> dataTable<span class="sc">$</span>entityName,</span>
-<span id="cb96-5"><a href="edit-datatables.html#cb96-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">entityDescription =</span> dataTable<span class="sc">$</span>entityDescription,</span>
-<span id="cb96-6"><a href="edit-datatables.html#cb96-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">physical =</span> physical,</span>
-<span id="cb96-7"><a href="edit-datatables.html#cb96-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">attributeList =</span> attributeList)</span>
-<span id="cb96-8"><a href="edit-datatables.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb96-9"><a href="edit-datatables.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  dts[[i]] <span class="ot">&lt;-</span> dataTable <span class="co"># add to the list</span></span>
-<span id="cb96-10"><a href="edit-datatables.html#cb96-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="edit-datatables.html#cb97-1" aria-hidden="true" tabindex="-1"></a>dts <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># create an empty list</span></span>
+<span id="cb97-2"><a href="edit-datatables.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(tables_you_need)){</span>
+<span id="cb97-3"><a href="edit-datatables.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code modifying/creating the dataTable here</span></span>
+<span id="cb97-4"><a href="edit-datatables.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> dataTable<span class="sc">$</span>entityName,</span>
+<span id="cb97-5"><a href="edit-datatables.html#cb97-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">entityDescription =</span> dataTable<span class="sc">$</span>entityDescription,</span>
+<span id="cb97-6"><a href="edit-datatables.html#cb97-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">physical =</span> physical,</span>
+<span id="cb97-7"><a href="edit-datatables.html#cb97-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">attributeList =</span> attributeList)</span>
+<span id="cb97-8"><a href="edit-datatables.html#cb97-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb97-9"><a href="edit-datatables.html#cb97-9" aria-hidden="true" tabindex="-1"></a>  dts[[i]] <span class="ot">&lt;-</span> dataTable <span class="co"># add to the list</span></span>
+<span id="cb97-10"><a href="edit-datatables.html#cb97-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>After getting a list of <code>dataTables</code>, assign the resulting list to <code>dataTable</code> EML</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="edit-datatables.html#cb97-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dts</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="edit-datatables.html#cb98-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> dts</span></code></pre></div>
 <p>By default, the online submission form adds all entities as <code>otherEntity</code>, even when most should probably be <code>dataTable</code>. You can use <code>eml_otherEntity_to_dataTable</code> to easily move items in <code>otherEntity</code> over to <code>dataTable</code>. Most tabular data or data that contain variables should be listed as a <code>dataTable</code>. Data that do not contain variables (eg: plain text readme files, pdfs, jpegs) should be listed as <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="edit-datatables.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_otherEntity_to_dataTable</span>(doc, </span>
-<span id="cb98-2"><a href="edit-datatables.html#cb98-2" aria-hidden="true" tabindex="-1"></a>                             <span class="dv">1</span>, <span class="co"># which otherEntities you want to convert, for multiple use - 1:5</span></span>
-<span id="cb98-3"><a href="edit-datatables.html#cb98-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">validate_eml =</span> F) <span class="co"># set this to False if the physical or attributes are not added</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="edit-datatables.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_otherEntity_to_dataTable</span>(doc, </span>
+<span id="cb99-2"><a href="edit-datatables.html#cb99-2" aria-hidden="true" tabindex="-1"></a>                             <span class="dv">1</span>, <span class="co"># which otherEntities you want to convert, for multiple use - 1:5</span></span>
+<span id="cb99-3"><a href="edit-datatables.html#cb99-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">validate_eml =</span> F) <span class="co"># set this to False if the physical or attributes are not added</span></span></code></pre></div>
 </div>
             </section>
 

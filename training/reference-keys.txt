@@ -16,12 +16,9 @@ packages-on-the-website
 about-identifiers
 upload-a-package
 datapack-background
-data-packages
 navigating-data-packages
-nodes
-data
+data-objects
 provenance
-get-identifiers
 exercise-2a
 create-a-new-data-package
 upload-new-data-files
@@ -117,7 +114,7 @@ data-citations
 title
 abstract
 keywords
-data-1
+data
 people-parties
 coverages
 project-information
@@ -148,7 +145,7 @@ dataset-citations
 title-2
 abstract-2
 keywords-1
-data-2
+data-1
 attributes
 funding
 methods-2

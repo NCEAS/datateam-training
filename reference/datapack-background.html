@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -422,14 +422,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="datapack-background.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
 <span id="cb8-2"><a href="datapack-background.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datapack)</span>
 <span id="cb8-3"><a href="datapack-background.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(uuid)</span></code></pre></div>
-<div id="data-packages" class="section level3">
-<h3>Data packages</h3>
+<p><strong>Data packages</strong></p>
 <p>Data packages are a class that has slots for <code>relations</code> (provenance), <code>objects</code>(the metadata and data file(s)) and <code>systemMetadata</code>.</p>
-</div>
 <div id="navigating-data-packages" class="section level3">
 <h3>Navigating data packages</h3>
-<div id="nodes" class="section level4">
-<h4>Nodes</h4>
+<p><strong>Nodes</strong></p>
 <p>Using this example on arcticdata.io</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="datapack-background.html#cb9-1" aria-hidden="true" tabindex="-1"></a>d1c_test <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
 <p>To use the member node information, use the <code>mn</code> slot</p>
@@ -442,30 +439,25 @@ To access the various slots using objects created by datapack and dataone (e.g.Â
 <p>Get an existing package from the Arctic Data Center</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="datapack-background.html#cb11-1" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28&quot;</span>)</span></code></pre></div>
 </div>
-<div id="data" class="section level4">
-<h4>Data</h4>
+<div id="data-objects" class="section level3">
+<h3>Data Objects</h3>
 <p>Check out the <code>objects</code> slot</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datapack-background.html#cb12-1" aria-hidden="true" tabindex="-1"></a>dp<span class="sc">@</span>objects</span></code></pre></div>
 <p>Get the number for data and metadata files associated with this data package:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="datapack-background.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(dp<span class="sc">@</span>objects)</span></code></pre></div>
-</div>
-<div id="provenance" class="section level4">
-<h4>Provenance</h4>
-<p>View the provenance as a dataTable. We will get into detail in the Building provenance chapter.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datapack-background.html#cb14-1" aria-hidden="true" tabindex="-1"></a>dp<span class="sc">@</span>relations<span class="sc">$</span>relations</span></code></pre></div>
-<div id="get-identifiers" class="section level5">
-<h5>Get identifiers</h5>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="datapack-background.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getSize</span>(dp<span class="sc">@</span>objects)</span></code></pre></div>
+<p>Get the file names and corresponding pids</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datapack-background.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getValue</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>)</span></code></pre></div>
+<p><strong>Get identifiers</strong></p>
 <p>You can search by any of the <code>sysmeta</code> slots such as <code>fileName</code> and <code>formatId</code> and get the corresponding identifier(s):</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="datapack-background.html#cb15-1" aria-hidden="true" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@ADD THE NAME OF THE SLOT&quot;</span>, <span class="at">value=</span><span class="st">&quot;PATTERN TO SEARCH BY&quot;</span>)</span></code></pre></div>
-<p>For example:</p>
+<p><strong>Example:</strong></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datapack-background.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;image/tiff&quot;</span>)</span>
 <span id="cb16-2"><a href="datapack-background.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value=</span><span class="st">&quot;filename.csv&quot;</span>)</span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="exercise-2a" class="section level3 exercise">
-<h3>Exercise 2a</h3>
-<p>Select a dataset from the catalog on arcticdata.io and checkout the number of files and provencance relationships in the dataset.</p>
+<div id="provenance" class="section level3">
+<h3>Provenance</h3>
+<p>View the provenance as a dataTable. We will get into detail in the Building provenance chapter.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="datapack-background.html#cb17-1" aria-hidden="true" tabindex="-1"></a>dp<span class="sc">@</span>relations<span class="sc">$</span>relations</span></code></pre></div>
 </div>
 </div>
             </section>

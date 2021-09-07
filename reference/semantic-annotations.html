@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -440,7 +440,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (<code>propertyURI</code>),
 and object (<code>valueURI</code>). Because of the way our search interface is built, for now we will be using attribute annotations that have a <code>propertyURI</code> label of “contains measurements of type”.</p>
 <p>Here is what an annotation for an attribute looks like in R. Note that both the <code>propertyURI</code> and <code>valueURI</code> have both a label, and the URI itself.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="semantic-annotations.html#cb105-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="semantic-annotations.html#cb106-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span></code></pre></div>
 <pre><code>$id
 [1] &quot;ODBcOyaTsg&quot;
 
@@ -507,20 +507,20 @@ e.g. selecting the lake area annotation for the <a href="https://arcticdata.io/
 <h4>Manually Annotating</h4>
 <p><em>this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists</em></p>
 <p>First you need to figure out the index of the attribute you want to annotate.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="semantic-annotations.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="semantic-annotations.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
 <pre><code> [1] &quot;prdM&quot;         &quot;t090C&quot;        &quot;t190C&quot;        &quot;c0mS/cm&quot;      &quot;c1mS/cm&quot;      &quot;sal00&quot;        &quot;sal11&quot;        &quot;sbeox0V&quot;      &quot;flECO-AFL&quot;
 [10] &quot;CStarTr0&quot;     &quot;cpar&quot;         &quot;v0&quot;           &quot;v4&quot;           &quot;v6&quot;           &quot;v7&quot;           &quot;svCM&quot;         &quot;altM&quot;         &quot;depSM&quot;    
 [19] &quot;scan&quot;         &quot;sbeox0ML/L&quot;   &quot;sbeox0dOV/dT&quot; &quot;flag&quot;    </code></pre>
 <p>Next, assign an <code>id</code> to the attribute. It should be unique within the document, and it’s nice if it is human readable and related to the attribute it is describing. One format you could use is <code>entity_x_attribute_y</code> which should be unique in scope, and is nice and descriptive.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="semantic-annotations.html#cb109-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;entity_ctd_attribute_salinity&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="semantic-annotations.html#cb110-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;entity_ctd_attribute_salinity&quot;</span></span></code></pre></div>
 <p>Now, assign the <code>propertyURI</code> information. This will be the same for every annotation you build.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="semantic-annotations.html#cb110-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>propertyURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</span>
-<span id="cb110-2"><a href="semantic-annotations.html#cb110-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="semantic-annotations.html#cb111-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>propertyURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</span>
+<span id="cb111-2"><a href="semantic-annotations.html#cb111-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</span></code></pre></div>
 <p>Finally, add the <code>valueURI</code> information from your search.</p>
 <p><img src="../images/bioportal_term.png" />
 You should see an ID on the Bioportal page that looks like a URL - this is the <code>valueURI</code>. Use the value to populate the label element.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="semantic-annotations.html#cb111-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
-<span id="cb111-2"><a href="semantic-annotations.html#cb111-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="semantic-annotations.html#cb112-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
+<span id="cb112-2"><a href="semantic-annotations.html#cb112-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
 </div>
 <div id="shiny-attributes" class="section level4">
 <h4>Shiny Attributes</h4>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -425,40 +425,40 @@ If files are in the visitor folder you might need to be complete the following w
 </p>
 </div>
 <p>Load the necessary packages</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="convert-excel-file-to-csv.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb150-2"><a href="convert-excel-file-to-csv.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb150-3"><a href="convert-excel-file-to-csv.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="convert-excel-file-to-csv.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb151-2"><a href="convert-excel-file-to-csv.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb151-3"><a href="convert-excel-file-to-csv.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <p>Get a list of files that we want to convert</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="convert-excel-file-to-csv.html#cb151-1" aria-hidden="true" tabindex="-1"></a>xlsx <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">&quot;directory/of/files/here&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;*xls&quot;</span>, <span class="at">recursive =</span> T, <span class="at">full.names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="convert-excel-file-to-csv.html#cb152-1" aria-hidden="true" tabindex="-1"></a>xlsx <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">&quot;directory/of/files/here&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;*xls&quot;</span>, <span class="at">recursive =</span> T, <span class="at">full.names =</span> T)</span></code></pre></div>
 <p>Create a function that iterates through the excel files and saves it as a csv in the same folder the excel file was in</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="convert-excel-file-to-csv.html#cb152-1" aria-hidden="true" tabindex="-1"></a>read_then_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(sheet, path) {</span>
-<span id="cb152-2"><a href="convert-excel-file-to-csv.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#remove the file extension</span></span>
-<span id="cb152-3"><a href="convert-excel-file-to-csv.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  pathbase <span class="ot">&lt;-</span> path <span class="sc">%&gt;%</span></span>
-<span id="cb152-4"><a href="convert-excel-file-to-csv.html#cb152-4" aria-hidden="true" tabindex="-1"></a>    tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>()</span>
-<span id="cb152-5"><a href="convert-excel-file-to-csv.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb152-6"><a href="convert-excel-file-to-csv.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#change file extension to csv and save with the sheet name</span></span>
-<span id="cb152-7"><a href="convert-excel-file-to-csv.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sheet)){</span>
-<span id="cb152-8"><a href="convert-excel-file-to-csv.html#cb152-8" aria-hidden="true" tabindex="-1"></a>    path <span class="sc">%&gt;%</span></span>
-<span id="cb152-9"><a href="convert-excel-file-to-csv.html#cb152-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">read_excel</span>(<span class="at">sheet =</span> i) <span class="sc">%&gt;%</span></span>
-<span id="cb152-10"><a href="convert-excel-file-to-csv.html#cb152-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">write_csv</span>(<span class="fu">paste0</span>(pathbase, <span class="st">&quot;_&quot;</span>, sheet[i], <span class="st">&quot;.csv&quot;</span>)) </span>
-<span id="cb152-11"><a href="convert-excel-file-to-csv.html#cb152-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb152-12"><a href="convert-excel-file-to-csv.html#cb152-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb152-13"><a href="convert-excel-file-to-csv.html#cb152-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="convert-excel-file-to-csv.html#cb153-1" aria-hidden="true" tabindex="-1"></a>read_then_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(sheet, path) {</span>
+<span id="cb153-2"><a href="convert-excel-file-to-csv.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#remove the file extension</span></span>
+<span id="cb153-3"><a href="convert-excel-file-to-csv.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  pathbase <span class="ot">&lt;-</span> path <span class="sc">%&gt;%</span></span>
+<span id="cb153-4"><a href="convert-excel-file-to-csv.html#cb153-4" aria-hidden="true" tabindex="-1"></a>    tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>()</span>
+<span id="cb153-5"><a href="convert-excel-file-to-csv.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb153-6"><a href="convert-excel-file-to-csv.html#cb153-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#change file extension to csv and save with the sheet name</span></span>
+<span id="cb153-7"><a href="convert-excel-file-to-csv.html#cb153-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sheet)){</span>
+<span id="cb153-8"><a href="convert-excel-file-to-csv.html#cb153-8" aria-hidden="true" tabindex="-1"></a>    path <span class="sc">%&gt;%</span></span>
+<span id="cb153-9"><a href="convert-excel-file-to-csv.html#cb153-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">read_excel</span>(<span class="at">sheet =</span> i) <span class="sc">%&gt;%</span></span>
+<span id="cb153-10"><a href="convert-excel-file-to-csv.html#cb153-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">write_csv</span>(<span class="fu">paste0</span>(pathbase, <span class="st">&quot;_&quot;</span>, sheet[i], <span class="st">&quot;.csv&quot;</span>)) </span>
+<span id="cb153-11"><a href="convert-excel-file-to-csv.html#cb153-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb153-12"><a href="convert-excel-file-to-csv.html#cb153-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb153-13"><a href="convert-excel-file-to-csv.html#cb153-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Get the sheet name(s)</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="convert-excel-file-to-csv.html#cb153-1" aria-hidden="true" tabindex="-1"></a>sheets <span class="ot">&lt;-</span> xlsx <span class="sc">%&gt;%</span></span>
-<span id="cb153-2"><a href="convert-excel-file-to-csv.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(excel_sheets) <span class="sc">%&gt;%</span></span>
-<span id="cb153-3"><a href="convert-excel-file-to-csv.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="convert-excel-file-to-csv.html#cb154-1" aria-hidden="true" tabindex="-1"></a>sheets <span class="ot">&lt;-</span> xlsx <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href="convert-excel-file-to-csv.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(excel_sheets) <span class="sc">%&gt;%</span></span>
+<span id="cb154-3"><a href="convert-excel-file-to-csv.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>()</span></code></pre></div>
 <p>Iterate over all the xlsx files for each of the sheets</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="convert-excel-file-to-csv.html#cb154-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">map2</span>(sheets, xlsx, <span class="sc">~</span><span class="fu">read_then_csv</span>(.x, <span class="at">path =</span> .y))</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="convert-excel-file-to-csv.html#cb155-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">map2</span>(sheets, xlsx, <span class="sc">~</span><span class="fu">read_then_csv</span>(.x, <span class="at">path =</span> .y))</span></code></pre></div>
 <p>Check the files afterwards to make sure everything was converted properly</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="convert-excel-file-to-csv.html#cb155-1" aria-hidden="true" tabindex="-1"></a>csv <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">&quot;directory/of/files/here&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;*csv&quot;</span>, <span class="at">recursive =</span> T, <span class="at">full.names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="convert-excel-file-to-csv.html#cb156-1" aria-hidden="true" tabindex="-1"></a>csv <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">&quot;directory/of/files/here&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;*csv&quot;</span>, <span class="at">recursive =</span> T, <span class="at">full.names =</span> T)</span></code></pre></div>
 <p>Check to see if there are any empty tables and get a list of files that were empty</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="convert-excel-file-to-csv.html#cb156-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">map</span>(csv, read_csv)</span>
-<span id="cb156-2"><a href="convert-excel-file-to-csv.html#cb156-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">map</span>(files, nrow) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="convert-excel-file-to-csv.html#cb157-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">map</span>(csv, read_csv)</span>
+<span id="cb157-2"><a href="convert-excel-file-to-csv.html#cb157-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">map</span>(files, nrow) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <p>Remove those empty table files</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="convert-excel-file-to-csv.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(csv[n], file.remove)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="convert-excel-file-to-csv.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(csv[n], file.remove)</span></code></pre></div>
 <p>Remove xlsx files if everything looks in order</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="convert-excel-file-to-csv.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xlsx, file.remove)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="convert-excel-file-to-csv.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xlsx, file.remove)</span></code></pre></div>
 </div>
             </section>
 

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -424,15 +424,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>update the metadata that describes that object</li>
 </ol>
 <p>The <code>datapack::replaceMember</code> function takes care of the first two of these tasks. First you need to get the pid of the file you want to replace by using <code>datapack::selectMember</code></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="update-a-data-object.html#cb53-1" aria-hidden="true" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="update-a-data-object.html#cb54-1" aria-hidden="true" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span></code></pre></div>
 <p>Then use <code>replaceMember</code>:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="update-a-data-object.html#cb54-1" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>file_path)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="update-a-data-object.html#cb55-1" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>file_path)</span></code></pre></div>
 <p>If the object was previously uploaded, we can use <code>getDataObject</code> to retrieve it:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="update-a-data-object.html#cb55-1" aria-hidden="true" tabindex="-1"></a>dataObj <span class="ot">&lt;-</span> <span class="fu">getDataObject</span>(d1c_test, <span class="at">id=</span><span class="st">&quot;urn:uuid: here&quot;</span>, <span class="at">lazyLoad=</span>T, <span class="at">limit=</span><span class="st">&quot;1TB&quot;</span>)</span>
-<span id="cb55-2"><a href="update-a-data-object.html#cb55-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, <span class="at">mo=</span>metadataId)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="update-a-data-object.html#cb56-1" aria-hidden="true" tabindex="-1"></a>dataObj <span class="ot">&lt;-</span> <span class="fu">getDataObject</span>(d1c_test, <span class="at">id=</span><span class="st">&quot;urn:uuid: here&quot;</span>, <span class="at">lazyLoad=</span>T, <span class="at">limit=</span><span class="st">&quot;1TB&quot;</span>)</span>
+<span id="cb56-2"><a href="update-a-data-object.html#cb56-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, <span class="at">mo=</span>metadataId)</span></code></pre></div>
 <p>If you want to remove some files from the data package we can use <code>datapack::removeMember</code>. In this example, we want to remove all the zip files associated with this data package, we can use <code>datapack::removeMember</code>:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="update-a-data-object.html#cb56-1" aria-hidden="true" tabindex="-1"></a>zipId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;application/vnd.shp+zip&quot;</span>)</span>
-<span id="cb56-2"><a href="update-a-data-object.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">removeMember</span>(dp, zipId, <span class="at">removeRelationships =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="update-a-data-object.html#cb57-1" aria-hidden="true" tabindex="-1"></a>zipId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;application/vnd.shp+zip&quot;</span>)</span>
+<span id="cb57-2"><a href="update-a-data-object.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">removeMember</span>(dp, zipId, <span class="at">removeRelationships =</span> T)</span></code></pre></div>
 <div class="note">
 <p>
 You will need to be explicit about your <code>format_id</code> here based on the file type. A list of format IDs can be found <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a> on the DataONE website. Use line 2 (Id:) exactly, character for character.

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-04" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
 <ul>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-packages"><i class="fa fa-check"></i>Data packages</a></li>
 <li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
-<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#exercise-2a"><i class="fa fa-check"></i>Exercise 2a</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
 <ul>
@@ -274,7 +274,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
 <ul>
-<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-2"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
 <li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
 </ul></li>
@@ -419,23 +419,23 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Obsolescence chain</h2>
 <p>You can obsolete a dataset using the function <code>datamgmt::obsolete_package()</code>. Use the documentation for instructions on using the function. The following workflow explains how the functions operate.</p>
 <p>This chunk is to obsolete one data set. If there are more to add to the chain, more steps can be added. Be very careful. Make sure to fill in <code>obsoletes</code> and <code>obsoletedBy</code> slots for each one. The <code>obsoletes</code> and <code>obsoletedBy</code> fields must be <code>NA</code>, once they are populated they can’t be modified.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="obsolescence-chain.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get oldest version of the file you want to be visible. Use get_all_versions and look at the latest.</span></span>
-<span id="cb41-2"><a href="obsolescence-chain.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># urn:uuid:...</span></span>
-<span id="cb41-3"><a href="obsolescence-chain.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="obsolescence-chain.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># PID for data set to be obsoleted (hidden): doi:10…</span></span>
-<span id="cb41-5"><a href="obsolescence-chain.html#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-6"><a href="obsolescence-chain.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># adding data set to obsolete (hide) in the slot before the first version of the visible data set</span></span>
-<span id="cb41-7"><a href="obsolescence-chain.html#cb41-7" aria-hidden="true" tabindex="-1"></a>sysmeta1 <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:example_pid&quot;</span>)</span>
-<span id="cb41-8"><a href="obsolescence-chain.html#cb41-8" aria-hidden="true" tabindex="-1"></a>sysmeta1<span class="sc">@</span>obsoletes <span class="ot">&lt;-</span> <span class="st">&quot;doi:10.example_doi&quot;</span></span>
-<span id="cb41-9"><a href="obsolescence-chain.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:example_pid&quot;</span>, sysmeta1)</span>
-<span id="cb41-10"><a href="obsolescence-chain.html#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="obsolescence-chain.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># adding first version to obsolescence chain after obsoleted (hidden) version</span></span>
-<span id="cb41-12"><a href="obsolescence-chain.html#cb41-12" aria-hidden="true" tabindex="-1"></a>sysmeta0 <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, <span class="st">&quot;doi:10.example_doi&quot;</span>)</span>
-<span id="cb41-13"><a href="obsolescence-chain.html#cb41-13" aria-hidden="true" tabindex="-1"></a>sysmeta0<span class="sc">@</span>obsoletedBy <span class="ot">&lt;-</span> <span class="st">&quot;urn:uuid:example_pid&quot;</span></span>
-<span id="cb41-14"><a href="obsolescence-chain.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, <span class="st">&quot;doi:10.example_doi&quot;</span>, sysmeta0)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="obsolescence-chain.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get oldest version of the file you want to be visible. Use get_all_versions and look at the latest.</span></span>
+<span id="cb42-2"><a href="obsolescence-chain.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># urn:uuid:...</span></span>
+<span id="cb42-3"><a href="obsolescence-chain.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="obsolescence-chain.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># PID for data set to be obsoleted (hidden): doi:10…</span></span>
+<span id="cb42-5"><a href="obsolescence-chain.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="obsolescence-chain.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># adding data set to obsolete (hide) in the slot before the first version of the visible data set</span></span>
+<span id="cb42-7"><a href="obsolescence-chain.html#cb42-7" aria-hidden="true" tabindex="-1"></a>sysmeta1 <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:example_pid&quot;</span>)</span>
+<span id="cb42-8"><a href="obsolescence-chain.html#cb42-8" aria-hidden="true" tabindex="-1"></a>sysmeta1<span class="sc">@</span>obsoletes <span class="ot">&lt;-</span> <span class="st">&quot;doi:10.example_doi&quot;</span></span>
+<span id="cb42-9"><a href="obsolescence-chain.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, <span class="st">&quot;urn:uuid:example_pid&quot;</span>, sysmeta1)</span>
+<span id="cb42-10"><a href="obsolescence-chain.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="obsolescence-chain.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co"># adding first version to obsolescence chain after obsoleted (hidden) version</span></span>
+<span id="cb42-12"><a href="obsolescence-chain.html#cb42-12" aria-hidden="true" tabindex="-1"></a>sysmeta0 <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, <span class="st">&quot;doi:10.example_doi&quot;</span>)</span>
+<span id="cb42-13"><a href="obsolescence-chain.html#cb42-13" aria-hidden="true" tabindex="-1"></a>sysmeta0<span class="sc">@</span>obsoletedBy <span class="ot">&lt;-</span> <span class="st">&quot;urn:uuid:example_pid&quot;</span></span>
+<span id="cb42-14"><a href="obsolescence-chain.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, <span class="st">&quot;doi:10.example_doi&quot;</span>, sysmeta0)</span></code></pre></div>
 <p>The following code is equivalent to the code chunk above. This method is recommended, however it is necessary to read the function documentation first.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="obsolescence-chain.html#cb42-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">obsolete_package</span>(mn, <span class="at">metadata_obsolete =</span> <span class="st">&quot;doi:10.example_doi&quot;</span>, </span>
-<span id="cb42-2"><a href="obsolescence-chain.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">metadata_new =</span> <span class="st">&quot;urn:uuid:example_pid&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="obsolescence-chain.html#cb43-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">obsolete_package</span>(mn, <span class="at">metadata_obsolete =</span> <span class="st">&quot;doi:10.example_doi&quot;</span>, </span>
+<span id="cb43-2"><a href="obsolescence-chain.html#cb43-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">metadata_new =</span> <span class="st">&quot;urn:uuid:example_pid&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
