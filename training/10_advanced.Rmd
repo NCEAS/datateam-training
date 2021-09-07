@@ -4,10 +4,10 @@ This section is meant to be read after you have processed a couple of tickets an
 
 ## Working with large data packages
 
-```{r, child = '../workflows/edit_eml/use_references.Rmd'}
+```{r, child = '../workflows/adc_web_submissions/add_physicals_to_submissions.Rmd'}
 ```
 
-```{r, child = '../workflows/adc_web_submissions/add_physicals_to_submissions.Rmd'}
+```{r, child = '../workflows/edit_eml/use_references.Rmd'}
 ```
 
 ## Streamlining your workflow
