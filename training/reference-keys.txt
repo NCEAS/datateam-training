@@ -167,7 +167,12 @@ linking-orcid-and-ldap-accounts
 categorize-datasets
 congrats
 beyond-your-first-ticket
+working-with-large-data-packages
 add-physicals-to-submissions
+use-references
+example-with-parties
+example-with-attributes
+streamlining-your-workflow
 code-snippets
 resources-for-r
 learning
