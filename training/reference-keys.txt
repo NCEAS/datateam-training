@@ -172,6 +172,7 @@ add-physicals-to-submissions
 use-references
 example-with-parties
 example-with-attributes
+annotations
 streamlining-your-workflow
 code-snippets
 resources-for-r

@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -337,12 +337,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3.1" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#example-with-parties"><i class="fa fa-check"></i><b>10.3.1</b> Example with parties</a></li>
 <li class="chapter" data-level="10.3.2" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#example-with-attributes"><i class="fa fa-check"></i><b>10.3.2</b> Example with attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#streamlining-your-workflow"><i class="fa fa-check"></i><b>10.4</b> Streamlining your workflow</a></li>
-<li class="chapter" data-level="10.5" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#code-snippets"><i class="fa fa-check"></i><b>10.5</b> Code Snippets</a></li>
-<li class="chapter" data-level="10.6" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#resources-for-r"><i class="fa fa-check"></i><b>10.6</b> Resources for R</a>
+<li class="chapter" data-level="10.4" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#annotations"><i class="fa fa-check"></i><b>10.4</b> Annotations</a></li>
+<li class="chapter" data-level="10.5" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#streamlining-your-workflow"><i class="fa fa-check"></i><b>10.5</b> Streamlining your workflow</a></li>
+<li class="chapter" data-level="10.6" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#code-snippets"><i class="fa fa-check"></i><b>10.6</b> Code Snippets</a></li>
+<li class="chapter" data-level="10.7" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#resources-for-r"><i class="fa fa-check"></i><b>10.7</b> Resources for R</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#learning"><i class="fa fa-check"></i><b>10.6.1</b> Learning</a></li>
-<li class="chapter" data-level="10.6.2" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#packages"><i class="fa fa-check"></i><b>10.6.2</b> Packages</a></li>
+<li class="chapter" data-level="10.7.1" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#learning"><i class="fa fa-check"></i><b>10.7.1</b> Learning</a></li>
+<li class="chapter" data-level="10.7.2" data-path="beyond-your-first-ticket.html"><a href="beyond-your-first-ticket.html#packages"><i class="fa fa-check"></i><b>10.7.2</b> Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -475,112 +476,145 @@ The reference <code>id</code> needs to be unique within the EML record but doesn
 <span id="cb141-6"><a href="beyond-your-first-ticket.html#cb141-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
-<div id="streamlining-your-workflow" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Streamlining your workflow</h2>
+<div id="annotations" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Annotations</h2>
+<p>If there are multiple tables with similar annotations you can try something like this:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="beyond-your-first-ticket.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co">#go through each dataTable</span></span>
+<span id="cb142-2"><a href="beyond-your-first-ticket.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)){</span>
+<span id="cb142-3"><a href="beyond-your-first-ticket.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb142-4"><a href="beyond-your-first-ticket.html#cb142-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#get all the attibute names</span></span>
+<span id="cb142-5"><a href="beyond-your-first-ticket.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  an <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]], <span class="st">&quot;attributeName&quot;</span>)</span>
+<span id="cb142-6"><a href="beyond-your-first-ticket.html#cb142-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb142-7"><a href="beyond-your-first-ticket.html#cb142-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#go through the attributes figure out what will match</span></span>
+<span id="cb142-8"><a href="beyond-your-first-ticket.html#cb142-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(a <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(an)){</span>
+<span id="cb142-9"><a href="beyond-your-first-ticket.html#cb142-9" aria-hidden="true" tabindex="-1"></a>    annotation <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb142-10"><a href="beyond-your-first-ticket.html#cb142-10" aria-hidden="true" tabindex="-1"></a>      <span class="co"># the attributeName to match ~ valueLabel</span></span>
+<span id="cb142-11"><a href="beyond-your-first-ticket.html#cb142-11" aria-hidden="true" tabindex="-1"></a>      an[[a]] <span class="sc">==</span> <span class="st">&quot;Sample ID&quot;</span> <span class="sc">~</span> <span class="st">&quot;Identity&quot;</span>,</span>
+<span id="cb142-12"><a href="beyond-your-first-ticket.html#cb142-12" aria-hidden="true" tabindex="-1"></a>      an[[a]] <span class="sc">==</span> <span class="st">&quot;Location&quot;</span> <span class="sc">~</span> <span class="st">&quot;study location name&quot;</span>,</span>
+<span id="cb142-13"><a href="beyond-your-first-ticket.html#cb142-13" aria-hidden="true" tabindex="-1"></a>      an[[a]] <span class="sc">==</span> <span class="st">&quot;Latitude&quot;</span> <span class="sc">~</span> <span class="st">&quot;latitude coordinate&quot;</span>,</span>
+<span id="cb142-14"><a href="beyond-your-first-ticket.html#cb142-14" aria-hidden="true" tabindex="-1"></a>      an[[a]] <span class="sc">==</span> <span class="st">&quot;Longitude&quot;</span> <span class="sc">~</span> <span class="st">&quot;longitude coordinate&quot;</span>,</span>
+<span id="cb142-15"><a href="beyond-your-first-ticket.html#cb142-15" aria-hidden="true" tabindex="-1"></a>      an[[a]] <span class="sc">==</span> <span class="st">&quot;Elevation (m)&quot;</span> <span class="sc">~</span> <span class="st">&quot;elevation&quot;</span>,</span>
+<span id="cb142-16"><a href="beyond-your-first-ticket.html#cb142-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(an[[a]], <span class="st">&quot;Depth|depth&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Depth&quot;</span>)</span>
+<span id="cb142-17"><a href="beyond-your-first-ticket.html#cb142-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-18"><a href="beyond-your-first-ticket.html#cb142-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#only run this code when the annotations match</span></span>
+<span id="cb142-19"><a href="beyond-your-first-ticket.html#cb142-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(annotation)){</span>
+<span id="cb142-20"><a href="beyond-your-first-ticket.html#cb142-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#based on the entity Name create a unique id</span></span>
+<span id="cb142-21"><a href="beyond-your-first-ticket.html#cb142-21" aria-hidden="true" tabindex="-1"></a>      entity <span class="ot">&lt;-</span> <span class="fu">str_split</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>entityName, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb142-22"><a href="beyond-your-first-ticket.html#cb142-22" aria-hidden="true" tabindex="-1"></a>      doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[a]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">paste0</span>(entity[[<span class="dv">1</span>]][[<span class="dv">1</span>]], <span class="st">&quot;_&quot;</span>, an[[a]])</span>
+<span id="cb142-23"><a href="beyond-your-first-ticket.html#cb142-23" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb142-24"><a href="beyond-your-first-ticket.html#cb142-24" aria-hidden="true" tabindex="-1"></a>      <span class="co">#add the annotation</span></span>
+<span id="cb142-25"><a href="beyond-your-first-ticket.html#cb142-25" aria-hidden="true" tabindex="-1"></a>      doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[a]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">eml_ecso_annotation</span>(annotation)</span>
+<span id="cb142-26"><a href="beyond-your-first-ticket.html#cb142-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb142-27"><a href="beyond-your-first-ticket.html#cb142-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb142-28"><a href="beyond-your-first-ticket.html#cb142-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb142-29"><a href="beyond-your-first-ticket.html#cb142-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="code-snippets" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Code Snippets</h2>
+<div id="streamlining-your-workflow" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Streamlining your workflow</h2>
+</div>
+<div id="code-snippets" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Code Snippets</h2>
 <p>Code snippets help with templating portions of code that you will be using regularly. To add your own, go to the toolbar ribbon at the top of your Rstudio screen and select:</p>
 <pre><code>Tools &gt; Global Options... &gt; Code &gt; Edit Snippets &gt; Add these chunks to the end of the file</code></pre>
 <p>More info can be found in this blog post by Mara Averick on how to add them: <a href="https://maraaverick.rbind.io/2017/09/custom-snippets-in-rstudio-faster-tweet-chunks-for-all/" class="uri">https://maraaverick.rbind.io/2017/09/custom-snippets-in-rstudio-faster-tweet-chunks-for-all/</a></p>
 <p>Usual <code>arcticdatautils</code> ticket workflow</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="beyond-your-first-ticket.html#cb143-1" aria-hidden="true" tabindex="-1"></a>snippet ticket</span>
-<span id="cb143-2"><a href="beyond-your-first-ticket.html#cb143-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
-<span id="cb143-3"><a href="beyond-your-first-ticket.html#cb143-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
-<span id="cb143-4"><a href="beyond-your-first-ticket.html#cb143-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
-<span id="cb143-5"><a href="beyond-your-first-ticket.html#cb143-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb143-6"><a href="beyond-your-first-ticket.html#cb143-6" aria-hidden="true" tabindex="-1"></a>    cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb143-7"><a href="beyond-your-first-ticket.html#cb143-7" aria-hidden="true" tabindex="-1"></a>    adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb143-8"><a href="beyond-your-first-ticket.html#cb143-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb143-9"><a href="beyond-your-first-ticket.html#cb143-9" aria-hidden="true" tabindex="-1"></a>    rm <span class="ot">&lt;-</span> <span class="st">&quot;add your rm&quot;</span></span>
-<span id="cb143-10"><a href="beyond-your-first-ticket.html#cb143-10" aria-hidden="true" tabindex="-1"></a>    pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm)</span>
-<span id="cb143-11"><a href="beyond-your-first-ticket.html#cb143-11" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg\<span class="sc">$</span>metadata))</span>
-<span id="cb143-12"><a href="beyond-your-first-ticket.html#cb143-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb143-13"><a href="beyond-your-first-ticket.html#cb143-13" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
-<span id="cb143-14"><a href="beyond-your-first-ticket.html#cb143-14" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span>
-<span id="cb143-15"><a href="beyond-your-first-ticket.html#cb143-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb143-16"><a href="beyond-your-first-ticket.html#cb143-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">eml_validate</span>(doc)</span>
-<span id="cb143-17"><a href="beyond-your-first-ticket.html#cb143-17" aria-hidden="true" tabindex="-1"></a>    eml_path <span class="ot">&lt;-</span> <span class="st">&quot;eml.xml&quot;</span>   </span>
-<span id="cb143-18"><a href="beyond-your-first-ticket.html#cb143-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_eml</span>(doc, eml_path)</span>
-<span id="cb143-19"><a href="beyond-your-first-ticket.html#cb143-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-20"><a href="beyond-your-first-ticket.html#cb143-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#update &lt;- publish_update(adc,</span></span>
-<span id="cb143-21"><a href="beyond-your-first-ticket.html#cb143-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               metadata_pid = pkg\$metadata,</span></span>
-<span id="cb143-22"><a href="beyond-your-first-ticket.html#cb143-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               resource_map_pid = pkg\$resource_map,</span></span>
-<span id="cb143-23"><a href="beyond-your-first-ticket.html#cb143-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               metadata_path = eml_path,</span></span>
-<span id="cb143-24"><a href="beyond-your-first-ticket.html#cb143-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               data_pids = pkg\$data,</span></span>
-<span id="cb143-25"><a href="beyond-your-first-ticket.html#cb143-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               public = F)</span></span>
-<span id="cb143-26"><a href="beyond-your-first-ticket.html#cb143-26" aria-hidden="true" tabindex="-1"></a>                                                    </span>
-<span id="cb143-27"><a href="beyond-your-first-ticket.html#cb143-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#datamgmt::categorize_dataset(update\$metadata, c(&quot;theme1&quot;), &quot;Your Name&quot;)</span></span></code></pre></div>
-<p>The <code>datapack</code> ticket workflow</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="beyond-your-first-ticket.html#cb144-1" aria-hidden="true" tabindex="-1"></a>snippet datapack</span>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="beyond-your-first-ticket.html#cb144-1" aria-hidden="true" tabindex="-1"></a>snippet ticket</span>
 <span id="cb144-2"><a href="beyond-your-first-ticket.html#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
-<span id="cb144-3"><a href="beyond-your-first-ticket.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(datapack)</span>
-<span id="cb144-4"><a href="beyond-your-first-ticket.html#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(digest)</span>
-<span id="cb144-5"><a href="beyond-your-first-ticket.html#cb144-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(uuid)</span>
-<span id="cb144-6"><a href="beyond-your-first-ticket.html#cb144-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
-<span id="cb144-7"><a href="beyond-your-first-ticket.html#cb144-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
-<span id="cb144-8"><a href="beyond-your-first-ticket.html#cb144-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
-<span id="cb144-9"><a href="beyond-your-first-ticket.html#cb144-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-10"><a href="beyond-your-first-ticket.html#cb144-10" aria-hidden="true" tabindex="-1"></a>    d1c <span class="ot">&lt;-</span> <span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb144-11"><a href="beyond-your-first-ticket.html#cb144-11" aria-hidden="true" tabindex="-1"></a>    packageId <span class="ot">&lt;-</span> <span class="st">&quot;id here&quot;</span></span>
-<span id="cb144-12"><a href="beyond-your-first-ticket.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier=</span>packageId, <span class="at">lazyLoad=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span>
-<span id="cb144-13"><a href="beyond-your-first-ticket.html#cb144-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-14"><a href="beyond-your-first-ticket.html#cb144-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#get metadata id</span></span>
-<span id="cb144-15"><a href="beyond-your-first-ticket.html#cb144-15" aria-hidden="true" tabindex="-1"></a>    metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
-<span id="cb144-16"><a href="beyond-your-first-ticket.html#cb144-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-17"><a href="beyond-your-first-ticket.html#cb144-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#edit the metadata</span></span>
-<span id="cb144-18"><a href="beyond-your-first-ticket.html#cb144-18" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId))</span>
-<span id="cb144-19"><a href="beyond-your-first-ticket.html#cb144-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-20"><a href="beyond-your-first-ticket.html#cb144-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#add the publisher info</span></span>
-<span id="cb144-21"><a href="beyond-your-first-ticket.html#cb144-21" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
-<span id="cb144-22"><a href="beyond-your-first-ticket.html#cb144-22" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span>
-<span id="cb144-23"><a href="beyond-your-first-ticket.html#cb144-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-24"><a href="beyond-your-first-ticket.html#cb144-24" aria-hidden="true" tabindex="-1"></a>    doc\<span class="sc">$</span>dataset\<span class="sc">$</span>project <span class="ot">&lt;-</span> <span class="fu">eml_nsf_to_project</span>(<span class="st">&quot;nsf id here&quot;</span>)</span>
-<span id="cb144-25"><a href="beyond-your-first-ticket.html#cb144-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-26"><a href="beyond-your-first-ticket.html#cb144-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#check and save the metadata</span></span>
-<span id="cb144-27"><a href="beyond-your-first-ticket.html#cb144-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">eml_validate</span>(doc)</span>
-<span id="cb144-28"><a href="beyond-your-first-ticket.html#cb144-28" aria-hidden="true" tabindex="-1"></a>    eml_path <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">title_to_file_name</span>(doc\<span class="sc">$</span>dataset\<span class="sc">$</span>title)</span>
-<span id="cb144-29"><a href="beyond-your-first-ticket.html#cb144-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_eml</span>(doc, eml_path)</span>
-<span id="cb144-30"><a href="beyond-your-first-ticket.html#cb144-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-31"><a href="beyond-your-first-ticket.html#cb144-31" aria-hidden="true" tabindex="-1"></a>    dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path)</span>
-<span id="cb144-32"><a href="beyond-your-first-ticket.html#cb144-32" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-33"><a href="beyond-your-first-ticket.html#cb144-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">#upload the dataset</span></span>
-<span id="cb144-34"><a href="beyond-your-first-ticket.html#cb144-34" aria-hidden="true" tabindex="-1"></a>    myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>) </span>
-<span id="cb144-35"><a href="beyond-your-first-ticket.html#cb144-35" aria-hidden="true" tabindex="-1"></a>    packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span>F, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span>
-<span id="cb144-36"><a href="beyond-your-first-ticket.html#cb144-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">#datamgmt::categorize_dataset(&quot;doi&quot;, c(&quot;theme1&quot;), &quot;Jasmine&quot;)</span></span></code></pre></div>
-<p>Quick way to give access to submitters to their datasets:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="beyond-your-first-ticket.html#cb145-1" aria-hidden="true" tabindex="-1"></a>snippet access</span>
+<span id="cb144-3"><a href="beyond-your-first-ticket.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
+<span id="cb144-4"><a href="beyond-your-first-ticket.html#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
+<span id="cb144-5"><a href="beyond-your-first-ticket.html#cb144-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-6"><a href="beyond-your-first-ticket.html#cb144-6" aria-hidden="true" tabindex="-1"></a>    cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb144-7"><a href="beyond-your-first-ticket.html#cb144-7" aria-hidden="true" tabindex="-1"></a>    adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb144-8"><a href="beyond-your-first-ticket.html#cb144-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-9"><a href="beyond-your-first-ticket.html#cb144-9" aria-hidden="true" tabindex="-1"></a>    rm <span class="ot">&lt;-</span> <span class="st">&quot;add your rm&quot;</span></span>
+<span id="cb144-10"><a href="beyond-your-first-ticket.html#cb144-10" aria-hidden="true" tabindex="-1"></a>    pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm)</span>
+<span id="cb144-11"><a href="beyond-your-first-ticket.html#cb144-11" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg\<span class="sc">$</span>metadata))</span>
+<span id="cb144-12"><a href="beyond-your-first-ticket.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-13"><a href="beyond-your-first-ticket.html#cb144-13" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
+<span id="cb144-14"><a href="beyond-your-first-ticket.html#cb144-14" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span>
+<span id="cb144-15"><a href="beyond-your-first-ticket.html#cb144-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-16"><a href="beyond-your-first-ticket.html#cb144-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">eml_validate</span>(doc)</span>
+<span id="cb144-17"><a href="beyond-your-first-ticket.html#cb144-17" aria-hidden="true" tabindex="-1"></a>    eml_path <span class="ot">&lt;-</span> <span class="st">&quot;eml.xml&quot;</span>   </span>
+<span id="cb144-18"><a href="beyond-your-first-ticket.html#cb144-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_eml</span>(doc, eml_path)</span>
+<span id="cb144-19"><a href="beyond-your-first-ticket.html#cb144-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-20"><a href="beyond-your-first-ticket.html#cb144-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#update &lt;- publish_update(adc,</span></span>
+<span id="cb144-21"><a href="beyond-your-first-ticket.html#cb144-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               metadata_pid = pkg\$metadata,</span></span>
+<span id="cb144-22"><a href="beyond-your-first-ticket.html#cb144-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               resource_map_pid = pkg\$resource_map,</span></span>
+<span id="cb144-23"><a href="beyond-your-first-ticket.html#cb144-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               metadata_path = eml_path,</span></span>
+<span id="cb144-24"><a href="beyond-your-first-ticket.html#cb144-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               data_pids = pkg\$data,</span></span>
+<span id="cb144-25"><a href="beyond-your-first-ticket.html#cb144-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                                               public = F)</span></span>
+<span id="cb144-26"><a href="beyond-your-first-ticket.html#cb144-26" aria-hidden="true" tabindex="-1"></a>                                                    </span>
+<span id="cb144-27"><a href="beyond-your-first-ticket.html#cb144-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#datamgmt::categorize_dataset(update\$metadata, c(&quot;theme1&quot;), &quot;Your Name&quot;)</span></span></code></pre></div>
+<p>The <code>datapack</code> ticket workflow</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="beyond-your-first-ticket.html#cb145-1" aria-hidden="true" tabindex="-1"></a>snippet datapack</span>
 <span id="cb145-2"><a href="beyond-your-first-ticket.html#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
-<span id="cb145-3"><a href="beyond-your-first-ticket.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
-<span id="cb145-4"><a href="beyond-your-first-ticket.html#cb145-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
-<span id="cb145-5"><a href="beyond-your-first-ticket.html#cb145-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-6"><a href="beyond-your-first-ticket.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb145-7"><a href="beyond-your-first-ticket.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb145-8"><a href="beyond-your-first-ticket.html#cb145-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-9"><a href="beyond-your-first-ticket.html#cb145-9" aria-hidden="true" tabindex="-1"></a>    rm <span class="ot">&lt;-</span> <span class="st">&quot;rm here&quot;</span></span>
-<span id="cb145-10"><a href="beyond-your-first-ticket.html#cb145-10" aria-hidden="true" tabindex="-1"></a>    pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm)</span>
-<span id="cb145-11"><a href="beyond-your-first-ticket.html#cb145-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-12"><a href="beyond-your-first-ticket.html#cb145-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_access</span>(adc, <span class="fu">unlist</span>(pkg), <span class="st">&quot;orcid here&quot;</span>)</span></code></pre></div>
-<p>Quick access to the usual code for common Solr queries:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="beyond-your-first-ticket.html#cb146-1" aria-hidden="true" tabindex="-1"></a>snippet solr</span>
+<span id="cb145-3"><a href="beyond-your-first-ticket.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(datapack)</span>
+<span id="cb145-4"><a href="beyond-your-first-ticket.html#cb145-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(digest)</span>
+<span id="cb145-5"><a href="beyond-your-first-ticket.html#cb145-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(uuid)</span>
+<span id="cb145-6"><a href="beyond-your-first-ticket.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
+<span id="cb145-7"><a href="beyond-your-first-ticket.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
+<span id="cb145-8"><a href="beyond-your-first-ticket.html#cb145-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
+<span id="cb145-9"><a href="beyond-your-first-ticket.html#cb145-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-10"><a href="beyond-your-first-ticket.html#cb145-10" aria-hidden="true" tabindex="-1"></a>    d1c <span class="ot">&lt;-</span> <span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb145-11"><a href="beyond-your-first-ticket.html#cb145-11" aria-hidden="true" tabindex="-1"></a>    packageId <span class="ot">&lt;-</span> <span class="st">&quot;id here&quot;</span></span>
+<span id="cb145-12"><a href="beyond-your-first-ticket.html#cb145-12" aria-hidden="true" tabindex="-1"></a>    dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier=</span>packageId, <span class="at">lazyLoad=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span>
+<span id="cb145-13"><a href="beyond-your-first-ticket.html#cb145-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-14"><a href="beyond-your-first-ticket.html#cb145-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#get metadata id</span></span>
+<span id="cb145-15"><a href="beyond-your-first-ticket.html#cb145-15" aria-hidden="true" tabindex="-1"></a>    metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
+<span id="cb145-16"><a href="beyond-your-first-ticket.html#cb145-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-17"><a href="beyond-your-first-ticket.html#cb145-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#edit the metadata</span></span>
+<span id="cb145-18"><a href="beyond-your-first-ticket.html#cb145-18" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId))</span>
+<span id="cb145-19"><a href="beyond-your-first-ticket.html#cb145-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-20"><a href="beyond-your-first-ticket.html#cb145-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#add the publisher info</span></span>
+<span id="cb145-21"><a href="beyond-your-first-ticket.html#cb145-21" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
+<span id="cb145-22"><a href="beyond-your-first-ticket.html#cb145-22" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span>
+<span id="cb145-23"><a href="beyond-your-first-ticket.html#cb145-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-24"><a href="beyond-your-first-ticket.html#cb145-24" aria-hidden="true" tabindex="-1"></a>    doc\<span class="sc">$</span>dataset\<span class="sc">$</span>project <span class="ot">&lt;-</span> <span class="fu">eml_nsf_to_project</span>(<span class="st">&quot;nsf id here&quot;</span>)</span>
+<span id="cb145-25"><a href="beyond-your-first-ticket.html#cb145-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-26"><a href="beyond-your-first-ticket.html#cb145-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#check and save the metadata</span></span>
+<span id="cb145-27"><a href="beyond-your-first-ticket.html#cb145-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">eml_validate</span>(doc)</span>
+<span id="cb145-28"><a href="beyond-your-first-ticket.html#cb145-28" aria-hidden="true" tabindex="-1"></a>    eml_path <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">title_to_file_name</span>(doc\<span class="sc">$</span>dataset\<span class="sc">$</span>title)</span>
+<span id="cb145-29"><a href="beyond-your-first-ticket.html#cb145-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_eml</span>(doc, eml_path)</span>
+<span id="cb145-30"><a href="beyond-your-first-ticket.html#cb145-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-31"><a href="beyond-your-first-ticket.html#cb145-31" aria-hidden="true" tabindex="-1"></a>    dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path)</span>
+<span id="cb145-32"><a href="beyond-your-first-ticket.html#cb145-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-33"><a href="beyond-your-first-ticket.html#cb145-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">#upload the dataset</span></span>
+<span id="cb145-34"><a href="beyond-your-first-ticket.html#cb145-34" aria-hidden="true" tabindex="-1"></a>    myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>) </span>
+<span id="cb145-35"><a href="beyond-your-first-ticket.html#cb145-35" aria-hidden="true" tabindex="-1"></a>    packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span>F, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span>
+<span id="cb145-36"><a href="beyond-your-first-ticket.html#cb145-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">#datamgmt::categorize_dataset(&quot;doi&quot;, c(&quot;theme1&quot;), &quot;Jasmine&quot;)</span></span></code></pre></div>
+<p>Quick way to give access to submitters to their datasets:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="beyond-your-first-ticket.html#cb146-1" aria-hidden="true" tabindex="-1"></a>snippet access</span>
 <span id="cb146-2"><a href="beyond-your-first-ticket.html#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
 <span id="cb146-3"><a href="beyond-your-first-ticket.html#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
 <span id="cb146-4"><a href="beyond-your-first-ticket.html#cb146-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
 <span id="cb146-5"><a href="beyond-your-first-ticket.html#cb146-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb146-6"><a href="beyond-your-first-ticket.html#cb146-6" aria-hidden="true" tabindex="-1"></a>    cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
 <span id="cb146-7"><a href="beyond-your-first-ticket.html#cb146-7" aria-hidden="true" tabindex="-1"></a>    adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb146-8"><a href="beyond-your-first-ticket.html#cb146-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb146-9"><a href="beyond-your-first-ticket.html#cb146-9" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
-<span id="cb146-10"><a href="beyond-your-first-ticket.html#cb146-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId, fileName, dateUploaded&quot;</span>,</span>
-<span id="cb146-11"><a href="beyond-your-first-ticket.html#cb146-11" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb146-12"><a href="beyond-your-first-ticket.html#cb146-12" aria-hidden="true" tabindex="-1"></a>                              <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
-<span id="cb146-13"><a href="beyond-your-first-ticket.html#cb146-13" aria-hidden="true" tabindex="-1"></a>                              <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
-<span id="cb146-14"><a href="beyond-your-first-ticket.html#cb146-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<span id="cb146-8"><a href="beyond-your-first-ticket.html#cb146-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-9"><a href="beyond-your-first-ticket.html#cb146-9" aria-hidden="true" tabindex="-1"></a>    rm <span class="ot">&lt;-</span> <span class="st">&quot;rm here&quot;</span></span>
+<span id="cb146-10"><a href="beyond-your-first-ticket.html#cb146-10" aria-hidden="true" tabindex="-1"></a>    pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm)</span>
+<span id="cb146-11"><a href="beyond-your-first-ticket.html#cb146-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-12"><a href="beyond-your-first-ticket.html#cb146-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_access</span>(adc, <span class="fu">unlist</span>(pkg), <span class="st">&quot;orcid here&quot;</span>)</span></code></pre></div>
+<p>Quick access to the usual code for common Solr queries:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="beyond-your-first-ticket.html#cb147-1" aria-hidden="true" tabindex="-1"></a>snippet solr</span>
+<span id="cb147-2"><a href="beyond-your-first-ticket.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dataone)</span>
+<span id="cb147-3"><a href="beyond-your-first-ticket.html#cb147-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(arcticdatautils)</span>
+<span id="cb147-4"><a href="beyond-your-first-ticket.html#cb147-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(EML)</span>
+<span id="cb147-5"><a href="beyond-your-first-ticket.html#cb147-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-6"><a href="beyond-your-first-ticket.html#cb147-6" aria-hidden="true" tabindex="-1"></a>    cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb147-7"><a href="beyond-your-first-ticket.html#cb147-7" aria-hidden="true" tabindex="-1"></a>    adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb147-8"><a href="beyond-your-first-ticket.html#cb147-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb147-9"><a href="beyond-your-first-ticket.html#cb147-9" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb147-10"><a href="beyond-your-first-ticket.html#cb147-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId, fileName, dateUploaded&quot;</span>,</span>
+<span id="cb147-11"><a href="beyond-your-first-ticket.html#cb147-11" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb147-12"><a href="beyond-your-first-ticket.html#cb147-12" aria-hidden="true" tabindex="-1"></a>                              <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
+<span id="cb147-13"><a href="beyond-your-first-ticket.html#cb147-13" aria-hidden="true" tabindex="-1"></a>                              <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
+<span id="cb147-14"><a href="beyond-your-first-ticket.html#cb147-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
-<div id="resources-for-r" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> Resources for R</h2>
-<div id="learning" class="section level3" number="10.6.1">
-<h3><span class="header-section-number">10.6.1</span> Learning</h3>
+<div id="resources-for-r" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Resources for R</h2>
+<div id="learning" class="section level3" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> Learning</h3>
 <p>The following online books are useful for expanding your R knowledge and skills:</p>
 <ul>
 <li><a href="http://training.arcticdata.io/" target="_blank">the most recent ADC training materials</a>
@@ -618,8 +652,8 @@ The reference <code>id</code> needs to be unique within the EML record but doesn
 </ul>
 <p>The RStudio <a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">cheatsheets</a> are also useful references for functions in <a href="https://www.tidyverse.org/" target="_blank">tidyverse</a> and other packages.</p>
 </div>
-<div id="packages" class="section level3" number="10.6.2">
-<h3><span class="header-section-number">10.6.2</span> Packages</h3>
+<div id="packages" class="section level3" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> Packages</h3>
 <p>The data team uses and develops a number of R packages. Here is a listing and description of the main packages:</p>
 <ul>
 <li>dataone
