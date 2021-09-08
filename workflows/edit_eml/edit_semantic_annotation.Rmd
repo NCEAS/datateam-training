@@ -140,4 +140,3 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- l
 
 On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `propertyURI`, `propertyLabel`, `valueURI`, `valueLabel` that can be filled out.
 
-
