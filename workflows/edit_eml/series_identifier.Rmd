@@ -1,6 +1,6 @@
 ## Series Identifier (SID)
-A series identifier is a system metadata field that represents a single identifier across multiple versions of a data package, a feature often requested by submitters.  These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future.  
-
+A series identifier is a system metadata field that represents a single identifier across multiple versions of a data package, a feature often requested by submitters.  These are useful for maintaining a single identifier when a data package is expected to receive updates (usually additional data) in the future. For example, this dataset has a series id:
+https://doi.org/10.18739/A2154DQ22 (the doi and urn:uuid are both present at the top of the dataset).
 
 ### Adding a SID to a package
 Adding a series identifier should be the last step.  In most cases the SID will be in `DOI` format.  Once the data package is complete (peer-reviewd and approved by the PI) the series identifier can be added by updating the `seriesId` field of the system metadata of the metadata object. 

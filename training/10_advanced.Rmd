@@ -1,0 +1,55 @@
+# Beyond your first ticket
+
+This section is meant to be read after you have processed a couple of tickets and you are comfortable with the workflow with a relatively simple dataset with 1-2 files and want to expand your skills and workflows further.
+
+## Working with large data packages
+
+```{r, child = '../workflows/adc_web_submissions/add_physicals_to_submissions.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/use_references.Rmd'}
+```
+
+## Annotations
+
+If there are multiple tables with similar annotations you can try something like this:
+
+```{r, eval = F}
+#go through each dataTable
+for(i in 1:length(doc$dataset$dataTable)){
+  
+  #get all the attibute names
+  an <- eml_get_simple(doc$dataset$dataTable[[i]], "attributeName")
+  
+  #go through the attributes figure out what will match
+  for(a in 1:length(an)){
+    annotation <- dplyr::case_when(
+      # the attributeName to match ~ valueLabel
+      an[[a]] == "Sample ID" ~ "Identity",
+      an[[a]] == "Location" ~ "study location name",
+      an[[a]] == "Latitude" ~ "latitude coordinate",
+      an[[a]] == "Longitude" ~ "longitude coordinate",
+      an[[a]] == "Elevation (m)" ~ "elevation",
+      str_detect(an[[a]], "Depth|depth") ~ "Depth")
+    
+    #only run this code when the annotations match
+    if(!is.na(annotation)){
+      #based on the entity Name create a unique id
+      entity <- str_split(doc$dataset$dataTable[[i]]$entityName, "_")
+      doc$dataset$dataTable[[i]]$attributeList$attribute[[a]]$id <- paste0(entity[[1]][[1]], "_", an[[a]])
+      
+      #add the annotation
+      doc$dataset$dataTable[[i]]$attributeList$attribute[[a]]$annotation <- eml_ecso_annotation(annotation)
+    }
+  }
+  
+}
+```
+
+## Streamlining your workflow
+
+```{r, child = '../workflows/miscellaneous/code_snippets.Rmd'}
+```
+
+```{r, child = '../workflows/miscellaneous/resources_for_r.Rmd'}
+```

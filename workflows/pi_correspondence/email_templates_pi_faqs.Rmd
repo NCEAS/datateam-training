@@ -3,13 +3,20 @@
 ### Data
 *Q: I would like to / have already uploaded data to ____ repository*
 
-Generalist repository
+- Review the repository, does it issue persistent identifiers (ie. DOIs)?
+- Do they say how long they will be commiting to storing the data?
+
+If the answer is no to either questions, we will need to document and store any files in our own system. If any of this is unclear from what you can find online, you can message Matt to discuss with NSF if a particular repository will be allowed.
+
+**Possible response for a generalist repository**
 
 > If your data doesn't require features that only ____ provides, we would encourage you to consider publishing both the data and the metadata at the Arctic Data Center. Some benefits to submitting to us includes:
 
 - We provide a DOI that can be cited in your published papers
 - We track where datasets are being cited
 - By submitting both the data and metadata to us, you can fulfill your NSF reporting requirements at the same time. This will reduce the work needed on your part to get any additional metadata requirements for NSF.
+
+
 
 *Q: Can I replace data that have already been uploaded and keep the DOI?* 
 
@@ -31,9 +38,9 @@ Generalist repository
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
 
-> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
+> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. If it is not a NSF dataset see the section on Scope.
 
->Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
+> We have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
 
 > If you have files to transfer to us that total several terabytes it may be best to arrange a shipment of an external hard drive.
 

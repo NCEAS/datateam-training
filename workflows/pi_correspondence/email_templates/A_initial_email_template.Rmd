@@ -63,9 +63,25 @@ Offer this if submitter is reluctant to change:
 
 Sensitive Data
 
-*Example response. Tailor this reponse to the format in question.*
+We will need to ask these questions manually until the fields are added to the webform.
 
-> We wanted to check with you to make sure there is no sensitive data that could potentially be de-anonymized (eg. would there be small enough populations where the data could be disaggregated).
+1. Data sensitivity categories
+
+Once we have the ontology this question can be asked:
+
+> Based on our Data sensitivity categories, which of the 3 does your dataset align with most:
+
+- **Non-sensitive data** - None of the data includes sensitive or protected information.
+
+- **Some or all data is sensitive with minimal risk** - Sensitive data has been de-identified, anonymized, aggregated, or summarized to remove sensitivities and enable safe data distribution. Examples include ensuring that human subjects data, protected species data, archaeological site locations and personally identifiable information have been properly anonymized, aggregated and summarized.
+
+- **Some or all data is sensitive with significant risk** - The data contains human subjects data or other sensitive data. Release of the data could cause harm or violate statutes, and must remain confidential following restrictions from an Institutional Review Board (IRB) or similar body.
+
+2. Ethical research proceedures
+
+> We were wondering if you could also address this question specifically on Ethical Research Procedures:
+Describe how and the extent to which data collection procedures followed community standards for ethical research practices (e.g., CARE Principles). Be explicit about Insitutional Review Board approvals, consent waivers, procedures for co-production, data sovreignty, and other issues addressing responsible and ethical research. Include any steps to anonymize, aggregate or de-identify the dataset, or to otherwise create a version for public distribution.
+We can help add your answers to the question to the metadata.
 
 Adding provenance
 

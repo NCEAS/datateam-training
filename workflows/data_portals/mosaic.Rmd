@@ -4,25 +4,30 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 **When working on MOSAiC datasets:**
 
-- Will need to find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `eventLabel`). Ask for it in your email:
+1. Find out the `EventId` from the researcher to annotate (`Campaign` can be derived from the `eventLabel`). Ask for it in your email:
 
 > We would like to ask for the event label associated with this dataset (see https://www.pangaea.de/expeditions/events/PS122%2F4).
 
-- There is a custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you won't need to use it directly if the function works.
-- Use `EML::shiny_attributes` only when no annotations have been added. The function does not work well with multiple annotations
+2. Find the appropriate dataset and attribute level annotations
+
 - There are functions in `arcticdatautils` to help with annotating: `mosaic_annotate_dataset` and `mosaic_annotate_attribute`
-- The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.
+- The custom ontology for the datasets are currently in the [sem-prov-ontologies](https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl) repository but you won't need to use it directly if the function works.
+- Use `EML::shiny_attributes` only when no annotations have been added. The function does not work well with multiple annotations
+- Please continue to annotate the measurement types using `containst measurements of type` for all other attributes
+
+3. The [portal](https://search.dataone.org/portals/mosaic/Data) is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.
 
 **Here are two fully annotated datasets for reference:**
 
-1. https://doi.org/10.18739/A27S7HT3B
-2. https://doi.org/10.18739/A23F4KP3J
+1. [Simple example](https://doi.org/10.18739/A27S7HT3B)
+2. [Example with MOSAiC and ECSO annotations](https://doi.org/10.18739/A2M03XZ32)
+3. [Example with non-polarstern vessels](https://arcticdata.io/catalog/view/urn%3Auuid%3A679b719b-2feb-4b61-a975-282149995b51)
 
 The following shows how to add the annotations using `arcticdatautils` and manually in the case the functions fail to work:
 
 ### Dataset Level Annotations
 
-There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`.
+There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`. For the full campaign list it is easiest to see on the [PANGAEA website](https://www.pangaea.de/expeditions/byproject/MOSAiC)
 
 **arcticdatautils**
 ```{r, eval = F}
@@ -67,7 +72,7 @@ doc$dataset$annotation <- list(
 )
 ```
 
-### Entity Level Annotations
+#### Attribute Level Annotations
 
 Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.
 

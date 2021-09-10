@@ -1,10 +1,14 @@
 ## Code Snippets
 
+Code snippets help with templating portions of code that you will be using regularly. To add your own, go to the toolbar ribbon at the top of your Rstudio screen and select:
+
+```
 Tools > Global Options... > Code > Edit Snippets > Add these chunks to the end of the file
+```
 
 More info can be found in this blog post by Mara Averick on how to add them: https://maraaverick.rbind.io/2017/09/custom-snippets-in-rstudio-faster-tweet-chunks-for-all/
 
-Usual ticket workflow
+Usual `arcticdatautils` ticket workflow
 ```{r  , eval=F}
 snippet ticket
 	library(dataone)
@@ -35,31 +39,44 @@ snippet ticket
 	#datamgmt::categorize_dataset(update\$metadata, c("theme1"), "Your Name")
 ```
 
-The datapack version
+The `datapack` ticket workflow
 ```{r , eval=F}
 snippet datapack
 	library(dataone)
 	library(datapack)
 	library(digest)
 	library(uuid)
-
+	library(dataone)
+	library(arcticdatautils)
+	library(EML)
+	
 	d1c <- D1Client("PROD", "urn:node:ARCTIC")
-	packageId <- "metadata id here"
+	packageId <- "id here"
 	dp <- getDataPackage(d1c, identifier=packageId, lazyLoad=TRUE, quiet=FALSE)
 	
 	#get metadata id
 	metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 	
-	zipId <- selectMember(dp, name="sysmeta@formatId", value="application/vnd.shp+zip")
-	removeMember(dp, zipId, removeRelationships = T)
+	#edit the metadata
+	doc <- read_eml(getObject(d1c@mn, metadataId))
 	
-	#add an existing data object
-	dataObj <- getDataObject(d1c, id="uuid of data object", lazyLoad=T, limit="1TB")
-	dp <- addMember(dp, dataObj, mo=metadataId)
+	#add the publisher info
+	doc <- eml_add_publisher(doc)
+	doc <- eml_add_entity_system(doc)
+	
+	doc\$dataset\$project <- eml_nsf_to_project("nsf id here")
+	
+	#check and save the metadata
+	eml_validate(doc)
+	eml_path <- arcticdatautils::title_to_file_name(doc\$dataset\$title)
+	write_eml(doc, eml_path)
+	
+	dp <- replaceMember(dp, metadataId, replacement=eml_path)
 	
 	#upload the dataset
 	myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission") 
-	packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
+	packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
+	#datamgmt::categorize_dataset("doi", c("theme1"), "Jasmine")
 ```
 
 Quick way to give access to submitters to their datasets:
@@ -95,4 +112,5 @@ snippet solr
 	                          rows = "1500"),
 	                     as="data.frame")
 ```
+
 
