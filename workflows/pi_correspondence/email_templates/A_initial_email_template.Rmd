@@ -69,10 +69,13 @@ We will need to ask these questions manually until the fields are added to the w
 
 Once we have the ontology this question can be asked:
 
-> Based on our Data sensitivity categories, which of the 3 does your dataset align with most:(
-1. Non-sensitive data(None of the data includes sensitive or protected information.(
-2. Some or all data is sensitive with minimal risk(Sensitive data has been de-identified, anonymized, aggregated, or summarized to remove sensitivities and enable safe data distribution. Examples include ensuring that human subjects data, protected species data, archaeological site locations and personally identifiable information have been properly anonymized, aggregated and summarized.(
-3. Some or all data is sensitive with significant risk(The data contains human subjects data or other sensitive data. Release of the data could cause harm or violate statutes, and must remain confidential following restrictions from an Institutional Review Board (IRB) or similar body.
+> Based on our Data sensitivity categories, which of the 3 does your dataset align with most:
+
+- **Non-sensitive data** - None of the data includes sensitive or protected information.
+
+- **Some or all data is sensitive with minimal risk** - Sensitive data has been de-identified, anonymized, aggregated, or summarized to remove sensitivities and enable safe data distribution. Examples include ensuring that human subjects data, protected species data, archaeological site locations and personally identifiable information have been properly anonymized, aggregated and summarized.
+
+- **Some or all data is sensitive with significant risk** - The data contains human subjects data or other sensitive data. Release of the data could cause harm or violate statutes, and must remain confidential following restrictions from an Institutional Review Board (IRB) or similar body.
 
 2. Ethical research proceedures
 
