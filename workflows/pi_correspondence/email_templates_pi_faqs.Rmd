@@ -38,9 +38,9 @@ If the answer is no to either questions, we will need to document and store any 
 
 *Issue: MANY files to upload (100s or 1000s) or large cumulative size.*  
 
-> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. 
+> A: Datateam - Prior to accepting large uploads, take the time to make sure there is enough space available and uploading all the files is necessary. If it is not a NSF dataset see the section on Scope.
 
->Can you upload the files to a drive we can access, such as Google Drive or Dropbox? Alternatively, if you have a publicly accessible FTP you can point us to, we could grab the files from there. If needed, we have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
+> We have a secure FTP you can access. Details are available here: <a href = 'https://help.nceas.ucsb.edu/remote_file_access' target='_blank'>https://help.nceas.ucsb.edu/remote_file_access</a> . Please access our server at datateam.nceas.ucsb.edu with the username "visitor". Let us know if you would like to use our SFTP and we will send you the password and the path to which directory to upload to.
 
 > If you have files to transfer to us that total several terabytes it may be best to arrange a shipment of an external hard drive.
 
