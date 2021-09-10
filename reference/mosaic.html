@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-09" />
+<meta name="date" content="2021-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,22 +419,28 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>MOSAiC</h2>
 <p>Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.</p>
 <p><strong>When working on MOSAiC datasets:</strong></p>
-<ul>
-<li>Will need to find out the <code>EventId</code> from the researcher to annotate (<code>Campaign</code> can be derived from the <code>eventLabel</code>). Ask for it in your email:</li>
-</ul>
+<ol style="list-style-type: decimal">
+<li>Find out the <code>EventId</code> from the researcher to annotate (<code>Campaign</code> can be derived from the <code>eventLabel</code>). Ask for it in your email:</li>
+</ol>
 <blockquote>
 <p>We would like to ask for the event label associated with this dataset (see <a href="https://www.pangaea.de/expeditions/events/PS122%2F4" class="uri">https://www.pangaea.de/expeditions/events/PS122%2F4</a>).</p>
 </blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the appropriate dataset and attribute level annotations</li>
+</ol>
 <ul>
-<li>There is a custom ontology for the datasets are currently in the <a href="https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl">sem-prov-ontologies</a> repository but you won’t need to use it directly if the function works.</li>
-<li>Use <code>EML::shiny_attributes</code> only when no annotations have been added. The function does not work well with multiple annotations</li>
 <li>There are functions in <code>arcticdatautils</code> to help with annotating: <code>mosaic_annotate_dataset</code> and <code>mosaic_annotate_attribute</code></li>
-<li>The <a href="https://search.dataone.org/portals/mosaic/Data">portal</a> is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.</li>
+<li>The custom ontology for the datasets are currently in the <a href="https://github.com/DataONEorg/sem-prov-ontologies/blob/main/MOSAiC/MOSAiC.owl">sem-prov-ontologies</a> repository but you won’t need to use it directly if the function works.</li>
+<li>Use <code>EML::shiny_attributes</code> only when no annotations have been added. The function does not work well with multiple annotations</li>
+<li>Please continue to annotate the measurement types using <code>containst measurements of type</code> for all other attributes</li>
 </ul>
+<ol start="3" style="list-style-type: decimal">
+<li>The <a href="https://search.dataone.org/portals/mosaic/Data">portal</a> is on DataONE. Make sure the dataset(s) show up in the portal after you add the annotations.</li>
+</ol>
 <p><strong>Here are two fully annotated datasets for reference:</strong></p>
 <ol style="list-style-type: decimal">
 <li><a href="https://doi.org/10.18739/A27S7HT3B">Simple example</a></li>
-<li><a href="https://doi.org/10.18739/A23F4KP3J">Example with MOSAiC and ECSO annotations</a></li>
+<li><a href="https://doi.org/10.18739/A2M03XZ32">Example with MOSAiC and ECSO annotations</a></li>
 <li><a href="https://arcticdata.io/catalog/view/urn%3Auuid%3A679b719b-2feb-4b61-a975-282149995b51">Example with non-polarstern vessels</a></li>
 </ol>
 <p>The following shows how to add the annotations using <code>arcticdatautils</code> and manually in the case the functions fail to work:</p>
