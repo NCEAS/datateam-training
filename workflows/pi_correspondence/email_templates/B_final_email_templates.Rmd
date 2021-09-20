@@ -8,7 +8,7 @@
 
 > Please review and approve it for publishing or let us know if you would like anything else changed. For your convenience, if we do not hear from you within a week we will proceed with publishing with a DOI.
 
-> After publishing with a DOI, any further changes to the dataset will result in a new DOI. However, any previous DOIs will still resolve and point the user to the newest version. If you would like to maintain the same DOI please let us know. 
+> After publishing with a DOI, any further changes to the dataset will result in a new DOI. However, any previous DOIs will still resolve and point the user to the newest version.
 
 > Please let us know if you have any questions.
 
