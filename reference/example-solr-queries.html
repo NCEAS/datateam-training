@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Example Solr queries | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Example Solr queries | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-20" />
+<meta name="date" content="2021-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -527,608 +527,809 @@ You can use either spaces or <code>+</code> to separate query parameters. When t
 <span id="cb196-4"><a href="example-solr-queries.html#cb196-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
 <span id="cb196-5"><a href="example-solr-queries.html#cb196-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <pre><code>##                                                     identifier
-## 1                urn:uuid:25683ee4-c7bf-4601-b4bc-0d89397a9541
-## 2                urn:uuid:7cd1baba-b5e2-45ee-b1c5-f43a6c62c4ee
-## 3   resource_map_urn:uuid:be9f4db2-611d-46e4-9e4b-15970253a76b
-## 4                urn:uuid:be9f4db2-611d-46e4-9e4b-15970253a76b
-## 5   resource_map_urn:uuid:1d9620fb-a52a-4d9e-b246-ab17968020d4
-## 6                urn:uuid:1d9620fb-a52a-4d9e-b246-ab17968020d4
-## 7   resource_map_urn:uuid:cd423114-f676-487d-9667-64b26ebaea4e
-## 8                urn:uuid:cd423114-f676-487d-9667-64b26ebaea4e
-## 9   resource_map_urn:uuid:8080e181-f491-48bc-9d3d-2940ff54593c
-## 10               urn:uuid:8080e181-f491-48bc-9d3d-2940ff54593c
-## 11  resource_map_urn:uuid:c268739f-d46e-46e5-b2b8-46388a8c6834
-## 12               urn:uuid:c268739f-d46e-46e5-b2b8-46388a8c6834
-## 13  resource_map_urn:uuid:7b37ddb1-a470-4a47-b720-50a9b2e15e49
-## 14               urn:uuid:7b37ddb1-a470-4a47-b720-50a9b2e15e49
-## 15               urn:uuid:4cfd01ff-0db2-41bc-b578-7e8f39eca091
-## 16               urn:uuid:c9c779c2-88c7-4d20-9f57-33265144d0e6
-## 17               urn:uuid:c0ac2488-fd0b-405f-8c98-473a35fcaae6
-## 18               urn:uuid:db8998e4-dfd7-4971-b256-2da95c4593c0
-## 19                         resource_map_doi:10.18739/A23R0PV3M
-## 20                                      doi:10.18739/A23R0PV3M
-## 21               urn:uuid:c61b94d2-9451-4786-86fd-2fd9a3eb8f1f
-## 22               urn:uuid:1511aa15-d38e-4a98-8ffe-de299603c8d4
-## 23               urn:uuid:ecc676c3-d8f8-4675-87e0-3b6940e1459a
-## 24               urn:uuid:3cf43f30-7d79-4204-b82e-10cf58f47fd4
-## 25               urn:uuid:34c9e0ae-9edf-43fc-a957-462072f4c3df
-## 26                         resource_map_doi:10.18739/A2RF5KG8J
-## 27                                      doi:10.18739/A2RF5KG8J
-## 28                         resource_map_doi:10.18739/A2W66993S
-## 29                                      doi:10.18739/A2W66993S
-## 30               urn:uuid:5608f4c8-6bca-4e03-b279-8fcb242c5d4a
-## 31               urn:uuid:866bec12-5b82-45f1-acfa-5fd8bb3321c9
-## 32               urn:uuid:70f551e7-577b-48cc-b899-811be9cc2c8c
-## 33               urn:uuid:9fa9cebd-d4d6-41df-9b40-23667b1d1c77
-## 34               urn:uuid:3b59feb3-35ee-46bc-93d7-9e4680f17126
-## 35               urn:uuid:8740d6ca-f720-4014-bfad-c3b96e226a24
-## 36               urn:uuid:8eb58fc9-0606-4091-a569-72ddbd43dc43
-## 37               urn:uuid:3c830f1d-d96b-4feb-a677-b5a1d16b31d6
-## 38               urn:uuid:8099b150-4c25-48f6-bfee-3566a228cc04
-## 39               urn:uuid:ebe951cd-5320-44ec-839c-6e4d5de50c8f
-## 40               urn:uuid:777ab8a8-d84a-4f04-a450-ef788ca9251e
-## 41               urn:uuid:2a8aa72e-cffc-4caf-bba8-d24e5843ada0
-## 42               urn:uuid:37efc844-57ea-4647-94c9-b68447e98da3
-## 43               urn:uuid:26afd7a3-fa94-4678-9673-3ecc8f795c84
-## 44                         resource_map_doi:10.18739/A2GX44W0N
-## 45                                      doi:10.18739/A2GX44W0N
-## 46               urn:uuid:d1ab94bf-97f0-4139-a501-97e3c7683d99
-## 47               urn:uuid:c7a12d47-fb6f-4010-b5d0-f985428179aa
-## 48                         resource_map_doi:10.18739/A20Z70X9X
-## 49                                      doi:10.18739/A20Z70X9X
-## 50                         resource_map_doi:10.18739/A24Q7QR2T
-## 51                                      doi:10.18739/A24Q7QR2T
-## 52                         resource_map_doi:10.18739/A2HX15R9S
-## 53                                      doi:10.18739/A2HX15R9S
-## 54                         resource_map_doi:10.18739/A2NP1WK4N
-## 55                                      doi:10.18739/A2NP1WK4N
-## 56                         resource_map_doi:10.18739/A2X63B64H
-## 57                                      doi:10.18739/A2X63B64H
-## 58                         resource_map_doi:10.18739/A21Z41T8P
-## 59                                      doi:10.18739/A21Z41T8P
-## 60                         resource_map_doi:10.18739/A25M6279H
-## 61                                      doi:10.18739/A25M6279H
-## 62                         resource_map_doi:10.18739/A29C6S22D
-## 63                                      doi:10.18739/A29C6S22D
-## 64                         resource_map_doi:10.18739/A2F47GV64
-## 65                                      doi:10.18739/A2F47GV64
-## 66                         resource_map_doi:10.18739/A2JW86P12
-## 67                                      doi:10.18739/A2JW86P12
-## 68                         resource_map_doi:10.18739/A2PN8XG69
-## 69                                      doi:10.18739/A2PN8XG69
-## 70                         resource_map_doi:10.18739/A2TD9N902
-## 71                                      doi:10.18739/A2TD9N902
-## 72                         resource_map_doi:10.18739/A2Z60C338
-## 73                                      doi:10.18739/A2Z60C338
-## 74                         resource_map_doi:10.18739/A22V2CB5M
-## 75                                      doi:10.18739/A22V2CB5M
-## 76                         resource_map_doi:10.18739/A26M33488
-## 77                                      doi:10.18739/A26M33488
-## 78                         resource_map_doi:10.18739/A2BC3SZ27
-## 79                                      doi:10.18739/A2BC3SZ27
-## 80                         resource_map_doi:10.18739/A2G44HR7V
-## 81                                      doi:10.18739/A2G44HR7V
-## 82                         resource_map_doi:10.18739/A2KW57K2S
-## 83                                      doi:10.18739/A2KW57K2S
-## 84  resource_map_urn:uuid:bb45e9f1-75e2-4aaa-bae5-59ba10f5aabf
-## 85               urn:uuid:f3bd4e34-92d2-4ec6-8e2e-e41b8113433b
-## 86  resource_map_urn:uuid:6d5cd4fb-4b12-4e77-94f4-ef44945218ea
-## 87               urn:uuid:528d4e48-8e7e-449c-aa5a-adfc81bf8c3d
-## 88                         resource_map_doi:10.18739/A2QN5ZC6J
-## 89                                      doi:10.18739/A2QN5ZC6J
-## 90                         resource_map_doi:10.18739/A2VD6P596
-## 91                                      doi:10.18739/A2VD6P596
-## 92                         resource_map_doi:10.18739/A2028PF1G
-## 93                                      doi:10.18739/A2028PF1G
-## 94                         resource_map_doi:10.18739/A23T9D73B
-## 95                                      doi:10.18739/A23T9D73B
-## 96                         resource_map_doi:10.18739/A27M04171
-## 97                                      doi:10.18739/A27M04171
-## 98                         resource_map_doi:10.18739/A2CC0TV2G
-## 99                                      doi:10.18739/A2CC0TV2G
-## 100                        resource_map_doi:10.18739/A2H41JN73
-## 101                                     doi:10.18739/A2H41JN73
-## 102                        resource_map_doi:10.18739/A2MW28G1J
-## 103                                     doi:10.18739/A2MW28G1J
-## 104                        resource_map_doi:10.18739/A2RN30846
-## 105                                     doi:10.18739/A2RN30846
-## 106                        resource_map_doi:10.18739/A2W950P63
-## 107                                     doi:10.18739/A2W950P63
-## 108              urn:uuid:b696a060-6d7b-4571-a9b9-d3b560323591
-## 109              urn:uuid:b2447cde-100b-4eff-8323-67f91cbbbe25
-## 110              urn:uuid:92616af1-6874-4b80-a202-a1f486fde037
-## 111              urn:uuid:a7e53043-7a92-406a-b47f-6b4452bb8fb9
-## 112              urn:uuid:09eb8179-96ee-41f8-b11d-cae0936e7c65
-## 113              urn:uuid:cd334714-31aa-464f-a3b9-40c71db657ba
-## 114              urn:uuid:db777211-10e6-424f-bfd3-b3aed57f105c
-## 115              urn:uuid:f00c03d1-a238-4aad-92a8-41c965c68af9
-## 116              urn:uuid:adfdcb96-b0f4-4440-8861-7e59c7381081
-## 117              urn:uuid:7312b0e3-d165-43c8-8f04-847ce897443c
-## 118              urn:uuid:c4a7150c-3728-45c5-9bf1-84675ffaf078
-## 119              urn:uuid:784ab8df-6340-4862-aa18-933315a5f142
-## 120              urn:uuid:de9cdf1f-368e-4d9b-a4bc-dbbb8399fdc4
-## 121              urn:uuid:87b41365-9108-46eb-8992-3179bb5cfd76
-## 122                        resource_map_doi:10.18739/A24T6F442
-## 123                                     doi:10.18739/A24T6F442
-## 124 resource_map_urn:uuid:dc3539de-e5b7-45f1-b5fa-62da23db3a16
-## 125              urn:uuid:dc3539de-e5b7-45f1-b5fa-62da23db3a16
-## 126 resource_map_urn:uuid:68736022-14d0-41f7-92cb-ccf644490bd0
-## 127              urn:uuid:68736022-14d0-41f7-92cb-ccf644490bd0
-## 128 resource_map_urn:uuid:0059fd3c-114a-4092-913e-3cdf723633e9
-## 129              urn:uuid:0059fd3c-114a-4092-913e-3cdf723633e9
-## 130              urn:uuid:f1c04804-61e5-4982-ad9d-eed9ef4b3ec2
-## 131                        resource_map_doi:10.18739/A28K74X8S
-## 132                                     doi:10.18739/A28K74X8S
-## 133 resource_map_urn:uuid:e94530e7-55d6-4791-b33d-542a73a74841
-## 134                        resource_map_doi:10.18739/A2DB7VR3N
-## 135                                     doi:10.18739/A2DB7VR3N
-## 136                        resource_map_doi:10.18739/A2J38KJ69
-## 137                                     doi:10.18739/A2J38KJ69
-## 138                        resource_map_doi:10.18739/A2NV99B9N
-## 139                                     doi:10.18739/A2NV99B9N
-## 140                        resource_map_doi:10.18739/A2SJ19S26
-## 141                                     doi:10.18739/A2SJ19S26
-## 142                        resource_map_doi:10.18739/A2X921K5V
-## 143                                     doi:10.18739/A2X921K5V
-## 144                        resource_map_doi:10.18739/A2222R70G
-## 145                                     doi:10.18739/A2222R70G
-## 146 resource_map_urn:uuid:403b8474-25ac-476d-a36e-d0b29a47333e
-## 147                        resource_map_doi:10.18739/A29K45T9H
-## 148                                     doi:10.18739/A29K45T9H
-## 149              urn:uuid:7cb35253-f4ee-4b0e-b54d-f5cc1a118b9c
-## 150              urn:uuid:56176672-9494-4e52-a839-87c509dcc6f9
-## 151              urn:uuid:cb610e10-137a-448b-b5d3-672e48fda8b9
-## 152              urn:uuid:9abc41e6-4690-42d6-b3d2-bf5d7764316f
-## 153              urn:uuid:1641d325-e5d7-4a9f-992c-f22f5543aa0d
-## 154              urn:uuid:8b4d60e8-2da0-4874-94d9-da96d8166db3
-## 155              urn:uuid:14a05487-2488-4d5c-a7d6-5d3d939ab78f
-## 156              urn:uuid:dc0745fd-bd71-43d6-82b6-d0100b7bd962
-## 157              urn:uuid:68014572-174b-4fc5-babd-695d24bd6e89
-## 158              urn:uuid:0c18c91a-76d0-43d5-a083-2c12b9d84308
-## 159              urn:uuid:b1769d4e-5e97-4937-acee-be26d76848ee
-## 160              urn:uuid:3cc9585f-658f-4f82-ad29-2c7f99d4a90c
-## 161              urn:uuid:7e3c2e58-7c6c-4d9c-9728-5ea71b59aa93
-## 162              urn:uuid:149bf5c5-bdde-4d99-851f-d4222eae238e
-## 163              urn:uuid:5dea390b-1605-4276-a47f-7f4b6369a1c4
-## 164              urn:uuid:07f208c5-2bef-424b-b315-f279e55de405
-## 165              urn:uuid:b01d4750-d46f-4910-9cfc-a0cb62a8b1bc
-## 166              urn:uuid:37ad68f5-f577-49bd-900c-1a1ce9d4567e
-## 167              urn:uuid:d7df4b8e-8c56-48b2-9c2f-b6571d9c9c74
-## 168              urn:uuid:89ba9341-3fa6-4230-9b7b-35b225016013
-## 169              urn:uuid:48666502-ec68-46dc-889f-9a10c0e9ed6d
-## 170              urn:uuid:b827d628-8950-4c21-8c4b-26a2e87f7da5
-## 171              urn:uuid:ec3241fd-160f-414d-9f2d-a3f0995e6fbc
-## 172              urn:uuid:472c9b6c-3852-4a5f-af94-4cf9ee6c4a98
-## 173              urn:uuid:83efe42d-a672-46bf-8126-7bf3d4a2228e
-## 174              urn:uuid:0372a265-5332-46da-9cb0-c416d9b1c9e3
-## 175              urn:uuid:c21d0b5e-4f57-4d2e-9c65-1be1348009d3
-## 176              urn:uuid:971e1143-064d-430d-adf3-f2b6a1c743ea
-## 177              urn:uuid:6fe4e561-46cd-4680-bb1d-91ec955f39eb
-## 178              urn:uuid:fb458cb6-6685-41a1-b306-892d03b199de
-## 179              urn:uuid:ded64e90-9785-4f24-8926-9c02eb1b34f2
-## 180              urn:uuid:698862b0-16e0-439f-8c15-78862097e416
-## 181              urn:uuid:1fc13e27-368a-460f-b2f4-d85fe3b5effb
-## 182              urn:uuid:487a3a6f-d630-4e80-9bc7-89e285105e3d
-## 183              urn:uuid:6b740eeb-f1b9-4b74-8b33-5d3ff0e5bd37
-## 184              urn:uuid:b79baefe-2c86-4e80-8863-279e4ef8309e
-## 185              urn:uuid:d6ee2df9-cf2f-48af-be3c-4d45b3728668
-## 186              urn:uuid:527359ba-f02c-4b02-bcfd-44a3133bfb7b
-## 187              urn:uuid:66492e33-237c-4c89-9f70-588816d8c84b
-## 188              urn:uuid:ed769ba4-b252-444c-a43e-e11ac1192225
-## 189              urn:uuid:7dfdf64d-7196-474e-8965-6a03391993a8
-## 190              urn:uuid:386c3607-f344-4a35-adff-4fe80caf44dd
-## 191              urn:uuid:4b6c3690-e78a-4470-a593-5cafdcbac77d
-## 192              urn:uuid:3de9419e-035a-4500-add2-059af6b32d86
-## 193              urn:uuid:6fea52f0-1ad6-435d-97ba-1d3ec5c3a0b3
-## 194              urn:uuid:b522e6f6-32ee-444e-a6ee-33b6c217e534
-## 195              urn:uuid:131c5e7d-0efa-4b9b-a504-3633f9d7fcbd
-## 196              urn:uuid:79deab02-4fca-481b-87a1-1e536864319c
-## 197              urn:uuid:2df6b2e0-6012-47de-a87d-d882431b47f4
-## 198              urn:uuid:bd7a1207-0a93-4652-87f0-ce0d251f6ee2
-## 199              urn:uuid:8d2a1aa0-615f-481d-8838-74d2b61fc292
-## 200              urn:uuid:bd815a9a-fce8-430b-bbad-849121976255
-##            dateUploaded        dateModified  resourceMap
-## 1   2021-09-20 17:38:36 2021-09-20 17:38:37 resource....
-## 2   2021-09-20 17:38:29 2021-09-20 17:38:29 resource....
-## 3   2021-09-18 00:27:57 2021-09-18 00:31:46             
-## 4   2021-09-18 00:27:47 2021-09-18 00:31:43 resource....
-## 5   2021-09-18 00:17:17 2021-09-18 00:27:58             
-## 6   2021-09-18 00:17:07 2021-09-18 00:27:52 resource....
-## 7   2021-09-18 00:07:51 2021-09-18 00:17:18             
-## 8   2021-09-18 00:07:42 2021-09-18 00:17:12 resource....
-## 9   2021-09-17 23:59:04 2021-09-18 00:07:52             
-## 10  2021-09-17 23:58:53 2021-09-18 00:07:47 resource....
-## 11  2021-09-17 23:16:21 2021-09-17 23:59:04             
-## 12  2021-09-17 23:16:12 2021-09-17 23:58:58 resource....
-## 13  2021-09-17 20:24:46 2021-09-17 23:16:22             
-## 14  2021-09-17 20:24:36 2021-09-17 23:16:17 resource....
-## 15  2021-09-16 17:47:34 2021-09-16 17:47:34             
-## 16  2021-09-16 17:46:45 2021-09-16 17:46:45             
-## 17  2021-09-16 17:46:11 2021-09-16 17:46:11             
-## 18  2021-09-16 17:29:07 2021-09-16 17:29:07             
-## 19  2021-09-16 17:20:25 2021-09-16 17:20:26             
-## 20  2021-09-16 17:20:07 2021-09-16 17:20:14 resource....
-## 21  2021-09-16 16:50:55 2021-09-16 16:50:55             
-## 22  2021-09-16 16:46:04 2021-09-16 16:46:04             
-## 23  2021-09-16 16:45:17 2021-09-16 16:45:17             
-## 24  2021-09-16 16:44:12 2021-09-16 16:44:12             
-## 25  2021-09-16 16:43:32 2021-09-16 16:43:32             
-## 26  2021-09-16 16:42:23 2021-09-16 16:42:23             
-## 27  2021-09-16 16:42:20 2021-09-16 16:42:21 resource....
-## 28  2021-09-16 16:37:49 2021-09-16 16:37:49             
-## 29  2021-09-16 16:37:45 2021-09-16 16:37:46 resource....
-## 30  2021-09-15 23:02:20 2021-09-20 17:38:29 resource....
-## 31  2021-09-15 23:02:19 2021-09-16 23:36:10 resource....
-## 32  2021-09-15 23:02:18 2021-09-16 23:36:11 resource....
-## 33  2021-09-15 23:02:18 2021-09-20 17:38:36 resource....
-## 34  2021-09-15 23:02:17 2021-09-16 23:36:16 resource....
-## 35  2021-09-15 23:02:17 2021-09-16 23:36:16 resource....
-## 36  2021-09-15 23:02:16 2021-09-16 23:36:15 resource....
-## 37  2021-09-15 23:02:16 2021-09-16 23:36:15 resource....
-## 38  2021-09-15 23:02:15 2021-09-16 23:36:14 resource....
-## 39  2021-09-15 23:02:15 2021-09-16 23:36:12 resource....
-## 40  2021-09-15 23:02:14 2021-09-16 23:36:14 resource....
-## 41  2021-09-15 23:02:13 2021-09-16 23:36:14 resource....
-## 42  2021-09-15 23:02:13 2021-09-16 23:36:13 resource....
-## 43  2021-09-15 23:02:12 2021-09-16 23:36:17 resource....
-## 44  2021-09-15 16:31:27 2021-09-15 16:31:27             
-## 45  2021-09-15 16:31:22 2021-09-15 16:31:24 resource....
-## 46  2021-09-13 11:38:42 2021-09-16 16:37:44 resource....
-## 47  2021-09-12 21:23:02 2021-09-16 16:42:18 resource....
-## 48  2021-09-09 19:54:25 2021-09-09 19:54:25             
-## 49  2021-09-09 19:54:14 2021-09-09 21:26:30 resource....
-## 50  2021-09-09 18:17:04 2021-09-09 18:17:04 resource....
-## 51  2021-09-09 18:17:00 2021-09-09 18:17:01 resource....
-## 52  2021-09-08 18:42:20 2021-09-09 17:22:38             
-## 53  2021-09-08 18:42:15 2021-09-09 17:22:40 resource....
-## 54  2021-09-07 23:44:50 2021-09-09 17:23:39             
-## 55  2021-09-07 23:44:39 2021-09-09 17:23:42 resource....
-## 56  2021-09-03 23:24:53 2021-09-09 17:31:24             
-## 57  2021-09-03 23:24:20 2021-09-09 17:31:31 resource....
-## 58  2021-09-02 23:37:06 2021-09-09 17:31:40             
-## 59  2021-09-02 23:37:03 2021-09-09 17:31:41 resource....
-## 60  2021-09-02 23:33:51 2021-09-09 17:31:42             
-## 61  2021-09-02 23:33:48 2021-09-09 17:31:44 resource....
-## 62  2021-09-02 23:31:30 2021-09-09 17:31:45             
-## 63  2021-09-02 23:31:27 2021-09-09 17:31:46 resource....
-## 64  2021-09-02 23:28:58 2021-09-09 17:31:47             
-## 65  2021-09-02 23:28:55 2021-09-09 17:31:48 resource....
-## 66  2021-09-02 23:26:07 2021-09-09 17:31:50             
-## 67  2021-09-02 23:26:04 2021-09-09 17:31:51 resource....
-## 68  2021-09-02 23:22:37 2021-09-09 17:31:52             
-## 69  2021-09-02 23:22:34 2021-09-09 17:31:53 resource....
-## 70  2021-09-02 23:18:21 2021-09-09 17:31:55             
-## 71  2021-09-02 23:18:18 2021-09-09 17:31:56 resource....
-## 72  2021-09-02 23:15:44 2021-09-09 17:31:57             
-## 73  2021-09-02 23:15:41 2021-09-09 17:31:58 resource....
-## 74  2021-09-02 23:14:01 2021-09-09 17:32:01             
-## 75  2021-09-02 23:13:53 2021-09-09 17:32:03 resource....
-## 76  2021-09-02 23:12:52 2021-09-09 17:32:04             
-## 77  2021-09-02 23:12:49 2021-09-09 17:32:06 resource....
-## 78  2021-09-02 23:12:30 2021-09-09 17:32:09             
-## 79  2021-09-02 23:12:23 2021-09-09 17:32:13 resource....
-## 80  2021-09-02 23:10:08 2021-09-09 17:32:14             
-## 81  2021-09-02 23:10:05 2021-09-09 17:32:15 resource....
-## 82  2021-09-02 23:06:35 2021-09-09 17:32:17             
-## 83  2021-09-02 23:06:31 2021-09-09 17:32:18 resource....
-## 84  2021-09-02 23:06:12 2021-09-02 23:14:01             
-## 85  2021-09-02 23:06:07 2021-09-02 23:13:56 resource....
-## 86  2021-09-02 23:01:50 2021-09-02 23:12:30             
-## 87  2021-09-02 23:01:44 2021-09-02 23:12:24 resource....
-## 88  2021-09-02 22:55:29 2021-09-09 17:32:20             
-## 89  2021-09-02 22:55:26 2021-09-09 17:32:21 resource....
-## 90  2021-09-02 22:52:47 2021-09-09 17:32:22             
-## 91  2021-09-02 22:52:44 2021-09-09 17:32:23 resource....
-## 92  2021-09-02 22:49:54 2021-09-09 17:32:24             
-## 93  2021-09-02 22:49:51 2021-09-09 17:32:26 resource....
-## 94  2021-09-02 22:47:48 2021-09-09 17:32:27             
-## 95  2021-09-02 22:47:45 2021-09-09 17:32:28 resource....
-## 96  2021-09-02 22:45:26 2021-09-09 17:32:30             
-## 97  2021-09-02 22:45:23 2021-09-09 17:32:31 resource....
-## 98  2021-09-02 22:41:56 2021-09-09 17:32:32             
-## 99  2021-09-02 22:41:53 2021-09-09 17:32:34 resource....
-## 100 2021-09-02 22:39:11 2021-09-09 17:32:35             
-## 101 2021-09-02 22:39:08 2021-09-09 17:32:36 resource....
-## 102 2021-09-02 22:35:41 2021-09-09 17:32:37             
-## 103 2021-09-02 22:35:38 2021-09-09 17:32:39 resource....
-## 104 2021-09-02 22:26:49 2021-09-09 17:32:40             
-## 105 2021-09-02 22:26:46 2021-09-09 17:32:41 resource....
-## 106 2021-09-02 22:23:11 2021-09-09 17:32:42             
-## 107 2021-09-02 22:23:07 2021-09-09 17:32:43 resource....
-## 108 2021-09-01 21:01:41 2021-09-09 17:32:50 resource....
-## 109 2021-09-01 21:01:39 2021-09-09 17:32:51 resource....
-## 110 2021-09-01 21:01:38 2021-09-09 17:32:51 resource....
-## 111 2021-09-01 21:01:38 2021-09-09 17:32:52 resource....
-## 112 2021-09-01 21:01:37 2021-09-09 17:32:52 resource....
-## 113 2021-09-01 21:01:37 2021-09-09 17:32:53 resource....
-## 114 2021-09-01 21:01:37 2021-09-09 17:32:53 resource....
-## 115 2021-09-01 21:01:36 2021-09-09 17:32:54 resource....
-## 116 2021-09-01 21:01:36 2021-09-09 17:32:54 resource....
-## 117 2021-09-01 21:01:35 2021-09-09 17:32:55 resource....
-## 118 2021-09-01 21:01:35 2021-09-09 17:32:55 resource....
-## 119 2021-09-01 21:01:35 2021-09-09 17:32:56 resource....
-## 120 2021-09-01 21:01:34 2021-09-09 17:32:57 resource....
-## 121 2021-09-01 21:01:34 2021-09-09 17:32:57 resource....
-## 122 2021-09-01 20:40:28 2021-09-09 17:32:59             
-## 123 2021-09-01 20:40:23 2021-09-09 17:33:02 resource....
-## 124 2021-08-31 22:42:32 2021-09-01 20:40:28             
-## 125 2021-08-31 22:42:28 2021-09-01 20:40:25 resource....
-## 126 2021-08-31 22:03:34 2021-08-31 22:42:32             
-## 127 2021-08-31 22:03:29 2021-08-31 22:42:29 resource....
-## 128 2021-08-31 21:12:34 2021-08-31 22:03:34             
-## 129 2021-08-31 21:12:30 2021-08-31 22:03:30 resource....
-## 130 2021-08-31 17:41:07 2021-08-31 17:41:11             
-## 131 2021-08-31 17:07:43 2021-08-31 17:07:44             
-## 132 2021-08-31 17:06:44 2021-08-31 17:07:03 resource....
-## 133 2021-08-31 16:35:59 2021-08-31 16:36:01             
-## 134 2021-08-31 15:47:06 2021-08-31 15:47:07             
-## 135 2021-08-31 15:44:31 2021-08-31 15:45:08 resource....
-## 136 2021-08-31 12:16:00 2021-08-31 12:16:01             
-## 137 2021-08-31 12:12:07 2021-08-31 12:12:55 resource....
-## 138 2021-08-31 06:46:55 2021-08-31 06:46:55             
-## 139 2021-08-31 06:44:28 2021-08-31 06:45:03 resource....
-## 140 2021-08-31 03:51:42 2021-08-31 03:51:42             
-## 141 2021-08-31 03:47:11 2021-08-31 03:48:29 resource....
-## 142 2021-08-30 23:26:24 2021-08-30 23:26:24             
-## 143 2021-08-30 23:24:59 2021-08-30 23:25:26 resource....
-## 144 2021-08-30 21:46:55 2021-08-30 21:46:56             
-## 145 2021-08-30 21:46:01 2021-08-30 21:46:20 resource....
-## 146 2021-08-30 21:11:01 2021-08-31 16:35:59             
-## 147 2021-08-30 18:16:27 2021-08-30 18:16:28             
-## 148 2021-08-30 18:15:59 2021-08-30 18:16:13 resource....
-## 149 2021-08-27 18:43:27 2021-08-27 18:43:27             
-## 150 2021-08-27 18:38:57 2021-08-27 18:38:57             
-## 151 2021-08-27 18:38:09 2021-08-27 18:38:09             
-## 152 2021-08-27 18:36:44 2021-08-27 18:36:44             
-## 153 2021-08-27 18:35:53 2021-08-27 18:35:53             
-## 154 2021-08-27 18:34:12 2021-08-27 18:34:12             
-## 155 2021-08-27 18:33:18 2021-08-27 18:33:18             
-## 156 2021-08-27 18:27:01 2021-08-27 18:27:01             
-## 157 2021-08-27 17:58:23 2021-09-16 17:19:40 resource....
-## 158 2021-08-27 17:58:23 2021-09-16 17:19:14 resource....
-## 159 2021-08-27 17:58:23 2021-09-16 17:19:44 resource....
-## 160 2021-08-27 17:58:23 2021-09-16 17:19:09 resource....
-## 161 2021-08-27 17:58:23 2021-09-16 17:19:08 resource....
-## 162 2021-08-27 17:58:23 2021-09-16 17:20:04 resource....
-## 163 2021-08-27 17:58:23 2021-09-16 17:19:05 resource....
-## 164 2021-08-27 17:58:23 2021-09-16 17:19:17 resource....
-## 165 2021-08-27 17:58:23 2021-09-16 17:19:03 resource....
-## 166 2021-08-27 17:58:23 2021-09-16 17:19:23 resource....
-## 167 2021-08-27 17:58:23 2021-09-16 17:19:55 resource....
-## 168 2021-08-27 17:58:23 2021-09-16 17:19:31 resource....
-## 169 2021-08-27 17:58:23 2021-09-16 17:19:06 resource....
-## 170 2021-08-27 17:58:23 2021-09-16 17:19:04 resource....
-## 171 2021-08-27 17:58:22 2021-09-16 17:19:32 resource....
-## 172 2021-08-27 17:58:22 2021-09-16 17:19:56 resource....
-## 173 2021-08-27 17:58:22 2021-09-16 17:19:31 resource....
-## 174 2021-08-27 17:58:22 2021-09-16 17:19:50 resource....
-## 175 2021-08-27 17:58:22 2021-09-16 17:19:18 resource....
-## 176 2021-08-27 17:58:22 2021-09-16 17:19:58 resource....
-## 177 2021-08-27 17:58:22 2021-09-16 17:19:29 resource....
-## 178 2021-08-27 17:58:22 2021-09-16 17:19:58 resource....
-## 179 2021-08-27 17:58:22 2021-09-16 17:19:14 resource....
-## 180 2021-08-27 17:58:22 2021-09-16 17:19:27 resource....
-## 181 2021-08-27 17:58:22 2021-09-16 17:19:04 resource....
-## 182 2021-08-27 17:58:22 2021-09-16 17:19:48 resource....
-## 183 2021-08-27 17:58:22 2021-09-16 17:19:48 resource....
-## 184 2021-08-27 17:58:22 2021-09-16 17:19:15 resource....
-## 185 2021-08-27 17:58:22 2021-09-16 17:19:03 resource....
-## 186 2021-08-27 17:58:22 2021-09-16 17:19:21 resource....
-## 187 2021-08-27 17:58:21 2021-09-16 17:19:25 resource....
-## 188 2021-08-27 17:58:21 2021-09-16 17:20:04 resource....
-## 189 2021-08-27 17:58:21 2021-09-16 17:19:59 resource....
-## 190 2021-08-27 17:58:21 2021-09-16 17:19:34 resource....
-## 191 2021-08-27 17:58:21 2021-09-16 17:19:54 resource....
-## 192 2021-08-27 17:58:21 2021-09-16 17:19:06 resource....
-## 193 2021-08-27 17:58:21 2021-09-16 17:19:38 resource....
-## 194 2021-08-27 17:58:21 2021-09-16 17:19:19 resource....
-## 195 2021-08-27 17:58:21 2021-09-16 17:19:44 resource....
-## 196 2021-08-27 17:58:21 2021-09-16 17:20:05 resource....
-## 197 2021-08-27 17:58:21 2021-09-16 17:19:47 resource....
-## 198 2021-08-27 17:58:21 2021-09-16 17:19:42 resource....
-## 199 2021-08-27 17:58:21 2021-09-16 17:19:25 resource....
-## 200 2021-08-27 17:58:21 2021-09-16 17:19:36 resource....
-##                                                                                                                                                                    title
-## 1                                                                                                                                                                   &lt;NA&gt;
-## 2                                                                                                                                                                   &lt;NA&gt;
-## 3                                                                                                                                                                   &lt;NA&gt;
-## 4                           Biology/Ice/Ocean Modeling and Assimilation System (BIOMAS) model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 5                                                                                                                                                                   &lt;NA&gt;
-## 6                           Biology/Ice/Ocean Modeling and Assimilation System (BIOMAS) model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 7                                                                                                                                                                   &lt;NA&gt;
-## 8                           Biology/Ice/Ocean Modeling and Assimilation System (BIOMAS) model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 9                                                                                                                                                                   &lt;NA&gt;
-## 10                          Biology/Ice/Ocean Modeling and Assimilation System (BIOMAS) model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 11                                                                                                                                                                  &lt;NA&gt;
-## 12                          Biology/Ice/Ocean Modeling and Assimilation System (BIOMAS) model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 13                                                                                                                                                                  &lt;NA&gt;
-## 14                                                                               BIOMAS model results (a coupled sea ice/ocean/ecosystem model), Arctic Ocean, 2004-2020
-## 15                                                                                                                                                                  &lt;NA&gt;
-## 16                                                                                                                                                                  &lt;NA&gt;
-## 17                                                                                                                                                                  &lt;NA&gt;
-## 18                                                                                                                                                                  &lt;NA&gt;
-## 19                                                                                                                                                                  &lt;NA&gt;
-## 20                                                                                   South Alaskan ice-marginal lakes from Landsat 8 (2013-2019) via Google Earth Engine
-## 21                                                                                                                                                                  &lt;NA&gt;
-## 22                                                                                                                                                                  &lt;NA&gt;
-## 23                                                                                                                                                                  &lt;NA&gt;
-## 24                                                                                                                                                                  &lt;NA&gt;
-## 25                                                                                                                                                                  &lt;NA&gt;
-## 26                                                                                                                                                                  &lt;NA&gt;
-## 27                                                                                     Alexandrium catenella resting cyst distribution in the Alaskan Arctic (2018-2019)
-## 28                                                                                                                                                                  &lt;NA&gt;
-## 29                                                                                  Alexandrium catenella planktonic cell distribution in the Alaskan Arctic (2018-2019)
-## 30                                                                                                                                                                  &lt;NA&gt;
-## 31                                                                                                                                                                  &lt;NA&gt;
-## 32                                                                                                                                                                  &lt;NA&gt;
-## 33                                                                                                                                                                  &lt;NA&gt;
-## 34                                                                                                                                                                  &lt;NA&gt;
-## 35                                                                                                                                                                  &lt;NA&gt;
-## 36                                                                                                                                                                  &lt;NA&gt;
-## 37                                                                                                                                                                  &lt;NA&gt;
-## 38                                                                                                                                                                  &lt;NA&gt;
-## 39                                                                                                                                                                  &lt;NA&gt;
-## 40                                                                                                                                                                  &lt;NA&gt;
-## 41                                                                                                                                                                  &lt;NA&gt;
-## 42                                                                                                                                                                  &lt;NA&gt;
-## 43                                                                                                                                                                  &lt;NA&gt;
-## 44                                                                                                                                                                  &lt;NA&gt;
-## 45                                                                                                     Ground temperatures for Eastern Baffin Island, Canada (2018-2019)
-## 46                                                                                                                                                                  &lt;NA&gt;
-## 47                                                                                                                                                                  &lt;NA&gt;
-## 48                                                                                                                                                                  &lt;NA&gt;
-## 49                                 Long-term Measurements and Observations for the International Arctic Research Community on the Kuparuk River Basin, Alaska, 1985-2017
-## 50                                                                                                                                                                  &lt;NA&gt;
-## 51                                   Updated Meteorological, Radiation, and Soil Temperature Data, Kuparuk River and Nearby Watersheds: Imnavait A site (IA), 1985-1993.
-## 52                                                                                                                                                                  &lt;NA&gt;
-## 53                                                                                                                 Beryllium-10 measurements from Jakobshavn Isbræ, 2018
-## 54                                                                                                                                                                  &lt;NA&gt;
-## 55                                                                                                                Holocene lake-based Arctic glacier and ice cap records
-## 56                                                                                                                                                                  &lt;NA&gt;
-## 57                                 In-situ snow accumulation, melt, and firn density records using ground penetrating radar and firn cores, western Greenland, 1955-2017
-## 58                                                                                                                                                                  &lt;NA&gt;
-## 59                           Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R45) Kruglaya (Anadyr), Russia. 2010-2020.
-## 60                                                                                                                                                                  &lt;NA&gt;
-## 61                           Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R38 C) Mount Rodinka (Station), 2003-2020.
-## 62                                                                                                                                                                  &lt;NA&gt;
-## 63                                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R36) Andryushkino, Russia. 2005-2020.
-## 64                                                                                                                                                                  &lt;NA&gt;
-## 65                                      Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R35) Omolon, Russia. 2007-2020.
-## 66                                                                                                                                                                  &lt;NA&gt;
-## 67                          Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R30C) Tolbachinsky Pass, Russia. 2006-2020.
-## 68                                                                                                                                                                  &lt;NA&gt;
-## 69                              Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R25) Yakutskoe Lake, Russia. 1999-2020.
-## 70                                                                                                                                                                  &lt;NA&gt;
-## 71                               Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R22) Alazeya River, Russia. 1998-2020.
-## 72                                                                                                                                                                  &lt;NA&gt;
-## 73                               Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R21), Lake Akhmelo, Russia. 1996-2020.
-## 74                                                                                                                                                                  &lt;NA&gt;
-## 75                                                                                                                      Sermilik, Greenland 3D iceberg data, summer 2017
-## 76                                                                                                                                                                  &lt;NA&gt;
-## 77              Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R20) Malchilovskaya Channel, Kolyma, Russia. 1996-2020.
-## 78                                                                                                                                                                  &lt;NA&gt;
-## 79        Meteorological data from two on-ice weather stations at 780 and 950 m asl elevations in the ablation area of Sermeq Avannarleq, West Greenland from 2017-2018.
-## 80                                                                                                                                                                  &lt;NA&gt;
-## 81                        Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R19) Lake Glukhoe, Kolyma, Russia. 1996-2020.
-## 82                                                                                                                                                                  &lt;NA&gt;
-## 83  Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R18A) Mount Rodinka; Kolyma (10 meter (m) grid), Russia. 2003-2020.
-## 84                                                                                                                                                                  &lt;NA&gt;
-## 85                                                                                                                      Sermilik, Greenland 3D iceberg data, summer 2017
-## 86                                                                                                                                                                  &lt;NA&gt;
-## 87        Meteorological data from two on-ice weather stations at 780 and 950 m asl elevations in the ablation area of Sermeq Avannarleq, West Greenland from 2017-2018.
-## 88                                                                                                                                                                  &lt;NA&gt;
-## 89                       Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R18) Mount Rodinka, Kolyma, Russia. 1998-2020.
-## 90                                                                                                                                                                  &lt;NA&gt;
-## 91                     Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R17) Akhmelo channel, Kolyma, Russia. 1996-2020.
-## 92                                                                                                                                                                  &lt;NA&gt;
-## 93                      Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R16) Segodnya Pingo, Kolyma, Russia. 1996-2020.
-## 94                                                                                                                                                                  &lt;NA&gt;
-## 95                    Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R15B) Konkovaya River, Kolyma, Russia. 1999-2020.
-## 96                                                                                                                                                                  &lt;NA&gt;
-## 97                    Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R15A) Konkovaya River, Kolyma, Russia. 1996-2020.
-## 98                                                                                                                                                                  &lt;NA&gt;
-## 99                     Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R14) Chukochya River, Kolyma, Russia. 1996-2020.
-## 100                                                                                                                                                                 &lt;NA&gt;
-## 101                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (13B) Cape Chukochi, alas, Kolyma, Russia. 2000-2020.
-## 102                                                                                                                                                                 &lt;NA&gt;
-## 103               Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (13A) Cape Chukochii; edoma,Kolyma, Russia. 1999-2020.
-## 104                                                                                                                                                                 &lt;NA&gt;
-## 105                    Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R11) Mount Dionisya, Chukotka, Russia. 1996-2020
-## 106                                                                                                                                                                 &lt;NA&gt;
-## 107                      Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (R9) Cape Rogozhny; Chukotka, Russia. 1994-2020
-## 108                                                                                                                                                                 &lt;NA&gt;
-## 109                                                                                                                                                                 &lt;NA&gt;
-## 110                                                                                                                                                                 &lt;NA&gt;
-## 111                                                                                                                                                                 &lt;NA&gt;
-## 112                                                                                                                                                                 &lt;NA&gt;
-## 113                                                                                                                                                                 &lt;NA&gt;
-## 114                                                                                                                                                                 &lt;NA&gt;
-## 115                                                                                                                                                                 &lt;NA&gt;
-## 116                                                                                                                                                                 &lt;NA&gt;
-## 117                                                                                                                                                                 &lt;NA&gt;
-## 118                                                                                                                                                                 &lt;NA&gt;
-## 119                                                                                                                                                                 &lt;NA&gt;
-## 120                                                                                                                                                                 &lt;NA&gt;
-## 121                                                                                                                                                                 &lt;NA&gt;
-## 122                                                                                                                                                                 &lt;NA&gt;
-## 123                          Model output from particle tracking simulations to assess formation of benthic hotspots on the northern Bering and Chukchi Shelf, 1995-2014
-## 124                                                                                                                                                                 &lt;NA&gt;
-## 125                          Model output from particle tracking simulations to assess formation of benthic hotspots on the northern Bering and Chukchi Shelf, 1995-2014
-## 126                                                                                                                                                                 &lt;NA&gt;
-## 127                          Model output from particle tracking simulations to assess formation of benthic hotspots on the northern Bering and Chukchi Shelf, 1995-2014
-## 128                                                                                                                                                                 &lt;NA&gt;
-## 129                          Model output from particle tracking simulations to assess formation of benthic hotspots on the northern Bering and Chukchi Shelf, 1995-2014
-## 130                                                                      Uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests
-## 131                                                                                                                                                                 &lt;NA&gt;
-## 132             Raw files from flight RU_CYN_TR1_FL018B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 133                                                                                                                                                                 &lt;NA&gt;
-## 134                                                                                                                                                                 &lt;NA&gt;
-## 135              Raw files from flight RU_BP_TR2_FL013M of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 136                                                                                                                                                                 &lt;NA&gt;
-## 137             Raw files from flight RU_CYN_TR1_FL020B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 138                                                                                                                                                                 &lt;NA&gt;
-## 139             Raw files from flight RU_CYN_TR1_FL016B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 140                                                                                                                                                                 &lt;NA&gt;
-## 141             Raw files from flight RU_ALN_TR1_FL008B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 142                                                                                                                                                                 &lt;NA&gt;
-## 143             Raw files from flight RU_CYN_TR2_FL017B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 144                                                                                                                                                                 &lt;NA&gt;
-## 145             Raw files from flight RU_ANS_TR2_FL005B of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 146                                                                                                                                                                 &lt;NA&gt;
-## 147                                                                                                                                                                 &lt;NA&gt;
-## 148             Raw files from flight RU_CYN_TR1_FL015R of the uncrewed aerial vehicle remote sensing imagery of postfire vegetation in Siberian larch forests 2018-2019
-## 149                                                                                                                                                                 &lt;NA&gt;
-## 150                                                                                                                                                                 &lt;NA&gt;
-## 151                                                                                                                                                                 &lt;NA&gt;
-## 152                                                                                                                                                                 &lt;NA&gt;
-## 153                                                                                                                                                                 &lt;NA&gt;
-## 154                                                                                                                                                                 &lt;NA&gt;
-## 155                                                                                                                                                                 &lt;NA&gt;
-## 156                                                                                                                                                                 &lt;NA&gt;
-## 157                                                                                                                                                                 &lt;NA&gt;
-## 158                                                                                                                                                                 &lt;NA&gt;
-## 159                                                                                                                                                                 &lt;NA&gt;
-## 160                                                                                                                                                                 &lt;NA&gt;
-## 161                                                                                                                                                                 &lt;NA&gt;
-## 162                                                                                                                                                                 &lt;NA&gt;
-## 163                                                                                                                                                                 &lt;NA&gt;
-## 164                                                                                                                                                                 &lt;NA&gt;
-## 165                                                                                                                                                                 &lt;NA&gt;
-## 166                                                                                                                                                                 &lt;NA&gt;
-## 167                                                                                                                                                                 &lt;NA&gt;
-## 168                                                                                                                                                                 &lt;NA&gt;
-## 169                                                                                                                                                                 &lt;NA&gt;
-## 170                                                                                                                                                                 &lt;NA&gt;
-## 171                                                                                                                                                                 &lt;NA&gt;
-## 172                                                                                                                                                                 &lt;NA&gt;
-## 173                                                                                                                                                                 &lt;NA&gt;
-## 174                                                                                                                                                                 &lt;NA&gt;
-## 175                                                                                                                                                                 &lt;NA&gt;
-## 176                                                                                                                                                                 &lt;NA&gt;
-## 177                                                                                                                                                                 &lt;NA&gt;
-## 178                                                                                                                                                                 &lt;NA&gt;
-## 179                                                                                                                                                                 &lt;NA&gt;
-## 180                                                                                                                                                                 &lt;NA&gt;
-## 181                                                                                                                                                                 &lt;NA&gt;
-## 182                                                                                                                                                                 &lt;NA&gt;
-## 183                                                                                                                                                                 &lt;NA&gt;
-## 184                                                                                                                                                                 &lt;NA&gt;
-## 185                                                                                                                                                                 &lt;NA&gt;
-## 186                                                                                                                                                                 &lt;NA&gt;
-## 187                                                                                                                                                                 &lt;NA&gt;
-## 188                                                                                                                                                                 &lt;NA&gt;
-## 189                                                                                                                                                                 &lt;NA&gt;
-## 190                                                                                                                                                                 &lt;NA&gt;
-## 191                                                                                                                                                                 &lt;NA&gt;
-## 192                                                                                                                                                                 &lt;NA&gt;
-## 193                                                                                                                                                                 &lt;NA&gt;
-## 194                                                                                                                                                                 &lt;NA&gt;
-## 195                                                                                                                                                                 &lt;NA&gt;
-## 196                                                                                                                                                                 &lt;NA&gt;
-## 197                                                                                                                                                                 &lt;NA&gt;
-## 198                                                                                                                                                                 &lt;NA&gt;
-## 199                                                                                                                                                                 &lt;NA&gt;
-## 200                                                                                                                                                                 &lt;NA&gt;</code></pre>
+## 1                urn:uuid:8ee0f291-75b2-48a4-a7be-3c8644eca5ec
+## 2                urn:uuid:cfed589b-695a-4650-bb53-531996fb0c5d
+## 3                urn:uuid:5023f380-9ef5-4bf0-8c52-a76c12aba137
+## 4                urn:uuid:c2af0d48-824d-4db0-9072-3d92e9f54326
+## 5                urn:uuid:8c3337e6-e9ac-47ad-8737-478171427214
+## 6                urn:uuid:1900411b-d4cc-4534-b87a-28ce988a2d7a
+## 7                urn:uuid:d12aff3b-594f-49fc-bcf5-c225397c0872
+## 8                urn:uuid:58e59abd-e71b-41c4-94c7-d91a58f15a34
+## 9                urn:uuid:328dca91-e52e-43b6-a943-96a32f330e5b
+## 10  resource_map_urn:uuid:13047c85-9c15-4cbc-a91c-a85dc272f8a0
+## 11  resource_map_urn:uuid:ab793e69-bc83-418a-89f1-37ba51199dd2
+## 12                         resource_map_doi:10.18739/A2KD1QM54
+## 13                                      doi:10.18739/A2KD1QM54
+## 14                         resource_map_doi:10.18739/A2Q52FD8S
+## 15                                      doi:10.18739/A2Q52FD8S
+## 16                         resource_map_doi:10.18739/A2TX3573Q
+## 17                                      doi:10.18739/A2TX3573Q
+## 18               urn:uuid:de4c76e3-80e4-4c7d-8fc7-44eabc94755d
+## 19               urn:uuid:c06db068-2f90-48ca-9270-13154a0b4dab
+## 20               urn:uuid:e7f7cc0f-0a24-439e-b2cf-1ea3b3b7f557
+## 21               urn:uuid:ad123274-e655-4acc-a968-7f5881fa5f2a
+## 22               urn:uuid:d0a671b2-b27a-4147-beef-f5597f4507a2
+## 23               urn:uuid:e9ee76d4-1612-4a39-8592-858319d5dff3
+## 24               urn:uuid:06dbe9c0-4bd1-40e3-884f-f6244822c871
+## 25               urn:uuid:de9ceb1e-0e29-4279-a835-24d5dbc4da5e
+## 26  resource_map_urn:uuid:35a985a0-0fd8-411f-a702-3db07109b3a9
+## 27               urn:uuid:35a985a0-0fd8-411f-a702-3db07109b3a9
+## 28  resource_map_urn:uuid:b739ebb2-d2d2-4e6f-bf76-87da79cd7c45
+## 29               urn:uuid:b739ebb2-d2d2-4e6f-bf76-87da79cd7c45
+## 30                         resource_map_doi:10.18739/A2BV79W8S
+## 31                                      doi:10.18739/A2BV79W8S
+## 32                         resource_map_doi:10.18739/A2GM81Q0K
+## 33                                      doi:10.18739/A2GM81Q0K
+## 34                         resource_map_doi:10.18739/A2MC8RH4B
+## 35                                      doi:10.18739/A2MC8RH4B
+## 36                         resource_map_doi:10.18739/A2R49G99Z
+## 37                                      doi:10.18739/A2R49G99Z
+## 38                         resource_map_doi:10.18739/A2VX0644F
+## 39                                      doi:10.18739/A2VX0644F
+## 40                         resource_map_doi:10.18739/A20P0WS04
+## 41                                      doi:10.18739/A20P0WS04
+## 42                         resource_map_doi:10.18739/A24F1MK3S
+## 43                                      doi:10.18739/A24F1MK3S
+## 44                         resource_map_doi:10.18739/A2833N034
+## 45                                      doi:10.18739/A2833N034
+## 46                         resource_map_doi:10.18739/A2CV4BS62
+## 47                                      doi:10.18739/A2CV4BS62
+## 48                         resource_map_doi:10.18739/A2HM52M0T
+## 49                                      doi:10.18739/A2HM52M0T
+## 50                         resource_map_doi:10.18739/A2NC5SD52
+## 51                                      doi:10.18739/A2NC5SD52
+## 52               urn:uuid:cfa2d320-be39-47ef-9874-595fb013e10f
+## 53                         resource_map_doi:10.18739/A2086365J
+## 54                                      doi:10.18739/A2086365J
+## 55                         resource_map_doi:10.18739/A2VH5CK05
+## 56                                      doi:10.18739/A2VH5CK05
+## 57               urn:uuid:6ecdde6b-6c1c-4687-b9c5-730f04813091
+## 58               urn:uuid:2c465f16-d405-4fc0-aed3-c5ddc28e27d6
+## 59                         resource_map_doi:10.18739/A2S46H709
+## 60                                      doi:10.18739/A2S46H709
+## 61                         resource_map_doi:10.18739/A2WW77144
+## 62                                      doi:10.18739/A2WW77144
+## 63                         resource_map_doi:10.18739/A21N7XN87
+## 64                                      doi:10.18739/A21N7XN87
+## 65                         resource_map_doi:10.18739/A2599Z305
+## 66                                      doi:10.18739/A2599Z305
+## 67                         resource_map_doi:10.18739/A2930NW3Z
+## 68                                      doi:10.18739/A2930NW3Z
+## 69                         resource_map_doi:10.18739/A2DV1CP7S
+## 70                                      doi:10.18739/A2DV1CP7S
+## 71                         resource_map_doi:10.18739/A2JM23H21
+## 72                                      doi:10.18739/A2JM23H21
+## 73                         resource_map_doi:10.18739/A2PC2T978
+## 74                                      doi:10.18739/A2PC2T978
+## 75               urn:uuid:e16a495b-d3ce-4a21-ad94-3373820c0ef6
+## 76               urn:uuid:a4978ce2-73d9-4d3f-aaed-151b829dac94
+## 77                         resource_map_doi:10.18739/A2T43J411
+## 78                                      doi:10.18739/A2T43J411
+## 79                         resource_map_doi:10.18739/A2XW47X4Z
+## 80                                      doi:10.18739/A2XW47X4Z
+## 81                         resource_map_doi:10.18739/A22J68561
+## 82                                      doi:10.18739/A22J68561
+## 83                         resource_map_doi:10.18739/A2696ZZ9W
+## 84                                      doi:10.18739/A2696ZZ9W
+## 85                         resource_map_doi:10.18739/A28911S0V
+## 86                                      doi:10.18739/A28911S0V
+## 87                         resource_map_doi:10.18739/A2ZS2KF0D
+## 88                                      doi:10.18739/A2ZS2KF0D
+## 89                         resource_map_doi:10.18739/A23J39249
+## 90                                      doi:10.18739/A23J39249
+## 91  resource_map_urn:uuid:95642572-e3c8-46ca-99b8-2b919d844539
+## 92               urn:uuid:91f3a2b2-edfd-423e-9b78-4e57379daab6
+## 93                         resource_map_doi:10.18739/A27940V81
+## 94                                      doi:10.18739/A27940V81
+## 95  resource_map_urn:uuid:b765a875-5afe-428d-ab66-733dfff5065e
+## 96  resource_map_urn:uuid:7fca453b-07a4-42ba-914b-b94213ad4c9a
+## 97  resource_map_urn:uuid:981920e5-c95c-46ba-b862-9d2b62d8c90e
+## 98               urn:uuid:b7325dc9-3cf5-4f2b-abf5-2e9a47224825
+## 99               urn:uuid:a1a0bedb-95df-4dba-a601-e8da8aece689
+## 100              urn:uuid:bec4b0d8-3078-40f5-8561-c5028b86048b
+## 101              urn:uuid:ba8ceb00-211b-428a-a19f-656d09d87289
+## 102              urn:uuid:8fb1b7a2-2def-48a0-ad37-36865a940d76
+## 103              urn:uuid:caf510da-b181-4dac-a1ca-2dc53bb30662
+## 104              urn:uuid:0073d5a1-c084-4dd5-b485-70291a69dfb5
+## 105              urn:uuid:c8fbbdf2-5aed-4eef-8ccf-e035f04730c0
+## 106              urn:uuid:ad2b791a-c75d-4ce8-b79a-64952f7b304c
+## 107              urn:uuid:31c08d6b-e3a0-4065-8b5d-895190d37f03
+## 108              urn:uuid:a33ae07f-f764-4a95-b859-e12fc9f57fb3
+## 109              urn:uuid:544e34a0-3400-4113-b8ec-bf4747454384
+## 110              urn:uuid:dcfd7e58-d4b9-49c0-b1f1-2c0a51567546
+## 111              urn:uuid:8674d240-900c-45ee-9aea-6926ecd29c49
+## 112              urn:uuid:dc2deffb-55ac-4658-8e2b-231149df730c
+## 113              urn:uuid:2a93100a-7988-4ce4-8061-293b79fe40bc
+## 114              urn:uuid:10325d23-1964-4035-a697-664e8b619f93
+## 115              urn:uuid:0ee290eb-891e-4be7-9b73-6a091cc2ea4f
+## 116              urn:uuid:27499c0d-bfe4-45b7-a7f7-32df81b7f2f1
+## 117              urn:uuid:8ecfd644-229e-4031-a44c-186097561eff
+## 118              urn:uuid:ae0700d4-a4f4-482b-af33-2daa3a3a5052
+## 119              urn:uuid:cc2a563b-e592-400d-92e2-856d5067c2b3
+## 120              urn:uuid:a8884c0d-4c53-481f-bd80-3a3a7db533d5
+## 121              urn:uuid:db6fab0d-f4ab-41a3-b6e8-cf10e47f16b2
+## 122              urn:uuid:ad3460ea-60a6-4309-835a-9f32c73ad32b
+## 123              urn:uuid:7cd89b88-7342-4364-b77f-158b818e034d
+## 124              urn:uuid:2d9162f6-d350-41d8-954d-0b69a78a246a
+## 125              urn:uuid:4fdc1d4b-025d-48d1-a910-b2ba31239b38
+## 126              urn:uuid:8396be37-2927-48f2-85ff-92a9e9f9dec5
+## 127              urn:uuid:bcbfad6e-b7c8-4ff5-b28c-9dbba32f947c
+## 128              urn:uuid:db8db8d7-5f9a-47c6-bc13-a91afd9bb794
+## 129              urn:uuid:231cbdbb-97b4-48dc-bd89-7e7b29836ae8
+## 130              urn:uuid:988da562-913e-4a0b-b08e-a0b95c96c588
+## 131              urn:uuid:f37e3b17-5d2f-479c-8381-107dabe17ab7
+## 132              urn:uuid:41cba52b-cd72-4443-a221-536c537a661f
+## 133              urn:uuid:5f5f23b7-afa7-409a-bad3-89db1aa5300f
+## 134              urn:uuid:1b862194-41e6-446f-9ee6-4d450a8ab8d2
+## 135              urn:uuid:4727cf6f-2063-4f8e-8e96-459cf29cc6da
+## 136              urn:uuid:3a2145db-e1fc-4858-844c-107b4eefa753
+## 137              urn:uuid:c9b2a628-e465-4b90-9d6e-b5eb1c8950e5
+## 138              urn:uuid:6669caf8-17b8-4157-8bae-1d3935459a20
+## 139              urn:uuid:62d350a8-a805-4012-bbbd-5515d9dbfb56
+## 140              urn:uuid:0d64760b-fecd-45df-a5f6-b2c89c73f86a
+## 141              urn:uuid:789e4750-0851-4ef5-98eb-be70b511b673
+## 142              urn:uuid:61537b4a-9573-4c6c-8ef9-cedea0a6ce48
+## 143              urn:uuid:d17917c4-89d7-4a6d-8e33-8024875e449c
+## 144              urn:uuid:b9968b0f-fc07-47e9-ad0e-12f9930400e8
+## 145              urn:uuid:6616d6e6-4914-44cb-9138-06cd41b0111c
+## 146              urn:uuid:485d57d6-1591-4b2b-be88-8f7b0c91057e
+## 147              urn:uuid:de772601-bd31-4a02-9287-9ab09a691520
+## 148              urn:uuid:4f64e10f-566c-46b6-8a83-cef2e3a27d65
+## 149              urn:uuid:c30ab35c-644a-4112-a4f7-f799c06f35e6
+## 150              urn:uuid:8f4bbd4d-7ec6-425c-a504-80124c1b96e1
+## 151              urn:uuid:0d307302-4314-4170-90b5-3272b7ffc89a
+## 152              urn:uuid:80677e10-86e5-400c-b556-76fb904136bb
+## 153              urn:uuid:d2eb8283-c9cd-49ec-a7a8-b4078dd9e63e
+## 154              urn:uuid:9aca22e9-f7b5-41fe-9ca1-208627c0594e
+## 155              urn:uuid:ded609f5-db0b-45f7-9dcf-bdca3c8b380b
+## 156              urn:uuid:7b18f3e4-052b-4928-9202-7303414f33a7
+## 157              urn:uuid:7493a263-1eb4-446e-8445-754b5a669091
+## 158              urn:uuid:63a5a6fe-70ff-4a95-a04c-aef4115353d3
+## 159              urn:uuid:407ee55e-6ba6-4cfe-8fa4-cf6c1887474d
+## 160              urn:uuid:44abeaf1-6ef9-49d1-ab17-c05268d7fccb
+## 161              urn:uuid:64dfc016-a889-452f-b9e3-03d0251947c1
+## 162              urn:uuid:28134864-9bc0-465a-8f8b-cd5f51f36a41
+## 163              urn:uuid:858052ef-77f0-4f5b-8804-1ee3e47383c1
+## 164              urn:uuid:8abbca95-42c1-4d86-9707-425219c75a80
+## 165              urn:uuid:6ce6371f-7b0b-4d53-9947-98d627ace0e3
+## 166              urn:uuid:46f89b6f-c6af-4d59-b48f-6470ece67baf
+## 167              urn:uuid:a54a21e9-cd19-468b-9ae4-4813da3bd234
+## 168              urn:uuid:7717d08d-605d-4302-a1cc-4c13f363629d
+## 169              urn:uuid:f7c01350-9a61-4a21-b859-99fcd9a51ae8
+## 170              urn:uuid:bac0f6e4-ee5f-42ef-ba8a-249c6e97c81c
+## 171              urn:uuid:508b6d68-e122-4ee6-9955-12cd16d84b42
+## 172              urn:uuid:a09b618d-306a-4f5d-be6c-f16031741a4b
+## 173              urn:uuid:5b8dfe65-ed4f-47a1-804c-de7629fb10f8
+## 174              urn:uuid:55e47ca1-7820-4555-ade3-1969967f5eca
+## 175              urn:uuid:785fa75d-a53d-414a-ab34-48834b4b36b2
+## 176              urn:uuid:fc3b4f12-b6fa-4c52-ba3a-a04b87741471
+## 177              urn:uuid:37c70852-a91a-475e-9748-fbe39e64a442
+## 178              urn:uuid:f89f4c9b-5c9f-43ba-81ed-8ec958f5f6b9
+## 179              urn:uuid:9ffa6b2e-5980-4cfc-811c-b643f5bd4637
+## 180              urn:uuid:08ef5f55-f1b3-4dcb-9d24-58390cc17b55
+## 181              urn:uuid:cdcec4b3-2d2d-4b76-a5a9-6709fe73e65d
+## 182              urn:uuid:e1578543-c4dc-4e59-b621-67d365769ccf
+## 183              urn:uuid:6cbc0af1-ecb1-4642-95aa-3dfd9e329f18
+## 184              urn:uuid:e2222c11-d891-4a26-ba39-84e42433f1bd
+## 185              urn:uuid:d68a8601-6bff-493e-9753-56d3b6f0529d
+## 186              urn:uuid:24f9aaf3-162c-4892-9600-5f5f50c478f4
+## 187              urn:uuid:38156e0c-503e-49ac-8806-27a2784ab148
+## 188              urn:uuid:50c7c7a4-ccf5-4951-b7d1-bcb32a8aa80e
+## 189              urn:uuid:3512c29d-546d-4149-bc0f-afe0bfb7304e
+## 190              urn:uuid:74d7d5e0-d4bd-4134-9cb7-aa03b5000926
+## 191              urn:uuid:3bfaf0d4-a471-4dce-bf84-6dd9ebe2a419
+## 192              urn:uuid:b4b69b4b-ef89-4432-9900-95f5855eab7b
+## 193              urn:uuid:7546f62b-a86d-47ff-adcc-5e1ba2673878
+## 194              urn:uuid:6089b56f-6c51-4cb9-8cf1-42eaff729133
+## 195              urn:uuid:bb0e431b-0a71-4786-a791-e85bae3f4375
+## 196              urn:uuid:cbfa86e0-ea9d-472d-b268-c611b94bc208
+## 197              urn:uuid:46f05417-4ecb-41b7-82a1-327eddef0576
+## 198              urn:uuid:73bec203-1a1b-4b26-87a3-9373e8c4dbc1
+## 199              urn:uuid:59b5505c-d21a-464f-aafa-26cfa8f403f3
+## 200              urn:uuid:4d79346a-bfca-4d65-bc4b-5a90d2b96957
+##            dateUploaded        dateModified
+## 1   2021-10-30 01:59:43 2021-10-30 01:59:47
+## 2   2021-10-30 01:58:34 2021-10-30 01:58:34
+## 3   2021-10-30 01:58:05 2021-10-30 01:58:05
+## 4   2021-10-30 01:57:11 2021-10-30 01:57:11
+## 5   2021-10-30 01:56:41 2021-10-30 01:56:41
+## 6   2021-10-30 01:53:14 2021-10-30 01:59:47
+## 7   2021-10-30 01:42:36 2021-10-30 01:53:20
+## 8   2021-10-30 01:42:32 2021-10-30 01:42:32
+## 9   2021-10-30 01:42:19 2021-10-30 01:42:19
+## 10  2021-10-29 21:54:23 2021-10-29 22:06:22
+## 11  2021-10-29 21:37:36 2021-10-29 21:54:23
+## 12  2021-10-28 22:27:40 2021-10-28 22:27:41
+## 13  2021-10-28 22:27:15 2021-10-28 22:27:33
+## 14  2021-10-28 21:45:53 2021-10-28 21:45:58
+## 15  2021-10-28 21:45:23 2021-10-28 21:45:45
+## 16  2021-10-28 21:15:25 2021-10-28 21:15:26
+## 17  2021-10-28 21:15:21 2021-10-28 21:15:23
+## 18  2021-10-28 19:34:45 2021-10-28 19:34:45
+## 19  2021-10-28 19:33:30 2021-10-28 19:33:30
+## 20  2021-10-28 19:32:22 2021-10-28 19:32:22
+## 21  2021-10-28 19:27:33 2021-10-28 19:27:33
+## 22  2021-10-28 19:27:09 2021-10-28 19:27:09
+## 23  2021-10-28 18:34:31 2021-10-28 18:34:31
+## 24  2021-10-28 17:17:41 2021-10-30 01:42:40
+## 25  2021-10-28 17:16:06 2021-10-28 17:17:43
+## 26  2021-10-27 16:39:49 2021-10-27 16:39:53
+## 27  2021-10-27 16:39:39 2021-10-27 16:39:47
+## 28  2021-10-26 22:33:20 2021-10-26 22:33:25
+## 29  2021-10-26 22:33:01 2021-10-26 22:33:17
+## 30  2021-10-21 21:29:20 2021-10-21 21:29:20
+## 31  2021-10-21 21:29:16 2021-10-21 21:29:17
+## 32  2021-10-20 22:55:53 2021-10-20 22:55:54
+## 33  2021-10-20 22:55:44 2021-10-20 22:55:50
+## 34  2021-10-20 22:44:47 2021-10-20 22:44:48
+## 35  2021-10-20 22:44:38 2021-10-20 22:44:43
+## 36  2021-10-20 22:31:38 2021-10-20 22:31:38
+## 37  2021-10-20 22:31:27 2021-10-20 22:31:33
+## 38  2021-10-20 22:18:07 2021-10-20 22:18:08
+## 39  2021-10-20 22:17:46 2021-10-20 22:18:00
+## 40  2021-10-20 21:53:21 2021-10-20 21:53:22
+## 41  2021-10-20 21:53:11 2021-10-20 21:53:17
+## 42  2021-10-20 21:41:34 2021-10-20 21:41:34
+## 43  2021-10-20 21:41:16 2021-10-20 21:41:25
+## 44  2021-10-20 21:16:29 2021-10-20 21:16:29
+## 45  2021-10-20 21:16:19 2021-10-20 21:16:24
+## 46  2021-10-20 21:15:10 2021-10-20 21:15:10
+## 47  2021-10-20 21:15:06 2021-10-20 21:15:07
+## 48  2021-10-20 21:01:32 2021-10-20 21:01:33
+## 49  2021-10-20 21:00:40 2021-10-20 21:01:18
+## 50  2021-10-20 20:36:04 2021-10-20 20:36:05
+## 51  2021-10-20 20:35:46 2021-10-20 20:35:55
+## 52  2021-10-20 19:26:26 2021-10-21 21:29:15
+## 53  2021-10-19 23:54:50 2021-10-19 23:54:51
+## 54  2021-10-19 23:54:44 2021-10-19 23:54:48
+## 55  2021-10-19 22:48:39 2021-10-19 22:48:40
+## 56  2021-10-19 22:48:25 2021-10-19 22:48:36
+## 57  2021-10-19 21:20:39 2021-10-20 21:15:04
+## 58  2021-10-19 21:20:35 2021-10-20 21:15:04
+## 59  2021-10-18 23:40:34 2021-10-18 23:40:34
+## 60  2021-10-18 23:40:31 2021-10-18 23:40:32
+## 61  2021-10-18 23:38:01 2021-10-18 23:38:01
+## 62  2021-10-18 23:37:58 2021-10-18 23:37:59
+## 63  2021-10-18 23:36:41 2021-10-18 23:36:42
+## 64  2021-10-18 23:36:38 2021-10-18 23:36:40
+## 65  2021-10-18 23:35:18 2021-10-18 23:35:18
+## 66  2021-10-18 23:35:15 2021-10-18 23:35:16
+## 67  2021-10-18 23:33:11 2021-10-18 23:33:11
+## 68  2021-10-18 23:33:08 2021-10-18 23:33:09
+## 69  2021-10-18 23:31:51 2021-10-18 23:31:51
+## 70  2021-10-18 23:31:48 2021-10-18 23:31:49
+## 71  2021-10-18 23:29:49 2021-10-18 23:29:49
+## 72  2021-10-18 23:29:45 2021-10-18 23:29:46
+## 73  2021-10-18 23:28:50 2021-10-18 23:28:50
+## 74  2021-10-18 23:28:47 2021-10-18 23:28:48
+## 75  2021-10-18 17:16:19 2021-10-18 17:16:26
+## 76  2021-10-16 15:01:35 2021-10-18 17:16:25
+## 77  2021-10-14 18:33:13 2021-10-14 18:33:14
+## 78  2021-10-14 18:33:10 2021-10-14 18:33:10
+## 79  2021-10-14 18:32:54 2021-10-14 18:32:54
+## 80  2021-10-14 18:32:51 2021-10-14 18:32:51
+## 81  2021-10-14 18:32:37 2021-10-14 18:32:38
+## 82  2021-10-14 18:32:34 2021-10-14 18:32:34
+## 83  2021-10-13 20:08:46 2021-10-13 20:08:47
+## 84  2021-10-13 20:08:40 2021-10-13 20:08:43
+## 85  2021-10-13 16:45:38 2021-10-13 16:45:39
+## 86  2021-10-13 16:45:32 2021-10-13 16:45:35
+## 87  2021-10-12 17:16:43 2021-10-12 17:16:44
+## 88  2021-10-12 17:16:37 2021-10-12 17:16:40
+## 89  2021-10-12 13:51:46 2021-10-12 13:51:48
+## 90  2021-10-12 13:51:40 2021-10-12 13:51:44
+## 91  2021-10-12 13:42:14 2021-10-12 13:51:47
+## 92  2021-10-12 13:42:09 2021-10-12 13:51:43
+## 93  2021-10-12 13:29:20 2021-10-12 13:29:20
+## 94  2021-10-12 13:29:16 2021-10-12 13:29:17
+## 95  2021-10-11 23:04:05 2021-10-11 23:11:34
+## 96  2021-10-11 22:37:23 2021-10-11 23:04:05
+## 97  2021-10-11 19:56:11 2021-10-11 20:33:08
+## 98  2021-10-11 19:54:29 2021-10-11 20:20:13
+## 99  2021-10-11 19:54:29 2021-10-11 22:27:17
+## 100 2021-10-11 19:54:28 2021-10-11 20:21:10
+## 101 2021-10-11 19:54:28 2021-10-11 22:26:15
+## 102 2021-10-11 19:54:27 2021-10-11 20:20:20
+## 103 2021-10-11 19:54:27 2021-10-11 22:27:50
+## 104 2021-10-11 19:54:26 2021-10-11 20:22:16
+## 105 2021-10-11 19:54:25 2021-10-11 22:27:40
+## 106 2021-10-11 19:54:25 2021-10-11 20:20:37
+## 107 2021-10-11 19:54:24 2021-10-11 22:26:18
+## 108 2021-10-11 19:54:24 2021-10-11 20:22:29
+## 109 2021-10-11 19:54:23 2021-10-11 22:26:13
+## 110 2021-10-11 19:54:23 2021-10-11 20:19:54
+## 111 2021-10-11 19:54:22 2021-10-11 22:27:07
+## 112 2021-10-11 19:54:22 2021-10-11 20:22:14
+## 113 2021-10-11 19:54:21 2021-10-11 22:26:43
+## 114 2021-10-11 19:54:21 2021-10-11 20:19:50
+## 115 2021-10-11 19:54:20 2021-10-11 22:27:56
+## 116 2021-10-11 19:54:20 2021-10-11 20:20:10
+## 117 2021-10-11 19:54:19 2021-10-11 22:27:23
+## 118 2021-10-11 19:54:19 2021-10-11 20:20:52
+## 119 2021-10-11 19:54:18 2021-10-11 22:27:35
+## 120 2021-10-11 19:54:18 2021-10-11 20:21:11
+## 121 2021-10-11 19:54:17 2021-10-11 22:26:20
+## 122 2021-10-11 19:54:17 2021-10-11 20:21:33
+## 123 2021-10-11 19:54:16 2021-10-11 22:27:28
+## 124 2021-10-11 19:54:16 2021-10-11 20:20:25
+## 125 2021-10-11 19:54:15 2021-10-11 22:26:38
+## 126 2021-10-11 19:54:14 2021-10-11 20:20:02
+## 127 2021-10-11 19:54:14 2021-10-11 22:26:14
+## 128 2021-10-11 19:54:13 2021-10-11 20:20:17
+## 129 2021-10-11 19:54:13 2021-10-11 22:28:01
+## 130 2021-10-11 19:54:12 2021-10-11 20:20:15
+## 131 2021-10-11 19:54:12 2021-10-11 22:27:32
+## 132 2021-10-11 19:54:11 2021-10-11 20:21:46
+## 133 2021-10-11 19:54:11 2021-10-11 22:27:10
+## 134 2021-10-11 19:54:10 2021-10-11 20:20:53
+## 135 2021-10-11 19:54:10 2021-10-11 22:26:07
+## 136 2021-10-11 19:54:09 2021-10-11 20:21:34
+## 137 2021-10-11 19:54:08 2021-10-11 22:27:05
+## 138 2021-10-11 19:54:08 2021-10-11 20:21:40
+## 139 2021-10-11 19:54:07 2021-10-11 22:26:40
+## 140 2021-10-11 19:54:07 2021-10-11 20:21:39
+## 141 2021-10-11 19:54:06 2021-10-11 22:26:44
+## 142 2021-10-11 19:54:05 2021-10-11 20:21:20
+## 143 2021-10-11 19:54:05 2021-10-11 22:26:52
+## 144 2021-10-11 19:54:04 2021-10-11 20:19:48
+## 145 2021-10-11 19:54:04 2021-10-11 22:26:05
+## 146 2021-10-11 19:54:03 2021-10-11 20:20:07
+## 147 2021-10-11 19:54:02 2021-10-11 22:27:42
+## 148 2021-10-11 19:54:02 2021-10-11 20:21:00
+## 149 2021-10-11 19:54:01 2021-10-11 22:26:14
+## 150 2021-10-11 19:54:01 2021-10-11 20:20:27
+## 151 2021-10-11 19:54:00 2021-10-11 22:26:57
+## 152 2021-10-11 19:54:00 2021-10-11 20:22:49
+## 153 2021-10-11 19:53:59 2021-10-11 22:26:59
+## 154 2021-10-11 19:53:59 2021-10-11 20:22:37
+## 155 2021-10-11 19:53:58 2021-10-11 22:27:47
+## 156 2021-10-11 19:53:58 2021-10-11 20:19:32
+## 157 2021-10-11 19:53:57 2021-10-11 22:27:54
+## 158 2021-10-11 19:53:57 2021-10-11 20:20:44
+## 159 2021-10-11 19:53:56 2021-10-11 22:27:26
+## 160 2021-10-11 19:53:56 2021-10-11 20:20:01
+## 161 2021-10-11 19:53:55 2021-10-11 22:27:28
+## 162 2021-10-11 19:53:54 2021-10-11 20:19:49
+## 163 2021-10-11 19:53:54 2021-10-11 22:27:47
+## 164 2021-10-11 19:53:53 2021-10-11 20:19:31
+## 165 2021-10-11 19:53:52 2021-10-11 22:27:12
+## 166 2021-10-11 19:53:52 2021-10-11 20:21:39
+## 167 2021-10-11 19:53:51 2021-10-11 22:27:15
+## 168 2021-10-11 19:53:50 2021-10-11 20:19:50
+## 169 2021-10-11 19:53:50 2021-10-11 22:26:29
+## 170 2021-10-11 19:53:49 2021-10-11 20:22:17
+## 171 2021-10-11 19:53:49 2021-10-11 22:26:18
+## 172 2021-10-11 19:53:48 2021-10-11 20:22:47
+## 173 2021-10-11 19:53:48 2021-10-11 22:26:54
+## 174 2021-10-11 19:53:47 2021-10-11 20:23:02
+## 175 2021-10-11 19:53:47 2021-10-11 22:27:24
+## 176 2021-10-11 19:53:46 2021-10-11 20:20:01
+## 177 2021-10-11 19:53:46 2021-10-11 22:26:46
+## 178 2021-10-11 19:53:45 2021-10-11 20:19:53
+## 179 2021-10-11 19:53:44 2021-10-11 22:27:13
+## 180 2021-10-11 19:53:44 2021-10-11 20:22:09
+## 181 2021-10-11 19:53:43 2021-10-11 22:27:01
+## 182 2021-10-11 19:53:43 2021-10-11 20:21:44
+## 183 2021-10-11 19:53:42 2021-10-11 22:26:09
+## 184 2021-10-11 19:53:42 2021-10-11 20:22:32
+## 185 2021-10-11 19:53:41 2021-10-11 22:27:17
+## 186 2021-10-11 19:53:41 2021-10-11 20:19:37
+## 187 2021-10-11 19:53:40 2021-10-11 22:26:43
+## 188 2021-10-11 19:53:40 2021-10-11 20:20:39
+## 189 2021-10-11 19:53:39 2021-10-11 22:27:29
+## 190 2021-10-11 19:53:38 2021-10-11 20:20:28
+## 191 2021-10-11 19:53:38 2021-10-11 22:27:40
+## 192 2021-10-11 19:53:37 2021-10-11 20:22:55
+## 193 2021-10-11 19:53:37 2021-10-11 22:27:58
+## 194 2021-10-11 19:53:36 2021-10-11 20:20:06
+## 195 2021-10-11 19:53:36 2021-10-11 22:27:57
+## 196 2021-10-11 19:53:35 2021-10-11 20:21:03
+## 197 2021-10-11 19:53:34 2021-10-11 22:26:56
+## 198 2021-10-11 19:53:34 2021-10-11 20:20:26
+## 199 2021-10-11 19:53:33 2021-10-11 22:27:10
+## 200 2021-10-11 19:53:33 2021-10-11 20:20:56
+##                                                                                                                                                                                                                                                                       title
+## 1                                                                                                                                                                                                                             Arctic Incubator for Digital Entrepreneurship
+## 2                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 3                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 4                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 5                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 6                                                                                                                                                                                                                             Arctic Incubator for Digital Entrepreneurship
+## 7                                                                                                                                                                                                                             Arctic Incubator for Digital Entrepreneurship
+## 8                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 9                                                                                                                                                                                                                                                                      &lt;NA&gt;
+## 10                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 11                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 12                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 13                                                           Raw files for sea ice drift tracks from the Distributed Network of autonomous buoys deployed during the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) expedition 2019 - 2021
+## 14                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 15                                                                         Sea ice drift tracks from the Distributed Network of autonomous buoys deployed during the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) expedition 2019 - 2021
+## 16                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 17                                                                Code for sea ice drift tracks from the Distributed Network of autonomous buoys deployed during the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) expedition 2019 - 2021
+## 18                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 19                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 20                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 21                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 22                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 23                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 24                                                                                                                                                                                                                            Arctic Incubator for Digital Entrepreneurship
+## 25                                                                                                                                                                                                                            Arctic Incubator for Digital Entrepreneurship
+## 26                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 27                                                                                                                                                                                                             Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
+## 28                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 29                                                                                                                                                                  Vulcan Creek Gage site flow data, Tubutulik River Watershed on the Seward Peninsula, Alaska, 2012-2016.
+## 30                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 31                                                                                                                                                                                           Landsat derived patterns of lake drainage in northern Alaska between 1975-2019
+## 32                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 33              Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2014 Beaufort shelf-edge cruise (HLY1402), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 34                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 35              Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2013 Beaufort shelf-edge cruise (HLY1303), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 36                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 37                                                                      Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2004 Beaufort shelf-edge cruise (HLY04), as part of the Western Arctic Shelf-Basin Interactions (SBI) experiment.
+## 38                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 39                                                                      Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2003 Beaufort shelf-edge cruise (HLY03), as part of the Western Arctic Shelf-Basin Interactions (SBI) experiment.
+## 40                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 41              Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2012 Beaufort shelf-edge cruise (HLY1203), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 42                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 43              Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2011 Beaufort shelf-edge cruise (HLY1103), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 44                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 45              Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2010 Beaufort shelf-edge cruise (HLY1003), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 46                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 47                                                                                                                             An Unmanned Aerial Vehicle Sampling Platform for Atmospheric Water Vapor Isotopes in Polar Environments Data Product for 2019 Field Campaign
+## 48                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 49             Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2009 Beaufort shelf-edge cruise (HLY09-04), as part of the Circulation, Cross-shelf Exchange, Sea Ice, and Marine Mammal Habitat on the Alaskan Beaufort Sea Shelf cruise.
+## 50                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 51  Arctic Observing Network (AON) Conductivity Temperature Depth (CTD) data from the 2018 Beaufort shelf-edge cruise (HLY1803), as part of the Monitoring the Western Arctic Boundary Current in a Warming Climate: Atmospheric Forcing and Oceanographic Response cruise.
+## 52                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 53                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 54                                                                                                                                                                             Age-depth data and chemistry from a shallow firn core collected in Southwest Greenland, 2018
+## 55                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 56                                                                                                                                                                        Density and ice layer stratigraphy in 24 shallow firn cores from Southwest Greenland, 2017 - 2019
+## 57                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 58                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 59                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 60                                                                                                                                  Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R43 Neleger, Interior Siberia 2008-2020
+## 61                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 62                                                                                                                                   Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R42 Tuymada, Central Siberia 2008-2020
+## 63                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 64                                                                                                            Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R29c Bykovsky, Central Siberia 2015-2020. Arctic Data Center.
+## 65                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 66                                                                                                            Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R56, Oktyabrskyy, West Siberia 2013-2020. Arctic Data Center.
+## 67                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 68                                                                                        Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R29b, Bykovsky (Lena delta) (alas), Central Siberia 2004-2020. Arctic Data Center
+## 69                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 70                                                                                                             Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R57, Labytnangy, West Siberia 2013-2020. Arctic Data Center.
+## 71                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 72                                                                                                                   Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R58 Erkuta, West Siberia 2017-2020. Arctic Data Center
+## 73                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 74                                                                                                               Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, R40 Igarka, Central Siberia 2008-2020. Arctic Data Center.
+## 75                                                                                                                                                                                                   Formation of benthic hotspots on the northern Bering and Chukchi shelf
+## 76                                                                                                                                                                                                   Formation of benthic hotspots on the northern Bering and Chukchi shelf
+## 77                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 78                                                                                                                                                                                     Ice draft data from two moorings in Hudson Strait from August 2008 to September 2009
+## 79                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 80                                                                                                                                                                                        Ice draft data from a mooring in Hudson Strait from September 2005 to August 2006
+## 81                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 82                                                                                                                                                                                        Ice draft data from a mooring in Hudson Strait from September 2006 to August 2007
+## 83                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 84                                                                                            Melt Pond Maps around the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Drifting Station derived from High Resolution Optical Imagery, 2020
+## 85                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 86                                                                                                                             Gulf of Alaska Regional Oceanic Model System - Carbon, Ocean Biogeochemistry and Lower Trophic (ROMS-COBALT) Hindcast Simulation 1980 - 2013
+## 87                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 88                                                                                                                                                                               Alaska Native Successful Aging, Northwest, Anchorage, Aleutian Pribilof Islands, 2016-2021
+## 89                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 90                                                                                  Airborne Laser Altimeter, Global Positioning System (GPS), Inertial Measurement Unit (IMU) and Imagery Campaign of the Surging Negribreen Glacier, Svalbard, in July 2017 and July 2018
+## 91                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 92                                                                                  Airborne Laser Altimeter, Global Positioning System (GPS), Inertial Measurement Unit (IMU) and Imagery Campaign of the Surging Negribreen Glacier, Svalbard, in July 2017 and July 2018
+## 93                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 94                                                                                                                                                        Total Rebound: solid Earth isostatic response to the complete unloading of the Greenland and Antarctic Ice Sheets
+## 95                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 96                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 97                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 98                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 99                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 100                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 101                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 102                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 103                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 104                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 105                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 106                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 107                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 108                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 109                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 110                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 111                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 112                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 113                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 114                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 115                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 116                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 117                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 118                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 119                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 120                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 121                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 122                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 123                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 124                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 125                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 126                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 127                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 128                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 129                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 130                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 131                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 132                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 133                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 134                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 135                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 136                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 137                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 138                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 139                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 140                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 141                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 142                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 143                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 144                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 145                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 146                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 147                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 148                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 149                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 150                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 151                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 152                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 153                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 154                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 155                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 156                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 157                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 158                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 159                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 160                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 161                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 162                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 163                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 164                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 165                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 166                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 167                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 168                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 169                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 170                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 171                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 172                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 173                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 174                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 175                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 176                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 177                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 178                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 179                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 180                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 181                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 182                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 183                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 184                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 185                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 186                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 187                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 188                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 189                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 190                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 191                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 192                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 193                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 194                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 195                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 196                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 197                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 198                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 199                                                                                                                                                                                                                                                                    &lt;NA&gt;
+## 200                                                                                                                                                                                                                                                                    &lt;NA&gt;
+##      resourceMap
+## 1               
+## 2               
+## 3               
+## 4               
+## 5               
+## 6               
+## 7               
+## 8               
+## 9               
+## 10              
+## 11              
+## 12              
+## 13  resource....
+## 14              
+## 15  resource....
+## 16              
+## 17  resource....
+## 18              
+## 19              
+## 20              
+## 21              
+## 22              
+## 23              
+## 24              
+## 25              
+## 26              
+## 27  resource....
+## 28              
+## 29  resource....
+## 30              
+## 31  resource....
+## 32              
+## 33  resource....
+## 34              
+## 35  resource....
+## 36              
+## 37  resource....
+## 38              
+## 39  resource....
+## 40              
+## 41  resource....
+## 42              
+## 43  resource....
+## 44              
+## 45  resource....
+## 46              
+## 47  resource....
+## 48              
+## 49  resource....
+## 50              
+## 51  resource....
+## 52  resource....
+## 53              
+## 54  resource....
+## 55              
+## 56  resource....
+## 57  resource....
+## 58  resource....
+## 59              
+## 60  resource....
+## 61              
+## 62  resource....
+## 63              
+## 64  resource....
+## 65              
+## 66  resource....
+## 67              
+## 68  resource....
+## 69              
+## 70  resource....
+## 71              
+## 72  resource....
+## 73              
+## 74  resource....
+## 75              
+## 76              
+## 77              
+## 78  resource....
+## 79              
+## 80  resource....
+## 81              
+## 82  resource....
+## 83              
+## 84  resource....
+## 85              
+## 86  resource....
+## 87              
+## 88  resource....
+## 89              
+## 90  resource....
+## 91              
+## 92  resource....
+## 93              
+## 94  resource....
+## 95              
+## 96              
+## 97              
+## 98  resource....
+## 99  resource....
+## 100 resource....
+## 101 resource....
+## 102 resource....
+## 103 resource....
+## 104 resource....
+## 105 resource....
+## 106 resource....
+## 107 resource....
+## 108 resource....
+## 109 resource....
+## 110 resource....
+## 111 resource....
+## 112 resource....
+## 113 resource....
+## 114 resource....
+## 115 resource....
+## 116 resource....
+## 117 resource....
+## 118 resource....
+## 119 resource....
+## 120 resource....
+## 121 resource....
+## 122 resource....
+## 123 resource....
+## 124 resource....
+## 125 resource....
+## 126 resource....
+## 127 resource....
+## 128 resource....
+## 129 resource....
+## 130 resource....
+## 131 resource....
+## 132 resource....
+## 133 resource....
+## 134 resource....
+## 135 resource....
+## 136 resource....
+## 137 resource....
+## 138 resource....
+## 139 resource....
+## 140 resource....
+## 141 resource....
+## 142 resource....
+## 143 resource....
+## 144 resource....
+## 145 resource....
+## 146 resource....
+## 147 resource....
+## 148 resource....
+## 149 resource....
+## 150 resource....
+## 151 resource....
+## 152 resource....
+## 153 resource....
+## 154 resource....
+## 155 resource....
+## 156 resource....
+## 157 resource....
+## 158 resource....
+## 159 resource....
+## 160 resource....
+## 161 resource....
+## 162 resource....
+## 163 resource....
+## 164 resource....
+## 165 resource....
+## 166 resource....
+## 167 resource....
+## 168 resource....
+## 169 resource....
+## 170 resource....
+## 171 resource....
+## 172 resource....
+## 173 resource....
+## 174 resource....
+## 175 resource....
+## 176 resource....
+## 177 resource....
+## 178 resource....
+## 179 resource....
+## 180 resource....
+## 181 resource....
+## 182 resource....
+## 183 resource....
+## 184 resource....
+## 185 resource....
+## 186 resource....
+## 187 resource....
+## 188 resource....
+## 189 resource....
+## 190 resource....
+## 191 resource....
+## 192 resource....
+## 193 resource....
+## 194 resource....
+## 195 resource....
+## 196 resource....
+## 197 resource....
+## 198 resource....
+## 199 resource....
+## 200 resource....</code></pre>
 </div>
 <div id="use-facets-1" class="section level3">
 <h3>Use facets</h3>

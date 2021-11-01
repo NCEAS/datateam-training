@@ -156,6 +156,7 @@ resolve-the-ticket
 additional-email-templates
 deadlines
 pre-assigned-doi
+sensitive-data-1
 asking-for-dataset-access
 no-response-from-the-researcher
 recovering-dataset-submissions

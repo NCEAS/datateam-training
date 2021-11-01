@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 First Ticket | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 First Ticket | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-09-20" />
+<meta name="date" content="2021-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1030,21 +1030,62 @@ We can help add your answers to the question to the metadata.</p>
 <p>We can provide you with a pre-assigned DOI that you can reference in your paper, as long as your submission is not facing a deadline from NSF for your final report. However, please note that it will not become active until after we have finished processing your submission and the package is published. Once you have your dataset published, we would appreciate it if you could register the DOI of your published paper with us by using the citations button beside the orange lock icon. We are working to build our catalog of dataset citations in the Arctic Data Center.</p>
 </blockquote>
 </div>
-<div id="asking-for-dataset-access" class="section level4" number="9.5.4.3">
-<h4><span class="header-section-number">9.5.4.3</span> Asking for dataset access</h4>
+<div id="sensitive-data-1" class="section level4" number="9.5.4.3">
+<h4><span class="header-section-number">9.5.4.3</span> Sensitive Data</h4>
+<blockquote>
+<p>Which of the following categories best describes the level of
+sensitivity of your data?</p>
+</blockquote>
+<blockquote>
+<p>A. Non-sensitive data None of the data includes sensitive or protected
+information. Proceed with uploading data.
+B. Some or all data is sensitive but has been made safe for open
+distribution Sensitive data has been de-identified, anonymized, aggregated,
+or summarized to remove sensitivities and enable safe data distribution.
+Examples include ensuring that human subjects data, protected species data,
+archaeological site locations and personally identifiable information have
+been properly anonymized, aggregated and summarized. Proceed with uploading
+data, but ensure that only data that are safe for public distribution are
+uploaded. Address questions about anonymization, aggregation,
+de-identification, and data embargoes with the data curation support team
+before uploading data. Describe these approaches in the Methods section.
+C. Some or all data is sensitive and should not be distributed The data
+contains human subjects data or other sensitive data. Release of the data
+could cause harm or violate statutes, and must remain confidential
+following restrictions from an Institutional Review Board (IRB) or similar
+body. Do NOT upload sensitive data. You should still upload a metadata
+description of your dataset that omits all sensitive information to inform
+the community of the dataset’s existence. Contact the data curation support
+team about possible alternative approaches to safely preserve sensitive or
+protected data.</p>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Ethical Research Procedures. Please describe how and the extent to which
+data collection procedures followed community standards for ethical
+research practices (e.g., CARE Principles). Be explicit about Institutional
+Review Board approvals, consent waivers, procedures for co-production, data
+sovereignty, and other issues addressing responsible and ethical research.
+Include any steps to anonymize, aggregate or de-identify the dataset, or to
+otherwise create a version for public distribution.</li>
+</ol>
+</blockquote>
+</div>
+<div id="asking-for-dataset-access" class="section level4" number="9.5.4.4">
+<h4><span class="header-section-number">9.5.4.4</span> Asking for dataset access</h4>
 <blockquote>
 <p>As a security measure we ask that we get the approval from the original submitter of the dataset prior to granting edit permissions to all datasets.</p>
 </blockquote>
 </div>
-<div id="no-response-from-the-researcher" class="section level4" number="9.5.4.4">
-<h4><span class="header-section-number">9.5.4.4</span> No response from the researcher</h4>
+<div id="no-response-from-the-researcher" class="section level4" number="9.5.4.5">
+<h4><span class="header-section-number">9.5.4.5</span> No response from the researcher</h4>
 <p>Please email them before resolving a ticket like this:</p>
 <blockquote>
 <p>We are resolving this ticket for bookkeeping purposes, if you would like to follow up please feel free to respond to this email.</p>
 </blockquote>
 </div>
-<div id="recovering-dataset-submissions" class="section level4" number="9.5.4.5">
-<h4><span class="header-section-number">9.5.4.5</span> Recovering Dataset submissions</h4>
+<div id="recovering-dataset-submissions" class="section level4" number="9.5.4.6">
+<h4><span class="header-section-number">9.5.4.6</span> Recovering Dataset submissions</h4>
 <blockquote>
 <p>To recover dataset submissions that were not successful please do the following:</p>
 </blockquote>
@@ -1056,16 +1097,16 @@ We can help add your answers to the question to the metadata.</p>
 </ol>
 </blockquote>
 </div>
-<div id="custom-search-link" class="section level4" number="9.5.4.6">
-<h4><span class="header-section-number">9.5.4.6</span> Custom Search Link</h4>
+<div id="custom-search-link" class="section level4" number="9.5.4.7">
+<h4><span class="header-section-number">9.5.4.7</span> Custom Search Link</h4>
 <blockquote>
 <p>You could also use a permalink like this to direct users to the datasets:
 <a href="https://arcticdata.io/catalog/data/query=%22your" class="uri">https://arcticdata.io/catalog/data/query="your</a> search query here”
 for example: <a href="https://arcticdata.io/catalog/data/query=Beaufort%20Lagoon%20Ecosystems%20LTER" class="uri">https://arcticdata.io/catalog/data/query=Beaufort%20Lagoon%20Ecosystems%20LTER</a></p>
 </blockquote>
 </div>
-<div id="adding-metadata-via-r" class="section level4" number="9.5.4.7">
-<h4><span class="header-section-number">9.5.4.7</span> Adding metadata via R</h4>
+<div id="adding-metadata-via-r" class="section level4" number="9.5.4.8">
+<h4><span class="header-section-number">9.5.4.8</span> Adding metadata via R</h4>
 <blockquote>
 <p>KNB does not support direct uploading of EML metadata files through the website (we have a webform that creates metadata), but you can upload your data and metadata through R.</p>
 </blockquote>
@@ -1076,15 +1117,15 @@ for example: <a href="https://arcticdata.io/catalog/data/query=Beaufort%20Lagoon
 <p>If you prefer, there are Java, Python, MATLAB, and Bash/cURL clients as well.</p>
 </blockquote>
 </div>
-<div id="finding-multiple-data-packages" class="section level4" number="9.5.4.8">
-<h4><span class="header-section-number">9.5.4.8</span> Finding multiple data packages</h4>
+<div id="finding-multiple-data-packages" class="section level4" number="9.5.4.9">
+<h4><span class="header-section-number">9.5.4.9</span> Finding multiple data packages</h4>
 <blockquote>
 <p>If linking to multiple data packages, you can send a link to the profile associated with the submitter’s ORCID iD and it will display all their data packages.
 e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533' target='_blank'>https://arcticdata.io/catalog/profile/http://orcid.org/0000-0002-2604-4533</a></p>
 </blockquote>
 </div>
-<div id="nsf-arc-data-submission-policy" class="section level4" number="9.5.4.9">
-<h4><span class="header-section-number">9.5.4.9</span> NSF ARC data submission policy</h4>
+<div id="nsf-arc-data-submission-policy" class="section level4" number="9.5.4.10">
+<h4><span class="header-section-number">9.5.4.10</span> NSF ARC data submission policy</h4>
 <blockquote>
 <p>Please find an overview of our submission guidelines here: <a href = 'https://arcticdata.io/submit/' target='_blank'>https://arcticdata.io/submit/</a>, and NSF Office of Polar Programs policy information here: <a href = 'https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp' target='_blank'>https://www.nsf.gov/pubs/2016/nsf16055/nsf16055.jsp</a>.</p>
 </blockquote>
@@ -1092,8 +1133,8 @@ e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-000
 <p>Investigators should upload their data to the Arctic Data Center (<a href = 'https://arcticdata.io' target='_blank'>https://arcticdata.io</a>), or, where appropriate, to another community endorsed data archive that ensures the longevity, interpretation, public accessibility, and preservation of the data (e.g., GenBank, NCEI). Local and university web pages generally are not sufficient as an archive. Data preservation should be part of the institutional mission and data must remain accessible even if funding for the archive wanes (i.e., succession plans are in place). We would be happy to discuss the suitability of various archival locations with you further. In order to provide a central location for discovery of ARC-funded data, a metadata record must always be uploaded to the Arctic Data Center even when another community archive is used.</p>
 </blockquote>
 </div>
-<div id="linking-orcid-and-ldap-accounts" class="section level4" number="9.5.4.10">
-<h4><span class="header-section-number">9.5.4.10</span> Linking ORCiD and LDAP accounts</h4>
+<div id="linking-orcid-and-ldap-accounts" class="section level4" number="9.5.4.11">
+<h4><span class="header-section-number">9.5.4.11</span> Linking ORCiD and LDAP accounts</h4>
 <blockquote>
 <p>First create an account at orcid.org/register if you have not already. After that account registration is complete, login to the KNB with your ORCID iD here: <a href = 'https://knb.ecoinformatics.org/#share' target='_blank'>https://knb.ecoinformatics.org/#share</a>. Next, hover over the icon on the top right and choose “My Profile”. Then, click the “Settings” tab and scroll down to “Add Another Account”. Enter your name or username from your Morpho account and select yourself (your name should populate as an option). Click the “+”. You will then need to log out of knb.ecoinformatics.org and then log back in with your old LDAP account (click “have an existing account”, and enter your Morpho credentials with the organization set to “unaffiliated”) to finalize the linkage between the two accounts. Navigate to “My Profile” and “Settings” to confirm the linkage.</p>
 </blockquote>
