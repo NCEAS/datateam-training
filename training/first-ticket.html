@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 First Ticket | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 First Ticket | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-11-01" />
+<meta name="date" content="2021-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -614,8 +614,8 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <div id="general-eml" class="section level3" number="9.4.3">
 <h3><span class="header-section-number">9.4.3</span> General EML</h3>
 <p>Included lines for FAIR:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="first-ticket.html#cb133-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
-<span id="cb133-2"><a href="first-ticket.html#cb133-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="first-ticket.html#cb129-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
+<span id="cb129-2"><a href="first-ticket.html#cb129-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
 <div id="title-1" class="section level3" number="9.4.4">
 <h3><span class="header-section-number">9.4.4</span> Title</h3>
@@ -1145,10 +1145,10 @@ e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-000
 <p>Or, try reversing my instructions - log in first using your Morpho account (by clicking the “existing account” button and selecting organization “unaffiliated”), look for your ORCiD account, then log out and back in with ORCiD to confirm the linkage.</p>
 </blockquote>
 <p>Once the dataset is approved by the PI and there are no further changes, publish the dataset with a doi.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="first-ticket.html#cb134-1" aria-hidden="true" tabindex="-1"></a>doi <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">generateIdentifier</span>(d1c_test<span class="sc">@</span>mn, <span class="st">&quot;DOI&quot;</span>)</span>
-<span id="cb134-2"><a href="first-ticket.html#cb134-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path, <span class="at">newId=</span>doi)</span>
-<span id="cb134-3"><a href="first-ticket.html#cb134-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-4"><a href="first-ticket.html#cb134-4" aria-hidden="true" tabindex="-1"></a>newPackageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c_test, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="first-ticket.html#cb130-1" aria-hidden="true" tabindex="-1"></a>doi <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">generateIdentifier</span>(d1c_test<span class="sc">@</span>mn, <span class="st">&quot;DOI&quot;</span>)</span>
+<span id="cb130-2"><a href="first-ticket.html#cb130-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path, <span class="at">newId=</span>doi)</span>
+<span id="cb130-3"><a href="first-ticket.html#cb130-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-4"><a href="first-ticket.html#cb130-4" aria-hidden="true" tabindex="-1"></a>newPackageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c_test, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1157,7 +1157,7 @@ e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-000
 <p>As a final step we will categorize the dataset you processed. We are trying to categorize datasets so we can have a rough idea of what kinds of datasets we have at the Arctic Data Center. We will grant you access to the google sheet that has all of the <a href="https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118">categorized datasets</a></p>
 <p>We will categorize each dataset into one of the predefined themes (ie. biology, ecology etc.). Definition of the themes can be found in the <a href="https://docs.google.com/document/d/1rqHk9SCH9JvdSnIJovYVE1YF4IF4_yNxFfCOJMI8xjk/edit">google sheet</a></p>
 <p>Run the following line with your doi and themes as a list.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="first-ticket.html#cb135-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">categorize_dataset</span>(<span class="st">&quot;your_doi&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>), <span class="st">&quot;your name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="first-ticket.html#cb131-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">categorize_dataset</span>(<span class="st">&quot;your_doi&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>), <span class="st">&quot;your name&quot;</span>)</span></code></pre></div>
 </div>
 <div id="congrats" class="section level2" number="9.7">
 <h2><span class="header-section-number">9.7</span> Congrats!</h2>

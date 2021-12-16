@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Editing EML | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Editing EML | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-11-01" />
+<meta name="date" content="2021-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -999,40 +999,6 @@ eml_get_raster_metadata(path, coord_name, attributes)</code></pre>
 <p>Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="editing-eml.html#cb98-1" aria-hidden="true" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
 <span id="cb98-2"><a href="editing-eml.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span></code></pre></div>
-<p>To update a package with the newly edited EML, use <code>arcticdatautils::publish_update()</code>. This function has an argument for adding data <code>PID</code>s (or otherwise including existing data <code>PID</code>s) to make sure that they stay with the package. This function allows you to make metadata edits, as well as add or remove data objects (discussed in <a href="#update-a-data-package">the following chapter</a>).</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="editing-eml.html#cb99-1" aria-hidden="true" tabindex="-1"></a>update <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, </span>
-<span id="cb99-2"><a href="editing-eml.html#cb99-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">metadata_pid =</span> pkg<span class="sc">$</span>metadata,</span>
-<span id="cb99-3"><a href="editing-eml.html#cb99-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">resource_map_pid =</span> pkg<span class="sc">$</span>resource_map,</span>
-<span id="cb99-4"><a href="editing-eml.html#cb99-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data_pids =</span> pkg<span class="sc">$</span>data,</span>
-<span id="cb99-5"><a href="editing-eml.html#cb99-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">metadata_path =</span> eml_path, </span>
-<span id="cb99-6"><a href="editing-eml.html#cb99-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">public =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>Note that there are other arguments to <code>publish_update()</code> you may need.</p>
-<p>After your package is published, run the <code>qa_package()</code> function from the <code>datamgmt</code> package.</p>
-<p>The function arguments are as follows:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="editing-eml.html#cb100-1" aria-hidden="true" tabindex="-1"></a>qa_package <span class="ot">&lt;-</span> <span class="cf">function</span>(node, pid, <span class="at">readAllData =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb100-2"><a href="editing-eml.html#cb100-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_attributes =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb100-3"><a href="editing-eml.html#cb100-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_creators =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb100-4"><a href="editing-eml.html#cb100-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">check_access =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>By default, <code>qa_package()</code> checks for:</p>
-<ul>
-<li>Correctness of distribution URLs for each data object (URLs must match the EML physical section for the object)</li>
-<li>Congruence of metadata and data</li>
-</ul>
-<p>The <code>check_creators</code> and <code>check_access</code> flags can be set to <code>TRUE</code> to check:</p>
-<ul>
-<li>Correctness of ORCIDs of creators in a given EML</li>
-<li>Rights and access are set for creators in the system metadata</li>
-</ul>
-<p>In most cases, <code>qa_package()</code> will be run just by passing in a member node and the resource map PID.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="editing-eml.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qa_package</span>(mn, resource_map_pid)</span></code></pre></div>
-<div class="note">
-<p>
-There is a bug in for <code>qa_package()</code> for datasets in test.arcticdata.io that should be ignored:
-</p>
-</div>
-<pre><code>The distribution URL for object urn:uuid:......(your resource map pid) is missing or incongruent in the physical section of the EML.
-Error in dl_and_read_all_data(mn, package, doc, read_all_data) : 
-All distribution URLs for data objects must match the data PIDs to continue.</code></pre>
 </div>
 <div id="exercise-3b" class="section level2 exercise" number="4.14">
 <h2><span class="header-section-number">4.14</span> Exercise 3b</h2>
