@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-16" />
+<meta name="date" content="2021-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,6 +226,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -418,34 +419,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="access-specific-elements" class="section level2">
 <h2>Access specific elements</h2>
 <p>The <code>eml_get()</code> function is a powerful tool for exploring EML (more on that <a href = 'https://ropensci.github.io/EML/' target='_blank'>here</a> ). It takes any chunk of EML and returns <em>all instances</em> of the element you specify. <em>Note:</em> you’ll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="access-specific-elements.html#cb58-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
-<span id="cb58-2"><a href="access-specific-elements.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="access-specific-elements.html#cb56-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
+<span id="cb56-2"><a href="access-specific-elements.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>
 <pre><code>individualName:
   givenName: Bryce
   surName: Mecum
 organizationName: National Center for Ecological Analysis and Synthesis</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="access-specific-elements.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="access-specific-elements.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;boundingCoordinates&quot;</span>)</span></code></pre></div>
 <pre><code>eastBoundingCoordinate: &#39;-134&#39;
 northBoundingCoordinate: &#39;59&#39;
 southBoundingCoordinate: &#39;57&#39;
 westBoundingCoordinate: &#39;-135&#39;</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="access-specific-elements.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="access-specific-elements.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;url&quot;</span>)</span></code></pre></div>
 <pre><code>&#39;&#39;:
   function: download
   url: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456
 &#39;&#39;: ecogrid://knb/urn:uuid:89bec5d0-26db-48ac-ae54-e1b4c999c456</code></pre>
 <p><code>eml_get_simple()</code> is a simplified alternative to <code>eml_get()</code> that produces a list of the desired EML element.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="access-specific-elements.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="access-specific-elements.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="st">&quot;entityName&quot;</span>)</span></code></pre></div>
 <p>To find an eml element you can use either a combination of <code>which_in_eml</code>from the <code>arcticdatautils</code> package or <code>eml_get_simple</code> and <code>which</code> to find the index in an EML list. Use which ever workflow you see
 fit.</p>
 <p><strong>An example question you may have:</strong> <em>Which creators have a surName “Mecum”?</em></p>
 <p>Example using <code>which_in_eml</code>:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="access-specific-elements.html#cb65-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which_in_eml</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</span>
-<span id="cb65-2"><a href="access-specific-elements.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[n]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="access-specific-elements.html#cb63-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which_in_eml</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>, <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb63-2"><a href="access-specific-elements.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[n]]</span></span></code></pre></div>
 <p>Example using <code>eml_get_simple</code> and <code>which</code>:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="access-specific-elements.html#cb66-1" aria-hidden="true" tabindex="-1"></a>ent_names <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>)</span>
-<span id="cb66-2"><a href="access-specific-elements.html#cb66-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which</span>(ent_names <span class="sc">==</span> <span class="st">&quot;Mecum&quot;</span>)</span>
-<span id="cb66-3"><a href="access-specific-elements.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[i]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="access-specific-elements.html#cb64-1" aria-hidden="true" tabindex="-1"></a>ent_names <span class="ot">&lt;-</span> <span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>creator, <span class="st">&quot;surName&quot;</span>)</span>
+<span id="cb64-2"><a href="access-specific-elements.html#cb64-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which</span>(ent_names <span class="sc">==</span> <span class="st">&quot;Mecum&quot;</span>)</span>
+<span id="cb64-3"><a href="access-specific-elements.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: doc$dataset$creator[[i]]</span></span></code></pre></div>
 </div>
             </section>
 

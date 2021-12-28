@@ -24,7 +24,6 @@ create-a-new-data-package
 upload-new-data-files
 create-and-add-a-metadata-file
 add-some-additional-data-files
-add-additional-files-with-structure
 upload-the-package
 exercise-2b
 part-1---gather-your-data-files
@@ -55,7 +54,11 @@ attribute-level-annotations
 how-to-add-an-annotation
 manually-annotating
 shiny-attributes
+annotating-sensitive-data
 exercise-3a
+validate-eml-and-update-package
+exercise-3b
+other-eml-functionality
 edit-spatial-data
 file-types
 reading-spatial-files
@@ -71,8 +74,6 @@ geologic-dates
 set-methods
 adding-sampling-info-to-methods-section
 set-parties
-validate-eml-and-update-package
-exercise-3b
 updating-a-data-package
 update-a-data-object
 update-a-package-with-a-new-data-object

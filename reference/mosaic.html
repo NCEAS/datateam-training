@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-16" />
+<meta name="date" content="2021-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,6 +226,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -448,89 +449,89 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h3>Dataset Level Annotations</h3>
 <p>There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern <code>PS122/#</code>. For the full campaign list it is easiest to see on the <a href="https://www.pangaea.de/expeditions/byproject/MOSAiC">PANGAEA website</a></p>
 <p><strong>arcticdatautils</strong></p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="mosaic.html#cb213-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
-<span id="cb213-2"><a href="mosaic.html#cb213-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty</span></span>
-<span id="cb213-3"><a href="mosaic.html#cb213-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-4"><a href="mosaic.html#cb213-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">mosaic_annotate_dataset</span>(<span class="fu">c</span>(<span class="st">&quot;PS122/1&quot;</span>, <span class="st">&quot;PS122/2&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="mosaic.html#cb210-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
+<span id="cb210-2"><a href="mosaic.html#cb210-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty</span></span>
+<span id="cb210-3"><a href="mosaic.html#cb210-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-4"><a href="mosaic.html#cb210-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">mosaic_annotate_dataset</span>(<span class="fu">c</span>(<span class="st">&quot;PS122/1&quot;</span>, <span class="st">&quot;PS122/2&quot;</span>))</span></code></pre></div>
 <p><strong>Manual</strong></p>
 <p>Majority of the annotations will be the same across all of the datasets. Pay attention to what needs to be changed for the <code>hasBasis</code> and <code>isPartOfCampaign</code> valueURIs.</p>
 <p>More than one <code>Campaign</code> and <code>Basis</code> might be needed in rare cases.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="mosaic.html#cb214-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
-<span id="cb214-2"><a href="mosaic.html#cb214-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty here</span></span>
-<span id="cb214-3"><a href="mosaic.html#cb214-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb214-4"><a href="mosaic.html#cb214-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb214-5"><a href="mosaic.html#cb214-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Basis</span></span>
-<span id="cb214-6"><a href="mosaic.html#cb214-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb214-7"><a href="mosaic.html#cb214-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasBasis&quot;</span>,</span>
-<span id="cb214-8"><a href="mosaic.html#cb214-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000034&quot;</span>),</span>
-<span id="cb214-9"><a href="mosaic.html#cb214-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Polarstern&quot;</span>, <span class="co"># this depends on your event ID, most of them should be Polarstern</span></span>
-<span id="cb214-10"><a href="mosaic.html#cb214-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000030&quot;</span>)</span>
-<span id="cb214-11"><a href="mosaic.html#cb214-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb214-12"><a href="mosaic.html#cb214-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Project</span></span>
-<span id="cb214-13"><a href="mosaic.html#cb214-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb214-14"><a href="mosaic.html#cb214-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasProjectLabel&quot;</span>,</span>
-<span id="cb214-15"><a href="mosaic.html#cb214-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000025&quot;</span>),</span>
-<span id="cb214-16"><a href="mosaic.html#cb214-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;MOSAiC20192020&quot;</span>,</span>
-<span id="cb214-17"><a href="mosaic.html#cb214-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000023&quot;</span>)</span>
-<span id="cb214-18"><a href="mosaic.html#cb214-18" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb214-19"><a href="mosaic.html#cb214-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Campaign</span></span>
-<span id="cb214-20"><a href="mosaic.html#cb214-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb214-21"><a href="mosaic.html#cb214-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;isPartOfCampaign&quot;</span>,</span>
-<span id="cb214-22"><a href="mosaic.html#cb214-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000032&quot;</span>),</span>
-<span id="cb214-23"><a href="mosaic.html#cb214-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2&quot;</span>, <span class="co">#*** this changes depending on the campaign</span></span>
-<span id="cb214-24"><a href="mosaic.html#cb214-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000018&quot;</span>)</span>
-<span id="cb214-25"><a href="mosaic.html#cb214-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#*** this changes depending on the campaign</span></span>
-<span id="cb214-26"><a href="mosaic.html#cb214-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="mosaic.html#cb211-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
+<span id="cb211-2"><a href="mosaic.html#cb211-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty here</span></span>
+<span id="cb211-3"><a href="mosaic.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-4"><a href="mosaic.html#cb211-4" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb211-5"><a href="mosaic.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Basis</span></span>
+<span id="cb211-6"><a href="mosaic.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb211-7"><a href="mosaic.html#cb211-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasBasis&quot;</span>,</span>
+<span id="cb211-8"><a href="mosaic.html#cb211-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000034&quot;</span>),</span>
+<span id="cb211-9"><a href="mosaic.html#cb211-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Polarstern&quot;</span>, <span class="co"># this depends on your event ID, most of them should be Polarstern</span></span>
+<span id="cb211-10"><a href="mosaic.html#cb211-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000030&quot;</span>)</span>
+<span id="cb211-11"><a href="mosaic.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb211-12"><a href="mosaic.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Project</span></span>
+<span id="cb211-13"><a href="mosaic.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb211-14"><a href="mosaic.html#cb211-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;hasProjectLabel&quot;</span>,</span>
+<span id="cb211-15"><a href="mosaic.html#cb211-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000025&quot;</span>),</span>
+<span id="cb211-16"><a href="mosaic.html#cb211-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;MOSAiC20192020&quot;</span>,</span>
+<span id="cb211-17"><a href="mosaic.html#cb211-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000023&quot;</span>)</span>
+<span id="cb211-18"><a href="mosaic.html#cb211-18" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb211-19"><a href="mosaic.html#cb211-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Campaign</span></span>
+<span id="cb211-20"><a href="mosaic.html#cb211-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb211-21"><a href="mosaic.html#cb211-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;isPartOfCampaign&quot;</span>,</span>
+<span id="cb211-22"><a href="mosaic.html#cb211-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000032&quot;</span>),</span>
+<span id="cb211-23"><a href="mosaic.html#cb211-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2&quot;</span>, <span class="co">#*** this changes depending on the campaign</span></span>
+<span id="cb211-24"><a href="mosaic.html#cb211-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000018&quot;</span>)</span>
+<span id="cb211-25"><a href="mosaic.html#cb211-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#*** this changes depending on the campaign</span></span>
+<span id="cb211-26"><a href="mosaic.html#cb211-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div id="attribute-level-annotations-1" class="section level4">
 <h4>Attribute Level Annotations</h4>
 <p>Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.</p>
 <p><strong>arcticdatautils</strong></p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="mosaic.html#cb215-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;some id here&quot;</span></span>
-<span id="cb215-2"><a href="mosaic.html#cb215-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">mosaic_annotate_attribute</span>(<span class="st">&quot;PS122/2_14-270&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="mosaic.html#cb212-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;some id here&quot;</span></span>
+<span id="cb212-2"><a href="mosaic.html#cb212-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="fu">mosaic_annotate_attribute</span>(<span class="st">&quot;PS122/2_14-270&quot;</span>)</span></code></pre></div>
 <p><strong>Manual</strong></p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="mosaic.html#cb216-1" aria-hidden="true" tabindex="-1"></a>event_annotation <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="co">#Event Label</span></span>
-<span id="cb216-2"><a href="mosaic.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb216-3"><a href="mosaic.html#cb216-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;wasGeneratedBy&quot;</span>,</span>
-<span id="cb216-4"><a href="mosaic.html#cb216-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;http://www.w3.org/ns/prov#wasGeneratedBy&quot;</span>),</span>
-<span id="cb216-5"><a href="mosaic.html#cb216-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2_14-270&quot;</span>,</span>
-<span id="cb216-6"><a href="mosaic.html#cb216-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00004550&quot;</span>)</span>
-<span id="cb216-7"><a href="mosaic.html#cb216-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb216-8"><a href="mosaic.html#cb216-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Method/Device - Use the long name!</span></span>
-<span id="cb216-9"><a href="mosaic.html#cb216-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb216-10"><a href="mosaic.html#cb216-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;deployedSystem&quot;</span>,</span>
-<span id="cb216-11"><a href="mosaic.html#cb216-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00002201&quot;</span>),</span>
-<span id="cb216-12"><a href="mosaic.html#cb216-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Ultra-Wideband Software-defined Microwave Radiometer (0.5-2GHZ)&quot;</span>,</span>
-<span id="cb216-13"><a href="mosaic.html#cb216-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00001163&quot;</span>)</span>
-<span id="cb216-14"><a href="mosaic.html#cb216-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb216-15"><a href="mosaic.html#cb216-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-16"><a href="mosaic.html#cb216-16" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;eventId&quot;</span></span>
-<span id="cb216-17"><a href="mosaic.html#cb216-17" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span></span>
-<span id="cb216-18"><a href="mosaic.html#cb216-18" aria-hidden="true" tabindex="-1"></a>  event_annotate</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="mosaic.html#cb213-1" aria-hidden="true" tabindex="-1"></a>event_annotation <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="co">#Event Label</span></span>
+<span id="cb213-2"><a href="mosaic.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb213-3"><a href="mosaic.html#cb213-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;wasGeneratedBy&quot;</span>,</span>
+<span id="cb213-4"><a href="mosaic.html#cb213-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;http://www.w3.org/ns/prov#wasGeneratedBy&quot;</span>),</span>
+<span id="cb213-5"><a href="mosaic.html#cb213-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;PS122/2_14-270&quot;</span>,</span>
+<span id="cb213-6"><a href="mosaic.html#cb213-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00004550&quot;</span>)</span>
+<span id="cb213-7"><a href="mosaic.html#cb213-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb213-8"><a href="mosaic.html#cb213-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Method/Device - Use the long name!</span></span>
+<span id="cb213-9"><a href="mosaic.html#cb213-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb213-10"><a href="mosaic.html#cb213-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">propertyURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;deployedSystem&quot;</span>,</span>
+<span id="cb213-11"><a href="mosaic.html#cb213-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">propertyURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00002201&quot;</span>),</span>
+<span id="cb213-12"><a href="mosaic.html#cb213-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">valueURI =</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Ultra-Wideband Software-defined Microwave Radiometer (0.5-2GHZ)&quot;</span>,</span>
+<span id="cb213-13"><a href="mosaic.html#cb213-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00001163&quot;</span>)</span>
+<span id="cb213-14"><a href="mosaic.html#cb213-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb213-15"><a href="mosaic.html#cb213-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-16"><a href="mosaic.html#cb213-16" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;eventId&quot;</span></span>
+<span id="cb213-17"><a href="mosaic.html#cb213-17" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span></span>
+<span id="cb213-18"><a href="mosaic.html#cb213-18" aria-hidden="true" tabindex="-1"></a>  event_annotate</span></code></pre></div>
 <p><strong>Adding annotations</strong></p>
 <p>If there are already annotations applied (ie. using ECSO), the MOSAiC annotations can be added as so:</p>
 <ol style="list-style-type: decimal">
 <li>get the index of all of the attributes we want to add this annotation</li>
 </ol>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="mosaic.html#cb217-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>),<span class="st">&quot;Brightness&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="mosaic.html#cb214-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">which</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>),<span class="st">&quot;Brightness&quot;</span>))</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>loop through and add the annotation(s)</li>
 </ol>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="mosaic.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> n) {</span>
-<span id="cb218-2"><a href="mosaic.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span></span>
-<span id="cb218-3"><a href="mosaic.html#cb218-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">append</span>(</span>
-<span id="cb218-4"><a href="mosaic.html#cb218-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(</span>
-<span id="cb218-5"><a href="mosaic.html#cb218-5" aria-hidden="true" tabindex="-1"></a>        doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span>
-<span id="cb218-6"><a href="mosaic.html#cb218-6" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb218-7"><a href="mosaic.html#cb218-7" aria-hidden="true" tabindex="-1"></a>      event_annotation</span>
-<span id="cb218-8"><a href="mosaic.html#cb218-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb218-9"><a href="mosaic.html#cb218-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="mosaic.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> n) {</span>
+<span id="cb215-2"><a href="mosaic.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation <span class="ot">&lt;-</span></span>
+<span id="cb215-3"><a href="mosaic.html#cb215-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">append</span>(</span>
+<span id="cb215-4"><a href="mosaic.html#cb215-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(</span>
+<span id="cb215-5"><a href="mosaic.html#cb215-5" aria-hidden="true" tabindex="-1"></a>        doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span>
+<span id="cb215-6"><a href="mosaic.html#cb215-6" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb215-7"><a href="mosaic.html#cb215-7" aria-hidden="true" tabindex="-1"></a>      event_annotation</span>
+<span id="cb215-8"><a href="mosaic.html#cb215-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb215-9"><a href="mosaic.html#cb215-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="portal-updates" class="section level3">
 <h3>Portal updates</h3>
 <p>The filters are based on the MOSAiC ontology. The <code>Campaign</code> and <code>Basis</code> filters should remain relatively the same. However there are over 500 Method and Devices. So the decision was made to only show the ones we have annotated.</p>
 <p>We can query for all of them and output them formatted as a choice:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="mosaic.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic_portal_filter</span>(<span class="st">&quot;Method/Device&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="mosaic.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic_portal_filter</span>(<span class="st">&quot;Method/Device&quot;</span>)</span></code></pre></div>
 <p>Then update the portal document using the steps outlines in the <a href="https://nceas.github.io/datateam-training/reference/data-portals-1.html">advanced data portal customizations</a></p>
 </div>
 </div>

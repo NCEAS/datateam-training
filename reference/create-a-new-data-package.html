@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-16" />
+<meta name="date" content="2021-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,6 +226,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -429,6 +430,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="create-and-add-a-metadata-file" class="section level4">
 <h4>Create and add a metadata file</h4>
 <p>In this example we will use this previously written EML metadata. Here we are getting the file path from the dataone package and saving that as the object <code>emlFile</code>.</p>
+<p>This is a bit of an unusual way to reference a local file path, but all this does is looks within the R package <code>dataone</code> and grabs the path to a metadata document stored within that package. If you print the value of <code>emlFile</code> you’ll see it is just a file path, but it points to a special place on the server where that package is installed. Usually you will just reference EML paths that are stored within your user file system.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="create-a-new-data-package.html#cb20-1" aria-hidden="true" tabindex="-1"></a>emlFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/strix-pacific-northwest.xml&quot;</span>, <span class="at">package=</span><span class="st">&quot;dataone&quot;</span>)</span></code></pre></div>
 <p>Create a new <code>DataObject</code> and add it to the package.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="create-a-new-data-package.html#cb21-1" aria-hidden="true" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>, <span class="at">filename=</span>emlFile)</span>
@@ -441,32 +443,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="create-a-new-data-package.html#cb23-1" aria-hidden="true" tabindex="-1"></a>sourceData <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/OwlNightj.csv&quot;</span>, <span class="at">package=</span><span class="st">&quot;dataone&quot;</span>)</span>
 <span id="cb23-2"><a href="create-a-new-data-package.html#cb23-2" aria-hidden="true" tabindex="-1"></a>sourceObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format=</span><span class="st">&quot;text/csv&quot;</span>, <span class="at">filename=</span>sourceData)</span>
 <span id="cb23-3"><a href="create-a-new-data-package.html#cb23-3" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, sourceObj, metadataObj)</span></code></pre></div>
-</div>
-<div id="add-additional-files-with-structure" class="section level4">
-<h4>Add additional files with structure</h4>
-<p>In this example adding the csv files to a folder named data and scripts</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="create-a-new-data-package.html#cb24-1" aria-hidden="true" tabindex="-1"></a>outputData <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/Strix-occidentalis-obs.csv&quot;</span>, <span class="at">package=</span><span class="st">&quot;dataone&quot;</span>)</span>
-<span id="cb24-2"><a href="create-a-new-data-package.html#cb24-2" aria-hidden="true" tabindex="-1"></a>outputObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format=</span><span class="st">&quot;text/csv&quot;</span>, <span class="at">filename=</span>outputData, <span class="at">targetPath =</span> <span class="st">&quot;data&quot;</span>)</span>
-<span id="cb24-3"><a href="create-a-new-data-package.html#cb24-3" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, outputObj, metadataObj)</span>
-<span id="cb24-4"><a href="create-a-new-data-package.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="create-a-new-data-package.html#cb24-5" aria-hidden="true" tabindex="-1"></a>progFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/filterObs.R&quot;</span>, <span class="at">package=</span><span class="st">&quot;dataone&quot;</span>)</span>
-<span id="cb24-6"><a href="create-a-new-data-package.html#cb24-6" aria-hidden="true" tabindex="-1"></a>progObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format=</span><span class="st">&quot;application/R&quot;</span>, <span class="at">filename=</span>progFile, <span class="at">targetPath =</span> <span class="st">&quot;scripts&quot;</span>,</span>
-<span id="cb24-7"><a href="create-a-new-data-package.html#cb24-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">mediaType=</span><span class="st">&quot;text/x-rsrc&quot;</span>)</span>
-<span id="cb24-8"><a href="create-a-new-data-package.html#cb24-8" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, progObj, metadataObj)</span></code></pre></div>
 <div class="note">
 <p>
-If you want to change the formatId please use <code>updateSystemMetadata</code>
+If you want to change the formatId please use <code>updateSystemMetadata</code> (more on this later in the book)
 </p>
 </div>
 </div>
 </div>
 <div id="upload-the-package" class="section level3">
 <h3>Upload the package</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="create-a-new-data-package.html#cb25-1" aria-hidden="true" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
-<p>Make sure to give access privlidges to the ADC admins:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="create-a-new-data-package.html#cb26-1" aria-hidden="true" tabindex="-1"></a>myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="create-a-new-data-package.html#cb24-1" aria-hidden="true" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
+<p>Make sure to give access privileges to the ADC admins:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="create-a-new-data-package.html#cb25-1" aria-hidden="true" tabindex="-1"></a>myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>) </span></code></pre></div>
 <p>Get necessary token from test.arcticdata.io to upload the dataset prior uploading the datapackage:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="create-a-new-data-package.html#cb27-1" aria-hidden="true" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="create-a-new-data-package.html#cb26-1" aria-hidden="true" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="note">
+<p>
+<strong>If you want to preserve folder structures, you can use this method</strong>
+</p>
+<p>
+In this example adding the csv files to a folder named data and scripts
+</p>
+<p>
+outputData &lt;- system.file(“extdata/Strix-occidentalis-obs.csv”, package=“dataone”) outputObj &lt;- new(“DataObject”, format=“text/csv”, filename=outputData, targetPath = “data”) dp &lt;- addMember(dp, outputObj, metadataObj)
+</p>
+<p>
+progFile &lt;- system.file(“extdata/filterObs.R”, package=“dataone”) progObj &lt;- new(“DataObject”, format=“application/R”, filename=progFile, targetPath = “scripts”, mediaType=“text/x-rsrc”) dp &lt;- addMember(dp, progObj, metadataObj)
+</p>
+</div>
 </div>
 </div>
             </section>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-16" />
+<meta name="date" content="2021-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,6 +226,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -422,30 +423,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-a-sid-to-a-package" class="section level3">
 <h3>Adding a SID to a package</h3>
 <p>Adding a series identifier should be the last step. In most cases the SID will be in <code>DOI</code> format. Once the data package is complete (peer-reviewd and approved by the PI) the series identifier can be added by updating the <code>seriesId</code> field of the system metadata of the metadata object.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="series-identifier-sid.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The metadata identifier we&#39;re assigning an SID to</span></span>
-<span id="cb124-2"><a href="series-identifier-sid.html#cb124-2" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span> <span class="st">&#39;metadata_pid&#39;</span></span>
-<span id="cb124-3"><a href="series-identifier-sid.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-4"><a href="series-identifier-sid.html#cb124-4" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, metadata_pid)</span>
-<span id="cb124-5"><a href="series-identifier-sid.html#cb124-5" aria-hidden="true" tabindex="-1"></a>sys<span class="sc">@</span>seriesId <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="at">scheme =</span> <span class="st">&#39;DOI&#39;</span>) <span class="co">#update the scheme argument if it should not be a DOI</span></span>
-<span id="cb124-6"><a href="series-identifier-sid.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, metadata_pid, sys)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="series-identifier-sid.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The metadata identifier we&#39;re assigning an SID to</span></span>
+<span id="cb122-2"><a href="series-identifier-sid.html#cb122-2" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span> <span class="st">&#39;metadata_pid&#39;</span></span>
+<span id="cb122-3"><a href="series-identifier-sid.html#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="series-identifier-sid.html#cb122-4" aria-hidden="true" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, metadata_pid)</span>
+<span id="cb122-5"><a href="series-identifier-sid.html#cb122-5" aria-hidden="true" tabindex="-1"></a>sys<span class="sc">@</span>seriesId <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="at">scheme =</span> <span class="st">&#39;DOI&#39;</span>) <span class="co">#update the scheme argument if it should not be a DOI</span></span>
+<span id="cb122-6"><a href="series-identifier-sid.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, metadata_pid, sys)</span></code></pre></div>
 </div>
 <div id="updating-the-child-packages-of-a-parent-package-with-a-sid" class="section level3">
 <h3>Updating the child packages of a parent package with a SID</h3>
 <p>When updating a parent package with a series identifier you need to use <code>update_resource_map</code> rather than <code>publish_update</code>. In this case our goal is add nested data packages to an existing parent package.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="series-identifier-sid.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call get_package on the parent package that has a `seriesId` in its system metadata </span></span>
-<span id="cb125-2"><a href="series-identifier-sid.html#cb125-2" aria-hidden="true" tabindex="-1"></a>parent_package <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb125-3"><a href="series-identifier-sid.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The resource map of the package we want to add to the &#39;child_pids&#39; of the parent</span></span>
-<span id="cb125-4"><a href="series-identifier-sid.html#cb125-4" aria-hidden="true" tabindex="-1"></a>resource_map_new_child <span class="ot">&lt;-</span> <span class="st">&#39;&#39;</span> </span>
-<span id="cb125-5"><a href="series-identifier-sid.html#cb125-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-6"><a href="series-identifier-sid.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="fu">update_resource_map</span>(mn, parent_package<span class="sc">$</span>resource_map, parent_package<span class="sc">$</span>metadata, parent_package<span class="sc">$</span>data,</span>
-<span id="cb125-7"><a href="series-identifier-sid.html#cb125-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">c</span>(parent_package<span class="sc">$</span>child_packages, resource_map_new_child))</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="series-identifier-sid.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call get_package on the parent package that has a `seriesId` in its system metadata </span></span>
+<span id="cb123-2"><a href="series-identifier-sid.html#cb123-2" aria-hidden="true" tabindex="-1"></a>parent_package <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
+<span id="cb123-3"><a href="series-identifier-sid.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The resource map of the package we want to add to the &#39;child_pids&#39; of the parent</span></span>
+<span id="cb123-4"><a href="series-identifier-sid.html#cb123-4" aria-hidden="true" tabindex="-1"></a>resource_map_new_child <span class="ot">&lt;-</span> <span class="st">&#39;&#39;</span> </span>
+<span id="cb123-5"><a href="series-identifier-sid.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-6"><a href="series-identifier-sid.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">update_resource_map</span>(mn, parent_package<span class="sc">$</span>resource_map, parent_package<span class="sc">$</span>metadata, parent_package<span class="sc">$</span>data,</span>
+<span id="cb123-7"><a href="series-identifier-sid.html#cb123-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">c</span>(parent_package<span class="sc">$</span>child_packages, resource_map_new_child))</span></code></pre></div>
 </div>
 <div id="updating-the-metadata-of-a-package-with-a-sid" class="section level3">
 <h3>Updating the metadata of a package with a SID</h3>
 <p>When updating the metadata (xml) of a package with a series identifier use <code>publish_update</code>. It’s important that you pass the metadata pid to the <code>metadata_pid</code> argument rather than <code>seriesId</code>. The metadata pid will usually have the text “version:” ahead of it, however it’s best to use <code>get_package</code> first to avoid mistakes.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="series-identifier-sid.html#cb126-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb126-2"><a href="series-identifier-sid.html#cb126-2" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>resource_map, pkg<span class="sc">$</span>data, </span>
-<span id="cb126-3"><a href="series-identifier-sid.html#cb126-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">child_pids =</span> pkg<span class="sc">$</span>child_pids) <span class="co"># + any additional arguments to &quot;publish_update&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="series-identifier-sid.html#cb124-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
+<span id="cb124-2"><a href="series-identifier-sid.html#cb124-2" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>resource_map, pkg<span class="sc">$</span>data, </span>
+<span id="cb124-3"><a href="series-identifier-sid.html#cb124-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">child_pids =</span> pkg<span class="sc">$</span>child_pids) <span class="co"># + any additional arguments to &quot;publish_update&quot;</span></span></code></pre></div>
 </div>
 </div>
             </section>
