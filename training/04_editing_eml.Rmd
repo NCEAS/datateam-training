@@ -17,13 +17,7 @@ The result of these function calls won't show up on the webpage but they will ad
 
 These two functions come from the `arcticatautils` package, an R package we wrote to help with some very specific data processing tasks.
 
-To install `arcticdatautils`, run this:
-
-```
-devtools::install_github("NCEAS/arcticdatautils")
-```
-
-Then add these to all of your EML processing scripts.
+Add these function calls to all of your EML processing scripts.
 
 ```{r, eval= FALSE}
   library(arcticdatautils)
