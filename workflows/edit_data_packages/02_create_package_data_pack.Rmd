@@ -43,22 +43,9 @@ sourceObj <- new("DataObject", format="text/csv", filename=sourceData)
 dp <- addMember(dp, sourceObj, metadataObj)
 ```
 
-#### Add additional files with structure
-
-In this example adding the csv files to a folder named data and scripts
-```{r, eval = F}
-outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
-outputObj <- new("DataObject", format="text/csv", filename=outputData, targetPath = "data")
-dp <- addMember(dp, outputObj, metadataObj)
-
-progFile <- system.file("extdata/filterObs.R", package="dataone")
-progObj <- new("DataObject", format="application/R", filename=progFile, targetPath = "scripts",
-               mediaType="text/x-rsrc")
-dp <- addMember(dp, progObj, metadataObj)
-```
 
 ```{block, type = "note"}
-If you want to change the formatId please use `updateSystemMetadata`
+If you want to change the formatId please use `updateSystemMetadata` (more on this later in the book)
 ```
 
 ### Upload the package
@@ -67,7 +54,7 @@ If you want to change the formatId please use `updateSystemMetadata`
 d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
-Make sure to give access privlidges to the ADC admins:
+Make sure to give access privileges to the ADC admins:
 ```{r}
 myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission") 
 ```
@@ -75,4 +62,23 @@ myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", p
 Get necessary token from test.arcticdata.io to upload the dataset prior uploading the datapackage:
 ```{r, eval = F}
 packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
+```
+
+
+
+```{block, type = "note"}
+
+**If you want to preserve folder structures, you can use this method**
+
+In this example adding the csv files to a folder named data and scripts
+
+
+outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
+outputObj <- new("DataObject", format="text/csv", filename=outputData, targetPath = "data")
+dp <- addMember(dp, outputObj, metadataObj)
+
+progFile <- system.file("extdata/filterObs.R", package="dataone")
+progObj <- new("DataObject", format="application/R", filename=progFile, targetPath = "scripts",
+               mediaType="text/x-rsrc")
+dp <- addMember(dp, progObj, metadataObj)
 ```
