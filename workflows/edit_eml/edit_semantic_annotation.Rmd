@@ -140,3 +140,7 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- l
 
 On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `propertyURI`, `propertyLabel`, `valueURI`, `valueLabel` that can be filled out.
 
+### Annotating sensitive data
+
+Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&conceptid=root. 
+
