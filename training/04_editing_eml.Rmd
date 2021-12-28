@@ -53,21 +53,32 @@ The metadata for the dataset created earlier in Exercise 2 was not very complete
 
 * Make sure your package from [before](#exercise-2) is loaded into R.
 * Convert `otherEntity` into `dataTable`.
-* Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` and `physical` section you write in R using the above commands.
-* Add semantic annotations for attribute area.
+* Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` you write in R using the above commands.
 * We will continue using the objects created and updated in this exercise in 3b.
 
-```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
+Below is some pseudo-code for how to accomplish the above steps. Fill in the dots according to the above sections to complete the exercise.
+
+```
+dp # print the value of dp to ensure it is still in your environment
+
+# get metadata pid
+mo <- selectMember(...)
+
+# read in EML
+doc <- read_eml(getObject(...))
+
+# convert otherEntity to dataTable
+doc <- eml_otherEntity_to_dataTable(...)
+
+# write an attribute list using shiny_attributes based on the data in your file
+ex_data <- read.csv(...)
+atts <- shiny_attributes(data = ex_data)
+
+# set the attributeList
+doc$dataset$dataTable$attributeList <- set_attributes(...)
+
 ```
 
-```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
-```
-
-```{r, child = '../workflows/edit_eml/set_methods.Rmd'}
-```
-
-```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
-```
 
 ## Validate EML and update package
 
@@ -100,4 +111,33 @@ After adding more metadata, we want to publish the dataset onto `test.arcticdata
 * Use the [checklist](#final-checklist) to review your submission.
 * Make edits where necessary
 
-Once `eml_validate` returns `TRUE` go ahead and run `write_eml` and `publish_update`. There might be a small lag for your changes to appear on the website. 
+Once `eml_validate` returns `TRUE` go ahead and run `write_eml`, `replaceMember`, and `uploadDataPackage`. There might be a small lag for your changes to appear on the website. This part of the workflow will look roughly like this:
+
+```
+# validate and write the EML
+eml_validate(...)
+write_eml(...)
+
+# replace the old metadata file with the new one in the local package
+replaceMember(dp, ...)
+
+# upload the data package
+packageId <- uploadDataPackage(...)
+```
+
+## Other EML functionality
+
+The following sections are other tasks we often need to do to our metadata, but are not specific to the exercises.
+
+```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_methods.Rmd'}
+```
+
+```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
+```
+

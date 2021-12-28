@@ -16,13 +16,8 @@ Then use `replaceMember`:
 dp <- replaceMember(dp, metadataId, replacement=file_path)
 ```
 
-If the object was previously uploaded, we can use `getDataObject` to retrieve it:
-```{r, eval=F}
-dataObj <- getDataObject(d1c_test, id="urn:uuid: here", lazyLoad=T, limit="1TB")
-dp <- addMember(dp, dataObj, mo=metadataId)
-```
 
-If you want to remove some files from the data package we can use `datapack::removeMember`. In this example, we want to remove all the zip files associated with this data package, we can use `datapack::removeMember`:
+If you want to remove some files from the data package we can use `datapack::removeMember`. If we wanted to remove all the zip files associated with this data package, we can use `datapack::removeMember`:
 
 ```{r, eval = F}
 zipId <- selectMember(dp, name="sysmeta@formatId", value="application/vnd.shp+zip")

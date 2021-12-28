@@ -18,17 +18,6 @@ physical <- arcticdatautils::pid_to_eml_physical(mn, "your_data_pid")
 
 The `physical` must then be assigned to the data object.
 
-A final, but not recommended option, is to set the `physical` by hand. To do so, one can use a workflow similar to the one below. However, the far superior workflow is to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html' target='_blank'>update</a> your data first and then use `pid_to_eml_physical()` to set the `physical`.
+Note that the above workflow only works if your data object already exists on the member node.
 
-```{r, eval = FALSE}
-id <- 'your_data_pid' # this should be an actual PID
-path <- '~/your/data/path' # path to data table
-physical <- set_physical(objectName = path,
-                              size = as.character(file.size(path)),
-                              sizeUnit = 'bytes',
-                              authentication = digest(fpath, algo="sha256", serialize=FALSE, file=TRUE),
-                              authMethod = 'SHA-256',
-                              numHeaderLines = '1',
-                              fieldDelimiter = ',',
-                              url = paste0('https://cn.dataone.org/cn/v2/resolve/', id))
-```
+

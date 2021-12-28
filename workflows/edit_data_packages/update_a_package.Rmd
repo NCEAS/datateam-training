@@ -1,8 +1,8 @@
 ## Update a package with a new data object
 
-Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new `pid` to the resource map using `publish_update()`.
+Once you have updated the data objects and saved the metadata to a file, we can update the metadata and use `replaceMember` to update the package with the new metadata.
 
-Make sure you have the package you want to update, <a href = 'https://nceas.github.io/datateam-training/reference/get-package-and-eml.html#get-package-and-eml' target='_blank'>loaded into R</a> using `get_package()`.
+Make sure you have the package you want to update loaded into R using `dataone::getDataPackage()`.
 
 ### Publish update
 

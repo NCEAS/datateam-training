@@ -1,11 +1,13 @@
 ## Edit attributeLists
 
-Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:
+Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)
 
-Attributes can exist in EML for `dataTable`, `otherEntity`, and `spatialVector` data objects. Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
+The `attributeList` is an element within one of 4 different types of entity objects. An entity corresponds to a file, typically. Multiple entities (files) can exist within a dataset. The 4 different entity types are `dataTable` (most common for us), `spatialVector`, `spatialRaster`, and `otherEntity`
+
+Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
 
 To edit or examine an existing attribute table already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
 
