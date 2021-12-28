@@ -18,6 +18,9 @@ dp <- new("DataPackage")
 #### Create and add a metadata file
 
 In this example we will use this previously written EML metadata. Here we are getting the file path from the dataone package and saving that as the object `emlFile`.
+
+This is a bit of an unusual way to reference a local file path, but all this does is looks within the R package `dataone` and grabs the path to a metadata document stored within that package. If you print the value of `emlFile` you'll see it is just a file path, but it points to a special place on the server where that package is installed. Usually you will just reference EML paths that are stored within your user file system.
+
 ```{r, eval = F}
 emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone")
 ```
