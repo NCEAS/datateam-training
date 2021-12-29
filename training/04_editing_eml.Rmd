@@ -125,19 +125,3 @@ replaceMember(dp, ...)
 packageId <- uploadDataPackage(...)
 ```
 
-## Other EML functionality
-
-The following sections are other tasks we often need to do to our metadata, but are not specific to the exercises.
-
-```{r, child = '../workflows/edit_eml/edit_spatialdata.Rmd'}
-```
-
-```{r, child = '../workflows/edit_eml/set_coverages.Rmd'}
-```
-
-```{r, child = '../workflows/edit_eml/set_methods.Rmd'}
-```
-
-```{r, child = '../workflows/edit_eml/set_parties.Rmd'}
-```
-
