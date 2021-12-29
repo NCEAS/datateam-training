@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,11 +419,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="get-package-and-eml" class="section level2">
 <h2>Get package and EML</h2>
 <p>Before we look more in depth at EML, we first need to load your data package into R. After <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>setting your node</a>, use the following commands to load the package:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="get-package-and-eml.html#cb218-1" aria-hidden="true" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
-<span id="cb218-2"><a href="get-package-and-eml.html#cb218-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-3"><a href="get-package-and-eml.html#cb218-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
-<span id="cb218-4"><a href="get-package-and-eml.html#cb218-4" aria-hidden="true" tabindex="-1"></a>                   rm_pid,</span>
-<span id="cb218-5"><a href="get-package-and-eml.html#cb218-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="get-package-and-eml.html#cb217-1" aria-hidden="true" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
+<span id="cb217-2"><a href="get-package-and-eml.html#cb217-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-3"><a href="get-package-and-eml.html#cb217-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
+<span id="cb217-4"><a href="get-package-and-eml.html#cb217-4" aria-hidden="true" tabindex="-1"></a>                   rm_pid,</span>
+<span id="cb217-5"><a href="get-package-and-eml.html#cb217-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="note">
 <p>
 <strong>Keeping track of PIDs</strong>
@@ -435,11 +435,11 @@ In all subsequent sections, if they ask for the <code>pid</code> of the metadata
 For example, if you assigned the value from <code>get_package()</code> as above as <code>pkg</code> then you can refer to the following by using the corresponding commands:
 </p>
 </div>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="get-package-and-eml.html#cb219-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
-<span id="cb219-2"><a href="get-package-and-eml.html#cb219-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
-<span id="cb219-3"><a href="get-package-and-eml.html#cb219-3" aria-hidden="true" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="get-package-and-eml.html#cb218-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
+<span id="cb218-2"><a href="get-package-and-eml.html#cb218-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
+<span id="cb218-3"><a href="get-package-and-eml.html#cb218-3" aria-hidden="true" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
 <p>After loading the package, you can also load the EML file into R using the following command:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="get-package-and-eml.html#cb220-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="get-package-and-eml.html#cb219-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
 <p>Note that we named the object <code>doc</code>. This is a good generic name to use for EML documents. The generic name <code>eml</code> should not be used - as the EML package ships with an <code>eml</code> function, which can cause namespace issues in your environment if you have an object also called <code>eml</code>.</p>
 <div class="note">
 <p>

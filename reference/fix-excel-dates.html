@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,7 +419,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="fix-excel-dates" class="section level2">
 <h2>Fix Excel dates</h2>
 <p>Do you see something that looks like <code>43134, 43135, 43136</code> even though the column header is <code>Dates</code>? You may have encountered an <strong>Excel date/time</strong> problem. To fix it, the <code>janitor</code> package has a handy function:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="fix-excel-dates.html#cb176-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">excel_numeric_to_date</span>(<span class="fu">c</span>(<span class="dv">43134</span>, <span class="dv">43135</span>, <span class="dv">43136</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="fix-excel-dates.html#cb175-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">excel_numeric_to_date</span>(<span class="fu">c</span>(<span class="dv">43134</span>, <span class="dv">43135</span>, <span class="dv">43136</span>))</span></code></pre></div>
 <div class="warning">
 <p>
 Make sure you check that the dates make sense!

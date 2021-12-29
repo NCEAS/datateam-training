@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -420,16 +420,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Add children to an existing parent</h2>
 <p>A new package is published with a DOI and needs to be nested underneath a pre-existing parent.
 Nest the new child using the <code>child_pids</code> argument in <code>publish_update()</code>.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="add-children-to-an-existing-parent.html#cb225-1" aria-hidden="true" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
-<span id="cb225-2"><a href="add-children-to-an-existing-parent.html#cb225-2" aria-hidden="true" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
-<span id="cb225-3"><a href="add-children-to-an-existing-parent.html#cb225-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-4"><a href="add-children-to-an-existing-parent.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
-<span id="cb225-5"><a href="add-children-to-an-existing-parent.html#cb225-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
-<span id="cb225-6"><a href="add-children-to-an-existing-parent.html#cb225-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
-<span id="cb225-7"><a href="add-children-to-an-existing-parent.html#cb225-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
-<span id="cb225-8"><a href="add-children-to-an-existing-parent.html#cb225-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
-<span id="cb225-9"><a href="add-children-to-an-existing-parent.html#cb225-9" aria-hidden="true" tabindex="-1"></a>                              resource_map_child_new))</span>
-<span id="cb225-10"><a href="add-children-to-an-existing-parent.html#cb225-10" aria-hidden="true" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="add-children-to-an-existing-parent.html#cb224-1" aria-hidden="true" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
+<span id="cb224-2"><a href="add-children-to-an-existing-parent.html#cb224-2" aria-hidden="true" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
+<span id="cb224-3"><a href="add-children-to-an-existing-parent.html#cb224-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-4"><a href="add-children-to-an-existing-parent.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
+<span id="cb224-5"><a href="add-children-to-an-existing-parent.html#cb224-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
+<span id="cb224-6"><a href="add-children-to-an-existing-parent.html#cb224-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
+<span id="cb224-7"><a href="add-children-to-an-existing-parent.html#cb224-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
+<span id="cb224-8"><a href="add-children-to-an-existing-parent.html#cb224-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
+<span id="cb224-9"><a href="add-children-to-an-existing-parent.html#cb224-9" aria-hidden="true" tabindex="-1"></a>                              resource_map_child_new))</span>
+<span id="cb224-10"><a href="add-children-to-an-existing-parent.html#cb224-10" aria-hidden="true" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
 <div class="warning">
 <p>
 Check through all arguments carefully before you publish to production! Do you need to update the metadata? Does the parent include data objects? Does the parent have a parent?

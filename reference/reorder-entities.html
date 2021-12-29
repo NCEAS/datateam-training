@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -423,13 +423,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Metadata</li>
 </ol>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="reorder-entities.html#cb223-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[<span class="fu">order</span>(entity_names)]</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="reorder-entities.html#cb222-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[<span class="fu">order</span>(entity_names)]</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Data files</li>
 </ol>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="reorder-entities.html#cb224-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm, <span class="at">file_names =</span> T)</span>
-<span id="cb224-2"><a href="reorder-entities.html#cb224-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg<span class="sc">$</span>metadata))</span>
-<span id="cb224-3"><a href="reorder-entities.html#cb224-3" aria-hidden="true" tabindex="-1"></a>reordered <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">reorder_pids</span>(pkg<span class="sc">$</span>data, doc)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="reorder-entities.html#cb223-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm, <span class="at">file_names =</span> T)</span>
+<span id="cb223-2"><a href="reorder-entities.html#cb223-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg<span class="sc">$</span>metadata))</span>
+<span id="cb223-3"><a href="reorder-entities.html#cb223-3" aria-hidden="true" tabindex="-1"></a>reordered <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">reorder_pids</span>(pkg<span class="sc">$</span>data, doc)</span></code></pre></div>
 </div>
 <!-- </div> -->
             </section>

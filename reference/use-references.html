@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -454,9 +454,9 @@ Do not use references for creators as it is used for the citation information. T
   &lt;/dataset&gt;
 &lt;/eml&gt;</code></pre>
 <p>So you see those two times Bryce Mecum is referenced there? If you mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there’s some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="use-references.html#cb140-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
-<span id="cb140-2"><a href="use-references.html#cb140-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
-<span id="cb140-3"><a href="use-references.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="use-references.html#cb139-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
+<span id="cb139-2"><a href="use-references.html#cb139-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
+<span id="cb139-3"><a href="use-references.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;eml:eml xmlns:eml=&quot;eml://ecoinformatics.org/eml-2.1.1&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:stmml=&quot;http://www.xml-cml.org/schema/stmml-1.1&quot; packageId=&quot;id&quot; system=&quot;system&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1/ eml.xsd&quot;&gt;
   &lt;dataset&gt;
@@ -487,12 +487,12 @@ The reference <code>id</code> needs to be unique within the EML record but doesn
 <li>Use references to add that information into the <code>attributeList</code>s of the other data tables</li>
 </ol>
 <p>For example, if all the data tables in our data package have the same attributes, we can set the attribute list for the first one, and use references for the rest:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="use-references.html#cb142-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
-<span id="cb142-2"><a href="use-references.html#cb142-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
-<span id="cb142-3"><a href="use-references.html#cb142-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-4"><a href="use-references.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
-<span id="cb142-5"><a href="use-references.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
-<span id="cb142-6"><a href="use-references.html#cb142-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="use-references.html#cb141-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
+<span id="cb141-2"><a href="use-references.html#cb141-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
+<span id="cb141-3"><a href="use-references.html#cb141-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-4"><a href="use-references.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
+<span id="cb141-5"><a href="use-references.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
+<span id="cb141-6"><a href="use-references.html#cb141-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <!-- </div> -->

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -424,9 +424,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization). so, we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical.
 </p>
 </div>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-physical.html#cb134-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
-<p>Alternatively, you can set the <code>physical</code> of a data object not yet in your package by simply inputting the data <code>PID</code>:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="set-physical.html#cb135-1" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-physical.html#cb134-1" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
+<span id="cb134-2"><a href="set-physical.html#cb134-2" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, data_pid)</span></code></pre></div>
 <p>The <code>physical</code> must then be assigned to the data object.</p>
 <p>Note that the above workflow only works if your data object already exists on the member node.</p>
 </div>

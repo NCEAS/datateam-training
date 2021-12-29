@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -223,23 +223,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3a"><i class="fa fa-check"></i><b>4.8</b> Exercise 3a</a></li>
 <li class="chapter" data-level="4.9" data-path="editing-eml.html"><a href="editing-eml.html#validate-eml-and-update-package"><i class="fa fa-check"></i><b>4.9</b> Validate EML and update package</a></li>
 <li class="chapter" data-level="4.10" data-path="editing-eml.html"><a href="editing-eml.html#exercise-3b"><i class="fa fa-check"></i><b>4.10</b> Exercise 3b</a></li>
-<li class="chapter" data-level="4.11" data-path="editing-eml.html"><a href="editing-eml.html#other-eml-functionality"><i class="fa fa-check"></i><b>4.11</b> Other EML functionality</a></li>
-<li class="chapter" data-level="4.12" data-path="editing-eml.html"><a href="editing-eml.html#edit-spatial-data"><i class="fa fa-check"></i><b>4.12</b> Edit spatial data</a>
-<ul>
-<li class="chapter" data-level="4.12.1" data-path="editing-eml.html"><a href="editing-eml.html#reading-spatial-files"><i class="fa fa-check"></i><b>4.12.1</b> Reading Spatial Files</a></li>
-<li class="chapter" data-level="4.12.2" data-path="editing-eml.html"><a href="editing-eml.html#spatialvector"><i class="fa fa-check"></i><b>4.12.2</b> spatialVector</a></li>
-<li class="chapter" data-level="4.12.3" data-path="editing-eml.html"><a href="editing-eml.html#spatialrasters"><i class="fa fa-check"></i><b>4.12.3</b> spatialRasters</a></li>
-</ul></li>
-<li class="chapter" data-level="4.13" data-path="editing-eml.html"><a href="editing-eml.html#set-coverages"><i class="fa fa-check"></i><b>4.13</b> Set coverages</a>
-<ul>
-<li class="chapter" data-level="4.13.1" data-path="editing-eml.html"><a href="editing-eml.html#set-multiple-coverages"><i class="fa fa-check"></i><b>4.13.1</b> Set multiple coverages</a></li>
-<li class="chapter" data-level="4.13.2" data-path="editing-eml.html"><a href="editing-eml.html#special-coverages"><i class="fa fa-check"></i><b>4.13.2</b> Special coverages</a></li>
-</ul></li>
-<li class="chapter" data-level="4.14" data-path="editing-eml.html"><a href="editing-eml.html#set-methods"><i class="fa fa-check"></i><b>4.14</b> Set methods</a>
-<ul>
-<li class="chapter" data-level="4.14.1" data-path="editing-eml.html"><a href="editing-eml.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i><b>4.14.1</b> Adding sampling info to methods section</a></li>
-</ul></li>
-<li class="chapter" data-level="4.15" data-path="editing-eml.html"><a href="editing-eml.html#set-parties"><i class="fa fa-check"></i><b>4.15</b> Set parties</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="updating-a-data-package.html"><a href="updating-a-data-package.html"><i class="fa fa-check"></i><b>5</b> Updating a data package</a>
 <ul>
@@ -616,8 +599,8 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
 <div id="general-eml" class="section level3" number="9.4.3">
 <h3><span class="header-section-number">9.4.3</span> General EML</h3>
 <p>Included lines for FAIR:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="first-ticket.html#cb128-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
-<span id="cb128-2"><a href="first-ticket.html#cb128-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="first-ticket.html#cb112-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
+<span id="cb112-2"><a href="first-ticket.html#cb112-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
 <div id="title-1" class="section level3" number="9.4.4">
 <h3><span class="header-section-number">9.4.4</span> Title</h3>
@@ -1147,10 +1130,10 @@ e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-000
 <p>Or, try reversing my instructions - log in first using your Morpho account (by clicking the “existing account” button and selecting organization “unaffiliated”), look for your ORCiD account, then log out and back in with ORCiD to confirm the linkage.</p>
 </blockquote>
 <p>Once the dataset is approved by the PI and there are no further changes, publish the dataset with a doi.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="first-ticket.html#cb129-1" aria-hidden="true" tabindex="-1"></a>doi <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">generateIdentifier</span>(d1c_test<span class="sc">@</span>mn, <span class="st">&quot;DOI&quot;</span>)</span>
-<span id="cb129-2"><a href="first-ticket.html#cb129-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path, <span class="at">newId=</span>doi)</span>
-<span id="cb129-3"><a href="first-ticket.html#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb129-4"><a href="first-ticket.html#cb129-4" aria-hidden="true" tabindex="-1"></a>newPackageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c_test, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="first-ticket.html#cb113-1" aria-hidden="true" tabindex="-1"></a>doi <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">generateIdentifier</span>(d1c_test<span class="sc">@</span>mn, <span class="st">&quot;DOI&quot;</span>)</span>
+<span id="cb113-2"><a href="first-ticket.html#cb113-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path, <span class="at">newId=</span>doi)</span>
+<span id="cb113-3"><a href="first-ticket.html#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="first-ticket.html#cb113-4" aria-hidden="true" tabindex="-1"></a>newPackageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c_test, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1159,7 +1142,7 @@ e.g.: <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-000
 <p>As a final step we will categorize the dataset you processed. We are trying to categorize datasets so we can have a rough idea of what kinds of datasets we have at the Arctic Data Center. We will grant you access to the google sheet that has all of the <a href="https://docs.google.com/spreadsheets/d/1S_7iW0UBZLZoJBrHXTW5fbHH-NOuOb6xLghraPA4Kf4/edit#gid=1479370118">categorized datasets</a></p>
 <p>We will categorize each dataset into one of the predefined themes (ie. biology, ecology etc.). Definition of the themes can be found in the <a href="https://docs.google.com/document/d/1rqHk9SCH9JvdSnIJovYVE1YF4IF4_yNxFfCOJMI8xjk/edit">google sheet</a></p>
 <p>Run the following line with your doi and themes as a list.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="first-ticket.html#cb130-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">categorize_dataset</span>(<span class="st">&quot;your_doi&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>), <span class="st">&quot;your name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="first-ticket.html#cb114-1" aria-hidden="true" tabindex="-1"></a>datamgmt<span class="sc">::</span><span class="fu">categorize_dataset</span>(<span class="st">&quot;your_doi&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>), <span class="st">&quot;your name&quot;</span>)</span></code></pre></div>
 </div>
 <div id="congrats" class="section level2" number="9.7">
 <h2><span class="header-section-number">9.7</span> Congrats!</h2>

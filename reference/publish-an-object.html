@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,16 +419,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="publish-an-object" class="section level2">
 <h2>Publish an object</h2>
 <p>Objects (data files, xml metadata files) can be published to a DataONE node using the function <code>publish_object()</code> from the <code>arcticdatautils</code> R Package. To publish an object, you must first get the <code>formatId</code> of the object you want to publish. A few common <code>formatId</code>s are listed below.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="publish-an-object.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .csv file</span></span>
-<span id="cb221-2"><a href="publish-an-object.html#cb221-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
-<span id="cb221-3"><a href="publish-an-object.html#cb221-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-4"><a href="publish-an-object.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="co"># .txt file</span></span>
-<span id="cb221-5"><a href="publish-an-object.html#cb221-5" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
-<span id="cb221-6"><a href="publish-an-object.html#cb221-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-7"><a href="publish-an-object.html#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="co"># metadata file</span></span>
-<span id="cb221-8"><a href="publish-an-object.html#cb221-8" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
-<span id="cb221-9"><a href="publish-an-object.html#cb221-9" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb221-10"><a href="publish-an-object.html#cb221-10" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="publish-an-object.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .csv file</span></span>
+<span id="cb220-2"><a href="publish-an-object.html#cb220-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
+<span id="cb220-3"><a href="publish-an-object.html#cb220-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-4"><a href="publish-an-object.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="co"># .txt file</span></span>
+<span id="cb220-5"><a href="publish-an-object.html#cb220-5" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
+<span id="cb220-6"><a href="publish-an-object.html#cb220-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-7"><a href="publish-an-object.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="co"># metadata file</span></span>
+<span id="cb220-8"><a href="publish-an-object.html#cb220-8" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
+<span id="cb220-9"><a href="publish-an-object.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb220-10"><a href="publish-an-object.html#cb220-10" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
 <p>Most objects have registered <code>formatId</code>s that can be found on the DataONE Object Format List <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>. Always use the “Id:” (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the <code>formatId</code>. If the <code>formatId</code> is not listed at the DataONE website, you can set <code>formatId &lt;- "application/octet-stream"</code>.</p>
 <div class="note">
 <p>
@@ -436,12 +436,12 @@ If you want to change the formatId please use <code>updateSystemMetadata</code> 
 </p>
 </div>
 <p>Once you know the appropriate <code>formatId</code> you can publish an object using these commands:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="publish-an-object.html#cb222-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
-<span id="cb222-2"><a href="publish-an-object.html#cb222-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
-<span id="cb222-3"><a href="publish-an-object.html#cb222-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-4"><a href="publish-an-object.html#cb222-4" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
-<span id="cb222-5"><a href="publish-an-object.html#cb222-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
-<span id="cb222-6"><a href="publish-an-object.html#cb222-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="publish-an-object.html#cb221-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
+<span id="cb221-2"><a href="publish-an-object.html#cb221-2" aria-hidden="true" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
+<span id="cb221-3"><a href="publish-an-object.html#cb221-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-4"><a href="publish-an-object.html#cb221-4" aria-hidden="true" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
+<span id="cb221-5"><a href="publish-an-object.html#cb221-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
+<span id="cb221-6"><a href="publish-an-object.html#cb221-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
 <p>After publishing the object, the <code>PID</code> will need to be added to a resource map by <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#update-a-package' target='_blank'>updating</a> or <a href = 'https://nceas.github.io/datateam-training/reference/create-a-resource-map.html#create-a-resource-map' target='_blank'>creating</a> a resource map. Additionally, the <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'>rights and access</a> for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don’t need to do this.</p>
 </div>
             </section>
