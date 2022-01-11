@@ -106,7 +106,7 @@ If you are curious how everything magically works, here is a handy diagram:
 
 ## Exercise 2a {.exercise}
 
-Select a dataset from the catalog on arcticdata.io and checkout the number of files and provenance relationships in the dataset.
+Select a dataset from the [catalog](http://arcticdata.io/catalog) on the Arctic Data Center. Observe the number of data files in the dataset. Try to find identifiers for the metadata file and resource map on the landing page for the dataset based on the screenshot shown above.
 
 ```{r, child = '../workflows/edit_data_packages/02_create_package_data_pack.Rmd'}
 ```
