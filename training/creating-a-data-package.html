@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2022-01-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -445,8 +445,9 @@ When you are usually working with data packages you will only need the following
 To access the various slots using objects created by datapack and dataone (e.g. <code>getSystemMetadata</code>) requires the <code>@</code> which is different from what you might have seen in the past. This is because these use the <a href="https://adv-r.hadley.nz/s4.html">S4</a> system.
 </p>
 </div>
-<p>Get an existing package from the Arctic Data Center</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="creating-a-data-package.html#cb10-1" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28&quot;</span>)</span></code></pre></div>
+<p>Get an existing package from the Arctic Data Center. Make sure you know as you go through this training whether you are reading or writing to test or production. We don’t want to upload any of your test datasets to production!</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="creating-a-data-package.html#cb10-1" aria-hidden="true" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb10-2"><a href="creating-a-data-package.html#cb10-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28&quot;</span>)</span></code></pre></div>
 </div>
 <div id="data-objects" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Data Objects</h3>
