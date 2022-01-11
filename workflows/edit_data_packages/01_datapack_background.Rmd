@@ -31,8 +31,10 @@ d1c_test@mn
 To access the various slots using objects created by datapack and dataone (e.g. `getSystemMetadata`) requires the `@` which is different from what you might have seen in the past. This is because these use the [S4](https://adv-r.hadley.nz/s4.html) system.
 ```
 
-Get an existing package from the Arctic Data Center
+Get an existing package from the Arctic Data Center. Make sure you know as you go through this training whether you are reading or writing to test or production. We don't want to upload any of your test datasets to production!
+
 ```{r, eval=F}
+d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC")
 dp <- dataone::getDataPackage(d1c, "resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28")
 ```
 
