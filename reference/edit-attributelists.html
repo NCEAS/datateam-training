@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-11" />
+<meta name="date" content="2022-01-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -485,7 +485,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb76-12"><a href="edit-attributelists.html#cb76-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">missingValueCodeExplanation =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&#39;no sampling comments&#39;</span>))</span></code></pre></div>
 <p>However, typing this out in R can be a major pain. Luckily, there’s a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="edit-attributelists.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first download the CSV in your data package from Exercise #2</span></span>
-<span id="cb77-2"><a href="edit-attributelists.html#cb77-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text=</span><span class="fu">rawToChar</span>(<span class="fu">getObject</span>(mn, pkg<span class="sc">$</span>data)))</span></code></pre></div>
+<span id="cb77-2"><a href="edit-attributelists.html#cb77-2" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb77-3"><a href="edit-attributelists.html#cb77-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text=</span><span class="fu">rawToChar</span>(<span class="fu">getObject</span>(d1c_test<span class="sc">@</span>mn, data_pid)))</span></code></pre></div>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="edit-attributelists.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From data (recommended)</span></span>
 <span id="cb78-2"><a href="edit-attributelists.html#cb78-2" aria-hidden="true" tabindex="-1"></a>EML<span class="sc">::</span><span class="fu">shiny_attributes</span>(<span class="at">data =</span> data)</span>
 <span id="cb78-3"><a href="edit-attributelists.html#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
