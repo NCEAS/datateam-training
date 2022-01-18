@@ -73,7 +73,8 @@ However, typing this out in R can be a major pain. Luckily, there's a Shiny app 
 
 ```{r, eval = FALSE}
 #first download the CSV in your data package from Exercise #2
-data <- read.csv(text=rawToChar(getObject(mn, pkg$data)))
+data_pid <- selectMember(dp, name = "sysmeta@fileName", value = ".csv")
+data <- read.csv(text=rawToChar(getObject(d1c_test@mn, data_pid)))
 ```
 
 ```{r, eval = FALSE}
