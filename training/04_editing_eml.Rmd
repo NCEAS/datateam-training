@@ -59,7 +59,9 @@ The metadata for the dataset created earlier in Exercise 2 was not very complete
 Below is some pseudo-code for how to accomplish the above steps. Fill in the dots according to the above sections to complete the exercise.
 
 ```
-dp # print the value of dp to ensure it is still in your environment
+# get the latest version of the resource map identifier from your dataset on the arctic data center
+resource_map_pid <- ...
+dp <- getDataPackage(d1c_test, identifier=resource_map_pid, lazyLoad=TRUE, quiet=FALSE)
 
 # get metadata pid
 mo <- selectMember(...)
