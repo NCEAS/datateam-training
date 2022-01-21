@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -445,7 +445,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-3"><a href="create-a-new-data-package.html#cb23-3" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, sourceObj, metadataObj)</span></code></pre></div>
 <div class="note">
 <p>
-If you want to change the formatId please use <code>updateSystemMetadata</code> (more on this later in the book)
+If you want to change the formatId please use
+<code>updateSystemMetadata</code> (more on this later in the book)
 </p>
 </div>
 </div>
@@ -459,16 +460,24 @@ If you want to change the formatId please use <code>updateSystemMetadata</code> 
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="create-a-new-data-package.html#cb26-1" aria-hidden="true" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="note">
 <p>
-<strong>If you want to preserve folder structures, you can use this method</strong>
+<strong>If you want to preserve folder structures, you can use this
+method</strong>
 </p>
 <p>
-In this example adding the csv files to a folder named data and scripts
+In this example adding the csv files to a folder named data and
+scripts
 </p>
 <p>
-outputData &lt;- system.file(“extdata/Strix-occidentalis-obs.csv”, package=“dataone”) outputObj &lt;- new(“DataObject”, format=“text/csv”, filename=outputData, targetPath = “data”) dp &lt;- addMember(dp, outputObj, metadataObj)
+outputData &lt;- system.file(“extdata/Strix-occidentalis-obs.csv”,
+package=“dataone”) outputObj &lt;- new(“DataObject”, format=“text/csv”,
+filename=outputData, targetPath = “data”) dp &lt;- addMember(dp,
+outputObj, metadataObj)
 </p>
 <p>
-progFile &lt;- system.file(“extdata/filterObs.R”, package=“dataone”) progObj &lt;- new(“DataObject”, format=“application/R”, filename=progFile, targetPath = “scripts”, mediaType=“text/x-rsrc”) dp &lt;- addMember(dp, progObj, metadataObj)
+progFile &lt;- system.file(“extdata/filterObs.R”, package=“dataone”)
+progObj &lt;- new(“DataObject”, format=“application/R”,
+filename=progFile, targetPath = “scripts”, mediaType=“text/x-rsrc”) dp
+&lt;- addMember(dp, progObj, metadataObj)
 </p>
 </div>
 </div>

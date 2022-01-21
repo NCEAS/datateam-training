@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -429,10 +429,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <strong>Keeping track of PIDs</strong>
 </p>
 <p>
-In all subsequent sections, if they ask for the <code>pid</code> of the metadata, reasource map or data you can refer to the object from <code>get_package()</code>.
+In all subsequent sections, if they ask for the <code>pid</code> of
+the metadata, reasource map or data you can refer to the object from
+<code>get_package()</code>.
 </p>
 <p>
-For example, if you assigned the value from <code>get_package()</code> as above as <code>pkg</code> then you can refer to the following by using the corresponding commands:
+For example, if you assigned the value from
+<code>get_package()</code> as above as <code>pkg</code> then you can
+refer to the following by using the corresponding commands:
 </p>
 </div>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="get-package-and-eml.html#cb218-1" aria-hidden="true" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
@@ -446,7 +450,9 @@ For example, if you assigned the value from <code>get_package()</code> as above 
 <strong>Tip to always have the most recent resource map.</strong>
 </p>
 <p>
-When editing data packages, you always want to be working with the most recent update. To ensure you have the most recent resource map, you can use the following commands:
+When editing data packages, you always want to be working with the
+most recent update. To ensure you have the most recent resource map, you
+can use the following commands:
 </p>
 <pre class="sourceCode r"><code class="sourceCode r">rm_pid_original &lt;-<span class="st"> &quot;your_original_resource_map_pid&quot;</span>
 all_rm_versions &lt;-<span class="st"> </span><span class="op"></span><span class="kw">get_all_versions</span>(adc_test, rm_pid_original)

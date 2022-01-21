@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -383,7 +383,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a ‘token’ into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on “My profile”, then navigating to “Settings” and “Authentication Token”, copying the “Token for DataONE R”, and finally pasting and running it in your <em>R console</em>.</p>
 <div class="warning">
 <p>
-<strong>This token is your identity on these sites, please treat it as you would a password</strong> (i.e. don’t paste into scripts that will be shared). The easiest way to do this is to always run the token in the <em>console</em>. There’s no need to keep it in your script since it’s temporary anyway.
+<strong>This token is your identity on these sites, please treat it
+as you would a password</strong> (i.e. don’t paste into scripts that
+will be shared). The easiest way to do this is to always run the token
+in the <em>console</em>. There’s no need to keep it in your script since
+it’s temporary anyway.
 </p>
 </div>
 <p>You will need to retrieve a new one after it either expires or you quit your R session.</p>
@@ -391,7 +395,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="creating-a-data-package.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dataone_test_token =</span> <span class="st">&quot;...&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
-Since we will be working on the test site and not the production site, please remember to get your token from test.arcticdata.io
+Since we will be working on the test site and not the production
+site, please remember to get your token from test.arcticdata.io
 </p>
 </div>
 <p>Next, please be sure these packages are loaded for the training (these should already exist if you are working on the server):</p>
@@ -411,7 +416,9 @@ Since we will be working on the test site and not the production site, please re
 <span id="cb5-4"><a href="creating-a-data-package.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datamgmt)</span></code></pre></div>
 <div class="note">
 <p>
-When you are usually working with data packages you will only need the following: library(dataone) library(datapack) library(EML) library(arcticdatautils)
+When you are usually working with data packages you will only need
+the following: library(dataone) library(datapack) library(EML)
+library(arcticdatautils)
 </p>
 </div>
 <p>For this training, we will be working exclusively on the Arctic test site, or “node.” In many of the functions you will use this will be the first argument. It is often referred to in documentation as <code>mn</code>, short for member node. More information on the other nodes can be found in the reference section under Set DataONE nodes <a href="https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html">Set DataONE nodes</a></p>
@@ -442,7 +449,11 @@ When you are usually working with data packages you will only need the following
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="creating-a-data-package.html#cb9-1" aria-hidden="true" tabindex="-1"></a>d1c_test<span class="sc">@</span>mn</span></code></pre></div>
 <div class="note">
 <p>
-To access the various slots using objects created by datapack and dataone (e.g. <code>getSystemMetadata</code>) requires the <code>@</code> which is different from what you might have seen in the past. This is because these use the <a href="https://adv-r.hadley.nz/s4.html">S4</a> system.
+To access the various slots using objects created by datapack and
+dataone (e.g. <code>getSystemMetadata</code>) requires the
+<code>@</code> which is different from what you might have seen in the
+past. This is because these use the <a
+href="https://adv-r.hadley.nz/s4.html">S4</a> system.
 </p>
 </div>
 <p>Get an existing package from the Arctic Data Center. Make sure you know as you go through this training whether you are reading or writing to test or production. We don’t want to upload any of your test datasets to production!</p>
@@ -503,7 +514,8 @@ To access the various slots using objects created by datapack and dataone (e.g.�
 <span id="cb22-3"><a href="creating-a-data-package.html#cb22-3" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, sourceObj, metadataObj)</span></code></pre></div>
 <div class="note">
 <p>
-If you want to change the formatId please use <code>updateSystemMetadata</code> (more on this later in the book)
+If you want to change the formatId please use
+<code>updateSystemMetadata</code> (more on this later in the book)
 </p>
 </div>
 </div>
@@ -517,16 +529,24 @@ If you want to change the formatId please use <code>updateSystemMetadata</code> 
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="creating-a-data-package.html#cb25-1" aria-hidden="true" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span><span class="cn">TRUE</span>, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="note">
 <p>
-<strong>If you want to preserve folder structures, you can use this method</strong>
+<strong>If you want to preserve folder structures, you can use this
+method</strong>
 </p>
 <p>
-In this example adding the csv files to a folder named data and scripts
+In this example adding the csv files to a folder named data and
+scripts
 </p>
 <p>
-outputData &lt;- system.file(“extdata/Strix-occidentalis-obs.csv”, package=“dataone”) outputObj &lt;- new(“DataObject”, format=“text/csv”, filename=outputData, targetPath = “data”) dp &lt;- addMember(dp, outputObj, metadataObj)
+outputData &lt;- system.file(“extdata/Strix-occidentalis-obs.csv”,
+package=“dataone”) outputObj &lt;- new(“DataObject”, format=“text/csv”,
+filename=outputData, targetPath = “data”) dp &lt;- addMember(dp,
+outputObj, metadataObj)
 </p>
 <p>
-progFile &lt;- system.file(“extdata/filterObs.R”, package=“dataone”) progObj &lt;- new(“DataObject”, format=“application/R”, filename=progFile, targetPath = “scripts”, mediaType=“text/x-rsrc”) dp &lt;- addMember(dp, progObj, metadataObj)
+progFile &lt;- system.file(“extdata/filterObs.R”, package=“dataone”)
+progObj &lt;- new(“DataObject”, format=“application/R”,
+filename=progFile, targetPath = “scripts”, mediaType=“text/x-rsrc”) dp
+&lt;- addMember(dp, progObj, metadataObj)
 </p>
 </div>
 </div>

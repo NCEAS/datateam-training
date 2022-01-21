@@ -24,7 +24,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Most of the functions you will see in this chapter will use the <code>arcticdatautils</code> and <code>EML</code> packages.</p>
 <div class="note">
 <p>
-This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.
+This chapter will be longest of all the sections! This is a reminder
+to take frequent breaks when completing this section.
 </p>
 </div>
 <div id="edit-an-eml-element" class="section level2" number="4.1">
@@ -411,7 +412,12 @@ $keywordThesaurus
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="editing-eml.html#cb45-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>keywordSet <span class="ot">&lt;-</span> <span class="fu">list</span>(kw_list_1, kw_list_2)</span></code></pre></div>
 <div class="note">
 <p>
-Note that you <strong>must</strong> use the function <code>list</code> here and not the <code>c()</code> function. The reasons for this are complex, and due to some technical subtlety in R - but the gist of the issue is that the <code>c()</code> function can behave in unexpected ways with nested lists, and frequently will collapse the nesting into a single level, resulting in invalid EML.
+Note that you <strong>must</strong> use the function
+<code>list</code> here and not the <code>c()</code> function. The
+reasons for this are complex, and due to some technical subtlety in R -
+but the gist of the issue is that the <code>c()</code> function can
+behave in unexpected ways with nested lists, and frequently will
+collapse the nesting into a single level, resulting in invalid EML.
 </p>
 </div>
 </div>
@@ -564,7 +570,8 @@ Note that you <strong>must</strong> use the function <code>list</code> here and 
 <p>This <code>attributeList</code> must then be <a href="editing-eml.html#edit-datatables">added to a <code>dataTable</code></a>.</p>
 <div class="note">
 <p>
-Remember to use: <code>d1c_test &lt;- dataone::D1Client(“STAGING”, “<a href="urn:node:mnTestARCTIC" class="uri">urn:node:mnTestARCTIC</a>”)</code> <code><a href="mailto:d1c_test@mn" class="email">d1c_test@mn</a></code>
+Remember to use: <code>d1c_test &lt;- dataone::D1Client(“STAGING”,
+“<a href="urn:node:mnTestARCTIC" class="uri">urn:node:mnTestARCTIC</a>”)</code> <code><a href="mailto:d1c_test@mn" class="email">d1c_test@mn</a></code>
 </p>
 </div>
 </div>
@@ -574,7 +581,12 @@ Remember to use: <code>d1c_test &lt;- dataone::D1Client(“STAGING”, “<a hre
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
 <div class="note">
 <p>
-The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization). so, we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical.
+The word ‘physical’ derives from database systems, which distinguish
+the ‘logical’ model (e.g., what attributes are in a table, etc) from the
+physical model (how the data are written to a physical hard disk
+(basically, the serialization). so, we grouped metadata about the file
+(eg. dataformat, file size, file name) as written to disk in
+physical.
 </p>
 </div>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="editing-eml.html#cb58-1" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
@@ -682,7 +694,8 @@ $valueURI$valueURI
 [1] &quot;http://purl.dataone.org/odo/ECSO_00002617&quot;</code></pre>
 <div class="note">
 <p>
-Semantic attribute annotations can be applied to spatialRasters, spatialVectors and dataTables
+Semantic attribute annotations can be applied to spatialRasters,
+spatialVectors and dataTables
 </p>
 </div>
 </div>
@@ -718,10 +731,14 @@ Semantic attribute annotations can be applied to spatialRasters, spatialVectors 
 <p>Our exact attribute, carbon tetroxide flux is not listed. In this case, we should pick “carbon flux” as it’s completely correct and not “carbon dioxide flux” because it’s more specific but not quite right.</p>
 <div class="note">
 <p>
-For general attributes (such as ones named depth or length), it is important to be as specific as possible about what is being measured.
+For general attributes (such as ones named depth or length), it is
+important to be as specific as possible about what is being
+measured.
 </p>
 <p>
-e.g. selecting the lake area annotation for the <a href="https://arcticdata.io/catalog/view/urn%3Auuid%3A64a3a75b-0630-44d2-a7e7-519029a48d9d#urn%3Auuid%3Ab8c29251-e628-405a-8e66-a5fa55703904">area attribute</a> in this dataset
+e.g. selecting the lake area annotation for the <a
+href="https://arcticdata.io/catalog/view/urn%3Auuid%3A64a3a75b-0630-44d2-a7e7-519029a48d9d#urn%3Auuid%3Ab8c29251-e628-405a-8e66-a5fa55703904">area
+attribute</a> in this dataset
 </p>
 </div>
 <p><strong>3. Build the annotation in R</strong></p>
@@ -765,7 +782,9 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <li>We will continue using the objects created and updated in this exercise in 3b.</li>
 </ul>
 <p>Below is some pseudo-code for how to accomplish the above steps. Fill in the dots according to the above sections to complete the exercise.</p>
-<pre><code>dp # print the value of dp to ensure it is still in your environment
+<pre><code># get the latest version of the resource map identifier from your dataset on the arctic data center
+resource_map_pid &lt;- ...
+dp &lt;- getDataPackage(d1c_test, identifier=resource_map_pid, lazyLoad=TRUE, quiet=FALSE)
 
 # get metadata pid
 mo &lt;- selectMember(...)

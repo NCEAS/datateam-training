@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -429,7 +429,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>The query (<code>q</code>) parameter uses a syntax that looks like <code>field:value</code>, where <code>field</code> is one of the Solr fields and <code>value</code> is an expression. The expression can match a specific value exactly, e.g., <code>q=identifier:arctic-data.7747.1</code> or <code>q=identifier:"doi:10.5065/D60P0X4S"</code>, which finds the Solr document for a specific Object by <code>PID</code> (identifier).</p>
 <div class="note">
 <p>
-In the second example, the DOI <code>PID</code> is surrounded in double quotes. This is because Solr has <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>reserved characters</a>, of which <code>:</code> is one, so we have to help Solr by surrounding values with reserved characters in them in quotes or by escaping them.
+In the second example, the DOI <code>PID</code> is surrounded in
+double quotes. This is because Solr has
+<a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>reserved
+characters</a>, of which <code>:</code> is one, so we have to help Solr
+by surrounding values with reserved characters in them in quotes or by
+escaping them.
 </p>
 </div>
 <p>To view the list of query-able parameters on the Arctic Data Center and their descriptions, you can visit <a href = 'https://arcticdata.io/metacat/d1/mn/v2/query/solr' target='_blank'>https://arcticdata.io/metacat/d1/mn/v2/query/solr</a>. The list of parameters is also provided below:</p>

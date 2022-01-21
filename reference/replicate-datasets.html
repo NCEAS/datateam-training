@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -421,7 +421,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Sometimes we get requests to have their datasets replicated to ADC. Usually it is a <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.20129.1">dataset on EDI</a> where you can ge the <code>Digital Object Identifier:</code> which serves as the resource map on <a href="https://search.dataone.org/view/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fmetadata%2Feml%2Fknb-lter-arc%2F20129%2F1">DataOne</a></p>
 <div class="note">
 <p>
-If a link isn’t given, you can use the package ID (i.e. knb-lter-arc.20129.1) and add it to the end of this link: <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=" class="uri">https://portal.edirepository.org/nis/mapbrowse?packageid=</a>
+If a link isn’t given, you can use the package ID
+(i.e. knb-lter-arc.20129.1) and add it to the end of this link: <a
+href="https://portal.edirepository.org/nis/mapbrowse?packageid="
+class="uri">https://portal.edirepository.org/nis/mapbrowse?packageid=</a>
 </p>
 </div>
 <p>If we are unsure about the identifer you can try querying for it on the <code>CN</code>:</p>
@@ -443,7 +446,9 @@ If a link isn’t given, you can use the package ID (i.e. knb-lter-arc.20129.1)
 <span id="cb144-2"><a href="replicate-datasets.html#cb144-2" aria-hidden="true" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
-For LTER datasets on EDI, there are two possibilities for the mn: <code>“<a href="urn:node:LTER" class="uri">urn:node:LTER</a>”</code> and <code>“<a href="urn:node:EDI" class="uri">urn:node:EDI</a>”</code>. Try the other one if one isn’t working
+For LTER datasets on EDI, there are two possibilities for the mn:
+<code>“<a href="urn:node:LTER" class="uri">urn:node:LTER</a>”</code> and <code>“<a href="urn:node:EDI" class="uri">urn:node:EDI</a>”</code>. Try the
+other one if one isn’t working
 </p>
 </div>
 <ol start="2" style="list-style-type: decimal">
@@ -469,7 +474,8 @@ For LTER datasets on EDI, there are two possibilities for the mn: <code>“<a hr
 <span id="cb146-9"><a href="replicate-datasets.html#cb146-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">new_pid =</span> F) <span class="co">#uses the same pid</span></span></code></pre></div>
 <div class="note">
 <p>
-make sure the <code>new_pid</code> argument is set to <code>F</code> when you publish to production
+make sure the <code>new_pid</code> argument is set to <code>F</code>
+when you publish to production
 </p>
 </div>
 </div>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -427,7 +427,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren’t sure whether to unzip a file, ask Jasmine or Jeanette.</p>
 <div class="note">
 <p>
-There are specific <code>formatIds</code> for these kinds of zipped files: <code>application/vnd.shp+zip</code> <code>image/geotiff+zip</code>. Remember to check that the files have the correct <code>formatId</code>
+There are specific <code>formatIds</code> for these kinds of zipped
+files: <code>application/vnd.shp+zip</code>
+<code>image/geotiff+zip</code>. Remember to check that the files have
+the correct <code>formatId</code>
 </p>
 </div>
 </div>
@@ -438,12 +441,15 @@ There are specific <code>formatIds</code> for these kinds of zipped files: <code
 spatial_file &lt;- sf::read_sf(&quot;example.kml&quot;)</code></pre>
 <div class="note">
 <p>
-When you read kml files, <code>read_sf()</code> sometimes shows additional columns that aren’t in the actual file. Always open kml files in text editor to check if the columns actually exist.
+When you read kml files, <code>read_sf()</code> sometimes shows
+additional columns that aren’t in the actual file. Always open kml files
+in text editor to check if the columns actually exist.
 </p>
 </div>
 <div class="note">
 <p>
-If it is a zipped shapefile there is a handy function you can use <code>arcticdatautils::read_zip_shapefile(mn, pid)</code>
+If it is a zipped shapefile there is a handy function you can use
+<code>arcticdatautils::read_zip_shapefile(mn, pid)</code>
 </p>
 </div>
 <div id="coordinate-systems" class="section level4">

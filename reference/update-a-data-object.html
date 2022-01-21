@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -433,7 +433,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb55-2"><a href="update-a-data-object.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">removeMember</span>(dp, zipId, <span class="at">removeRelationships =</span> T)</span></code></pre></div>
 <div class="note">
 <p>
-You will need to be explicit about your <code>format_id</code> here based on the file type. A list of format IDs can be found <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a> on the DataONE website. Use line 2 (Id:) exactly, character for character.
+You will need to be explicit about your <code>format_id</code> here
+based on the file type. A list of format IDs can be found
+<a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>
+on the DataONE website. Use line 2 (Id:) exactly, character for
+character.
 </p>
 </div>
 <p>To accomplish the second task, you will need to update the metadata using the EML package. This is covered in <a href = 'https://nceas.github.io/datateam-training/training/editing-eml.html' target='_blank'>Chapter 4</a>. After you update a file, you will always need to update the metadata because parts of the <code>physical</code> section (such as the file size, checksum) will be different, and it may also require different attribute information.</p>

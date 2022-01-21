@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -432,10 +432,14 @@ Nest the new child using the <code>child_pids</code> argument in <code>publish_u
 <span id="cb224-10"><a href="add-children-to-an-existing-parent.html#cb224-10" aria-hidden="true" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
 <div class="warning">
 <p>
-Check through all arguments carefully before you publish to production! Do you need to update the metadata? Does the parent include data objects? Does the parent have a parent?
+Check through all arguments carefully before you publish to
+production! Do you need to update the metadata? Does the parent include
+data objects? Does the parent have a parent?
 </p>
 <p>
-Parents can be tricky to fix and work with (especially if they have serial identifiers (SIDs)), so if you’re not sure how something works, try it on a test node.
+Parents can be tricky to fix and work with (especially if they have
+serial identifiers (SIDs)), so if you’re not sure how something works,
+try it on a test node.
 </p>
 </div>
 </div>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -421,7 +421,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
 <div class="note">
 <p>
-The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization). so, we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical.
+The word ‘physical’ derives from database systems, which distinguish
+the ‘logical’ model (e.g., what attributes are in a table, etc) from the
+physical model (how the data are written to a physical hard disk
+(basically, the serialization). so, we grouped metadata about the file
+(eg. dataformat, file size, file name) as written to disk in
+physical.
 </p>
 </div>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-physical.html#cb134-1" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>

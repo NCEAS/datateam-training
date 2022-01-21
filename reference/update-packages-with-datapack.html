@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -421,12 +421,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Once you have updated the data objects and saved the metadata to a file, we can update the metadata and add the new <code>pid</code> to the resource map using <code>datapack::updateDataObject()</code>.</p>
 <div class="note">
 <p>
-This part of the training assumes that you have an EML file created from earlier parts of the training
+This part of the training assumes that you have an EML file created
+from earlier parts of the training
 </p>
 </div>
 <div class="warning">
 <p>
-You must use these R packages for data packages that have provenance or folder hierarchy (<code>arcticdatatutils</code> does not support those features)
+You must use these R packages for data packages that have provenance
+or folder hierarchy (<code>arcticdatatutils</code> does not support
+those features)
 </p>
 </div>
 <div id="get-the-package" class="section level3">
@@ -444,7 +447,8 @@ You must use these R packages for data packages that have provenance or folder h
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="update-packages-with-datapack.html#cb29-1" aria-hidden="true" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
-Take note of the EML version. If it is EML 2.1.1 the value needs to be changed to -<code>“eml://ecoinformatics.org/eml-2.1.1”</code>
+Take note of the EML version. If it is EML 2.1.1 the value needs to
+be changed to -<code>“eml://ecoinformatics.org/eml-2.1.1”</code>
 </p>
 </div>
 <p>Read the EML doc</p>
@@ -466,7 +470,8 @@ Take note of the EML version. If it is EML 2.1.1 the value needs to be changed t
 <span id="cb33-2"><a href="update-packages-with-datapack.html#cb33-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, <span class="at">mo=</span>metadataId)</span></code></pre></div>
 <div class="note">
 <p>
-If you want to change the formatId please use <code>updateSystemMetadata</code>
+If you want to change the formatId please use
+<code>updateSystemMetadata</code>
 </p>
 </div>
 </div>

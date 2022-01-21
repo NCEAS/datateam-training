@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-18" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -468,7 +468,12 @@ $keywordThesaurus
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="edit-an-eml-element.html#cb74-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>keywordSet <span class="ot">&lt;-</span> <span class="fu">list</span>(kw_list_1, kw_list_2)</span></code></pre></div>
 <div class="note">
 <p>
-Note that you <strong>must</strong> use the function <code>list</code> here and not the <code>c()</code> function. The reasons for this are complex, and due to some technical subtlety in R - but the gist of the issue is that the <code>c()</code> function can behave in unexpected ways with nested lists, and frequently will collapse the nesting into a single level, resulting in invalid EML.
+Note that you <strong>must</strong> use the function
+<code>list</code> here and not the <code>c()</code> function. The
+reasons for this are complex, and due to some technical subtlety in R -
+but the gist of the issue is that the <code>c()</code> function can
+behave in unexpected ways with nested lists, and frequently will
+collapse the nesting into a single level, resulting in invalid EML.
 </p>
 </div>
 </div>
