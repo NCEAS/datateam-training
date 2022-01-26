@@ -121,7 +121,7 @@ eml_validate(...)
 write_eml(...)
 
 # replace the old metadata file with the new one in the local package
-replaceMember(dp, ...)
+dp <- replaceMember(dp, ...)
 
 # upload the data package
 packageId <- uploadDataPackage(...)
