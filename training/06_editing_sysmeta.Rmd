@@ -7,8 +7,6 @@ Although the majority of system metadata changes that need to be made are done a
 ```{r, child = '../workflows/edit_data_packages/edit_sysmeta.Rmd'}
 ```
 
-```{r, child = '../workflows/edit_data_packages/set_rights_and_access.Rmd'}
-```
 
 ## Exercise 5 {.exercise}
 
@@ -17,7 +15,3 @@ Sometimes the system doesn't recognize the file types properly. For example you 
 * Read the system metadata in from the data file you uploaded [previously](#exercise-4).
 * Check to make sure the `fileName` and `formatId` are set correctly (the extension in `fileName` should match the `formatId`).
 * Update the system metadata if necessary.
-
-Finally make sure that the researcher has permission to edit and view the dataset. In this case use your own ORCiD.
-
-* Set the rights and access for all objects with your ORCiD.
