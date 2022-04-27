@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Using Git | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Using Git | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="building-provenance.html"/>
 <link rel="next" href="first-ticket.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -240,11 +239,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.2</b> Exercise 5</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
 <ul>
@@ -350,18 +345,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-git" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Using Git</h1>
-<div id="usage-in-the-datateam" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Usage in the datateam</h2>
+<div id="using-git" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Using Git<a href="using-git.html#using-git" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="usage-in-the-datateam" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Usage in the datateam<a href="using-git.html#usage-in-the-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We use git and Github to manage our packages (ie datamgmt, arcticdatautils) and even this document!</p>
 </div>
-<div id="what-is-git" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> What is Git?</h2>
+<div id="what-is-git" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> What is Git?<a href="using-git.html#what-is-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://git-scm.com/" target = "_blank">Git</a> is a distributed version control system.</p>
 <p>Important! If you have never used Git before, or only used it a little, or have no idea what it is, check out this <a href = 'https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf' target='_blank'>intro to Git</a> put together by the ecodatascience group at UCSB. Don’t worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.</p>
-<div id="so-why-do-i-need-to-use-this-again" class="section level3" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> So why do I need to use this again?</h3>
+<div id="so-why-do-i-need-to-use-this-again" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> So why do I need to use this again?<a href="using-git.html#so-why-do-i-need-to-use-this-again" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are several reasons why using the arctic-data GitHub repository is helpful, both for you and for the rest of the data team. Here are a few:</p>
 <ul>
 <li><strong>Versioning</strong>: Did you accidentally make a change to your code and can’t figure out why it broke? Do you wish you could go back to the version that worked? If you add your code to the GitHub repo you can do this!</li>
@@ -371,25 +366,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="setting-up-git" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Setting up Git</h2>
+<div id="setting-up-git" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Setting up Git<a href="using-git.html#setting-up-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now you need to set up your Git global options, and tell it who you are. At the top of your RStudio window, select Tools &gt; Shell. In the prompt, you will need to run two commands, one at a time. The first tells Git what your name is, the second what your email address is. These are the commands:</p>
 <p><code>git config --global user.name "My Name"</code>
 <code>git config --global user.email myemail@domain.com</code></p>
 <p>After running these commands, the shell prompt should look like this:
 <img src="images/shell_config.jpeg" alt="global config" /></p>
-<div id="cloning-the-arctic-data-repo" class="section level3" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> Cloning the arctic-data repo</h3>
+<div id="cloning-the-arctic-data-repo" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Cloning the arctic-data repo<a href="using-git.html#cloning-the-arctic-data-repo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, you need to clone the arctic-data repository to your RStudio. You do this by adding it as a “project”. In your RStudio window, click File &gt; New Project. Then click ‘Version Control’, and then select the ‘Git’ option. If you are prompted to save your workspace during this process, make sure all of your work is saved, and you don’t need anything in your environment, and then click ‘Don’t Save’.</p>
 <p>You should see a prompt asking you for a URL. Fill it out as shown in the image below to clone the arctic-data repository into the top level of your home directory. Note that the URL is the same URL you use to view the repository on the web. If you are using the sasap-data repository, the URL is <a href="http://github.nceas.ucsb.edu/NCEAS/sasap-data/" class="uri">http://github.nceas.ucsb.edu/NCEAS/sasap-data/</a>.</p>
 <p><img src="images/clone_repo.jpeg" /></p>
 <p>You will be prompted for your username and password, and then Git will clone the directory. The username/password you use should be the enterprise account you use to log in when you go to <a href="http://github.nceas.ucsb.edu/KNB/arctic-data" class="uri">http://github.nceas.ucsb.edu/KNB/arctic-data</a> or RT. Now you should have a directory called arctic-data in your RStudio files window.</p>
 </div>
 </div>
-<div id="working-with-the-repository" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Working with the repository</h2>
-<div id="adding-a-new-script" class="section level3" number="8.4.1">
-<h3><span class="header-section-number">8.4.1</span> Adding a new script</h3>
+<div id="working-with-the-repository" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Working with the repository<a href="using-git.html#working-with-the-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-a-new-script" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Adding a new script<a href="using-git.html#adding-a-new-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you have been working on a script that you want to put in the arctic-data GitHub repo, you first need to save it somewhere in the arctic-data folder you cloned to your account on the Datateam server. You can do this by either moving your script into the folder or using the save-as functionality. Note that Git will try and version anything that you save in this folder, so you should be careful about what you save here. For our purposes, things that probably shouldn’t be saved in this folder include:</p>
 <ul>
 <li><strong>Tokens</strong>: Any token file or script with a token in it should NOT be saved in the repository. Others could steal your login credentials if you put a token in GitHub.</li>
@@ -411,22 +406,22 @@ your Git tab, ask for help before committing.
 <p>Push ‘Commit’, and your commit will be saved to your local repository (this will not push it to the remote repository, yet). Now you want to merge the commits you made with the master version of the remote repository. You do this by using the command “Push.” But before you push, you <em>always</em> need to pull first to avoid merge conflicts. Pulling will merge the current version of the remote repository with your local repository, on your local machine. Click “Pull” and type in your credentials. Then, assuming you don’t have a merge conflict, you can push your changes by clicking “Push”.</p>
 <p>Always remember, the order is <strong>commit-pull-push</strong>.</p>
 </div>
-<div id="editing-a-script" class="section level3" number="8.4.2">
-<h3><span class="header-section-number">8.4.2</span> Editing a script</h3>
+<div id="editing-a-script" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Editing a script<a href="using-git.html#editing-a-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you want to change a script, the workflow is the same. Just open the script that was saved in the arctic-data folder on your server account, make your changes, save the changes, stage them by clicking the box, commit, pull, then push to merge your version with the main version on the website. Do NOT edit scripts using the GitHub website. It is much easier to accidentally overwrite the history of a file this way.</p>
 <p>One thing you might be wondering as you are working on a script is, how often should I be committing my changes? It might not make sense to commit-pull-push after every single tiny change - if only because it would slow you way down. Personally, I commit every time I feel that a significant change has happened and that the chunk of code I was working on is “done”. Sometimes this is an entire script, other times it is just a few lines within a script. A good sign that you are committing too infrequently might be if many of your commit messages address a wide variety of coding tasks, such as: “wrote for loop to create referenced attribute lists for tables 1:20. also created nesting structure for this package with another package. also created attribute list for data table 40”.</p>
 <p>One final note, you can make multiple commits before you push to the repo. If you are making lots of changes to the script, you might want to make several commits before pull-push. You can see how many commits you are ahead of the “origin/master” branch (i.e. what you see on the website) by looking for text in your Git tab in RStudio that looks like this:
 <img src="images/multiple_commits.jpeg" /></p>
 </div>
-<div id="where-do-i-commit" class="section level3" number="8.4.3">
-<h3><span class="header-section-number">8.4.3</span> Where do I commit?</h3>
+<div id="where-do-i-commit" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> Where do I commit?<a href="using-git.html#where-do-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default right now is to save data-processing scripts in the <code>arctic-data/datateam/data-processing/</code> directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure.</p>
 <p>The Github workflow diagram from <a href = 'https://www.reddit.com/r/git/comments/99ul9f/git_workflow_diagram_showcasing_the_role_of/' target='_blank'>stamminator</a> shows each step and their functions explicitly.</p>
 <p><img src="images/github-workflow.png" /></p>
 </div>
 </div>
-<div id="my-git-tab-disappeared" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> My Git tab disappeared</h2>
+<div id="my-git-tab-disappeared" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> My Git tab disappeared<a href="using-git.html#my-git-tab-disappeared" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your “project” and all you need to do is reopen it. If your Git tab has disappeared, in the top right of your RStudio session, you should see a little R logo with “Project: (None)” next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select “arctic-data” or “sasap-data.” Once you have opened your project, the Git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.</p>
 
 </div>

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set the project section | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set the project section | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="set-physical.html"/>
 <link rel="next" href="use-references.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-the-project-section" class="section level2">
-<h2>Set the project section</h2>
+<div id="set-the-project-section" class="section level2 hasAnchor">
+<h2>Set the project section<a href="set-the-project-section.html#set-the-project-section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The project section in an EML document is automatically filled out by the metacatUI editor. It sets the project title and project personnel to the submission’s title and creators. Most of the time at least some of this information is incorrect and we need to update it.</p>
 <p>Start by searching for the funding information using <a href = 'https://www.nsf.gov/awardsearch/' target='_blank'>NSF’s award search</a>. This will give us the project title, abstract, and personnel - along with some additional metadata.</p>
 <p>Using this information we will set the title, personnel, and funding number. For NSF funded projects prepend the funding number with “NSF”. If there are multiple awards associated with one dataset then additional <code>funding</code>, <code>title</code>, and <code>personnel</code> elements should be added to reflect the additional awards.</p>

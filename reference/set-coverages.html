@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set coverages | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set coverages | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="series-identifier-sid.html"/>
 <link rel="next" href="set-methods.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-coverages" class="section level2">
-<h2>Set coverages</h2>
+<div id="set-coverages" class="section level2 hasAnchor">
+<h2>Set coverages<a href="set-coverages.html#set-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a data set. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering <code>doc$dataset$coverage</code> into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using <code>set_coverage()</code>.</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="set-coverages.html#cb125-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
 <span id="cb125-2"><a href="set-coverages.html#cb125-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
@@ -428,8 +427,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb125-7"><a href="set-coverages.html#cb125-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">north =</span> <span class="fl">68.3831</span>, </span>
 <span id="cb125-8"><a href="set-coverages.html#cb125-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">south =</span> <span class="fl">68.3619</span>)</span>
 <span id="cb125-9"><a href="set-coverages.html#cb125-9" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
-<div id="set-multiple-coverages" class="section level3">
-<h3>Set multiple coverages</h3>
+<div id="set-multiple-coverages" class="section level3 hasAnchor">
+<h3>Set multiple coverages<a href="set-coverages.html#set-multiple-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages. Note that we use nested <code>eml</code> function helpers in this construction.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="set-coverages.html#cb126-1" aria-hidden="true" tabindex="-1"></a>geocov1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,</span>
 <span id="cb126-2"><a href="set-coverages.html#cb126-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
@@ -451,14 +450,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb126-18"><a href="set-coverages.html#cb126-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb126-19"><a href="set-coverages.html#cb126-19" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>geographicCoverage <span class="ot">&lt;-</span> <span class="fu">list</span>(geocov1, geocov2)</span></code></pre></div>
 </div>
-<div id="special-coverages" class="section level3">
-<h3>Special coverages</h3>
-<div id="arctic-circle" class="section level4">
-<h4>Arctic Circle</h4>
+<div id="special-coverages" class="section level3 hasAnchor">
+<h3>Special coverages<a href="set-coverages.html#special-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="arctic-circle" class="section level4 hasAnchor">
+<h4>Arctic Circle<a href="set-coverages.html#arctic-circle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For arctic circle geographic coverage, we only have the starting vertical line of the circle shown in the projection. <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2QJ77Z7P' target='_blank'>Here</a> is an example with arctic circle geographic coverage.</p>
 </div>
-<div id="geologic-dates" class="section level4">
-<h4>Geologic dates</h4>
+<div id="geologic-dates" class="section level4 hasAnchor">
+<h4>Geologic dates<a href="set-coverages.html#geologic-dates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q' target='_blank'>Example dataset</a> with geologic coverages set using the following:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="set-coverages.html#cb127-1" aria-hidden="true" tabindex="-1"></a>geo_time_start <span class="ot">&lt;-</span> EML<span class="sc">::</span>eml<span class="sc">$</span><span class="fu">alternativeTimeScale</span>(<span class="at">timeScaleName =</span> <span class="st">&quot;Absolute&quot;</span>,</span>
 <span id="cb127-2"><a href="set-coverages.html#cb127-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">timeScaleAgeEstimate =</span> <span class="st">&quot;7.5 Myr&quot;</span>)</span>

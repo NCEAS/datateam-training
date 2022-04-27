@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Final Checklist | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Final Checklist | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="good-examples-of-data-packages.html"/>
 <link rel="next" href="initial-review-checklist.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,51 +415,51 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-checklist" class="section level2">
-<h2>Final Checklist</h2>
+<div id="final-checklist" class="section level2 hasAnchor">
+<h2>Final Checklist<a href="final-checklist.html#final-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can click on the <code>assessment report</code> on the website to for a general check. Fix anything you see there.</p>
 <p>Send the link over slack for peer review by your fellow datateam members. Usually we look for the following (the list is not exhaustive):</p>
-<div id="special-datasets" class="section level3">
-<h3>Special Datasets</h3>
+<div id="special-datasets" class="section level3 hasAnchor">
+<h3>Special Datasets<a href="final-checklist.html#special-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Please refer to the dedicated pages for instructions to handle these cases:</p>
 <ul>
 <li><a href="https://nceas.github.io/datateam-training/reference/MOSAiC.html">MOSAiC</a></li>
 <li><a href="https://nceas.github.io/datateam-training/reference/distributed-biological-observatory-dbo-submissions.html">DBO</a></li>
 </ul>
 </div>
-<div id="system-metadata" class="section level3">
-<h3>System Metadata</h3>
+<div id="system-metadata" class="section level3 hasAnchor">
+<h3>System Metadata<a href="final-checklist.html#system-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>the format ids are correct</p>
 </div>
-<div id="general-eml" class="section level3">
-<h3>General EML</h3>
+<div id="general-eml" class="section level3 hasAnchor">
+<h3>General EML<a href="final-checklist.html#general-eml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Included lines for FAIR:</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="final-checklist.html#cb142-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
 <span id="cb142-2"><a href="final-checklist.html#cb142-2" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
-<div id="title-1" class="section level3">
-<h3>Title</h3>
+<div id="title-1" class="section level3 hasAnchor">
+<h3>Title<a href="final-checklist.html#title-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>No abbreviations, should include geographic and temporal coverage</li>
 </ul>
 </div>
-<div id="abstract-1" class="section level3">
-<h3>Abstract</h3>
+<div id="abstract-1" class="section level3 hasAnchor">
+<h3>Abstract<a href="final-checklist.html#abstract-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>longer than 100 words</li>
 <li>no abbreviations or garbled text</li>
 <li>tags such as <code>&lt;superscript&gt;2&lt;/superscript&gt;</code> and <code>&lt;subscript&gt;2&lt;/subscript&gt;</code> can be used for nicer formatting</li>
 </ul>
 </div>
-<div id="datatable-otherentity-spatialvectors" class="section level3">
-<h3>DataTable / OtherEntity / SpatialVectors</h3>
+<div id="datatable-otherentity-spatialvectors" class="section level3 hasAnchor">
+<h3>DataTable / OtherEntity / SpatialVectors<a href="final-checklist.html#datatable-otherentity-spatialvectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>in the correct one: <strong>DataTable / OtherEntity / SpatialVector / SpatialRaster</strong> for the file type</li>
 <li><strong>entityDescription</strong> - longer than 5 words and unique</li>
 <li><strong>physical</strong> present and format correct</li>
 </ul>
-<div id="attribute-table" class="section level4">
-<h4>Attribute Table</h4>
+<div id="attribute-table" class="section level4 hasAnchor">
+<h4>Attribute Table<a href="final-checklist.html#attribute-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>complete</li>
 <li>attributeDefinitions longer than 3 words</li>
@@ -471,8 +470,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="people" class="section level3">
-<h3>People</h3>
+<div id="people" class="section level3 hasAnchor">
+<h3>People<a href="final-checklist.html#people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>complete information for each person in each section
 <ul>
@@ -481,15 +480,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="geographic-region" class="section level3">
-<h3>Geographic region</h3>
+<div id="geographic-region" class="section level3 hasAnchor">
+<h3>Geographic region<a href="final-checklist.html#geographic-region" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>the map looks correctand matches the geographic description</li>
 <li>check if negatives (-) are missing</li>
 </ul>
 </div>
-<div id="project" class="section level3">
-<h3>Project</h3>
+<div id="project" class="section level3 hasAnchor">
+<h3>Project<a href="final-checklist.html#project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>if it is an NSF award you can use the helper function:
 <ul>
@@ -498,15 +497,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>for other awards that need to be set manually, see the <a href="https://nceas.github.io/datateam-training/reference/set-the-project-section.html">set project</a> page</li>
 </ul>
 </div>
-<div id="methods-1" class="section level3">
-<h3>Methods</h3>
+<div id="methods-1" class="section level3 hasAnchor">
+<h3>Methods<a href="final-checklist.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>present</li>
 <li>no garbled text</li>
 </ul>
 </div>
-<div id="check-eml-version" class="section level3">
-<h3>Check EML Version</h3>
+<div id="check-eml-version" class="section level3 hasAnchor">
+<h3>Check EML Version<a href="final-checklist.html#check-eml-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>currently using: <code>eml-2.2.0</code> (as of July 30 2020)</li>
 <li>review to see if the EML version is set correctly by reviewing the <code>doc$`@context`</code> that it is indeed 2.2.0 under eml</li>
@@ -514,8 +513,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Make sure the system metadata is also 2.2.0</li>
 </ul>
 </div>
-<div id="access-1" class="section level3">
-<h3>Access</h3>
+<div id="access-1" class="section level3 hasAnchor">
+<h3>Access<a href="final-checklist.html#access-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Granted access to PI using <code>set_rights_and_access()</code>
 <ul>
@@ -524,14 +523,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>note</strong> if it is a part of portals there might be specific access requirements for it to be visible using <code>set_access()</code></li>
 </ul>
 </div>
-<div id="sftp-files" class="section level3">
-<h3>SFTP Files</h3>
+<div id="sftp-files" class="section level3 hasAnchor">
+<h3>SFTP Files<a href="final-checklist.html#sftp-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>if there are files transferred to us via SFTP, delete those files when the ticket is resolved</li>
 </ul>
 </div>
-<div id="updated-datasets" class="section level3">
-<h3>Updated datasets</h3>
+<div id="updated-datasets" class="section level3 hasAnchor">
+<h3>Updated datasets<a href="final-checklist.html#updated-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>All the above applies. These are some areas to do a closer check when users update with a new file:</p>
 <ul>
 <li>New data was added

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>datapack Background | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="datapack Background | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="edit-data-packages.html"/>
 <link rel="next" href="create-a-new-data-package.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="datapack-background" class="section level2">
-<h2>datapack Background</h2>
+<div id="datapack-background" class="section level2 hasAnchor">
+<h2>datapack Background<a href="datapack-background.html#datapack-background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>adapted from the dataone and datapack vingettes</em></p>
 <p><code>datapack</code> is written differently than most R packages you may have encountered in the past. This is because it uses the <a href="https://adv-r.hadley.nz/s4.html">S4</a> system instead.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="datapack-background.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
@@ -425,8 +424,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-3"><a href="datapack-background.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(uuid)</span></code></pre></div>
 <p><strong>Data packages</strong></p>
 <p>Data packages are a class that has slots for <code>relations</code> (provenance), <code>objects</code>(the metadata and data file(s)) and <code>systemMetadata</code>.</p>
-<div id="navigating-data-packages" class="section level3">
-<h3>Navigating data packages</h3>
+<div id="navigating-data-packages" class="section level3 hasAnchor">
+<h3>Navigating data packages<a href="datapack-background.html#navigating-data-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Nodes</strong></p>
 <p>Using this example on arcticdata.io</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="datapack-background.html#cb9-1" aria-hidden="true" tabindex="-1"></a>d1c_test <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
@@ -445,8 +444,8 @@ href="https://adv-r.hadley.nz/s4.html">S4</a> system.
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="datapack-background.html#cb11-1" aria-hidden="true" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
 <span id="cb11-2"><a href="datapack-background.html#cb11-2" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;resource_map_urn:uuid:1f9eee7e-2d03-43c4-ad7f-f300e013ab28&quot;</span>)</span></code></pre></div>
 </div>
-<div id="data-objects" class="section level3">
-<h3>Data Objects</h3>
+<div id="data-objects" class="section level3 hasAnchor">
+<h3>Data Objects<a href="datapack-background.html#data-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Check out the <code>objects</code> slot</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datapack-background.html#cb12-1" aria-hidden="true" tabindex="-1"></a>dp<span class="sc">@</span>objects</span></code></pre></div>
 <p>Get the number for data and metadata files associated with this data package:</p>
@@ -460,8 +459,8 @@ href="https://adv-r.hadley.nz/s4.html">S4</a> system.
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datapack-background.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;image/tiff&quot;</span>)</span>
 <span id="cb16-2"><a href="datapack-background.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value=</span><span class="st">&quot;filename.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="provenance" class="section level3">
-<h3>Provenance</h3>
+<div id="provenance" class="section level3 hasAnchor">
+<h3>Provenance<a href="datapack-background.html#provenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>View the provenance as a dataTable. We will get into detail in the Building provenance chapter.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="datapack-background.html#cb17-1" aria-hidden="true" tabindex="-1"></a>dp<span class="sc">@</span>relations<span class="sc">$</span>relations</span></code></pre></div>
 </div>

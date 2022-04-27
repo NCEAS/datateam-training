@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Update a package with a new data object | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Update a package with a new data object | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="show-indexing-status.html"/>
 <link rel="next" href="update-a-data-object.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,12 +415,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="update-a-package-with-a-new-data-object" class="section level2">
-<h2>Update a package with a new data object</h2>
+<div id="update-a-package-with-a-new-data-object" class="section level2 hasAnchor">
+<h2>Update a package with a new data object<a href="update-a-package-with-a-new-data-object.html#update-a-package-with-a-new-data-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once you have updated the data objects and saved the metadata to a file, we can update the metadata and use <code>replaceMember</code> to update the package with the new metadata.</p>
 <p>Make sure you have the package you want to update loaded into R using <code>dataone::getDataPackage()</code>.</p>
-<div id="publish-update-1" class="section level3">
-<h3>Publish update</h3>
+<div id="publish-update-1" class="section level3 hasAnchor">
+<h3>Publish update<a href="update-a-package-with-a-new-data-object.html#publish-update-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now we can update your data package to include the new data object. Assuming you have updated your data package earlier something like the below:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="update-a-package-with-a-new-data-object.html#cb49-1" aria-hidden="true" tabindex="-1"></a>d1c_test <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span>
 <span id="cb49-2"><a href="update-a-package-with-a-new-data-object.html#cb49-2" aria-hidden="true" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="st">&quot;the resource map&quot;</span></span>

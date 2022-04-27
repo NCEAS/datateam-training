@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit sysmeta | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit sysmeta | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="add-a-pre-generated-identifier-to-the-eml.html"/>
 <link rel="next" href="obsolescence-chain.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="edit-sysmeta" class="section level2">
-<h2>Edit sysmeta</h2>
+<div id="edit-sysmeta" class="section level2 hasAnchor">
+<h2>Edit sysmeta<a href="edit-sysmeta.html#edit-sysmeta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To edit the sysmeta of an object (data file, EML, or resource map, etc.) with a <code>PID</code>, first load the sysmeta into R using the following command:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="edit-sysmeta.html#cb37-1" aria-hidden="true" tabindex="-1"></a>sysmeta <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, pid)</span></code></pre></div>
 <p>Then edit the sysmeta slots by using <code>@</code> functionality. For example, to change the <code>fileName</code> use the following command:</p>
@@ -427,12 +426,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb39-2"><a href="edit-sysmeta.html#cb39-2" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>formatId <span class="ot">&lt;-</span> <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span></span></code></pre></div>
 <p>After you have changed the necessary slot, you can update the system metadata using the following command:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="edit-sysmeta.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, pid, sysmeta)</span></code></pre></div>
-<div id="identifiers-and-sysmeta" class="section level3">
-<h3>Identifiers and sysmeta</h3>
+<div id="identifiers-and-sysmeta" class="section level3 hasAnchor">
+<h3>Identifiers and sysmeta<a href="edit-sysmeta.html#identifiers-and-sysmeta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Importantly, changing the system metadata does NOT necessitate a change in the <code>PID</code> of an object. This is because changes to the system metadata do not change the object itself, they are only changing the description of the object (although ideally the system metadata are accurate when an object is first published).</p>
 </div>
-<div id="additional-resources" class="section level3">
-<h3>Additional resources</h3>
+<div id="additional-resources" class="section level3 hasAnchor">
+<h3>Additional resources<a href="edit-sysmeta.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a more in-depth (and technical) guide to sysmeta, check out the DataONE documentation:</p>
 <ul>
 <li><a href = 'https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html' target='_blank'>System Metadata</a></li>

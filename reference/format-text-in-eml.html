@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Format text in EML | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Format text in EML | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="edit-spatial-data.html"/>
 <link rel="next" href="series-identifier-sid.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="format-text-in-eml" class="section level2">
-<h2>Format text in EML</h2>
+<div id="format-text-in-eml" class="section level2 hasAnchor">
+<h2>Format text in EML<a href="format-text-in-eml.html#format-text-in-eml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this <a href = 'https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml' target='_blank'>demo</a> for a full example. Additional info is also available <a href = 'https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html' target='_blank'>here</a>.</p>
 <div class="note">
 <p>
@@ -427,22 +426,22 @@ Many of these formatting functions only work when enclosed by
 </div>
 <p>You can insert these tags directly into the EML document using syntax that looks like this:</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="format-text-in-eml.html#cb117-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">abstract</span>(<span class="at">para =</span> <span class="st">&quot;Some abstracts require subscripts like CO&lt;subscript&gt;2&lt;/subscript&gt;&quot;</span>)</span></code></pre></div>
-<div id="type-setting" class="section level3">
-<h3>Type-setting</h3>
+<div id="type-setting" class="section level3 hasAnchor">
+<h3>Type-setting<a href="format-text-in-eml.html#type-setting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Subscripts, superscripts, and italics:</p>
 <pre><code>&lt;subscript&gt;You can do subscripts&lt;/subscript&gt;
 &lt;superscript&gt;or superscipts&lt;/superscript&gt;
 &lt;emphasis&gt;or even italics.&lt;/emphasis&gt; </code></pre>
 </div>
-<div id="links" class="section level3">
-<h3>Links</h3>
+<div id="links" class="section level3 hasAnchor">
+<h3>Links<a href="format-text-in-eml.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Be sure to include the “<a href="https://" class="uri">https://</a>” before the link or it will redirect incorrectly. Also, always check that your links go through to the correct page. Please be aware that most links are inherently unstable so always default to archiving files over pointing to websites when possible and appropriate.</p>
 <pre><code>&lt;ulink url=&quot;https://some_url.com&quot;&gt;
     &lt;citetitle&gt;some text&lt;/citetitle&gt;
 &lt;/ulink&gt;</code></pre>
 </div>
-<div id="lists" class="section level3">
-<h3>Lists</h3>
+<div id="lists" class="section level3 hasAnchor">
+<h3>Lists<a href="format-text-in-eml.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Unordered (bulleted) lists:</p>
 <pre><code>&lt;itemizedlist&gt;
     &lt;listitem&gt;

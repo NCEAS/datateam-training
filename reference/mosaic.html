@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>MOSAiC | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="MOSAiC | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="distributed-biological-observatory-dbo-submissions.html"/>
 <link rel="next" href="using-arcticdatautils.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mosaic" class="section level2">
-<h2>MOSAiC</h2>
+<div id="mosaic" class="section level2 hasAnchor">
+<h2>MOSAiC<a href="mosaic.html#mosaic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. There are a couple of special steps for datasets from this project.</p>
 <p><strong>When working on MOSAiC datasets:</strong></p>
 <ol style="list-style-type: decimal">
@@ -445,8 +444,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://arcticdata.io/catalog/view/urn%3Auuid%3A679b719b-2feb-4b61-a975-282149995b51">Example with non-polarstern vessels</a></li>
 </ol>
 <p>The following shows how to add the annotations using <code>arcticdatautils</code> and manually in the case the functions fail to work:</p>
-<div id="dataset-level-annotations" class="section level3">
-<h3>Dataset Level Annotations</h3>
+<div id="dataset-level-annotations" class="section level3 hasAnchor">
+<h3>Dataset Level Annotations<a href="mosaic.html#dataset-level-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern <code>PS122/#</code>. For the full campaign list it is easiest to see on the <a href="https://www.pangaea.de/expeditions/byproject/MOSAiC">PANGAEA website</a></p>
 <p><strong>arcticdatautils</strong></p>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="mosaic.html#cb209-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
@@ -482,8 +481,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb210-24"><a href="mosaic.html#cb210-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valueURI =</span> <span class="st">&quot;https://purl.dataone.org/odo/MOSAIC_00000018&quot;</span>)</span>
 <span id="cb210-25"><a href="mosaic.html#cb210-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#*** this changes depending on the campaign</span></span>
 <span id="cb210-26"><a href="mosaic.html#cb210-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div id="attribute-level-annotations-1" class="section level4">
-<h4>Attribute Level Annotations</h4>
+<div id="attribute-level-annotations-1" class="section level4 hasAnchor">
+<h4>Attribute Level Annotations<a href="mosaic.html#attribute-level-annotations-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Apply these to the attribute level of the dataset. Event IDs should have already be identified earlier on in the dataset review. Check the ticket overview for details.</p>
 <p><strong>arcticdatautils</strong></p>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="mosaic.html#cb211-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;some id here&quot;</span></span>
@@ -527,8 +526,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb214-9"><a href="mosaic.html#cb214-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
-<div id="portal-updates" class="section level3">
-<h3>Portal updates</h3>
+<div id="portal-updates" class="section level3 hasAnchor">
+<h3>Portal updates<a href="mosaic.html#portal-updates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The filters are based on the MOSAiC ontology. The <code>Campaign</code> and <code>Basis</code> filters should remain relatively the same. However there are over 500 Method and Devices. So the decision was made to only show the ones we have annotated.</p>
 <p>We can query for all of them and output them formatted as a choice:</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="mosaic.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic_portal_filter</span>(<span class="st">&quot;Method/Device&quot;</span>)</span></code></pre></div>

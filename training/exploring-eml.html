@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Exploring EML | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Exploring EML | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="creating-a-data-package.html"/>
 <link rel="next" href="editing-eml.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -240,11 +239,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.2</b> Exercise 5</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
 <ul>
@@ -350,14 +345,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploring-eml" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Exploring EML</h1>
+<div id="exploring-eml" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Exploring EML<a href="exploring-eml.html#exploring-eml" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>We use the Ecological Metadata Language (EML) to store structured metadata for all datasets submitted to the Arctic Data Center. EML is written in XML (extensible markup language) and functions for building and editing EML are in the <a href = 'https://github.com/ropensci/EML' target='_blank'>EML R package</a>.</p>
 <p>Currently the Arctic Data Center website supports editing EML version 2.2.0. There are still some metadata in 2.1.1 that will be converted eventually.</p>
 <p>For additional background on EML and principles for metadata creation, check out <a href = 'data/eml-principles.pdf' target='_blank'>this paper</a>.</p>
 <p>If you aren’t too familiar with lists and how to navigate them yet take a look at the relevant sections in the <a href = 'https://stat545.com/r-objects.html#lists-hold-just-about-anything' target='_blank'>Stat 545 class.</a></p>
-<div id="navigate-through-eml" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Navigate through EML</h2>
+<div id="navigate-through-eml" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Navigate through EML<a href="exploring-eml.html#navigate-through-eml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The first task when editing an EML file is navigating the EML file. An EML file is organized in a structure that contains many lists nested within other lists. The function <code>View</code> allows you to get a crude view of an EML file in the viewer. It can be useful for exploring the file.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="exploring-eml.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to be in this member node to explore file</span></span>
 <span id="cb27-2"><a href="exploring-eml.html#cb27-2" aria-hidden="true" tabindex="-1"></a>d1c_test <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span>
@@ -371,8 +366,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that if you hit tab, and nothing pops up, this most likely implies that you are trying to go into an EML element that can take a series items. For example <code>doc$dataset$creator$&lt;TAB&gt;</code> will not show a pop-up menu. This is because <code>creator</code> is a series-type object (i.e. you can have multiple <code>creator</code>s). If you want to go deeper into <code>creator</code>, you first must tell R which <code>creator</code> you are interested in. Do this by writing <code>[[i]]</code> first where <code>i</code> is the index of the <code>creator</code> you are concerned with. For example, if you want to look at the first <code>creator</code> i = 1. Now <code>doc$dataset$creator[[1]]$&lt;TAB&gt;</code> will give you many more options. Note, an empty autocomplete result sometimes means you have reached the end of a branch in the EML structure.</p>
 <p>At this point stop and take a deep breath. The key takeaway is that EML is a hierarchical tree structure. The best way to get familiar with it is to explore the structure. Try entering <code>doc$dataset</code> into your console, and print it. Now make the search more specific, for instance: <code>doc$dataset$abstract</code>.</p>
 </div>
-<div id="understand-the-eml-schema" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Understand the EML schema</h2>
+<div id="understand-the-eml-schema" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Understand the EML schema<a href="exploring-eml.html#understand-the-eml-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.</p>
 <p>For example, let’s take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.</p>
 <p><img src="../images/eml-party.png" /></p>
@@ -382,8 +377,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>The eml schema sections you may find particularly helpful include <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>, <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>eml-attribute</a> and <a href = 'https://eml.ecoinformatics.org/images/eml-physical.png' target='_blank'>eml-physical</a>.</p>
 <p>For a more detailed description of the EML schema, see the <a href = 'https://nceas.github.io/datateam-training/reference/explore-eml.html' target='_blank'>reference section on exploring EML</a>.</p>
 </div>
-<div id="access-specific-elements" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Access specific elements</h2>
+<div id="access-specific-elements" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Access specific elements<a href="exploring-eml.html#access-specific-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>eml_get()</code> function is a powerful tool for exploring EML (more on that <a href = 'https://ropensci.github.io/EML/' target='_blank'>here</a> ). It takes any chunk of EML and returns <em>all instances</em> of the element you specify. <em>Note:</em> you’ll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="exploring-eml.html#cb29-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
 <span id="cb29-2"><a href="exploring-eml.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>

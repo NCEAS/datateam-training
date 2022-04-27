@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Editing system metadata | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Editing system metadata | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="updating-a-data-package.html"/>
 <link rel="next" href="building-provenance.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -240,11 +239,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.2</b> Exercise 5</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
 <ul>
@@ -350,12 +345,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="editing-system-metadata" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Editing system metadata</h1>
+<div id="editing-system-metadata" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Editing system metadata<a href="editing-system-metadata.html#editing-system-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Every object on the ADC (or the KNB) has “system metadata”. An object’s system metadata have information about the file itself, such as the name of the file (<code>fileName</code>), the format (<code>formatId</code>), who the <code>rightsHolder</code> is, what the <code>accessPolicy</code> is, and more. Sometimes we will need to edit system metadata in order to make sure that things on the webpage display correctly, or to ensure a file downloads from the website with the correct file name and extension.</p>
 <p>Although the majority of system metadata changes that need to be made are done automatically, sometimes we need to change aspects of the system metadata (or ‘sysmeta’ for short) manually.</p>
-<div id="edit-sysmeta" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Edit sysmeta</h2>
+<div id="edit-sysmeta" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Edit sysmeta<a href="editing-system-metadata.html#edit-sysmeta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To edit the sysmeta of an object (data file, EML, or resource map, etc.) with a <code>PID</code>, first load the sysmeta into R using the following command:</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="editing-system-metadata.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sysmeta <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, pid)</span></code></pre></div>
 <p>Then edit the sysmeta slots by using <code>@</code> functionality. For example, to change the <code>fileName</code> use the following command:</p>
@@ -365,12 +360,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb92-2"><a href="editing-system-metadata.html#cb92-2" aria-hidden="true" tabindex="-1"></a>sysmeta<span class="sc">@</span>formatId <span class="ot">&lt;-</span> <span class="st">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span></span></code></pre></div>
 <p>After you have changed the necessary slot, you can update the system metadata using the following command:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="editing-system-metadata.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, pid, sysmeta)</span></code></pre></div>
-<div id="identifiers-and-sysmeta" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Identifiers and sysmeta</h3>
+<div id="identifiers-and-sysmeta" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Identifiers and sysmeta<a href="editing-system-metadata.html#identifiers-and-sysmeta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Importantly, changing the system metadata does NOT necessitate a change in the <code>PID</code> of an object. This is because changes to the system metadata do not change the object itself, they are only changing the description of the object (although ideally the system metadata are accurate when an object is first published).</p>
 </div>
-<div id="additional-resources" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Additional resources</h3>
+<div id="additional-resources" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Additional resources<a href="editing-system-metadata.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a more in-depth (and technical) guide to sysmeta, check out the DataONE documentation:</p>
 <ul>
 <li><a href = 'https://releases.dataone.org/online/api-documentation-v2.0.1/design/SystemMetadata.html' target='_blank'>System Metadata</a></li>
@@ -378,46 +373,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="set-rights-and-access" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Set rights and access</h2>
-<p>One final step when creating/updating packages is to make sure that the rights and access on all the objects that were uploaded are set correctly within the sysmeta. The function <code>arcticdatautils::set_rights_and_access()</code> will set both, and <code>arcticdatautils::set_access()</code> will just set access. There are two functions for this because a <code>rightsHolder</code> should always have access, but not all people who need access are <code>rightsHolder</code>s. The <code>rightsHolder</code> of the data package is typically the <code>submitter</code> (if the data set is submitted through the web form (“editor”)), but if a data team member is publishing objects for a PI, the <code>rightsHolder</code> should be the main point of contact for the data set (i.e. the person who requested that we upload the data for them).</p>
-<p>To set the rights and access for all of the objects in a <a href = 'https://nceas.github.io/datateam-training/reference/get-package-and-eml.html#get-package-and-eml' target='_blank'>package</a>, first get the ORCiD of the person to whom you are giving rights and access. You can set this manually, or grab it from one of the creators in an EML file. You can look up ORCID iDs <a href = 'https://orcid.org/orcid-search/search' target='_blank'>here</a></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="editing-system-metadata.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Manually set ORCiD</span></span>
-<span id="cb94-2"><a href="editing-system-metadata.html#cb94-2" aria-hidden="true" tabindex="-1"></a> subject <span class="ot">&lt;-</span> <span class="st">&#39;http://orcid.org/PUT-YOUR-ORCD-HERE&#39;</span></span>
-<span id="cb94-3"><a href="editing-system-metadata.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="editing-system-metadata.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set ORCiD from EML creator</span></span>
-<span id="cb94-5"><a href="editing-system-metadata.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if only 1 creator exists</span></span>
-<span id="cb94-6"><a href="editing-system-metadata.html#cb94-6" aria-hidden="true" tabindex="-1"></a> subject <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>creator<span class="sc">$</span>userId<span class="sc">$</span>userId</span>
-<span id="cb94-7"><a href="editing-system-metadata.html#cb94-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># if more than 1 creator exists and you want the first one</span></span>
-<span id="cb94-8"><a href="editing-system-metadata.html#cb94-8" aria-hidden="true" tabindex="-1"></a> subject <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>userId<span class="sc">$</span>userId</span>
-<span id="cb94-9"><a href="editing-system-metadata.html#cb94-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb94-10"><a href="editing-system-metadata.html#cb94-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># As a convention we use `http:` instead of `https:` in our system metadata</span></span>
-<span id="cb94-11"><a href="editing-system-metadata.html#cb94-11" aria-hidden="true" tabindex="-1"></a> subject <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;^https://&quot;</span>, <span class="st">&quot;http://&quot;</span>, subject)</span></code></pre></div>
-<p>Note, when setting metadata, the ORCiD must start with <code>http://</code>. ORCiDs in EML should start with <code>https://</code>. The <code>sub()</code> command above will change this formatting for you.</p>
-<p>Next, set the rights and access using the following command:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="editing-system-metadata.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_rights_and_access</span>(mn, </span>
-<span id="cb95-2"><a href="editing-system-metadata.html#cb95-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pids =</span> <span class="fu">c</span>(pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>data, pkg<span class="sc">$</span>resource_map),</span>
-<span id="cb95-3"><a href="editing-system-metadata.html#cb95-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">subject =</span> subject,</span>
-<span id="cb95-4"><a href="editing-system-metadata.html#cb95-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">permissions =</span> <span class="fu">c</span>(<span class="st">&#39;read&#39;</span>,<span class="st">&#39;write&#39;</span>,<span class="st">&#39;changePermission&#39;</span>))</span></code></pre></div>
-<p>If you ever need to remove/add public access to your package or object, you can use <code>remove_public_read()</code> or <code>set_public_read()</code>, respectively.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="editing-system-metadata.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove_public_read</span>(mn, <span class="fu">c</span>(pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>data, pkg<span class="sc">$</span>resource_map))</span></code></pre></div>
-<div id="my-profile" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> My profile</h3>
-<p>The datasets that render under a user’s profile page like <a href = 'https://arcticdata.io/catalog/profile/http://orcid.org/0000-0003-3644-7237' target='_blank'>here</a> are added if one of the following three System Metadata fields exists. The subject is the <code>rightsHolder</code> or the subject has one of either <code>write</code> or <code>changePermission</code> in the <code>accessPolicy</code>.</p>
-<p>If you ever need to remove a subject from the <code>accessPolicy</code> or update the <code>rightsHolder</code> you can use <code>arcticdatautils::remove_access</code> and <code>arcticdatautils::set_rightsHolder</code>, respectively.</p>
-</div>
-</div>
-<div id="exercise-5" class="section level2 exercise" number="6.3">
-<h2><span class="header-section-number">6.3</span> Exercise 5</h2>
+<div id="exercise-5" class="section level2 exercise hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Exercise 5<a href="editing-system-metadata.html#exercise-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes the system doesn’t recognize the file types properly. For example you have a csv file but the File type on the website says <code>Microsoft Excel</code></p>
 <ul>
 <li>Read the system metadata in from the data file you uploaded <a href="updating-a-data-package.html#exercise-4">previously</a>.</li>
 <li>Check to make sure the <code>fileName</code> and <code>formatId</code> are set correctly (the extension in <code>fileName</code> should match the <code>formatId</code>).</li>
 <li>Update the system metadata if necessary.</li>
-</ul>
-<p>Finally make sure that the researcher has permission to edit and view the dataset. In this case use your own ORCiD.</p>
-<ul>
-<li>Set the rights and access for all objects with your ORCiD.</li>
 </ul>
 
 </div>

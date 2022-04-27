@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Access specific elements | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Access specific elements | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="explore-eml.html"/>
 <link rel="next" href="navigate-through-eml.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="access-specific-elements" class="section level2">
-<h2>Access specific elements</h2>
+<div id="access-specific-elements" class="section level2 hasAnchor">
+<h2>Access specific elements<a href="access-specific-elements.html#access-specific-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>eml_get()</code> function is a powerful tool for exploring EML (more on that <a href = 'https://ropensci.github.io/EML/' target='_blank'>here</a> ). It takes any chunk of EML and returns <em>all instances</em> of the element you specify. <em>Note:</em> you’ll have to specify the element of interest exactly, according to the spelling/capitalization conventions used in EML. Here are some examples:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="access-specific-elements.html#cb56-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">system.file</span>(<span class="st">&quot;example-eml.xml&quot;</span>, <span class="at">package =</span> <span class="st">&quot;arcticdatautils&quot;</span>))</span>
 <span id="cb56-2"><a href="access-specific-elements.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get</span>(doc, <span class="st">&quot;creator&quot;</span>)</span></code></pre></div>

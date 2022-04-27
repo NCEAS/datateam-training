@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set DataONE nodes | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set DataONE nodes | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="obsolescence-chain.html"/>
 <link rel="next" href="set-rights-and-access.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-dataone-nodes" class="section level2">
-<h2>Set DataONE nodes</h2>
+<div id="set-dataone-nodes" class="section level2 hasAnchor">
+<h2>Set DataONE nodes<a href="set-dataone-nodes.html#set-dataone-nodes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>DataONE is a network of data repositories that is structured with coordinating nodes (CN) and member nodes (MN). The network tree looks something like this:</p>
 <p><img src="../images/dataone-nodes-tree.png" /></p>
 <p>At the top level is DataONE itself. Within DataONE there are several coordinating nodes, including nodes for both production material and testing material. Within these coordinating nodes are many member nodes, including ones for both the Arctic Data Center and the KNB. To set the environment in which you want to publish data, you need to set both the coordinating node and the member node. For example, if you are publishing to the Arctic Data Center test site, you would want to set the coordinating node to STAGING and the member node to mnTestArctic.</p>
@@ -429,8 +428,8 @@ should NEVER be used to publish test or training data sets.
 </p>
 </div>
 <p>The primary nodes we work on, and how to set them in R, are below:</p>
-<div id="staging-test-nodes" class="section level3">
-<h3>Staging (Test) nodes</h3>
+<div id="staging-test-nodes" class="section level3 hasAnchor">
+<h3>Staging (Test) nodes<a href="set-dataone-nodes.html#staging-test-nodes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="set-dataone-nodes.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (test.arcticdata.io)</span></span>
 <span id="cb43-2"><a href="set-dataone-nodes.html#cb43-2" aria-hidden="true" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
 <span id="cb43-3"><a href="set-dataone-nodes.html#cb43-3" aria-hidden="true" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
@@ -439,8 +438,8 @@ should NEVER be used to publish test or training data sets.
 <span id="cb43-6"><a href="set-dataone-nodes.html#cb43-6" aria-hidden="true" tabindex="-1"></a>cn_staging2 <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;STAGING2&quot;</span>)</span>
 <span id="cb43-7"><a href="set-dataone-nodes.html#cb43-7" aria-hidden="true" tabindex="-1"></a>knb_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging2, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</span></code></pre></div>
 </div>
-<div id="production-nodes" class="section level3">
-<h3>Production nodes</h3>
+<div id="production-nodes" class="section level3 hasAnchor">
+<h3>Production nodes<a href="set-dataone-nodes.html#production-nodes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="set-dataone-nodes.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADC (arcticdata.io)</span></span>
 <span id="cb44-2"><a href="set-dataone-nodes.html#cb44-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
 <span id="cb44-3"><a href="set-dataone-nodes.html#cb44-3" aria-hidden="true" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>

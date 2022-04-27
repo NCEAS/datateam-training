@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Editing EML | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Editing EML | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="exploring-eml.html"/>
 <link rel="next" href="updating-a-data-package.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -240,11 +239,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#identifiers-and-sysmeta"><i class="fa fa-check"></i><b>6.1.1</b> Identifiers and sysmeta</a></li>
 <li class="chapter" data-level="6.1.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#additional-resources"><i class="fa fa-check"></i><b>6.1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#set-rights-and-access"><i class="fa fa-check"></i><b>6.2</b> Set rights and access</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#my-profile"><i class="fa fa-check"></i><b>6.2.1</b> My profile</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.3</b> Exercise 5</a></li>
+<li class="chapter" data-level="6.2" data-path="editing-system-metadata.html"><a href="editing-system-metadata.html#exercise-5"><i class="fa fa-check"></i><b>6.2</b> Exercise 5</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="building-provenance.html"><a href="building-provenance.html"><i class="fa fa-check"></i><b>7</b> Building provenance</a>
 <ul>
@@ -350,8 +345,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="editing-eml" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Editing EML</h1>
+<div id="editing-eml" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Editing EML<a href="editing-eml.html#editing-eml" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter is a practical tutorial for using R to read, edit, write, and validate EML documents. Much of the information here can also be found in the vignettes for the R packages used in this section (e.g. the <a href = 'https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd' target='_blank'>EML package</a>).</p>
 <p>Most of the functions you will see in this chapter will use the <code>arcticdatautils</code> and <code>EML</code> packages.</p>
 <div class="note">
@@ -360,11 +355,11 @@ This chapter will be longest of all the sections! This is a reminder
 to take frequent breaks when completing this section.
 </p>
 </div>
-<div id="edit-an-eml-element" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Edit an EML element</h2>
+<div id="edit-an-eml-element" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Edit an EML element<a href="editing-eml.html#edit-an-eml-element" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are multiple ways to edit an EML element.</p>
-<div id="edit-eml-with-strings" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Edit EML with strings</h3>
+<div id="edit-eml-with-strings" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Edit EML with strings<a href="editing-eml.html#edit-eml-with-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most basic way to edit an EML element would be to navigate to the element and replace it with something else. Easy!</p>
 <p>For example, to change the title one could use the following command:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="editing-eml.html#cb38-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="st">&quot;New Title&quot;</span></span></code></pre></div>
@@ -372,8 +367,8 @@ to take frequent breaks when completing this section.
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="editing-eml.html#cb39-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;New Title&quot;</span>, <span class="st">&quot;Second New Title&quot;</span>)</span></code></pre></div>
 <p>However, this isn’t always the best method to edit the EML, particularly if the element has sub-elements.</p>
 </div>
-<div id="edit-eml-with-the-eml-package" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Edit EML with the “EML” package</h3>
+<div id="edit-eml-with-the-eml-package" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Edit EML with the “EML” package<a href="editing-eml.html#edit-eml-with-the-eml-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To edit a section where you are not 100% sure of the sub-elements, using the <code>eml$elementName()</code> helper functions from the EML package will pre-populate the options for you if you utilize the RStudio autocomplete functionality. The arguments in these functions show the available slots for any given EML element. For example, typing <code>doc$dataset$abstract &lt;- eml$abstract()&lt;TAB&gt;</code> will show you that the <code>abstract</code> element can take either the <code>section</code> or <code>para</code> sub-elements.</p>
 <p><img src="../images/eml_function_autocomplete.png" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="editing-eml.html#cb40-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">abstract</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
@@ -382,8 +377,8 @@ to take frequent breaks when completing this section.
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="editing-eml.html#cb41-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
 <p>The <code>eml()</code> family of functions provides the sub-elements as arguments, which is extremely helpful, but functionally all it is doing is creating a named list, which you can also do using the <code>list</code> function.</p>
 </div>
-<div id="edit-eml-with-objects" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Edit EML with objects</h3>
+<div id="edit-eml-with-objects" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Edit EML with objects<a href="editing-eml.html#edit-eml-with-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A final way to edit an EML element would be to build a new object to replace the old object. To begin, you might create an object using an <code>eml</code> helper function. Let’s take keywords as an example. Sometimes keyword lists in a metadata record will come from different thesauruses, which you can then add in series (similar to the way we added multiple titles) to the element <code>keywordSet</code>.</p>
 <p>We start by creating our first set of keywords and saving it to an object.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="editing-eml.html#cb42-1" aria-hidden="true" tabindex="-1"></a>kw_list_1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">keywordSet</span>(<span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER controlled vocabulary&quot;</span>,</span>
@@ -422,8 +417,8 @@ collapse the nesting into a single level, resulting in invalid EML.
 </div>
 </div>
 </div>
-<div id="fair-data-practices" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> FAIR data practices</h2>
+<div id="fair-data-practices" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> FAIR data practices<a href="editing-eml.html#fair-data-practices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The result of these function calls won’t show up on the webpage but they will add a <code>publisher</code> element to the <code>dataset</code> element and a <code>system</code> to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable).</p>
 <p>These two functions come from the <code>arcticatautils</code> package, an R package we wrote to help with some very specific data processing tasks.</p>
 <p>Add these function calls to all of your EML processing scripts.</p>
@@ -432,8 +427,8 @@ collapse the nesting into a single level, resulting in invalid EML.
 <span id="cb46-3"><a href="editing-eml.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
 <span id="cb46-4"><a href="editing-eml.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
-<div id="edit-attributelists" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Edit attributeLists</h2>
+<div id="edit-attributelists" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Edit attributeLists<a href="editing-eml.html#edit-attributelists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:</p>
 <ol style="list-style-type: decimal">
 <li>A data.frame of attributes</li>
@@ -451,8 +446,8 @@ collapse the nesting into a single level, resulting in invalid EML.
 <span id="cb47-7"><a href="editing-eml.html#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-8"><a href="editing-eml.html#cb47-8" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> attributeList<span class="sc">$</span>attributes</span>
 <span id="cb47-9"><a href="editing-eml.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(attributes)</span></code></pre></div>
-<div id="edit-attributes" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Edit attributes</h3>
+<div id="edit-attributes" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Edit attributes<a href="editing-eml.html#edit-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Attribute information should be stored in a <code>data.frame</code> with the following columns:</p>
 <ul>
 <li><strong>attributeName</strong>: The name of the attribute as listed in the csv. Required. e.g.: “c_temp”</li>
@@ -518,8 +513,8 @@ collapse the nesting into a single level, resulting in invalid EML.
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="editing-eml.html#cb51-1" aria-hidden="true" tabindex="-1"></a>new_attribute <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">edit_attribute</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]], <span class="at">attributeName =</span> <span class="st">&#39;date_and_time&#39;</span>, <span class="at">domain =</span> <span class="st">&#39;dateTimeDomain&#39;</span>, <span class="at">measurementScale =</span> <span class="st">&#39;dateTime&#39;</span>)</span>
 <span id="cb51-2"><a href="editing-eml.html#cb51-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> new_attribute</span></code></pre></div>
 </div>
-<div id="edit-custom-units" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Edit custom units</h3>
+<div id="edit-custom-units" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Edit custom units<a href="editing-eml.html#edit-custom-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>EML has a set list of units that can be added to an EML file. These can be seen by using the following code:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="editing-eml.html#cb52-1" aria-hidden="true" tabindex="-1"></a>standardUnits <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_unitList</span>()</span>
 <span id="cb52-2"><a href="editing-eml.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(standardUnits<span class="sc">$</span>units)</span></code></pre></div>
@@ -547,8 +542,8 @@ collapse the nesting into a single level, resulting in invalid EML.
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="editing-eml.html#cb54-1" aria-hidden="true" tabindex="-1"></a>unitlist <span class="ot">&lt;-</span> <span class="fu">set_unitList</span>(custom_units, <span class="at">as_metadata =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb54-2"><a href="editing-eml.html#cb54-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>additionalMetadata <span class="ot">&lt;-</span>  <span class="fu">list</span>(<span class="at">metadata =</span> <span class="fu">list</span>(<span class="at">unitList =</span> unitlist))</span></code></pre></div>
 </div>
-<div id="edit-factors" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Edit factors</h3>
+<div id="edit-factors" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Edit factors<a href="editing-eml.html#edit-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For attributes that are <code>enumeratedDomains</code>, a table is needed with three columns: <code>attributeName</code>, <code>code</code>, and <code>definition</code>.</p>
 <ul>
 <li><strong>attributeName</strong> should be the same as the <code>attributeName</code> within the attribute table and repeated for all codes belonging to a common attribute.</li>
@@ -562,22 +557,23 @@ collapse the nesting into a single level, resulting in invalid EML.
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="editing-eml.html#cb56-1" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Location&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Location), <span class="at">definition =</span> <span class="fu">unname</span>(Location)),</span>
 <span id="cb56-2"><a href="editing-eml.html#cb56-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Region&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Region), <span class="at">definition =</span> <span class="fu">unname</span>(Region)))</span></code></pre></div>
 </div>
-<div id="finalize-attributelist" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Finalize attributeList</h3>
+<div id="finalize-attributelist" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Finalize attributeList<a href="editing-eml.html#finalize-attributelist" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an <code>attributeList</code> using the following command:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="editing-eml.html#cb57-1" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> attributes,</span>
 <span id="cb57-2"><a href="editing-eml.html#cb57-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">factors =</span> factors) </span></code></pre></div>
 <p>This <code>attributeList</code> must then be <a href="editing-eml.html#edit-datatables">added to a <code>dataTable</code></a>.</p>
 <div class="note">
 <p>
-Remember to use: <code>d1c_test &lt;- dataone::D1Client(“STAGING”,
-“<a href="urn:node:mnTestARCTIC" class="uri">urn:node:mnTestARCTIC</a>”)</code> <code><a href="mailto:d1c_test@mn" class="email">d1c_test@mn</a></code>
+Remember to use:
+<code>d1c_test &lt;- dataone::D1Client(“STAGING”, “<a href="urn:node:mnTestARCTIC" class="uri">urn:node:mnTestARCTIC</a>”)</code>
+<code><a href="mailto:d1c_test@mn" class="email">d1c_test@mn</a></code>
 </p>
 </div>
 </div>
 </div>
-<div id="set-physical" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Set physical</h2>
+<div id="set-physical" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Set physical<a href="editing-eml.html#set-physical" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
 <div class="note">
 <p>
@@ -594,8 +590,8 @@ physical.
 <p>The <code>physical</code> must then be assigned to the data object.</p>
 <p>Note that the above workflow only works if your data object already exists on the member node.</p>
 </div>
-<div id="edit-datatables" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Edit dataTables</h2>
+<div id="edit-datatables" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Edit dataTables<a href="editing-eml.html#edit-datatables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To edit a <code>dataTable</code>, first <a href="editing-eml.html#edit-attributelists">edit/create an <code>attributeList</code></a> and <a href="editing-eml.html#set-physical">set the physical</a>.
 Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> helper function as below:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="editing-eml.html#cb59-1" aria-hidden="true" tabindex="-1"></a>dataTable <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;A descriptive name for the data (does not need to be the same as the data file)&quot;</span>,</span>
@@ -627,15 +623,15 @@ Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> 
 <span id="cb65-2"><a href="editing-eml.html#cb65-2" aria-hidden="true" tabindex="-1"></a>                             <span class="dv">1</span>, <span class="co"># which otherEntities you want to convert, for multiple use - 1:5</span></span>
 <span id="cb65-3"><a href="editing-eml.html#cb65-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">validate_eml =</span> F) <span class="co"># set this to False if the physical or attributes are not added</span></span></code></pre></div>
 </div>
-<div id="edit-otherentities" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Edit otherEntities</h2>
-<div id="remove-otherentities" class="section level3" number="4.6.1">
-<h3><span class="header-section-number">4.6.1</span> Remove otherEntities</h3>
+<div id="edit-otherentities" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Edit otherEntities<a href="editing-eml.html#edit-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="remove-otherentities" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Remove otherEntities<a href="editing-eml.html#remove-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To remove an <code>otherEntity</code> use the following command. This may be useful if a data object is originally listed as an <code>otherEntity</code> and then transferred to a <code>dataTable</code>.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="editing-eml.html#cb66-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
-<div id="create-otherentities" class="section level3" number="4.6.2">
-<h3><span class="header-section-number">4.6.2</span> Create otherEntities</h3>
+<div id="create-otherentities" class="section level3 hasAnchor" number="4.6.2">
+<h3><span class="header-section-number">4.6.2</span> Create otherEntities<a href="editing-eml.html#create-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you need to create/update an <code>otherEntity</code>, make sure to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/edit-otherentities.html#update-a-data-file' target='_blank'>update</a> your data object first (if it is not already on the DataONE MN). Then build your <code>otherEntity</code>.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="editing-eml.html#cb67-1" aria-hidden="true" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
 <p>Alternatively, you can build the <code>otherEntity</code> of a data object not in your package by simply inputting the data <code>PID</code>.</p>
@@ -649,8 +645,8 @@ Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> 
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="editing-eml.html#cb71-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="fu">list</span>(otherEntity, doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)</span></code></pre></div>
 </div>
 </div>
-<div id="semantic-annotations" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> Semantic annotations</h2>
+<div id="semantic-annotations" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Semantic annotations<a href="editing-eml.html#semantic-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For a brief overview of what a semantic annotation is, and why we use them check out <a href="https://drive.google.com/file/d/1Err-fL8O21kd1NzHJ9HJkK_B2fpt4sQW/view?usp=sharing">this video.</a></p>
 <p>Even more information on how to add semantic annotations to EML 2.2.0 can be found
 <a href = 'https://eml.ecoinformatics.org/semantic-annotation-primer.html'>here</a>. Currently metacatUI does not support the editing of semantic annotations on the website so all changes will have to be done in R.</p>
@@ -661,15 +657,15 @@ Then create a new <code>dataTable</code> using the <code>eml$dataTable()</code> 
 <li><code>attribute</code></li>
 </ul>
 <p>On the datateam, we will only be adding annotations to attributes for now.</p>
-<div id="how-annotations-are-used" class="section level3" number="4.7.1">
-<h3><span class="header-section-number">4.7.1</span> How annotations are used</h3>
+<div id="how-annotations-are-used" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> How annotations are used<a href="editing-eml.html#how-annotations-are-used" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that has semantic annotations included.</p>
 <p>On the website you can see annotations in each of the attributes.
 <img src="../images/annotations_web.png" /></p>
 <p>You can click on any one of them to search for more datasets with that same annotation.
 <img src="../images/annotations_web_use.png" /></p>
-<div id="attribute-level-annotations" class="section level4" number="4.7.1.1">
-<h4><span class="header-section-number">4.7.1.1</span> Attribute-level annotations</h4>
+<div id="attribute-level-annotations" class="section level4 hasAnchor" number="4.7.1.1">
+<h4><span class="header-section-number">4.7.1.1</span> Attribute-level annotations<a href="editing-eml.html#attribute-level-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To add annotations to the <code>attributeList</code> you will need information about the <code>propertyURI</code> and <code>valueURI</code></p>
 <p>Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (<code>propertyURI</code>),
 and object (<code>valueURI</code>). Because of the way our search interface is built, for now we will be using attribute annotations that have a <code>propertyURI</code> label of “contains measurements of type”.</p>
@@ -700,8 +696,8 @@ spatialVectors and dataTables
 </div>
 </div>
 </div>
-<div id="how-to-add-an-annotation" class="section level3" number="4.7.2">
-<h3><span class="header-section-number">4.7.2</span> How to add an annotation</h3>
+<div id="how-to-add-an-annotation" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> How to add an annotation<a href="editing-eml.html#how-to-add-an-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>1. Decide which variable to annotate</strong></p>
 <p>The goal for the datateam is to start annotating every dataset that comes in. Please make sure to add semantic annotations to spatial and temporal features such as latitude, longitude, site name and date and aim to annotate as many attributes as possible.</p>
 <p><strong>2. Find an appropriate <code>valueURI</code></strong></p>
@@ -742,8 +738,8 @@ attribute</a> in this dataset
 </p>
 </div>
 <p><strong>3. Build the annotation in R</strong></p>
-<div id="manually-annotating" class="section level4" number="4.7.2.1">
-<h4><span class="header-section-number">4.7.2.1</span> Manually Annotating</h4>
+<div id="manually-annotating" class="section level4 hasAnchor" number="4.7.2.1">
+<h4><span class="header-section-number">4.7.2.1</span> Manually Annotating<a href="editing-eml.html#manually-annotating" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists</em></p>
 <p>First you need to figure out the index of the attribute you want to annotate.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="editing-eml.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
@@ -761,19 +757,19 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="editing-eml.html#cb78-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
 <span id="cb78-2"><a href="editing-eml.html#cb78-2" aria-hidden="true" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
 </div>
-<div id="shiny-attributes" class="section level4" number="4.7.2.2">
-<h4><span class="header-section-number">4.7.2.2</span> Shiny Attributes</h4>
+<div id="shiny-attributes" class="section level4 hasAnchor" number="4.7.2.2">
+<h4><span class="header-section-number">4.7.2.2</span> Shiny Attributes<a href="editing-eml.html#shiny-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>this method is great for when you are updating many attributes</em></p>
 <p>On the far right of the table of <code>shiny_attributes</code> there are 4 columns: <code>id</code>, <code>propertyURI</code>, <code>propertyLabel</code>, <code>valueURI</code>, <code>valueLabel</code> that can be filled out.</p>
 </div>
 </div>
-<div id="annotating-sensitive-data" class="section level3" number="4.7.3">
-<h3><span class="header-section-number">4.7.3</span> Annotating sensitive data</h3>
+<div id="annotating-sensitive-data" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Annotating sensitive data<a href="editing-eml.html#annotating-sensitive-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: <a href="https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root" class="uri">https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root</a>.</p>
 </div>
 </div>
-<div id="exercise-3a" class="section level2 exercise" number="4.8">
-<h2><span class="header-section-number">4.8</span> Exercise 3a</h2>
+<div id="exercise-3a" class="section level2 exercise hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Exercise 3a<a href="editing-eml.html#exercise-3a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).</p>
 <ul>
 <li>Make sure your package from <a href="#exercise-2">before</a> is loaded into R.</li>
@@ -803,8 +799,8 @@ atts &lt;- shiny_attributes(data = ex_data)
 doc$dataset$dataTable$attributeList &lt;- set_attributes(...)
 </code></pre>
 </div>
-<div id="validate-eml-and-update-package" class="section level2" number="4.9">
-<h2><span class="header-section-number">4.9</span> Validate EML and update package</h2>
+<div id="validate-eml-and-update-package" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Validate EML and update package<a href="editing-eml.html#validate-eml-and-update-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To make sure that your edited EML is valid against the EML schema, run <code>eml_validate()</code> on your EML. Fix any errors that you see.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="editing-eml.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
 <p>You should see something like if everything passes:
@@ -815,8 +811,8 @@ doc$dataset$dataTable$attributeList &lt;- set_attributes(...)
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="editing-eml.html#cb81-1" aria-hidden="true" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
 <span id="cb81-2"><a href="editing-eml.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span></code></pre></div>
 </div>
-<div id="exercise-3b" class="section level2 exercise" number="4.10">
-<h2><span class="header-section-number">4.10</span> Exercise 3b</h2>
+<div id="exercise-3b" class="section level2 exercise hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Exercise 3b<a href="editing-eml.html#exercise-3b" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Make sure you have everything from <a href="editing-eml.html#exercise-3a">before</a> in R.</li>
 </ul>
@@ -832,7 +828,7 @@ eml_validate(...)
 write_eml(...)
 
 # replace the old metadata file with the new one in the local package
-replaceMember(dp, ...)
+dp &lt;- replaceMember(dp, ...)
 
 # upload the data package
 packageId &lt;- uploadDataPackage(...)</code></pre>

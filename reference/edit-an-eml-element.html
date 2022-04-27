@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit an EML element | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit an EML element | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="edit-eml.html"/>
 <link rel="next" href="edit-attributelists.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,11 +415,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="edit-an-eml-element" class="section level2">
-<h2>Edit an EML element</h2>
+<div id="edit-an-eml-element" class="section level2 hasAnchor">
+<h2>Edit an EML element<a href="edit-an-eml-element.html#edit-an-eml-element" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are multiple ways to edit an EML element.</p>
-<div id="edit-eml-with-strings" class="section level3">
-<h3>Edit EML with strings</h3>
+<div id="edit-eml-with-strings" class="section level3 hasAnchor">
+<h3>Edit EML with strings<a href="edit-an-eml-element.html#edit-eml-with-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most basic way to edit an EML element would be to navigate to the element and replace it with something else. Easy!</p>
 <p>For example, to change the title one could use the following command:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="edit-an-eml-element.html#cb67-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="st">&quot;New Title&quot;</span></span></code></pre></div>
@@ -428,8 +427,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="edit-an-eml-element.html#cb68-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;New Title&quot;</span>, <span class="st">&quot;Second New Title&quot;</span>)</span></code></pre></div>
 <p>However, this isn’t always the best method to edit the EML, particularly if the element has sub-elements.</p>
 </div>
-<div id="edit-eml-with-the-eml-package" class="section level3">
-<h3>Edit EML with the “EML” package</h3>
+<div id="edit-eml-with-the-eml-package" class="section level3 hasAnchor">
+<h3>Edit EML with the “EML” package<a href="edit-an-eml-element.html#edit-eml-with-the-eml-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To edit a section where you are not 100% sure of the sub-elements, using the <code>eml$elementName()</code> helper functions from the EML package will pre-populate the options for you if you utilize the RStudio autocomplete functionality. The arguments in these functions show the available slots for any given EML element. For example, typing <code>doc$dataset$abstract &lt;- eml$abstract()&lt;TAB&gt;</code> will show you that the <code>abstract</code> element can take either the <code>section</code> or <code>para</code> sub-elements.</p>
 <p><img src="../images/eml_function_autocomplete.png" /></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="edit-an-eml-element.html#cb69-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">abstract</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
@@ -438,8 +437,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="edit-an-eml-element.html#cb70-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">para =</span> <span class="st">&quot;A concise but thorough description of the who, what, where, when, why, and how of a dataset.&quot;</span>)</span></code></pre></div>
 <p>The <code>eml()</code> family of functions provides the sub-elements as arguments, which is extremely helpful, but functionally all it is doing is creating a named list, which you can also do using the <code>list</code> function.</p>
 </div>
-<div id="edit-eml-with-objects" class="section level3">
-<h3>Edit EML with objects</h3>
+<div id="edit-eml-with-objects" class="section level3 hasAnchor">
+<h3>Edit EML with objects<a href="edit-an-eml-element.html#edit-eml-with-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A final way to edit an EML element would be to build a new object to replace the old object. To begin, you might create an object using an <code>eml</code> helper function. Let’s take keywords as an example. Sometimes keyword lists in a metadata record will come from different thesauruses, which you can then add in series (similar to the way we added multiple titles) to the element <code>keywordSet</code>.</p>
 <p>We start by creating our first set of keywords and saving it to an object.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="edit-an-eml-element.html#cb71-1" aria-hidden="true" tabindex="-1"></a>kw_list_1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">keywordSet</span>(<span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER controlled vocabulary&quot;</span>,</span>

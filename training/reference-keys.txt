@@ -67,8 +67,6 @@ editing-system-metadata
 edit-sysmeta
 identifiers-and-sysmeta
 additional-resources
-set-rights-and-access
-my-profile
 exercise-5
 building-provenance
 using-the-prov-editor

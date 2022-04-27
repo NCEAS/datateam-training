@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="assess-attributes.html"/>
 <link rel="next" href="recover-failed-submissions.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="list-submissions-to-the-arctic-data-center" class="section level2">
-<h2>List submissions to the Arctic Data Center</h2>
+<div id="list-submissions-to-the-arctic-data-center" class="section level2 hasAnchor">
+<h2>List submissions to the Arctic Data Center<a href="list-submissions-to-the-arctic-data-center.html#list-submissions-to-the-arctic-data-center" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If the arctic bot fails to pick up a new submission, due to an invalid token or another error, we can check for submissions using a solr query. The <code>list_submissions()</code> function in the <code>arcticdatautils</code> package is a convenience wrapper around the solr query. If the function doesn’t specifically fit your needs it’s fairly straight-forward to modify the source code. <em>Note:</em> the function can be applied to any node, although it filters out results if the submitter is in the Arctic Data Center Admins group. Refer to the function documentation for more information.</p>
 <ul>
 <li>View submissions to the Arctic Data Center from 10/1/18 to 10/7/18</li>

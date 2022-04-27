@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Reorganize files on the server | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Reorganize files on the server | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="netcdfs.html"/>
 <link rel="next" href="scan-rar-files.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,16 +415,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reorganize-files-on-the-server" class="section level2">
-<h2>Reorganize files on the server</h2>
+<div id="reorganize-files-on-the-server" class="section level2 hasAnchor">
+<h2>Reorganize files on the server<a href="reorganize-files-on-the-server.html#reorganize-files-on-the-server" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Useful commands to use when reorganizing large datasets to be prepped to be uploaded using <code>datapack</code></p>
 <div class="note">
 <p>
 This is run in the terminal
 </p>
 </div>
-<div id="basics" class="section level3">
-<h3>Basics</h3>
+<div id="basics" class="section level3 hasAnchor">
+<h3>Basics<a href="reorganize-files-on-the-server.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Moving around</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb158-1"><a href="reorganize-files-on-the-server.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> directory_name</span></code></pre></div>
 <p>Go up one directory using <code>..</code></p>
@@ -440,8 +439,8 @@ This is run in the terminal
 <span id="cb161-2"><a href="reorganize-files-on-the-server.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb161-3"><a href="reorganize-files-on-the-server.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="at">-d</span></span></code></pre></div>
 </div>
-<div id="rename-file-based-on-file-path" class="section level3">
-<h3>Rename file based on file path</h3>
+<div id="rename-file-based-on-file-path" class="section level3 hasAnchor">
+<h3>Rename file based on file path<a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For example you have some files organized like this:</p>
 <pre><code>../../visitor/Lastname
 └── RU_ALN_TR1_FL007R
@@ -473,12 +472,12 @@ This is run in the terminal
 </ul>
 <div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="reorganize-files-on-the-server.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&#39;image.png&#39;</span> <span class="kw">|</span> <span class="ex">rename</span> <span class="at">-v</span> <span class="at">--</span> <span class="st">&#39;s|(.*)/(.*)/(.*)/(.*)$|$2/$3/$2-$3-$4|&#39;</span></span></code></pre></div>
 </div>
-<div id="unzip-files" class="section level3">
-<h3>Unzip files</h3>
+<div id="unzip-files" class="section level3 hasAnchor">
+<h3>Unzip files<a href="reorganize-files-on-the-server.html#unzip-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="reorganize-files-on-the-server.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> <span class="st">&#39;*zip&#39;</span></span></code></pre></div>
 </div>
-<div id="zip-shapefiles" class="section level3">
-<h3>Zip shapefiles</h3>
+<div id="zip-shapefiles" class="section level3 hasAnchor">
+<h3>Zip shapefiles<a href="reorganize-files-on-the-server.html#zip-shapefiles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>For all the files in a directory, create a folder and move those files</li>
 </ol>

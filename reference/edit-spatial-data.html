@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit spatial data | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit spatial data | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="semantic-annotations.html"/>
 <link rel="next" href="format-text-in-eml.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,12 +415,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="edit-spatial-data" class="section level2">
-<h2>Edit spatial data</h2>
+<div id="edit-spatial-data" class="section level2 hasAnchor">
+<h2>Edit spatial data<a href="edit-spatial-data.html#edit-spatial-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Occasionally, you may encounter a third type of data object: <code>spatialVector</code> and <code>spatialRaster</code>. These objects contains spatial data (ie maps), such as a shapefile or geodatabase.</p>
 <p>Editing a <code>spatialVector</code> or <code>spatialRaster</code> is similar to editing a <code>dataTable</code> or an <code>otherEntity</code>. A <code>physical</code> and <code>attributeList</code> should be present. We will focus on how to get the information unique to spatialData and how to create the <code>spatialVector/spatialRaster</code></p>
-<div id="file-types" class="section level4">
-<h4>File types</h4>
+<div id="file-types" class="section level4 hasAnchor">
+<h4>File types<a href="edit-spatial-data.html#file-types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>File extensions to look for that might be spatial data: kml, geoJSON, geoTIFF, .dbf, .shp, and .shx</p>
 <p>Additionally, spatial data that involve multiple files should typically be archived within a .zip file to ensure all related and interdependent files stay together (ie . a geodatabase). This is one of the exceptions to our rule regarding .zip files.</p>
 <p>For example, a spatial dataset for a shapefile should, at a minimum, consist of separate .dbf, .shp, and .shx files with the same prefix in the same directory. All these files are required in order to use the data. Also note that shapefiles limit attribute names to 10 characters, so attribute names in the metadata may not match exactly to attribute names in the data. Some spatial raster data come as standalone files (.tiff or .nc) and some come as a group of files. If you aren’t sure whether to unzip a file, ask Jasmine or Jeanette.</p>
@@ -434,8 +433,8 @@ the correct <code>formatId</code>
 </p>
 </div>
 </div>
-<div id="reading-spatial-files" class="section level3">
-<h3>Reading Spatial Files</h3>
+<div id="reading-spatial-files" class="section level3 hasAnchor">
+<h3>Reading Spatial Files<a href="edit-spatial-data.html#reading-spatial-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Read in the files to (1) help you in creating your attributes table and (2) sometimes also figure out the coordinate reference system.</p>
 <pre><code>library(sf)
 spatial_file &lt;- sf::read_sf(&quot;example.kml&quot;)</code></pre>
@@ -452,8 +451,8 @@ If it is a zipped shapefile there is a handy function you can use
 <code>arcticdatautils::read_zip_shapefile(mn, pid)</code>
 </p>
 </div>
-<div id="coordinate-systems" class="section level4">
-<h4>Coordinate Systems</h4>
+<div id="coordinate-systems" class="section level4 hasAnchor">
+<h4>Coordinate Systems<a href="edit-spatial-data.html#coordinate-systems" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The coordinate system allow to work with spatial data using the same frame of reference (a Datum). A common coordinate system is “<code>GCS_WGS_1984</code> (used in Google Maps!) which is suitable for plotting points distributed globally. There are many others that may be better suited for certain areas in the world.</p>
 <p>All latitudes and longitude coordinates should have a coordinate system (like a frame of reference).</p>
 <p>There are horizontal coordinate systems (earth’s surface) and vertical coordinate systems (depth). More information can be found <a href = 'https://pro.arcgis.com/en/pro-app/help/mapping/properties/coordinate-systems-and-projections.htm' target='_blank'>here</a>.</p>
@@ -462,10 +461,10 @@ If it is a zipped shapefile there is a handy function you can use
 <p>Take the Datum and add GCS (Geographic Coordinate System) in front. For example: “GCS_WGS_1984”</p>
 </div>
 </div>
-<div id="spatialvector" class="section level3">
-<h3>spatialVector</h3>
-<div id="adding-geometry" class="section level4">
-<h4>Adding Geometry</h4>
+<div id="spatialvector" class="section level3 hasAnchor">
+<h3>spatialVector<a href="edit-spatial-data.html#spatialvector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="adding-geometry" class="section level4 hasAnchor">
+<h4>Adding Geometry<a href="edit-spatial-data.html#adding-geometry" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One important difference is that a <code>spatialVector</code> object should also have a <code>geometry</code> slot that describes the geometry features of the data. The possible values include one or more (in a list) of ‘Point’, ‘LineString’, ‘LinearRing’, ‘Polygon’, ‘MultiPoint’, ‘MultiLineString’, ‘MultiPolygon’, or ‘MultiGeometry’. You will likely have to open the file itself within QGIS or R (ie . the <code>sf</code> package) to get the correct geometry value.</p>
 <p>To add just a <code>geometry</code> slot use:</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="edit-spatial-data.html#cb113-1" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialVector[[<span class="dv">1</span>]]<span class="sc">$</span>geometry <span class="ot">&lt;-</span> <span class="st">&quot;Polygon&quot;</span></span></code></pre></div>
@@ -486,8 +485,8 @@ If it is a zipped shapefile there is a handy function you can use
 <pre><code>doc$dataset$spatialVector[[1]] &lt;- spatialVector</code></pre>
 </div>
 </div>
-<div id="spatialrasters" class="section level3">
-<h3>spatialRasters</h3>
+<div id="spatialrasters" class="section level3 hasAnchor">
+<h3>spatialRasters<a href="edit-spatial-data.html#spatialrasters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Most often these come in GeoTiff or Tiff files. The data is presented as a grid of “pixels”. For more information ESRI has a indepth article <a href = 'https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm' target='_blank'>here</a>.</p>
 <p>To use the helper function get:</p>
 <ol style="list-style-type: decimal">

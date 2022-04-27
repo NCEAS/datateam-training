@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit attributeLists | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit attributeLists | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="edit-an-eml-element.html"/>
 <link rel="next" href="edit-custom-units-1.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -416,8 +415,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="edit-attributelists" class="section level2">
-<h2>Edit attributeLists</h2>
+<div id="edit-attributelists" class="section level2 hasAnchor">
+<h2>Edit attributeLists<a href="edit-attributelists.html#edit-attributelists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:</p>
 <ol style="list-style-type: decimal">
 <li>A data.frame of attributes</li>
@@ -435,8 +434,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb75-7"><a href="edit-attributelists.html#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-8"><a href="edit-attributelists.html#cb75-8" aria-hidden="true" tabindex="-1"></a>attributes <span class="ot">&lt;-</span> attributeList<span class="sc">$</span>attributes</span>
 <span id="cb75-9"><a href="edit-attributelists.html#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(attributes)</span></code></pre></div>
-<div id="edit-attributes" class="section level3">
-<h3>Edit attributes</h3>
+<div id="edit-attributes" class="section level3 hasAnchor">
+<h3>Edit attributes<a href="edit-attributelists.html#edit-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Attribute information should be stored in a <code>data.frame</code> with the following columns:</p>
 <ul>
 <li><strong>attributeName</strong>: The name of the attribute as listed in the csv. Required. e.g.: “c_temp”</li>
@@ -502,8 +501,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="edit-attributelists.html#cb79-1" aria-hidden="true" tabindex="-1"></a>new_attribute <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">edit_attribute</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]], <span class="at">attributeName =</span> <span class="st">&#39;date_and_time&#39;</span>, <span class="at">domain =</span> <span class="st">&#39;dateTimeDomain&#39;</span>, <span class="at">measurementScale =</span> <span class="st">&#39;dateTime&#39;</span>)</span>
 <span id="cb79-2"><a href="edit-attributelists.html#cb79-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> new_attribute</span></code></pre></div>
 </div>
-<div id="edit-custom-units" class="section level3">
-<h3>Edit custom units</h3>
+<div id="edit-custom-units" class="section level3 hasAnchor">
+<h3>Edit custom units<a href="edit-attributelists.html#edit-custom-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>EML has a set list of units that can be added to an EML file. These can be seen by using the following code:</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="edit-attributelists.html#cb80-1" aria-hidden="true" tabindex="-1"></a>standardUnits <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_unitList</span>()</span>
 <span id="cb80-2"><a href="edit-attributelists.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(standardUnits<span class="sc">$</span>units)</span></code></pre></div>
@@ -531,8 +530,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="edit-attributelists.html#cb82-1" aria-hidden="true" tabindex="-1"></a>unitlist <span class="ot">&lt;-</span> <span class="fu">set_unitList</span>(custom_units, <span class="at">as_metadata =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb82-2"><a href="edit-attributelists.html#cb82-2" aria-hidden="true" tabindex="-1"></a>doc<span class="sc">$</span>additionalMetadata <span class="ot">&lt;-</span>  <span class="fu">list</span>(<span class="at">metadata =</span> <span class="fu">list</span>(<span class="at">unitList =</span> unitlist))</span></code></pre></div>
 </div>
-<div id="edit-factors" class="section level3">
-<h3>Edit factors</h3>
+<div id="edit-factors" class="section level3 hasAnchor">
+<h3>Edit factors<a href="edit-attributelists.html#edit-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For attributes that are <code>enumeratedDomains</code>, a table is needed with three columns: <code>attributeName</code>, <code>code</code>, and <code>definition</code>.</p>
 <ul>
 <li><strong>attributeName</strong> should be the same as the <code>attributeName</code> within the attribute table and repeated for all codes belonging to a common attribute.</li>
@@ -546,8 +545,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="edit-attributelists.html#cb84-1" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Location&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Location), <span class="at">definition =</span> <span class="fu">unname</span>(Location)),</span>
 <span id="cb84-2"><a href="edit-attributelists.html#cb84-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">data.frame</span>(<span class="at">attributeName =</span> <span class="st">&#39;Region&#39;</span>, <span class="at">code =</span> <span class="fu">names</span>(Region), <span class="at">definition =</span> <span class="fu">unname</span>(Region)))</span></code></pre></div>
 </div>
-<div id="finalize-attributelist" class="section level3">
-<h3>Finalize attributeList</h3>
+<div id="finalize-attributelist" class="section level3 hasAnchor">
+<h3>Finalize attributeList<a href="edit-attributelists.html#finalize-attributelist" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an <code>attributeList</code> using the following command:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="edit-attributelists.html#cb85-1" aria-hidden="true" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> attributes,</span>
 <span id="cb85-2"><a href="edit-attributelists.html#cb85-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">factors =</span> factors) </span></code></pre></div>
