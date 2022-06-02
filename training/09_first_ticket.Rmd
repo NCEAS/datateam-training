@@ -1,6 +1,6 @@
 # First Ticket
 
-After completing the previous chapters, Jasmine or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
+After completing the previous chapters, Daphne or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
 
 ```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
 ```
@@ -21,7 +21,7 @@ Once you have updated the dataset to your satisfaction and reviewed the Final Ch
 ```{r, child = '../workflows/pi_correspondence/final_review_checklist.Rmd'}
 ```
 
-After all the revisions send the link to the PI in an email through RT. Send the draft of the email to Jasmine or Jeanette on Slack.
+After all the revisions send the link to the PI in an email through RT. Send the draft of the email to Daphne or Jeanette on Slack.
 ```{r, child = '../workflows/pi_correspondence/A_email_templates.Rmd'}
 ```
 
