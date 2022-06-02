@@ -40,7 +40,7 @@ favicon: "favicon.ico"
 * <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping
 via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
 <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
-* Let Jeanette or Jasmine know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
+* Let Jeanette or Daphne know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
 
 ## NCEAS events {-}
 
