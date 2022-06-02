@@ -1,6 +1,6 @@
 # Building provenance
 
-**Note** - It is rare for a dataset to have provenance - though we would like to see that change by encouraging researchers to submit scripts whenever it is reasonable. When processing datasets if you notice that provenance is needed let Jasmine or Jeanette know.
+**Note** - It is rare for a dataset to have provenance - though we would like to see that change by encouraging researchers to submit scripts whenever it is reasonable. When processing datasets if you notice that provenance is needed let Daphne or Jeanette know.
 
 The provenance chain describes the origin and processing history of data. Provenance (or "prov") can exist on a continuum, ranging from prose descriptions of the history, to formal provenance traces, to fully executable environments. In this section we will describe how to build provenance using formal provenance traces in DataONE.
 
