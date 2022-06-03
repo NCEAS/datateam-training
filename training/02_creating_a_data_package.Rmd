@@ -70,7 +70,7 @@ If any package could not be loaded, use the following command (replacing package
 install.packages("package_name")
 ```
 
-Now install a couple of packages:
+Now you'll install the `arcticdatautils` and `datamgmt` packages with the code below. If prompted to update packages during the installation process, **skip the updates.** Now, run the following code to install and load the libraries.
 
 ```{r, eval = FALSE}
 remotes::install_github("nceas/arcticdatautils")

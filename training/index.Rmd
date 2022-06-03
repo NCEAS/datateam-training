@@ -1,6 +1,6 @@
 --- 
 title: "NCEAS Data Team Training"
-author: "Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai"
+author: "Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai, Daphne Virlar-Knight"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
@@ -40,7 +40,7 @@ favicon: "favicon.ico"
 * <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping
 via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
 <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
-* Let Jeanette or Jasmine know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
+* Let Jeanette or Daphne know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
 
 ## NCEAS events {-}
 
@@ -70,4 +70,4 @@ Take a moment to review the [diversity and inclusion page](https://www.nceas.ucs
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai. 2019 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
+Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai, Daphne Virlar-Knight. 2022 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
