@@ -21,7 +21,7 @@ There are several reasons why using the arctic-data GitHub repository is helpful
 
 ## Setting up Git
 
-Before using git, you need to tell it who you are, also known as setting the global options. The only way to do this is through the command line. When you open RStudio, you should see a Terminal tab located to the right of the Console tab. If the Terminal tab is not visible, you can open it by selecting Tools -\> Terminal -\> New Terminal at the top of your RStudio window.
+Before using git, you need to tell it who you are. The only way to do this is through the command line. When you open RStudio, you should see a Terminal tab located to the right of the Console tab. If the Terminal tab is not visible, you can open it by selecting Tools -\> Terminal -\> New Terminal at the top of your RStudio window.
 
 To tell git who you are, you're going to set the global options. This includes setting your name, email address, PAT (Personal Access Token), and caching the PAT. Make sure you run the following commands one at a time.
 
@@ -39,7 +39,7 @@ git config --global user.email MyEmail@domain.com
 
 After running these commands, the Terminal window should look like this: ![global config](images/shell_config.jpeg)
 
-Next, we will tell Git to store your PAT (we'll do that next, don't worry). We must do this because of the way  our server operating system handles credentials. If you don't run the next line, your PAT will expire immediately on the server, even though we will set it up on GitHub to be valid for 90 days.
+Next, we will tell Git to store your PAT. We must do this because of the way our server operating system handles credentials. If you don't run the next line, your PAT will expire immediately on the server, even though we will set it up on GitHub to be valid for 90 days.
 
 ```{r, eval = FALSE}
 git config --global credential.helper 'cache -- timeout=10000000'
