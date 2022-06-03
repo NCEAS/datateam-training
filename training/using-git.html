@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Using Git | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Using Git | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
 
-<meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai" />
+<meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai, Daphne Virlar-Knight" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,17 +258,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="using-git.html"><a href="using-git.html#so-why-do-i-need-to-use-this-again"><i class="fa fa-check"></i><b>8.2.1</b> So why do I need to use this again?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a>
+<li class="chapter" data-level="8.3" data-path="using-git.html"><a href="using-git.html#setting-up-git"><i class="fa fa-check"></i><b>8.3</b> Setting up Git</a></li>
+<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#github-authentication"><i class="fa fa-check"></i><b>8.4</b> GitHub Authentication</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="using-git.html"><a href="using-git.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>8.3.1</b> Cloning the arctic-data repo</a></li>
+<li class="chapter" data-level="8.4.1" data-path="using-git.html"><a href="using-git.html#cloning-the-arctic-data-repo"><i class="fa fa-check"></i><b>8.4.1</b> Cloning the arctic-data repo</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.4</b> Working with the repository</a>
+<li class="chapter" data-level="8.5" data-path="using-git.html"><a href="using-git.html#working-with-the-repository"><i class="fa fa-check"></i><b>8.5</b> Working with the repository</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="using-git.html"><a href="using-git.html#adding-a-new-script"><i class="fa fa-check"></i><b>8.4.1</b> Adding a new script</a></li>
-<li class="chapter" data-level="8.4.2" data-path="using-git.html"><a href="using-git.html#editing-a-script"><i class="fa fa-check"></i><b>8.4.2</b> Editing a script</a></li>
-<li class="chapter" data-level="8.4.3" data-path="using-git.html"><a href="using-git.html#where-do-i-commit"><i class="fa fa-check"></i><b>8.4.3</b> Where do I commit?</a></li>
+<li class="chapter" data-level="8.5.1" data-path="using-git.html"><a href="using-git.html#adding-a-new-script"><i class="fa fa-check"></i><b>8.5.1</b> Adding a new script</a></li>
+<li class="chapter" data-level="8.5.2" data-path="using-git.html"><a href="using-git.html#editing-a-script"><i class="fa fa-check"></i><b>8.5.2</b> Editing a script</a></li>
+<li class="chapter" data-level="8.5.3" data-path="using-git.html"><a href="using-git.html#where-do-i-commit"><i class="fa fa-check"></i><b>8.5.3</b> Where do I commit?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="using-git.html"><a href="using-git.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>8.5</b> My Git tab disappeared</a></li>
+<li class="chapter" data-level="8.6" data-path="using-git.html"><a href="using-git.html#my-git-tab-disappeared"><i class="fa fa-check"></i><b>8.6</b> My Git tab disappeared</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="first-ticket.html"><a href="first-ticket.html"><i class="fa fa-check"></i><b>9</b> First Ticket</a>
 <ul>
@@ -368,23 +369,46 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="setting-up-git" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Setting up Git<a href="using-git.html#setting-up-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now you need to set up your Git global options, and tell it who you are. At the top of your RStudio window, select Tools &gt; Shell. In the prompt, you will need to run two commands, one at a time. The first tells Git what your name is, the second what your email address is. These are the commands:</p>
-<p><code>git config --global user.name "My Name"</code>
-<code>git config --global user.email myemail@domain.com</code></p>
-<p>After running these commands, the shell prompt should look like this:
-<img src="images/shell_config.jpeg" alt="global config" /></p>
-<div id="cloning-the-arctic-data-repo" class="section level3 hasAnchor" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> Cloning the arctic-data repo<a href="using-git.html#cloning-the-arctic-data-repo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Next, you need to clone the arctic-data repository to your RStudio. You do this by adding it as a “project”. In your RStudio window, click File &gt; New Project. Then click ‘Version Control’, and then select the ‘Git’ option. If you are prompted to save your workspace during this process, make sure all of your work is saved, and you don’t need anything in your environment, and then click ‘Don’t Save’.</p>
-<p>You should see a prompt asking you for a URL. Fill it out as shown in the image below to clone the arctic-data repository into the top level of your home directory. Note that the URL is the same URL you use to view the repository on the web. If you are using the sasap-data repository, the URL is <a href="http://github.nceas.ucsb.edu/NCEAS/sasap-data/" class="uri">http://github.nceas.ucsb.edu/NCEAS/sasap-data/</a>.</p>
+<p>Before using git, you need to tell it who you are. The only way to do this is through the command line. When you open RStudio, you should see a Terminal tab located to the right of the Console tab. If the Terminal tab is not visible, you can open it by selecting Tools -&gt; Terminal -&gt; New Terminal at the top of your RStudio window.</p>
+<p>To tell git who you are, you’re going to set the global options. This includes setting your name, email address, PAT (Personal Access Token), and caching the PAT. Make sure you run the following commands one at a time.</p>
+<p>Type the following command in the Terminal window, with your actual name, and press enter. If you do this correctly, it will look as though <strong>nothing</strong> happened.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="using-git.html#cb109-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global user.name <span class="st">&quot;Your Name&quot;</span></span></code></pre></div>
+<p>Next, enter the following line, with the email address associated with your GitHub account.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="using-git.html#cb110-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global user.email MyEmail<span class="sc">@</span>domain.com</span></code></pre></div>
+<p>After running these commands, the Terminal window should look like this: <img src="images/shell_config.jpeg" alt="global config" /></p>
+<p>Next, we will tell Git to store your PAT. We must do this because of the way our server operating system handles credentials. If you don’t run the next line, your PAT will expire immediately on the server, even though we will set it up on GitHub to be valid for 90 days.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="using-git.html#cb111-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global credential.helper <span class="st">&#39;cache -- timeout=10000000&#39;</span></span></code></pre></div>
+<p>Finally, check to make sure everything looks correct by entering the following command, which will return the options that you have set.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="using-git.html#cb112-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global <span class="sc">--</span>list</span></code></pre></div>
+</div>
+<div id="github-authentication" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> GitHub Authentication<a href="using-git.html#github-authentication" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>GitHub recently deprecated password authentication for accessing repositories, so we need to set up a secure way to authenticate. That’s where the PAT comes in.</p>
+<p>In the tabs at the bottom of your RStudio window, make sure to switch from the <strong>Terminal</strong> to the <strong>Console</strong>. Now that, you’ve done that, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Run <code>usethis::create_github_token()</code></li>
+<li>In the browser window that pops up, log into GitHub</li>
+<li>In the “Expiration” drop down menu, select “90 days”</li>
+<li>Click “Generate token” in the green box at the bottom of the page</li>
+<li>On the next page, copy the token from the green box</li>
+<li>Back in RStudio, run <code>credentials::set_github_pat()</code></li>
+<li>Paste your token into the dialog box that pops up</li>
+</ol>
+<p>You’ve now successfully set your PAT in RStudio, and connected R, Git, and GitHub. Great job! Now, you’re going to clone the repository we work in so that you can version control your code.</p>
+<div id="cloning-the-arctic-data-repo" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Cloning the arctic-data repo<a href="using-git.html#cloning-the-arctic-data-repo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To clone the arctic-data repository, navigate to the repository on GitHub: <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/" class="uri">https://github.nceas.ucsb.edu/KNB/arctic-data/</a>.</p>
+<p>If you are not already logged on, this will be the enterprise account you use to log in when you go to RT. If you have trouble with this, send a message to Nick Outin (<span class="citation">@Nick</span>) in the datateam slack channel.</p>
+<p>Once you are logged on and can view the above link, click on the green “Code” button, and copy the URL in the gray box.</p>
+<p>In your RStudio window, click File -&gt; New Project -&gt; Version Control -&gt; Git. Paste the URL you just copied into the “Repository URL” box, and press tab on your keyboard. This should autofill the “Project directory name.” If it does not, then type in <code>arctic-data</code>. Fill it out as shown in the image below to clone the arctic-data repository into the top level of your home directory. Click “Create Project,” and now you should have a directory called arctic-data in your RStudio files window.</p>
+<p>If you are prompted to save your workspace during this process, make sure all of your work is saved, and you don’t need anything in your environment, and then click ‘Don’t Save’.</p>
 <p><img src="images/clone_repo.jpeg" /></p>
-<p>You will be prompted for your username and password, and then Git will clone the directory. The username/password you use should be the enterprise account you use to log in when you go to <a href="http://github.nceas.ucsb.edu/KNB/arctic-data" class="uri">http://github.nceas.ucsb.edu/KNB/arctic-data</a> or RT. Now you should have a directory called arctic-data in your RStudio files window.</p>
 </div>
 </div>
-<div id="working-with-the-repository" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> Working with the repository<a href="using-git.html#working-with-the-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="adding-a-new-script" class="section level3 hasAnchor" number="8.4.1">
-<h3><span class="header-section-number">8.4.1</span> Adding a new script<a href="using-git.html#adding-a-new-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="working-with-the-repository" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Working with the repository<a href="using-git.html#working-with-the-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-a-new-script" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Adding a new script<a href="using-git.html#adding-a-new-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you have been working on a script that you want to put in the arctic-data GitHub repo, you first need to save it somewhere in the arctic-data folder you cloned to your account on the Datateam server. You can do this by either moving your script into the folder or using the save-as functionality. Note that Git will try and version anything that you save in this folder, so you should be careful about what you save here. For our purposes, things that probably shouldn’t be saved in this folder include:</p>
 <ul>
 <li><strong>Tokens</strong>: Any token file or script with a token in it should NOT be saved in the repository. Others could steal your login credentials if you put a token in GitHub.</li>
@@ -399,29 +423,26 @@ something unexpected (like a file you have never worked on) shows up in
 your Git tab, ask for help before committing.
 </p>
 </div>
-<p>After you save your script in the appropriate place within the arctic-data folder, it will show up in your Git tab looking like this:
-<img src="images/unstaged.jpeg" /></p>
-<p>Before you commit your changes, you need to click the little box under “Staged”. Do not stage or commit any .Rproj file. After clicking the box for your file, click “Commit” to commit your changes. In the window that pops up (you may need to force the browser to allow pop-ups), write your commit message. <em>Always</em> include a commit message. Remember that the commit message should be a concise description of the changes that were made to a file. Your window should look like this:
-<img src="images/commit.jpeg" /></p>
+<p>After you save your script in the appropriate place within the arctic-data folder, it will show up in your Git tab looking like this: <img src="images/unstaged.jpeg" /></p>
+<p>Before you commit your changes, you need to click the little box under “Staged”. Do not stage or commit any .Rproj file. After clicking the box for your file, click “Commit” to commit your changes. In the window that pops up (you may need to force the browser to allow pop-ups), write your commit message. <em>Always</em> include a commit message. Remember that the commit message should be a concise description of the changes that were made to a file. Your window should look like this: <img src="images/commit.jpeg" /></p>
 <p>Push ‘Commit’, and your commit will be saved to your local repository (this will not push it to the remote repository, yet). Now you want to merge the commits you made with the master version of the remote repository. You do this by using the command “Push.” But before you push, you <em>always</em> need to pull first to avoid merge conflicts. Pulling will merge the current version of the remote repository with your local repository, on your local machine. Click “Pull” and type in your credentials. Then, assuming you don’t have a merge conflict, you can push your changes by clicking “Push”.</p>
 <p>Always remember, the order is <strong>commit-pull-push</strong>.</p>
 </div>
-<div id="editing-a-script" class="section level3 hasAnchor" number="8.4.2">
-<h3><span class="header-section-number">8.4.2</span> Editing a script<a href="using-git.html#editing-a-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="editing-a-script" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Editing a script<a href="using-git.html#editing-a-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you want to change a script, the workflow is the same. Just open the script that was saved in the arctic-data folder on your server account, make your changes, save the changes, stage them by clicking the box, commit, pull, then push to merge your version with the main version on the website. Do NOT edit scripts using the GitHub website. It is much easier to accidentally overwrite the history of a file this way.</p>
 <p>One thing you might be wondering as you are working on a script is, how often should I be committing my changes? It might not make sense to commit-pull-push after every single tiny change - if only because it would slow you way down. Personally, I commit every time I feel that a significant change has happened and that the chunk of code I was working on is “done”. Sometimes this is an entire script, other times it is just a few lines within a script. A good sign that you are committing too infrequently might be if many of your commit messages address a wide variety of coding tasks, such as: “wrote for loop to create referenced attribute lists for tables 1:20. also created nesting structure for this package with another package. also created attribute list for data table 40”.</p>
-<p>One final note, you can make multiple commits before you push to the repo. If you are making lots of changes to the script, you might want to make several commits before pull-push. You can see how many commits you are ahead of the “origin/master” branch (i.e. what you see on the website) by looking for text in your Git tab in RStudio that looks like this:
-<img src="images/multiple_commits.jpeg" /></p>
+<p>One final note, you can make multiple commits before you push to the repo. If you are making lots of changes to the script, you might want to make several commits before pull-push. You can see how many commits you are ahead of the “origin/master” branch (i.e. what you see on the website) by looking for text in your Git tab in RStudio that looks like this: <img src="images/multiple_commits.jpeg" /></p>
 </div>
-<div id="where-do-i-commit" class="section level3 hasAnchor" number="8.4.3">
-<h3><span class="header-section-number">8.4.3</span> Where do I commit?<a href="using-git.html#where-do-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="where-do-i-commit" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Where do I commit?<a href="using-git.html#where-do-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default right now is to save data-processing scripts in the <code>arctic-data/datateam/data-processing/</code> directory, with sub-folders listed by project. Directories can be created as needed but please ask Dom or Jesse first so we can try and maintain some semblance of order in the file structure.</p>
 <p>The Github workflow diagram from <a href = 'https://www.reddit.com/r/git/comments/99ul9f/git_workflow_diagram_showcasing_the_role_of/' target='_blank'>stamminator</a> shows each step and their functions explicitly.</p>
 <p><img src="images/github-workflow.png" /></p>
 </div>
 </div>
-<div id="my-git-tab-disappeared" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> My Git tab disappeared<a href="using-git.html#my-git-tab-disappeared" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="my-git-tab-disappeared" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> My Git tab disappeared<a href="using-git.html#my-git-tab-disappeared" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes R will crash so hard it loses your project information, causing your Git tab to disappear. Most likely, RStudio has just closed your “project” and all you need to do is reopen it. If your Git tab has disappeared, in the top right of your RStudio session, you should see a little R logo with “Project: (None)” next to it. This means you do not currently have a project open. Clicking the arrow should give you a dropdown menu of recent projects, where you can select “arctic-data” or “sasap-data.” Once you have opened your project, the Git tab should reappear! This is also a convenient way to switch between projects if you are working in multiple repositories.</p>
 
 </div>

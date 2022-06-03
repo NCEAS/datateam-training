@@ -79,6 +79,7 @@ usage-in-the-datateam
 what-is-git
 so-why-do-i-need-to-use-this-again
 setting-up-git
+github-authentication
 cloning-the-arctic-data-repo
 working-with-the-repository
 adding-a-new-script
