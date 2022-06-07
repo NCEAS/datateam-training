@@ -55,10 +55,11 @@ NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on
     
 ## NCEAS Community Meetings/ Groups {-}
 
-Check out their inidividual calendar entries and channels for more information
+Check out their individual calendar entries and channels for more information
 
 * Early Career Researcher Community Forum - #ecr_community
 * Hacky Hours - #hackyhour
+* Data Science Chats - #data-science-chats
 * NCEAS Diversity Team
 * NCEAS Book Club - #bookclub
 
