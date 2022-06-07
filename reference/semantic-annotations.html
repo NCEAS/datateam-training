@@ -536,6 +536,13 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <div id="annotating-sensitive-data" class="section level3 hasAnchor">
 <h3>Annotating sensitive data<a href="semantic-annotations.html#annotating-sensitive-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: <a href="https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root" class="uri">https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root</a>.</p>
+<div id="dataset-annotations" class="section level4 hasAnchor">
+<h4>Dataset Annotations<a href="semantic-annotations.html#dataset-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.</p>
+<p>Datasets will be categorized using the <a href="https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&amp;conceptid=root">Academic Ontology</a>. These annotations will be seen at the top of the landing page, and can be thought of as “themes” for the dataset. In reality, they are dataset-level annotations.</p>
+<p>Be sure to ask your peers in the #datateam slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="semantic-annotations.html#cb111-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">eml_categorize_dataset</span>(doc, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>))</span></code></pre></div>
+</div>
 </div>
 </div>
             </section>

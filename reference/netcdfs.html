@@ -418,20 +418,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="netcdfs" class="section level2 hasAnchor">
 <h2>NetCDFs<a href="netcdfs.html#netcdfs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section is for dealing with NetCDF (.nc) files. These files require <em>data tables</em> but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or the R commands. However, notice that not all NetCDF files have the attribute table information.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="netcdfs.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
-<span id="cb156-2"><a href="netcdfs.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
-<span id="cb156-3"><a href="netcdfs.html#cb156-3" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
-<span id="cb156-4"><a href="netcdfs.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
-<span id="cb156-5"><a href="netcdfs.html#cb156-5" aria-hidden="true" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="netcdfs.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
+<span id="cb157-2"><a href="netcdfs.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
+<span id="cb157-3"><a href="netcdfs.html#cb157-3" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
+<span id="cb157-4"><a href="netcdfs.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
+<span id="cb157-5"><a href="netcdfs.html#cb157-5" aria-hidden="true" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netCDF_full_att_preview.png" /></p>
 <p>The “long_name” can be used to build a definition.</p>
 <p>The “units” can be used for either units or the enumerated domain codes.</p>
 <p>The “_FillValue” is a missing value code it looks like.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="netcdfs.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
-<span id="cb157-2"><a href="netcdfs.html#cb157-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
-<span id="cb157-3"><a href="netcdfs.html#cb157-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
-<span id="cb157-4"><a href="netcdfs.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
-<span id="cb157-5"><a href="netcdfs.html#cb157-5" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="netcdfs.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
+<span id="cb158-2"><a href="netcdfs.html#cb158-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
+<span id="cb158-3"><a href="netcdfs.html#cb158-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
+<span id="cb158-4"><a href="netcdfs.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
+<span id="cb158-5"><a href="netcdfs.html#cb158-5" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netcdf_value_preview.png" /></p>
 <p>The <code>formatId</code> in the sysmeta will most likely be <code>netCDF-4</code>, but could be <code>netCDF-3</code>.</p>
 </div>

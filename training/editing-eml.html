@@ -768,6 +768,13 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <div id="annotating-sensitive-data" class="section level3 hasAnchor" number="4.7.3">
 <h3><span class="header-section-number">4.7.3</span> Annotating sensitive data<a href="editing-eml.html#annotating-sensitive-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: <a href="https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root" class="uri">https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&amp;conceptid=root</a>.</p>
+<div id="dataset-annotations" class="section level4 hasAnchor" number="4.7.3.1">
+<h4><span class="header-section-number">4.7.3.1</span> Dataset Annotations<a href="editing-eml.html#dataset-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.</p>
+<p>Datasets will be categorized using the <a href="https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&amp;conceptid=root">Academic Ontology</a>. These annotations will be seen at the top of the landing page, and can be thought of as “themes” for the dataset. In reality, they are dataset-level annotations.</p>
+<p>Be sure to ask your peers in the #datateam slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="editing-eml.html#cb79-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">eml_categorize_dataset</span>(doc, <span class="fu">c</span>(<span class="st">&quot;list&quot;</span>, <span class="st">&quot;of&quot;</span>, <span class="st">&quot;themes&quot;</span>))</span></code></pre></div>
+</div>
 </div>
 </div>
 <div id="exercise-3a" class="section level2 exercise hasAnchor" number="4.8">
@@ -804,14 +811,14 @@ doc$dataset$dataTable$attributeList &lt;- set_attributes(...)
 <div id="validate-eml-and-update-package" class="section level2 hasAnchor" number="4.9">
 <h2><span class="header-section-number">4.9</span> Validate EML and update package<a href="editing-eml.html#validate-eml-and-update-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To make sure that your edited EML is valid against the EML schema, run <code>eml_validate()</code> on your EML. Fix any errors that you see.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="editing-eml.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="editing-eml.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
 <p>You should see something like if everything passes:
 &gt;[1] TRUE
 &gt;attr(,“errors”)
 &gt;character(0)</p>
 <p>Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="editing-eml.html#cb81-1" aria-hidden="true" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
-<span id="cb81-2"><a href="editing-eml.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="editing-eml.html#cb82-1" aria-hidden="true" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
+<span id="cb82-2"><a href="editing-eml.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span></code></pre></div>
 </div>
 <div id="exercise-3b" class="section level2 exercise hasAnchor" number="4.10">
 <h2><span class="header-section-number">4.10</span> Exercise 3b<a href="editing-eml.html#exercise-3b" class="anchor-section" aria-label="Anchor link to header"></a></h2>

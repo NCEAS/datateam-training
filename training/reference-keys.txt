@@ -55,6 +55,7 @@ how-to-add-an-annotation
 manually-annotating
 shiny-attributes
 annotating-sensitive-data
+dataset-annotations
 exercise-3a
 validate-eml-and-update-package
 exercise-3b

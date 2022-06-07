@@ -428,8 +428,8 @@ physical model (how the data are written to a physical hard disk
 physical.
 </p>
 </div>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-physical.html#cb134-1" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
-<span id="cb134-2"><a href="set-physical.html#cb134-2" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, data_pid)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="set-physical.html#cb135-1" aria-hidden="true" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
+<span id="cb135-2"><a href="set-physical.html#cb135-2" aria-hidden="true" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, data_pid)</span></code></pre></div>
 <p>The <code>physical</code> must then be assigned to the data object.</p>
 <p>Note that the above workflow only works if your data object already exists on the member node.</p>
 </div>
