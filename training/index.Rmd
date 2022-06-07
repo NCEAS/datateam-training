@@ -19,8 +19,8 @@ favicon: "favicon.ico"
 ## First day to-dos {-}
 
 * Get a tour of the office from Ginger
-* Fill out required paperwork from Ana (room 309)
-* Have Gabriella take your picture (room 309)
+* Fill out required paperwork from Ana (room 325)
+* Schedule a headshot with Alex (room 326)
 * Set up the remainder of your accounts
 
 ## Account information {-}
@@ -55,12 +55,18 @@ NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on
     
 ## NCEAS Community Meetings/ Groups {-}
 
-Check out their inidividual calendar entries and channels for more information
+Check out their individual calendar entries and channels for more information
 
 * Early Career Researcher Community Forum - #ecr_community
 * Hacky Hours - #hackyhour
+* Data Science Chats - #data-science-chats
 * NCEAS Diversity Team
 * NCEAS Book Club - #bookclub
+
+## Internship Expectations {-}
+As an intern with the data team, there are a few expectations that the Project Coordinators have of you. Overall, we expect you to be communicative and proactive. We want you to learn and grow in this position, but we don't want you spinning your wheels going nowhere fast! If you've spent 10-15 minutes on an issue and you're not making any progress, reach out to us and your peers for help in the #datateam slack channel. The #datateam slack channel is the main form of communication, and we expect all interns to become comfortable communicating in this space. 
+
+Additionally, we expect interns to work within the standard business hours of 8am - 5pm (pacific time). We ask that you mark your expected work hours on the shared "Intern" Google Calendar. This is so that the Project Coordinators are aware of who's working day-to-day and can plan their days accordingly. We also use this to verify time sheets when they are submitted. Ideally, interns would input their proposed hours on the calendar at least one week in advance. During exams and other unusually busy weeks at school, we understand you may need to shift your hours or reduce your workload. When this occurs, please make sure to email either Daphne or Jeanette so that we know not to expect you during your usual schedule.
 
 ## Code of Conduct {-}
 
