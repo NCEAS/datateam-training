@@ -19,8 +19,8 @@ favicon: "favicon.ico"
 ## First day to-dos {-}
 
 * Get a tour of the office from Ginger
-* Fill out required paperwork from Ana (room 309)
-* Have Gabriella take your picture (room 309)
+* Fill out required paperwork from Ana (room 325)
+* Schedule a headshot with Alex (room 326)
 * Set up the remainder of your accounts
 
 ## Account information {-}
