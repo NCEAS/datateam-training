@@ -71,7 +71,6 @@ You've now successfully set your PAT in RStudio, and connected R, Git, and GitHu
 
 To clone the arctic-data repository, navigate to the repository on GitHub: <https://github.nceas.ucsb.edu/KNB/arctic-data/>.
 
-If you are using the sasap-data repository, the URL is <http://github.nceas.ucsb.edu/NCEAS/sasap-data/>.
 
 If you are not already logged on, this will be the enterprise account you use to log in when you go to RT. If you have trouble with this, send a message to Nick Outin (@Nick) in the datateam slack channel. 
 
