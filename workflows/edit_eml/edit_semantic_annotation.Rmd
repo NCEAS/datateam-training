@@ -144,3 +144,14 @@ On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `
 
 Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&conceptid=root. 
 
+#### Dataset Annotations
+
+As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.
+
+Datasets will be categorized using the [Academic Ontology](https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&conceptid=root). These annotations will be seen at the top of the landing page, and can be thought of as "themes" for the dataset. In reality, they are dataset-level annotations.
+
+Be sure to ask your peers in the #datateam slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code: 
+
+```{r, eval = F}
+doc <- datamgmt::eml_categorize_dataset(doc, c("list", "of", "themes"))
+```
