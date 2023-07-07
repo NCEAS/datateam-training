@@ -140,11 +140,15 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- l
 
 On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `propertyURI`, `propertyLabel`, `valueURI`, `valueLabel` that can be filled out.
 
-### Annotating sensitive data
+### Dataset annotations
+
+In addition to attributes being assigned annotations, the overall dataset will also be annotated. The dataset will be given two categories of annotations: one for documenting how "sensitive" the data are, and one for documenting the overall academic discipline the dataset falls under.
+
+#### Annotating sensitive data
 
 Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&conceptid=root. 
 
-#### Dataset Annotations
+#### Academic discipline annotations
 
 As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.
 
