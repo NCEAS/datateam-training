@@ -79,11 +79,11 @@ data <- read.csv(text=rawToChar(getObject(d1c_test@mn, data_pid)))
 
 ```{r, eval = FALSE}
 # From data (recommended)
-EML::shiny_attributes(data = data)
+atts <- EML::shiny_attributes(data = data)
 
 # From an existing attribute table
 attributeList <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
-EML::shiny_attributes(data = NULL, attributes = attributeList$attributes)
+atts <- EML::shiny_attributes(data = NULL, attributes = attributeList$attributes)
 
 # From scratch
 atts <- EML::shiny_attributes()
@@ -171,7 +171,7 @@ factors <- rbind(data.frame(attributeName = 'Location', code = names(Location), 
 Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an `attributeList` using the following command:
 
 ```{r, eval = FALSE}
-attributeList <- EML::set_attributes(attributes = attributes,
+attributeList <- EML::set_attributes(attributes = atts$attributes,
                                      factors = factors) 
 ```
 
