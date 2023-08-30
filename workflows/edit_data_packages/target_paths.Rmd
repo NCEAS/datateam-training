@@ -77,7 +77,6 @@ rel_paths <- list.files("~/Submitter/PI_dir_name/", full.names = FALSE, recursiv
 Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory.
 
 ```{r, eval = FALSE}
-
 metadataObj <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 
 for (i in 1:length(abs_paths)){
@@ -99,8 +98,37 @@ The `targetPath` (3rd column) should NOT look like
 
 Make sure this looks correct, then update the data package with:
 
-```{r}
+```{r, eval = FALSE}
 uploadDataPackage(d1c, dp, public = FALSE)
 ```
 
 Finally, check your work. Go to the Arctic Data Center and see if the package displays correctly. Edit the package using the user interface to remove the zip file. Continue with metadata updates as normal.
+
+### Summary
+
+Here is the example code all put together. Make sure you change all of the relevant bits, and check your work carefully!!
+
+```{r, eval = FALSE}
+url <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338"
+pid <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
+
+arcticdatautils::set_public_read(d1c@mn, pid)
+download.file(url, "~/Submitter/example.zip")
+arcticdatautils::remove_public_read(d1c@mn, pid)
+
+unzip("~/Submitter/example.zip", exdir = "~/Submitter")
+
+dp <- getDataPackage(d1c, "identifier")
+
+abs_paths <- list.files("~/Submitter/PI_dir_name/", full.names = TRUE, recursive = TRUE)
+rel_paths <- list.files("~/Submitter/PI_dir_name/", full.names = FALSE, recursive = TRUE)
+
+metadataObj <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
+
+for (i in 1:length(abs_paths)){
+  formatId <- arcticdatautils::guess_format_id(abs_paths[i])
+  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i])
+  dp <- addMember(dp, dataObj, metadataObj)
+}
+```
+
