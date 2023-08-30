@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Edit otherEntities | NCEAS Data Team Reference Guide</title>
+  <title>Preserve folder structures | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Edit otherEntities | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Preserve folder structures | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Edit otherEntities | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Preserve folder structures | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="edit-datatables.html"/>
-<link rel="next" href="semantic-annotations.html"/>
+<link rel="prev" href="show-indexing-status.html"/>
+<link rel="next" href="update-a-package-with-a-new-data-object.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -425,26 +425,124 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="edit-otherentities" class="section level2 hasAnchor">
-<h2>Edit otherEntities<a href="edit-otherentities.html#edit-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="remove-otherentities" class="section level3 hasAnchor">
-<h3>Remove otherEntities<a href="edit-otherentities.html#remove-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To remove an <code>otherEntity</code> use the following command. This may be useful if a data object is originally listed as an <code>otherEntity</code> and then transferred to a <code>dataTable</code>.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="edit-otherentities.html#cb106-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div id="preserve-folder-structures" class="section level2 hasAnchor">
+<h2>Preserve folder structures<a href="preserve-folder-structures.html#preserve-folder-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes, researchers will upload zip files that a contain nested file and folder structure that we would like to maintain. This reference section will walk you through how to re-upload the contents of the zip file to the Arctic Data Center such that the files and folders are preserved. Note that changing the locations of the files within the package can be tricky, so take these steps with care and try to make sure it is done correctly.</p>
+<p>With that, here are the steps assuming that the PI has uploaded one zip file to their dataset. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator.</p>
+<div id="download-the-zip-file-to-datateam" class="section level3 hasAnchor">
+<h3>Download the zip file to datateam<a href="preserve-folder-structures.html#download-the-zip-file-to-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we will download the file, using R. To make things simpler, we’ll set public read on <strong>just the data file</strong> and then remove it again when we are finished.</p>
+<ol style="list-style-type: decimal">
+<li>Navigate to the dataset landing page on the Arctic Data Center</li>
+<li>Right click the “download” button next to the zip file</li>
+<li>Select “copy link address”</li>
+<li>Run the following two lines of code to set the URL variable, and extract the pid</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="preserve-folder-structures.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb49-2"><a href="preserve-folder-structures.html#cb49-2" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338&quot;</span></span>
+<span id="cb49-3"><a href="preserve-folder-structures.html#cb49-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Set public read on the pid</li>
+<li>Download the file</li>
+<li>Remove public read again</li>
+</ol>
+<p>Note that this will download the file to the location you specify as the second argument in <code>download.file</code>. If you are organizing your scripts and data by submitter, it would look like the example below.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="preserve-folder-structures.html#cb50-1" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">set_public_read</span>(d1c<span class="sc">@</span>mn, pid)</span>
+<span id="cb50-2"><a href="preserve-folder-structures.html#cb50-2" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="st">&quot;~/Submitter/example.zip&quot;</span>)</span>
+<span id="cb50-3"><a href="preserve-folder-structures.html#cb50-3" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">remove_public_read</span>(d1c<span class="sc">@</span>mn, pid)</span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Unzip the file into your submitter directory.</li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="preserve-folder-structures.html#cb51-1" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/Submitter/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/Submitter&quot;</span>)</span></code></pre></div>
+<p>Now if you look at the directory, you shuold see the unzipped contents of the file in a subdirectory of <code>~/Submitter</code>. The name of the directory will be the name of the folder the PI created the archive from.</p>
+<p>Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for csv versions of excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.</p>
 </div>
-<div id="create-otherentities" class="section level3 hasAnchor">
-<h3>Create otherEntities<a href="edit-otherentities.html#create-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If you need to create/update an <code>otherEntity</code>, make sure to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/edit-otherentities.html#update-a-data-file' target='_blank'>update</a> your data object first (if it is not already on the DataONE MN). Then build your <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="edit-otherentities.html#cb107-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
-<p>Alternatively, you can build the <code>otherEntity</code> of a data object not in your package by simply inputting the data <code>PID</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="edit-otherentities.html#cb108-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>, <span class="at">entityType =</span> <span class="st">&quot;otherEntity&quot;</span>, <span class="at">entityName =</span> <span class="st">&quot;Entity Name&quot;</span>, <span class="at">entityDescription =</span> <span class="st">&quot;Description about entity&quot;</span>)</span></code></pre></div>
-<p>The <code>otherEntity</code> must then be set to the EML, like so:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="edit-otherentities.html#cb109-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
-<p>If you have more than one <code>otherEntity</code> object in the EML already, you can add the new one like this:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="edit-otherentities.html#cb110-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
-<p>Where <code>i</code> is set to the number of existing entities plus one.</p>
-<p>Remember the warning from the last section, however. If you only have one <code>otherEntity</code>, and you are trying to add another, you have to run:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="edit-otherentities.html#cb111-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="fu">list</span>(otherEntity, doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)</span></code></pre></div>
+<div id="re-upload-the-contents-to-the-arctic-data-center" class="section level3 hasAnchor">
+<h3>Re-upload the contents to the Arctic Data Center<a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once you have confirmed everything is all good, we can upload the files to the ADC while preserving the directory structure.</p>
+<p>First, get the data package loaded into your R session as usual. I recommend not attempting any EML edits while you do these steps, this update adding the files is best done on it’s own, and EML edits can be done on the next version.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="preserve-folder-structures.html#cb52-1" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;identifier&quot;</span>)</span></code></pre></div>
+<p>Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the download all result) of the data package.</p>
+<div class="warning">
+<p>
+If you don’t know the difference between an absolute and relative
+path, read on. It is SUPER IMPORTANT!
+</p>
+<p>
+A path is a location of a file or folder on a computer. There are two
+types of paths in computing: absolute paths and relative paths.
+</p>
+<p>
+An absolute path always starts with the root of your file system and
+locates files from there. The absolute path to my example submitter zip
+is: <code>/home/jclark/Submitter/example.zip</code>. The generic
+shortcut <code>~/</code> is often used to replace the location of your
+home directory (<code>/home/username</code>) to save typing, but your
+path is still an absolute path if it starts with <code>~/</code>. Note
+that a relative path will <strong>always</strong> start with either
+<code>~/</code> or <code>/</code>.
+</p>
+<p>
+Relative paths start from some location in your file system that is
+below the root. Relative paths are combined with the path of that
+location to locate files on your system. R (and some other languages
+like MATLAB) refer to the location where the relative path starts as our
+working directory. If our working directory is set to
+<code>~/Submitter</code>, the relative path to the zip would be just
+<code>example.zip</code>. Note that a relative path will
+<strong>never</strong> start with either <code>~/</code> or
+<code>/</code>.
+</p>
+</div>
+<p>Getting these paths right is very important because we don’t want submitters to download a folder of data, and have the paths look like <code>/home/internname/ticket_27341/important_folder/important_file.csv</code>. The first part of that path is particular to however the person processing the ticket organized the data, and is not how the submitter of the data intented to organize the data. Follow the steps below to make sure this does not happen.</p>
+<ol style="list-style-type: decimal">
+<li><p>get a list of absolute paths for each file in the directory. <strong>NOTE</strong> The “PI_dir_name” here represents whatever directory you retrieved after running <code>unzip</code> in the previous step. The actual .zip file should not be in this directory.</p></li>
+<li><p>get a list of relative paths for each file in the directory. Note this is the same command, but with the argument <code>full.names</code> set to <code>FALSE</code>.</p></li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="preserve-folder-structures.html#cb53-1" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-2"><a href="preserve-folder-structures.html#cb53-2" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Now for each of these files, we can create a <code>dataObject</code> for them and add them to the package using a loop. Before running this, look at the values of your <code>abs_paths</code> and <code>rel_paths</code> and make sure they look correct based on what you know about both paths and the structure of the directory.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="preserve-folder-structures.html#cb54-1" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
+<span id="cb54-2"><a href="preserve-folder-structures.html#cb54-2" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="preserve-folder-structures.html#cb54-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)){</span>
+<span id="cb54-4"><a href="preserve-folder-structures.html#cb54-4" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
+<span id="cb54-5"><a href="preserve-folder-structures.html#cb54-5" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i])</span>
+<span id="cb54-6"><a href="preserve-folder-structures.html#cb54-6" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataObj)</span>
+<span id="cb54-7"><a href="preserve-folder-structures.html#cb54-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>Once this is finished you can examine the relationships by running <code>View(dp@relations$relations)</code>. If everything worked out well you should see rows that look like this:</p>
+<p>|—————————————————————|————————————————————————————————————————————|———————–|
+| <code>urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d</code> | <code>http://www.w3.org/ns/prov#atLocation</code> | <code>figure2/figure2.tif</code> |</p>
+<p>The <code>targetPath</code> (3rd column) should NOT look like</p>
+<p>|—————————————————————|————————————————————————————————————————————|———————–|
+| <code>urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d</code> | <code>http://www.w3.org/ns/prov#atLocation</code> | <code>/home/jclark/ArcticSupport/Zhao/dataset1/figure2/figure2.tif</code> |</p>
+<p>Make sure this looks correct, then update the data package with:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="preserve-folder-structures.html#cb55-1" tabindex="-1"></a><span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Finally, check your work. Go to the Arctic Data Center and see if the package displays correctly. Edit the package using the user interface to remove the zip file. Continue with metadata updates as normal.</p>
+</div>
+<div id="summary" class="section level3 hasAnchor">
+<h3>Summary<a href="preserve-folder-structures.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is the example code all put together. Make sure you change all of the relevant bits, and check your work carefully!!</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="preserve-folder-structures.html#cb56-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338&quot;</span></span>
+<span id="cb56-2"><a href="preserve-folder-structures.html#cb56-2" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
+<span id="cb56-3"><a href="preserve-folder-structures.html#cb56-3" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="preserve-folder-structures.html#cb56-4" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">set_public_read</span>(d1c<span class="sc">@</span>mn, pid)</span>
+<span id="cb56-5"><a href="preserve-folder-structures.html#cb56-5" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="st">&quot;~/Submitter/example.zip&quot;</span>)</span>
+<span id="cb56-6"><a href="preserve-folder-structures.html#cb56-6" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">remove_public_read</span>(d1c<span class="sc">@</span>mn, pid)</span>
+<span id="cb56-7"><a href="preserve-folder-structures.html#cb56-7" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="preserve-folder-structures.html#cb56-8" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/Submitter/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/Submitter&quot;</span>)</span>
+<span id="cb56-9"><a href="preserve-folder-structures.html#cb56-9" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="preserve-folder-structures.html#cb56-10" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;identifier&quot;</span>)</span>
+<span id="cb56-11"><a href="preserve-folder-structures.html#cb56-11" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="preserve-folder-structures.html#cb56-12" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-13"><a href="preserve-folder-structures.html#cb56-13" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-14"><a href="preserve-folder-structures.html#cb56-14" tabindex="-1"></a></span>
+<span id="cb56-15"><a href="preserve-folder-structures.html#cb56-15" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
+<span id="cb56-16"><a href="preserve-folder-structures.html#cb56-16" tabindex="-1"></a></span>
+<span id="cb56-17"><a href="preserve-folder-structures.html#cb56-17" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)){</span>
+<span id="cb56-18"><a href="preserve-folder-structures.html#cb56-18" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
+<span id="cb56-19"><a href="preserve-folder-structures.html#cb56-19" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i])</span>
+<span id="cb56-20"><a href="preserve-folder-structures.html#cb56-20" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataObj)</span>
+<span id="cb56-21"><a href="preserve-folder-structures.html#cb56-21" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -452,8 +550,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="edit-datatables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="semantic-annotations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="show-indexing-status.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="update-a-package-with-a-new-data-object.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

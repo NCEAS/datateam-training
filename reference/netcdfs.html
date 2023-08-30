@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>NetCDFs | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.26.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="NetCDFs | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-06-07" />
+<meta name="date" content="2023-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -89,11 +89,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -102,14 +102,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -117,6 +117,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="../styles.css" type="text/css" />
 </head>
@@ -187,6 +191,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html#my-profile"><i class="fa fa-check"></i>My profile</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="show-indexing-status.html"><a href="show-indexing-status.html"><i class="fa fa-check"></i>Show indexing status</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html"><i class="fa fa-check"></i>Preserve folder structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
@@ -418,20 +428,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="netcdfs" class="section level2 hasAnchor">
 <h2>NetCDFs<a href="netcdfs.html#netcdfs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section is for dealing with NetCDF (.nc) files. These files require <em>data tables</em> but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or the R commands. However, notice that not all NetCDF files have the attribute table information.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="netcdfs.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
-<span id="cb157-2"><a href="netcdfs.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
-<span id="cb157-3"><a href="netcdfs.html#cb157-3" aria-hidden="true" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
-<span id="cb157-4"><a href="netcdfs.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
-<span id="cb157-5"><a href="netcdfs.html#cb157-5" aria-hidden="true" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="netcdfs.html#cb165-1" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
+<span id="cb165-2"><a href="netcdfs.html#cb165-2" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
+<span id="cb165-3"><a href="netcdfs.html#cb165-3" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
+<span id="cb165-4"><a href="netcdfs.html#cb165-4" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
+<span id="cb165-5"><a href="netcdfs.html#cb165-5" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netCDF_full_att_preview.png" /></p>
 <p>The “long_name” can be used to build a definition.</p>
 <p>The “units” can be used for either units or the enumerated domain codes.</p>
 <p>The “_FillValue” is a missing value code it looks like.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="netcdfs.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
-<span id="cb158-2"><a href="netcdfs.html#cb158-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
-<span id="cb158-3"><a href="netcdfs.html#cb158-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
-<span id="cb158-4"><a href="netcdfs.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
-<span id="cb158-5"><a href="netcdfs.html#cb158-5" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="netcdfs.html#cb166-1" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
+<span id="cb166-2"><a href="netcdfs.html#cb166-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
+<span id="cb166-3"><a href="netcdfs.html#cb166-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
+<span id="cb166-4"><a href="netcdfs.html#cb166-4" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
+<span id="cb166-5"><a href="netcdfs.html#cb166-5" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netcdf_value_preview.png" /></p>
 <p>The <code>formatId</code> in the sysmeta will most likely be <code>netCDF-4</code>, but could be <code>netCDF-3</code>.</p>
 </div>
