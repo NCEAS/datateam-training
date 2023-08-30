@@ -65,20 +65,3 @@ packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, 
 ```
 
 
-
-```{block, type = "note"}
-
-**If you want to preserve folder structures, you can use this method**
-
-In this example adding the csv files to a folder named data and scripts
-
-
-outputData <- system.file("extdata/Strix-occidentalis-obs.csv", package="dataone")
-outputObj <- new("DataObject", format="text/csv", filename=outputData, targetPath = "data")
-dp <- addMember(dp, outputObj, metadataObj)
-
-progFile <- system.file("extdata/filterObs.R", package="dataone")
-progObj <- new("DataObject", format="application/R", filename=progFile, targetPath = "scripts",
-               mediaType="text/x-rsrc")
-dp <- addMember(dp, progObj, metadataObj)
-```
