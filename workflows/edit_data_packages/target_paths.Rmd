@@ -2,7 +2,7 @@
 
 Sometimes, researchers will upload zip files that a contain nested file and folder structure that we would like to maintain. This reference section will walk you through how to re-upload the contents of the zip file to the Arctic Data Center such that the files and folders are preserved. Note that changing the locations of the files within the package can be tricky, so take these steps with care and try to make sure it is done correctly.
 
-With that, here are the steps assuming that the PI has uploaded one zip file to their dataset. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator.
+With that, here are the steps assuming that the PI has uploaded one zip file to their dataset. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator. In particular, tar files (.tgz) or rar files (.rar) are also compressed archives that might be better to unpack using command line tools.
 
 ### Download the zip file to datateam
 
