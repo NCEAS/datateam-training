@@ -6,7 +6,7 @@ With that, here are the steps assuming that the PI has uploaded one zip file to 
 
 ### Download the zip file to datateam
 
-First, we will download the file, using R. To make things simpler, we'll set public read on **just the data file** and then remove it again when we are finished.
+First, we will download the file, using R.
 
 1.  Navigate to the dataset landing page on the Arctic Data Center
 2.  Right click the "download" button next to the zip file
@@ -19,19 +19,15 @@ url <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f
 pid <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
 ```
 
-5.  Set public read on the pid
-6.  Download the file
-7.  Remove public read again
+5.  Download the file
 
-Note that this will download the file to the location you specify as the second argument in `download.file`. If you are organizing your scripts and data by submitter, it would look like the example below.
+Note that this will download the file to the location you specify as the second argument in `writeBin`. If you are organizing your scripts and data by submitter, it would look like the example below.
 
 ```{r, eval = FALSE}
-arcticdatautils::set_public_read(d1c@mn, pid)
-download.file(url, "~/Submitter/example.zip")
-arcticdatautils::remove_public_read(d1c@mn, pid)
+writeBin(getObject(d1c@mn, pid), "~/Submitter/example.zip")
 ```
 
-8.  Unzip the file into your submitter directory.
+6.  Unzip the file into your submitter directory.
 
 ```{r, eval = FALSE}
 unzip("~/Submitter/example.zip", exdir = "~/Submitter")
@@ -74,26 +70,34 @@ abs_paths <- list.files("~/Submitter/PI_dir_name/", full.names = TRUE, recursive
 rel_paths <- list.files("~/Submitter/PI_dir_name/", full.names = FALSE, recursive = TRUE)
 ```
 
-Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory.
+Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.
 
 ```{r, eval = FALSE}
 metadataObj <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 
+doc <- read_eml(getObject(d1c@mn, metadataObj))
+doc$dataset$otherEntity <- NULL
+oes <- list()
+
 for (i in 1:length(abs_paths)){
   formatId <- arcticdatautils::guess_format_id(abs_paths[i])
-  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i])
+  id <- generateIdentifier(d1c@mn, scheme = "uuid")
+  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
   dp <- addMember(dp, dataObj, metadataObj)
+  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id)
 }
+
+doc$dataset$otherEntity <- oes
 ```
 
 Once this is finished you can examine the relationships by running `View(dp@relations$relations)`. If everything worked out well you should see rows that look like this:
 
-|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+
 | `urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d` | `http://www.w3.org/ns/prov#atLocation` | `figure2/figure2.tif` |
 
 The `targetPath` (3rd column) should NOT look like
 
-|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+
 | `urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d` | `http://www.w3.org/ns/prov#atLocation` | `/home/jclark/ArcticSupport/Zhao/dataset1/figure2/figure2.tif` |
 
 Make sure this looks correct, then update the data package with:
@@ -112,9 +116,7 @@ Here is the example code all put together. Make sure you change all of the relev
 url <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338"
 pid <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
 
-arcticdatautils::set_public_read(d1c@mn, pid)
-download.file(url, "~/Submitter/example.zip")
-arcticdatautils::remove_public_read(d1c@mn, pid)
+writeBin(getObject(d1c@mn, pid), "~/Submitter/example.zip")
 
 unzip("~/Submitter/example.zip", exdir = "~/Submitter")
 
