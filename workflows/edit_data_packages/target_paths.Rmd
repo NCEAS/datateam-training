@@ -13,10 +13,12 @@ First, we will download the file, using R.
 3.  Select "copy link address"
 4.  Run the following two lines of code to set the URL variable, and extract the pid
 
+Here is an example on the test site. Note that on production, you will need to change the URL that you are substituting in the second line of code.
+
 ```{r}
 library(magrittr)
-url <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338"
-pid <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
+url <- "https://test.arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A48c0e669-fd8a-4875-acfd-e8933bb350ed"
+pid <- gsub("https://test.arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
 ```
 
 5.  Download the file
@@ -32,6 +34,9 @@ writeBin(getObject(d1c@mn, pid), "~/Submitter/example.zip")
 ```{r, eval = FALSE}
 unzip("~/Submitter/example.zip", exdir = "~/Submitter")
 ```
+
+
+7. Delete the zip file (example.zip)
 
 Now if you look at the directory, you shuold see the unzipped contents of the file in a subdirectory of `~/Submitter`. The name of the directory will be the name of the folder the PI created the archive from.
 
@@ -66,8 +71,14 @@ Getting these paths right is very important because we don't want submitters to 
 2.  get a list of relative paths for each file in the directory. Note this is the same command, but with the argument `full.names` set to `FALSE`.
 
 ```{r, eval = FALSE}
-abs_paths <- list.files("~/Submitter/PI_dir_name/", full.names = TRUE, recursive = TRUE)
-rel_paths <- list.files("~/Submitter/PI_dir_name/", full.names = FALSE, recursive = TRUE)
+abs_paths <- list.files("~/Submitter", full.names = TRUE, recursive = TRUE)
+rel_paths <- list.files("~/Submitter", full.names = FALSE, recursive = TRUE)
+```
+
+```{block, type = "warning"}
+Make sure that these paths look correct! They should contain ONLY the files that were unzipped. If you have other scripts or metadata files you might want to rearrange your directories to get the correct paths. The relative paths should start with the submitter's directory name. In this example they will look like the below:
+
+`"final_image_set/level1.png"          "final_image_set/photos/level2_1.png" "final_image_set/photos/level2_2.png"`
 ```
 
 Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.
