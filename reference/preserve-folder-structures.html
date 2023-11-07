@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Preserve folder structures | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Preserve folder structures | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-08-31" />
+<meta name="date" content="2023-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -438,9 +438,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Select “copy link address”</li>
 <li>Run the following two lines of code to set the URL variable, and extract the pid</li>
 </ol>
+<p>Here is an example on the test site. Note that on production, you will need to change the URL that you are substituting in the second line of code.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="preserve-folder-structures.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb49-2"><a href="preserve-folder-structures.html#cb49-2" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338&quot;</span></span>
-<span id="cb49-3"><a href="preserve-folder-structures.html#cb49-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span></code></pre></div>
+<span id="cb49-2"><a href="preserve-folder-structures.html#cb49-2" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://test.arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A48c0e669-fd8a-4875-acfd-e8933bb350ed&quot;</span></span>
+<span id="cb49-3"><a href="preserve-folder-structures.html#cb49-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://test.arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Download the file</li>
 </ol>
@@ -450,6 +451,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Unzip the file into your submitter directory.</li>
 </ol>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="preserve-folder-structures.html#cb51-1" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/Submitter/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/Submitter&quot;</span>)</span></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Delete the zip file (example.zip)</li>
+</ol>
 <p>Now if you look at the directory, you shuold see the unzipped contents of the file in a subdirectory of <code>~/Submitter</code>. The name of the directory will be the name of the folder the PI created the archive from.</p>
 <p>Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for csv versions of excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.</p>
 </div>
@@ -495,8 +499,20 @@ working directory. If our working directory is set to
 <li><p>get a list of absolute paths for each file in the directory. <strong>NOTE</strong> The “PI_dir_name” here represents whatever directory you retrieved after running <code>unzip</code> in the previous step. The actual .zip file should not be in this directory.</p></li>
 <li><p>get a list of relative paths for each file in the directory. Note this is the same command, but with the argument <code>full.names</code> set to <code>FALSE</code>.</p></li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="preserve-folder-structures.html#cb53-1" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-2"><a href="preserve-folder-structures.html#cb53-2" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="preserve-folder-structures.html#cb53-1" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-2"><a href="preserve-folder-structures.html#cb53-2" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="warning">
+<p>
+Make sure that these paths look correct! They should contain ONLY the
+files that were unzipped. If you have other scripts or metadata files
+you might want to rearrange your directories to get the correct paths.
+The relative paths should start with the submitter’s directory name. In
+this example they will look like the below:
+</p>
+<p>
+<code>“final_image_set/level1.png” “final_image_set/photos/level2_1.png” “final_image_set/photos/level2_2.png”</code>
+</p>
+</div>
 <p>Now for each of these files, we can create a <code>dataObject</code> for them and add them to the package using a loop. Before running this, look at the values of your <code>abs_paths</code> and <code>rel_paths</code> and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="preserve-folder-structures.html#cb54-1" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
 <span id="cb54-2"><a href="preserve-folder-structures.html#cb54-2" tabindex="-1"></a></span>
