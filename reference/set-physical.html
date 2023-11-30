@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -428,20 +428,28 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="set-physical" class="section level2 hasAnchor">
 <h2>Set physical<a href="set-physical.html#set-physical" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To set the <code>physical</code> aspects of a data object, use the following commands to build a <code>physical</code> object from a data <code>PID</code> that exists in your package. <strong>Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!</strong></p>
+<p>Every entity that we upload needs a physical description added. When replacing files, the physical must be replaced as well.</p>
 <div class="note">
 <p>
 The word ‘physical’ derives from database systems, which distinguish
 the ‘logical’ model (e.g., what attributes are in a table, etc) from the
 physical model (how the data are written to a physical hard disk
-(basically, the serialization). so, we grouped metadata about the file
-(eg. dataformat, file size, file name) as written to disk in
-physical.
+(basically, the serialization)). so, we grouped metadata about the file
+(eg. dataformat, file size, file name) as written to disk in physical.
+It includes info like the file size. For CSV files, the physical
+describes the number of header lines and the attribute orientation.
 </p>
 </div>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="set-physical.html#cb143-1" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
-<span id="cb143-2"><a href="set-physical.html#cb143-2" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, data_pid)</span></code></pre></div>
-<p>The <code>physical</code> must then be assigned to the data object.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="set-physical.html#cb149-1" tabindex="-1"></a><span class="co"># Get the PID of a file</span></span>
+<span id="cb149-2"><a href="set-physical.html#cb149-2" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name =</span> <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value =</span> <span class="st">&quot;your_file_name.csv&quot;</span>)</span>
+<span id="cb149-3"><a href="set-physical.html#cb149-3" tabindex="-1"></a><span class="co"># Get the physical info and store it in an object</span></span>
+<span id="cb149-4"><a href="set-physical.html#cb149-4" tabindex="-1"></a>physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(mn, data_pid)</span></code></pre></div>
+<p>The <code>physical</code> object can then be checked for errors and added to the EML document.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="set-physical.html#cb150-1" tabindex="-1"></a><span class="co"># Edit EML document with object</span></span>
+<span id="cb150-2"><a href="set-physical.html#cb150-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>physical <span class="ot">&lt;-</span> physical</span></code></pre></div>
 <p>Note that the above workflow only works if your data object already exists on the member node.</p>
+<p>Physicals can be seen in the website representation of the EML below the entity description.
+<img src="../images/physical_screenshot.png" /></p>
 </div>
             </section>
 

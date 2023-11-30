@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -429,21 +429,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Assess attributes<a href="assess-attributes.html#assess-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>New submissions made through the web editor should have attributes created by the <code>submitter</code>. If there are no attributes, or if they are incomplete, please use the <a href = 'https://nceas.github.io/datateam-training/reference/email-templates.html' target='_blank'>email template</a> to correspond with the <code>submitter</code> to ask for attributes.</p>
 <p>Additionally, the web editor will not allow for the creation of custom units. <code>submitter</code>s should select <code>other/none</code> in the editor unit dropdown if they cannot find their desired unit. In the EML document, these will result in <code>dimensionless</code> units. Accordingly, new submissions should be checked for <code>dimensionless</code> units. This can be done with the following code. Note that this only applies if there is more than one <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="assess-attributes.html#cb205-1" tabindex="-1"></a>dim_units <span class="ot">&lt;-</span> <span class="fu">sapply</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="cf">function</span>(x) {</span>
-<span id="cb205-2"><a href="assess-attributes.html#cb205-2" tabindex="-1"></a>      i <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">which_in_eml</span>(x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute, <span class="st">&quot;standardUnit&quot;</span>, <span class="fu">as</span>(<span class="st">&quot;dimensionless&quot;</span>, <span class="st">&quot;standardUnit&quot;</span>))</span>
-<span id="cb205-3"><a href="assess-attributes.html#cb205-3" tabindex="-1"></a>      </span>
-<span id="cb205-4"><a href="assess-attributes.html#cb205-4" tabindex="-1"></a>      out <span class="ot">&lt;-</span> <span class="fu">sapply</span>(i, <span class="cf">function</span>(j){</span>
-<span id="cb205-5"><a href="assess-attributes.html#cb205-5" tabindex="-1"></a>         <span class="fu">list</span>(<span class="at">entityName =</span> x<span class="sc">$</span>entityName,</span>
-<span id="cb205-6"><a href="assess-attributes.html#cb205-6" tabindex="-1"></a>               <span class="at">attributeName =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeName,</span>
-<span id="cb205-7"><a href="assess-attributes.html#cb205-7" tabindex="-1"></a>               <span class="at">attributeLabel =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeLabel,</span>
-<span id="cb205-8"><a href="assess-attributes.html#cb205-8" tabindex="-1"></a>               <span class="at">attributeDefinition =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeDefinition)</span>
-<span id="cb205-9"><a href="assess-attributes.html#cb205-9" tabindex="-1"></a>      })</span>
-<span id="cb205-10"><a href="assess-attributes.html#cb205-10" tabindex="-1"></a>      </span>
-<span id="cb205-11"><a href="assess-attributes.html#cb205-11" tabindex="-1"></a>  <span class="fu">return</span>(out)  </span>
-<span id="cb205-12"><a href="assess-attributes.html#cb205-12" tabindex="-1"></a>})</span>
-<span id="cb205-13"><a href="assess-attributes.html#cb205-13" tabindex="-1"></a>dim_units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">do.call</span>(cbind, dim_units)))</span>
-<span id="cb205-14"><a href="assess-attributes.html#cb205-14" tabindex="-1"></a></span>
-<span id="cb205-15"><a href="assess-attributes.html#cb205-15" tabindex="-1"></a>dim_units</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="assess-attributes.html#cb212-1" tabindex="-1"></a>dim_units <span class="ot">&lt;-</span> <span class="fu">sapply</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity, <span class="cf">function</span>(x) {</span>
+<span id="cb212-2"><a href="assess-attributes.html#cb212-2" tabindex="-1"></a>      i <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">which_in_eml</span>(x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute, <span class="st">&quot;standardUnit&quot;</span>, <span class="fu">as</span>(<span class="st">&quot;dimensionless&quot;</span>, <span class="st">&quot;standardUnit&quot;</span>))</span>
+<span id="cb212-3"><a href="assess-attributes.html#cb212-3" tabindex="-1"></a>      </span>
+<span id="cb212-4"><a href="assess-attributes.html#cb212-4" tabindex="-1"></a>      out <span class="ot">&lt;-</span> <span class="fu">sapply</span>(i, <span class="cf">function</span>(j){</span>
+<span id="cb212-5"><a href="assess-attributes.html#cb212-5" tabindex="-1"></a>         <span class="fu">list</span>(<span class="at">entityName =</span> x<span class="sc">$</span>entityName,</span>
+<span id="cb212-6"><a href="assess-attributes.html#cb212-6" tabindex="-1"></a>               <span class="at">attributeName =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeName,</span>
+<span id="cb212-7"><a href="assess-attributes.html#cb212-7" tabindex="-1"></a>               <span class="at">attributeLabel =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeLabel,</span>
+<span id="cb212-8"><a href="assess-attributes.html#cb212-8" tabindex="-1"></a>               <span class="at">attributeDefinition =</span> x<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[j]]<span class="sc">$</span>attributeDefinition)</span>
+<span id="cb212-9"><a href="assess-attributes.html#cb212-9" tabindex="-1"></a>      })</span>
+<span id="cb212-10"><a href="assess-attributes.html#cb212-10" tabindex="-1"></a>      </span>
+<span id="cb212-11"><a href="assess-attributes.html#cb212-11" tabindex="-1"></a>  <span class="fu">return</span>(out)  </span>
+<span id="cb212-12"><a href="assess-attributes.html#cb212-12" tabindex="-1"></a>})</span>
+<span id="cb212-13"><a href="assess-attributes.html#cb212-13" tabindex="-1"></a>dim_units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">do.call</span>(cbind, dim_units)))</span>
+<span id="cb212-14"><a href="assess-attributes.html#cb212-14" tabindex="-1"></a></span>
+<span id="cb212-15"><a href="assess-attributes.html#cb212-15" tabindex="-1"></a>dim_units</span></code></pre></div>
 <p>If dimensionless units are found, first check the <code>attributeDefinition</code>, <code>attributeLabel</code>, and <code>attributeName</code> to see if <code>dimensionless</code> seems to be an appropriate unit for the attribute. If there is any question about whether or not <code>dimensionless</code> seems appropriate, ask another member of the data team. If there is still any question about what the unit should be, reach out to the <code>submitter</code> and ask for clarification.</p>
 </div>
             </section>

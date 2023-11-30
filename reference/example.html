@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -429,56 +429,56 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Example<a href="example.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can start by creating two data packages on the test node to nest beneath a parent. These data packages contain measurements taken from Lake E1 in Alaska in 2013 and 2014.</p>
 <p>First, load the Arctic Data Center Test Node and libraries.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="example.html#cb233-1" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
-<span id="cb233-2"><a href="example.html#cb233-2" tabindex="-1"></a><span class="fu">library</span>(arcticdatautils)</span>
-<span id="cb233-3"><a href="example.html#cb233-3" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
-<span id="cb233-4"><a href="example.html#cb233-4" tabindex="-1"></a></span>
-<span id="cb233-5"><a href="example.html#cb233-5" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
-<span id="cb233-6"><a href="example.html#cb233-6" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
-<span id="cb233-7"><a href="example.html#cb233-7" tabindex="-1"></a></span>
-<span id="cb233-8"><a href="example.html#cb233-8" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb233-9"><a href="example.html#cb233-9" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="example.html#cb240-1" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
+<span id="cb240-2"><a href="example.html#cb240-2" tabindex="-1"></a><span class="fu">library</span>(arcticdatautils)</span>
+<span id="cb240-3"><a href="example.html#cb240-3" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
+<span id="cb240-4"><a href="example.html#cb240-4" tabindex="-1"></a></span>
+<span id="cb240-5"><a href="example.html#cb240-5" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
+<span id="cb240-6"><a href="example.html#cb240-6" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
+<span id="cb240-7"><a href="example.html#cb240-7" tabindex="-1"></a></span>
+<span id="cb240-8"><a href="example.html#cb240-8" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb240-9"><a href="example.html#cb240-9" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span></code></pre></div>
 <p>We will re-create the following parent package: <a href="https://arcticdata.io/catalog/#view/urn:uuid:799b7a86-cb1c-497c-a05a-d73492915cad" class="uri">https://arcticdata.io/catalog/#view/urn:uuid:799b7a86-cb1c-497c-a05a-d73492915cad</a> on the test node with two of its children. First we will copy two of the children to the test node, make sure your token for the test node is not expired.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="example.html#cb234-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb234-2"><a href="example.html#cb234-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span>
-<span id="cb234-3"><a href="example.html#cb234-3" tabindex="-1"></a></span>
-<span id="cb234-4"><a href="example.html#cb234-4" tabindex="-1"></a>child_pkg_1 <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">clone_package</span>(<span class="st">&#39;resource_map_doi:10.18739/A2KS1R&#39;</span>,</span>
-<span id="cb234-5"><a href="example.html#cb234-5" tabindex="-1"></a>                                       <span class="at">from =</span> from, <span class="at">to =</span> to,</span>
-<span id="cb234-6"><a href="example.html#cb234-6" tabindex="-1"></a>                                       <span class="at">add_access_to =</span> arcticdatautils<span class="sc">:::</span><span class="fu">get_token_subject</span>(),</span>
-<span id="cb234-7"><a href="example.html#cb234-7" tabindex="-1"></a>                                       <span class="at">change_auth_node =</span> <span class="cn">TRUE</span>, <span class="at">new_pid =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb234-8"><a href="example.html#cb234-8" tabindex="-1"></a></span>
-<span id="cb234-9"><a href="example.html#cb234-9" tabindex="-1"></a>child_pkg_2 <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">clone_package</span>(<span class="st">&#39;resource_map_doi:10.18739/A2QK29&#39;</span>,</span>
-<span id="cb234-10"><a href="example.html#cb234-10" tabindex="-1"></a>                                       <span class="at">from =</span> from, <span class="at">to =</span> to,</span>
-<span id="cb234-11"><a href="example.html#cb234-11" tabindex="-1"></a>                                       <span class="at">add_access_to =</span> arcticdatautils<span class="sc">:::</span><span class="fu">get_token_subject</span>(),</span>
-<span id="cb234-12"><a href="example.html#cb234-12" tabindex="-1"></a>                                       <span class="at">change_auth_node =</span> <span class="cn">TRUE</span>, <span class="at">new_pid =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="example.html#cb241-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb241-2"><a href="example.html#cb241-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span>
+<span id="cb241-3"><a href="example.html#cb241-3" tabindex="-1"></a></span>
+<span id="cb241-4"><a href="example.html#cb241-4" tabindex="-1"></a>child_pkg_1 <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">clone_package</span>(<span class="st">&#39;resource_map_doi:10.18739/A2KS1R&#39;</span>,</span>
+<span id="cb241-5"><a href="example.html#cb241-5" tabindex="-1"></a>                                       <span class="at">from =</span> from, <span class="at">to =</span> to,</span>
+<span id="cb241-6"><a href="example.html#cb241-6" tabindex="-1"></a>                                       <span class="at">add_access_to =</span> arcticdatautils<span class="sc">:::</span><span class="fu">get_token_subject</span>(),</span>
+<span id="cb241-7"><a href="example.html#cb241-7" tabindex="-1"></a>                                       <span class="at">change_auth_node =</span> <span class="cn">TRUE</span>, <span class="at">new_pid =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb241-8"><a href="example.html#cb241-8" tabindex="-1"></a></span>
+<span id="cb241-9"><a href="example.html#cb241-9" tabindex="-1"></a>child_pkg_2 <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">clone_package</span>(<span class="st">&#39;resource_map_doi:10.18739/A2QK29&#39;</span>,</span>
+<span id="cb241-10"><a href="example.html#cb241-10" tabindex="-1"></a>                                       <span class="at">from =</span> from, <span class="at">to =</span> to,</span>
+<span id="cb241-11"><a href="example.html#cb241-11" tabindex="-1"></a>                                       <span class="at">add_access_to =</span> arcticdatautils<span class="sc">:::</span><span class="fu">get_token_subject</span>(),</span>
+<span id="cb241-12"><a href="example.html#cb241-12" tabindex="-1"></a>                                       <span class="at">change_auth_node =</span> <span class="cn">TRUE</span>, <span class="at">new_pid =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>These two packages correspond to data from the same study, varying only by year; however, they currently exist on the test node as independent entities. We will associate them with each other by nesting them underneath a parent.</p>
 <p>Now, let’s create a parent metadata file. Read in one of the childs’ metadata files (EML). We can download object from a node in binary format using <code>dataone::getObject()</code>. Once it’s downloaded we just need to convert to it to the proper format: in this case to EML format using <code>EML::read_eml()</code>.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="example.html#cb235-1" tabindex="-1"></a>doc_parent <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, child_pkg_1<span class="sc">$</span>metadata))</span></code></pre></div>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="example.html#cb236-1" tabindex="-1"></a><span class="do">## View the title </span></span>
-<span id="cb236-2"><a href="example.html#cb236-2" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>title</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="example.html#cb242-1" tabindex="-1"></a>doc_parent <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, child_pkg_1<span class="sc">$</span>metadata))</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="example.html#cb243-1" tabindex="-1"></a><span class="do">## View the title </span></span>
+<span id="cb243-2"><a href="example.html#cb243-2" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>title</span></code></pre></div>
 <p>The title of this child contains “2012-2013”. This is too specific for the parent, as the temporal range of both childs is 2012-2014. The parent should encompass this larger time range.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="example.html#cb237-1" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="st">&#39;Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="example.html#cb244-1" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="st">&#39;Time series of water temperature, specific conductance, and oxygen from Lake E1, North Slope, Alaska, 2012-2014&#39;</span></span></code></pre></div>
 <p>Like the title, the temporal coverage elements in this EML need to be adjusted.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="example.html#cb238-1" tabindex="-1"></a>new_end_date <span class="ot">&lt;-</span> <span class="st">&quot;2014-09-20&quot;</span></span>
-<span id="cb238-2"><a href="example.html#cb238-2" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>temporalCoverage<span class="sc">$</span>rangeOfDates<span class="sc">$</span>endDate<span class="sc">$</span>calendarDate <span class="ot">&lt;-</span> new_end_date</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="example.html#cb245-1" tabindex="-1"></a>new_end_date <span class="ot">&lt;-</span> <span class="st">&quot;2014-09-20&quot;</span></span>
+<span id="cb245-2"><a href="example.html#cb245-2" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>temporalCoverage<span class="sc">$</span>rangeOfDates<span class="sc">$</span>endDate<span class="sc">$</span>calendarDate <span class="ot">&lt;-</span> new_end_date</span></code></pre></div>
 <p>Remove <code>dataTable</code>s and <code>otherEntity</code>s from the metadata. If you recall from previous chapters, <code>dataTable</code>s contain metadata associated with data files (generally CSVs) and <code>otherEntity</code>s contain metadata about any other files in the data package (for instance a README or coding script). Because the parent does not contain any data objects, we want to remove <code>dataTable</code>s and <code>otherEntity</code>s from the metdata file. In this instance, the E1 2013 metadata only contain <code>dataTable</code>s. We can remove these by setting the <code>dataTable</code> element in the EML to a new blank object.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="example.html#cb239-1" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="example.html#cb246-1" tabindex="-1"></a>doc_parent<span class="sc">$</span>dataset<span class="sc">$</span>dataTable <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>In this case, the <code>abstract</code>, <code>contact</code>s, <code>creator</code>s, <code>geographicDescription</code>, and <code>methods</code> are already generalized and do not require changes.</p>
 <p>Before writing your parent EML make sure that it validates. This is just a check to make sure everything is in the correct format.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="example.html#cb240-1" tabindex="-1"></a><span class="fu">eml_validate</span>(doc_parent)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="example.html#cb247-1" tabindex="-1"></a><span class="fu">eml_validate</span>(doc_parent)</span></code></pre></div>
 <p>After your EML validates we need to save, or “write”, it as a new file. Write your parent EML to a directory in your home folder. You can view this process like using “Save as” in Microsoft Word. We opened a file (“E1_2013.xml”), made some changes, and “saved it as” a new file called “doc_parent.xml”.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="example.html#cb241-1" tabindex="-1"></a><span class="co"># We can save the eml in a temporary file </span></span>
-<span id="cb241-2"><a href="example.html#cb241-2" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">&#39;science_metadata.xml&#39;</span>)</span>
-<span id="cb241-3"><a href="example.html#cb241-3" tabindex="-1"></a><span class="fu">write_eml</span>(doc_parent, path)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="example.html#cb248-1" tabindex="-1"></a><span class="co"># We can save the eml in a temporary file </span></span>
+<span id="cb248-2"><a href="example.html#cb248-2" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">&#39;science_metadata.xml&#39;</span>)</span>
+<span id="cb248-3"><a href="example.html#cb248-3" tabindex="-1"></a><span class="fu">write_eml</span>(doc_parent, path)</span></code></pre></div>
 <p>Next, we will publish the parent metadata to the test node.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="example.html#cb242-1" tabindex="-1"></a>metadata_parent <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test, </span>
-<span id="cb242-2"><a href="example.html#cb242-2" tabindex="-1"></a>                                  <span class="at">path =</span> eml_path, </span>
-<span id="cb242-3"><a href="example.html#cb242-3" tabindex="-1"></a>                                  <span class="at">format_id =</span> <span class="fu">format_eml</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="example.html#cb249-1" tabindex="-1"></a>metadata_parent <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test, </span>
+<span id="cb249-2"><a href="example.html#cb249-2" tabindex="-1"></a>                                  <span class="at">path =</span> eml_path, </span>
+<span id="cb249-3"><a href="example.html#cb249-3" tabindex="-1"></a>                                  <span class="at">format_id =</span> <span class="fu">format_eml</span>())</span></code></pre></div>
 <p>Finally, we create a resource map for the parent package. We nest the two child data packages using the <code>child_pids</code> argument in <code>create_resource_map()</code>. Note that these <code>child_pids</code> are <code>PID</code>s for the resource maps of the child packages, NOT the metadata <code>PID</code>s.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="example.html#cb243-1" tabindex="-1"></a>resource_map_parent <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test, </span>
-<span id="cb243-2"><a href="example.html#cb243-2" tabindex="-1"></a>                                           <span class="at">metadata_pid =</span> metadata_parent,</span>
-<span id="cb243-3"><a href="example.html#cb243-3" tabindex="-1"></a>                                           <span class="at">child_pids =</span> <span class="fu">c</span>(child_pkg_1<span class="sc">$</span>resource_map,</span>
-<span id="cb243-4"><a href="example.html#cb243-4" tabindex="-1"></a>                                                          child_pkg_2<span class="sc">$</span>resource_map))</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="example.html#cb250-1" tabindex="-1"></a>resource_map_parent <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test, </span>
+<span id="cb250-2"><a href="example.html#cb250-2" tabindex="-1"></a>                                           <span class="at">metadata_pid =</span> metadata_parent,</span>
+<span id="cb250-3"><a href="example.html#cb250-3" tabindex="-1"></a>                                           <span class="at">child_pids =</span> <span class="fu">c</span>(child_pkg_1<span class="sc">$</span>resource_map,</span>
+<span id="cb250-4"><a href="example.html#cb250-4" tabindex="-1"></a>                                                          child_pkg_2<span class="sc">$</span>resource_map))</span></code></pre></div>
 <p>The child packages are now nested underneath the parent.</p>
 
 </div>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -428,20 +428,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="netcdfs" class="section level2 hasAnchor">
 <h2>NetCDFs<a href="netcdfs.html#netcdfs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section is for dealing with NetCDF (.nc) files. These files require <em>data tables</em> but since they can not be simply opened on the computer using a text editor or Excel, you can use Panoply to explore them or the R commands. However, notice that not all NetCDF files have the attribute table information.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="netcdfs.html#cb165-1" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
-<span id="cb165-2"><a href="netcdfs.html#cb165-2" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
-<span id="cb165-3"><a href="netcdfs.html#cb165-3" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
-<span id="cb165-4"><a href="netcdfs.html#cb165-4" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
-<span id="cb165-5"><a href="netcdfs.html#cb165-5" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="netcdfs.html#cb172-1" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
+<span id="cb172-2"><a href="netcdfs.html#cb172-2" tabindex="-1"></a><span class="co"># gets attribute info</span></span>
+<span id="cb172-3"><a href="netcdfs.html#cb172-3" tabindex="-1"></a>atts <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">get_ncdf4_attributes</span>(<span class="st">&#39;filepath&#39;</span>)</span>
+<span id="cb172-4"><a href="netcdfs.html#cb172-4" tabindex="-1"></a><span class="co"># preview of View(atts)</span></span>
+<span id="cb172-5"><a href="netcdfs.html#cb172-5" tabindex="-1"></a>atts[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netCDF_full_att_preview.png" /></p>
 <p>The “long_name” can be used to build a definition.</p>
 <p>The “units” can be used for either units or the enumerated domain codes.</p>
 <p>The “_FillValue” is a missing value code it looks like.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="netcdfs.html#cb166-1" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
-<span id="cb166-2"><a href="netcdfs.html#cb166-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
-<span id="cb166-3"><a href="netcdfs.html#cb166-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
-<span id="cb166-4"><a href="netcdfs.html#cb166-4" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
-<span id="cb166-5"><a href="netcdfs.html#cb166-5" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="netcdfs.html#cb173-1" tabindex="-1"></a><span class="co"># returns the actual values for a specified attribute</span></span>
+<span id="cb173-2"><a href="netcdfs.html#cb173-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">nc_open</span>(filepath)</span>
+<span id="cb173-3"><a href="netcdfs.html#cb173-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> ncdf4<span class="sc">::</span><span class="fu">ncvar_get</span>(t, <span class="st">&#39;attributeName&#39;</span>)</span>
+<span id="cb173-4"><a href="netcdfs.html#cb173-4" tabindex="-1"></a><span class="co"># preview of View(test)</span></span>
+<span id="cb173-5"><a href="netcdfs.html#cb173-5" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/NCEAS/datateam-training/master/images/netcdf_value_preview.png" /></p>
 <p>The <code>formatId</code> in the sysmeta will most likely be <code>netCDF-4</code>, but could be <code>netCDF-3</code>.</p>
 </div>

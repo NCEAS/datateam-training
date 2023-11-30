@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -434,20 +434,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Why does #2 matter? Well by default, all of those URLs above only return publicly-readable Solr documents.
 If a private document matches any of those queries, Solr won’t tell you that. It will act like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="query-solr-via-r.html#cb186-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb186-2"><a href="query-solr-via-r.html#cb186-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb186-3"><a href="query-solr-via-r.html#cb186-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
-<span id="cb186-4"><a href="query-solr-via-r.html#cb186-4" tabindex="-1"></a></span>
-<span id="cb186-5"><a href="query-solr-via-r.html#cb186-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
-<span id="cb186-6"><a href="query-solr-via-r.html#cb186-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
-<span id="cb186-7"><a href="query-solr-via-r.html#cb186-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb186-8"><a href="query-solr-via-r.html#cb186-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb186-9"><a href="query-solr-via-r.html#cb186-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="query-solr-via-r.html#cb193-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb193-2"><a href="query-solr-via-r.html#cb193-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb193-3"><a href="query-solr-via-r.html#cb193-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
+<span id="cb193-4"><a href="query-solr-via-r.html#cb193-4" tabindex="-1"></a></span>
+<span id="cb193-5"><a href="query-solr-via-r.html#cb193-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
+<span id="cb193-6"><a href="query-solr-via-r.html#cb193-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
+<span id="cb193-7"><a href="query-solr-via-r.html#cb193-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb193-8"><a href="query-solr-via-r.html#cb193-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb193-9"><a href="query-solr-via-r.html#cb193-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
 <p>By default, <code>query</code> returns the result as a <code>list</code>, but a <code>data.frame</code> can be a more useful way to work with the result. To get a <code>data.frame</code> instead, just set the <code>as</code> argument to ‘data.frame’ to get a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="query-solr-via-r.html#cb187-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb187-2"><a href="query-solr-via-r.html#cb187-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb187-3"><a href="query-solr-via-r.html#cb187-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
-<span id="cb187-4"><a href="query-solr-via-r.html#cb187-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="query-solr-via-r.html#cb194-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb194-2"><a href="query-solr-via-r.html#cb194-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb194-3"><a href="query-solr-via-r.html#cb194-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
+<span id="cb194-4"><a href="query-solr-via-r.html#cb194-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 

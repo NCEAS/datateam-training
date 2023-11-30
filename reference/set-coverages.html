@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -428,37 +428,37 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="set-coverages" class="section level2 hasAnchor">
 <h2>Set coverages<a href="set-coverages.html#set-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes EML documents may lack coverage information describing the temporal, geographic, or taxonomic coverage of a data set. This example shows how to create coverage information from scratch, or replace an existing coverage element with an updated one. You can view the current coverage (if it exists) by entering <code>doc$dataset$coverage</code> into the console. Here the coverage, including temporal, taxonomic, and geographic coverages, is defined using <code>set_coverage()</code>.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="set-coverages.html#cb134-1" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
-<span id="cb134-2"><a href="set-coverages.html#cb134-2" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
-<span id="cb134-3"><a href="set-coverages.html#cb134-3" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>),</span>
-<span id="cb134-4"><a href="set-coverages.html#cb134-4" tabindex="-1"></a>                              <span class="at">geographicDescription =</span> <span class="st">&quot;The geographic region covers the lake region near Eagle Mountain, Alaska.&quot;</span>,</span>
-<span id="cb134-5"><a href="set-coverages.html#cb134-5" tabindex="-1"></a>                              <span class="at">west =</span> <span class="sc">-</span><span class="fl">154.6192</span>, </span>
-<span id="cb134-6"><a href="set-coverages.html#cb134-6" tabindex="-1"></a>                              <span class="at">east =</span> <span class="sc">-</span><span class="fl">154.5753</span>, </span>
-<span id="cb134-7"><a href="set-coverages.html#cb134-7" tabindex="-1"></a>                              <span class="at">north =</span> <span class="fl">68.3831</span>, </span>
-<span id="cb134-8"><a href="set-coverages.html#cb134-8" tabindex="-1"></a>                              <span class="at">south =</span> <span class="fl">68.3619</span>)</span>
-<span id="cb134-9"><a href="set-coverages.html#cb134-9" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="set-coverages.html#cb140-1" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb140-2"><a href="set-coverages.html#cb140-2" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb140-3"><a href="set-coverages.html#cb140-3" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">c</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>),</span>
+<span id="cb140-4"><a href="set-coverages.html#cb140-4" tabindex="-1"></a>                              <span class="at">geographicDescription =</span> <span class="st">&quot;The geographic region covers the lake region near Eagle Mountain, Alaska.&quot;</span>,</span>
+<span id="cb140-5"><a href="set-coverages.html#cb140-5" tabindex="-1"></a>                              <span class="at">west =</span> <span class="sc">-</span><span class="fl">154.6192</span>, </span>
+<span id="cb140-6"><a href="set-coverages.html#cb140-6" tabindex="-1"></a>                              <span class="at">east =</span> <span class="sc">-</span><span class="fl">154.5753</span>, </span>
+<span id="cb140-7"><a href="set-coverages.html#cb140-7" tabindex="-1"></a>                              <span class="at">north =</span> <span class="fl">68.3831</span>, </span>
+<span id="cb140-8"><a href="set-coverages.html#cb140-8" tabindex="-1"></a>                              <span class="at">south =</span> <span class="fl">68.3619</span>)</span>
+<span id="cb140-9"><a href="set-coverages.html#cb140-9" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
 <div id="set-multiple-coverages" class="section level3 hasAnchor">
 <h3>Set multiple coverages<a href="set-coverages.html#set-multiple-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can also set multiple geographic (or temporal) coverages. Here is an example of how you might set two geographic coverages. Note that we use nested <code>eml</code> function helpers in this construction.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="set-coverages.html#cb135-1" tabindex="-1"></a>geocov1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,</span>
-<span id="cb135-2"><a href="set-coverages.html#cb135-2" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
-<span id="cb135-3"><a href="set-coverages.html#cb135-3" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">68</span>,</span>
-<span id="cb135-4"><a href="set-coverages.html#cb135-4" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">154</span>,</span>
-<span id="cb135-5"><a href="set-coverages.html#cb135-5" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">67</span>,</span>
-<span id="cb135-6"><a href="set-coverages.html#cb135-6" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">155</span>))</span>
-<span id="cb135-7"><a href="set-coverages.html#cb135-7" tabindex="-1"></a></span>
-<span id="cb135-8"><a href="set-coverages.html#cb135-8" tabindex="-1"></a>geocov2 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 2&quot;</span>,</span>
-<span id="cb135-9"><a href="set-coverages.html#cb135-9" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
-<span id="cb135-10"><a href="set-coverages.html#cb135-10" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">65</span>,</span>
-<span id="cb135-11"><a href="set-coverages.html#cb135-11" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">151</span>,</span>
-<span id="cb135-12"><a href="set-coverages.html#cb135-12" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">62</span>,</span>
-<span id="cb135-13"><a href="set-coverages.html#cb135-13" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">153</span>))</span>
-<span id="cb135-14"><a href="set-coverages.html#cb135-14" tabindex="-1"></a></span>
-<span id="cb135-15"><a href="set-coverages.html#cb135-15" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
-<span id="cb135-16"><a href="set-coverages.html#cb135-16" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
-<span id="cb135-17"><a href="set-coverages.html#cb135-17" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">list</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>))</span>
-<span id="cb135-18"><a href="set-coverages.html#cb135-18" tabindex="-1"></a></span>
-<span id="cb135-19"><a href="set-coverages.html#cb135-19" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>geographicCoverage <span class="ot">&lt;-</span> <span class="fu">list</span>(geocov1, geocov2)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="set-coverages.html#cb141-1" tabindex="-1"></a>geocov1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 1&quot;</span>,</span>
+<span id="cb141-2"><a href="set-coverages.html#cb141-2" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
+<span id="cb141-3"><a href="set-coverages.html#cb141-3" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">68</span>,</span>
+<span id="cb141-4"><a href="set-coverages.html#cb141-4" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">154</span>,</span>
+<span id="cb141-5"><a href="set-coverages.html#cb141-5" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">67</span>,</span>
+<span id="cb141-6"><a href="set-coverages.html#cb141-6" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">155</span>))</span>
+<span id="cb141-7"><a href="set-coverages.html#cb141-7" tabindex="-1"></a></span>
+<span id="cb141-8"><a href="set-coverages.html#cb141-8" tabindex="-1"></a>geocov2 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">geographicCoverage</span>(<span class="at">geographicDescription =</span> <span class="st">&quot;The geographich region covers area 2&quot;</span>,</span>
+<span id="cb141-9"><a href="set-coverages.html#cb141-9" tabindex="-1"></a>                                  <span class="at">boundingCoordinates =</span> eml<span class="sc">$</span><span class="fu">boundingCoordinates</span>(</span>
+<span id="cb141-10"><a href="set-coverages.html#cb141-10" tabindex="-1"></a>                                         <span class="at">northBoundingCoordinate =</span> <span class="dv">65</span>,</span>
+<span id="cb141-11"><a href="set-coverages.html#cb141-11" tabindex="-1"></a>                                         <span class="at">eastBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">151</span>,</span>
+<span id="cb141-12"><a href="set-coverages.html#cb141-12" tabindex="-1"></a>                                         <span class="at">southBoundingCoordinate =</span> <span class="dv">62</span>,</span>
+<span id="cb141-13"><a href="set-coverages.html#cb141-13" tabindex="-1"></a>                                         <span class="at">westBoundingCoordinate =</span> <span class="sc">-</span><span class="dv">153</span>))</span>
+<span id="cb141-14"><a href="set-coverages.html#cb141-14" tabindex="-1"></a></span>
+<span id="cb141-15"><a href="set-coverages.html#cb141-15" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb141-16"><a href="set-coverages.html#cb141-16" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb141-17"><a href="set-coverages.html#cb141-17" tabindex="-1"></a>                              <span class="at">sci_names =</span> <span class="fu">list</span>(<span class="st">&#39;exampleGenus exampleSpecies1&#39;</span>, <span class="st">&#39;exampleGenus ExampleSpecies2&#39;</span>))</span>
+<span id="cb141-18"><a href="set-coverages.html#cb141-18" tabindex="-1"></a></span>
+<span id="cb141-19"><a href="set-coverages.html#cb141-19" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage<span class="sc">$</span>geographicCoverage <span class="ot">&lt;-</span> <span class="fu">list</span>(geocov1, geocov2)</span></code></pre></div>
 </div>
 <div id="special-coverages" class="section level3 hasAnchor">
 <h3>Special coverages<a href="set-coverages.html#special-coverages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -469,12 +469,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="geologic-dates" class="section level4 hasAnchor">
 <h4>Geologic dates<a href="set-coverages.html#geologic-dates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2D795B3Q' target='_blank'>Example dataset</a> with geologic coverages set using the following:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="set-coverages.html#cb136-1" tabindex="-1"></a>geo_time_start <span class="ot">&lt;-</span> EML<span class="sc">::</span>eml<span class="sc">$</span><span class="fu">alternativeTimeScale</span>(<span class="at">timeScaleName =</span> <span class="st">&quot;Absolute&quot;</span>,</span>
-<span id="cb136-2"><a href="set-coverages.html#cb136-2" tabindex="-1"></a>                                                <span class="at">timeScaleAgeEstimate =</span> <span class="st">&quot;7.5 Myr&quot;</span>)</span>
-<span id="cb136-3"><a href="set-coverages.html#cb136-3" tabindex="-1"></a></span>
-<span id="cb136-4"><a href="set-coverages.html#cb136-4" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
-<span id="cb136-5"><a href="set-coverages.html#cb136-5" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
-<span id="cb136-6"><a href="set-coverages.html#cb136-6" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="set-coverages.html#cb142-1" tabindex="-1"></a>geo_time_start <span class="ot">&lt;-</span> EML<span class="sc">::</span>eml<span class="sc">$</span><span class="fu">alternativeTimeScale</span>(<span class="at">timeScaleName =</span> <span class="st">&quot;Absolute&quot;</span>,</span>
+<span id="cb142-2"><a href="set-coverages.html#cb142-2" tabindex="-1"></a>                                                <span class="at">timeScaleAgeEstimate =</span> <span class="st">&quot;7.5 Myr&quot;</span>)</span>
+<span id="cb142-3"><a href="set-coverages.html#cb142-3" tabindex="-1"></a></span>
+<span id="cb142-4"><a href="set-coverages.html#cb142-4" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_coverage</span>(<span class="at">beginDate =</span> <span class="st">&#39;2012-01-01&#39;</span>, </span>
+<span id="cb142-5"><a href="set-coverages.html#cb142-5" tabindex="-1"></a>                              <span class="at">endDate =</span> <span class="st">&#39;2012-01-10&#39;</span>, </span>
+<span id="cb142-6"><a href="set-coverages.html#cb142-6" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>coverage <span class="ot">&lt;-</span> coverage</span></code></pre></div>
 </div>
 </div>
 </div>

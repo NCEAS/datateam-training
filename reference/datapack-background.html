@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -456,23 +456,26 @@ href="https://adv-r.hadley.nz/s4.html">S4</a> system.
 </div>
 <div id="data-objects" class="section level3 hasAnchor">
 <h3>Data Objects<a href="datapack-background.html#data-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can see what slots are in an S4 object after typing the subsetting operator <code>@</code>, or pressing TAB with the cursor after an existing <code>@</code>. Try viewing the slots of the data package.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datapack-background.html#cb12-1" tabindex="-1"></a>dp<span class="sc">@</span></span></code></pre></div>
 <p>Check out the <code>objects</code> slot</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datapack-background.html#cb12-1" tabindex="-1"></a>dp<span class="sc">@</span>objects</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="datapack-background.html#cb13-1" tabindex="-1"></a>dp<span class="sc">@</span>objects</span></code></pre></div>
+<p>The <code>objects</code> slot contains a list of object PIDs that are accessed using the <code>$</code> subsetting operator. Both are found within the structure of data packages in R.</p>
 <p>Get the number for data and metadata files associated with this data package:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="datapack-background.html#cb13-1" tabindex="-1"></a><span class="fu">getSize</span>(dp)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datapack-background.html#cb14-1" tabindex="-1"></a><span class="fu">getSize</span>(dp)</span></code></pre></div>
 <p>Get the file names and corresponding pids</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datapack-background.html#cb14-1" tabindex="-1"></a><span class="fu">getValue</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="datapack-background.html#cb15-1" tabindex="-1"></a><span class="fu">getValue</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>)</span></code></pre></div>
 <p><strong>Get identifiers</strong></p>
 <p>You can search by any of the <code>sysmeta</code> slots such as <code>fileName</code> and <code>formatId</code> and get the corresponding identifier(s):</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="datapack-background.html#cb15-1" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@ADD THE NAME OF THE SLOT&quot;</span>, <span class="at">value=</span><span class="st">&quot;PATTERN TO SEARCH BY&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datapack-background.html#cb16-1" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@ADD THE NAME OF THE SLOT&quot;</span>, <span class="at">value=</span><span class="st">&quot;PATTERN TO SEARCH BY&quot;</span>)</span></code></pre></div>
 <p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datapack-background.html#cb16-1" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;image/tiff&quot;</span>)</span>
-<span id="cb16-2"><a href="datapack-background.html#cb16-2" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value=</span><span class="st">&quot;filename.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="datapack-background.html#cb17-1" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;image/tiff&quot;</span>) </span>
+<span id="cb17-2"><a href="datapack-background.html#cb17-2" tabindex="-1"></a><span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="at">value=</span><span class="st">&quot;filename.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="provenance" class="section level3 hasAnchor">
 <h3>Provenance<a href="datapack-background.html#provenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>View the provenance as a dataTable. We will get into detail in the Building provenance chapter.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="datapack-background.html#cb17-1" tabindex="-1"></a>dp<span class="sc">@</span>relations<span class="sc">$</span>relations</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="datapack-background.html#cb18-1" tabindex="-1"></a>dp<span class="sc">@</span>relations<span class="sc">$</span>relations</span></code></pre></div>
 </div>
 </div>
             </section>

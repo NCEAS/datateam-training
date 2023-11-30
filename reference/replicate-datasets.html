@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -436,22 +436,22 @@ If a link isn’t given, you can use the package ID
 </p>
 </div>
 <p>If we are unsure about the identifer you can try querying for it on the <code>CN</code>:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="replicate-datasets.html#cb152-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb152-2"><a href="replicate-datasets.html#cb152-2" tabindex="-1"></a></span>
-<span id="cb152-3"><a href="replicate-datasets.html#cb152-3" tabindex="-1"></a><span class="co">#find the DOIs</span></span>
-<span id="cb152-4"><a href="replicate-datasets.html#cb152-4" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;(id:*10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>,<span class="st">&quot;* *:* NOT obsoletedBy:*)&quot;</span>),</span>
-<span id="cb152-5"><a href="replicate-datasets.html#cb152-5" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId, fileName, dateUploaded, authoritativeMN, replicaMN&quot;</span>,</span>
-<span id="cb152-6"><a href="replicate-datasets.html#cb152-6" tabindex="-1"></a>                         <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb152-7"><a href="replicate-datasets.html#cb152-7" tabindex="-1"></a>                         <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
-<span id="cb152-8"><a href="replicate-datasets.html#cb152-8" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
-<span id="cb152-9"><a href="replicate-datasets.html#cb152-9" tabindex="-1"></a>                <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="replicate-datasets.html#cb159-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb159-2"><a href="replicate-datasets.html#cb159-2" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="replicate-datasets.html#cb159-3" tabindex="-1"></a><span class="co">#find the DOIs</span></span>
+<span id="cb159-4"><a href="replicate-datasets.html#cb159-4" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;(id:*10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>,<span class="st">&quot;* *:* NOT obsoletedBy:*)&quot;</span>),</span>
+<span id="cb159-5"><a href="replicate-datasets.html#cb159-5" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId, fileName, dateUploaded, authoritativeMN, replicaMN&quot;</span>,</span>
+<span id="cb159-6"><a href="replicate-datasets.html#cb159-6" tabindex="-1"></a>                         <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb159-7"><a href="replicate-datasets.html#cb159-7" tabindex="-1"></a>                         <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
+<span id="cb159-8"><a href="replicate-datasets.html#cb159-8" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
+<span id="cb159-9"><a href="replicate-datasets.html#cb159-9" tabindex="-1"></a>                <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <div id="cloning-the-packages" class="section level3 hasAnchor">
 <h3>Cloning the packages<a href="replicate-datasets.html#cloning-the-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Try cloning to the test node first to see how it will look. Set up your nodes</li>
 </ol>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="replicate-datasets.html#cb153-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
-<span id="cb153-2"><a href="replicate-datasets.html#cb153-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="replicate-datasets.html#cb160-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
+<span id="cb160-2"><a href="replicate-datasets.html#cb160-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
 For LTER datasets on EDI, there are two possibilities for the mn:
@@ -462,24 +462,24 @@ other one if one isn’t working
 <ol start="2" style="list-style-type: decimal">
 <li>Use <code>clone_package</code> to copy it over to the test node</li>
 </ol>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="replicate-datasets.html#cb154-1" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>, <span class="co">#example doi to replicate</span></span>
-<span id="cb154-2"><a href="replicate-datasets.html#cb154-2" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
-<span id="cb154-3"><a href="replicate-datasets.html#cb154-3" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
-<span id="cb154-4"><a href="replicate-datasets.html#cb154-4" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
-<span id="cb154-5"><a href="replicate-datasets.html#cb154-5" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
-<span id="cb154-6"><a href="replicate-datasets.html#cb154-6" tabindex="-1"></a>              <span class="at">new_pid =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="replicate-datasets.html#cb161-1" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/d4f567844673857239eec0cb61c6f543&quot;</span>, <span class="co">#example doi to replicate</span></span>
+<span id="cb161-2"><a href="replicate-datasets.html#cb161-2" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
+<span id="cb161-3"><a href="replicate-datasets.html#cb161-3" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
+<span id="cb161-4"><a href="replicate-datasets.html#cb161-4" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
+<span id="cb161-5"><a href="replicate-datasets.html#cb161-5" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
+<span id="cb161-6"><a href="replicate-datasets.html#cb161-6" tabindex="-1"></a>              <span class="at">new_pid =</span> T)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Once you have verified that it clones properly to the test node, do the same in production but with a couple of minor modifications:</li>
 </ol>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="replicate-datasets.html#cb155-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
-<span id="cb155-2"><a href="replicate-datasets.html#cb155-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb155-3"><a href="replicate-datasets.html#cb155-3" tabindex="-1"></a></span>
-<span id="cb155-4"><a href="replicate-datasets.html#cb155-4" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/0af82d3c3d9d1710775cf9b1464ce70b&quot;</span>,</span>
-<span id="cb155-5"><a href="replicate-datasets.html#cb155-5" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
-<span id="cb155-6"><a href="replicate-datasets.html#cb155-6" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
-<span id="cb155-7"><a href="replicate-datasets.html#cb155-7" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
-<span id="cb155-8"><a href="replicate-datasets.html#cb155-8" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
-<span id="cb155-9"><a href="replicate-datasets.html#cb155-9" tabindex="-1"></a>              <span class="at">new_pid =</span> F) <span class="co">#uses the same pid</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="replicate-datasets.html#cb162-1" tabindex="-1"></a>from <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:LTER&quot;</span>)</span>
+<span id="cb162-2"><a href="replicate-datasets.html#cb162-2" tabindex="-1"></a>to <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;PROD&quot;</span>, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb162-3"><a href="replicate-datasets.html#cb162-3" tabindex="-1"></a></span>
+<span id="cb162-4"><a href="replicate-datasets.html#cb162-4" tabindex="-1"></a><span class="fu">clone_package</span>(<span class="st">&quot;doi:10.6073/pasta/0af82d3c3d9d1710775cf9b1464ce70b&quot;</span>,</span>
+<span id="cb162-5"><a href="replicate-datasets.html#cb162-5" tabindex="-1"></a>              <span class="at">from =</span> from,</span>
+<span id="cb162-6"><a href="replicate-datasets.html#cb162-6" tabindex="-1"></a>              <span class="at">to =</span> to,</span>
+<span id="cb162-7"><a href="replicate-datasets.html#cb162-7" tabindex="-1"></a>              <span class="at">add_access_to =</span> <span class="st">&quot;http://orcid.org/0000-0001-8888-547X&quot;</span>,</span>
+<span id="cb162-8"><a href="replicate-datasets.html#cb162-8" tabindex="-1"></a>              <span class="at">change_auth_node =</span> F,</span>
+<span id="cb162-9"><a href="replicate-datasets.html#cb162-9" tabindex="-1"></a>              <span class="at">new_pid =</span> F) <span class="co">#uses the same pid</span></span></code></pre></div>
 <div class="note">
 <p>
 make sure the <code>new_pid</code> argument is set to <code>F</code>

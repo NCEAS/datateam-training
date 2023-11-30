@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -432,10 +432,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Download the rar file to datateam</p></li>
 <li><p>In the terminal run the following on your files:</p></li>
 </ol>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="scan-rar-files.html#cb179-1" tabindex="-1"></a>mkdir to<span class="sc">-</span>scan <span class="sc">&amp;&amp;</span> mv <span class="sc">&lt;</span>file.rar<span class="sc">&gt;</span> to<span class="sc">-</span>scan <span class="sc">&amp;&amp;</span> cd to<span class="sc">-</span>scan</span>
-<span id="cb179-2"><a href="scan-rar-files.html#cb179-2" tabindex="-1"></a>unrar e <span class="sc">&lt;</span>file.rar<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="scan-rar-files.html#cb186-1" tabindex="-1"></a>mkdir to<span class="sc">-</span>scan <span class="sc">&amp;&amp;</span> mv <span class="sc">&lt;</span>file.rar<span class="sc">&gt;</span> to<span class="sc">-</span>scan <span class="sc">&amp;&amp;</span> cd to<span class="sc">-</span>scan</span>
+<span id="cb186-2"><a href="scan-rar-files.html#cb186-2" tabindex="-1"></a>unrar e <span class="sc">&lt;</span>file.rar<span class="sc">&gt;</span></span></code></pre></div>
 <p>That should scan the compressed file and each individual file it contains:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="scan-rar-files.html#cb180-1" tabindex="-1"></a>clamscan <span class="sc">*</span></span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="scan-rar-files.html#cb187-1" tabindex="-1"></a>clamscan <span class="sc">*</span></span></code></pre></div>
 <p>Clean up by deleting the to-scan folder - ’rm -r to-scan`.</p>
 </div>
             </section>

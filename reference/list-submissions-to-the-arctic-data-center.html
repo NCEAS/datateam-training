@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -431,17 +431,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>View submissions to the Arctic Data Center from 10/1/18 to 10/7/18</li>
 </ul>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="list-submissions-to-the-arctic-data-center.html#cb206-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb206-2"><a href="list-submissions-to-the-arctic-data-center.html#cb206-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb206-3"><a href="list-submissions-to-the-arctic-data-center.html#cb206-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="list-submissions-to-the-arctic-data-center.html#cb213-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb213-2"><a href="list-submissions-to-the-arctic-data-center.html#cb213-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb213-3"><a href="list-submissions-to-the-arctic-data-center.html#cb213-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
 <ul>
 <li>The following code shows the underlying solr query</li>
 </ul>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="list-submissions-to-the-arctic-data-center.html#cb207-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
-<span id="cb207-2"><a href="list-submissions-to-the-arctic-data-center.html#cb207-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
-<span id="cb207-3"><a href="list-submissions-to-the-arctic-data-center.html#cb207-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
-<span id="cb207-4"><a href="list-submissions-to-the-arctic-data-center.html#cb207-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
-<span id="cb207-5"><a href="list-submissions-to-the-arctic-data-center.html#cb207-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="list-submissions-to-the-arctic-data-center.html#cb214-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
+<span id="cb214-2"><a href="list-submissions-to-the-arctic-data-center.html#cb214-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
+<span id="cb214-3"><a href="list-submissions-to-the-arctic-data-center.html#cb214-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
+<span id="cb214-4"><a href="list-submissions-to-the-arctic-data-center.html#cb214-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
+<span id="cb214-5"><a href="list-submissions-to-the-arctic-data-center.html#cb214-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 

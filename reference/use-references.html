@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -466,9 +466,9 @@ will need to keep this in account.
   &lt;/dataset&gt;
 &lt;/eml&gt;</code></pre>
 <p>So you see those two times Bryce Mecum is referenced there? If you mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there’s some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="use-references.html#cb148-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
-<span id="cb148-2"><a href="use-references.html#cb148-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
-<span id="cb148-3"><a href="use-references.html#cb148-3" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="use-references.html#cb155-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
+<span id="cb155-2"><a href="use-references.html#cb155-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
+<span id="cb155-3"><a href="use-references.html#cb155-3" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;eml:eml xmlns:eml=&quot;eml://ecoinformatics.org/eml-2.1.1&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:stmml=&quot;http://www.xml-cml.org/schema/stmml-1.1&quot; packageId=&quot;id&quot; system=&quot;system&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1/ eml.xsd&quot;&gt;
   &lt;dataset&gt;
@@ -500,12 +500,12 @@ record but doesn’t need to have meaning outside of that.
 <li>Use references to add that information into the <code>attributeList</code>s of the other data tables</li>
 </ol>
 <p>For example, if all the data tables in our data package have the same attributes, we can set the attribute list for the first one, and use references for the rest:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="use-references.html#cb150-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
-<span id="cb150-2"><a href="use-references.html#cb150-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
-<span id="cb150-3"><a href="use-references.html#cb150-3" tabindex="-1"></a></span>
-<span id="cb150-4"><a href="use-references.html#cb150-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
-<span id="cb150-5"><a href="use-references.html#cb150-5" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
-<span id="cb150-6"><a href="use-references.html#cb150-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="use-references.html#cb157-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
+<span id="cb157-2"><a href="use-references.html#cb157-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
+<span id="cb157-3"><a href="use-references.html#cb157-3" tabindex="-1"></a></span>
+<span id="cb157-4"><a href="use-references.html#cb157-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
+<span id="cb157-5"><a href="use-references.html#cb157-5" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
+<span id="cb157-6"><a href="use-references.html#cb157-6" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <!-- </div> -->

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -429,25 +429,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Set methods<a href="set-methods.html#set-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The methods tree in the EML section has many different options, visible in the <a href = 'https://eml.ecoinformatics.org/schema/index.html' target='_blank'>schema</a>. You can create new elements in the methods tree by following the schema and using the <code>eml</code> helpers.</p>
 <p>Another simple and potentially useful way to add methods to an EML that has no methods at all is by adding them via a MS Word document. An example is shown below:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="set-methods.html#cb137-1" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</span>
-<span id="cb137-2"><a href="set-methods.html#cb137-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="set-methods.html#cb143-1" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</span>
+<span id="cb143-2"><a href="set-methods.html#cb143-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 <p>If you want to make minor changes to existing methods information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing methods information.</p>
 <div id="adding-sampling-info-to-methods-section" class="section level3 hasAnchor">
 <h3>Adding sampling info to methods section<a href="set-methods.html#adding-sampling-info-to-methods-section" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="set-methods.html#cb138-1" tabindex="-1"></a><span class="co"># add method steps as new variables</span></span>
-<span id="cb138-2"><a href="set-methods.html#cb138-2" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methodStep</span>(<span class="at">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</span>
-<span id="cb138-3"><a href="set-methods.html#cb138-3" tabindex="-1"></a></span>
-<span id="cb138-4"><a href="set-methods.html#cb138-4" tabindex="-1"></a>stEx <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">studyExtent</span>(<span class="at">description =</span> <span class="st">&quot;study extent description&quot;</span>)</span>
-<span id="cb138-5"><a href="set-methods.html#cb138-5" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="set-methods.html#cb138-6" tabindex="-1"></a>samp <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">sampling</span>(<span class="at">studyExtent =</span> stEx,</span>
-<span id="cb138-7"><a href="set-methods.html#cb138-7" tabindex="-1"></a>                     <span class="at">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</span>
-<span id="cb138-8"><a href="set-methods.html#cb138-8" tabindex="-1"></a></span>
-<span id="cb138-9"><a href="set-methods.html#cb138-9" tabindex="-1"></a></span>
-<span id="cb138-10"><a href="set-methods.html#cb138-10" tabindex="-1"></a><span class="co"># combine all methods steps and sampling info </span></span>
-<span id="cb138-11"><a href="set-methods.html#cb138-11" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methods</span>(<span class="at">methodStep =</span> step1, </span>
-<span id="cb138-12"><a href="set-methods.html#cb138-12" tabindex="-1"></a>                        <span class="at">sampling =</span> samp)</span>
-<span id="cb138-13"><a href="set-methods.html#cb138-13" tabindex="-1"></a></span>
-<span id="cb138-14"><a href="set-methods.html#cb138-14" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="set-methods.html#cb144-1" tabindex="-1"></a><span class="co"># add method steps as new variables</span></span>
+<span id="cb144-2"><a href="set-methods.html#cb144-2" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methodStep</span>(<span class="at">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</span>
+<span id="cb144-3"><a href="set-methods.html#cb144-3" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="set-methods.html#cb144-4" tabindex="-1"></a>stEx <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">studyExtent</span>(<span class="at">description =</span> <span class="st">&quot;study extent description&quot;</span>)</span>
+<span id="cb144-5"><a href="set-methods.html#cb144-5" tabindex="-1"></a></span>
+<span id="cb144-6"><a href="set-methods.html#cb144-6" tabindex="-1"></a>samp <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">sampling</span>(<span class="at">studyExtent =</span> stEx,</span>
+<span id="cb144-7"><a href="set-methods.html#cb144-7" tabindex="-1"></a>                     <span class="at">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</span>
+<span id="cb144-8"><a href="set-methods.html#cb144-8" tabindex="-1"></a></span>
+<span id="cb144-9"><a href="set-methods.html#cb144-9" tabindex="-1"></a></span>
+<span id="cb144-10"><a href="set-methods.html#cb144-10" tabindex="-1"></a><span class="co"># combine all methods steps and sampling info </span></span>
+<span id="cb144-11"><a href="set-methods.html#cb144-11" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methods</span>(<span class="at">methodStep =</span> step1, </span>
+<span id="cb144-12"><a href="set-methods.html#cb144-12" tabindex="-1"></a>                        <span class="at">sampling =</span> samp)</span>
+<span id="cb144-13"><a href="set-methods.html#cb144-13" tabindex="-1"></a></span>
+<span id="cb144-14"><a href="set-methods.html#cb144-14" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 </div>
 </div>
             </section>

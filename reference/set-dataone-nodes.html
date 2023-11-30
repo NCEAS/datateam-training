@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -440,29 +440,29 @@ should NEVER be used to publish test or training data sets.
 <p>The primary nodes we work on, and how to set them in R, are below:</p>
 <div id="staging-test-nodes" class="section level3 hasAnchor">
 <h3>Staging (Test) nodes<a href="set-dataone-nodes.html#staging-test-nodes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="set-dataone-nodes.html#cb43-1" tabindex="-1"></a><span class="co"># ADC (test.arcticdata.io)</span></span>
-<span id="cb43-2"><a href="set-dataone-nodes.html#cb43-2" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
-<span id="cb43-3"><a href="set-dataone-nodes.html#cb43-3" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
-<span id="cb43-4"><a href="set-dataone-nodes.html#cb43-4" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="set-dataone-nodes.html#cb43-5" tabindex="-1"></a><span class="co"># KNB (dev.nceas.ucsb.edu)</span></span>
-<span id="cb43-6"><a href="set-dataone-nodes.html#cb43-6" tabindex="-1"></a>cn_staging2 <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;STAGING2&quot;</span>)</span>
-<span id="cb43-7"><a href="set-dataone-nodes.html#cb43-7" tabindex="-1"></a>knb_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging2, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="set-dataone-nodes.html#cb44-1" tabindex="-1"></a><span class="co"># ADC (test.arcticdata.io)</span></span>
+<span id="cb44-2"><a href="set-dataone-nodes.html#cb44-2" tabindex="-1"></a>cn_staging <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;STAGING&#39;</span>)</span>
+<span id="cb44-3"><a href="set-dataone-nodes.html#cb44-3" tabindex="-1"></a>adc_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging,<span class="st">&#39;urn:node:mnTestARCTIC&#39;</span>)</span>
+<span id="cb44-4"><a href="set-dataone-nodes.html#cb44-4" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="set-dataone-nodes.html#cb44-5" tabindex="-1"></a><span class="co"># KNB (dev.nceas.ucsb.edu)</span></span>
+<span id="cb44-6"><a href="set-dataone-nodes.html#cb44-6" tabindex="-1"></a>cn_staging2 <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;STAGING2&quot;</span>)</span>
+<span id="cb44-7"><a href="set-dataone-nodes.html#cb44-7" tabindex="-1"></a>knb_test <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn_staging2, <span class="st">&quot;urn:node:mnTestKNB&quot;</span>)</span></code></pre></div>
 </div>
 <div id="production-nodes" class="section level3 hasAnchor">
 <h3>Production nodes<a href="set-dataone-nodes.html#production-nodes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="set-dataone-nodes.html#cb44-1" tabindex="-1"></a><span class="co"># ADC (arcticdata.io)</span></span>
-<span id="cb44-2"><a href="set-dataone-nodes.html#cb44-2" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb44-3"><a href="set-dataone-nodes.html#cb44-3" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb44-4"><a href="set-dataone-nodes.html#cb44-4" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="set-dataone-nodes.html#cb44-5" tabindex="-1"></a><span class="co"># KNB (knb.ecoinformatics.org)</span></span>
-<span id="cb44-6"><a href="set-dataone-nodes.html#cb44-6" tabindex="-1"></a>knb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:KNB&quot;</span>)</span>
-<span id="cb44-7"><a href="set-dataone-nodes.html#cb44-7" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="set-dataone-nodes.html#cb44-8" tabindex="-1"></a><span class="co"># GOA </span></span>
-<span id="cb44-9"><a href="set-dataone-nodes.html#cb44-9" tabindex="-1"></a>goa <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:GOA&quot;</span>)</span>
-<span id="cb44-10"><a href="set-dataone-nodes.html#cb44-10" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="set-dataone-nodes.html#cb44-11" tabindex="-1"></a><span class="co"># You can also use the datamgmt::guess_membernode function to set a member node</span></span>
-<span id="cb44-12"><a href="set-dataone-nodes.html#cb44-12" tabindex="-1"></a><span class="co"># Note: this pid looks like a URL - it&#39;s really a unique identifier</span></span>
-<span id="cb44-13"><a href="set-dataone-nodes.html#cb44-13" tabindex="-1"></a>dryad <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">guess_member_node</span>(<span class="st">&#39;https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="set-dataone-nodes.html#cb45-1" tabindex="-1"></a><span class="co"># ADC (arcticdata.io)</span></span>
+<span id="cb45-2"><a href="set-dataone-nodes.html#cb45-2" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb45-3"><a href="set-dataone-nodes.html#cb45-3" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb45-4"><a href="set-dataone-nodes.html#cb45-4" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="set-dataone-nodes.html#cb45-5" tabindex="-1"></a><span class="co"># KNB (knb.ecoinformatics.org)</span></span>
+<span id="cb45-6"><a href="set-dataone-nodes.html#cb45-6" tabindex="-1"></a>knb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:KNB&quot;</span>)</span>
+<span id="cb45-7"><a href="set-dataone-nodes.html#cb45-7" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="set-dataone-nodes.html#cb45-8" tabindex="-1"></a><span class="co"># GOA </span></span>
+<span id="cb45-9"><a href="set-dataone-nodes.html#cb45-9" tabindex="-1"></a>goa <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:GOA&quot;</span>)</span>
+<span id="cb45-10"><a href="set-dataone-nodes.html#cb45-10" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="set-dataone-nodes.html#cb45-11" tabindex="-1"></a><span class="co"># You can also use the datamgmt::guess_membernode function to set a member node</span></span>
+<span id="cb45-12"><a href="set-dataone-nodes.html#cb45-12" tabindex="-1"></a><span class="co"># Note: this pid looks like a URL - it&#39;s really a unique identifier</span></span>
+<span id="cb45-13"><a href="set-dataone-nodes.html#cb45-13" tabindex="-1"></a>dryad <span class="ot">&lt;-</span> datamgmt<span class="sc">::</span><span class="fu">guess_member_node</span>(<span class="st">&#39;https://doi.org/10.5061/dryad.k6gf1tf/15?ver=2018-09-18T03:54:10.492+00:00&#39;</span>)</span></code></pre></div>
 <p>More DataONE STAGING nodes can be found <a href = 'https://cn-stage.test.dataone.org/cn/v2/node' target='_blank'>here</a>
 More DataONE PROD nodes can be found <a href = 'https://cn.dataone.org/cn/v2/node' target='_blank'>here</a></p>
 </div>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -428,10 +428,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="add-a-pre-generated-identifier-to-the-eml" class="section level2 hasAnchor">
 <h2>Add a pre-generated identifier to the EML<a href="add-a-pre-generated-identifier-to-the-eml.html#add-a-pre-generated-identifier-to-the-eml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you pre-generate a UUID or DOI, the change is not automatically reflected in the <code>packageId</code> section of the EML. Use the code below to ensure that the EML lines up with the desired identifier:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-1" tabindex="-1"></a><span class="do">## Generate DOI and add to EML</span></span>
-<span id="cb36-2"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-2" tabindex="-1"></a><span class="co"># Note that you cannot generate a DOI on test nodes</span></span>
-<span id="cb36-3"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-3" tabindex="-1"></a>doiPid <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="st">&quot;DOI&quot;</span>)</span>
-<span id="cb36-4"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb36-4" tabindex="-1"></a>doc<span class="sc">$</span>packageId <span class="ot">&lt;-</span> doiPid</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-1" tabindex="-1"></a><span class="do">## Generate DOI and add to EML</span></span>
+<span id="cb37-2"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-2" tabindex="-1"></a><span class="co"># Note that you cannot generate a DOI on test nodes</span></span>
+<span id="cb37-3"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-3" tabindex="-1"></a>doiPid <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="st">&quot;DOI&quot;</span>)</span>
+<span id="cb37-4"><a href="add-a-pre-generated-identifier-to-the-eml.html#cb37-4" tabindex="-1"></a>doc<span class="sc">$</span>packageId <span class="ot">&lt;-</span> doiPid</span></code></pre></div>
 <p>Be sure to include the <code>identifier=</code> argument in your <a href = 'https://nceas.github.io/datateam-training/reference/update-a-package-with-a-new-data-object.html#publish-update' target='_blank'>publish update</a> command so the pre-generated identifier is applied.</p>
 </div>
             </section>

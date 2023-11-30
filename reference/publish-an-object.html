@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -428,16 +428,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="publish-an-object" class="section level2 hasAnchor">
 <h2>Publish an object<a href="publish-an-object.html#publish-an-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Objects (data files, xml metadata files) can be published to a DataONE node using the function <code>publish_object()</code> from the <code>arcticdatautils</code> R Package. To publish an object, you must first get the <code>formatId</code> of the object you want to publish. A few common <code>formatId</code>s are listed below.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="publish-an-object.html#cb228-1" tabindex="-1"></a><span class="co"># .csv file</span></span>
-<span id="cb228-2"><a href="publish-an-object.html#cb228-2" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
-<span id="cb228-3"><a href="publish-an-object.html#cb228-3" tabindex="-1"></a></span>
-<span id="cb228-4"><a href="publish-an-object.html#cb228-4" tabindex="-1"></a><span class="co"># .txt file</span></span>
-<span id="cb228-5"><a href="publish-an-object.html#cb228-5" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
-<span id="cb228-6"><a href="publish-an-object.html#cb228-6" tabindex="-1"></a></span>
-<span id="cb228-7"><a href="publish-an-object.html#cb228-7" tabindex="-1"></a><span class="co"># metadata file</span></span>
-<span id="cb228-8"><a href="publish-an-object.html#cb228-8" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
-<span id="cb228-9"><a href="publish-an-object.html#cb228-9" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb228-10"><a href="publish-an-object.html#cb228-10" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="publish-an-object.html#cb235-1" tabindex="-1"></a><span class="co"># .csv file</span></span>
+<span id="cb235-2"><a href="publish-an-object.html#cb235-2" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/csv&quot;</span></span>
+<span id="cb235-3"><a href="publish-an-object.html#cb235-3" tabindex="-1"></a></span>
+<span id="cb235-4"><a href="publish-an-object.html#cb235-4" tabindex="-1"></a><span class="co"># .txt file</span></span>
+<span id="cb235-5"><a href="publish-an-object.html#cb235-5" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;text/plain&quot;</span></span>
+<span id="cb235-6"><a href="publish-an-object.html#cb235-6" tabindex="-1"></a></span>
+<span id="cb235-7"><a href="publish-an-object.html#cb235-7" tabindex="-1"></a><span class="co"># metadata file</span></span>
+<span id="cb235-8"><a href="publish-an-object.html#cb235-8" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span></span>
+<span id="cb235-9"><a href="publish-an-object.html#cb235-9" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb235-10"><a href="publish-an-object.html#cb235-10" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="fu">format_eml</span>(<span class="st">&quot;2.2.0&quot;</span>)</span></code></pre></div>
 <p>Most objects have registered <code>formatId</code>s that can be found on the DataONE Object Format List <a href = 'https://cn.dataone.org/cn/v2/formats' target='_blank'>here</a>. Always use the “Id:” (2nd line) from the DataONE Object Format List and ensure it is copied EXACTLY. Metadata files (as shown above) use a special function to set the <code>formatId</code>. If the <code>formatId</code> is not listed at the DataONE website, you can set <code>formatId &lt;- "application/octet-stream"</code>.</p>
 <div class="note">
 <p>
@@ -446,12 +446,12 @@ If you want to change the formatId please use
 </p>
 </div>
 <p>Once you know the appropriate <code>formatId</code> you can publish an object using these commands:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="publish-an-object.html#cb229-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
-<span id="cb229-2"><a href="publish-an-object.html#cb229-2" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
-<span id="cb229-3"><a href="publish-an-object.html#cb229-3" tabindex="-1"></a></span>
-<span id="cb229-4"><a href="publish-an-object.html#cb229-4" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
-<span id="cb229-5"><a href="publish-an-object.html#cb229-5" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
-<span id="cb229-6"><a href="publish-an-object.html#cb229-6" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="publish-an-object.html#cb236-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/file&quot;</span></span>
+<span id="cb236-2"><a href="publish-an-object.html#cb236-2" tabindex="-1"></a>formatId <span class="ot">&lt;-</span> <span class="st">&quot;your/formatId&quot;</span></span>
+<span id="cb236-3"><a href="publish-an-object.html#cb236-3" tabindex="-1"></a></span>
+<span id="cb236-4"><a href="publish-an-object.html#cb236-4" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">publish_object</span>(adc_test,</span>
+<span id="cb236-5"><a href="publish-an-object.html#cb236-5" tabindex="-1"></a>                      <span class="at">path =</span> path,</span>
+<span id="cb236-6"><a href="publish-an-object.html#cb236-6" tabindex="-1"></a>                      <span class="at">format_id =</span> formatId) <span class="co"># note that the output of this function is the PID of the newly published object</span></span></code></pre></div>
 <p>After publishing the object, the <code>PID</code> will need to be added to a resource map by <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#update-a-package' target='_blank'>updating</a> or <a href = 'https://nceas.github.io/datateam-training/reference/create-a-resource-map.html#create-a-resource-map' target='_blank'>creating</a> a resource map. Additionally, the <a href = 'https://nceas.github.io/datateam-training/reference/set-rights-and-access.html#set-rights-and-access' target='_blank'>rights and access</a> for the object must be set. However, you only need to give other people rights and access to objects to objects that are not yours, for the training you don’t need to do this.</p>
 </div>
             </section>

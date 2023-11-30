@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-11-07" />
+<meta name="date" content="2023-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="update-a-data-object.html"><a href="update-a-data-object.html"><i class="fa fa-check"></i>Update a data object</a></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
 <ul>
@@ -235,7 +235,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#annotating-sensitive-data"><i class="fa fa-check"></i>Annotating sensitive data</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -430,26 +430,26 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>For additional examples and explanations, check out the Apache Lucene <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>Query Parser Syntax</a> page.</p>
 <div id="find-everything" class="section level3 hasAnchor">
 <h3>Find everything<a href="example-solr-queries.html#find-everything" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="example-solr-queries.html#cb188-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;*:*&quot;</span>,</span>
-<span id="cb188-2"><a href="example-solr-queries.html#cb188-2" tabindex="-1"></a>                               <span class="at">fl=</span><span class="st">&quot;*&quot;</span>,</span>
-<span id="cb188-3"><a href="example-solr-queries.html#cb188-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb188-4"><a href="example-solr-queries.html#cb188-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="example-solr-queries.html#cb195-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;*:*&quot;</span>,</span>
+<span id="cb195-2"><a href="example-solr-queries.html#cb195-2" tabindex="-1"></a>                               <span class="at">fl=</span><span class="st">&quot;*&quot;</span>,</span>
+<span id="cb195-3"><a href="example-solr-queries.html#cb195-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb195-4"><a href="example-solr-queries.html#cb195-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-a-wildcard-expression" class="section level3 hasAnchor">
 <h3>Query a wildcard expression<a href="example-solr-queries.html#query-a-wildcard-expression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="example-solr-queries.html#cb189-1" tabindex="-1"></a><span class="co">#find any id that starts with arctic-data.6</span></span>
-<span id="cb189-2"><a href="example-solr-queries.html#cb189-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;id:arctic-data.6*&quot;</span>,</span>
-<span id="cb189-3"><a href="example-solr-queries.html#cb189-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb189-4"><a href="example-solr-queries.html#cb189-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="example-solr-queries.html#cb196-1" tabindex="-1"></a><span class="co">#find any id that starts with arctic-data.6</span></span>
+<span id="cb196-2"><a href="example-solr-queries.html#cb196-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;id:arctic-data.6*&quot;</span>,</span>
+<span id="cb196-3"><a href="example-solr-queries.html#cb196-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb196-4"><a href="example-solr-queries.html#cb196-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-multiple-fields" class="section level3 hasAnchor">
 <h3>Query multiple fields<a href="example-solr-queries.html#query-multiple-fields" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="example-solr-queries.html#cb190-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil*+AND+origin:Ludwig&quot;</span>,</span>
-<span id="cb190-2"><a href="example-solr-queries.html#cb190-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb190-3"><a href="example-solr-queries.html#cb190-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="example-solr-queries.html#cb191-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* OR origin:Ludwig&quot;</span>,</span>
-<span id="cb191-2"><a href="example-solr-queries.html#cb191-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb191-3"><a href="example-solr-queries.html#cb191-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="example-solr-queries.html#cb197-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil*+AND+origin:Ludwig&quot;</span>,</span>
+<span id="cb197-2"><a href="example-solr-queries.html#cb197-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb197-3"><a href="example-solr-queries.html#cb197-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="example-solr-queries.html#cb198-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* OR origin:Ludwig&quot;</span>,</span>
+<span id="cb198-2"><a href="example-solr-queries.html#cb198-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb198-3"><a href="example-solr-queries.html#cb198-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
 You can use either spaces or <code>+</code> to separate query
@@ -463,739 +463,739 @@ with <code>%20</code>.)
 <div id="query-by-formattype" class="section level3 hasAnchor">
 <h3>Query by formatType<a href="example-solr-queries.html#query-by-formattype" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Objects are queryable via their <code>formatType</code> which is one of DATA, METADATA, or RESOURCE.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="example-solr-queries.html#cb192-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:RESOURCE AND submitter:&quot;http://orcid.org/0000-0002-2561-5840&quot;&#39;</span>,</span>
-<span id="cb192-2"><a href="example-solr-queries.html#cb192-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
-<span id="cb192-3"><a href="example-solr-queries.html#cb192-3" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb192-4"><a href="example-solr-queries.html#cb192-4" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
-<span id="cb192-5"><a href="example-solr-queries.html#cb192-5" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb192-6"><a href="example-solr-queries.html#cb192-6" tabindex="-1"></a></span>
-<span id="cb192-7"><a href="example-solr-queries.html#cb192-7" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:METADATA AND title:*Toolik*&#39;</span>,</span>
-<span id="cb192-8"><a href="example-solr-queries.html#cb192-8" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
-<span id="cb192-9"><a href="example-solr-queries.html#cb192-9" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb192-10"><a href="example-solr-queries.html#cb192-10" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
-<span id="cb192-11"><a href="example-solr-queries.html#cb192-11" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="example-solr-queries.html#cb199-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:RESOURCE AND submitter:&quot;http://orcid.org/0000-0002-2561-5840&quot;&#39;</span>,</span>
+<span id="cb199-2"><a href="example-solr-queries.html#cb199-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
+<span id="cb199-3"><a href="example-solr-queries.html#cb199-3" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb199-4"><a href="example-solr-queries.html#cb199-4" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
+<span id="cb199-5"><a href="example-solr-queries.html#cb199-5" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb199-6"><a href="example-solr-queries.html#cb199-6" tabindex="-1"></a></span>
+<span id="cb199-7"><a href="example-solr-queries.html#cb199-7" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:METADATA AND title:*Toolik*&#39;</span>,</span>
+<span id="cb199-8"><a href="example-solr-queries.html#cb199-8" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
+<span id="cb199-9"><a href="example-solr-queries.html#cb199-9" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb199-10"><a href="example-solr-queries.html#cb199-10" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
+<span id="cb199-11"><a href="example-solr-queries.html#cb199-11" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-pids-by-a-specific-submitter" class="section level3 hasAnchor">
 <h3>Query pids by a specific submitter<a href="example-solr-queries.html#query-pids-by-a-specific-submitter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="example-solr-queries.html#cb193-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;submitter:&quot;http://orcid.org/0000-0003-4703-1974&quot;&#39;</span>,</span>
-<span id="cb193-2"><a href="example-solr-queries.html#cb193-2" tabindex="-1"></a>               <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName, size&#39;</span>,</span>
-<span id="cb193-3"><a href="example-solr-queries.html#cb193-3" tabindex="-1"></a>               <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb193-4"><a href="example-solr-queries.html#cb193-4" tabindex="-1"></a>               <span class="at">rows=</span><span class="st">&#39;1000&#39;</span>),</span>
-<span id="cb193-5"><a href="example-solr-queries.html#cb193-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="example-solr-queries.html#cb200-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;submitter:&quot;http://orcid.org/0000-0003-4703-1974&quot;&#39;</span>,</span>
+<span id="cb200-2"><a href="example-solr-queries.html#cb200-2" tabindex="-1"></a>               <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName, size&#39;</span>,</span>
+<span id="cb200-3"><a href="example-solr-queries.html#cb200-3" tabindex="-1"></a>               <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb200-4"><a href="example-solr-queries.html#cb200-4" tabindex="-1"></a>               <span class="at">rows=</span><span class="st">&#39;1000&#39;</span>),</span>
+<span id="cb200-5"><a href="example-solr-queries.html#cb200-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-pids-with-special-characters" class="section level3 hasAnchor">
 <h3>Query pids with special characters<a href="example-solr-queries.html#query-pids-with-special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="example-solr-queries.html#cb194-1" tabindex="-1"></a><span class="co"># Wrap the pid with special characters with escaped backslashes</span></span>
-<span id="cb194-2"><a href="example-solr-queries.html#cb194-2" tabindex="-1"></a>dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;id:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;doi:10.18739/A20R9M36V&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
-<span id="cb194-3"><a href="example-solr-queries.html#cb194-3" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&#39;dateUploaded AND identifier&#39;</span>,</span>
-<span id="cb194-4"><a href="example-solr-queries.html#cb194-4" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="dv">5000</span>),</span>
-<span id="cb194-5"><a href="example-solr-queries.html#cb194-5" tabindex="-1"></a>               <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="example-solr-queries.html#cb201-1" tabindex="-1"></a><span class="co"># Wrap the pid with special characters with escaped backslashes</span></span>
+<span id="cb201-2"><a href="example-solr-queries.html#cb201-2" tabindex="-1"></a>dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;id:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;doi:10.18739/A20R9M36V&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
+<span id="cb201-3"><a href="example-solr-queries.html#cb201-3" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&#39;dateUploaded AND identifier&#39;</span>,</span>
+<span id="cb201-4"><a href="example-solr-queries.html#cb201-4" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="dv">5000</span>),</span>
+<span id="cb201-5"><a href="example-solr-queries.html#cb201-5" tabindex="-1"></a>               <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-multiple-conditions-within-one-field" class="section level3 hasAnchor">
 <h3>Query multiple conditions within one field<a href="example-solr-queries.html#query-multiple-conditions-within-one-field" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="example-solr-queries.html#cb195-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil* AND carbo*)&quot;</span>,</span>
-<span id="cb195-2"><a href="example-solr-queries.html#cb195-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb195-3"><a href="example-solr-queries.html#cb195-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="example-solr-queries.html#cb202-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil* AND carbo*)&quot;</span>,</span>
+<span id="cb202-2"><a href="example-solr-queries.html#cb202-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb202-3"><a href="example-solr-queries.html#cb202-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>) </span></code></pre></div>
 </div>
 <div id="query-for-latest-versions-only" class="section level3 hasAnchor">
 <h3>Query for latest versions only<a href="example-solr-queries.html#query-for-latest-versions-only" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="example-solr-queries.html#cb196-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
-<span id="cb196-2"><a href="example-solr-queries.html#cb196-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId&quot;</span>,</span>
-<span id="cb196-3"><a href="example-solr-queries.html#cb196-3" tabindex="-1"></a>                          <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
-<span id="cb196-4"><a href="example-solr-queries.html#cb196-4" tabindex="-1"></a>                          <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
-<span id="cb196-5"><a href="example-solr-queries.html#cb196-5" tabindex="-1"></a>                     <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="example-solr-queries.html#cb203-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb203-2"><a href="example-solr-queries.html#cb203-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId&quot;</span>,</span>
+<span id="cb203-3"><a href="example-solr-queries.html#cb203-3" tabindex="-1"></a>                          <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
+<span id="cb203-4"><a href="example-solr-queries.html#cb203-4" tabindex="-1"></a>                          <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
+<span id="cb203-5"><a href="example-solr-queries.html#cb203-5" tabindex="-1"></a>                     <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="use-not-in-a-query" class="section level3 hasAnchor">
 <h3>Use NOT in a query<a href="example-solr-queries.html#use-not-in-a-query" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Just add <code>-</code> before a query parameter!</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="example-solr-queries.html#cb197-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil AND -carbon)&quot;</span>,</span>
-<span id="cb197-2"><a href="example-solr-queries.html#cb197-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb197-3"><a href="example-solr-queries.html#cb197-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="example-solr-queries.html#cb204-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil AND -carbon)&quot;</span>,</span>
+<span id="cb204-2"><a href="example-solr-queries.html#cb204-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb204-3"><a href="example-solr-queries.html#cb204-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-a-coordinating-node" class="section level3 hasAnchor">
 <h3>Query a coordinating node<a href="example-solr-queries.html#query-a-coordinating-node" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="example-solr-queries.html#cb198-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* AND origin:Ludwig&quot;</span>,</span>
-<span id="cb198-2"><a href="example-solr-queries.html#cb198-2" tabindex="-1"></a>                              <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb198-3"><a href="example-solr-queries.html#cb198-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="example-solr-queries.html#cb205-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* AND origin:Ludwig&quot;</span>,</span>
+<span id="cb205-2"><a href="example-solr-queries.html#cb205-2" tabindex="-1"></a>                              <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb205-3"><a href="example-solr-queries.html#cb205-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-for-emls-that-document-a-specific-data-pid" class="section level3 hasAnchor">
 <h3>Query for EMLs that document a specific data pid<a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="example-solr-queries.html#cb199-1" tabindex="-1"></a><span class="co"># Wrap the pid in escaped quotation marks if it contains special characters </span></span>
-<span id="cb199-2"><a href="example-solr-queries.html#cb199-2" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;documents:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
-<span id="cb199-3"><a href="example-solr-queries.html#cb199-3" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
-<span id="cb199-4"><a href="example-solr-queries.html#cb199-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb199-5"><a href="example-solr-queries.html#cb199-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb199-6"><a href="example-solr-queries.html#cb199-6" tabindex="-1"></a></span>
-<span id="cb199-7"><a href="example-solr-queries.html#cb199-7" tabindex="-1"></a><span class="co"># Alternatively we can use a wildcard expression in place of &quot;urn:uuid:&quot;</span></span>
-<span id="cb199-8"><a href="example-solr-queries.html#cb199-8" tabindex="-1"></a><span class="co"># This way we don&#39;t need to escape the colon special characters </span></span>
-<span id="cb199-9"><a href="example-solr-queries.html#cb199-9" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&quot;</span>),</span>
-<span id="cb199-10"><a href="example-solr-queries.html#cb199-10" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
-<span id="cb199-11"><a href="example-solr-queries.html#cb199-11" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb199-12"><a href="example-solr-queries.html#cb199-12" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="example-solr-queries.html#cb206-1" tabindex="-1"></a><span class="co"># Wrap the pid in escaped quotation marks if it contains special characters </span></span>
+<span id="cb206-2"><a href="example-solr-queries.html#cb206-2" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;documents:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
+<span id="cb206-3"><a href="example-solr-queries.html#cb206-3" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
+<span id="cb206-4"><a href="example-solr-queries.html#cb206-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb206-5"><a href="example-solr-queries.html#cb206-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb206-6"><a href="example-solr-queries.html#cb206-6" tabindex="-1"></a></span>
+<span id="cb206-7"><a href="example-solr-queries.html#cb206-7" tabindex="-1"></a><span class="co"># Alternatively we can use a wildcard expression in place of &quot;urn:uuid:&quot;</span></span>
+<span id="cb206-8"><a href="example-solr-queries.html#cb206-8" tabindex="-1"></a><span class="co"># This way we don&#39;t need to escape the colon special characters </span></span>
+<span id="cb206-9"><a href="example-solr-queries.html#cb206-9" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&quot;</span>),</span>
+<span id="cb206-10"><a href="example-solr-queries.html#cb206-10" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
+<span id="cb206-11"><a href="example-solr-queries.html#cb206-11" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb206-12"><a href="example-solr-queries.html#cb206-12" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-for-files-uploaded-during-a-specific-time" class="section level3 hasAnchor">
 <h3>Query for files uploaded during a specific time<a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="example-solr-queries.html#cb200-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;dateUploaded:[2020-05-06T00:00:00Z TO NOW]&quot;</span>,</span>
-<span id="cb200-2"><a href="example-solr-queries.html#cb200-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title,identifier,resourceMap,dateUploaded,dateModified&quot;</span>,</span>
-<span id="cb200-3"><a href="example-solr-queries.html#cb200-3" tabindex="-1"></a>                <span class="at">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</span>
-<span id="cb200-4"><a href="example-solr-queries.html#cb200-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
-<span id="cb200-5"><a href="example-solr-queries.html#cb200-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="example-solr-queries.html#cb207-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;dateUploaded:[2020-05-06T00:00:00Z TO NOW]&quot;</span>,</span>
+<span id="cb207-2"><a href="example-solr-queries.html#cb207-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title,identifier,resourceMap,dateUploaded,dateModified&quot;</span>,</span>
+<span id="cb207-3"><a href="example-solr-queries.html#cb207-3" tabindex="-1"></a>                <span class="at">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</span>
+<span id="cb207-4"><a href="example-solr-queries.html#cb207-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
+<span id="cb207-5"><a href="example-solr-queries.html#cb207-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <pre><code>##                                                     identifier
-## 1                urn:uuid:4867170c-a428-431d-8dc3-cabfd909e636
-## 2                          resource_map_doi:10.18739/A2MG7FX4N
-## 3                                       doi:10.18739/A2MG7FX4N
-## 4                          resource_map_doi:10.18739/A2R785Q79
-## 5                                       doi:10.18739/A2R785Q79
-## 6   resource_map_urn:uuid:ff1fae18-7dc8-437b-afd1-9784a577bd1d
-## 7                urn:uuid:f5cb2469-ebea-4323-bf81-cc533e208cc4
-## 8   resource_map_urn:uuid:abb4c093-128f-4cf0-9693-3eb883f3a74c
-## 9                urn:uuid:5e1ae5a9-c9b0-42cb-9414-004f9a2d6ec1
-## 10                         resource_map_doi:10.18739/A2W08WJ1P
-## 11                                      doi:10.18739/A2W08WJ1P
-## 12  resource_map_urn:uuid:68feafa2-392d-4713-be0c-4687a48ab6fc
-## 13               urn:uuid:c236b036-ba27-4156-a500-ba8e321aa557
-## 14                         resource_map_doi:10.18739/A20R9M56R
-## 15                                      doi:10.18739/A20R9M56R
-## 16  resource_map_urn:uuid:aaec3bfd-b25e-4a7d-b451-6273fe47c5c8
-## 17               urn:uuid:b438ecc5-2248-45fc-82fe-e00b497df19c
-## 18  resource_map_urn:uuid:fc6a1134-eb1a-4d9f-ae6a-6d553ec8c1d8
-## 19               urn:uuid:9ed68836-2b72-42ad-a430-11cb7b384918
-## 20  resource_map_urn:uuid:0241109b-281f-4a35-b9d7-70052899bc26
-## 21               urn:uuid:553a36e6-63e5-431b-a028-017372748a77
-## 22                         resource_map_doi:10.18739/A28911S58
-## 23                                      doi:10.18739/A28911S58
-## 24  resource_map_urn:uuid:f72cfa56-0de4-4c73-9e9a-f6b6649b0d87
-## 25               urn:uuid:77ea93e3-3e3a-4f12-8d63-16563d485c4c
-## 26               urn:uuid:1317cf3a-1eb3-4b69-8334-f1473a9338ee
-## 27               urn:uuid:2b8abf18-5f91-4256-bd9b-218d8ccc2164
-## 28               urn:uuid:1944d52f-e605-43c8-9b61-d59884e5b55a
-## 29               urn:uuid:1f328489-c371-4d0f-afb4-aef939ad0c95
-## 30               urn:uuid:5f309ad6-dc34-4ca4-8cf4-bc85eff51a29
-## 31               urn:uuid:c5b39ed5-029e-4748-b1e7-2035ad4cded5
-## 32               urn:uuid:5296442c-5d77-4ff6-8b24-64d2512893eb
-## 33               urn:uuid:04e9c6be-a063-4bb7-8c8f-3dd68697d2c9
-## 34               urn:uuid:53b5fc50-939e-442a-ba83-c8820fdc2550
-## 35  resource_map_urn:uuid:34bcea9c-3f99-48dd-bfd9-19afe0512778
-## 36               urn:uuid:2e4154d2-6692-4981-8ac0-6a354fe49637
-## 37  resource_map_urn:uuid:c00d8545-8c38-45d8-aadd-ee49699aacd0
-## 38               urn:uuid:d15c30d4-655e-450f-80d6-e62a9618f552
-## 39  resource_map_urn:uuid:3ff62884-209e-4b40-85e0-596665d104bd
-## 40               urn:uuid:ff0baf03-f1f1-4871-bff2-adb65709964d
-## 41  resource_map_urn:uuid:159165d2-fe56-4cdf-ace2-1979da4d8f0f
-## 42               urn:uuid:599480bf-3148-40b7-bb2c-22605e46672f
-## 43               urn:uuid:374ce48d-1510-4702-97fb-941fa6f517a0
-## 44               urn:uuid:f7060358-6d82-4727-a831-007f5cd62bc7
-## 45               urn:uuid:25942d2f-ffc8-4b73-acd4-126543766734
-## 46  resource_map_urn:uuid:8a20d420-5778-4a3b-8ba2-f1fd2ccd2beb
-## 47               urn:uuid:4986a81d-593b-4ddb-a80d-93ab0c86cbdf
-## 48               urn:uuid:0dfe3170-a690-482d-8d81-7a876ee0605e
-## 49               urn:uuid:f1dea101-839c-4bc2-a947-77636d696991
-## 50  resource_map_urn:uuid:4a6ae415-84df-4e51-ba64-5fddddc69733
-## 51               urn:uuid:4a6ae415-84df-4e51-ba64-5fddddc69733
-## 52               urn:uuid:33d278c8-e51c-4db6-b6f4-bfe0f7476576
-## 53               urn:uuid:c0b2d6b3-09fb-4be9-b34c-5485d3c31923
-## 54  resource_map_urn:uuid:7805c767-9999-4bdf-a7f4-d30e445e63a1
-## 55               urn:uuid:37bd4e4e-cf13-4a7e-96fa-1dd274b6c185
-## 56  resource_map_urn:uuid:eb804468-7699-4b2a-8262-769dd97816cc
-## 57               urn:uuid:1cef63ca-8364-4dd4-af1f-fe293b434cf2
-## 58  resource_map_urn:uuid:ce4be393-a87d-444d-994a-42f8aa50967a
-## 59               urn:uuid:0b9e91ed-6e7d-4694-a239-3d6dccf03a76
-## 60               urn:uuid:7d8930fc-a2fe-4595-94ba-ca552eaaa360
-## 61               urn:uuid:7772df5a-43a9-4c9c-b977-5523a0b4f10a
-## 62  resource_map_urn:uuid:96f02aba-1ebc-4071-aec4-ce74c06d6ff8
-## 63               urn:uuid:bda45edb-632c-4c72-9e80-feeeca3760df
-## 64               urn:uuid:b1ab7a06-9324-45b1-a730-327e1b394af8
-## 65  resource_map_urn:uuid:cf4e7ca8-f191-4b87-90df-11bbadbc78c8
-## 66               urn:uuid:b16fe2e9-74c2-4f14-914a-9864202b82b7
-## 67  resource_map_urn:uuid:c5ef3428-cf0b-4708-bf41-03ba9d8bea71
-## 68               urn:uuid:b15ce77f-e759-4427-a9af-1a8c2022202a
-## 69                         resource_map_doi:10.18739/A2NG4GT3D
-## 70                                      doi:10.18739/A2NG4GT3D
-## 71  resource_map_urn:uuid:52ac45ff-fc16-4867-9e16-a5ee97888662
-## 72               urn:uuid:f57bc7ec-5b49-4ea8-a726-302be1690e8f
-## 73                         resource_map_doi:10.18739/A2S756M7J
-## 74                                      doi:10.18739/A2S756M7J
-## 75  resource_map_urn:uuid:722644be-34e2-4495-9402-ca540d13b2cb
-## 76               urn:uuid:e0013864-0716-4fbf-a255-03e3f48fb331
-## 77                         resource_map_doi:10.18739/A2X05XF1X
-## 78                                      doi:10.18739/A2X05XF1X
-## 79                         resource_map_doi:10.18739/A21R6N260
-## 80                                      doi:10.18739/A21R6N260
-## 81  resource_map_urn:uuid:4fb6a47b-da71-45cc-904e-62e66f358f3e
-## 82               urn:uuid:da6c378a-5fbc-40f8-bd4f-6344f4a26ee4
-## 83                         resource_map_doi:10.18739/A25H7BW1T
-## 84                                      doi:10.18739/A25H7BW1T
-## 85  resource_map_urn:uuid:2ad25824-b1b3-4e45-8e72-3e9f5d681f6f
-## 86               urn:uuid:a4de2890-6d47-49e4-8183-0e893a0cd1c2
-## 87                         resource_map_doi:10.18739/A29882P5Z
-## 88                                      doi:10.18739/A29882P5Z
-## 89  resource_map_urn:uuid:021b4e57-7346-4809-9e57-c2ec1e595c61
-## 90               urn:uuid:bd6cd607-5d85-4e56-853c-0132fb2a3b56
-## 91                         resource_map_doi:10.18739/A2DZ0335J
-## 92                                      doi:10.18739/A2DZ0335J
-## 93  resource_map_urn:uuid:99a15d9b-2d60-4417-95f1-28b403feeccc
-## 94               urn:uuid:ecb52bc8-c2a9-4d30-adcf-3540ee7015aa
-## 95                         resource_map_doi:10.18739/A2JQ0SW8D
-## 96                                      doi:10.18739/A2JQ0SW8D
-## 97  resource_map_urn:uuid:be2f1206-49f5-426d-8a00-32748d7fbd7f
-## 98               urn:uuid:7c740b6e-3483-4e8c-8c96-b78bb3d4ff6c
-## 99                         resource_map_doi:10.18739/A2PG1HQ25
-## 100                                     doi:10.18739/A2PG1HQ25
-## 101                        resource_map_doi:10.18739/A2T727H69
-## 102                                     doi:10.18739/A2T727H69
-## 103 resource_map_urn:uuid:d5e36114-0a34-4aa8-87d9-ed778567a182
-## 104              urn:uuid:1caed884-7720-4760-a15d-33c51d89e7fb
-## 105                        resource_map_doi:10.18739/A22R3NZ6T
-## 106                                     doi:10.18739/A22R3NZ6T
-## 107 resource_map_urn:uuid:9da0b3ca-d604-4d4f-b638-49b0dc51eb5a
-## 108              urn:uuid:1354a3e4-c7d4-4cab-b484-7857693c8ee7
-## 109                        resource_map_doi:10.18739/A26H4CS0K
-## 110                                     doi:10.18739/A26H4CS0K
-## 111 resource_map_urn:uuid:077dd65b-bdb9-42cd-9ff0-90d9abc9dcb3
-## 112              urn:uuid:06eaf342-9236-4be6-a962-ef9127f5708d
-## 113                        resource_map_doi:10.18739/A2B56D62W
-## 114                                     doi:10.18739/A2B56D62W
-## 115 resource_map_urn:uuid:c2efedde-acf2-4350-bd3f-5c151057f201
-## 116              urn:uuid:25c01342-6b4b-46e0-907b-4a03e43f4881
-## 117                        resource_map_doi:10.18739/A2FX74057
-## 118                                     doi:10.18739/A2FX74057
-## 119 resource_map_urn:uuid:1ce7776c-8119-4098-95d3-0705397f7c16
-## 120              urn:uuid:ecb72f2d-0ca0-4536-b566-c316e26d391a
-## 121                        resource_map_doi:10.18739/A2KP7TS9K
-## 122                                     doi:10.18739/A2KP7TS9K
-## 123 resource_map_urn:uuid:3cefcda7-10ca-4be9-913f-05eb40839f2e
-## 124              urn:uuid:a1fdb94e-a672-49db-81bc-00594281867d
-## 125                        resource_map_doi:10.18739/A2QF8JM3B
-## 126                                     doi:10.18739/A2QF8JM3B
-## 127 resource_map_urn:uuid:40cf12e6-0f39-47fb-8fa9-de67e418e6c3
-## 128              urn:uuid:a2cf25e5-2585-4c3c-a3d0-f383c9e540ca
-## 129                        resource_map_doi:10.18739/A2V698D7G
-## 130                                     doi:10.18739/A2V698D7G
-## 131 resource_map_urn:uuid:4c0ccea5-dfa8-4bc1-a052-64e267971ac9
-## 132              urn:uuid:1731c610-e94d-4ae6-94d8-6de523c7d204
-## 133                        resource_map_doi:10.18739/A20000221
-## 134                                     doi:10.18739/A20000221
-## 135 resource_map_urn:uuid:72cd997d-d450-4e8e-82c8-62006d7bfe87
-## 136              urn:uuid:09cc73c3-cc90-4367-b6da-9a4fc31990ec
-## 137 resource_map_urn:uuid:c2334296-d019-41af-8b7a-b30d49d7bafa
-## 138              urn:uuid:90ebe87d-c87f-4afc-946c-de54f6e0e052
-## 139 resource_map_urn:uuid:e8f5ddc6-9aa9-4f8f-bdab-47cd890693fc
-## 140              urn:uuid:27bf889f-1415-48b7-a9b9-030b97bc38ca
-## 141 resource_map_urn:uuid:28d881fd-b422-440e-add3-9cb4ac02ebd0
-## 142              urn:uuid:9f99d40e-310a-4b54-a6c1-98ee61e262ce
-## 143 resource_map_urn:uuid:bf9a6cca-125e-4a5e-9b41-d34a264e84d0
-## 144              urn:uuid:bb05a414-7249-48f8-958c-e6c7c968c88f
-## 145                        resource_map_doi:10.18739/A23R0PV7J
-## 146                                     doi:10.18739/A23R0PV7J
-## 147 resource_map_urn:uuid:2c8db0e0-0998-49c1-b925-348528f2326c
-## 148              urn:uuid:46c31611-f3a6-4c1d-89b8-95263f842e43
-## 149 resource_map_urn:uuid:d99eaf83-466f-47f6-9df6-afe5b3ec9a89
-## 150              urn:uuid:d99eaf83-466f-47f6-9df6-afe5b3ec9a89
-## 151 resource_map_urn:uuid:892cbcf0-086b-475c-ae2c-05afd0da1158
-## 152              urn:uuid:1c64defc-3e53-40e5-9f76-85de3c376a12
-## 153                        resource_map_doi:10.18739/A27D2Q88C
-## 154                                     doi:10.18739/A27D2Q88C
-## 155 resource_map_urn:uuid:ed1dca80-45a4-4bd0-b794-7a6d632e8773
-## 156              urn:uuid:785ec599-5d37-405b-b2be-193814040fc3
-## 157                        resource_map_doi:10.18739/A2C53F31N
-## 158                                     doi:10.18739/A2C53F31N
-## 159                        resource_map_doi:10.18739/A2GX44W52
-## 160                                     doi:10.18739/A2GX44W52
-## 161 resource_map_urn:uuid:3d076765-6b4e-4f0f-9660-8c923f933694
-## 162              urn:uuid:d29976a0-cc16-475d-b17b-701e961e8e43
-## 163 resource_map_urn:uuid:a1fd85a8-e875-4c3d-91cc-924feeaf5864
-## 164              urn:uuid:a1fd85a8-e875-4c3d-91cc-924feeaf5864
-## 165                        resource_map_doi:10.18739/A2MP4VP9T
-## 166                                     doi:10.18739/A2MP4VP9T
-## 167 resource_map_urn:uuid:05257453-4003-40ea-a94a-ec37db06b3ef
-## 168              urn:uuid:15c23ecc-3ac6-4583-b7d8-9162dd0be289
-## 169                        resource_map_doi:10.18739/A2RF5KH42
-## 170                                     doi:10.18739/A2RF5KH42
-## 171 resource_map_urn:uuid:82dbba82-d37e-44e4-a082-6c94cf853c78
-## 172              urn:uuid:1ca80e54-6032-43fe-bf2c-53b961275c16
-## 173 resource_map_urn:uuid:2e9ae70f-d18c-4b7c-a112-0ae2ecdc6d82
-## 174              urn:uuid:2e9ae70f-d18c-4b7c-a112-0ae2ecdc6d82
-## 175 resource_map_urn:uuid:91001540-27ab-4101-a9d7-67393e22a549
-## 176              urn:uuid:91001540-27ab-4101-a9d7-67393e22a549
-## 177                        resource_map_doi:10.18739/A2W669986
-## 178                                     doi:10.18739/A2W669986
-## 179              urn:uuid:440ae976-2ef2-448a-b7c3-466631a3282f
-## 180 resource_map_urn:uuid:80594b28-5e89-439d-9d6f-ea534798d28e
-## 181              urn:uuid:54c2fae5-cfc8-4b46-97ca-b0049e4e9fae
-## 182              urn:uuid:57bb0f32-3dd5-4ada-9e42-87a1cd42f02f
-## 183 resource_map_urn:uuid:2de24423-621e-41aa-bf15-977d75531b01
-## 184              urn:uuid:c0739918-ad55-463c-81d2-679ac9df2514
-## 185              urn:uuid:4e102c50-fde5-4691-9f9c-5bf985eee223
-## 186              urn:uuid:a03e9a14-b9c9-4061-bbb9-9ca493b391a8
-## 187 resource_map_urn:uuid:1d436076-cb25-4e2b-af5c-90956e5a4c7e
-## 188              urn:uuid:8da2db01-72e8-4337-8dbd-8bd567810e88
-## 189              urn:uuid:aac3bd71-8ff2-4bac-b6d3-e3799d73b372
-## 190                        resource_map_doi:10.18739/A20Z70Z3G
-## 191                                     doi:10.18739/A20Z70Z3G
-## 192                        resource_map_doi:10.18739/A24M91C3T
-## 193                                     doi:10.18739/A24M91C3T
-## 194                        resource_map_doi:10.18739/A28C9R563
-## 195                                     doi:10.18739/A28C9R563
-## 196                        resource_map_doi:10.18739/A2D50G00D
-## 197                                     doi:10.18739/A2D50G00D
-## 198                        resource_map_doi:10.18739/A2HX15S4T
-## 199                                     doi:10.18739/A2HX15S4T
-## 200                        resource_map_doi:10.18739/A2NP1WK92
+## 1   resource_map_urn:uuid:d6bbb9ef-7afd-409b-8897-e2bc96c7c9f3
+## 2                urn:uuid:d6bbb9ef-7afd-409b-8897-e2bc96c7c9f3
+## 3   resource_map_urn:uuid:08367559-bd4e-419b-9eca-f18e1c48db10
+## 4                urn:uuid:08367559-bd4e-419b-9eca-f18e1c48db10
+## 5   resource_map_urn:uuid:48f0d4a7-cd07-43f7-83b0-b95dd30c8730
+## 6                urn:uuid:48f0d4a7-cd07-43f7-83b0-b95dd30c8730
+## 7   resource_map_urn:uuid:a8918814-2412-4533-ae33-52eec00b95f7
+## 8                urn:uuid:a8918814-2412-4533-ae33-52eec00b95f7
+## 9   resource_map_urn:uuid:6dc2ec1a-cad5-4ae2-9db0-42cb2263daa5
+## 10               urn:uuid:6dc2ec1a-cad5-4ae2-9db0-42cb2263daa5
+## 11  resource_map_urn:uuid:0c0c2720-baa2-481b-88e6-b8dc994b79b3
+## 12               urn:uuid:0c0c2720-baa2-481b-88e6-b8dc994b79b3
+## 13  resource_map_urn:uuid:d22e26d1-9ffc-4d88-87b4-dba43c78a99a
+## 14               urn:uuid:c577aadc-6c51-4e58-9c9d-bdbe9f127c80
+## 15  resource_map_urn:uuid:ea236d34-0ef8-4fd3-94e5-b519f1d2e8c5
+## 16               urn:uuid:ea236d34-0ef8-4fd3-94e5-b519f1d2e8c5
+## 17  resource_map_urn:uuid:df1a4562-35eb-4917-8fc1-51efe945b31b
+## 18               urn:uuid:29ae9139-97ff-44bf-9e8c-506c89ff319b
+## 19  resource_map_urn:uuid:298cec4a-94ab-4fc8-b256-5a07a706cf3c
+## 20               urn:uuid:298cec4a-94ab-4fc8-b256-5a07a706cf3c
+## 21  resource_map_urn:uuid:bb80ab5d-4f45-427f-85f3-f2f2e35b3f66
+## 22               urn:uuid:bb80ab5d-4f45-427f-85f3-f2f2e35b3f66
+## 23  resource_map_urn:uuid:9f23a12c-9305-4854-a5bc-c786d2e0e837
+## 24               urn:uuid:9f23a12c-9305-4854-a5bc-c786d2e0e837
+## 25               urn:uuid:ce5c9b6a-6069-4948-9ccd-0a2030987d2d
+## 26               urn:uuid:8a8f0c09-913d-40be-afd0-e9a562d8b1e9
+## 27  resource_map_urn:uuid:621a65f5-1ff2-4bd0-ba44-535be1694498
+## 28               urn:uuid:621a65f5-1ff2-4bd0-ba44-535be1694498
+## 29  resource_map_urn:uuid:57fc1841-84d4-4c32-bf0e-3d84efcce6a1
+## 30               urn:uuid:5d00ac2e-634a-4b4c-bc2d-3c03009589b7
+## 31  resource_map_urn:uuid:1723dfe4-8b0c-4b11-b765-76f697082c35
+## 32               urn:uuid:52d7f9a5-ccae-4e19-b82f-dc642ddb548f
+## 33               urn:uuid:5924549c-6c39-434f-8741-3e4ecb8e0ee1
+## 34  resource_map_urn:uuid:5078ed6b-5969-44cb-96ad-0e002a004c89
+## 35               urn:uuid:0b6901ef-310c-4a32-afdd-42e274cc095b
+## 36  resource_map_urn:uuid:da839a1b-d80c-4f33-8575-ba6c3d0f240c
+## 37               urn:uuid:da839a1b-d80c-4f33-8575-ba6c3d0f240c
+## 38               urn:uuid:3f419345-4823-4022-a6ad-d4b4ad724786
+## 39  resource_map_urn:uuid:9f80d655-2233-4f43-be60-2637b32a2dbf
+## 40               urn:uuid:c90025a6-8b2a-46c6-a8ad-27b8351e2c7b
+## 41  resource_map_urn:uuid:01a20c92-7a89-461b-b07c-18ab52e474a3
+## 42               urn:uuid:a6db7d59-2692-4bd8-ac67-4edaf53ba116
+## 43  resource_map_urn:uuid:f2ac1087-bf52-4ac8-863e-2f59d9e6458b
+## 44               urn:uuid:dca58b79-0e81-4560-9782-d10430bd0bfa
+## 45  resource_map_urn:uuid:01456dbc-2b97-4b7f-a54f-3f8712605a82
+## 46               urn:uuid:2c4877cc-8b26-4399-bfc9-074bdbdb3e92
+## 47  resource_map_urn:uuid:0d58cee1-8381-4525-8965-2989914b132e
+## 48               urn:uuid:88321530-bf05-4f91-9722-03036351c5ec
+## 49  resource_map_urn:uuid:743001b3-14a4-478d-ba5a-ace67cdc18e2
+## 50               urn:uuid:5165ce13-1d98-42d9-a27e-15de1a1c8420
+## 51               urn:uuid:a7b3c8fd-1e63-4111-ad3c-3dfc218aa4f5
+## 52  resource_map_urn:uuid:b31094f8-db15-4801-a0a1-59ff3670abfc
+## 53               urn:uuid:23d23599-feec-408e-a22b-5aadee74a458
+## 54  resource_map_urn:uuid:12c57652-9f90-4fc0-986a-f5887c104539
+## 55               urn:uuid:12c57652-9f90-4fc0-986a-f5887c104539
+## 56  resource_map_urn:uuid:2eeeb8cc-35fd-45f9-937b-2ce61b9284e7
+## 57               urn:uuid:b32f852a-0960-4dd6-bcaa-7e153b78380d
+## 58                         resource_map_doi:10.18739/A2PZ51N8Q
+## 59                                      doi:10.18739/A2PZ51N8Q
+## 60  resource_map_urn:uuid:ae4c4da8-9d8a-4dbc-badf-46656f3a8b96
+## 61               urn:uuid:ae4c4da8-9d8a-4dbc-badf-46656f3a8b96
+## 62  resource_map_urn:uuid:5418140f-efc0-415d-b253-de6b7fe81ca5
+## 63               urn:uuid:5418140f-efc0-415d-b253-de6b7fe81ca5
+## 64               urn:uuid:e0161630-0ce9-4da0-b32c-ffc634cc57ff
+## 65  resource_map_urn:uuid:2ac763ca-d06b-4193-935c-4799ec0fbf9e
+## 66               urn:uuid:2ac763ca-d06b-4193-935c-4799ec0fbf9e
+## 67               urn:uuid:e03e2da1-f8e5-4c6b-babe-ee35bc86f7d9
+## 68                         resource_map_doi:10.18739/A2TQ5RG1M
+## 69                                      doi:10.18739/A2TQ5RG1M
+## 70                         resource_map_doi:10.18739/A2ZS2KF4B
+## 71                                      doi:10.18739/A2ZS2KF4B
+## 72  resource_map_urn:uuid:980d782e-0f80-44df-a9e7-d45424d9e223
+## 73               urn:uuid:51712e5b-25b2-487e-bc2c-35b0eb0226e8
+## 74  resource_map_urn:uuid:ea7f7641-11e9-4b9c-bc26-ff4e873e26d3
+## 75               urn:uuid:57295d4b-2e83-403c-848c-b46c91d16b32
+## 76  resource_map_urn:uuid:73ae7645-1379-4f77-8448-a227595469f5
+## 77               urn:uuid:ee532443-a903-466f-9e91-929f8051139f
+## 78               urn:uuid:85f02f5c-5481-4f2c-8de1-4a6ebdd9a280
+## 79               urn:uuid:c4ad27ae-7c37-47e5-8686-30dbb08569e6
+## 80                         resource_map_doi:10.18739/A2QZ22J8Z
+## 81                                      doi:10.18739/A2QZ22J8Z
+## 82               urn:uuid:23e409fe-aed9-4fbe-bc2b-907859f2d282
+## 83               urn:uuid:bec21fde-978a-4058-a1a0-44aba141d1a9
+## 84               urn:uuid:4d6d1831-caf3-4b1f-8009-7587f0b91861
+## 85               urn:uuid:0ee3302b-1330-4e65-a7c8-6bedea170953
+## 86               urn:uuid:0155893a-85b4-45e7-8e3f-afae3a6b4ddf
+## 87               urn:uuid:035d0823-8517-4a10-a264-474d3243d951
+## 88               urn:uuid:5b5f0bdb-16db-4538-a77a-6ba9919e8115
+## 89               urn:uuid:95622e9e-6288-4cbf-b7fa-1d4d0283c24c
+## 90               urn:uuid:077f1a4c-1308-45f3-aee7-f969fb194abe
+## 91               urn:uuid:9a83a82b-0b11-4db7-895c-7fa516916c69
+## 92  resource_map_urn:uuid:c364984d-2801-457c-ba59-1095d44f69fe
+## 93               urn:uuid:e99fc3fe-ab91-4784-954f-78efae175317
+## 94                         resource_map_doi:10.18739/A20G3H07Q
+## 95                                      doi:10.18739/A20G3H07Q
+## 96                         resource_map_doi:10.18739/A24746T12
+## 97                                      doi:10.18739/A24746T12
+## 98                         resource_map_doi:10.18739/A2804XM69
+## 99                                      doi:10.18739/A2804XM69
+## 100                        resource_map_doi:10.18739/A2CR5NF0R
+## 101                                     doi:10.18739/A2CR5NF0R
+## 102                        resource_map_doi:10.18739/A2HD7NV15
+## 103                                     doi:10.18739/A2HD7NV15
+## 104                        resource_map_doi:10.18739/A2N58CN4T
+## 105                                     doi:10.18739/A2N58CN4T
+## 106                        resource_map_doi:10.18739/A2RX93F8N
+## 107                                     doi:10.18739/A2RX93F8N
+## 108              urn:uuid:57c23692-0f54-419e-888b-0f30c0ebad1c
+## 109              urn:uuid:9ddf65a6-fe94-431e-badf-56f4fd7cf473
+## 110                        resource_map_doi:10.18739/A2WP9T821
+## 111                                     doi:10.18739/A2WP9T821
+## 112 resource_map_urn:uuid:99fb973e-5b5e-487d-9608-0e613c6a3d2d
+## 113              urn:uuid:b7c9983e-6937-4b60-b865-0f457f275cd4
+## 114 resource_map_urn:uuid:98af543d-885c-45fb-8a1c-884b88bf34dd
+## 115              urn:uuid:eb1a791d-f7e9-4ddd-bb99-462edda8bf31
+## 116                        resource_map_doi:10.18739/A21G0HW7J
+## 117                                     doi:10.18739/A21G0HW7J
+## 118                        resource_map_doi:10.18739/A25717Q2S
+## 119                                     doi:10.18739/A25717Q2S
+## 120 resource_map_urn:uuid:1b0355df-3ad0-4de2-b96e-f88130e3a075
+## 121              urn:uuid:e54f4670-c6ad-4738-b8c5-2b3dc3d1d328
+## 122                        resource_map_doi:10.18739/A2901ZH6J
+## 123                                     doi:10.18739/A2901ZH6J
+## 124              urn:uuid:29bae32f-b790-45e6-8ca9-d0ecfb3bccb5
+## 125              urn:uuid:306314b0-5135-4a0a-9c6f-15dd7cc09d10
+## 126              urn:uuid:b2e76f6f-27ac-4719-ac2c-b7630f9f96dc
+## 127              urn:uuid:ef207f94-8622-48a4-8c42-9141b8ebe45b
+## 128              urn:uuid:8537b1a3-f590-442b-8b6c-a4d2799cf6cd
+## 129              urn:uuid:d356fa4c-3f68-4bd4-a7c4-cb1fb0c4df2b
+## 130              urn:uuid:227e78e5-0e93-41a5-a25f-071ed60ec99c
+## 131              urn:uuid:8db49358-1956-4d42-8ee4-98c6b4db12c9
+## 132                        resource_map_doi:10.18739/A2DN3ZX65
+## 133                                     doi:10.18739/A2DN3ZX65
+## 134                        resource_map_doi:10.18739/A2JD4PR0X
+## 135                                     doi:10.18739/A2JD4PR0X
+## 136                        resource_map_doi:10.18739/A2P55DJ42
+## 137                                     doi:10.18739/A2P55DJ42
+## 138                        resource_map_doi:10.18739/A2SX64B8W
+## 139                                     doi:10.18739/A2SX64B8W
+## 140              urn:uuid:6c0a3635-b5ac-44c3-800c-26875219c865
+## 141              urn:uuid:2897e9b0-10b1-4ef1-b47a-19bb7a926f0f
+## 142 resource_map_urn:uuid:85abe62c-56e9-4268-8707-10486088fee5
+## 143              urn:uuid:85abe62c-56e9-4268-8707-10486088fee5
+## 144 resource_map_urn:uuid:66a73eff-30ff-454a-8c1b-6d18be369765
+## 145              urn:uuid:66a73eff-30ff-454a-8c1b-6d18be369765
+## 146                        resource_map_doi:10.18739/A2XP6V528
+## 147                                     doi:10.18739/A2XP6V528
+## 148                        resource_map_doi:10.18739/A22F7JS77
+## 149                                     doi:10.18739/A22F7JS77
+## 150                        resource_map_doi:10.18739/A26688M10
+## 151                                     doi:10.18739/A26688M10
+## 152 resource_map_urn:uuid:b2ab15e8-677f-4b87-89ac-ebf0c713ad49
+## 153              urn:uuid:f5700307-ff08-4139-bb1c-09d27c31c2fc
+## 154 resource_map_urn:uuid:60ad9fac-149b-4722-8bdf-58e959cbcd0e
+## 155 resource_map_urn:uuid:efc7d7da-c92b-4d24-9339-1183a40cef56
+## 156              urn:uuid:6eee91e6-7e26-4640-b8a4-1e2a2b457ad0
+## 157 resource_map_urn:uuid:00f50084-ed6a-4e3f-aca9-7dd2d2f81f79
+## 158              urn:uuid:7a02beba-f798-4f5c-88b5-e2d7dfa5750e
+## 159                        resource_map_doi:10.18739/A2MS3K33N
+## 160                                     doi:10.18739/A2MS3K33N
+## 161                        resource_map_doi:10.18739/A29W0913J
+## 162                                     doi:10.18739/A29W0913J
+## 163                        resource_map_doi:10.18739/A2FN10T6S
+## 164                                     doi:10.18739/A2FN10T6S
+## 165                        resource_map_doi:10.18739/A2KD1QN05
+## 166                                     doi:10.18739/A2KD1QN05
+## 167 resource_map_urn:uuid:f265500d-a017-40d0-9838-62dc20c429b6
+## 168              urn:uuid:ad9fc61e-eea9-472c-98de-a2570497287d
+## 169 resource_map_urn:uuid:7034b5e7-823e-4967-80ad-5c86f59c67b0
+## 170              urn:uuid:7034b5e7-823e-4967-80ad-5c86f59c67b0
+## 171 resource_map_urn:uuid:e7fbde34-59ee-41d3-aeea-66a635465d01
+## 172              urn:uuid:8d420e29-5900-4e76-a9fe-2eb43b3eeb88
+## 173 resource_map_urn:uuid:d550afdb-3017-417a-ac45-72ff770d3c20
+## 174              urn:uuid:d550afdb-3017-417a-ac45-72ff770d3c20
+## 175 resource_map_urn:uuid:75542485-e49c-4c10-81f8-d5fc249d5791
+## 176              urn:uuid:8da04375-5f96-401e-b524-3c058894cc32
+## 177 resource_map_urn:uuid:e1d5dfe8-0939-4d41-8fc8-764ce4bc7fbc
+## 178              urn:uuid:e1d5dfe8-0939-4d41-8fc8-764ce4bc7fbc
+## 179                        resource_map_doi:10.18739/A2Q52FF49
+## 180                                     doi:10.18739/A2Q52FF49
+## 181                        resource_map_doi:10.18739/A2TX3579M
+## 182                                     doi:10.18739/A2TX3579M
+## 183                        resource_map_doi:10.18739/A2ZP3W230
+## 184                                     doi:10.18739/A2ZP3W230
+## 185 resource_map_urn:uuid:84f97c29-230f-43c8-8568-fc9d6f919cc5
+## 186              urn:uuid:84f97c29-230f-43c8-8568-fc9d6f919cc5
+## 187 resource_map_urn:uuid:abbfab3f-33fb-497d-a910-9e0653453333
+## 188              urn:uuid:b6143066-b0bf-4a24-a332-3b7f434e8251
+## 189                        resource_map_doi:10.18739/A23F4KP8Z
+## 190                                     doi:10.18739/A23F4KP8Z
+## 191                        resource_map_doi:10.18739/A2736M39S
+## 192                                     doi:10.18739/A2736M39S
+## 193 resource_map_urn:uuid:be7ba1d5-dfda-45bf-9193-04dfb80c67d1
+## 194              urn:uuid:756e031b-7211-4c66-8503-6d9c1c05d2ce
+## 195              urn:uuid:7ba31060-b04a-40e1-b342-56d5f97d5da3
+## 196              urn:uuid:9e850dc8-6402-41d2-8a37-4416885540bc
+## 197              urn:uuid:a039faf5-fe24-4500-95a9-dd670efd250e
+## 198                                     doi:10.18739/A2MC8RH9R
+## 199              urn:uuid:96613e98-0772-4998-8b3a-a8c443a87dad
+## 200 resource_map_urn:uuid:16cc5361-d194-4d24-930b-9cd3847010d3
 ##            dateUploaded        dateModified
-## 1   2023-11-06 22:11:18 2023-11-06 22:11:20
-## 2   2023-11-06 22:01:33 2023-11-06 22:01:34
-## 3   2023-11-06 22:01:24 2023-11-06 22:01:29
-## 4   2023-11-06 21:46:52 2023-11-06 22:01:33
-## 5   2023-11-06 21:46:45 2023-11-06 22:01:28
-## 6   2023-11-06 21:40:02 2023-11-06 21:46:52
-## 7   2023-11-06 21:39:59 2023-11-06 21:46:48
-## 8   2023-11-06 21:33:46 2023-11-06 21:40:02
-## 9   2023-11-06 21:33:43 2023-11-06 21:40:01
-## 10  2023-11-06 21:26:20 2023-11-06 21:26:20
-## 11  2023-11-06 21:26:11 2023-11-06 21:26:17
-## 12  2023-11-06 21:25:19 2023-11-06 21:26:20
-## 13  2023-11-06 21:25:13 2023-11-06 21:26:14
-## 14  2023-11-06 21:23:45 2023-11-06 21:25:19
-## 15  2023-11-06 21:23:38 2023-11-06 21:25:16
-## 16  2023-11-06 20:47:03 2023-11-06 20:47:03
-## 17  2023-11-06 20:46:55 2023-11-06 20:47:02
-## 18  2023-11-06 18:39:35 2023-11-06 20:47:03
-## 19  2023-11-06 18:39:28 2023-11-06 20:47:01
-## 20  2023-11-06 18:16:42 2023-11-06 18:39:35
-## 21  2023-11-06 18:16:35 2023-11-06 18:39:33
-## 22  2023-11-03 19:20:44 2023-11-03 19:20:45
-## 23  2023-11-03 19:20:37 2023-11-03 19:20:40
-## 24  2023-11-02 23:57:53 2023-11-02 23:57:55
-## 25  2023-11-02 23:57:50 2023-11-02 23:57:52
-## 26  2023-11-02 23:48:27 2023-11-02 23:48:27
-## 27  2023-11-02 23:48:25 2023-11-02 23:48:25
-## 28  2023-11-02 23:48:24 2023-11-02 23:48:24
-## 29  2023-11-02 23:48:22 2023-11-02 23:48:22
-## 30  2023-11-02 23:48:22 2023-11-02 23:48:22
-## 31  2023-11-02 23:48:21 2023-11-02 23:48:21
-## 32  2023-11-02 23:48:20 2023-11-02 23:48:20
-## 33  2023-11-02 23:48:13 2023-11-02 23:48:13
-## 34  2023-11-02 23:48:11 2023-11-02 23:48:11
-## 35  2023-11-02 21:10:28 2023-11-02 21:10:29
-## 36  2023-11-02 21:10:22 2023-11-02 21:10:26
-## 37  2023-11-02 21:06:12 2023-11-02 21:10:28
-## 38  2023-11-02 21:06:06 2023-11-02 21:10:25
-## 39  2023-11-02 20:56:02 2023-11-02 21:06:12
-## 40  2023-11-02 20:55:57 2023-11-02 21:06:10
-## 41  2023-11-02 20:39:10 2023-11-02 20:39:11
-## 42  2023-11-02 20:39:06 2023-11-02 20:39:06
-## 43  2023-11-02 20:39:06 2023-11-02 20:39:06
-## 44  2023-11-02 20:39:06 2023-11-02 20:39:09
-## 45  2023-11-02 19:59:13 2023-11-02 19:59:13
-## 46  2023-11-02 19:54:55 2023-11-06 18:16:42
-## 47  2023-11-02 19:54:45 2023-11-06 18:16:40
-## 48  2023-11-02 19:52:57 2023-11-02 19:52:57
-## 49  2023-11-02 19:50:41 2023-11-02 19:50:41
-## 50  2023-11-02 19:39:50 2023-11-02 19:39:51
-## 51  2023-11-02 19:39:30 2023-11-02 19:39:45
-## 52  2023-11-02 19:33:47 2023-11-02 19:33:47
-## 53  2023-11-02 19:33:40 2023-11-02 19:33:40
-## 54  2023-11-02 19:32:04 2023-11-02 19:39:50
-## 55  2023-11-02 19:31:52 2023-11-02 19:39:44
-## 56  2023-11-02 19:10:31 2023-11-02 19:32:04
-## 57  2023-11-02 19:10:22 2023-11-02 19:32:03
-## 58  2023-11-02 00:23:29 2023-11-02 19:10:31
-## 59  2023-11-02 00:23:20 2023-11-02 19:10:29
-## 60  2023-11-02 00:17:11 2023-11-02 00:17:11
-## 61  2023-11-02 00:16:55 2023-11-02 00:16:55
-## 62  2023-11-01 23:31:42 2023-11-01 23:31:43
-## 63  2023-11-01 23:31:38 2023-11-01 23:31:39
-## 64  2023-11-01 23:31:37 2023-11-01 23:31:41
-## 65  2023-11-01 00:36:55 2023-11-06 21:23:45
-## 66  2023-11-01 00:36:50 2023-11-06 21:23:41
-## 67  2023-10-31 23:32:58 2023-11-02 23:57:54
-## 68  2023-10-31 23:32:54 2023-11-02 23:57:51
-## 69  2023-10-31 23:23:11 2023-10-31 23:23:11
-## 70  2023-10-31 23:23:05 2023-10-31 23:23:08
-## 71  2023-10-31 23:21:57 2023-10-31 23:23:11
-## 72  2023-10-31 23:21:52 2023-10-31 23:23:08
-## 73  2023-10-31 23:21:30 2023-10-31 23:21:31
-## 74  2023-10-31 23:21:24 2023-10-31 23:21:27
-## 75  2023-10-31 23:20:38 2023-10-31 23:21:30
-## 76  2023-10-31 23:20:31 2023-10-31 23:21:26
-## 77  2023-10-31 23:17:46 2023-10-31 23:17:47
-## 78  2023-10-31 23:17:39 2023-11-06 21:58:49
-## 79  2023-10-31 23:15:36 2023-10-31 23:15:37
-## 80  2023-10-31 23:15:28 2023-10-31 23:15:32
-## 81  2023-10-31 23:14:48 2023-10-31 23:15:36
-## 82  2023-10-31 23:14:43 2023-10-31 23:15:31
-## 83  2023-10-31 23:12:57 2023-10-31 23:12:58
-## 84  2023-10-31 23:12:52 2023-10-31 23:12:55
-## 85  2023-10-31 23:12:14 2023-10-31 23:12:57
-## 86  2023-10-31 23:12:10 2023-10-31 23:12:54
-## 87  2023-10-31 23:10:28 2023-10-31 23:10:29
-## 88  2023-10-31 23:10:19 2023-10-31 23:10:24
-## 89  2023-10-31 23:07:27 2023-10-31 23:10:28
-## 90  2023-10-31 23:07:22 2023-10-31 23:10:22
-## 91  2023-10-31 23:05:32 2023-10-31 23:05:33
-## 92  2023-10-31 23:05:25 2023-10-31 23:05:28
-## 93  2023-10-31 23:04:51 2023-10-31 23:05:32
-## 94  2023-10-31 23:04:45 2023-10-31 23:05:27
-## 95  2023-10-31 22:15:48 2023-10-31 22:15:49
-## 96  2023-10-31 22:15:42 2023-10-31 22:15:45
-## 97  2023-10-31 22:14:00 2023-10-31 22:15:48
-## 98  2023-10-31 22:13:55 2023-10-31 22:15:44
-## 99  2023-10-31 22:12:41 2023-11-01 00:36:56
-## 100 2023-10-31 22:12:33 2023-11-01 00:36:53
-## 101 2023-10-31 21:56:57 2023-10-31 21:56:58
-## 102 2023-10-31 21:56:50 2023-10-31 21:56:53
-## 103 2023-10-31 21:52:07 2023-10-31 21:56:57
-## 104 2023-10-31 21:52:00 2023-10-31 21:56:53
-## 105 2023-10-31 21:39:17 2023-10-31 21:39:18
-## 106 2023-10-31 21:39:10 2023-10-31 21:39:14
-## 107 2023-10-31 21:38:17 2023-10-31 21:39:17
-## 108 2023-10-31 21:38:11 2023-10-31 21:39:13
-## 109 2023-10-31 21:37:16 2023-10-31 21:37:17
-## 110 2023-10-31 21:37:09 2023-10-31 21:37:13
-## 111 2023-10-31 21:36:17 2023-10-31 21:37:16
-## 112 2023-10-31 21:36:10 2023-10-31 21:37:12
-## 113 2023-10-31 21:35:19 2023-10-31 23:20:38
-## 114 2023-10-31 21:35:13 2023-10-31 23:20:35
-## 115 2023-10-31 21:34:33 2023-10-31 21:35:19
-## 116 2023-10-31 21:34:25 2023-10-31 21:35:16
-## 117 2023-10-31 21:33:16 2023-10-31 23:21:57
-## 118 2023-10-31 21:33:10 2023-10-31 23:21:54
-## 119 2023-10-31 21:32:22 2023-10-31 21:33:17
-## 120 2023-10-31 21:32:15 2023-10-31 21:33:13
-## 121 2023-10-31 21:31:10 2023-10-31 21:31:12
-## 122 2023-10-31 21:31:02 2023-10-31 21:31:07
-## 123 2023-10-31 21:29:59 2023-10-31 21:31:11
-## 124 2023-10-31 21:29:51 2023-10-31 21:31:05
-## 125 2023-10-31 21:28:30 2023-10-31 21:28:30
-## 126 2023-10-31 21:28:22 2023-10-31 21:28:26
-## 127 2023-10-31 21:27:02 2023-10-31 21:28:30
-## 128 2023-10-31 21:26:57 2023-10-31 21:28:26
-## 129 2023-10-31 21:25:13 2023-10-31 21:25:14
-## 130 2023-10-31 21:25:06 2023-10-31 21:25:10
-## 131 2023-10-31 21:22:08 2023-10-31 21:25:13
-## 132 2023-10-31 21:22:02 2023-10-31 21:25:10
-## 133 2023-10-31 21:19:24 2023-10-31 21:19:26
-## 134 2023-10-31 21:19:15 2023-10-31 21:19:19
-## 135 2023-10-31 21:15:06 2023-10-31 21:19:24
-## 136 2023-10-31 21:14:58 2023-10-31 21:19:19
-## 137 2023-10-31 21:02:29 2023-10-31 22:12:41
-## 138 2023-10-31 21:02:24 2023-10-31 22:12:36
-## 139 2023-10-31 21:01:53 2023-10-31 23:17:46
-## 140 2023-10-31 21:01:47 2023-10-31 23:17:42
-## 141 2023-10-31 20:59:09 2023-10-31 21:01:53
-## 142 2023-10-31 20:59:04 2023-10-31 21:01:50
-## 143 2023-10-31 20:58:36 2023-10-31 21:02:29
-## 144 2023-10-31 20:58:31 2023-10-31 21:02:26
-## 145 2023-10-31 20:52:30 2023-10-31 20:52:30
-## 146 2023-10-31 20:52:21 2023-10-31 20:52:25
-## 147 2023-10-31 20:39:56 2023-10-31 20:59:09
-## 148 2023-10-31 20:39:50 2023-10-31 20:59:06
-## 149 2023-10-31 20:34:14 2023-10-31 20:58:36
-## 150 2023-10-31 20:34:06 2023-10-31 20:58:34
-## 151 2023-10-31 20:03:11 2023-10-31 20:34:14
-## 152 2023-10-31 20:03:05 2023-10-31 20:34:09
-## 153 2023-10-31 19:57:18 2023-10-31 20:03:11
-## 154 2023-10-31 19:57:10 2023-10-31 20:03:08
-## 155 2023-10-31 19:37:42 2023-10-31 19:57:18
-## 156 2023-10-31 19:37:37 2023-10-31 19:57:13
-## 157 2023-10-31 19:22:58 2023-10-31 20:52:30
-## 158 2023-10-31 19:22:50 2023-10-31 20:52:24
-## 159 2023-10-31 19:19:17 2023-10-31 21:38:17
-## 160 2023-10-31 19:19:09 2023-10-31 21:38:14
-## 161 2023-10-31 19:14:48 2023-10-31 20:39:56
-## 162 2023-10-31 19:14:42 2023-10-31 20:39:52
-## 163 2023-10-31 19:12:38 2023-10-31 19:14:48
-## 164 2023-10-31 19:12:32 2023-10-31 19:14:45
-## 165 2023-10-31 19:09:30 2023-10-31 19:09:32
-## 166 2023-10-31 19:09:23 2023-10-31 19:09:27
-## 167 2023-10-31 19:08:21 2023-10-31 19:19:17
-## 168 2023-10-31 19:08:16 2023-10-31 19:19:12
-## 169 2023-10-31 19:06:10 2023-10-31 19:06:11
-## 170 2023-10-31 19:06:03 2023-10-31 19:06:07
-## 171 2023-10-31 19:05:32 2023-10-31 19:12:38
-## 172 2023-10-31 19:05:26 2023-10-31 19:12:34
-## 173 2023-10-31 19:04:27 2023-10-31 19:05:32
-## 174 2023-10-31 19:04:20 2023-10-31 19:05:28
-## 175 2023-10-31 19:02:52 2023-10-31 19:37:42
-## 176 2023-10-31 19:02:38 2023-10-31 19:37:40
-## 177 2023-10-31 18:42:50 2023-10-31 19:02:52
-## 178 2023-10-31 18:41:53 2023-10-31 19:02:44
-## 179 2023-10-31 18:23:31 2023-10-31 19:06:00
-## 180 2023-10-31 16:00:48 2023-10-31 19:04:27
-## 181 2023-10-31 16:00:44 2023-10-31 19:04:23
-## 182 2023-10-31 16:00:44 2023-10-31 16:00:46
-## 183 2023-10-31 15:42:49 2023-10-31 18:42:50
-## 184 2023-10-31 15:42:39 2023-10-31 18:41:52
-## 185 2023-10-31 15:42:39 2023-10-31 18:41:57
-## 186 2023-10-30 21:42:48 2023-10-31 19:09:19
-## 187 2023-10-30 20:06:19 2023-11-06 21:33:46
-## 188 2023-10-30 20:06:14 2023-10-30 20:06:15
-## 189 2023-10-30 20:06:14 2023-11-06 21:33:44
-## 190 2023-10-30 19:49:00 2023-10-30 19:49:01
-## 191 2023-10-30 19:48:26 2023-10-30 19:48:30
-## 192 2023-10-30 19:06:39 2023-10-30 19:06:39
-## 193 2023-10-30 19:06:31 2023-10-30 19:06:35
-## 194 2023-10-30 19:04:26 2023-10-30 19:04:27
-## 195 2023-10-30 19:04:18 2023-10-30 19:04:22
-## 196 2023-10-30 19:02:17 2023-10-30 19:02:18
-## 197 2023-10-30 19:02:01 2023-10-30 19:02:04
-## 198 2023-10-30 18:41:47 2023-10-31 23:14:49
-## 199 2023-10-30 18:41:41 2023-10-31 23:14:46
-## 200 2023-10-30 18:40:15 2023-10-31 23:12:14
-##                                                                                                                                                                                                        title
-## 1                                                                                                                                       Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
-## 2                                                                                                                                                                                                       &lt;NA&gt;
-## 3                                                                 Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U32B) Sagwon Hills MAT, Alaska, 1995-2023
-## 4                                                                                                                                                                                                       &lt;NA&gt;
-## 5                                                                 Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U32B) Sagwon Hills MAT, Alaska, 1995-2023
-## 6                                                                                                                                                                                                       &lt;NA&gt;
-## 7                                                                 Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U32B) Sagwon Hills MAT, Alaska, 1995-2023
-## 8                                                                                                                                                                                                       &lt;NA&gt;
-## 9                                                                 Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U32B) Sagwon Hills MAT, Alaska, 1995-2023
-## 10                                                                                                                                                                                                      &lt;NA&gt;
-## 11               Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States, Alaska, 1995-2023
-## 12                                                                                                                                                                                                      &lt;NA&gt;
-## 13               Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States, Alaska, 1995-2023
-## 14                                                                                                                                                                                                      &lt;NA&gt;
-## 15                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 16                                                                                                                                                                                                      &lt;NA&gt;
-## 17                                                                                                             Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
-## 18                                                                                                                                                                                                      &lt;NA&gt;
-## 19                                                                                                             Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
-## 20                                                                                                                                                                                                      &lt;NA&gt;
-## 21                                                                                                             Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
-## 22                                                                                                                                                                                                      &lt;NA&gt;
-## 23                                                                                                                  Central Seward Peninsula Deciduous Tall Shrub Map (1950-2018) and Suitable Habitat Model
-## 24                                                                                                                                                                                                      &lt;NA&gt;
-## 25                                                                                                                      Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
-## 26                                                                                                                                                                                                      &lt;NA&gt;
-## 27                                                                                                                                                                                                      &lt;NA&gt;
-## 28                                                                                                                                                                                                      &lt;NA&gt;
-## 29                                                                                                                                                                                                      &lt;NA&gt;
-## 30                                                                                                                                                                                                      &lt;NA&gt;
-## 31                                                                                                                                                                                                      &lt;NA&gt;
-## 32                                                                                                                                                                                                      &lt;NA&gt;
-## 33                                                                                                                                                                                                      &lt;NA&gt;
-## 34                                                                                                                                                                                                      &lt;NA&gt;
-## 35                                                                                                                                                                                                      &lt;NA&gt;
-## 36  Discrete water samples collected from the Conductivity-Temperature-Depth(CTD) rosette at specific depths, Canadian Coast Guard Ship (CCGS) Sir Wilfrid Laurier, Northern Bering Sea to Chukchi Sea, 2018
-## 37                                                                                                                                                                                                      &lt;NA&gt;
-## 38                              Discrete water samples collected from the Conductivity-Temperature-Depth(CTD) rosette at specific depths, CCGS Sir Wilfrid Laurier, Northern Bering Sea to Chukchi Sea, 2018
-## 39                                                                                                                                                                                                      &lt;NA&gt;
-## 40                                   Discrete water samples collected from the Conductivity-Temperature-Depth rosette at specific depths, CCGS Sir Wilfrid Laurier, Northern Bering Sea to Chukchi Sea, 2018
-## 41                                                                                                                                                                                                      &lt;NA&gt;
-## 42                                                                                                                                                                                                      &lt;NA&gt;
-## 43                                                                                                                                                                                                      &lt;NA&gt;
-## 44                                                                                                                                The Onset of Recrystallization in Polar Firn, Summit, Greenland, June 2017
-## 45                                                                                                                                                                                                      &lt;NA&gt;
-## 46                                                                                                                                                                                                      &lt;NA&gt;
-## 47                                                                                                             Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2022
-## 48                                                                                                                                                                                                      &lt;NA&gt;
-## 49                                                                                                                                                                                                      &lt;NA&gt;
-## 50                                                                                                                                                                                                      &lt;NA&gt;
-## 51                                                                                                          Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
-## 52                                                                                                                                                                                                      &lt;NA&gt;
-## 53                                                                                                                                                                                                      &lt;NA&gt;
-## 54                                                                                                                                                                                                      &lt;NA&gt;
-## 55                                                                                                          Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
-## 56                                                                                                                                                                                                      &lt;NA&gt;
-## 57                                                                                                          Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
-## 58                                                                                                                                                                                                      &lt;NA&gt;
-## 59                                                                                                          Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2022
-## 60                                                                                                                                                                                                      &lt;NA&gt;
-## 61                                                                                                                                                                                                      &lt;NA&gt;
-## 62                                                                                                                                                                                                      &lt;NA&gt;
-## 63                                                                                                                                                                                                      &lt;NA&gt;
-## 64                                       Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Barrow, CRREL Plots&#39; (U2), Alaska North Slope, United States (Alaska)
-## 65                                                                                                                                                                                                      &lt;NA&gt;
-## 66                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 67                                                                                                                                                                                                      &lt;NA&gt;
-## 68                                                                                                                      Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
-## 69                                                                                                                                                                                                      &lt;NA&gt;
-## 70                                                                      Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U7a) Betty Pingo, Alaska, 1995-2023
-## 71                                                                                                                                                                                                      &lt;NA&gt;
-## 72                                                                      Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U7a) Betty Pingo, Alaska, 1995-2023
-## 73                                                                                                                                                                                                      &lt;NA&gt;
-## 74                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U12A) Toolik 1 kilometer grid, Alaska, 1995-2020
-## 75                                                                                                                                                                                                      &lt;NA&gt;
-## 76                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U12A) Toolik 1 kilometer grid, Alaska, 1995-2020
-## 77                                                                                                                                                                                                      &lt;NA&gt;
-## 78                            Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 79                                                                                                                                                                                                      &lt;NA&gt;
-## 80                    Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project grid &#39;Betty Pingo WET&#39; (U7 C), Alaska North Slope, United States (Alaska), 1995-2023
-## 81                                                                                                                                                                                                      &lt;NA&gt;
-## 82                    Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project grid &#39;Betty Pingo WET&#39; (U7 C), Alaska North Slope, United States (Alaska), 1995-2023
-## 83                                                                                                                                                                                                      &lt;NA&gt;
-## 84                                 Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) site &#39;Lupine Hill&#39; (U10), Alaska North Slope, United States (Alaska), 1995-2023
-## 85                                                                                                                                                                                                      &lt;NA&gt;
-## 86                                 Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) site &#39;Lupine Hill&#39; (U10), Alaska North Slope, United States (Alaska), 1995-2023
-## 87                                                                                                                                                                                                      &lt;NA&gt;
-## 88                Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project site &#39;Imnavait Creek WET&#39; (U11 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 89                                                                                                                                                                                                      &lt;NA&gt;
-## 90                Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project site &#39;Imnavait Creek WET&#39; (U11 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 91                                                                                                                                                                                                      &lt;NA&gt;
-## 92                Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project site &#39;Imnavait Creek MAT&#39; (U11 C), Alaska North Slope, United States (Alaska), 1995-2023
-## 93                                                                                                                                                                                                      &lt;NA&gt;
-## 94                Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project site &#39;Imnavait Creek MAT&#39; (U11 C), Alaska North Slope, United States (Alaska), 1995-2023
-## 95                                                                                                                                                                                                      &lt;NA&gt;
-## 96                    Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Toolik MAT&#39; (U12 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 97                                                                                                                                                                                                      &lt;NA&gt;
-## 98                    Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Toolik MAT&#39; (U12 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 99                                                                                                                                                                                                      &lt;NA&gt;
-## 100             Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska), 1995-2023
-## 101                                                                                                                                                                                                     &lt;NA&gt;
-## 102                                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U56) 56 Mile, Alaska, 1996-2023
-## 103                                                                                                                                                                                                     &lt;NA&gt;
-## 104                                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U56) 56 Mile, Alaska, 1996-2023
-## 105                                                                                                                                                                                                     &lt;NA&gt;
-## 106                             Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Betty Pingo MNT&#39; (U7 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 107                                                                                                                                                                                                     &lt;NA&gt;
-## 108                             Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Betty Pingo MNT&#39; (U7 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 109                                                                                                                                                                                                     &lt;NA&gt;
-## 110                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U9B) &#39;Happy Valley 1km Grid&#39;, Alaska, 1995-2020
-## 111                                                                                                                                                                                                     &lt;NA&gt;
-## 112                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U9B) &#39;Happy Valley 1km Grid&#39;, Alaska, 1995-2020
-## 113                                                                                                                                                                                                     &lt;NA&gt;
-## 114                                                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U12A) Toolik 1 kilometer grid, Alaska, 1999-2020
-## 115                                                                                                                                                                                                     &lt;NA&gt;
-## 116                                                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U12A) Toolik 1 kilometer grid, Alaska, 1999-2020
-## 117                                                                                                                                                                                                     &lt;NA&gt;
-## 118                                                                     Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U7a) Betty Pingo, Alaska, 1999-2023
-## 119                                                                                                                                                                                                     &lt;NA&gt;
-## 120                                                                     Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U7a) Betty Pingo, Alaska, 1999-2023
-## 121                                                                                                                                                                                                     &lt;NA&gt;
-## 122                                                                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U28) &#39;Kougarok&#39; (U28), Alaska, 1999-2023
-## 123                                                                                                                                                                                                     &lt;NA&gt;
-## 124                                                                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U28) &#39;Kougarok&#39; (U28), Alaska, 1999-2023
-## 125                                                                                                                                                                                                     &lt;NA&gt;
-## 126                                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U27) Council, Alaska, 1999-2023
-## 127                                                                                                                                                                                                     &lt;NA&gt;
-## 128                                                                         Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U27) Council, Alaska, 1999-2023
-## 129                                                                                                                                                                                                     &lt;NA&gt;
-## 130                                                                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U1) Utqiagvik, Alaska, 1995-2023
-## 131                                                                                                                                                                                                     &lt;NA&gt;
-## 132                                                                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) grid, (U1) Utqiagvik, Alaska, 1995-2023
-## 133                                                                                                                                                                                                     &lt;NA&gt;
-## 134                                                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U11a) Imnavait Creek 1 kilometer grid, Alaska, 1995-2023
-## 135                                                                                                                                                                                                     &lt;NA&gt;
-## 136                                                Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U11a) Imnavait Creek 1 kilometer grid, Alaska, 1995-2023
-## 137                                                                                                                                                                                                     &lt;NA&gt;
-## 138             Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska), 1995-2023
-## 139                                                                                                                                                                                                     &lt;NA&gt;
-## 140                           Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska), 1995-2023
-## 141                                                                                                                                                                                                     &lt;NA&gt;
-## 142                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 143                                                                                                                                                                                                     &lt;NA&gt;
-## 144                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 145                                                                                                                                                                                                     &lt;NA&gt;
-## 146                 PM2.5 metals, organic and elemental carbon, and oxidative potential measurement at House sampling site in Fairbanks during Alaskan Layered Pollution And Chemical Analysis (ALPACA) 2022
-## 147                                                                                                                                                                                                     &lt;NA&gt;
-## 148                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 149                                                                                                                                                                                                     &lt;NA&gt;
-## 150                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 151                                                                                                                                                                                                     &lt;NA&gt;
-## 152                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 153                                                                                                                                                                                                     &lt;NA&gt;
-## 154                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 155                                                                                                                                                                                                     &lt;NA&gt;
-## 156                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 157                                                                                                                                                                                                     &lt;NA&gt;
-## 158                                                                                           PM2.5 metals, OC/EC and oxidative potential measurement at House sampling site in Fairbanks during ALPACA 2022
-## 159                                                                                                                                                                                                     &lt;NA&gt;
-## 160                                       Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Betty Pingo MNT&#39; (U7 B), Alaska North Slope, United States (Alaska).
-## 161                                                                                                                                                                                                     &lt;NA&gt;
-## 162                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 163                                                                                                                                                                                                     &lt;NA&gt;
-## 164                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 165                                                                                                                                                                                                     &lt;NA&gt;
-## 166                                  Discrete water samples collected from the Conductivity-Temperature-Depth (CTD) rosette at specific depths, Northern Bering Sea to Chukchi Sea, Sir Wilfrid Laurier 2022
-## 167                                                                                                                                                                                                     &lt;NA&gt;
-## 168                                       Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Betty Pingo MNT&#39; (U7 B), Alaska North Slope, United States (Alaska).
-## 169                                                                                                                                                                                                     &lt;NA&gt;
-## 170                                  Discrete water samples collected from the Conductivity-Temperature-Depth (CTD) rosette at specific depths, Northern Bering Sea to Chukchi Sea, Sir Wilfrid Laurier 2021
-## 171                                                                                                                                                                                                     &lt;NA&gt;
-## 172                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 173                                                                                                                                                                                                     &lt;NA&gt;
-## 174                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 175                                                                                                                                                                                                     &lt;NA&gt;
-## 176                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 177                                                                                                                                                                                                     &lt;NA&gt;
-## 178                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 179                                                                                                                                                                                                     &lt;NA&gt;
-## 180                                                                                                                                                                                                     &lt;NA&gt;
-## 181                                      Thaw depth measurements from the Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MAT&#39; (U32 B), Alaska North Slope, United States (Alaska)
-## 182                                                                                                                                                                                                     &lt;NA&gt;
-## 183                                                                                                                                                                                                     &lt;NA&gt;
-## 184                                                                                                                                                                                                     &lt;NA&gt;
-## 185                        Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project for site &#39;Sagwon Hills MNT&#39; (U32 A), Alaska North Slope, United States (Alaska)
-## 186                                                                                                                                                                                                     &lt;NA&gt;
-## 187                                                                                                                                                                                                     &lt;NA&gt;
-## 188                                                                                                                                                                                                     &lt;NA&gt;
-## 189                                                                          Seasonal soil active layer measurements from a Circumpolar Active Layer monitoring (CALM) grid, (U32B) Sagwon Hills MAT, Alaska
-## 190                                                                                                                                                                                                     &lt;NA&gt;
-## 191                                                                                                                       Wildfire Exposure: Anchorage and Fairbanks, Alaska and Whitehorse, Yukon 1984-2054
-## 192                                                                                                                                                                                                     &lt;NA&gt;
-## 193                                                                                                                   Whitehorse, Yukon modified ABoVE: Landsat-derived Annual Dominant Land Cover 1984-2054
-## 194                                                                                                                                                                                                     &lt;NA&gt;
-## 195                                                                                                                   Fairbanks, Alaska modified ABoVE: Landsat-derived Annual Dominant Land Cover 1984-2054
-## 196                                                                                                                                                                                                     &lt;NA&gt;
-## 197                                                                                                                  Anchorage, Alaska modified ABoVE: Landsat-derived Annual Dominant Land Cover, 1984-2054
-## 198                                                                                                                                                                                                     &lt;NA&gt;
-## 199                             Seasonal soil active layer measurements from a Circumpolar Active Layer Monitoring (CALM) project grid &#39;Betty Pingo WET&#39; (U7 C), Alaska North Slope, United States (Alaska).
-## 200                                                                                                                                                                                                     &lt;NA&gt;
+## 1   2023-11-30 11:07:03 2023-11-30 11:07:03
+## 2   2023-11-30 11:06:55 2023-11-30 11:06:59
+## 3   2023-11-30 11:00:10 2023-11-30 11:07:03
+## 4   2023-11-30 11:00:00 2023-11-30 11:06:59
+## 5   2023-11-30 10:48:56 2023-11-30 11:00:10
+## 6   2023-11-30 10:48:45 2023-11-30 11:00:04
+## 7   2023-11-30 10:27:36 2023-11-30 10:48:56
+## 8   2023-11-30 10:27:25 2023-11-30 10:48:50
+## 9   2023-11-30 10:14:48 2023-11-30 10:27:36
+## 10  2023-11-30 10:14:38 2023-11-30 10:27:30
+## 11  2023-11-30 01:06:51 2023-11-30 10:14:48
+## 12  2023-11-30 01:06:44 2023-11-30 10:14:43
+## 13  2023-11-30 00:54:06 2023-11-30 01:06:51
+## 14  2023-11-30 00:54:00 2023-11-30 01:06:47
+## 15  2023-11-29 23:54:34 2023-11-30 00:54:06
+## 16  2023-11-29 23:54:25 2023-11-30 00:54:04
+## 17  2023-11-29 23:49:37 2023-11-29 23:54:34
+## 18  2023-11-29 23:49:32 2023-11-29 23:54:29
+## 19  2023-11-29 23:26:03 2023-11-29 23:49:37
+## 20  2023-11-29 23:25:51 2023-11-29 23:49:35
+## 21  2023-11-29 21:52:08 2023-11-29 23:26:03
+## 22  2023-11-29 21:51:56 2023-11-29 23:25:55
+## 23  2023-11-29 21:30:20 2023-11-29 21:52:08
+## 24  2023-11-29 21:30:08 2023-11-29 21:52:00
+## 25  2023-11-29 21:03:18 2023-11-29 21:03:22
+## 26  2023-11-29 21:02:58 2023-11-29 21:03:22
+## 27  2023-11-29 20:50:08 2023-11-29 21:30:20
+## 28  2023-11-29 20:49:57 2023-11-29 21:30:12
+## 29  2023-11-29 19:40:36 2023-11-29 20:50:08
+## 30  2023-11-29 19:40:31 2023-11-29 20:50:01
+## 31  2023-11-28 23:55:08 2023-11-28 23:55:09
+## 32  2023-11-28 23:55:04 2023-11-28 23:55:06
+## 33  2023-11-28 23:18:38 2023-11-28 23:18:38
+## 34  2023-11-28 22:45:14 2023-11-28 22:45:15
+## 35  2023-11-28 22:45:10 2023-11-28 22:45:13
+## 36  2023-11-28 20:03:43 2023-11-28 23:55:08
+## 37  2023-11-28 20:03:36 2023-11-28 23:55:05
+## 38  2023-11-28 18:56:35 2023-11-28 18:56:39
+## 39  2023-11-27 22:22:28 2023-11-27 22:22:29
+## 40  2023-11-27 22:22:20 2023-11-27 22:22:26
+## 41  2023-11-27 22:20:58 2023-11-27 22:20:59
+## 42  2023-11-27 22:20:50 2023-11-27 22:20:57
+## 43  2023-11-27 22:15:18 2023-11-27 22:20:58
+## 44  2023-11-27 22:15:07 2023-11-27 22:20:57
+## 45  2023-11-27 22:10:52 2023-11-27 22:22:28
+## 46  2023-11-27 22:10:46 2023-11-27 22:22:25
+## 47  2023-11-27 21:24:43 2023-11-29 19:40:36
+## 48  2023-11-27 21:24:38 2023-11-29 19:40:34
+## 49  2023-11-27 21:06:28 2023-11-27 21:24:43
+## 50  2023-11-27 21:06:22 2023-11-27 21:24:41
+## 51  2023-11-27 20:40:05 2023-11-29 21:03:02
+## 52  2023-11-27 19:43:55 2023-11-27 21:06:28
+## 53  2023-11-27 19:43:49 2023-11-27 21:06:25
+## 54  2023-11-27 19:36:59 2023-11-27 19:43:55
+## 55  2023-11-27 19:36:49 2023-11-27 19:43:54
+## 56  2023-11-27 19:19:32 2023-11-27 19:36:59
+## 57  2023-11-27 19:19:26 2023-11-27 19:36:52
+## 58  2023-11-22 23:24:22 2023-11-22 23:24:23
+## 59  2023-11-22 23:24:09 2023-11-22 23:24:18
+## 60  2023-11-22 22:28:45 2023-11-22 23:24:22
+## 61  2023-11-22 22:28:32 2023-11-22 23:24:17
+## 62  2023-11-22 22:13:47 2023-11-27 19:19:33
+## 63  2023-11-22 22:13:37 2023-11-27 19:19:30
+## 64  2023-11-22 21:10:30 2023-11-27 20:40:08
+## 65  2023-11-22 20:47:30 2023-11-22 22:13:47
+## 66  2023-11-22 20:47:22 2023-11-22 22:13:41
+## 67  2023-11-22 19:56:56 2023-11-28 20:03:34
+## 68  2023-11-22 19:04:11 2023-11-22 22:28:45
+## 69  2023-11-22 19:03:59 2023-11-22 22:28:41
+## 70  2023-11-22 17:31:01 2023-11-22 17:31:03
+## 71  2023-11-22 17:30:54 2023-11-22 17:30:57
+## 72  2023-11-22 00:55:56 2023-11-22 17:31:03
+## 73  2023-11-22 00:55:52 2023-11-22 17:30:56
+## 74  2023-11-21 16:53:34 2023-11-21 16:53:35
+## 75  2023-11-21 16:53:26 2023-11-21 16:53:33
+## 76  2023-11-21 16:50:30 2023-11-21 16:53:35
+## 77  2023-11-21 16:50:16 2023-11-21 16:53:33
+## 78  2023-11-20 21:52:33 2023-11-22 21:10:35
+## 79  2023-11-20 21:51:44 2023-11-20 21:51:44
+## 80  2023-11-20 17:55:31 2023-11-28 22:45:14
+## 81  2023-11-20 17:55:23 2023-11-28 22:45:12
+## 82  2023-11-18 19:14:13 2023-11-22 23:23:33
+## 83  2023-11-18 19:14:12 2023-11-22 23:23:37
+## 84  2023-11-18 19:14:12 2023-11-22 23:23:55
+## 85  2023-11-18 19:14:12 2023-11-22 23:24:01
+## 86  2023-11-18 19:14:12 2023-11-22 23:23:29
+## 87  2023-11-18 19:14:12 2023-11-22 23:23:49
+## 88  2023-11-18 18:46:02 2023-11-22 23:23:53
+## 89  2023-11-18 18:40:08 2023-11-22 23:23:50
+## 90  2023-11-18 18:40:04 2023-11-22 23:24:07
+## 91  2023-11-18 18:39:56 2023-11-22 23:23:42
+## 92  2023-11-17 19:33:40 2023-11-20 17:55:31
+## 93  2023-11-17 19:33:36 2023-11-20 17:55:26
+## 94  2023-11-17 17:31:50 2023-11-17 17:31:50
+## 95  2023-11-17 17:31:43 2023-11-17 17:31:47
+## 96  2023-11-17 17:26:49 2023-11-17 17:26:50
+## 97  2023-11-17 17:26:37 2023-11-17 17:26:41
+## 98  2023-11-16 23:24:34 2023-11-16 23:24:35
+## 99  2023-11-16 23:24:29 2023-11-16 23:24:31
+## 100 2023-11-16 23:12:47 2023-11-16 23:12:48
+## 101 2023-11-16 23:12:43 2023-11-16 23:12:45
+## 102 2023-11-16 22:43:06 2023-11-16 22:43:07
+## 103 2023-11-16 22:43:01 2023-11-16 22:43:03
+## 104 2023-11-16 21:55:10 2023-11-16 21:55:11
+## 105 2023-11-16 21:55:05 2023-11-16 21:55:07
+## 106 2023-11-16 21:38:57 2023-11-16 21:38:58
+## 107 2023-11-16 21:38:50 2023-11-16 21:38:53
+## 108 2023-11-16 19:04:17 2023-11-28 18:56:38
+## 109 2023-11-16 19:01:54 2023-11-16 19:04:18
+## 110 2023-11-16 18:54:06 2023-11-16 18:54:07
+## 111 2023-11-16 18:54:00 2023-11-16 18:54:03
+## 112 2023-11-16 18:53:10 2023-11-16 18:54:06
+## 113 2023-11-16 18:53:05 2023-11-16 18:54:02
+## 114 2023-11-16 18:52:18 2023-11-16 18:53:10
+## 115 2023-11-16 18:52:14 2023-11-16 18:53:07
+## 116 2023-11-16 18:51:39 2023-11-16 18:52:18
+## 117 2023-11-16 18:51:33 2023-11-16 18:52:16
+## 118 2023-11-16 18:35:27 2023-11-16 18:35:27
+## 119 2023-11-16 18:35:20 2023-11-16 18:35:23
+## 120 2023-11-16 18:33:38 2023-11-16 18:35:27
+## 121 2023-11-16 18:33:34 2023-11-16 18:35:22
+## 122 2023-11-16 18:26:53 2023-11-16 18:33:38
+## 123 2023-11-16 18:26:48 2023-11-16 18:33:37
+## 124 2023-11-16 18:23:53 2023-11-20 21:52:37
+## 125 2023-11-16 18:15:51 2023-11-16 18:23:56
+## 126 2023-11-16 18:00:39 2023-11-16 18:15:57
+## 127 2023-11-16 17:58:41 2023-11-16 18:00:42
+## 128 2023-11-16 17:45:57 2023-11-16 17:58:44
+## 129 2023-11-16 17:28:19 2023-11-16 18:35:16
+## 130 2023-11-16 01:57:01 2023-11-16 17:46:02
+## 131 2023-11-16 01:55:18 2023-11-16 01:55:18
+## 132 2023-11-16 00:29:30 2023-11-16 00:29:31
+## 133 2023-11-16 00:29:25 2023-11-16 00:29:28
+## 134 2023-11-16 00:28:48 2023-11-16 00:28:48
+## 135 2023-11-16 00:28:43 2023-11-16 00:28:45
+## 136 2023-11-16 00:23:16 2023-11-16 00:23:17
+## 137 2023-11-16 00:23:12 2023-11-16 00:23:14
+## 138 2023-11-16 00:20:11 2023-11-16 00:20:11
+## 139 2023-11-16 00:20:03 2023-11-16 00:20:06
+## 140 2023-11-15 23:36:03 2023-11-16 23:12:42
+## 141 2023-11-15 23:17:55 2023-11-16 22:42:59
+## 142 2023-11-15 23:11:45 2023-11-22 20:47:30
+## 143 2023-11-15 23:11:37 2023-11-22 20:47:25
+## 144 2023-11-15 22:49:26 2023-11-15 23:11:45
+## 145 2023-11-15 22:49:19 2023-11-15 23:11:40
+## 146 2023-11-15 22:37:20 2023-11-15 22:37:21
+## 147 2023-11-15 22:37:15 2023-11-15 22:37:18
+## 148 2023-11-15 22:34:06 2023-11-15 22:34:07
+## 149 2023-11-15 22:34:02 2023-11-15 22:34:04
+## 150 2023-11-15 22:32:04 2023-11-15 22:32:05
+## 151 2023-11-15 22:31:58 2023-11-15 22:31:59
+## 152 2023-11-15 21:50:47 2023-11-15 22:49:26
+## 153 2023-11-15 21:50:42 2023-11-15 22:49:21
+## 154 2023-11-15 21:33:47 2023-11-15 21:33:47
+## 155 2023-11-15 20:40:35 2023-11-15 21:00:09
+## 156 2023-11-15 20:40:31 2023-11-15 21:00:04
+## 157 2023-11-15 20:38:28 2023-11-15 20:40:35
+## 158 2023-11-15 20:38:22 2023-11-15 20:40:33
+## 159 2023-11-15 00:27:45 2023-11-15 00:27:46
+## 160 2023-11-15 00:27:34 2023-11-15 00:27:42
+## 161 2023-11-15 00:24:58 2023-11-15 00:24:59
+## 162 2023-11-15 00:24:54 2023-11-15 00:24:56
+## 163 2023-11-15 00:22:37 2023-11-15 00:24:58
+## 164 2023-11-15 00:22:31 2023-11-15 00:24:55
+## 165 2023-11-15 00:19:40 2023-11-15 00:22:37
+## 166 2023-11-15 00:19:33 2023-11-15 00:22:33
+## 167 2023-11-15 00:17:26 2023-11-16 00:28:48
+## 168 2023-11-15 00:17:22 2023-11-16 00:28:44
+## 169 2023-11-15 00:08:34 2023-11-15 00:17:26
+## 170 2023-11-15 00:08:26 2023-11-15 00:17:25
+## 171 2023-11-15 00:05:04 2023-11-15 00:08:34
+## 172 2023-11-15 00:05:00 2023-11-15 00:08:29
+## 173 2023-11-14 23:30:37 2023-11-22 00:55:56
+## 174 2023-11-14 23:30:31 2023-11-22 00:55:53
+## 175 2023-11-14 23:29:10 2023-11-14 23:30:37
+## 176 2023-11-14 23:29:06 2023-11-14 23:30:34
+## 177 2023-11-14 23:26:38 2023-11-14 23:29:11
+## 178 2023-11-14 23:26:30 2023-11-14 23:29:09
+## 179 2023-11-14 22:36:25 2023-11-14 22:36:26
+## 180 2023-11-14 22:36:19 2023-11-14 22:36:22
+## 181 2023-11-14 22:35:34 2023-11-14 22:35:35
+## 182 2023-11-14 22:35:29 2023-11-14 22:35:31
+## 183 2023-11-14 22:34:33 2023-11-14 22:34:34
+## 184 2023-11-14 22:34:26 2023-11-14 22:34:29
+## 185 2023-11-14 21:35:51 2023-11-14 23:26:38
+## 186 2023-11-14 21:35:43 2023-11-14 23:26:34
+## 187 2023-11-14 21:23:20 2023-11-14 21:35:51
+## 188 2023-11-14 21:23:16 2023-11-14 21:35:46
+## 189 2023-11-14 20:53:34 2023-11-14 20:53:35
+## 190 2023-11-14 20:53:27 2023-11-14 20:53:31
+## 191 2023-11-14 20:51:35 2023-11-14 20:53:34
+## 192 2023-11-14 20:51:28 2023-11-14 20:53:30
+## 193 2023-11-14 20:45:13 2023-11-14 20:51:35
+## 194 2023-11-14 20:45:10 2023-11-14 20:51:31
+## 195 2023-11-14 20:45:07 2023-11-14 20:53:26
+## 196 2023-11-14 20:45:07 2023-11-14 20:53:24
+## 197 2023-11-14 20:45:07 2023-11-14 20:53:25
+## 198 2023-11-14 20:42:11 2023-11-14 20:45:12
+## 199 2023-11-14 17:50:40 2023-11-16 00:20:02
+## 200 2023-11-14 00:43:59 2023-11-14 21:23:20
+##                                                                                                                                                                                                              title
+## 1                                                                                                                                                                                                             &lt;NA&gt;
+## 2                                                                                                                              Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 3                                                                                                                                                                                                             &lt;NA&gt;
+## 4                                                                                                                              Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 5                                                                                                                                                                                                             &lt;NA&gt;
+## 6                                                                                                                              Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 7                                                                                                                                                                                                             &lt;NA&gt;
+## 8                                                                                                                              Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 9                                                                                                                                                                                                             &lt;NA&gt;
+## 10                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 11                                                                                                                                                                                                            &lt;NA&gt;
+## 12                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 13                                                                                                                                                                                                            &lt;NA&gt;
+## 14                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 15                                                                                                                                                                                                            &lt;NA&gt;
+## 16                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 17                                                                                                                                                                                                            &lt;NA&gt;
+## 18                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 19                                                                                                                                                                                                            &lt;NA&gt;
+## 20                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 21                                                                                                                                                                                                            &lt;NA&gt;
+## 22                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 23                                                                                                                                                                                                            &lt;NA&gt;
+## 24                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 25                                                                                                                                                                                    Permafrost Discovery Gateway
+## 26                                                                                                                                                                                    Permafrost Discovery Gateway
+## 27                                                                                                                                                                                                            &lt;NA&gt;
+## 28                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 29                                                                                                                                                                                                            &lt;NA&gt;
+## 30                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 31                                                                                                                                                                                                            &lt;NA&gt;
+## 32                                                                                                                                                          The Arctic Plant Aboveground Biomass Synthesis Dataset
+## 33                                                                                                                                                                                                            &lt;NA&gt;
+## 34                                                                                                                                                                                                            &lt;NA&gt;
+## 35                                                                                                                                                    Fairbanks sulfate isotope measurements during ALPACA (2022）
+## 36                                                                                                                                                                                                            &lt;NA&gt;
+## 37                                                                                                                                                          The Arctic Plant Aboveground Biomass Synthesis Dataset
+## 38                                                                                                                                            Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
+## 39                                                                                                                                                                                                            &lt;NA&gt;
+## 40                                                                                                                   Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
+## 41                                                                                                                                                                                                            &lt;NA&gt;
+## 42                                                                                                                Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
+## 43                                                                                                                                                                                                            &lt;NA&gt;
+## 44                                                                                                                Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
+## 45                                                                                                                                                                                                            &lt;NA&gt;
+## 46                                                                                                                   Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
+## 47                                                                                                                                                                                                            &lt;NA&gt;
+## 48                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 49                                                                                                                                                                                                            &lt;NA&gt;
+## 50                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 51                                                                                                                                                                                    Permafrost Discovery Gateway
+## 52                                                                                                                                                                                                            &lt;NA&gt;
+## 53                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 54                                                                                                                                                                                                            &lt;NA&gt;
+## 55                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 56                                                                                                                                                                                                            &lt;NA&gt;
+## 57                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 58                                                                                                                                                                                                            &lt;NA&gt;
+## 59                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 60                                                                                                                                                                                                            &lt;NA&gt;
+## 61                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 62                                                                                                                                                                                                            &lt;NA&gt;
+## 63                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 64                                                                                                                                                                                    Permafrost Discovery Gateway
+## 65                                                                                                                                                                                                            &lt;NA&gt;
+## 66                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 67                                                                                                                                                                                                            &lt;NA&gt;
+## 68                                                                                                                                                                                                            &lt;NA&gt;
+## 69                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 70                                                                                                                                                                                                            &lt;NA&gt;
+## 71                                 Retrogressive thaw slump data derived from ArcticDEM (Release 7) - elevation differences, composited images, and lines of narrow-steep slopes/headwalls, pan-Arctic (2008-2017)
+## 72                                                                                                                                                                                                            &lt;NA&gt;
+## 73                                 Retrogressive thaw slump data derived from ArcticDEM (Release 7) - elevation differences, composited images, and lines of narrow-steep slopes/headwalls, pan-Arctic (2008-2017)
+## 74                                                                                                                                                                                                            &lt;NA&gt;
+## 75  High-Resolution Repeat Topography of Drifting Ice Floes in the Arctic Ocean from Terrestrial Laser Scanning Collected on the Multidisciplinary drifting Observatory for the Study of Arctic Climate Expedition
+## 76                                                                                                                                                                                                            &lt;NA&gt;
+## 77  High-Resolution Repeat Topography of Drifting Ice Floes in the Arctic Ocean from Terrestrial Laser Scanning Collected on the Multidisciplinary drifting Observatory for the Study of Arctic Climate Expedition
+## 78                                                                                                                                                                                    Permafrost Discovery Gateway
+## 79                                                                                                                                                                                                            &lt;NA&gt;
+## 80                                                                                                                                                                                                            &lt;NA&gt;
+## 81                                                                                                                                                    Fairbanks sulfate isotope measurements during ALPACA (2022）
+## 82                                                                                                                                                                                                            &lt;NA&gt;
+## 83                                                                                                                                                                                                            &lt;NA&gt;
+## 84                                                                                                                                                                                                            &lt;NA&gt;
+## 85                                                                                                                                                                                                            &lt;NA&gt;
+## 86                                                                                                                                                                                                            &lt;NA&gt;
+## 87                                                                                                                                                                                                            &lt;NA&gt;
+## 88                                                                                                                                                                                                            &lt;NA&gt;
+## 89                                                                                                                                                                                                            &lt;NA&gt;
+## 90                                                                                                                                                                                                            &lt;NA&gt;
+## 91                                                                                                                                                                                                            &lt;NA&gt;
+## 92                                                                                                                                                                                                            &lt;NA&gt;
+## 93                                                                                                                                                    Fairbanks sulfate isotope measurements during ALPACA (2022）
+## 94                                                                                                                                                                                                            &lt;NA&gt;
+## 95                                                                                                              Water column carbonate chemistry and surface carbon dioxide, Bering and Chukchi Sea, May-June 2021
+## 96                                                                                                                                                                                                            &lt;NA&gt;
+## 97                                                                     Report on the 2023 Future of Greenland ice Sheet Science (FOGSS) Workshop: Unifying Themes, Cross-Cutting Priorities, and Future Directions
+## 98                                                                                                                                                                                                            &lt;NA&gt;
+## 99                                                                                       Strontium isotopes on wool samples from the urban medieval site of Gullskoen, Bergen, Norway, Medieval 13th -15th century
+## 100                                                                                                                                                                                                           &lt;NA&gt;
+## 101                                                   Archaeological textile data from Viking Age Scotland, UK 8th century-11th century from burial contexts, stored at the National Museum of Scotland Edinburgh.
+## 102                                                                                                                                                                                                           &lt;NA&gt;
+## 103                    Archaeological textile data from the Faroe Islands dated from the 9th-19th century from sites across the Faroe Islands. Material was analysed at the National Museum of the Faroes in 2018.
+## 104                                                                                                                                                                                                           &lt;NA&gt;
+## 105                                                                                            Strontium isotope extraction from wool, leaching and preparation method (2019-2020) carried out at Brown University
+## 106                                                                                                                                                                                                           &lt;NA&gt;
+## 107                     Textile Database from the sites of Möðruvellir, Bessastaðir and Reykholt, Iceland stored at the National Museum of Iceland. Date of the material: Viking Age - 10th century - 18th century
+## 108                                                                                                                                           Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
+## 109                                                                                                                                           Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
+## 110                                                                                                                                                                                                           &lt;NA&gt;
+## 111                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 112                                                                                                                                                                                                           &lt;NA&gt;
+## 113                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 114                                                                                                                                                                                                           &lt;NA&gt;
+## 115                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 116                                                                                                                                                                                                           &lt;NA&gt;
+## 117                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 118                                                                                                                                                                                                           &lt;NA&gt;
+## 119                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
+## 120                                                                                                                                                                                                           &lt;NA&gt;
+## 121                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
+## 122                                                                                                                                                                                                           &lt;NA&gt;
+## 123                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
+## 124                                                                                                                                                                                   Permafrost Discovery Gateway
+## 125                                                                                                                                                                                   Permafrost Discovery Gateway
+## 126                                                                                                                                                                                   Permafrost Discovery Gateway
+## 127                                                                                                                                                                                   Permafrost Discovery Gateway
+## 128                                                                                                                                                                                   Permafrost Discovery Gateway
+## 129                                                                                                                                                                                                           &lt;NA&gt;
+## 130                                                                                                                                                                                   Permafrost Discovery Gateway
+## 131                                                                                                                                                                                                           &lt;NA&gt;
+## 132                                                                                                                                                                                                           &lt;NA&gt;
+## 133                                                                                                                  Permafrost thaw depth measurements at beaver pond locations in Northwestern Alaska, 2022-2026
+## 134                                                                                                                                                                                                           &lt;NA&gt;
+## 135                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
+## 136                                                                                                                                                                                                           &lt;NA&gt;
+## 137                                                                                                     Summertime water quality measurements at beaver ponds and associated locations in Arctic Alaska, 2022-2026
+## 138                                                                                                                                                                                                           &lt;NA&gt;
+## 139                                                                                                    Wintertime water quality measurements at beaver ponds and associated locations in Arctic Alaska, 2022-2026.
+## 140                                                                                                                                                                                                           &lt;NA&gt;
+## 141                                                                                                                                                                                                           &lt;NA&gt;
+## 142                                                                                                                                                                                                           &lt;NA&gt;
+## 143                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 144                                                                                                                                                                                                           &lt;NA&gt;
+## 145                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 146                                                                                                                                                                                                           &lt;NA&gt;
+## 147                                                                                                                                    Textile Database from the site of Domkirkegatan, Bergen, Norway (2022-2025)
+## 148                                                                                                                                                                                                           &lt;NA&gt;
+## 149                                                                                                                      Accelerator Mass Spectrometry Textile Dating, Borgund Kaupang, Western Norway (2020-2023)
+## 150                                                                                                                                                                                                           &lt;NA&gt;
+## 151                                                                                                                                      Accelerator Mass Spectrometry Textile Dating, Borgund, Norway (2020-2023)
+## 152                                                                                                                                                                                                           &lt;NA&gt;
+## 153                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 154                                                                                                                                                                                                           &lt;NA&gt;
+## 155                                                                                                                                                                                                           &lt;NA&gt;
+## 156                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 157                                                                                                                                                                                                           &lt;NA&gt;
+## 158                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 159                                                                                                                                                                                                           &lt;NA&gt;
+## 160                                                                               Ilulissat Icefjord, Greenland Iceberg Positional Data and Expendable Conductivity-Temperature-Depth (XCTD), August 2014 and 2019
+## 161                                                                                                                                                                                                           &lt;NA&gt;
+## 162                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
+## 163                                                                                                                                                                                                           &lt;NA&gt;
+## 164                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
+## 165                                                                                                                                                                                                           &lt;NA&gt;
+## 166                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
+## 167                                                                                                                                                                                                           &lt;NA&gt;
+## 168                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
+## 169                                                                                                                                                                                                           &lt;NA&gt;
+## 170                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
+## 171                                                                                                                                                                                                           &lt;NA&gt;
+## 172                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
+## 173                                                                                                                                                                                                           &lt;NA&gt;
+## 174                                Retrogressive thaw slump data derived from ArcticDEM - elevation differences, composited images, and lines of narrow-steep slopes/headwalls (Release 7), pan-Arctic (2008-2017)
+## 175                                                                                                                                                                                                           &lt;NA&gt;
+## 176                                Retrogressive thaw slump data derived from ArcticDEM - elevation differences, composited images, and lines of narrow-steep slopes/headwalls (Release 7), pan-Arctic (2008-2017)
+## 177                                                                                                                                                                                                           &lt;NA&gt;
+## 178                              Elevation differences, composited images, and lines of narrow-steep slopes/headwalls of retrogressive thaw slumps data derived from ArcticDEM (Release 7), pan-Arctic (2008-2017)
+## 179                                                                                                                                                                                                           &lt;NA&gt;
+## 180                                                                                                                            White spruce (Picea glauca) densities at Brooks Range treelines, Alaska (2019-2022)
+## 181                                                                                                                                                                                                           &lt;NA&gt;
+## 182                                                                                           Tall shrub (Alnus, Betula, Juniperus, Salix, and Shepherdia) densities at Brooks Range treelines, Alaska (2019-2022)
+## 183                                                                                                                                                                                                           &lt;NA&gt;
+## 184                                                                                                                                               Ground cover ranks at Brooks Range treelines, Alaska (2019-2022)
+## 185                                                                                                                                                                                                           &lt;NA&gt;
+## 186                              Elevation differences, composited images, and lines of narrow-steep slopes/headwalls of retrogressive thaw slumps data derived from ArcticDEM (Release 7), pan-Arctic (2008-2017)
+## 187                                                                                                                                                                                                           &lt;NA&gt;
+## 188                              Elevation differences, composited images, and lines of narrow-steep slopes/headwalls of retrogressive thaw slumps data derived from ArcticDEM (Release 7), pan-Arctic (2008-2017)
+## 189                                                                                                                                                                                                           &lt;NA&gt;
+## 190                                                                                                                                     Brooks Range vegetation change from repeat imagery, Alaska, 1970s to 2010s
+## 191                                                                                                                                                                                                           &lt;NA&gt;
+## 192                                                                                                                                     Brooks Range vegetation change from repeat imagery, Alaska, 1970s to 2010s
+## 193                                                                                                                                                                                                           &lt;NA&gt;
+## 194                                                                                                                                     Brooks Range vegetation change from repeat imagery, Alaska, 1970s to 2010s
+## 195                                                                                                                                                                                                           &lt;NA&gt;
+## 196                                                                                                                                                                                                           &lt;NA&gt;
+## 197                                                                                                                                                                                                           &lt;NA&gt;
+## 198                                                                                                                                     Brooks Range vegetation change from repeat imagery, Alaska, 1970s to 2010s
+## 199                                                                                                                                                                                                           &lt;NA&gt;
+## 200                                                                                                                                                                                                           &lt;NA&gt;
 ##      resourceMap
 ## 1               
-## 2               
-## 3   resource....
-## 4               
-## 5   resource....
-## 6               
-## 7   resource....
-## 8               
-## 9   resource....
-## 10              
-## 11  resource....
-## 12              
-## 13  resource....
-## 14              
-## 15  resource....
-## 16              
-## 17  resource....
-## 18              
-## 19  resource....
-## 20              
-## 21  resource....
-## 22              
-## 23  resource....
-## 24              
-## 25  resource....
-## 26  resource....
-## 27  resource....
+## 2   resource....
+## 3               
+## 4   resource....
+## 5               
+## 6   resource....
+## 7               
+## 8   resource....
+## 9               
+## 10  resource....
+## 11              
+## 12  resource....
+## 13              
+## 14  resource....
+## 15              
+## 16  resource....
+## 17              
+## 18  resource....
+## 19              
+## 20  resource....
+## 21              
+## 22  resource....
+## 23              
+## 24  resource....
+## 25              
+## 26              
+## 27              
 ## 28  resource....
-## 29  resource....
+## 29              
 ## 30  resource....
-## 31  resource....
+## 31              
 ## 32  resource....
 ## 33  resource....
-## 34  resource....
-## 35              
-## 36  resource....
-## 37              
-## 38  resource....
+## 34              
+## 35  resource....
+## 36              
+## 37  resource....
+## 38              
 ## 39              
 ## 40  resource....
 ## 41              
 ## 42  resource....
-## 43  resource....
+## 43              
 ## 44  resource....
-## 45  resource....
-## 46              
-## 47  resource....
+## 45              
+## 46  resource....
+## 47              
 ## 48  resource....
-## 49  resource....
-## 50              
-## 51  resource....
-## 52  resource....
+## 49              
+## 50  resource....
+## 51              
+## 52              
 ## 53  resource....
 ## 54              
 ## 55  resource....
@@ -1203,101 +1203,101 @@ with <code>%20</code>.)
 ## 57  resource....
 ## 58              
 ## 59  resource....
-## 60  resource....
+## 60              
 ## 61  resource....
 ## 62              
 ## 63  resource....
-## 64  resource....
+## 64              
 ## 65              
 ## 66  resource....
-## 67              
-## 68  resource....
-## 69              
-## 70  resource....
-## 71              
-## 72  resource....
-## 73              
-## 74  resource....
-## 75              
-## 76  resource....
-## 77              
-## 78  resource....
+## 67  resource....
+## 68              
+## 69  resource....
+## 70              
+## 71  resource....
+## 72              
+## 73  resource....
+## 74              
+## 75  resource....
+## 76              
+## 77  resource....
+## 78              
 ## 79              
-## 80  resource....
-## 81              
+## 80              
+## 81  resource....
 ## 82  resource....
-## 83              
+## 83  resource....
 ## 84  resource....
-## 85              
+## 85  resource....
 ## 86  resource....
-## 87              
+## 87  resource....
 ## 88  resource....
-## 89              
+## 89  resource....
 ## 90  resource....
-## 91              
-## 92  resource....
-## 93              
-## 94  resource....
-## 95              
-## 96  resource....
-## 97              
-## 98  resource....
-## 99              
-## 100 resource....
-## 101             
-## 102 resource....
-## 103             
-## 104 resource....
-## 105             
-## 106 resource....
-## 107             
-## 108 resource....
+## 91  resource....
+## 92              
+## 93  resource....
+## 94              
+## 95  resource....
+## 96              
+## 97  resource....
+## 98              
+## 99  resource....
+## 100             
+## 101 resource....
+## 102             
+## 103 resource....
+## 104             
+## 105 resource....
+## 106             
+## 107 resource....
+## 108             
 ## 109             
-## 110 resource....
-## 111             
-## 112 resource....
-## 113             
-## 114 resource....
-## 115             
-## 116 resource....
-## 117             
-## 118 resource....
-## 119             
-## 120 resource....
-## 121             
-## 122 resource....
-## 123             
-## 124 resource....
+## 110             
+## 111 resource....
+## 112             
+## 113 resource....
+## 114             
+## 115 resource....
+## 116             
+## 117 resource....
+## 118             
+## 119 resource....
+## 120             
+## 121 resource....
+## 122             
+## 123 resource....
+## 124             
 ## 125             
-## 126 resource....
+## 126             
 ## 127             
-## 128 resource....
-## 129             
-## 130 resource....
+## 128             
+## 129 resource....
+## 130             
 ## 131             
-## 132 resource....
-## 133             
-## 134 resource....
-## 135             
-## 136 resource....
-## 137             
-## 138 resource....
-## 139             
+## 132             
+## 133 resource....
+## 134             
+## 135 resource....
+## 136             
+## 137 resource....
+## 138             
+## 139 resource....
 ## 140 resource....
-## 141             
-## 142 resource....
-## 143             
-## 144 resource....
-## 145             
-## 146 resource....
-## 147             
-## 148 resource....
-## 149             
-## 150 resource....
-## 151             
-## 152 resource....
-## 153             
-## 154 resource....
+## 141 resource....
+## 142             
+## 143 resource....
+## 144             
+## 145 resource....
+## 146             
+## 147 resource....
+## 148             
+## 149 resource....
+## 150             
+## 151 resource....
+## 152             
+## 153 resource....
+## 154             
 ## 155             
 ## 156 resource....
 ## 157             
@@ -1322,24 +1322,24 @@ with <code>%20</code>.)
 ## 176 resource....
 ## 177             
 ## 178 resource....
-## 179 resource....
-## 180             
-## 181 resource....
+## 179             
+## 180 resource....
+## 181             
 ## 182 resource....
 ## 183             
 ## 184 resource....
-## 185 resource....
+## 185             
 ## 186 resource....
 ## 187             
 ## 188 resource....
-## 189 resource....
-## 190             
-## 191 resource....
-## 192             
-## 193 resource....
-## 194             
+## 189             
+## 190 resource....
+## 191             
+## 192 resource....
+## 193             
+## 194 resource....
 ## 195 resource....
-## 196             
+## 196 resource....
 ## 197 resource....
 ## 198             
 ## 199 resource....
