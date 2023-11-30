@@ -2,17 +2,28 @@
 
 To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!**
 
+Every entity that we upload needs a physical description added. When replacing files, the physical must be replaced as well.
+
 ```{block, type = "note"}
-The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization). so,  we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical.
+The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization)). so,  we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical. It includes info like the file size. For CSV files, the physical describes the number of header lines and the attribute orientation.
 ```
 
 ```{r, eval = FALSE}
+# Get the PID of a file
 data_pid <- selectMember(dp, name = "sysmeta@fileName", value = "your_file_name.csv")
+# Get the physical info and store it in an object
 physical <- arcticdatautils::pid_to_eml_physical(mn, data_pid)
 ```
 
-The `physical` must then be assigned to the data object.
+The `physical` object can then be checked for errors and added to the EML document.
+```{r, eval=FALSE}
+# Edit EML document with object
+doc$dataset$dataTable[[i]]$physical <- physical
+```
 
 Note that the above workflow only works if your data object already exists on the member node.
+
+Physicals can be seen in the website representation of the EML below the entity description.
+![](../images/physical_screenshot.png)
 
 

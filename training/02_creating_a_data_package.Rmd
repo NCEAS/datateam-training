@@ -6,17 +6,17 @@ This chapter will teach you how to create and submit a data package to a DataONE
 
 A data package generally consists of at least 3 components. 
 
-1. Metadata: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata are information that describe data (e.g. who made the data, how were the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML, which is the metadata standard that it uses. This is also what you see when you click on a page in the Arctic Data Center.
+1. Metadata: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata are information that describe data (e.g. who made the data, how were the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML (Ecological Metadata Language), which is the metadata standard that it uses. Each dataset page in the Arctic Data Center is a direct representation of an EML document, made to look prettier for the web.
 
 2. Data: Other objects in a package are the data files themselves. Most commonly these are data tables (`.csv`), but they can also be audio files, NetCDF files, plain text files, PDF documents, image files, etc. 
 
-3. Resource Map: The final object is the resource map. This object is a plain text file with the extension `.rdf` (<a href = 'https://www.w3.org/RDF/' target='_blank'>Resource Description Framework</a>) that defines the relationships between all of the other objects in the data package. It says things like "this metadata file describes this data file," and is critical to making a data package render correctly on the website with the metadata file and all of the data files together in the correct place. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using tools in R.
+3. Resource Map: The final object is the resource map. This object is a plain text file with the extension `.rdf` (<a href = 'https://www.w3.org/RDF/' target='_blank'>Resource Description Framework</a>) that defines the relationships between all of the other objects in the data package. You can think of it like a "basket" that holds the metadata file and all data files together. It says things like "this metadata file describes this data file," and is critical to making a data package render correctly on the website. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using tools in R.
 
 ![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow2.png)
 
 ## Packages on the Website
 
-All of the package information is represented when you go to the landing page for a dataset. When you make changes through R those published changes will be reflected here. Although you can edit the metadata directly from the webpage but we recommend to use R in most cases.
+All of the package information is represented when you go to the landing page for a dataset. In the previous section, you uploaded a data file and made edits to the metadata using the web editor. When you make changes to the metadata and data files through R, those published changes will also be reflected here.
 
 ![](images/arctic_data_center_web.png)
 
@@ -34,13 +34,15 @@ Different versions of a package are linked together by what we call the "version
 
 ## Upload a package
 
-We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your *R console*.
+We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your *R console*. The console is the bottom left window in RStudio.
 
 ```{block, type = "warning"}
 **This token is your identity on these sites, please treat it as you would a password** (i.e. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway.
 ```
 
 You will need to retrieve a new one after it either expires or you quit your R session.
+
+Setting the token does not produce any output in the console. If the token is not set or is set incorrectly, you will know when an error is produced after trying to load a private dataset.
 
 Sometimes you'll see a placeholder in scripts to remind users to get their token, such as:
 
@@ -87,7 +89,9 @@ library(EML)
 library(arcticdatautils)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. More information on the other nodes can be found in the reference section under Set DataONE nodes [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html)
+For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. 
+
+Different repositories use different member nodes. More information on the other nodes can be found in the reference section under Set DataONE nodes [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html)
 
 For example, if we are using the test site, set the node to the test Arctic node:
 
@@ -147,5 +151,6 @@ myAccessRules <- data.frame(...)
 packageId <- uploadDataPackage(...)
 ```
 
-* View your new data set by appending the metadata PID to the end of the URL test.arcticdata.io/#view/... 
+* View your new data set by appending the metadata PID to the end of the URL test.arcticdata.io/view/... 
 * If you are successful it should look the same as the dataset you created in exercise 1
+* Send a message to #datateam with the exercise number and a link to your new package.

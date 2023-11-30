@@ -6,7 +6,7 @@ We use git and Github to manage our packages (ie datamgmt, arcticdatautils) and 
 
 ## What is Git?
 
-<a href="https://git-scm.com/" target = "_blank">Git</a> is a distributed version control system.
+<a href="https://git-scm.com/" target = "_blank">Git</a> is a distributed version control system. The NCEAS Github repository contains many processing scripts and templates that can help when working with datasets. 
 
 Important! If you have never used Git before, or only used it a little, or have no idea what it is, check out this <a href = 'https://github.com/eco-data-science/github-intro-2/blob/master/index.pdf' target='_blank'>intro to Git</a> put together by the ecodatascience group at UCSB. Don't worry too much about the forking and branching sections, as we will primarily be using the basic commit-pull-push commands. After you have read through that presentation, come back to this chapter.
 
@@ -89,7 +89,7 @@ If you are prompted to save your workspace during this process, make sure all of
 
 ### Adding a new script
 
-If you have been working on a script that you want to put in the arctic-data GitHub repo, you first need to save it somewhere in the arctic-data folder you cloned to your account on the Datateam server. You can do this by either moving your script into the folder or using the save-as functionality. Note that Git will try and version anything that you save in this folder, so you should be careful about what you save here. For our purposes, things that probably shouldn't be saved in this folder include:
+If you have been working on a script that you want to put in the arctic-data GitHub repo, you first need to save it somewhere in the arctic-data folder you cloned to your account on the Datateam server (/home/username/...). You can do this by either moving your script into the folder or using the save-as functionality. Note that Git will try and version anything that you save in this folder, so you should be careful about what you save here. For our purposes, things that probably shouldn't be saved in this folder include:
 
 -   **Tokens**: Any token file or script with a token in it should NOT be saved in the repository. Others could steal your login credentials if you put a token in GitHub.
 -   **Data files**: Git does not version data files very well. You shouldn't save any .csv files or any other data files (including metadata).

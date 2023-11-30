@@ -1,7 +1,7 @@
 ## Edit dataTables
 
-To edit a `dataTable`, first [edit/create an `attributeList`](#edit-attributelists) and [set the physical](#set-physical). 
-Then create a new `dataTable` using the `eml$dataTable()` helper function as below:
+
+Entities that are `dataTables` require an attribute list. To edit a `dataTable`, first [edit/create an `attributeList`](#edit-attributelists) and [set the physical](#set-physical). Then create a new `dataTable` using the `eml$dataTable()` helper function as below:
 
 ```{r, eval = FALSE}
 dataTable <- eml$dataTable(entityName = "A descriptive name for the data (does not need to be the same as the data file)",
@@ -50,9 +50,11 @@ After getting a list of `dataTables`, assign the resulting list to `dataTable` E
 doc$dataset$dataTable <- dts
 ```
 
-By default, the online submission form adds all entities as `otherEntity`, even when most should probably be `dataTable`.  You can use `eml_otherEntity_to_dataTable` to easily move items in `otherEntity` over to `dataTable`. Most tabular data or data that contain variables should be listed as a `dataTable`. Data that do not contain variables (eg: plain text readme files, pdfs, jpegs) should be listed as `otherEntity`.
+By default, the online submission form adds all entities as `otherEntity`, even when most should probably be `dataTable`.  You can use `eml_otherEntity_to_dataTable` to easily move items in `otherEntity` over to `dataTable`, and delete the old `otherEntity`. 
+
+Most tabular data or data that contain variables should be listed as a `dataTable`. Data that do not contain variables (eg: plain text readme files, pdfs, jpegs) should be listed as `otherEntity`.
 ```{r, eval = FALSE}
 eml_otherEntity_to_dataTable(doc, 
-                             1, # which otherEntities you want to convert, for multiple use - 1:5
+                             1, # Indexes of otherEntities you want to convert, for multiple use 1:5 or c(1,3,5..)
                              validate_eml = F) # set this to False if the physical or attributes are not added
 ```

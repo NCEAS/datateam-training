@@ -1,27 +1,32 @@
 ## Edit attributeLists
 
-Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, you need to create one to three objects:
+Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, we convert the attribute list information to data frame (table) format so that it is easier to edit. When editing attributes you will need to create one to three data frame objects:
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)
+3. A data.frame of factors (if applicable)
 
-The `attributeList` is an element within one of 4 different types of entity objects. An entity corresponds to a file, typically. Multiple entities (files) can exist within a dataset. The 4 different entity types are `dataTable` (most common for us), `spatialVector`, `spatialRaster`, and `otherEntity`
+The `attributeList` is an element within one of 4 different types of entity objects. An entity corresponds to a file, typically. Multiple entities (files) can exist within a dataset. The 4 different entity types are `dataTable` (most common for us), `spatialVector`, `spatialRaster`, and `otherEntity`.
 
-Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` object for spatial data.
+Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` or `spatialRaster` object for spatial data.
 
-To edit or examine an existing attribute table already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
+To edit or examine an existing attribute list already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
 
 ```{r, eval = FALSE}
 # If they are stored in an otherEntity (submitted from the website by default)
-attributeList <- EML::get_attributes(doc$dataset$otherEntity[[i]]$attributeList)
+attribute_tables <- EML::get_attributes(doc$dataset$otherEntity[[i]]$attributeList)
 # Or if they are stored in a dataTable (usually created by a datateam member)
-attributeList <- EML::get_attributes(doc$dataset$dataTable[[i]]$attributeList)
-# Or if they are stored in a spatialVector (usually created by a datateam member)
-attributeList <- EML::get_attributes(doc$dataset$spatialVector[[i]]$attributeList)
-
-attributes <- attributeList$attributes
-print(attributes)
+attribute_tables <- EML::get_attributes(doc$dataset$dataTable[[i]]$attributeList)
 ```
+
+The `get_attributes()` function returns the `attribute_tables` object, which is a list of the three data frames mentioned above. The data frame with the attributes is called `attribute_tables$attributes`.
+```{r, eval = FALSE}
+attribute_tables$attributes
+print(attribute_tables$attributes)
+```
+
+
+
 
 ### Edit attributes
 
@@ -42,7 +47,7 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *dateTimeDomain*: `dateTime` attributes
     + *numericDomain*: attributes that are numbers (either `ratio` or `interval`)
 * **formatString**: Required for `dateTime`, NA otherwise. Format string for dates, e.g. "DD/MM/YYYY".
-* **definition**: Required for `textDomain`, NA otherwise. Definition for attributes that are a character string, matches attribute definition in most cases.
+* **definition**: Required for `textDomain`, NA otherwise. Defines a format for attributes that are a character string. e.g.: "Any text" or "7-digit alphanumeric code"
 * **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: `standardUnits <- EML::get_unitList()` then running `View(standardUnits$units)`.
 * **numberType**: Required for `numericDomain`, NA otherwise. Options are `real`, `natural`, `whole`, and `integer`.
     + *real*: positive and negative fractions and integers (...-1,-0.25,0,0.25,1...)
@@ -62,14 +67,16 @@ attributes <- data.frame(
     measurementScale = c('dateTime', 'nominal','nominal', 'nominal', 'ratio', 'ratio', 'interval', 'nominal'),
     domain = c('dateTimeDomain', 'enumeratedDomain','enumeratedDomain', 'textDomain', 'numericDomain', 'numericDomain', 'numericDomain', 'textDomain'),
     formatString = c('MM-DD-YYYY', NA,NA,NA,NA,NA,NA,NA),
-    definition = c(NA,NA,NA,'Sample number', NA, NA, NA, 'comments about sampling process'),
+    definition = c(NA,NA,NA,'Six-digit code', NA, NA, NA, 'Any text'),
     unit = c(NA, NA, NA, NA,'milliliter', 'dimensionless', 'celsius', NA),
     numberType = c(NA, NA, NA,NA, 'real', 'real', 'real', NA),
     missingValueCode = c(NA, NA, NA,NA, NA, NA, NA, 'NA'),
     missingValueCodeExplanation = c(NA, NA, NA,NA, NA, NA, NA, 'no sampling comments'))
 ```
 
-However, typing this out in R can be a major pain. Luckily, there's a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes (these commands will launch a Shiny app in your web browser):
+However, typing this out in R can be a major pain. Luckily, there's an app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. 
+
+Use the following commands to create or modify attributes. These commands will launch a "Shiny" app in your web browser. You must select "Quit App" in order to save your changes, and R will not run code while the app is open.
 
 ```{r, eval = FALSE}
 #first download the CSV in your data package from Exercise #2
@@ -79,19 +86,19 @@ data <- read.csv(text=rawToChar(getObject(d1c_test@mn, data_pid)))
 
 ```{r, eval = FALSE}
 # From data (recommended)
-EML::shiny_attributes(data = data)
-
-# From an existing attribute table
-attributeList <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
-EML::shiny_attributes(data = NULL, attributes = attributeList$attributes)
+attribute_tables <- EML::shiny_attributes(data = data)
 
 # From scratch
-atts <- EML::shiny_attributes()
+attribute_tables <- EML::shiny_attributes()
+
+# From an existing attribute list
+attribute_tables <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
+attribute_tables <- EML::shiny_attributes(attributes = attribute_tables$attributes)
 ```
 
-Once you are done editing a table in the app, quit the app and the tables will be assigned to the `atts` variable as a list of data frames (one for attributes, factors, and units). Alternatively, each table can be to exported to a csv file by clicking the `Download` button.
+Once you are done editing a table in the app, quit the app and the tables will be assigned to the `attribute_tables` variable as a list of data frames (one for attributes, factors, and units). Be careful to not overwrite your completed `attribute_tables` object when trying to make edits. The last line of code can be used in order to make edits to an existing `attribute_tables` object.
 
-If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`), or just use the variable that `shiny_attributes` returned.
+Alternatively, each table can be to exported to a csv file by clicking the `Download` button. If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`), or just use the variable that `shiny_attributes` returned.
 
 For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through `datamgmt::edit_attribute()` and fill out the parameters you wish to edit/update. An example is provided below where we are changing `attributeName`, `domain`, and `measurementScale` in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.
 
@@ -113,11 +120,13 @@ View(standardUnits$units)
 
 Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit ie `meters` in the table to see if there are any matches.
 
-If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:
+If you have units that are not in the standard EML unit list, you will need to build a custom unit list. Attribute tables with custom units listed will generate a warning indicating that a custom unit will need to be described.
+
+A unit typically consists of the following fields:
 
 * **id**: The `unit id` (ids are camelCased)
 * **unitType**: The `unitType` (run `View(standardUnits$unitTypes)` to see standard `unitType`s)
-* **parentSI**: The `parentSI` unit (e.g. for kilometer `parentSI` = "meter")
+* **parentSI**: The `parentSI` unit (e.g. for kilometer `parentSI` = "meter"). The parentSI does not need to be part of the unitList.
 * **multiplierToSI**: Multiplier to the `parentSI` unit (e.g. for kilometer `multiplierToSI` = 1000)
 * **name**: Unit abbreviation (e.g. for kilometer `name` = "km")
 * **description**: Text defining the unit (e.g. for kilometer `description` = "1000 meters")
@@ -135,6 +144,13 @@ custom_units <- data.frame(
   description = c('siemens per meter', 'decibar'))
 ```
 
+Custom units can also be created in the shiny app, under the "units" tab. They cannot be edited again in the shiny app once created.
+```{r, eval=FALSE}
+attribute_tables <- EML::shiny_attributes()
+
+custom_units <- attribute_tables$units
+```
+
 Using `EML::get_unit_id` for custom units will also generate valid EML unit ids. 
 
 Custom units are then added to `additionalMetadata` using the following command:
@@ -143,6 +159,7 @@ Custom units are then added to `additionalMetadata` using the following command:
 unitlist <- set_unitList(custom_units, as_metadata = TRUE)
 doc$additionalMetadata <-  list(metadata = list(unitList = unitlist))
 ```
+
 
 ### Edit factors
 
@@ -166,13 +183,27 @@ factors <- rbind(data.frame(attributeName = 'Location', code = names(Location), 
                   data.frame(attributeName = 'Region', code = names(Region), definition = unname(Region)))
 ```
 
-### Finalize attributeList
+Factors can also be created in the shiny app, under the "factors" tab. They cannot be edited again in the shiny app once created.
+```{r, eval=FALSE}
+attribute_tables <- EML::shiny_attributes()
 
-Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an `attributeList` using the following command:
-
-```{r, eval = FALSE}
-attributeList <- EML::set_attributes(attributes = attributes,
-                                     factors = factors) 
+attribute_tables$factors
 ```
 
-This `attributeList` must then be [added to a `dataTable`](#edit-datatables).
+
+### Finalize attributeList
+
+Once you have built your attributes, factors, and custom units, you can add them to EML objects. Attributes and factors are combined to form an `attributeList` using `set_attributes()`:
+
+```{r, eval = FALSE}
+# Create an attributeList object
+attributeList <- EML::set_attributes(attributes = attribute_tables$attributes,
+                                     factors = attribute_tables$factors) 
+```
+
+This `attributeList` object can then be checked for errors and [added to a `dataTable`](#edit-datatables) in the EML document.
+```{r, eval = FALSE}
+# Edit EML document with object
+doc$dataset$dataTable[[i]]$attributeList <- attributeList
+```
+

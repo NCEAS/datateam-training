@@ -7,6 +7,9 @@ Most of the functions you will see in this chapter will use the `arcticdatautils
 ```{block, type = "note"}
 This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.
 ```
+```{block, type = "note"}
+When using R to edit EML documents, run each line individually by highlighting the line and using CTRL+ENTER). Many EML functions only need to be ran once, and will either produce errors or make the EML invalid if run multiple times.
+```
 
 ```{r, child = '../workflows/edit_eml/edit_an_eml_element.Rmd'}
 ```
@@ -64,7 +67,7 @@ resource_map_pid <- ...
 dp <- getDataPackage(d1c_test, identifier=resource_map_pid, lazyLoad=TRUE, quiet=FALSE)
 
 # get metadata pid
-mo <- selectMember(...)
+metadataId <- selectMember(...)
 
 # read in EML
 doc <- read_eml(getObject(...))
@@ -95,10 +98,16 @@ You should see something like if everything passes:
 >attr(,"errors")
 >character(0)
 
+```{block, type = "note"}
+When troubleshooting EML errors, it is helpful to run `eml_validate()` after every edit to the EML document in order to pinpoint the problematic code.
+```
+
+
 Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
 
 ```{r, eval = F}
-eml_path <- "path/to/save/eml.xml"
+# Create a standardized EML name from the dataset title
+eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
 write_eml(doc, eml_path)
 ```
 
@@ -111,7 +120,7 @@ After adding more metadata, we want to publish the dataset onto `test.arcticdata
 
 * Validate your metadata using `eml_validate`.
 * Use the [checklist](#final-checklist) to review your submission.
-* Make edits where necessary
+* Make edits where necessary (e.g. physicals)
 
 Once `eml_validate` returns `TRUE` go ahead and run `write_eml`, `replaceMember`, and `uploadDataPackage`. There might be a small lag for your changes to appear on the website. This part of the workflow will look roughly like this:
 
@@ -121,7 +130,7 @@ eml_validate(...)
 write_eml(...)
 
 # replace the old metadata file with the new one in the local package
-dp <- replaceMember(dp, ...)
+dp <- replaceMember(dp, metadataId, replacement = eml_path)
 
 # upload the data package
 packageId <- uploadDataPackage(...)

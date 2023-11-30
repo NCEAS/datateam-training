@@ -27,6 +27,11 @@ Just like you navigate in a `data.frame`, you can use the `$` operator to naviga
 
 ![](../images/rstudio_autocomplete.png)
 
-Note that if you hit tab, and nothing pops up, this most likely implies that you are trying to go into an EML element that can take a series items. For example ```doc$dataset$creator$<TAB>``` will not show a pop-up menu. This is because `creator` is a series-type object (i.e. you can have multiple `creator`s). If you want to go deeper into `creator`, you first must tell R which `creator` you are interested in. Do this by writing `[[i]]` first where `i` is the index of the `creator` you are concerned with. For example, if you want to look at the first `creator` i = 1. Now ```doc$dataset$creator[[1]]$<TAB>``` will give you many more options. Note, an empty autocomplete result sometimes means you have reached the end of a branch in the EML structure.
+Note that if you hit tab, and nothing pops up, this most likely implies that you are trying to go into an EML element that can take a series items. For example ```doc$dataset$creator$<TAB>``` will not show a pop-up menu. This is because `creator` is a **series-type object** (i.e. you can have multiple `creator`s). If you want to go deeper into `creator`, you first must tell R which `creator` you are interested in. Do this by writing `[[i]]` first where `i` is the index of the `creator` you are concerned with. For example, if you want to look at the first `creator` i = 1. Now ```doc$dataset$creator[[1]]$<TAB>``` will give you many more options. Note, an empty autocomplete result sometimes means you have reached the end of a branch in the EML structure.
+
+
+Below is the structure of `doc$dataset`. There are a series of multiple `creator`s, which can be accessed individually by index: `doc$dataset$creator[[#]]`.
+![](images/XML_series_pbject.png)
+
 
 At this point stop and take a deep breath.  The key takeaway is that EML is a hierarchical tree structure.  The best way to get familiar with it is to explore the structure.  Try entering `doc$dataset` into your console, and print it. Now make the search more specific, for instance: `doc$dataset$abstract`.  

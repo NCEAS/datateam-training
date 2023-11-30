@@ -1,4 +1,4 @@
-## Update a data object
+## Update an object
 
 To update a data file associated with a data package, you need to do three things:
 
@@ -8,12 +8,14 @@ To update a data file associated with a data package, you need to do three thing
 
 The `datapack::replaceMember` function takes care of the first two of these tasks. First you need to get the pid of the file you want to replace by using `datapack::selectMember`
 ```{r, eval = F}
-metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
+# Select the EML PID
+dataId <- selectMember(dp, name="sysmeta@formatId", value="text/csv")
 ```
 
 Then use `replaceMember`:
 ```{r, eval = F}
-dp <- replaceMember(dp, metadataId, replacement=file_path)
+# Replace the old file with the new
+dp <- replaceMember(dp, dataId, replacement=file_path)
 ```
 
 

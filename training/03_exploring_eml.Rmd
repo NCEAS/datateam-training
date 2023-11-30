@@ -14,5 +14,14 @@ If you aren't too familiar with lists and how to navigate them yet take a look a
 ```{r, child = '../workflows/explore_eml/understand_eml_schema.Rmd'}
 ```
 
+### Check your understanding {.exercise}
+* Find `otherEntity` within the EML schema. Which elements are required? Can `otherEntity` be a series object?
+
+<details>
+<summary>Answer</summary>
+<br>
+`otherEntity` requires `entityType` and `entityName` children, or alternatively will accept only `references`. It is a series object, so there can be multiple `otherEntities`. Along with `otherEntity` and `creator`, `dataTable` and `attribute` can also be series objects.
+</details>
+
 ```{r, child = '../workflows/explore_eml/access_specific_elements.Rmd'}
 ```

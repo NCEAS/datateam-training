@@ -19,7 +19,7 @@ doc$dataset$title <- list("New Title", "Second New Title")
 ```
 
 
-However, this isn't always the best method to edit the EML, particularly if the element has sub-elements.
+However, this isn't always the best method to edit the EML, particularly if the element has sub-elements. Adding directly to doc without a helper function can overwrite these parts of the doc that we need.
 
 ### Edit EML with the "EML" package
 

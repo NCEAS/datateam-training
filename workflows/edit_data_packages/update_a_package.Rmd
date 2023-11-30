@@ -9,14 +9,14 @@ Make sure you have the package you want to update loaded into R using `dataone::
 Now we can update your data package to include the new data object. Assuming you have updated your data package earlier something like the below: 
 ```{r, eval = FALSE}
 d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
-packageId <- "the resource map"
+packageId <- "resource_map_urn:uuid..."
 
 dp <- getDataPackage(d1c_test, identifier=packageId, lazyLoad=TRUE, quiet=FALSE)
 metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
 
 #some modification to the EML here
 
-eml_path <- "path/to/your/saved/eml.xml"
+eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
 write_eml(doc, eml_path)
 
 dp <- replaceMember(dp, metadataId, replacement=eml_path)
@@ -30,7 +30,7 @@ packageId <- uploadDataPackage(d1c_test, dp, public=FALSE, accessRules=myAccessR
 
 If a package is ready to be public, you can change the `public` argument in the `datapack::uploadDataPackage()` call to `TRUE`.
 
-If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you need to do this when replacing the metadata. **This should only be done after the package is finalized and has been thoroughly reviewed!**
+If you want to publish with a DOI (Digital Object Identifier) instead of a UUID (Universally Unique Identifier), you need to do this when replacing the metadata using the optional `newId` argument in `replaceMember()`. **This should only be done after the package is finalized and has been thoroughly reviewed!**
 ```{r, eval = FALSE}
 doi <- dataone::generateIdentifier(d1c_test@mn, "DOI")
 dp <- replaceMember(dp, metadataId, replacement=eml_path, newId=doi)
@@ -40,7 +40,7 @@ newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
 
 If there is a pre-issued DOI (researcher requested the DOI for the publication first), please do the following:
 ```{r, eval = FALSE}
-dp <- replaceMember(dp, metadataId, replacement=eml_path, newId="your pre-issued doi previously generated")
+dp <- replaceMember(dp, metadataId, replacement=eml_path, newId="doi:10.../...")
 
 newPackageId <- uploadDataPackage(d1c_test, dp, public=TRUE, quiet=FALSE)
 ```

@@ -22,13 +22,13 @@ Read Matt Jones et al.'s paper on <a href = 'https://esajournals.onlinelibrary.w
 
 (Please note that while the tips outlined in this article are best practices, we often do not reformat data files submitted to our repositories unless necessary. It is best to be conservative and not alter other people's data without good reason.)
 
-You may also want to explore the DataONE <a href='https://www.dataone.org/Education' target='_blank'>education resources</a> related to data management.
+You may also want to explore the DataONE <a href='https://dataoneorg.github.io/Education/' target='_blank'>education resources</a> related to data management.
 
 ## Using DataONE
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is <a href = 'https://www.dataone.org/what-dataone' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://www.dataone.org/sites/all/documents/DataONE_MN_Partner_Guidelines_20170501.pdf' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/about/' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://dataone-operations.readthedocs.io/en/latest/MN/deployment/baseline_implementation_requirements.html' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
 
 We will be applying these concepts in the next chapter. 
 
@@ -36,10 +36,13 @@ We will be applying these concepts in the next chapter.
 
 All of the work that we do at NCEAS is done on our remote server, datateam.nceas.ucsb.edu. If you have never worked on a remote server before, you can think of it like working on a different computer via the internet. 
 
-We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> This is the same as your desktop version of RStudio with one main difference is that files are on the server. Please do all your work here. This way you can share your code with the rest of us.
+We access RStudio on our server through this <a href = 'https://datateam.nceas.ucsb.edu/rstudio/' target='_blank'>link.</a> This is the same as your desktop version of RStudio with one main difference is that files are on the server. **Please do all your work here, and bookmark this link. Do not use RStudio on your local computer.** By only using the RStudio server, it is easier to share your code with the rest of us.
+
+### Check your understanding {.exercise}
+* Open a new tab in your browser and try logging into the [remote server](https://datateam.nceas.ucsb.edu/rstudio/) using your SSH credentials.
 
 ```{block, type = "note"}
-If you R session is frozen and unresponsive check out [the guide](https://help.nceas.ucsb.edu/NCEAS/Computing/rstudio_server.html) on how to fix it.
+If your R session is frozen and unresponsive check out [the guide](https://help.nceas.ucsb.edu/NCEAS/Computing/rstudio_server.html) on how to fix it.
 ```
 
 ## A note on paths
@@ -52,14 +55,17 @@ When you write scripts, try to avoid writing relative paths (which rely on what 
 
 ## A note on R
 
-This training assumes basic knowledge of R and RStudio. If you want a quick R refresher, walk through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html).
+This training assumes basic knowledge of R and RStudio. Spend at least 30 minutes walking through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) for a refresher.
 
 Throughout this training we will occasionally use the namespace syntax `package_name::function_name()` when writing a function. This syntax denotes which package a function came from.  For example `dataone::getSystemMetadata` selects the `getSystemMetadata` function from the `dataone` R package. More detailed information on namespaces can be found [here](http://r-pkgs.had.co.nz/namespace.html).
 
 ## A note on effective troubleshooting in R
-We suggest using a combination of **m**inimal **r**eproducible **e**xamples (MRE) and the package `reprex` to create **rep**roducible **ex**amples. This will allow others to better help you if we can run the code on our own computers.
 
-A MRE is stripping down your code to only the parts that cause the bug.
+One of the advantages with using the R programming language is the extensive documentation that is available for R packages. The R help operator `?` can be used to learn more about functions from all of the R packages we use. You can put the operator before the name of any function to view its documentation in RStudio: `?function`
+
+When asking for help in the `#datateam` channel in Slack, we suggest using a combination of **m**inimal **r**eproducible **e**xamples (MRE) and the package `reprex` to create **rep**roducible **ex**amples. This will allow others to better help you if we can run the code on our own computers.
+
+A MRE is stripping down your code to only the parts that cause the bug. When troubleshooting errors over Slack, send the code that returned an error **and** the error message itself.
 
 How to generate a reprex:
 
@@ -90,7 +96,7 @@ att_list <- set_attributes(attributes)
 
 
 doc_ex <- list(packageId = "id", system = "system", 
-            dataset = list(title = "A Mimimal Valid EML Dataset",
+            dataset = list(title = "A Minimal Valid EML Dataset",
                            creator = me,
                            contact = me,
                            dataTable = list(entityName = "data table", attributeList = att_list))
@@ -103,17 +109,19 @@ The rest of the training has a series of exercises. These are meant to take you 
 Please note that you will be completing everything on the  <a href = 'https://test.arcticdata.io' target='_blank'> site</a> for the training. In the future if you are unsure about doing anything with a dataset. The test site is a good place to try things out!
 
 ## Exercise 1 {.exercise}
-This part of the exercise walks you through submitting data through the web form on "<a href = 'https://test.arcticdata.io' target='_blank'>test.arcticdata.io</a>"
+This part of the exercise walks you through submitting data through the web form on "<a href = 'https://test.arcticdata.io' target='_blank'>test.arcticdata.io</a>". In addition to learning to use the webform, this exercise will also help you practice sleuthing for information in order to provide complete metadata. Most datasets do not come with all contextual information, so you will need to skim cited literature and search google for definitions of discipline-specific jargon. Don't be afraid to use the internet as a resource!
 
 ### Part 1
 * Download the [csv](data/Loranty_2016_Environ._Res._Lett._11_095008.csv) of Table 1 from <a href = 'http://iopscience.iop.org/article/10.1088/1748-9326/11/9/095008/meta' target='_blank'>this paper.</a>
-* Reformat the table to meet the guidelines outlined in the journal article on effective data management (this might be easier to do in an interactive environment like Excel).
-* Note - we usually don't edit the content in data submissions so don't stress over this part too much
+* Reformat the table to meet the guidelines outlined in the journal article on effective data management (this might be easier to do in an interactive environment like Excel). 
+    + Hint: This table is in wide format and can be made [longer](https://arcticdata.io/submit/#file-content-guidelines).
+* Note: we usually don't edit the content in data submissions so don't stress over this part too much
     
 ### Part 2
 * Go to "<a href = 'https://test.arcticdata.io/#data' target='_blank'>test.arcticdata.io</a>" and submit your reformatted file with appropriate metadata that you derive from the text of the paper:
-    + list yourself as the first 'Creator' so your test submission can easily be found,
-    + for the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine,
-    + directly copying and pasting sections from the paper (abstract, methods, etc.) is also fine,
-    + attributes (column names) should be defined, including correct units and missing value codes.
-    + submit the dataset
+    + List yourself as the first 'Creator' so your test submission can easily be found.
+    + For the purposes of this training exercise, not every single author needs to be listed with full contact details, listing the first two authors is fine.
+    + Directly copying and pasting sections from the paper (abstract, methods, etc.) is also fine.
+    + Attributes (column names) should be defined, including correct units and missing value codes.
+        * Click "describe" to the right of the file name in order to add file-specific information. The title and description can be edited in the "Overview" tab, while attributes are defined in the "Attributes" tab.
+    + Submit the dataset and post a message to the #datateam channel with a link to your package.

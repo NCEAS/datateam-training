@@ -25,13 +25,13 @@ This is a bit of an unusual way to reference a local file path, but all this doe
 emlFile <- system.file("extdata/strix-pacific-northwest.xml", package="dataone")
 ```
 
-Create a new `DataObject` and add it to the package.
+Create a new `DataObject` for the metadata and add it to the package.
 ```{r, eval = F}
 metadataObj <- new("DataObject", format="https://eml.ecoinformatics.org/eml-2.2.0", filename=emlFile)
 dp <- addMember(dp, metadataObj)
 ```
 
-Check the dp object to see if the `DataObject` was added correctly.
+Check the dp object to see if the metadata was added correctly.
 ```{r, eval = F}
 dp
 ```
@@ -40,7 +40,7 @@ dp
 ```{r, eval = F}
 sourceData <- system.file("extdata/OwlNightj.csv", package="dataone")
 sourceObj <- new("DataObject", format="text/csv", filename=sourceData)
-dp <- addMember(dp, sourceObj, metadataObj)
+dp <- addMember(dp, sourceObj, metadataObj) # The third argument of addMember() associates the new DataObject to the metadata that was just added.
 ```
 
 

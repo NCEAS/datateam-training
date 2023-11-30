@@ -1,6 +1,6 @@
 ## Understand the EML schema
 
-Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it.
+Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it. Use your browser's "search in page" function (usually CTRL-F or Command-F) to navigate the EML schema page quickly.
 
 For example, let's take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.
 
