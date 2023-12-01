@@ -531,7 +531,7 @@ this example they will look like the below:
 <span id="cb55-15"><a href="preserve-folder-structures.html#cb55-15" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> oes</span>
 <span id="cb55-16"><a href="preserve-folder-structures.html#cb55-16" tabindex="-1"></a></span>
 <span id="cb55-17"><a href="preserve-folder-structures.html#cb55-17" tabindex="-1"></a><span class="fu">write_eml</span>(doc, <span class="st">&quot;~/metadata.xml&quot;</span>)</span>
-<span id="cb55-18"><a href="preserve-folder-structures.html#cb55-18" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span><span class="st">&quot;~/metadata.xml&quot;</span>)</span></code></pre></div>
+<span id="cb55-18"><a href="preserve-folder-structures.html#cb55-18" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataObj, <span class="at">replacement=</span><span class="st">&quot;~/metadata.xml&quot;</span>)</span></code></pre></div>
 <p>Once this is finished you can examine the relationships by running <code>View(dp@relations$relations)</code>. If everything worked out well you should see rows that look like this:</p>
 <div class="line-block"><code>urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d</code> | <code>http://www.w3.org/ns/prov#atLocation</code> | <code>figure2/figure2.tif</code> |</div>
 <p>The <code>targetPath</code> (3rd column) should NOT look like</p>
