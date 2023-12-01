@@ -101,7 +101,7 @@ for (i in 1:length(abs_paths)){
 doc$dataset$otherEntity <- oes
 
 write_eml(doc, "~/metadata.xml")
-dp <- replaceMember(dp, metadataId, replacement="~/metadata.xml")
+dp <- replaceMember(dp, metadataObj, replacement="~/metadata.xml")
 ```
 
 Once this is finished you can examine the relationships by running `View(dp@relations$relations)`. If everything worked out well you should see rows that look like this:
