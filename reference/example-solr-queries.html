@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Example Solr queries | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.36.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Example Solr queries | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-12-01" />
+<meta name="date" content="2024-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -540,778 +540,778 @@ with <code>%20</code>.)
 <span id="cb207-3"><a href="example-solr-queries.html#cb207-3" tabindex="-1"></a>                <span class="at">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</span>
 <span id="cb207-4"><a href="example-solr-queries.html#cb207-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
 <span id="cb207-5"><a href="example-solr-queries.html#cb207-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
-<pre><code>##                                                     identifier
-## 1                          resource_map_doi:10.18739/A2GH9BB4N
-## 2                                       doi:10.18739/A2GH9BB4N
-## 3   resource_map_urn:uuid:a82e1a6f-162a-46b5-be09-2d2c10d360fa
-## 4                urn:uuid:a82e1a6f-162a-46b5-be09-2d2c10d360fa
-## 5                urn:uuid:9ea2f932-2eae-421f-8633-183fb4a61c53
-## 6                urn:uuid:d394bbf8-bcab-4f58-9659-14bfbdc7201a
-## 7                urn:uuid:2fb5502d-f98f-43f4-a265-085d800232de
-## 8                urn:uuid:491ec604-3b29-4e74-af65-47f7cb6d5f64
-## 9   resource_map_urn:uuid:d6bbb9ef-7afd-409b-8897-e2bc96c7c9f3
-## 10               urn:uuid:d6bbb9ef-7afd-409b-8897-e2bc96c7c9f3
-## 11  resource_map_urn:uuid:08367559-bd4e-419b-9eca-f18e1c48db10
-## 12               urn:uuid:08367559-bd4e-419b-9eca-f18e1c48db10
-## 13  resource_map_urn:uuid:48f0d4a7-cd07-43f7-83b0-b95dd30c8730
-## 14               urn:uuid:48f0d4a7-cd07-43f7-83b0-b95dd30c8730
-## 15  resource_map_urn:uuid:a8918814-2412-4533-ae33-52eec00b95f7
-## 16               urn:uuid:a8918814-2412-4533-ae33-52eec00b95f7
-## 17  resource_map_urn:uuid:6dc2ec1a-cad5-4ae2-9db0-42cb2263daa5
-## 18               urn:uuid:6dc2ec1a-cad5-4ae2-9db0-42cb2263daa5
-## 19  resource_map_urn:uuid:0c0c2720-baa2-481b-88e6-b8dc994b79b3
-## 20               urn:uuid:0c0c2720-baa2-481b-88e6-b8dc994b79b3
-## 21  resource_map_urn:uuid:d22e26d1-9ffc-4d88-87b4-dba43c78a99a
-## 22               urn:uuid:c577aadc-6c51-4e58-9c9d-bdbe9f127c80
-## 23  resource_map_urn:uuid:ea236d34-0ef8-4fd3-94e5-b519f1d2e8c5
-## 24               urn:uuid:ea236d34-0ef8-4fd3-94e5-b519f1d2e8c5
-## 25  resource_map_urn:uuid:df1a4562-35eb-4917-8fc1-51efe945b31b
-## 26               urn:uuid:29ae9139-97ff-44bf-9e8c-506c89ff319b
-## 27  resource_map_urn:uuid:298cec4a-94ab-4fc8-b256-5a07a706cf3c
-## 28               urn:uuid:298cec4a-94ab-4fc8-b256-5a07a706cf3c
-## 29  resource_map_urn:uuid:bb80ab5d-4f45-427f-85f3-f2f2e35b3f66
-## 30               urn:uuid:bb80ab5d-4f45-427f-85f3-f2f2e35b3f66
-## 31  resource_map_urn:uuid:9f23a12c-9305-4854-a5bc-c786d2e0e837
-## 32               urn:uuid:9f23a12c-9305-4854-a5bc-c786d2e0e837
-## 33               urn:uuid:ce5c9b6a-6069-4948-9ccd-0a2030987d2d
-## 34               urn:uuid:8a8f0c09-913d-40be-afd0-e9a562d8b1e9
-## 35  resource_map_urn:uuid:621a65f5-1ff2-4bd0-ba44-535be1694498
-## 36               urn:uuid:621a65f5-1ff2-4bd0-ba44-535be1694498
-## 37  resource_map_urn:uuid:57fc1841-84d4-4c32-bf0e-3d84efcce6a1
-## 38               urn:uuid:5d00ac2e-634a-4b4c-bc2d-3c03009589b7
-## 39               urn:uuid:47b695e6-3310-4c14-918b-952da35c2329
-## 40               urn:uuid:d7055e41-25d6-425a-9548-e48fccf1b5a1
-## 41               urn:uuid:d4665f0b-1659-44f5-95ea-1fe211cdd980
-## 42  resource_map_urn:uuid:1723dfe4-8b0c-4b11-b765-76f697082c35
-## 43               urn:uuid:52d7f9a5-ccae-4e19-b82f-dc642ddb548f
-## 44               urn:uuid:5924549c-6c39-434f-8741-3e4ecb8e0ee1
-## 45  resource_map_urn:uuid:5078ed6b-5969-44cb-96ad-0e002a004c89
-## 46               urn:uuid:0b6901ef-310c-4a32-afdd-42e274cc095b
-## 47  resource_map_urn:uuid:da839a1b-d80c-4f33-8575-ba6c3d0f240c
-## 48               urn:uuid:da839a1b-d80c-4f33-8575-ba6c3d0f240c
-## 49               urn:uuid:3f419345-4823-4022-a6ad-d4b4ad724786
-## 50               urn:uuid:179ccaf3-79e4-4cc7-a35a-6ef5058118f3
-## 51  resource_map_urn:uuid:9f80d655-2233-4f43-be60-2637b32a2dbf
-## 52               urn:uuid:c90025a6-8b2a-46c6-a8ad-27b8351e2c7b
-## 53  resource_map_urn:uuid:01a20c92-7a89-461b-b07c-18ab52e474a3
-## 54               urn:uuid:a6db7d59-2692-4bd8-ac67-4edaf53ba116
-## 55  resource_map_urn:uuid:f2ac1087-bf52-4ac8-863e-2f59d9e6458b
-## 56               urn:uuid:dca58b79-0e81-4560-9782-d10430bd0bfa
-## 57  resource_map_urn:uuid:01456dbc-2b97-4b7f-a54f-3f8712605a82
-## 58               urn:uuid:2c4877cc-8b26-4399-bfc9-074bdbdb3e92
-## 59  resource_map_urn:uuid:0d58cee1-8381-4525-8965-2989914b132e
-## 60               urn:uuid:88321530-bf05-4f91-9722-03036351c5ec
-## 61  resource_map_urn:uuid:743001b3-14a4-478d-ba5a-ace67cdc18e2
-## 62               urn:uuid:5165ce13-1d98-42d9-a27e-15de1a1c8420
-## 63               urn:uuid:a7b3c8fd-1e63-4111-ad3c-3dfc218aa4f5
-## 64  resource_map_urn:uuid:b31094f8-db15-4801-a0a1-59ff3670abfc
-## 65               urn:uuid:23d23599-feec-408e-a22b-5aadee74a458
-## 66  resource_map_urn:uuid:12c57652-9f90-4fc0-986a-f5887c104539
-## 67               urn:uuid:12c57652-9f90-4fc0-986a-f5887c104539
-## 68  resource_map_urn:uuid:2eeeb8cc-35fd-45f9-937b-2ce61b9284e7
-## 69               urn:uuid:b32f852a-0960-4dd6-bcaa-7e153b78380d
-## 70                         resource_map_doi:10.18739/A2PZ51N8Q
-## 71                                      doi:10.18739/A2PZ51N8Q
-## 72  resource_map_urn:uuid:ae4c4da8-9d8a-4dbc-badf-46656f3a8b96
-## 73               urn:uuid:ae4c4da8-9d8a-4dbc-badf-46656f3a8b96
-## 74  resource_map_urn:uuid:5418140f-efc0-415d-b253-de6b7fe81ca5
-## 75               urn:uuid:5418140f-efc0-415d-b253-de6b7fe81ca5
-## 76               urn:uuid:e0161630-0ce9-4da0-b32c-ffc634cc57ff
-## 77  resource_map_urn:uuid:2ac763ca-d06b-4193-935c-4799ec0fbf9e
-## 78               urn:uuid:2ac763ca-d06b-4193-935c-4799ec0fbf9e
-## 79               urn:uuid:e03e2da1-f8e5-4c6b-babe-ee35bc86f7d9
-## 80                         resource_map_doi:10.18739/A2TQ5RG1M
-## 81                                      doi:10.18739/A2TQ5RG1M
-## 82                         resource_map_doi:10.18739/A2ZS2KF4B
-## 83                                      doi:10.18739/A2ZS2KF4B
-## 84  resource_map_urn:uuid:980d782e-0f80-44df-a9e7-d45424d9e223
-## 85               urn:uuid:51712e5b-25b2-487e-bc2c-35b0eb0226e8
-## 86  resource_map_urn:uuid:ea7f7641-11e9-4b9c-bc26-ff4e873e26d3
-## 87               urn:uuid:57295d4b-2e83-403c-848c-b46c91d16b32
-## 88  resource_map_urn:uuid:73ae7645-1379-4f77-8448-a227595469f5
-## 89               urn:uuid:ee532443-a903-466f-9e91-929f8051139f
-## 90               urn:uuid:85f02f5c-5481-4f2c-8de1-4a6ebdd9a280
-## 91               urn:uuid:c4ad27ae-7c37-47e5-8686-30dbb08569e6
-## 92               urn:uuid:aa4725a0-c9ef-4801-89ac-db843438e5a9
-## 93               urn:uuid:29b93e97-2e9b-4c31-9336-1bb406928dd8
-## 94                         resource_map_doi:10.18739/A2QZ22J8Z
-## 95                                      doi:10.18739/A2QZ22J8Z
-## 96               urn:uuid:23e409fe-aed9-4fbe-bc2b-907859f2d282
-## 97               urn:uuid:bec21fde-978a-4058-a1a0-44aba141d1a9
-## 98               urn:uuid:4d6d1831-caf3-4b1f-8009-7587f0b91861
-## 99               urn:uuid:0ee3302b-1330-4e65-a7c8-6bedea170953
-## 100              urn:uuid:0155893a-85b4-45e7-8e3f-afae3a6b4ddf
-## 101              urn:uuid:035d0823-8517-4a10-a264-474d3243d951
-## 102              urn:uuid:5b5f0bdb-16db-4538-a77a-6ba9919e8115
-## 103              urn:uuid:95622e9e-6288-4cbf-b7fa-1d4d0283c24c
-## 104              urn:uuid:077f1a4c-1308-45f3-aee7-f969fb194abe
-## 105              urn:uuid:9a83a82b-0b11-4db7-895c-7fa516916c69
-## 106 resource_map_urn:uuid:c364984d-2801-457c-ba59-1095d44f69fe
-## 107              urn:uuid:e99fc3fe-ab91-4784-954f-78efae175317
-## 108                        resource_map_doi:10.18739/A20G3H07Q
-## 109                                     doi:10.18739/A20G3H07Q
-## 110                        resource_map_doi:10.18739/A24746T12
-## 111                                     doi:10.18739/A24746T12
-## 112                        resource_map_doi:10.18739/A2804XM69
-## 113                                     doi:10.18739/A2804XM69
-## 114                        resource_map_doi:10.18739/A2CR5NF0R
-## 115                                     doi:10.18739/A2CR5NF0R
-## 116                        resource_map_doi:10.18739/A2HD7NV15
-## 117                                     doi:10.18739/A2HD7NV15
-## 118                        resource_map_doi:10.18739/A2N58CN4T
-## 119                                     doi:10.18739/A2N58CN4T
-## 120                        resource_map_doi:10.18739/A2RX93F8N
-## 121                                     doi:10.18739/A2RX93F8N
-## 122              urn:uuid:57c23692-0f54-419e-888b-0f30c0ebad1c
-## 123              urn:uuid:9ddf65a6-fe94-431e-badf-56f4fd7cf473
-## 124                        resource_map_doi:10.18739/A2WP9T821
-## 125                                     doi:10.18739/A2WP9T821
-## 126 resource_map_urn:uuid:99fb973e-5b5e-487d-9608-0e613c6a3d2d
-## 127              urn:uuid:b7c9983e-6937-4b60-b865-0f457f275cd4
-## 128 resource_map_urn:uuid:98af543d-885c-45fb-8a1c-884b88bf34dd
-## 129              urn:uuid:eb1a791d-f7e9-4ddd-bb99-462edda8bf31
-## 130                        resource_map_doi:10.18739/A21G0HW7J
-## 131                                     doi:10.18739/A21G0HW7J
-## 132                        resource_map_doi:10.18739/A25717Q2S
-## 133                                     doi:10.18739/A25717Q2S
-## 134 resource_map_urn:uuid:1b0355df-3ad0-4de2-b96e-f88130e3a075
-## 135              urn:uuid:e54f4670-c6ad-4738-b8c5-2b3dc3d1d328
-## 136                        resource_map_doi:10.18739/A2901ZH6J
-## 137                                     doi:10.18739/A2901ZH6J
-## 138              urn:uuid:29bae32f-b790-45e6-8ca9-d0ecfb3bccb5
-## 139              urn:uuid:306314b0-5135-4a0a-9c6f-15dd7cc09d10
-## 140              urn:uuid:b2e76f6f-27ac-4719-ac2c-b7630f9f96dc
-## 141              urn:uuid:ef207f94-8622-48a4-8c42-9141b8ebe45b
-## 142              urn:uuid:8537b1a3-f590-442b-8b6c-a4d2799cf6cd
-## 143              urn:uuid:d356fa4c-3f68-4bd4-a7c4-cb1fb0c4df2b
-## 144              urn:uuid:227e78e5-0e93-41a5-a25f-071ed60ec99c
-## 145              urn:uuid:8db49358-1956-4d42-8ee4-98c6b4db12c9
-## 146                        resource_map_doi:10.18739/A2DN3ZX65
-## 147                                     doi:10.18739/A2DN3ZX65
-## 148                        resource_map_doi:10.18739/A2JD4PR0X
-## 149                                     doi:10.18739/A2JD4PR0X
-## 150                        resource_map_doi:10.18739/A2P55DJ42
-## 151                                     doi:10.18739/A2P55DJ42
-## 152                        resource_map_doi:10.18739/A2SX64B8W
-## 153                                     doi:10.18739/A2SX64B8W
-## 154              urn:uuid:6c0a3635-b5ac-44c3-800c-26875219c865
-## 155              urn:uuid:2897e9b0-10b1-4ef1-b47a-19bb7a926f0f
-## 156 resource_map_urn:uuid:85abe62c-56e9-4268-8707-10486088fee5
-## 157              urn:uuid:85abe62c-56e9-4268-8707-10486088fee5
-## 158 resource_map_urn:uuid:66a73eff-30ff-454a-8c1b-6d18be369765
-## 159              urn:uuid:66a73eff-30ff-454a-8c1b-6d18be369765
-## 160                        resource_map_doi:10.18739/A2XP6V528
-## 161                                     doi:10.18739/A2XP6V528
-## 162                        resource_map_doi:10.18739/A22F7JS77
-## 163                                     doi:10.18739/A22F7JS77
-## 164                        resource_map_doi:10.18739/A26688M10
-## 165                                     doi:10.18739/A26688M10
-## 166 resource_map_urn:uuid:b2ab15e8-677f-4b87-89ac-ebf0c713ad49
-## 167              urn:uuid:f5700307-ff08-4139-bb1c-09d27c31c2fc
-## 168 resource_map_urn:uuid:60ad9fac-149b-4722-8bdf-58e959cbcd0e
-## 169 resource_map_urn:uuid:efc7d7da-c92b-4d24-9339-1183a40cef56
-## 170              urn:uuid:6eee91e6-7e26-4640-b8a4-1e2a2b457ad0
-## 171 resource_map_urn:uuid:00f50084-ed6a-4e3f-aca9-7dd2d2f81f79
-## 172              urn:uuid:7a02beba-f798-4f5c-88b5-e2d7dfa5750e
-## 173                        resource_map_doi:10.18739/A2MS3K33N
-## 174                                     doi:10.18739/A2MS3K33N
-## 175                        resource_map_doi:10.18739/A29W0913J
-## 176                                     doi:10.18739/A29W0913J
-## 177                        resource_map_doi:10.18739/A2FN10T6S
-## 178                                     doi:10.18739/A2FN10T6S
-## 179                        resource_map_doi:10.18739/A2KD1QN05
-## 180                                     doi:10.18739/A2KD1QN05
-## 181 resource_map_urn:uuid:f265500d-a017-40d0-9838-62dc20c429b6
-## 182              urn:uuid:ad9fc61e-eea9-472c-98de-a2570497287d
-## 183 resource_map_urn:uuid:7034b5e7-823e-4967-80ad-5c86f59c67b0
-## 184              urn:uuid:7034b5e7-823e-4967-80ad-5c86f59c67b0
-## 185 resource_map_urn:uuid:e7fbde34-59ee-41d3-aeea-66a635465d01
-## 186              urn:uuid:8d420e29-5900-4e76-a9fe-2eb43b3eeb88
-## 187 resource_map_urn:uuid:d550afdb-3017-417a-ac45-72ff770d3c20
-## 188              urn:uuid:d550afdb-3017-417a-ac45-72ff770d3c20
-## 189 resource_map_urn:uuid:75542485-e49c-4c10-81f8-d5fc249d5791
-## 190              urn:uuid:8da04375-5f96-401e-b524-3c058894cc32
-## 191 resource_map_urn:uuid:e1d5dfe8-0939-4d41-8fc8-764ce4bc7fbc
-## 192              urn:uuid:e1d5dfe8-0939-4d41-8fc8-764ce4bc7fbc
-## 193                        resource_map_doi:10.18739/A2Q52FF49
-## 194                                     doi:10.18739/A2Q52FF49
-## 195                        resource_map_doi:10.18739/A2TX3579M
-## 196                                     doi:10.18739/A2TX3579M
-## 197                        resource_map_doi:10.18739/A2ZP3W230
-## 198                                     doi:10.18739/A2ZP3W230
-## 199 resource_map_urn:uuid:84f97c29-230f-43c8-8568-fc9d6f919cc5
-## 200              urn:uuid:84f97c29-230f-43c8-8568-fc9d6f919cc5
+<pre><code>##                                                              identifier
+## 1                                   resource_map_doi:10.18739/A2RR1PP3N
+## 2                                                doi:10.18739/A2RR1PP3N
+## 3            resource_map_urn:uuid:518c0e5f-7baa-49f6-ac97-8566b9849754
+## 4                         urn:uuid:240fb28d-7638-4165-8649-5458cbb87dfe
+## 5                         urn:uuid:e74bcc8a-17d7-4376-b8f0-16aee83102f5
+## 6                         urn:uuid:de93325d-68b4-4860-975b-c5249ce49a08
+## 7            resource_map_urn:uuid:c80d9792-7610-4fd5-a1e8-ca88ac235686
+## 8                                   resource_map_doi:10.18739/A2DF6K50X
+## 9                                                doi:10.18739/A2DF6K50X
+## 10                                  resource_map_doi:10.18739/A2J678Z4N
+## 11                                               doi:10.18739/A2J678Z4N
+## 12                                  resource_map_doi:10.18739/A2NZ80R8G
+## 13                                               doi:10.18739/A2NZ80R8G
+## 14                        urn:uuid:c6762c57-d3de-442b-b953-71b140d0f0de
+## 15                        urn:uuid:994f30ec-1120-4759-9034-ebebd6900242
+## 16                        urn:uuid:e4651e04-bd1b-4f3c-b1bf-dc0e8cca10b3
+## 17                        urn:uuid:2dc1fd18-6c4a-49df-a6d5-3a16b0fbdfda
+## 18                                  resource_map_doi:10.18739/A2251FM9P
+## 19                                               doi:10.18739/A2251FM9P
+## 20                        urn:uuid:384ec4c2-b192-4c59-891c-8c025f0e6927
+## 21                        urn:uuid:68e3f148-c0f3-4fec-ba0e-d2dad8361065
+## 22                        urn:uuid:4dc42f06-b3cf-49f3-876c-4cc5bca925a5
+## 23                        urn:uuid:6174b857-724c-4264-89ba-e71bc4618152
+## 24                                  resource_map_doi:10.18739/A2PZ51N96
+## 25                                               doi:10.18739/A2PZ51N96
+## 26           resource_map_urn:uuid:439fd6ee-35fb-4b65-9261-903744e0d331
+## 27                        urn:uuid:ae6ba4bf-ec30-4cc3-82cd-b36ad2ccbd21
+## 28           resource_map_urn:uuid:38d4eb0d-2333-4c2b-841a-25cd8e5b50bf
+## 29                        urn:uuid:dac8ec6f-fb73-4610-998d-7fadaf07679d
+## 30                        urn:uuid:64e1b2a9-e352-4d41-85e5-0725b7733d53
+## 31                        urn:uuid:13b4c1b6-65b8-4118-8a46-c917fa1cd4ff
+## 32                        urn:uuid:75ea8108-2a11-40af-a998-ce53006519fe
+## 33           resource_map_urn:uuid:c6545310-be0d-4b25-8c78-9e1fd6b444bd
+## 34                        urn:uuid:c9e4d0ea-714f-4388-b1e3-4aec1b9eff04
+## 35           resource_map_urn:uuid:5bfc3945-c5b9-4fc4-a224-8230208ceb92
+## 36                        urn:uuid:214b4258-d6db-4409-9922-9c07c41c1f7a
+## 37           resource_map_urn:uuid:79547ed9-1a48-41a9-b2f9-312e33793717
+## 38                        urn:uuid:2ff1adb7-24f3-4ff0-a774-91f2081532e2
+## 39           resource_map_urn:uuid:b2dd0507-61f9-4f02-9810-1d9d134b729e
+## 40                        urn:uuid:63f8d139-9cb7-4121-983e-c34ba5b72271
+## 41                        urn:uuid:c02fa0a1-59d0-40e8-9691-31800d9950c3
+## 42                        urn:uuid:9be44a54-e174-4592-a2ac-dcb197854ffa
+## 43                        urn:uuid:db5fd5eb-7a1e-47dc-b076-45bc2eec38ee
+## 44                        urn:uuid:2e0e060e-2bf4-4a07-a138-3d655c263b27
+## 45                                  resource_map_doi:10.18739/A2TQ5RG23
+## 46                        urn:uuid:f1461e52-9a12-46ad-aefc-155fe42d43bb
+## 47                                               doi:10.18739/A2TQ5RG23
+## 48                        urn:uuid:2a168651-218e-41a5-bb1f-3094c89ffe55
+## 49           resource_map_urn:uuid:417dc7c8-7e14-4a63-87d1-7bd468f0ed20
+## 50                        urn:uuid:25afffbf-fe25-4670-bd13-a36cf033c414
+## 51                        urn:uuid:9b84cf1f-8edd-4796-a132-4140f51a5e2b
+## 52           resource_map_urn:uuid:3e1c5292-34be-4aed-aa73-e8603f53c2b1
+## 53                        urn:uuid:79abe79b-8d41-4c84-bb75-4e14db211ff9
+## 54                        urn:uuid:404271bc-0f32-4493-88ee-7243077d1088
+## 55           resource_map_urn:uuid:bfaa8943-18ee-4b78-851c-bb11074d246a
+## 56                        urn:uuid:a5b60c5f-b18e-4e44-b0ae-e98515a73e8e
+## 57                        urn:uuid:cf4904f3-e856-4085-bf3e-833980ae1ab9
+## 58                        urn:uuid:a9ce6f17-a1d5-49b4-8b97-08a97e694056
+## 59                        urn:uuid:8e0306ae-62d7-4325-91b4-9d421e4a079e
+## 60                        urn:uuid:646da466-cda6-4f4a-8432-cc20abd847ef
+## 61                        urn:uuid:c0fcc9df-5efe-4c74-b134-6c1762737025
+## 62                        urn:uuid:5084196f-a75f-455c-bebc-2106f00d8292
+## 63                        urn:uuid:482ac0f3-025f-4267-bbf0-efbfb86b9dfd
+## 64                        urn:uuid:cb636578-3a9d-465e-bbb2-885ae21542b3
+## 65                        urn:uuid:beda1281-38e7-416e-ab01-9e86b0be02a3
+## 66           resource_map_urn:uuid:29acd72f-ef06-486a-a735-a7d4b9890510
+## 67                        urn:uuid:a594e4f0-d051-4e5c-b755-abb0d42bec37
+## 68                        urn:uuid:4feeb01b-7074-4e5e-8a4c-2d20e356cb67
+## 69           resource_map_urn:uuid:406860f0-a686-488d-8b9a-245162ea9927
+## 70                        urn:uuid:7370857f-af43-4a1f-947f-48b75211fc3a
+## 71                        urn:uuid:e8739968-60c8-4de4-aa97-f2b6cd082174
+## 72           resource_map_urn:uuid:4f397124-e60d-4ad7-b505-f4f30ea48342
+## 73                        urn:uuid:5e8cf881-8308-43e3-8044-36ed73a198a3
+## 74                        urn:uuid:2170097d-dcf2-4759-a56d-2407d6f6f3cc
+## 75                        urn:uuid:417a437c-269f-4119-8477-5d8639c4ff9f
+## 76                        urn:uuid:932d11d2-9cb6-4b64-8909-f5f1e8e5562a
+## 77                        urn:uuid:38796081-4fca-4c9d-833b-52a4ff197e73
+## 78                        urn:uuid:760392c1-57f4-402f-941b-3180fd7e1db9
+## 79                        urn:uuid:2bba80e9-c66d-46d2-9582-0701481cd141
+## 80           resource_map_urn:uuid:403c22da-9e6e-45b4-9a21-da4f1e93ec17
+## 81                        urn:uuid:5a52e915-c583-43f7-8390-5ce1a0be6210
+## 82           resource_map_urn:uuid:681c342b-761f-434e-a65e-eed75a2fa120
+## 83                        urn:uuid:7accda29-a7a1-49a8-93f2-481ecbf8217c
+## 84                        urn:uuid:880a0fac-5fb7-4f93-b09b-738dd5d8d1a1
+## 85                        urn:uuid:d4bc0a4a-f6eb-49a7-845d-30dcf423d02a
+## 86                        urn:uuid:8bfcd876-482e-4327-8294-b20edaed366f
+## 87                        urn:uuid:b6091189-d16e-423c-963f-c06fab095815
+## 88                        urn:uuid:77a5ad6c-abc9-496f-86fe-ea77b6aefc22
+## 89                        urn:uuid:6f9eb733-9703-4245-b261-7d534a696d76
+## 90                        urn:uuid:daa1a73f-0c70-499f-9023-5db2e5ff5190
+## 91                        urn:uuid:62fe0017-55f2-42b3-aa97-c4e5848b5df6
+## 92                        urn:uuid:baa714a2-1bc8-45bb-8d78-f53135598877
+## 93                        urn:uuid:de7892d4-0ed2-465c-90ff-27a8d8611556
+## 94           resource_map_urn:uuid:409a642e-195a-42a4-ae63-05a975c02b68
+## 95                        urn:uuid:dd9e9727-7c0c-4ab7-b645-be6a86bec28b
+## 96                        urn:uuid:51817752-f519-4ba8-b574-40d62633b97c
+## 97                        urn:uuid:3aa731c1-0312-4f31-bd3f-aa8f7bd41527
+## 98                        urn:uuid:049e3eaf-e122-48fc-aad9-81324150b2cb
+## 99                        urn:uuid:746c7874-982c-476f-a1fe-323d0bd80150
+## 100          resource_map_urn:uuid:1274dd8f-45a7-46c3-962a-9c9a8513c69b
+## 101                       urn:uuid:5892efb9-3a6e-4433-a0dc-b34d4d3639a3
+## 102                       urn:uuid:80bd15ef-b4ef-4779-a27f-17712511d1c6
+## 103                       urn:uuid:dc478756-e4f0-409b-9137-78899b7d592e
+## 104          resource_map_urn:uuid:aabe2856-a903-45c2-a262-b23265e04cb5
+## 105                       urn:uuid:e0797ee7-7905-48ca-a65c-0b85af0d7aa8
+## 106          resource_map_urn:uuid:e6c2f100-a856-44c3-8594-d9b221a3cb16
+## 107                       urn:uuid:1d0023fa-7be1-4066-aa14-735c456a0ff9
+## 108          resource_map_urn:uuid:42fd481e-1771-4c8a-a2f1-37e3969d0951
+## 109                       urn:uuid:b2457eaa-8bb2-41a0-a830-c86b8f5f83bf
+## 110                       urn:uuid:287ad12a-3c98-46df-a43d-1fa01016a4fe
+## 111                       urn:uuid:c1093208-6a17-4f3c-9534-a4c599c14a6c
+## 112                       urn:uuid:116c4c3b-2988-425e-99e9-2fa042d3733f
+## 113                       urn:uuid:82c346b3-12a8-4a05-87d2-e1df96ea03e4
+## 114                       urn:uuid:34538b05-3ad7-40f1-8895-9ea759a49e4b
+## 115                       urn:uuid:609016a7-1561-472b-b5ba-29d672f498a1
+## 116                       urn:uuid:36eaa834-5349-40d0-85e9-aa19f45fa1f1
+## 117                       urn:uuid:a4827708-7a1a-44f0-b764-29fb2a7f54af
+## 118                       urn:uuid:19ce461d-a84f-4d45-8e95-1cee99eeac45
+## 119                       urn:uuid:f97425c4-abc5-4fa5-bbf6-716bb8ddde2c
+## 120                       urn:uuid:ff2cab26-0509-4381-916e-71c1e42288cb
+## 121                       urn:uuid:60a19a70-c36e-4a83-bdc8-fc3df1e2c609
+## 122                       urn:uuid:2447bfd2-dade-40ea-af73-b6d9bc7ed69d
+## 123                       urn:uuid:d34d65b2-eddc-40de-9284-877797d5fa85
+## 124                       urn:uuid:86d81ffe-9e9e-4236-89f5-598a8eae6363
+## 125                       urn:uuid:86bdbed8-beeb-4230-b819-2e4f05eaf344
+## 126                       urn:uuid:95d133e1-89c6-42fc-af75-5ef492142366
+## 127                       urn:uuid:db7847fe-edc7-4bf6-86ec-f7665249793d
+## 128                                 resource_map_doi:10.18739/A27P8TF8W
+## 129                                              doi:10.18739/A27P8TF8W
+## 130          resource_map_urn:uuid:8319d198-38cf-4a49-bfa0-03cb4fa6d266
+## 131                       urn:uuid:46698c5b-9710-4838-8833-e1a09914a7d0
+## 132                       urn:uuid:ac2c8ca7-365b-4aa1-b6a1-8d3043e42abf
+## 133                       urn:uuid:fc0b8c88-e93a-44bf-b3eb-2526d9f50455
+## 134                       urn:uuid:6fbd365f-75f0-4ad7-afeb-8ffd1a4d889f
+## 135                       urn:uuid:bb201b6b-e509-4696-8bb2-97c340cfe4c1
+## 136                       urn:uuid:741b298f-ff82-4f8c-8320-4d6884a41884
+## 137                       urn:uuid:f9ceed24-e5ac-4db3-b530-2b75122e9b16
+## 138                       urn:uuid:63501abc-12da-4d70-95a7-1a3b15b23e39
+## 139                       urn:uuid:147fa847-5042-4832-9678-81738c21b7ac
+## 140          resource_map_urn:uuid:b01fdc10-6006-4b73-9a07-46b50104b6b6
+## 141          resource_map_urn:uuid:d56bc792-f0e9-4357-91ff-25721fcd4934
+## 142          resource_map_urn:uuid:6ef3312b-c89a-41e8-8355-53a77a5f267f
+## 143          resource_map_urn:uuid:dced869c-74fe-4ff5-8b5e-f59ed8ad543a
+## 144          resource_map_urn:uuid:d095855d-f2b2-4f68-b19e-281a3c6afa45
+## 145          resource_map_urn:uuid:a40a0980-17ba-410e-bd46-42ce78518322
+## 146          resource_map_urn:uuid:e0018fbd-b415-43b9-a79c-6c5836984bce
+## 147          resource_map_urn:uuid:c9fca95b-cbc9-4790-aec5-2073fcf55198
+## 148          resource_map_urn:uuid:8eb43ec9-3259-4e90-9cff-e9fa9964d7fb
+## 149                                 resource_map_doi:10.18739/A26W96B3T
+## 150                                              doi:10.18739/A26W96B3T
+## 151                                 resource_map_doi:10.18739/A2SQ8QK2V
+## 152                                              doi:10.18739/A2SQ8QK2V
+## 153 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20131/3
+## 154 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20131/2
+## 155 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20131/1
+## 156 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20130/3
+## 157 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20130/2
+## 158 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20130/1
+## 159 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20121/2
+## 160 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20121/1
+## 161 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20089/2
+## 162 https://pasta.lternet.edu/package/metadata/eml/knb-lter-arc/20089/1
+## 163                                 resource_map_doi:10.18739/A2M61BR63
+## 164                                              doi:10.18739/A2M61BR63
+## 165                                 resource_map_doi:10.18739/A2610VT5W
+## 166                                              doi:10.18739/A2610VT5W
+## 167                                 resource_map_doi:10.18739/A2P26Q527
+## 168                                              doi:10.18739/A2P26Q527
+## 169                                 resource_map_doi:10.18739/A2QZ22J9F
+## 170                                              doi:10.18739/A2QZ22J9F
+## 171                                 resource_map_doi:10.18739/A2WS8HN79
+## 172                                              doi:10.18739/A2WS8HN79
+## 173                                 resource_map_doi:10.18739/A2J09W58D
+## 174                                              doi:10.18739/A2J09W58D
+## 175          resource_map_urn:uuid:f94b5f05-27ed-4a0b-affc-4531ce6d60e7
+## 176                       urn:uuid:615dccb9-d77d-471e-b3e7-7b8c59e7538c
+## 177                                 resource_map_doi:10.18739/A28W3842T
+## 178                                              doi:10.18739/A28W3842T
+## 179                       urn:uuid:63c8577c-8175-425e-9be2-ced3d73ceb03
+## 180                                 resource_map_doi:10.18739/A2XK84S0D
+## 181                                              doi:10.18739/A2XK84S0D
+## 182                                 resource_map_doi:10.18739/A22B8VD5D
+## 183                                              doi:10.18739/A22B8VD5D
+## 184                                 resource_map_doi:10.18739/A2639K69J
+## 185                                              doi:10.18739/A2639K69J
+## 186          resource_map_urn:uuid:7a163227-a045-4c8f-a960-a06d8a9fabe5
+## 187                       urn:uuid:8af00f48-0d09-4ee9-aa5d-1cbf66b1e482
+## 188          resource_map_urn:uuid:355473d1-3938-4a82-92ec-bc0e51e062bb
+## 189                       urn:uuid:c6dabab9-e90a-488b-ae67-4d444deb6ac4
+## 190          resource_map_urn:uuid:a7fb05dc-06a2-4be9-98f2-37178087ccad
+## 191                       urn:uuid:49880fd7-8acd-400b-bafe-64cd49a3bb6c
+## 192          resource_map_urn:uuid:19473969-7c96-49a6-b9d7-4dce5ab38e8e
+## 193                       urn:uuid:d3ace541-b23e-4296-b9c5-695ea1ff97f6
+## 194          resource_map_urn:uuid:82fe4dba-6758-4c1b-b6ad-5b168bf7fce9
+## 195                       urn:uuid:82fe4dba-6758-4c1b-b6ad-5b168bf7fce9
+## 196          resource_map_urn:uuid:7bde3083-3031-4641-b458-3b3cf18c072f
+## 197                       urn:uuid:4af6c97c-376c-449d-bea9-71e40ccb719a
+## 198          resource_map_urn:uuid:3c35acba-46e1-4c93-9858-72f5c3eca2d5
+## 199                       urn:uuid:ef040ac9-b91f-467f-9ef2-01bc1105c906
+## 200          resource_map_urn:uuid:ecc5999a-7aca-4fb2-823d-b095863b3768
 ##            dateUploaded        dateModified
-## 1   2023-12-01 18:35:35 2023-12-01 18:35:35
-## 2   2023-12-01 18:35:20 2023-12-01 18:35:30
-## 3   2023-11-30 22:13:10 2023-11-30 22:13:11
-## 4   2023-11-30 22:12:56 2023-11-30 23:12:45
-## 5   2023-11-30 15:57:58 2023-11-30 22:12:45
-## 6   2023-11-30 15:57:50 2023-11-30 22:12:47
-## 7   2023-11-30 15:57:49 2023-11-30 22:12:42
-## 8   2023-11-30 15:57:45 2023-11-30 22:12:55
-## 9   2023-11-30 11:07:03 2023-11-30 11:07:03
-## 10  2023-11-30 11:06:55 2023-11-30 11:06:59
-## 11  2023-11-30 11:00:10 2023-11-30 11:07:03
-## 12  2023-11-30 11:00:00 2023-11-30 11:06:59
-## 13  2023-11-30 10:48:56 2023-11-30 11:00:10
-## 14  2023-11-30 10:48:45 2023-11-30 11:00:04
-## 15  2023-11-30 10:27:36 2023-11-30 10:48:56
-## 16  2023-11-30 10:27:25 2023-11-30 10:48:50
-## 17  2023-11-30 10:14:48 2023-11-30 10:27:36
-## 18  2023-11-30 10:14:38 2023-11-30 10:27:30
-## 19  2023-11-30 01:06:51 2023-11-30 10:14:48
-## 20  2023-11-30 01:06:44 2023-11-30 10:14:43
-## 21  2023-11-30 00:54:06 2023-11-30 01:06:51
-## 22  2023-11-30 00:54:00 2023-11-30 01:06:47
-## 23  2023-11-29 23:54:34 2023-11-30 00:54:06
-## 24  2023-11-29 23:54:25 2023-11-30 00:54:04
-## 25  2023-11-29 23:49:37 2023-11-29 23:54:34
-## 26  2023-11-29 23:49:32 2023-11-29 23:54:29
-## 27  2023-11-29 23:26:03 2023-11-29 23:49:37
-## 28  2023-11-29 23:25:51 2023-11-29 23:49:35
-## 29  2023-11-29 21:52:08 2023-11-29 23:26:03
-## 30  2023-11-29 21:51:56 2023-11-29 23:25:55
-## 31  2023-11-29 21:30:20 2023-11-29 21:52:08
-## 32  2023-11-29 21:30:08 2023-11-29 21:52:00
-## 33  2023-11-29 21:03:18 2023-11-29 21:03:22
-## 34  2023-11-29 21:02:58 2023-11-29 21:03:22
-## 35  2023-11-29 20:50:08 2023-11-29 21:30:20
-## 36  2023-11-29 20:49:57 2023-11-29 21:30:12
-## 37  2023-11-29 19:40:36 2023-11-29 20:50:08
-## 38  2023-11-29 19:40:31 2023-11-29 20:50:01
-## 39  2023-11-29 16:06:30 2023-11-30 22:12:51
-## 40  2023-11-29 15:56:45 2023-11-30 22:12:40
-## 41  2023-11-29 13:31:06 2023-11-30 22:12:43
-## 42  2023-11-28 23:55:08 2023-11-28 23:55:09
-## 43  2023-11-28 23:55:04 2023-11-28 23:55:06
-## 44  2023-11-28 23:18:38 2023-11-28 23:18:38
-## 45  2023-11-28 22:45:14 2023-11-28 22:45:15
-## 46  2023-11-28 22:45:10 2023-11-28 22:45:13
-## 47  2023-11-28 20:03:43 2023-11-28 23:55:08
-## 48  2023-11-28 20:03:36 2023-11-28 23:55:05
-## 49  2023-11-28 18:56:35 2023-11-28 18:56:39
-## 50  2023-11-28 14:02:57 2023-11-30 22:12:50
-## 51  2023-11-27 22:22:28 2023-11-27 22:22:29
-## 52  2023-11-27 22:22:20 2023-11-27 22:22:26
-## 53  2023-11-27 22:20:58 2023-11-27 22:20:59
-## 54  2023-11-27 22:20:50 2023-11-27 22:20:57
-## 55  2023-11-27 22:15:18 2023-11-27 22:20:58
-## 56  2023-11-27 22:15:07 2023-11-27 22:20:57
-## 57  2023-11-27 22:10:52 2023-11-27 22:22:28
-## 58  2023-11-27 22:10:46 2023-11-27 22:22:25
-## 59  2023-11-27 21:24:43 2023-11-29 19:40:36
-## 60  2023-11-27 21:24:38 2023-11-29 19:40:34
-## 61  2023-11-27 21:06:28 2023-11-27 21:24:43
-## 62  2023-11-27 21:06:22 2023-11-27 21:24:41
-## 63  2023-11-27 20:40:05 2023-11-29 21:03:02
-## 64  2023-11-27 19:43:55 2023-11-27 21:06:28
-## 65  2023-11-27 19:43:49 2023-11-27 21:06:25
-## 66  2023-11-27 19:36:59 2023-11-27 19:43:55
-## 67  2023-11-27 19:36:49 2023-11-27 19:43:54
-## 68  2023-11-27 19:19:32 2023-11-27 19:36:59
-## 69  2023-11-27 19:19:26 2023-11-27 19:36:52
-## 70  2023-11-22 23:24:22 2023-11-22 23:24:23
-## 71  2023-11-22 23:24:09 2023-11-22 23:24:18
-## 72  2023-11-22 22:28:45 2023-11-22 23:24:22
-## 73  2023-11-22 22:28:32 2023-11-22 23:24:17
-## 74  2023-11-22 22:13:47 2023-11-27 19:19:33
-## 75  2023-11-22 22:13:37 2023-11-27 19:19:30
-## 76  2023-11-22 21:10:30 2023-11-27 20:40:08
-## 77  2023-11-22 20:47:30 2023-11-22 22:13:47
-## 78  2023-11-22 20:47:22 2023-11-22 22:13:41
-## 79  2023-11-22 19:56:56 2023-11-28 20:03:34
-## 80  2023-11-22 19:04:11 2023-11-22 22:28:45
-## 81  2023-11-22 19:03:59 2023-11-22 22:28:41
-## 82  2023-11-22 17:31:01 2023-11-22 17:31:03
-## 83  2023-11-22 17:30:54 2023-11-22 17:30:57
-## 84  2023-11-22 00:55:56 2023-11-22 17:31:03
-## 85  2023-11-22 00:55:52 2023-11-22 17:30:56
-## 86  2023-11-21 16:53:34 2023-12-01 18:35:35
-## 87  2023-11-21 16:53:26 2023-12-01 18:35:30
-## 88  2023-11-21 16:50:30 2023-11-21 16:53:35
-## 89  2023-11-21 16:50:16 2023-11-21 16:53:33
-## 90  2023-11-20 21:52:33 2023-11-22 21:10:35
-## 91  2023-11-20 21:51:44 2023-11-20 21:51:44
-## 92  2023-11-20 20:06:11 2023-11-30 22:12:49
-## 93  2023-11-20 20:06:11 2023-11-30 22:12:53
-## 94  2023-11-20 17:55:31 2023-11-28 22:45:14
-## 95  2023-11-20 17:55:23 2023-11-28 22:45:12
-## 96  2023-11-18 19:14:13 2023-11-22 23:23:33
-## 97  2023-11-18 19:14:12 2023-11-22 23:23:37
-## 98  2023-11-18 19:14:12 2023-11-22 23:23:55
-## 99  2023-11-18 19:14:12 2023-11-22 23:24:01
-## 100 2023-11-18 19:14:12 2023-11-22 23:23:29
-## 101 2023-11-18 19:14:12 2023-11-22 23:23:49
-## 102 2023-11-18 18:46:02 2023-11-22 23:23:53
-## 103 2023-11-18 18:40:08 2023-11-22 23:23:50
-## 104 2023-11-18 18:40:04 2023-11-22 23:24:07
-## 105 2023-11-18 18:39:56 2023-11-22 23:23:42
-## 106 2023-11-17 19:33:40 2023-11-20 17:55:31
-## 107 2023-11-17 19:33:36 2023-11-20 17:55:26
-## 108 2023-11-17 17:31:50 2023-11-17 17:31:50
-## 109 2023-11-17 17:31:43 2023-11-17 17:31:47
-## 110 2023-11-17 17:26:49 2023-11-17 17:26:50
-## 111 2023-11-17 17:26:37 2023-11-17 17:26:41
-## 112 2023-11-16 23:24:34 2023-11-16 23:24:35
-## 113 2023-11-16 23:24:29 2023-11-16 23:24:31
-## 114 2023-11-16 23:12:47 2023-11-16 23:12:48
-## 115 2023-11-16 23:12:43 2023-11-16 23:12:45
-## 116 2023-11-16 22:43:06 2023-11-16 22:43:07
-## 117 2023-11-16 22:43:01 2023-11-16 22:43:03
-## 118 2023-11-16 21:55:10 2023-11-16 21:55:11
-## 119 2023-11-16 21:55:05 2023-11-16 21:55:07
-## 120 2023-11-16 21:38:57 2023-11-16 21:38:58
-## 121 2023-11-16 21:38:50 2023-11-16 21:38:53
-## 122 2023-11-16 19:04:17 2023-11-28 18:56:38
-## 123 2023-11-16 19:01:54 2023-11-16 19:04:18
-## 124 2023-11-16 18:54:06 2023-11-16 18:54:07
-## 125 2023-11-16 18:54:00 2023-11-16 18:54:03
-## 126 2023-11-16 18:53:10 2023-11-16 18:54:06
-## 127 2023-11-16 18:53:05 2023-11-16 18:54:02
-## 128 2023-11-16 18:52:18 2023-11-16 18:53:10
-## 129 2023-11-16 18:52:14 2023-11-16 18:53:07
-## 130 2023-11-16 18:51:39 2023-11-16 18:52:18
-## 131 2023-11-16 18:51:33 2023-11-16 18:52:16
-## 132 2023-11-16 18:35:27 2023-11-16 18:35:27
-## 133 2023-11-16 18:35:20 2023-11-16 18:35:23
-## 134 2023-11-16 18:33:38 2023-11-16 18:35:27
-## 135 2023-11-16 18:33:34 2023-11-16 18:35:22
-## 136 2023-11-16 18:26:53 2023-11-16 18:33:38
-## 137 2023-11-16 18:26:48 2023-11-16 18:33:37
-## 138 2023-11-16 18:23:53 2023-11-20 21:52:37
-## 139 2023-11-16 18:15:51 2023-11-16 18:23:56
-## 140 2023-11-16 18:00:39 2023-11-16 18:15:57
-## 141 2023-11-16 17:58:41 2023-11-16 18:00:42
-## 142 2023-11-16 17:45:57 2023-11-16 17:58:44
-## 143 2023-11-16 17:28:19 2023-11-16 18:35:16
-## 144 2023-11-16 01:57:01 2023-11-16 17:46:02
-## 145 2023-11-16 01:55:18 2023-11-16 01:55:18
-## 146 2023-11-16 00:29:30 2023-11-16 00:29:31
-## 147 2023-11-16 00:29:25 2023-11-16 00:29:28
-## 148 2023-11-16 00:28:48 2023-11-16 00:28:48
-## 149 2023-11-16 00:28:43 2023-11-16 00:28:45
-## 150 2023-11-16 00:23:16 2023-11-16 00:23:17
-## 151 2023-11-16 00:23:12 2023-11-16 00:23:14
-## 152 2023-11-16 00:20:11 2023-11-16 00:20:11
-## 153 2023-11-16 00:20:03 2023-11-16 00:20:06
-## 154 2023-11-15 23:36:03 2023-11-16 23:12:42
-## 155 2023-11-15 23:17:55 2023-11-16 22:42:59
-## 156 2023-11-15 23:11:45 2023-11-22 20:47:30
-## 157 2023-11-15 23:11:37 2023-11-22 20:47:25
-## 158 2023-11-15 22:49:26 2023-11-15 23:11:45
-## 159 2023-11-15 22:49:19 2023-11-15 23:11:40
-## 160 2023-11-15 22:37:20 2023-11-15 22:37:21
-## 161 2023-11-15 22:37:15 2023-11-15 22:37:18
-## 162 2023-11-15 22:34:06 2023-11-15 22:34:07
-## 163 2023-11-15 22:34:02 2023-11-15 22:34:04
-## 164 2023-11-15 22:32:04 2023-11-15 22:32:05
-## 165 2023-11-15 22:31:58 2023-11-15 22:31:59
-## 166 2023-11-15 21:50:47 2023-11-15 22:49:26
-## 167 2023-11-15 21:50:42 2023-11-15 22:49:21
-## 168 2023-11-15 21:33:47 2023-11-15 21:33:47
-## 169 2023-11-15 20:40:35 2023-11-15 21:00:09
-## 170 2023-11-15 20:40:31 2023-11-15 21:00:04
-## 171 2023-11-15 20:38:28 2023-11-15 20:40:35
-## 172 2023-11-15 20:38:22 2023-11-15 20:40:33
-## 173 2023-11-15 00:27:45 2023-11-15 00:27:46
-## 174 2023-11-15 00:27:34 2023-11-15 00:27:42
-## 175 2023-11-15 00:24:58 2023-11-15 00:24:59
-## 176 2023-11-15 00:24:54 2023-11-15 00:24:56
-## 177 2023-11-15 00:22:37 2023-11-15 00:24:58
-## 178 2023-11-15 00:22:31 2023-11-15 00:24:55
-## 179 2023-11-15 00:19:40 2023-11-15 00:22:37
-## 180 2023-11-15 00:19:33 2023-11-15 00:22:33
-## 181 2023-11-15 00:17:26 2023-11-16 00:28:48
-## 182 2023-11-15 00:17:22 2023-11-16 00:28:44
-## 183 2023-11-15 00:08:34 2023-11-15 00:17:26
-## 184 2023-11-15 00:08:26 2023-11-15 00:17:25
-## 185 2023-11-15 00:05:04 2023-11-15 00:08:34
-## 186 2023-11-15 00:05:00 2023-11-15 00:08:29
-## 187 2023-11-14 23:30:37 2023-11-22 00:55:56
-## 188 2023-11-14 23:30:31 2023-11-22 00:55:53
-## 189 2023-11-14 23:29:10 2023-11-14 23:30:37
-## 190 2023-11-14 23:29:06 2023-11-14 23:30:34
-## 191 2023-11-14 23:26:38 2023-11-14 23:29:11
-## 192 2023-11-14 23:26:30 2023-11-14 23:29:09
-## 193 2023-11-14 22:36:25 2023-11-14 22:36:26
-## 194 2023-11-14 22:36:19 2023-11-14 22:36:22
-## 195 2023-11-14 22:35:34 2023-11-14 22:35:35
-## 196 2023-11-14 22:35:29 2023-11-14 22:35:31
-## 197 2023-11-14 22:34:33 2023-11-14 22:34:34
-## 198 2023-11-14 22:34:26 2023-11-14 22:34:29
-## 199 2023-11-14 21:35:51 2023-11-14 23:26:38
-## 200 2023-11-14 21:35:43 2023-11-14 23:26:34
+## 1   2024-02-16 18:08:29 2024-02-16 18:08:31
+## 2   2024-02-16 18:08:22 2024-02-16 18:08:26
+## 3   2024-02-16 00:30:53 2024-02-16 18:08:31
+## 4   2024-02-16 00:30:50 2024-02-16 18:08:20
+## 5   2024-02-16 00:30:49 2024-02-16 18:08:25
+## 6   2024-02-16 00:29:55 2024-02-16 00:30:51
+## 7   2024-02-15 22:58:38 2024-02-15 22:58:40
+## 8   2024-02-15 19:45:14 2024-02-15 19:45:15
+## 9   2024-02-15 19:45:06 2024-02-15 19:45:11
+## 10  2024-02-15 19:41:23 2024-02-15 19:41:24
+## 11  2024-02-15 19:41:14 2024-02-15 19:41:19
+## 12  2024-02-15 19:29:50 2024-02-15 19:29:51
+## 13  2024-02-15 19:29:43 2024-02-15 19:29:46
+## 14  2024-02-15 18:32:50 2024-02-15 18:32:54
+## 15  2024-02-15 18:31:56 2024-02-15 18:32:53
+## 16  2024-02-15 18:31:21 2024-02-15 18:31:59
+## 17  2024-02-15 17:54:56 2024-02-15 18:31:25
+## 18  2024-02-14 23:05:00 2024-02-14 23:05:00
+## 19  2024-02-14 23:04:52 2024-02-14 23:04:56
+## 20  2024-02-14 22:00:08 2024-02-14 23:04:36
+## 21  2024-02-14 21:13:17 2024-02-15 17:54:59
+## 22  2024-02-14 21:12:50 2024-02-14 21:13:21
+## 23  2024-02-14 21:03:30 2024-02-14 21:12:54
+## 24  2024-02-12 22:58:35 2024-02-12 22:58:36
+## 25  2024-02-12 22:58:26 2024-02-12 22:58:31
+## 26  2024-02-12 22:56:13 2024-02-12 22:58:35
+## 27  2024-02-12 22:56:09 2024-02-12 22:58:30
+## 28  2024-02-12 18:24:25 2024-02-12 18:24:25
+## 29  2024-02-12 18:24:20 2024-02-12 18:24:22
+## 30  2024-02-12 18:24:20 2024-02-12 18:24:24
+## 31  2024-02-12 18:24:20 2024-02-12 18:24:21
+## 32  2024-02-10 00:16:00 2024-02-10 00:16:08
+## 33  2024-02-09 23:48:07 2024-02-15 22:58:41
+## 34  2024-02-09 23:47:58 2024-02-10 00:16:07
+## 35  2024-02-09 22:38:23 2024-02-09 23:48:07
+## 36  2024-02-09 22:38:12 2024-02-09 23:48:05
+## 37  2024-02-09 22:11:01 2024-02-09 22:38:23
+## 38  2024-02-09 22:10:53 2024-02-09 22:38:17
+## 39  2024-02-09 21:28:11 2024-02-09 21:28:11
+## 40  2024-02-09 21:28:07 2024-02-09 21:28:09
+## 41  2024-02-09 21:21:02 2024-02-09 21:21:02
+## 42  2024-02-09 21:20:46 2024-02-09 21:20:46
+## 43  2024-02-09 21:19:57 2024-02-09 21:19:57
+## 44  2024-02-09 21:11:12 2024-02-09 21:11:12
+## 45  2024-02-09 20:21:17 2024-02-12 22:56:13
+## 46  2024-02-09 20:21:12 2024-02-09 20:21:12
+## 47  2024-02-09 20:21:09 2024-02-12 22:56:11
+## 48  2024-02-09 18:54:00 2024-02-09 18:54:00
+## 49  2024-02-09 17:47:51 2024-02-09 21:28:11
+## 50  2024-02-09 17:47:47 2024-02-09 21:28:08
+## 51  2024-02-09 17:44:40 2024-02-09 17:44:40
+## 52  2024-02-09 11:37:49 2024-02-09 17:47:51
+## 53  2024-02-09 11:37:45 2024-02-09 17:47:49
+## 54  2024-02-09 11:37:35 2024-02-09 11:37:35
+## 55  2024-02-09 08:35:02 2024-02-09 11:37:50
+## 56  2024-02-09 08:34:58 2024-02-09 08:34:59
+## 57  2024-02-09 08:34:58 2024-02-09 11:37:47
+## 58  2024-02-09 04:55:38 2024-02-09 04:55:38
+## 59  2024-02-09 04:25:55 2024-02-09 08:34:58
+## 60  2024-02-09 03:19:18 2024-02-09 03:19:18
+## 61  2024-02-09 02:39:52 2024-02-09 02:39:52
+## 62  2024-02-09 02:01:08 2024-02-09 02:01:08
+## 63  2024-02-09 01:34:07 2024-02-09 01:34:07
+## 64  2024-02-09 00:38:29 2024-02-09 00:38:29
+## 65  2024-02-08 22:28:37 2024-02-08 22:28:37
+## 66  2024-02-08 21:27:10 2024-02-12 18:24:25
+## 67  2024-02-08 21:27:06 2024-02-12 18:24:21
+## 68  2024-02-08 21:27:06 2024-02-12 18:24:23
+## 69  2024-02-08 20:53:40 2024-02-08 20:53:41
+## 70  2024-02-08 20:53:37 2024-02-08 20:53:39
+## 71  2024-02-08 20:41:36 2024-02-08 20:41:36
+## 72  2024-02-08 17:19:54 2024-02-09 08:35:02
+## 73  2024-02-08 17:19:48 2024-02-09 08:35:00
+## 74  2024-02-08 17:19:48 2024-02-08 17:19:49
+## 75  2024-02-08 17:19:48 2024-02-08 17:19:49
+## 76  2024-02-08 17:19:48 2024-02-08 17:19:49
+## 77  2024-02-08 17:19:47 2024-02-08 17:19:48
+## 78  2024-02-08 17:19:47 2024-02-08 17:19:48
+## 79  2024-02-08 15:56:04 2024-02-08 17:19:48
+## 80  2024-02-08 01:42:47 2024-02-09 22:11:01
+## 81  2024-02-08 01:42:39 2024-02-09 22:10:58
+## 82  2024-02-08 00:30:44 2024-02-08 17:19:54
+## 83  2024-02-08 00:30:40 2024-02-08 00:30:41
+## 84  2024-02-08 00:30:40 2024-02-08 00:30:41
+## 85  2024-02-08 00:30:39 2024-02-08 00:30:41
+## 86  2024-02-08 00:30:39 2024-02-08 00:30:41
+## 87  2024-02-08 00:30:39 2024-02-08 17:19:51
+## 88  2024-02-07 23:17:05 2024-02-07 23:17:05
+## 89  2024-02-07 23:15:30 2024-02-07 23:15:30
+## 90  2024-02-07 23:14:49 2024-02-07 23:14:49
+## 91  2024-02-07 22:32:11 2024-02-07 22:32:15
+## 92  2024-02-07 18:03:35 2024-02-08 00:30:40
+## 93  2024-02-07 17:47:07 2024-02-08 00:30:40
+## 94  2024-02-07 08:02:39 2024-02-08 00:30:44
+## 95  2024-02-07 08:02:34 2024-02-08 00:30:40
+## 96  2024-02-07 07:59:10 2024-02-08 00:30:39
+## 97  2024-02-07 07:45:04 2024-02-08 00:30:40
+## 98  2024-02-07 06:24:54 2024-02-08 17:19:48
+## 99  2024-02-07 06:07:52 2024-02-08 17:19:47
+## 100 2024-02-07 04:16:07 2024-02-07 08:02:39
+## 101 2024-02-07 04:16:02 2024-02-07 08:02:36
+## 102 2024-02-07 03:53:50 2024-02-08 17:19:47
+## 103 2024-02-07 03:39:38 2024-02-08 17:19:48
+## 104 2024-02-07 00:30:14 2024-02-08 01:42:47
+## 105 2024-02-07 00:30:05 2024-02-08 01:42:44
+## 106 2024-02-07 00:26:57 2024-02-07 00:30:15
+## 107 2024-02-07 00:26:48 2024-02-07 00:30:11
+## 108 2024-02-07 00:08:20 2024-02-07 00:26:57
+## 109 2024-02-07 00:08:10 2024-02-07 00:26:54
+## 110 2024-02-07 00:05:15 2024-02-07 00:05:15
+## 111 2024-02-07 00:04:53 2024-02-09 07:08:13
+## 112 2024-02-07 00:04:50 2024-02-09 07:08:15
+## 113 2024-02-07 00:04:46 2024-02-09 07:31:31
+## 114 2024-02-07 00:04:43 2024-02-09 07:08:16
+## 115 2024-02-07 00:04:35 2024-02-09 07:08:07
+## 116 2024-02-07 00:04:33 2024-02-09 07:08:07
+## 117 2024-02-07 00:04:32 2024-02-09 07:08:12
+## 118 2024-02-07 00:04:32 2024-02-09 07:08:07
+## 119 2024-02-07 00:04:31 2024-02-09 07:08:11
+## 120 2024-02-07 00:04:19 2024-02-09 07:08:07
+## 121 2024-02-07 00:04:19 2024-02-09 07:08:18
+## 122 2024-02-07 00:04:18 2024-02-09 07:08:10
+## 123 2024-02-07 00:04:18 2024-02-09 22:38:13
+## 124 2024-02-07 00:04:17 2024-02-09 07:08:10
+## 125 2024-02-07 00:04:11 2024-02-09 07:08:09
+## 126 2024-02-06 19:13:47 2024-02-14 21:03:36
+## 127 2024-02-06 19:09:37 2024-02-06 19:09:37
+## 128 2024-02-05 22:22:21 2024-02-05 22:22:21
+## 129 2024-02-05 22:22:13 2024-02-05 22:22:16
+## 130 2024-02-04 19:40:58 2024-02-04 19:40:58
+## 131 2024-02-04 19:40:32 2024-02-04 19:40:33
+## 132 2024-02-04 19:40:30 2024-02-04 19:40:32
+## 133 2024-02-04 19:40:27 2024-02-04 19:40:29
+## 134 2024-02-04 19:40:26 2024-02-04 19:40:28
+## 135 2024-02-04 19:40:25 2024-02-04 19:40:28
+## 136 2024-02-04 19:40:23 2024-02-04 19:40:25
+## 137 2024-02-04 19:40:21 2024-02-04 19:40:24
+## 138 2024-02-04 19:40:19 2024-02-04 19:40:22
+## 139 2024-02-04 19:40:16 2024-02-04 19:40:55
+## 140 2024-02-03 00:17:40 2024-02-03 00:17:40
+## 141 2024-02-02 23:52:32 2024-02-03 00:17:40
+## 142 2024-02-02 23:51:34 2024-02-02 23:52:32
+## 143 2024-02-02 23:48:54 2024-02-02 23:51:36
+## 144 2024-02-02 21:52:58 2024-02-02 23:48:54
+## 145 2024-02-02 21:49:06 2024-02-02 21:52:58
+## 146 2024-02-02 20:59:50 2024-02-02 21:49:06
+## 147 2024-02-02 20:51:05 2024-02-02 20:59:50
+## 148 2024-02-02 20:42:19 2024-02-02 20:51:05
+## 149 2024-02-02 20:04:53 2024-02-02 20:04:54
+## 150 2024-02-02 20:04:46 2024-02-02 20:04:49
+## 151 2024-02-02 19:52:18 2024-02-02 19:52:19
+## 152 2024-02-02 19:52:10 2024-02-02 19:52:13
+## 153 2024-02-02 19:35:05 2024-02-02 19:35:05
+## 154 2024-02-02 19:35:01 2024-02-02 19:35:01
+## 155 2024-02-02 19:34:59 2024-02-02 19:34:59
+## 156 2024-02-02 19:31:17 2024-02-02 19:31:17
+## 157 2024-02-02 19:31:13 2024-02-02 19:31:13
+## 158 2024-02-02 19:31:09 2024-02-02 19:31:09
+## 159 2024-02-02 17:07:38 2024-02-02 17:07:38
+## 160 2024-02-02 17:07:34 2024-02-02 17:07:34
+## 161 2024-02-02 17:01:10 2024-02-02 17:01:10
+## 162 2024-02-02 17:01:05 2024-02-02 17:01:05
+## 163 2024-02-01 21:49:51 2024-02-01 21:49:52
+## 164 2024-02-01 21:49:41 2024-02-01 21:49:47
+## 165 2024-02-01 19:18:16 2024-02-01 19:18:17
+## 166 2024-02-01 19:17:53 2024-02-01 19:17:57
+## 167 2024-02-01 19:09:35 2024-02-01 19:09:35
+## 168 2024-02-01 19:09:27 2024-02-01 19:09:31
+## 169 2024-02-01 18:11:16 2024-02-01 18:11:17
+## 170 2024-02-01 18:10:44 2024-02-01 18:11:07
+## 171 2024-02-01 17:48:19 2024-02-01 17:48:19
+## 172 2024-02-01 17:48:12 2024-02-01 17:48:15
+## 173 2024-01-31 22:32:11 2024-01-31 22:32:11
+## 174 2024-01-31 22:32:03 2024-01-31 22:32:06
+## 175 2024-01-31 22:29:01 2024-01-31 22:32:11
+## 176 2024-01-31 22:28:57 2024-01-31 22:32:05
+## 177 2024-01-31 21:11:00 2024-01-31 21:11:01
+## 178 2024-01-31 21:10:53 2024-01-31 21:10:57
+## 179 2024-01-31 19:18:12 2024-02-01 21:49:36
+## 180 2024-01-31 18:49:52 2024-01-31 18:49:53
+## 181 2024-01-31 18:49:44 2024-01-31 18:49:49
+## 182 2024-01-31 18:47:52 2024-01-31 18:47:53
+## 183 2024-01-31 18:47:44 2024-01-31 18:47:50
+## 184 2024-01-31 18:45:29 2024-01-31 18:45:30
+## 185 2024-01-31 18:45:23 2024-01-31 18:45:26
+## 186 2024-01-31 00:31:34 2024-01-31 22:29:01
+## 187 2024-01-31 00:31:31 2024-01-31 22:28:59
+## 188 2024-01-31 00:29:36 2024-01-31 00:31:34
+## 189 2024-01-31 00:29:32 2024-01-31 00:31:33
+## 190 2024-01-31 00:06:40 2024-01-31 00:29:36
+## 191 2024-01-31 00:06:35 2024-01-31 00:29:34
+## 192 2024-01-30 23:56:42 2024-01-31 00:06:40
+## 193 2024-01-30 23:56:38 2024-01-31 00:06:38
+## 194 2024-01-30 23:53:09 2024-01-30 23:56:42
+## 195 2024-01-30 23:53:03 2024-01-30 23:56:40
+## 196 2024-01-30 23:38:34 2024-01-30 23:53:09
+## 197 2024-01-30 23:38:30 2024-01-30 23:53:05
+## 198 2024-01-30 23:30:21 2024-01-30 23:38:34
+## 199 2024-01-30 23:30:17 2024-01-30 23:38:32
+## 200 2024-01-30 20:07:13 2024-02-08 21:27:10
 ##                                                                                                                                                                                                              title
 ## 1                                                                                                                                                                                                             &lt;NA&gt;
-## 2   High-Resolution Repeat Topography of Drifting Ice Floes in the Arctic Ocean from Terrestrial Laser Scanning Collected on the Multidisciplinary drifting Observatory for the Study of Arctic Climate Expedition
+## 2                                                                                                                                    The Arctic Plant Aboveground Biomass Synthesis Dataset, Pan-Arctic, 1998-2022
 ## 3                                                                                                                                                                                                             &lt;NA&gt;
-## 4                                                The SUMup collaborative database: Surface mass balance, subsurface temperature and density measurements from the Greenland and Antarctic ice sheets (1912 - 2023)
-## 5                                                                                                                                                                                                             &lt;NA&gt;
-## 6                                                                                                                                                                                                             &lt;NA&gt;
+## 4                                                                                                                                                                                                             &lt;NA&gt;
+## 5                                                                                                                                    The Arctic Plant Aboveground Biomass Synthesis Dataset, Pan-Arctic, 1998-2022
+## 6                                                                                                                                    The Arctic Plant Aboveground Biomass Synthesis Dataset, Pan-Arctic, 1998-2022
 ## 7                                                                                                                                                                                                             &lt;NA&gt;
 ## 8                                                                                                                                                                                                             &lt;NA&gt;
-## 9                                                                                                                                                                                                             &lt;NA&gt;
-## 10                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 11                                                                                                                                                                                                            &lt;NA&gt;
-## 12                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 13                                                                                                                                                                                                            &lt;NA&gt;
-## 14                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 15                                                                                                                                                                                                            &lt;NA&gt;
-## 16                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 17                                                                                                                                                                                                            &lt;NA&gt;
-## 18                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 19                                                                                                                                                                                                            &lt;NA&gt;
-## 20                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 21                                                                                                                                                                                                            &lt;NA&gt;
-## 22                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 23                                                                                                                                                                                                            &lt;NA&gt;
-## 24                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 25                                                                                                                                                                                                            &lt;NA&gt;
-## 26                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 27                                                                                                                                                                                                            &lt;NA&gt;
-## 28                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 9                                               Sea Ice Drift Tracks for the Sea Ice Dynamic Experiment (SIDEx) Field Campaign from geodetic Global Navigation Satellite Systems (GNSS) SATICE Buoys, Alaska, 2021
+## 10                                                                                                                                                                                                            &lt;NA&gt;
+## 11                                                       Sea Ice Drift Tracks for The Sea Ice Dynamic Experiment (SIDEx) Field Campaign from Global Navigation Satellite Systems (GNSS) Ice Trackers, Alaska, 2021
+## 12                                                                                                                                                                                                            &lt;NA&gt;
+## 13                                                                 Workshop Outcomes Report: 1st International Workshop on Seismic Resilience of Arctic Infrastructure and Social Systems, Anchorage, Alaska, 2021
+## 14                                                                                                                                                                                    Permafrost Discovery Gateway
+## 15                                                                                                                                                                                    Permafrost Discovery Gateway
+## 16                                                                                                                                                                                    Permafrost Discovery Gateway
+## 17                                                                                                                                                                                    Permafrost Discovery Gateway
+## 18                                                                                                                                                                                                            &lt;NA&gt;
+## 19                                Multi-temporal elevation data, ground temperature time-series, and permafrost borehole logs document the recovery of permafrost at the Anaktuvuk River tundra fire, 2009 to 2023
+## 20                                                                                                                                                                                                            &lt;NA&gt;
+## 21                                                                                                                                                                                    Permafrost Discovery Gateway
+## 22                                                                                                                                                                                    Permafrost Discovery Gateway
+## 23                                                                                                                                                                                    Permafrost Discovery Gateway
+## 24                                                                                                                                                                                                            &lt;NA&gt;
+## 25                                                                                         Drivers of legacy soil organic matter decomposition after fire in boreal forests in Northwest Territories, Canada, 2014
+## 26                                                                                                                                                                                                            &lt;NA&gt;
+## 27                                                                                         Drivers of legacy soil organic matter decomposition after fire in boreal forests in Northwest Territories, Canada, 2014
+## 28                                                                                                                                                                                                            &lt;NA&gt;
 ## 29                                                                                                                                                                                                            &lt;NA&gt;
-## 30                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 30                                                                                                                                          Soil Analysis Treeline Summary at Agashashok River, Alaska 2016 - 2018
 ## 31                                                                                                                                                                                                            &lt;NA&gt;
-## 32                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 33                                                                                                                                                                                    Permafrost Discovery Gateway
-## 34                                                                                                                                                                                    Permafrost Discovery Gateway
+## 32                                                                                                                                                    Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
+## 33                                                                                                                                                                                                            &lt;NA&gt;
+## 34                                                                                                                                                    Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 35                                                                                                                                                                                                            &lt;NA&gt;
-## 36                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 36                                                                                                                                                    Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 37                                                                                                                                                                                                            &lt;NA&gt;
-## 38                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 38                                                                                                                                                    Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 39                                                                                                                                                                                                            &lt;NA&gt;
-## 40                                                                                                                                                                                                            &lt;NA&gt;
+## 40                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 41                                                                                                                                                                                                            &lt;NA&gt;
 ## 42                                                                                                                                                                                                            &lt;NA&gt;
-## 43                                                                                                                                                          The Arctic Plant Aboveground Biomass Synthesis Dataset
+## 43                                                                                                                                                                                                            &lt;NA&gt;
 ## 44                                                                                                                                                                                                            &lt;NA&gt;
 ## 45                                                                                                                                                                                                            &lt;NA&gt;
-## 46                                                                                                                                                    Fairbanks sulfate isotope measurements during ALPACA (2022）
-## 47                                                                                                                                                                                                            &lt;NA&gt;
-## 48                                                                                                                                                          The Arctic Plant Aboveground Biomass Synthesis Dataset
-## 49                                                                                                                                            Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
-## 50                                                                                                                                                                                                            &lt;NA&gt;
+## 46                                                                                                                                                                                                            &lt;NA&gt;
+## 47                                                                                         Drivers of legacy soil organic matter decomposition after fire in boreal forests in Northwest Territories, Canada, 2014
+## 48                                                                                                                                                                                                            &lt;NA&gt;
+## 49                                                                                                                                                                                                            &lt;NA&gt;
+## 50                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 51                                                                                                                                                                                                            &lt;NA&gt;
-## 52                                                                                                                   Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
-## 53                                                                                                                                                                                                            &lt;NA&gt;
-## 54                                                                                                                Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
+## 52                                                                                                                                                                                                            &lt;NA&gt;
+## 53                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
+## 54                                                                                                                                                                                                            &lt;NA&gt;
 ## 55                                                                                                                                                                                                            &lt;NA&gt;
-## 56                                                                                                                Plant phenology of species in moist acidic tundra around Toolik Field Station, Alaska, 2007-2023
-## 57                                                                                                                                                                                                            &lt;NA&gt;
-## 58                                                                                                                   Plant phenology of species in dry heath tundra around Toolik Field Station, Alaska, 2011-2023
+## 56                                                                                                                                                                                                            &lt;NA&gt;
+## 57                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
+## 58                                                                                                                                                                                                            &lt;NA&gt;
 ## 59                                                                                                                                                                                                            &lt;NA&gt;
-## 60                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 60                                                                                                                                                                                                            &lt;NA&gt;
 ## 61                                                                                                                                                                                                            &lt;NA&gt;
-## 62                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 63                                                                                                                                                                                    Permafrost Discovery Gateway
+## 62                                                                                                                                                                                                            &lt;NA&gt;
+## 63                                                                                                                                                                                                            &lt;NA&gt;
 ## 64                                                                                                                                                                                                            &lt;NA&gt;
-## 65                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 65                                                                                                                                                                                                            &lt;NA&gt;
 ## 66                                                                                                                                                                                                            &lt;NA&gt;
-## 67                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 68                                                                                                                                                                                                            &lt;NA&gt;
-## 69                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 70                                                                                                                                                                                                            &lt;NA&gt;
-## 71                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 67                                                                                                                                                                                                            &lt;NA&gt;
+## 68                                                                                                                                          Soil Analysis Treeline Summary at Agashashok River, Alaska 2016 - 2018
+## 69                                                                                                                                                                                                            &lt;NA&gt;
+## 70                                                                                Observed plant species emergence dates on grazed and exclosed plots at the Kangerlussuaq, Greenland study site 2009 through 2017
+## 71                                                                                                                                                                                                            &lt;NA&gt;
 ## 72                                                                                                                                                                                                            &lt;NA&gt;
-## 73                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 73                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 74                                                                                                                                                                                                            &lt;NA&gt;
-## 75                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 76                                                                                                                                                                                    Permafrost Discovery Gateway
+## 75                                                                                                                                                                                                            &lt;NA&gt;
+## 76                                                                                                                                                                                                            &lt;NA&gt;
 ## 77                                                                                                                                                                                                            &lt;NA&gt;
-## 78                                                                                                                             Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 78                                                                                                                                                                                                            &lt;NA&gt;
 ## 79                                                                                                                                                                                                            &lt;NA&gt;
 ## 80                                                                                                                                                                                                            &lt;NA&gt;
-## 81                                                                                                                                               The COVID-19 Gender-Responsive Policies in the Arctic (2020–2022)
+## 81                                                                                                                                                    Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 82                                                                                                                                                                                                            &lt;NA&gt;
-## 83                                 Retrogressive thaw slump data derived from ArcticDEM (Release 7) - elevation differences, composited images, and lines of narrow-steep slopes/headwalls, pan-Arctic (2008-2017)
+## 83                                                                                                                                                                                                            &lt;NA&gt;
 ## 84                                                                                                                                                                                                            &lt;NA&gt;
-## 85                                 Retrogressive thaw slump data derived from ArcticDEM (Release 7) - elevation differences, composited images, and lines of narrow-steep slopes/headwalls, pan-Arctic (2008-2017)
+## 85                                                                                                                                                                                                            &lt;NA&gt;
 ## 86                                                                                                                                                                                                            &lt;NA&gt;
-## 87  High-Resolution Repeat Topography of Drifting Ice Floes in the Arctic Ocean from Terrestrial Laser Scanning Collected on the Multidisciplinary drifting Observatory for the Study of Arctic Climate Expedition
+## 87                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 88                                                                                                                                                                                                            &lt;NA&gt;
-## 89  High-Resolution Repeat Topography of Drifting Ice Floes in the Arctic Ocean from Terrestrial Laser Scanning Collected on the Multidisciplinary drifting Observatory for the Study of Arctic Climate Expedition
-## 90                                                                                                                                                                                    Permafrost Discovery Gateway
-## 91                                                                                                                                                                                                            &lt;NA&gt;
+## 89                                                                                                                                                                                                            &lt;NA&gt;
+## 90                                                                                                                                                                                                            &lt;NA&gt;
+## 91                                                                                                                                                                                            Toolik Field Station
 ## 92                                                                                                                                                                                                            &lt;NA&gt;
 ## 93                                                                                                                                                                                                            &lt;NA&gt;
 ## 94                                                                                                                                                                                                            &lt;NA&gt;
-## 95                                                                                                                                                    Fairbanks sulfate isotope measurements during ALPACA (2022）
+## 95                                                                                                                            Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 96                                                                                                                                                                                                            &lt;NA&gt;
 ## 97                                                                                                                                                                                                            &lt;NA&gt;
 ## 98                                                                                                                                                                                                            &lt;NA&gt;
 ## 99                                                                                                                                                                                                            &lt;NA&gt;
 ## 100                                                                                                                                                                                                           &lt;NA&gt;
-## 101                                                                                                                                                                                                           &lt;NA&gt;
+## 101                                                                                                                           Cryostratigraphy and ground-ice content of the upper permafrost in Alaska, 2018-2023
 ## 102                                                                                                                                                                                                           &lt;NA&gt;
 ## 103                                                                                                                                                                                                           &lt;NA&gt;
 ## 104                                                                                                                                                                                                           &lt;NA&gt;
-## 105                                                                                                                                                                                                           &lt;NA&gt;
+## 105                                                                                                                                                   Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 106                                                                                                                                                                                                           &lt;NA&gt;
-## 107                                                                                                                                                   Fairbanks sulfate isotope measurements during ALPACA (2022）
+## 107                                                                                                                                                   Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 108                                                                                                                                                                                                           &lt;NA&gt;
-## 109                                                                                                             Water column carbonate chemistry and surface carbon dioxide, Bering and Chukchi Sea, May-June 2021
+## 109                                                                                                                                                   Flow data from Hot Springs Creek, Imuruk Basin, Alaska, 2012
 ## 110                                                                                                                                                                                                           &lt;NA&gt;
-## 111                                                                    Report on the 2023 Future of Greenland ice Sheet Science (FOGSS) Workshop: Unifying Themes, Cross-Cutting Priorities, and Future Directions
+## 111                                                                                                                                                                                                           &lt;NA&gt;
 ## 112                                                                                                                                                                                                           &lt;NA&gt;
-## 113                                                                                      Strontium isotopes on wool samples from the urban medieval site of Gullskoen, Bergen, Norway, Medieval 13th -15th century
+## 113                                                                                                                                                                                                           &lt;NA&gt;
 ## 114                                                                                                                                                                                                           &lt;NA&gt;
-## 115                                                   Archaeological textile data from Viking Age Scotland, UK 8th century-11th century from burial contexts, stored at the National Museum of Scotland Edinburgh.
+## 115                                                                                                                                                                                                           &lt;NA&gt;
 ## 116                                                                                                                                                                                                           &lt;NA&gt;
-## 117                    Archaeological textile data from the Faroe Islands dated from the 9th-19th century from sites across the Faroe Islands. Material was analysed at the National Museum of the Faroes in 2018.
+## 117                                                                                                                                                                                                           &lt;NA&gt;
 ## 118                                                                                                                                                                                                           &lt;NA&gt;
-## 119                                                                                            Strontium isotope extraction from wool, leaching and preparation method (2019-2020) carried out at Brown University
+## 119                                                                                                                                                                                                           &lt;NA&gt;
 ## 120                                                                                                                                                                                                           &lt;NA&gt;
-## 121                     Textile Database from the sites of Möðruvellir, Bessastaðir and Reykholt, Iceland stored at the National Museum of Iceland. Date of the material: Viking Age - 10th century - 18th century
-## 122                                                                                                                                           Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
-## 123                                                                                                                                           Alaskan Layered Pollution And Chemical Analysis (ALPACA) field study
+## 121                                                                                                                                                                                                           &lt;NA&gt;
+## 122                                                                                                                                                                                                           &lt;NA&gt;
+## 123                                                                                                                                                                                                           &lt;NA&gt;
 ## 124                                                                                                                                                                                                           &lt;NA&gt;
-## 125                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
-## 126                                                                                                                                                                                                           &lt;NA&gt;
-## 127                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 125                                                                                                                                                                                                           &lt;NA&gt;
+## 126                                                                                                                                                                                   Permafrost Discovery Gateway
+## 127                                                                                                                                                                                                           &lt;NA&gt;
 ## 128                                                                                                                                                                                                           &lt;NA&gt;
-## 129                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 129                       Soil branched Glycerol dialkyl glycerol tetraether (brGDGT) distributions, soil temperatures, soil properties, and air temperatures of the Eastern Canadian Arctic and Iceland,2023-2024
 ## 130                                                                                                                                                                                                           &lt;NA&gt;
-## 131                               Textile Databases and reports from the sites of Gásir and Gilsbakki, Iceland carried out between 2010 and 2023 at the National Museum of Iceland. Textiles: 13th-18th centuries.
+## 131                                                                                                                                                                                                           &lt;NA&gt;
 ## 132                                                                                                                                                                                                           &lt;NA&gt;
-## 133                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
+## 133                                                                                                                                                                                                           &lt;NA&gt;
 ## 134                                                                                                                                                                                                           &lt;NA&gt;
-## 135                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
+## 135                                                                                                                                                                                                           &lt;NA&gt;
 ## 136                                                                                                                                                                                                           &lt;NA&gt;
-## 137                     Strontium isotopes ratios obtained on modern and archaeological wool samples from the medieval harbour site of Borgund, Norway (contemporary samples 2018/archaeological 8th-15th century)
-## 138                                                                                                                                                                                   Permafrost Discovery Gateway
-## 139                                                                                                                                                                                   Permafrost Discovery Gateway
-## 140                                                                                                                                                                                   Permafrost Discovery Gateway
-## 141                                                                                                                                                                                   Permafrost Discovery Gateway
-## 142                                                                                                                                                                                   Permafrost Discovery Gateway
+## 137                                                                                                                                                                                                           &lt;NA&gt;
+## 138                                                                                                                                                                                                           &lt;NA&gt;
+## 139                                                                                                                           Greenhouse gas flux measurements at the zero curtain, North Slope, Alaska, 2012-2023
+## 140                                                                                                                                                                                                           &lt;NA&gt;
+## 141                                                                                                                                                                                                           &lt;NA&gt;
+## 142                                                                                                                                                                                                           &lt;NA&gt;
 ## 143                                                                                                                                                                                                           &lt;NA&gt;
-## 144                                                                                                                                                                                   Permafrost Discovery Gateway
+## 144                                                                                                                                                                                                           &lt;NA&gt;
 ## 145                                                                                                                                                                                                           &lt;NA&gt;
 ## 146                                                                                                                                                                                                           &lt;NA&gt;
-## 147                                                                                                                  Permafrost thaw depth measurements at beaver pond locations in Northwestern Alaska, 2022-2026
+## 147                                                                                                                                                                                                           &lt;NA&gt;
 ## 148                                                                                                                                                                                                           &lt;NA&gt;
-## 149                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
-## 150                                                                                                                                                                                                           &lt;NA&gt;
-## 151                                                                                                     Summertime water quality measurements at beaver ponds and associated locations in Arctic Alaska, 2022-2026
-## 152                                                                                                                                                                                                           &lt;NA&gt;
-## 153                                                                                                    Wintertime water quality measurements at beaver ponds and associated locations in Arctic Alaska, 2022-2026.
-## 154                                                                                                                                                                                                           &lt;NA&gt;
-## 155                                                                                                                                                                                                           &lt;NA&gt;
-## 156                                                                                                                                                                                                           &lt;NA&gt;
-## 157                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 158                                                                                                                                                                                                           &lt;NA&gt;
-## 159                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 160                                                                                                                                                                                                           &lt;NA&gt;
-## 161                                                                                                                                    Textile Database from the site of Domkirkegatan, Bergen, Norway (2022-2025)
-## 162                                                                                                                                                                                                           &lt;NA&gt;
-## 163                                                                                                                      Accelerator Mass Spectrometry Textile Dating, Borgund Kaupang, Western Norway (2020-2023)
-## 164                                                                                                                                                                                                           &lt;NA&gt;
-## 165                                                                                                                                      Accelerator Mass Spectrometry Textile Dating, Borgund, Norway (2020-2023)
-## 166                                                                                                                                                                                                           &lt;NA&gt;
-## 167                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
-## 168                                                                                                                                                                                                           &lt;NA&gt;
+## 149                                                                                                                                                                                                           &lt;NA&gt;
+## 150                                                                                Observations from Autonomous Ocean Flux Buoy 45 deployed at site L3 during the MOSAiC transpolar drift, Arctic Basin, 2019-2020
+## 151                                                                                                                                                                                                           &lt;NA&gt;
+## 152                                                                                Observations from Autonomous Ocean Flux Buoy 46 deployed at site CO during the MOSAiC transpolar drift, Arctic Basin, 2019-2020
+## 153 Modeling the effect of explicit vs implicit representation of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset B
+## 154 Modeling the effect of explicit vs implicit representation of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset B
+## 155  Modeling the effect of explicit vs implicit representaton of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset B
+## 156 Modeling the effect of explicit vs implicit representation of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset A
+## 157 Modeling the effect of explicit vs implicit representation of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset A
+## 158  Modeling the effect of explicit vs implicit representaton of grazing on ecosystem carbon and nitrogen cycling in response to elevated carbon dioxide and warming in arctic tussock tundra, Alaska - Dataset A
+## 159                                                                                             Vegetation species abundance via point frame from Arctic LTER dry heath tundra, Toolik Field Station, Alaska, 2017
+## 160                                                                                             Vegetation species abundance via point frame from Arctic LTER dry heath tundra, Toolik Field Station, Alaska, 2017
+## 161          Soil biogeochemical variables collected on the Arctic Long Term Ecological Research (ARC LTER) experimental plots in moist acidic and dry heath tundra, Arctic LTER Toolik Field Station, Alaska 2017
+## 162          Soil biogeochemical variables collected on the Arctic Long Term Ecological Research (ARC LTER) experimental plots in moist acidic and dry heath tundra, Arctic LTER Toolik Field Station, Alaska 2017
+## 163                                                                                                                                                                                                           &lt;NA&gt;
+## 164                                                                       Instantaneous discharge, suspended sediment, and organic carbon fluxes in the Canning River, Alaska, June-July 2022 and July-August 2023
+## 165                                                                                                                                                                                                           &lt;NA&gt;
+## 166                                                                                Observations from Autonomous Ocean Flux Buoy 43 deployed at site L1 during the MOSAiC transpolar drift, Arctic Basin, 2019-2020
+## 167                                                                                                                                                                                                           &lt;NA&gt;
+## 168                                                                                Observations from Autonomous Ocean Flux Buoy 44 deployed at site L2 during the MOSAiC transpolar drift, Arctic Basin, 2019-2020
 ## 169                                                                                                                                                                                                           &lt;NA&gt;
-## 170                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 170                                                                                                                            High Arctic Ocean, biological oceanography water-column data, August-September 2018
 ## 171                                                                                                                                                                                                           &lt;NA&gt;
-## 172                                                                                                                            Parameters and code for estimating methane emissions from Arctic-boreal lakes, 2022
+## 172                                                                                                                                                                   Sea Ice Outlook 2008-2023, Pan-arctic region
 ## 173                                                                                                                                                                                                           &lt;NA&gt;
-## 174                                                                               Ilulissat Icefjord, Greenland Iceberg Positional Data and Expendable Conductivity-Temperature-Depth (XCTD), August 2014 and 2019
+## 174                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
 ## 175                                                                                                                                                                                                           &lt;NA&gt;
-## 176                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
+## 176                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
 ## 177                                                                                                                                                                                                           &lt;NA&gt;
-## 178                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
+## 178                                                                                                                                  Lake, stream, and soil water isotopes in Iceland (2002-2004, 2014, 2019-2020)
 ## 179                                                                                                                                                                                                           &lt;NA&gt;
-## 180                                                                                                                  14C (Carbon-14) ages of Holocene lake drainage events on the North Slope of Alaska, 2019-2020
-## 181                                                                                                                                                                                                           &lt;NA&gt;
-## 182                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
-## 183                                                                                                                                                                                                           &lt;NA&gt;
-## 184                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
-## 185                                                                                                                                                                                                           &lt;NA&gt;
-## 186                                                                                                     Pressure transducer data for beaver ponds and associated streams on the Seward Peninsula, Alaska 2021-2026
-## 187                                                                                                                                                                                                           &lt;NA&gt;
-## 188                                Retrogressive thaw slump data derived from ArcticDEM - elevation differences, composited images, and lines of narrow-steep slopes/headwalls (Release 7), pan-Arctic (2008-2017)
-## 189                                                                                                                                                                                                           &lt;NA&gt;
-## 190                                Retrogressive thaw slump data derived from ArcticDEM - elevation differences, composited images, and lines of narrow-steep slopes/headwalls (Release 7), pan-Arctic (2008-2017)
-## 191                                                                                                                                                                                                           &lt;NA&gt;
-## 192                              Elevation differences, composited images, and lines of narrow-steep slopes/headwalls of retrogressive thaw slumps data derived from ArcticDEM (Release 7), pan-Arctic (2008-2017)
-## 193                                                                                                                                                                                                           &lt;NA&gt;
-## 194                                                                                                                            White spruce (Picea glauca) densities at Brooks Range treelines, Alaska (2019-2022)
-## 195                                                                                                                                                                                                           &lt;NA&gt;
-## 196                                                                                           Tall shrub (Alnus, Betula, Juniperus, Salix, and Shepherdia) densities at Brooks Range treelines, Alaska (2019-2022)
-## 197                                                                                                                                                                                                           &lt;NA&gt;
-## 198                                                                                                                                               Ground cover ranks at Brooks Range treelines, Alaska (2019-2022)
-## 199                                                                                                                                                                                                           &lt;NA&gt;
-## 200                              Elevation differences, composited images, and lines of narrow-steep slopes/headwalls of retrogressive thaw slumps data derived from ArcticDEM (Release 7), pan-Arctic (2008-2017)
+## 180                                                                                                                                                                                                           &lt;NA&gt;
+## 181                                                                                         Geospatial data about watercraft movements in Alaska freshwater from a statewide survey with watercraft owners in 2018
+## 182                                                                                                                                                                                                           &lt;NA&gt;
+## 183                                                                                                 A survey of 2015 Alaska seaplane operations with predictions of transmission risk for aquatic invasive plants.
+## 184                                                                                                                                                                                                           &lt;NA&gt;
+## 185                                                                                                                                                         Alaska waterbodies&#39; fetch distance and elevation, 2015
+## 186                                                                                                                                                                                                           &lt;NA&gt;
+## 187                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 188                                                                                                                                                                                                           &lt;NA&gt;
+## 189                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 190                                                                                                                                                                                                           &lt;NA&gt;
+## 191                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 192                                                                                                                                                                                                           &lt;NA&gt;
+## 193                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 194                                                                                                                                                                                                           &lt;NA&gt;
+## 195                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 196                                                                                                                                                                                                           &lt;NA&gt;
+## 197                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 198                                                                                                                                                                                                           &lt;NA&gt;
+## 199                                                                                                                                                                Gr1kmTM: Greenland 1 kilometer Tide Model, 2021
+## 200                                                                                                                                                                                                           &lt;NA&gt;
 ##      resourceMap
 ## 1               
 ## 2   resource....
 ## 3               
 ## 4   resource....
 ## 5   resource....
-## 6   resource....
-## 7   resource....
-## 8   resource....
-## 9               
-## 10  resource....
-## 11              
-## 12  resource....
-## 13              
-## 14  resource....
+## 6               
+## 7               
+## 8               
+## 9   resource....
+## 10              
+## 11  resource....
+## 12              
+## 13  resource....
+## 14              
 ## 15              
-## 16  resource....
+## 16              
 ## 17              
-## 18  resource....
-## 19              
+## 18              
+## 19  resource....
 ## 20  resource....
 ## 21              
-## 22  resource....
+## 22              
 ## 23              
-## 24  resource....
-## 25              
-## 26  resource....
-## 27              
-## 28  resource....
-## 29              
+## 24              
+## 25  resource....
+## 26              
+## 27  resource....
+## 28              
+## 29  resource....
 ## 30  resource....
-## 31              
+## 31  resource....
 ## 32  resource....
 ## 33              
-## 34              
+## 34  resource....
 ## 35              
 ## 36  resource....
 ## 37              
 ## 38  resource....
-## 39  resource....
+## 39              
 ## 40  resource....
 ## 41  resource....
-## 42              
+## 42  resource....
 ## 43  resource....
-## 44  resource....
+## 44              
 ## 45              
-## 46  resource....
-## 47              
-## 48  resource....
+## 46              
+## 47  resource....
+## 48              
 ## 49              
 ## 50  resource....
-## 51              
-## 52  resource....
-## 53              
+## 51  resource....
+## 52              
+## 53  resource....
 ## 54  resource....
 ## 55              
 ## 56  resource....
-## 57              
+## 57  resource....
 ## 58  resource....
 ## 59              
 ## 60  resource....
-## 61              
+## 61  resource....
 ## 62  resource....
-## 63              
-## 64              
+## 63  resource....
+## 64  resource....
 ## 65  resource....
 ## 66              
 ## 67  resource....
-## 68              
-## 69  resource....
-## 70              
+## 68  resource....
+## 69              
+## 70  resource....
 ## 71  resource....
 ## 72              
 ## 73  resource....
-## 74              
+## 74  resource....
 ## 75  resource....
-## 76              
-## 77              
+## 76  resource....
+## 77  resource....
 ## 78  resource....
-## 79  resource....
+## 79              
 ## 80              
 ## 81  resource....
 ## 82              
 ## 83  resource....
-## 84              
+## 84  resource....
 ## 85  resource....
-## 86              
+## 86  resource....
 ## 87  resource....
 ## 88              
-## 89  resource....
+## 89              
 ## 90              
 ## 91              
-## 92  resource....
-## 93  resource....
+## 92              
+## 93              
 ## 94              
 ## 95  resource....
 ## 96  resource....
 ## 97  resource....
 ## 98  resource....
 ## 99  resource....
-## 100 resource....
+## 100             
 ## 101 resource....
 ## 102 resource....
 ## 103 resource....
-## 104 resource....
+## 104             
 ## 105 resource....
 ## 106             
 ## 107 resource....
 ## 108             
 ## 109 resource....
-## 110             
+## 110 resource....
 ## 111 resource....
-## 112             
+## 112 resource....
 ## 113 resource....
-## 114             
+## 114 resource....
 ## 115 resource....
-## 116             
+## 116 resource....
 ## 117 resource....
-## 118             
+## 118 resource....
 ## 119 resource....
-## 120             
+## 120 resource....
 ## 121 resource....
-## 122             
-## 123             
-## 124             
+## 122 resource....
+## 123 resource....
+## 124 resource....
 ## 125 resource....
 ## 126             
-## 127 resource....
+## 127             
 ## 128             
 ## 129 resource....
 ## 130             
 ## 131 resource....
-## 132             
+## 132 resource....
 ## 133 resource....
-## 134             
+## 134 resource....
 ## 135 resource....
-## 136             
+## 136 resource....
 ## 137 resource....
-## 138             
-## 139             
+## 138 resource....
+## 139 resource....
 ## 140             
 ## 141             
 ## 142             
-## 143 resource....
+## 143             
 ## 144             
 ## 145             
 ## 146             
-## 147 resource....
+## 147             
 ## 148             
-## 149 resource....
-## 150             
-## 151 resource....
-## 152             
-## 153 resource....
-## 154 resource....
-## 155 resource....
+## 149             
+## 150 resource....
+## 151             
+## 152 resource....
+## 153             
+## 154             
+## 155             
 ## 156             
-## 157 resource....
+## 157             
 ## 158             
-## 159 resource....
+## 159             
 ## 160             
-## 161 resource....
+## 161             
 ## 162             
-## 163 resource....
-## 164             
-## 165 resource....
-## 166             
-## 167 resource....
-## 168             
+## 163             
+## 164 resource....
+## 165             
+## 166 resource....
+## 167             
+## 168 resource....
 ## 169             
 ## 170 resource....
 ## 171             
@@ -1322,28 +1322,28 @@ with <code>%20</code>.)
 ## 176 resource....
 ## 177             
 ## 178 resource....
-## 179             
-## 180 resource....
-## 181             
-## 182 resource....
-## 183             
-## 184 resource....
-## 185             
-## 186 resource....
-## 187             
-## 188 resource....
-## 189             
-## 190 resource....
-## 191             
-## 192 resource....
-## 193             
-## 194 resource....
-## 195             
-## 196 resource....
-## 197             
-## 198 resource....
-## 199             
-## 200 resource....</code></pre>
+## 179 resource....
+## 180             
+## 181 resource....
+## 182             
+## 183 resource....
+## 184             
+## 185 resource....
+## 186             
+## 187 resource....
+## 188             
+## 189 resource....
+## 190             
+## 191 resource....
+## 192             
+## 193 resource....
+## 194             
+## 195 resource....
+## 196             
+## 197 resource....
+## 198             
+## 199 resource....
+## 200</code></pre>
 </div>
 <div id="use-facets-1" class="section level3 hasAnchor">
 <h3>Use facets<a href="example-solr-queries.html#use-facets-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>

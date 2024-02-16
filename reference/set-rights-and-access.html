@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set rights and access | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.36.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set rights and access | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-12-01" />
+<meta name="date" content="2024-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -446,7 +446,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb47-2"><a href="set-rights-and-access.html#cb47-2" tabindex="-1"></a>                      <span class="at">pids =</span> <span class="fu">c</span>(pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>data, pkg<span class="sc">$</span>resource_map),</span>
 <span id="cb47-3"><a href="set-rights-and-access.html#cb47-3" tabindex="-1"></a>                      <span class="at">subject =</span> subject,</span>
 <span id="cb47-4"><a href="set-rights-and-access.html#cb47-4" tabindex="-1"></a>                      <span class="at">permissions =</span> <span class="fu">c</span>(<span class="st">&#39;read&#39;</span>,<span class="st">&#39;write&#39;</span>,<span class="st">&#39;changePermission&#39;</span>))</span></code></pre></div>
-<p>If you ever need to remove/add public access to your package or object, you can use <code>remove_public_read()</code> or <code>set_public_read()</code>, respectively.</p>
+<p>If you ever need to remove/add public access to your package or object, you can use <code>remove_public_read()</code> or <code>set_public_read()</code>, respectively. Making files publicly readable is especially useful when downloading large amounts of files to the server in order to to use metadata helper functions that require a file path (ex: <code>eml_get_raster_metadata()</code> and <code>get_ncdf4_attributes()</code>).</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="set-rights-and-access.html#cb48-1" tabindex="-1"></a><span class="fu">remove_public_read</span>(mn, <span class="fu">c</span>(pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>data, pkg<span class="sc">$</span>resource_map))</span></code></pre></div>
 <div id="my-profile" class="section level3 hasAnchor">
 <h3>My profile<a href="set-rights-and-access.html#my-profile" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>MOSAiC | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.36.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="MOSAiC | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-12-01" />
+<meta name="date" content="2024-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -435,6 +435,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>We would like to ask for the event label associated with this dataset (see <a href="https://www.pangaea.de/expeditions/events/PS122%2F4" class="uri">https://www.pangaea.de/expeditions/events/PS122%2F4</a>).</p>
 </blockquote>
+<p>Often times researchers do not have a full list of event labels, but instrument names are provided in the dataset metadata. In these cases, try to find the correct event labels by searching through the event lists and finding matching instrument names and dates. Each MOSAiC <a href="https://www.pangaea.de/expeditions/byproject/MOSAiC">campaign</a> has its own event list. <a href="https://www.pangaea.de/expeditions/events/PS122%2F1">Here</a> is an example of an event list for the first cruise by the Polarstern research vessel.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the appropriate dataset and attribute level annotations</li>
 </ol>
@@ -456,7 +457,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>The following shows how to add the annotations using <code>arcticdatautils</code> and manually in the case the functions fail to work:</p>
 <div id="dataset-level-annotations" class="section level3 hasAnchor">
 <h3>Dataset Level Annotations<a href="mosaic.html#dataset-level-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern <code>PS122/#</code>. For the full campaign list it is easiest to see on the <a href="https://www.pangaea.de/expeditions/byproject/MOSAiC">PANGAEA website</a></p>
+<p>There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern <code>PS122/#</code>. The full campaign list is easiest to view on the <a href="https://www.pangaea.de/expeditions/byproject/MOSAiC">PANGAEA website</a>. The first two letters of each campaign name correspond with the ship or station name (ex: PS = Polarstern).</p>
 <p><strong>arcticdatautils</strong></p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="mosaic.html#cb224-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;your id here&quot;</span></span>
 <span id="cb224-2"><a href="mosaic.html#cb224-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#make sure it is empty</span></span>

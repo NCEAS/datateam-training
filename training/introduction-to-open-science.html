@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction to open science | NCEAS Data Team Training</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.36.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction to open science | NCEAS Data Team Training" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O’Dean, Jasmine Lai, Daphne Virlar-Knight" />
 
 
-<meta name="date" content="2023-12-01" />
+<meta name="date" content="2024-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -359,7 +359,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction-to-open-science" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction to open science<a href="introduction-to-open-science.html#introduction-to-open-science" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training. This document is meant to take multiple days to complete depending on your previous knowledge on some of the topics.</p>
+<p>These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training. This document is meant to take multiple days to complete, depending on your previous knowledge.</p>
+<p>We believe in allowing employees the space to fully grasp concepts during training, even if it means taking longer than expected. Quality learning is our priority, and there’s no pressure to finish within a specific timeframe. You may find it helpful to take notes on important concepts, and you will always be able to refer back to this training during your time at NCEAS.</p>
 <p>If you see anything that needs fixing, submit a issue in the
 <a href = 'https://github.com/NCEAS/datateam-training/issues' target='_blank'> github issues </a></p>
 <div id="background-reading" class="section level2 hasAnchor" number="1.1">
@@ -406,11 +407,11 @@ guide</a> on how to fix it.
 <h2><span class="header-section-number">1.5</span> A note on paths<a href="introduction-to-open-science.html#a-note-on-paths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On the servers, paths to files in your folder always start with <code>/home/yourusername/...</code>.</p>
 <p><strong>Note</strong> - if you are a more advanced user, you may use the method you prefer as long as it is evident where your file is from.</p>
-<p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.</p>
+<p>When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory <code>~/</code> to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.</p>
 </div>
 <div id="a-note-on-r" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> A note on R<a href="introduction-to-open-science.html#a-note-on-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This training assumes basic knowledge of R and RStudio. Spend at least 30 minutes walking through Jenny Bryan’s excellent materials <a href="http://stat545.com/block002_hello-r-workspace-wd-project.html">here</a> for a refresher.</p>
+<p>This training assumes basic knowledge of R and RStudio. Spend at least 15 minutes walking through Jenny Bryan’s excellent materials <a href="http://stat545.com/block002_hello-r-workspace-wd-project.html">here</a> for a refresher.</p>
 <p>Throughout this training we will occasionally use the namespace syntax <code>package_name::function_name()</code> when writing a function. This syntax denotes which package a function came from. For example <code>dataone::getSystemMetadata</code> selects the <code>getSystemMetadata</code> function from the <code>dataone</code> R package. More detailed information on namespaces can be found <a href="http://r-pkgs.had.co.nz/namespace.html">here</a>.</p>
 </div>
 <div id="a-note-on-effective-troubleshooting-in-r" class="section level2 hasAnchor" number="1.7">
