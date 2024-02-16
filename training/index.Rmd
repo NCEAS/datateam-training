@@ -39,6 +39,7 @@ favicon: "favicon.ico"
 * If you are an intern, fill out anticipated quarterly schedule on the intern google calendar shared with you. 
 * <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping
 via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
+* <a href="https://www.ucpath.ucsb.edu/" target="_blank">UCPath</a> - you can set up your paycheck preferences here, including direct deposit and income tax withholding. 
 <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
 * Let Jeanette or Daphne know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
 
@@ -47,8 +48,9 @@ via your UCSBNetID and password (may not be accessible on the first day, if you 
 NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the recurring events are:
 
 * Roundtable
-    + weekly presentation and discussion of research by a visiting or local scientist
-    + Wednesdays at 12:15 in the lounge
+    + presentation and discussion of research by a visiting or local scientist
+    + first or second Thursdays of the month at 3:30 in the lounge and via zoom
+    + followed by happy hour at 4:30 on the terrace
 * Coffee Klatch
     + coffee, socializing, and news updates for NCEAS
     + Tuesdays at 10:30 in the lounge
@@ -64,7 +66,9 @@ Check out their individual calendar entries and channels for more information
 * NCEAS Book Club - #bookclub
 
 ## Internship Expectations {-}
-As an intern with the data team, there are a few expectations that the Project Coordinators have of you. Overall, we expect you to be communicative and proactive. We want you to learn and grow in this position, but we don't want you spinning your wheels going nowhere fast! If you've spent 10-15 minutes on an issue and you're not making any progress, reach out to us and your peers for help in the #datateam slack channel. The #datateam slack channel is the main form of communication, and we expect all interns to become comfortable communicating in this space. 
+As an intern with the data team, there are a few expectations that the Project Coordinators have of you. Overall, we expect you to be communicative and proactive. We want you to learn and grow in this position, but we don't want you spinning your wheels going nowhere fast! If you've spent 10-15 minutes on an issue and you're not making any progress, reach out to us and your peers for help in the #datateam slack channel. 
+
+The #datateam slack channel is our main form of communication, and we expect all interns to become comfortable communicating in this space. By posting your questions and code in the #datateam channel (instead of sending direct messages), multiple people will be able to help at once, and we all can learn from the problems that our peers encounter.
 
 Additionally, we expect interns to work within the standard business hours of 8am - 5pm (pacific time). We ask that you mark your expected work hours on the shared "Intern" Google Calendar. This is so that the Project Coordinators are aware of who's working day-to-day and can plan their days accordingly. We also use this to verify time sheets when they are submitted. Ideally, interns would input their proposed hours on the calendar at least one week in advance. During exams and other unusually busy weeks at school, we understand you may need to shift your hours or reduce your workload. When this occurs, please make sure to email either Daphne or Jeanette so that we know not to expect you during your usual schedule.
 

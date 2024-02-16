@@ -10,7 +10,7 @@ This is easier to accomplish using `arcticdatautils`
 doc$dataset$otherEntity <- doc$dataset$otherEntity[order(entity_names)]
 ```
 
-2. Data files
+2. Data files and PIDs retrieved with `get_package`
 
 ```{r eval = F}
 pkg <- get_package(adc, rm, file_names = T)

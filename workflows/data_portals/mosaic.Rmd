@@ -8,6 +8,8 @@ Look out for datasets that are part of the MOSAiC expedition from 2019 -2020. Th
 
 > We would like to ask for the event label associated with this dataset (see https://www.pangaea.de/expeditions/events/PS122%2F4).
 
+Often times researchers do not have a full list of event labels, but instrument names are provided in the dataset metadata. In these cases, try to find the correct event labels by searching through the event lists and finding matching instrument names and dates. Each MOSAiC [campaign](https://www.pangaea.de/expeditions/byproject/MOSAiC) has its own event list. [Here](https://www.pangaea.de/expeditions/events/PS122%2F1) is an example of an event list for the first cruise by the Polarstern research vessel.
+
 2. Find the appropriate dataset and attribute level annotations
 
 - There are functions in `arcticdatautils` to help with annotating: `mosaic_annotate_dataset` and `mosaic_annotate_attribute`
@@ -27,7 +29,7 @@ The following shows how to add the annotations using `arcticdatautils` and manua
 
 ### Dataset Level Annotations
 
-There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`. For the full campaign list it is easiest to see on the [PANGAEA website](https://www.pangaea.de/expeditions/byproject/MOSAiC)
+There are 5 main campaigns in the MOSAiC expedition. The main campaigns follow the pattern `PS122/#`. The full campaign list is easiest to view on the [PANGAEA website](https://www.pangaea.de/expeditions/byproject/MOSAiC). The first two letters of each campaign name correspond with the ship or station name (ex: PS = Polarstern).
 
 **arcticdatautils**
 ```{r, eval = F}

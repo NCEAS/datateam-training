@@ -5,7 +5,8 @@ This chapter is a practical tutorial for using R to read, edit, write, and valid
 Most of the functions you will see in this chapter will use the `arcticdatautils` and `EML` packages.
 
 ```{block, type = "note"}
-This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section.
+This chapter will be longest of all the sections! This is a reminder to take frequent breaks when completing this section. 
+If you struggle with getting a piece of code to work more than 10 minutes, reach out to your supervisor for help.
 ```
 ```{block, type = "note"}
 When using R to edit EML documents, run each line individually by highlighting the line and using CTRL+ENTER). Many EML functions only need to be ran once, and will either produce errors or make the EML invalid if run multiple times.

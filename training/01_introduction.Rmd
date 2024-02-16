@@ -2,7 +2,9 @@
 
 
 
-These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training. This document is meant to take multiple days to complete depending on your previous knowledge on some of the topics. 
+These materials are meant to introduce you to the principles of open science, effective data management, and data archival with the DataONE data repository. It also provides an overview on the tools we will be using (remote servers, Rstudio, R, Troubleshooting, Exercises) throughout the training. This document is meant to take multiple days to complete, depending on your previous knowledge.
+
+We believe in allowing employees the space to fully grasp concepts during training, even if it means taking longer than expected. Quality learning is our priority, and there's no pressure to finish within a specific timeframe. You may find it helpful to take notes on important concepts, and you will always be able to refer back to this training during your time at NCEAS.
 
 If you see anything that needs fixing, submit a issue in the 
 <a href = 'https://github.com/NCEAS/datateam-training/issues' target='_blank'> github issues </a>
@@ -51,11 +53,11 @@ On the servers, paths to files in your folder always start with `/home/yourusern
 
 **Note** - if you are a more advanced user, you may use the method you prefer as long as it is evident where your file is from.
 
-When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
+When you write scripts, try to avoid writing relative paths (which rely on what you have set your working directory `~/` to) as much as possible. Instead, write out the entire path as shown above, so that if another data team member needs to run your script, it is not dependent on a working directory.
 
 ## A note on R
 
-This training assumes basic knowledge of R and RStudio. Spend at least 30 minutes walking through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) for a refresher.
+This training assumes basic knowledge of R and RStudio. Spend at least 15 minutes walking through Jenny Bryan's excellent materials [here](http://stat545.com/block002_hello-r-workspace-wd-project.html) for a refresher.
 
 Throughout this training we will occasionally use the namespace syntax `package_name::function_name()` when writing a function. This syntax denotes which package a function came from.  For example `dataone::getSystemMetadata` selects the `getSystemMetadata` function from the `dataone` R package. More detailed information on namespaces can be found [here](http://r-pkgs.had.co.nz/namespace.html).
 

@@ -1,5 +1,5 @@
 ## datapack Background
-*adapted from the dataone and datapack vingettes*
+*adapted from the dataone and datapack vignettes*
 
 `datapack` is written differently than most R packages you may have encountered in the past. This is because it uses the [S4](https://adv-r.hadley.nz/s4.html) system instead.
 

@@ -1,6 +1,6 @@
 # First Ticket
 
-After completing the previous chapters, Daphne or Jeanette will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
+After completing the previous chapters, your supervisor will assign a ticket from RT. Login using your LDAP credentials got get familiarized with RT.
 
 ```{r, child = '../workflows/pi_correspondence/navigate_rt.Rmd'}
 ```
@@ -15,6 +15,8 @@ Before opening a R script first look over the initial checklist first to identif
 We have developed some partially filled R scripts to get you started on working on your first dataset. They outline common functions used in processing a dataset. However, it will differ depending on the dataset.
 
 You can use this template where you can [fill in the blanks](data/dataset_processing_example_blanks.R) to get familiar with the functions we use and workflow at first. We also have a more minimal example [A filled example](data/dataset_processing_example_skeleton.R) as a intermediate step. You can look at the [filled example](data/dataset_processing_example_filled.R) if you get stuck or message the #datateam.
+
+In addition, you may find this [cheat sheet](https://docs.google.com/document/d/1DPhCmnxhoSWv5FEHvlIiNRBjcuFbKqwZviaZDf8UfVU/edit?usp=sharing) of data team R functions helpful.
 
 Once you have updated the dataset to your satisfaction and reviewed the Final Checklist, post the link to the dataset on #datateam for peer review.
 

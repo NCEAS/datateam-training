@@ -29,7 +29,7 @@ set_rights_and_access(mn,
                       permissions = c('read','write','changePermission'))
 ```
 
-If you ever need to remove/add public access to your package or object, you can use `remove_public_read()` or `set_public_read()`, respectively.
+If you ever need to remove/add public access to your package or object, you can use `remove_public_read()` or `set_public_read()`, respectively. Making files publicly readable is especially useful when downloading large amounts of files to the server in order to to use metadata helper functions that require a file path (ex: `eml_get_raster_metadata()` and `get_ncdf4_attributes()`).
 
 ```{r, eval = FALSE}
 remove_public_read(mn, c(pkg$metadata, pkg$data, pkg$resource_map))
