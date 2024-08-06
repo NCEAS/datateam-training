@@ -126,4 +126,5 @@ This part of the exercise walks you through submitting data through the web form
     + Directly copying and pasting sections from the paper (abstract, methods, etc.) is also fine.
     + Attributes (column names) should be defined, including correct units and missing value codes.
         * Click "describe" to the right of the file name in order to add file-specific information. The title and description can be edited in the "Overview" tab, while attributes are defined in the "Attributes" tab.
-    + Submit the dataset and post a message to the #datateam channel with a link to your package.
+    + Submit the dataset
+* Post a message to the #datateam Slack channel with a link to your package.
