@@ -30,7 +30,7 @@ You may also want to explore the DataONE <a href='https://dataoneorg.github.io/E
 
 **Data Observation Network for Earth** (DataONE) is a community driven initiative that provides access to data across multiple member repositories, supporting enhanced search and discovery of Earth and environmental data.
 
-Read more about what DataONE is <a href = 'https://www.dataone.org/about/' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://dataone-operations.readthedocs.io/en/latest/MN/deployment/baseline_implementation_requirements.html' target='_blank'>here</a>. Please feel free to ask Jeanette any questions you have about DataONE.
+Read more about what DataONE is <a href = 'https://www.dataone.org/about/' target='_blank'>here</a> and about DataONE member node (MN) guidelines <a href = 'https://dataone-operations.readthedocs.io/en/latest/MN/deployment/baseline_implementation_requirements.html' target='_blank'>here</a>. Please feel free to ask your supervisor any questions you have about DataONE.
 
 We will be applying these concepts in the next chapter. 
 
