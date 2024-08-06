@@ -1,4 +1,4 @@
---- 
+---
 title: "NCEAS Data Team Training"
 author: "Jesse Goldstein, Dominic Mullen, Jeanette Clark, Irene Steves, Mitchell Maier, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai, Daphne Virlar-Knight, Maggie Klope"
 date: "`r Sys.Date()`"
@@ -13,71 +13,69 @@ description: "This is a training guide and reference resource for NCEAS data tea
 favicon: "favicon.ico"
 ---
 
+# Welcome to NCEAS! {.unnumbered}
 
-# Welcome to NCEAS! {-}
+## First day to-dos {.unnumbered}
 
-## First day to-dos {-}
+-   Get a tour of the office from Ginger
+-   Fill out required paperwork you received via email
+-   Set up the remainder of your accounts
 
-* Get a tour of the office from Ginger
-* Fill out required paperwork from Ana (room 325)
-* Schedule a headshot with Alex (room 326)
-* Set up the remainder of your accounts
+## Account information {.unnumbered}
 
-## Account information {-}
+-   <a href="https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account" target="_blank">LDAP</a> - this should be set up prior to your start date in order to help get other accounts set. This account and password control your access to:
+    -   arcticdata <a href="https://support.nceas.ucsb.edu/rt/" target="_blank">RT queue</a>
+    -   GitHub Enterprise - <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/" target="_blank">arctic-data</a>
+-   Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal
+-   <a href="https://orcid.org/register" target="_blank">ORCiD</a> - create an account
+    -   Login to <a href="https://test.arcticdata.io" target="_blank">test.arcticdata.io</a> with your ORCID iD
+-   <a href="http://nceas.slack.com" target="_blank">NCEAS Slack</a> - get an invite from <a href="http://slack.nceas.ucsb.edu" target="_blank">slack.nceas.ucsb.edu</a>
+    -   Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam
+    -   Introduce yourself in #datateam
+-   Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Justin or Maggie in Slack
+-   GitHub - if you do not have a public GitHub account already, please register for one <a href="https://github.com/join?source=header-home" target="_blank">here</a>
+-   If you are an intern, fill out anticipated quarterly schedule on the intern google calendar shared with you.
+-   <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.\
+-   <a href="https://www.ucpath.ucsb.edu/" target="_blank">UCPath</a> - you can set up your paycheck preferences here, including direct deposit and income tax withholding. <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
+-   Let Justin or Maggie know what email you would like to use for general NCEAS updates from [all\@nceas.ucsb.edu](mailto:all@nceas.ucsb.edu){.email}
 
-* <a href="https://identity.nceas.ucsb.edu/identity/cgi-bin/ldapweb.cgi?cfg=account" target="_blank">LDAP</a> - this should be set up prior to your start date in order to help get other accounts set. This account and password control your access to:
-    + arcticdata <a href="https://support.nceas.ucsb.edu/rt/" target="_blank">RT queue</a> 
-    + GitHub Enterprise - <a href="https://github.nceas.ucsb.edu/KNB/arctic-data/" target="_blank">arctic-data</a>
-* Datateam server - follow instructions in email from Nick at NCEAS to reset your datateam password in the terminal
-* <a href="https://orcid.org/register" target="_blank">ORCiD</a> - create an account
-    + Login to <a href="https://test.arcticdata.io" target="_blank">test.arcticdata.io</a> with your ORCID iD
-* <a href="http://nceas.slack.com" target="_blank">NCEAS Slack</a> - get an invite from <a href="http://slack.nceas.ucsb.edu" target="_blank">slack.nceas.ucsb.edu</a>
-    + Channels to join: #arctica, #arcticbot, #computing, #datateam, #devteam, #social
-    + Introduce yourself in #datateam and then use that channel to ask Justin or Maggie to make you an administrator on test.arcticdata.io
-* Arctic Data Center Team - after creation of ORCiD and sign-in to both arcticdata.io and test.arcticdata.io, request addition to the admin group from Justin or Maggie in Slack
-* GitHub - if you do not have a public GitHub account already, please register for one <a href="https://github.com/join?source=header-home" target="_blank">here</a>
-* If you are an intern, fill out anticipated quarterly schedule on the intern google calendar shared with you. 
-* <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping
-via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.  
-* <a href="https://www.ucpath.ucsb.edu/" target="_blank">UCPath</a> - you can set up your paycheck preferences here, including direct deposit and income tax withholding. 
-<a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
-* Let Justin or Maggie know what email you would like to use for general NCEAS updates from all@nceas.ucsb.edu
-
-## NCEAS events {-}
+## NCEAS events {.unnumbered}
 
 NCEAS hosts a number of events that you are encouraged to attend. Keep an eye on your email but the recurring events are:
 
-* Roundtable
-    + presentation and discussion of research by a visiting or local scientist
-    + first or second Thursdays of the month at 3:30 in the lounge and via zoom
-    + followed by happy hour at 4:30 on the terrace
-* Coffee Klatch
-    + coffee, socializing, and news updates for NCEAS
-    + Tuesdays at 10:30 in the lounge
-    
-## NCEAS Community Meetings/ Groups {-}
+-   Roundtable
+    -   presentation and discussion of research by a visiting or local scientist
+    -   first or second Thursdays of the month at 3:30 in the lounge and via zoom
+    -   followed by happy hour at 4:30 on the terrace
+-   Coffee Klatch
+    -   coffee, socializing, and news updates for NCEAS
+    -   Tuesdays at 10:30 in the lounge
+
+## NCEAS Community Meetings/ Groups {.unnumbered}
 
 Check out their individual calendar entries and channels for more information
 
-* Early Career Researcher Community Forum - #ecr_community
-* Hacky Hours - #hackyhour
-* Data Science Chats - #data-science-chats
-* NCEAS Diversity Team
-* NCEAS Book Club - #bookclub
+-   Early Career Researcher Community Forum - #ecr_community
+-   Hacky Hours - #hackyhour
+-   Data Science Chats - #data-science-chats
+-   NCEAS Diversity Team
+-   NCEAS Book Club - #bookclub
+-   NCEAS Social - #social
 
-## Internship Expectations {-}
-As an intern with the data team, there are a few expectations that the Project Coordinators have of you. Overall, we expect you to be communicative and proactive. We want you to learn and grow in this position, but we don't want you spinning your wheels going nowhere fast! If you've spent 10-15 minutes on an issue and you're not making any progress, reach out to us and your peers for help in the #datateam slack channel. 
+## Internship Expectations {.unnumbered}
+
+As an intern with the data team, there are a few expectations that the Project Coordinators have of you. Overall, we expect you to be communicative and proactive. We want you to learn and grow in this position, but we don't want you spinning your wheels going nowhere fast! If you've spent 10-15 minutes on an issue and you're not making any progress, reach out to us and your peers for help in the #datateam slack channel.
 
 The #datateam slack channel is our main form of communication, and we expect all interns to become comfortable communicating in this space. By posting your questions and code in the #datateam channel (instead of sending direct messages), multiple people will be able to help at once, and we all can learn from the problems that our peers encounter.
 
 Additionally, we expect interns to work within the standard business hours of 8am - 5pm (pacific time). We ask that you mark your expected work hours on the shared "Intern" Google Calendar. This is so that the Project Coordinators are aware of who's working day-to-day and can plan their days accordingly. We also use this to verify time sheets when they are submitted. Ideally, interns would input their proposed hours on the calendar at least one week in advance. During exams and other unusually busy weeks at school, we understand you may need to shift your hours or reduce your workload. When this occurs, please make sure to email either Daphne or Jeanette so that we know not to expect you during your usual schedule.
 
-## Code of Conduct {-}
+## Code of Conduct {.unnumbered}
 
 Take a moment to review the [diversity and inclusion page](https://www.nceas.ucsb.edu/diversity-inclusion) and [code of conduct](https://live-ncea-ucsb-edu-v01.pantheonsite.io/sites/default/files/2020-02/NCEAS_Code-of-Conduct_2019.pdf) at NCEAS so that we can foster an environment that is safe, welcoming and inclusive for everyone.
-    
-## Citation Information {-}
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+## Citation Information {.unnumbered}
 
-Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai, Daphne Virlar-Knight. 2022 _Training Materials for the Arctic Data Center Curation Team_. Arctic Data Center. doi:10.18739/A20G3GX8W.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+Clark, Jeanette, Jesse Goldstein, Dominic Mullen, Irene Steves, Mitchell Maier, Stephanie Freund, Sharis Ochs, Bryce Mecum, Peter Slaughter, Emily O'Dean, Jasmine Lai, Daphne Virlar-Knight. 2022 *Training Materials for the Arctic Data Center Curation Team*. Arctic Data Center. <doi:10.18739/A20G3GX8W>.
