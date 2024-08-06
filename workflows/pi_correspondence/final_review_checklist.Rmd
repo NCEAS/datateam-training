@@ -14,76 +14,80 @@ Please refer to the dedicated pages for instructions to handle these cases:
 the format ids are correct
 
 ### General EML
-Included lines for FAIR:
+- Ethical Research Practice section is completed
+- Publisher and system information have been added:
 ```{r eval=F}
 doc <- eml_add_publisher(doc)
 doc <- eml_add_entity_system(doc)
 ```
 ### Title
-- No abbreviations, should include geographic and temporal coverage
+- Include geographic and temporal coverage (when and where data was collected)
+- Abbreviations are removed or defined
 
 ### Abstract
 - longer than 100 words
-- no abbreviations or garbled text
-- tags such as  `<superscript>2</superscript>` and `<subscript>2</subscript>` can be used for nicer formatting
+- Abbreviations are removed or defined. No garbled text
+- Tags such as  `<superscript>2</superscript>` and `<subscript>2</subscript>` can be used for nicer formatting
 
 ### DataTable / OtherEntity / SpatialVectors
-- in the correct one: **DataTable / OtherEntity / SpatialVector / SpatialRaster** for the file type
+- In the correct one: **DataTable / OtherEntity / SpatialVector / SpatialRaster** for the file type
 - **entityDescription** - longer than 5 words and unique
-- **physical** present and format correct
+- **physical** present and up-to-date and format is correct
 
 #### Attribute Table
-- complete
+- Complete
 - attributeDefinitions longer than 3 words
 - **Variables** match what is in the file
 - **Measurement domain** - if appropirate (ie dateTime correct)
 - **Missing Value Code** - accounted for if applicable
 - **Semantic Annotation** - appropriate semantic annotations added, especially for spatial and temporal variables: lat, lon, date etc.
+- Custom units were created if necessary
 
 ### People
-- complete information for each person in each section
-    + including ORCID and e-mail address for all contacts
-    + people repeated across sections should have consistent information
+- Complete information for each person in each section
+    + includes ORCID and e-mail address for all contacts
+    + people repeated across sections have consistent information
 
 ### Geographic region
-- the map looks correctand matches the geographic description
+- the map looks correct and matches the geographic description
 - check if negatives (-) are missing
 
 ### Project
-- if it is an NSF award you can use the helper function:
+- If it is an NSF award you can use the helper function:
     + `doc$dataset$project <- eml_nsf_to_project(awards)`
 - for other awards that need to be set manually, see the [set project](https://nceas.github.io/datateam-training/reference/set-the-project-section.html) page
 
 ### Methods
-- present
-- no garbled text
+- Present
+- No garbled text
+- Acronyms and units are defined the first time they are used
 
 ### Check EML Version
-- currently using: `eml-2.2.0` (as of July 30 2020)
-- review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.2.0 under eml 
+- Currently using: `eml-2.2.0` (as of July 30 2020)
+- Review to see if the EML version is set correctly by reviewing the ``doc$`@context` `` that it is indeed 2.2.0 under eml 
 - Re-run your code again and have the line`emld::eml_version("eml-2.2.0")` at the top
 - Make sure the system metadata is also 2.2.0
 
 ### Access
-- Granted access to PI using `set_rights_and_access()`
+- If necessary, granted access to PI using `set_rights_and_access()`
   + make sure it is `http://` (no s)
 - **note** if it is a part of portals there might be specific access requirements for it to be visible using `set_access()`
 
 ### SFTP Files
-- if there are files transferred to us via SFTP, delete those files when the ticket is resolved
+- If there are files transferred to us via SFTP, delete those files once they have been added to the dataset and when the ticket is resolved
 
 ### Updated datasets
 All the above applies. These are some areas to do a closer check when users update with a new file:
 
 - New data was added
   + Temporal Coverage and Title
-  + and follow usual protocols
+  + Confirm if new data used same methods or if methods need updating
 - Files were replaced
   + update physical and entityName
   + double-check attributes are the same
   + check for any new missing value codes that should be accounted for
 - Was the dataset published before 2021?
-  + update project info , annotations
+  + update project info, annotations
 - Glance over entire page for any small mistakes (ie. repeated additionalMetadata, any missed &amps, typos)
 
 
