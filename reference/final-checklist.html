@@ -443,64 +443,69 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="general-eml" class="section level3 hasAnchor">
 <h3>General EML<a href="final-checklist.html#general-eml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Included lines for FAIR:</p>
+<ul>
+<li>Ethical Research Practice section is completed</li>
+<li>Publisher and system information have been added:</li>
+</ul>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="final-checklist.html#cb158-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_publisher</span>(doc)</span>
 <span id="cb158-2"><a href="final-checklist.html#cb158-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">eml_add_entity_system</span>(doc)</span></code></pre></div>
 </div>
 <div id="title-1" class="section level3 hasAnchor">
 <h3>Title<a href="final-checklist.html#title-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>No abbreviations, should include geographic and temporal coverage</li>
+<li>Include geographic and temporal coverage (when and where data was collected)</li>
+<li>Abbreviations are removed or defined</li>
 </ul>
 </div>
 <div id="abstract-1" class="section level3 hasAnchor">
 <h3>Abstract<a href="final-checklist.html#abstract-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>longer than 100 words</li>
-<li>no abbreviations or garbled text</li>
-<li>tags such as <code>&lt;superscript&gt;2&lt;/superscript&gt;</code> and <code>&lt;subscript&gt;2&lt;/subscript&gt;</code> can be used for nicer formatting</li>
+<li>Abbreviations are removed or defined. No garbled text</li>
+<li>Tags such as <code>&lt;superscript&gt;2&lt;/superscript&gt;</code> and <code>&lt;subscript&gt;2&lt;/subscript&gt;</code> can be used for nicer formatting</li>
 </ul>
 </div>
 <div id="datatable-otherentity-spatialvectors" class="section level3 hasAnchor">
 <h3>DataTable / OtherEntity / SpatialVectors<a href="final-checklist.html#datatable-otherentity-spatialvectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>in the correct one: <strong>DataTable / OtherEntity / SpatialVector / SpatialRaster</strong> for the file type</li>
+<li>In the correct one: <strong>DataTable / OtherEntity / SpatialVector / SpatialRaster</strong> for the file type</li>
 <li><strong>entityDescription</strong> - longer than 5 words and unique</li>
-<li><strong>physical</strong> present and format correct</li>
+<li><strong>physical</strong> present and up-to-date and format is correct</li>
 </ul>
 <div id="attribute-table" class="section level4 hasAnchor">
 <h4>Attribute Table<a href="final-checklist.html#attribute-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>complete</li>
+<li>Complete</li>
 <li>attributeDefinitions longer than 3 words</li>
 <li><strong>Variables</strong> match what is in the file</li>
 <li><strong>Measurement domain</strong> - if appropirate (ie dateTime correct)</li>
 <li><strong>Missing Value Code</strong> - accounted for if applicable</li>
 <li><strong>Semantic Annotation</strong> - appropriate semantic annotations added, especially for spatial and temporal variables: lat, lon, date etc.</li>
+<li>Custom units were created if necessary</li>
 </ul>
 </div>
 </div>
 <div id="people" class="section level3 hasAnchor">
 <h3>People<a href="final-checklist.html#people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>complete information for each person in each section
+<li>Complete information for each person in each section
 <ul>
-<li>including ORCID and e-mail address for all contacts</li>
-<li>people repeated across sections should have consistent information</li>
+<li>includes ORCID and e-mail address for all contacts</li>
+<li>people repeated across sections have consistent information</li>
 </ul></li>
 </ul>
 </div>
 <div id="geographic-region" class="section level3 hasAnchor">
 <h3>Geographic region<a href="final-checklist.html#geographic-region" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>the map looks correctand matches the geographic description</li>
+<li>the map looks correct and matches the geographic description</li>
 <li>check if negatives (-) are missing</li>
 </ul>
 </div>
 <div id="project" class="section level3 hasAnchor">
 <h3>Project<a href="final-checklist.html#project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>if it is an NSF award you can use the helper function:
+<li>If it is an NSF award you can use the helper function:
 <ul>
 <li><code>doc$dataset$project &lt;- eml_nsf_to_project(awards)</code></li>
 </ul></li>
@@ -510,15 +515,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="methods-1" class="section level3 hasAnchor">
 <h3>Methods<a href="final-checklist.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>present</li>
-<li>no garbled text</li>
+<li>Present</li>
+<li>No garbled text</li>
+<li>Acronyms and units are defined the first time they are used</li>
 </ul>
 </div>
 <div id="check-eml-version" class="section level3 hasAnchor">
 <h3>Check EML Version<a href="final-checklist.html#check-eml-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>currently using: <code>eml-2.2.0</code> (as of July 30 2020)</li>
-<li>review to see if the EML version is set correctly by reviewing the <code>doc$`@context`</code> that it is indeed 2.2.0 under eml</li>
+<li>Currently using: <code>eml-2.2.0</code> (as of July 30 2020)</li>
+<li>Review to see if the EML version is set correctly by reviewing the <code>doc$`@context`</code> that it is indeed 2.2.0 under eml</li>
 <li>Re-run your code again and have the line<code>emld::eml_version("eml-2.2.0")</code> at the top</li>
 <li>Make sure the system metadata is also 2.2.0</li>
 </ul>
@@ -526,7 +532,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="access-1" class="section level3 hasAnchor">
 <h3>Access<a href="final-checklist.html#access-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Granted access to PI using <code>set_rights_and_access()</code>
+<li>If necessary, granted access to PI using <code>set_rights_and_access()</code>
 <ul>
 <li>make sure it is <code>http://</code> (no s)</li>
 </ul></li>
@@ -536,7 +542,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="sftp-files" class="section level3 hasAnchor">
 <h3>SFTP Files<a href="final-checklist.html#sftp-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>if there are files transferred to us via SFTP, delete those files when the ticket is resolved</li>
+<li>If there are files transferred to us via SFTP, delete those files once they have been added to the dataset and when the ticket is resolved</li>
 </ul>
 </div>
 <div id="updated-datasets" class="section level3 hasAnchor">
@@ -546,7 +552,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>New data was added
 <ul>
 <li>Temporal Coverage and Title</li>
-<li>and follow usual protocols</li>
+<li>Confirm if new data used same methods or if methods need updating</li>
 </ul></li>
 <li>Files were replaced
 <ul>
@@ -556,7 +562,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>Was the dataset published before 2021?
 <ul>
-<li>update project info , annotations</li>
+<li>update project info, annotations</li>
 </ul></li>
 <li>Glance over entire page for any small mistakes (ie. repeated additionalMetadata, any missed &amp;amps, typos)</li>
 </ul>
