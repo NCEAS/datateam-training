@@ -40,7 +40,7 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *ordinal*: ordered categories. e.g.: Low, Medium, High
     + *dateTime*: date or time values from the Gregorian calendar. e.g.: 01-01-2001
     + *ratio*: measurement scale with a meaningful zero point in nature. Ratios are proportional to the measured variable. e.g.: 0 Kelvin represents a complete absence of heat. 200 Kelvin is half as hot as 400 Kelvin. 1.2 meters per second is twice as fast as 0.6 meters per second.
-    + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or latitude and longitude coordinates, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius.
+    + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius.
 * **domain**: One of: `textDomain`, `enumeratedDomain`, `numericDomain`, `dateTime`. Required.
     + *textDomain*: text that is free-form, or matches a pattern
     + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. e.g.: CASC = Cascade Lake, HEAR = Heart Lake
