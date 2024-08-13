@@ -36,7 +36,7 @@ favicon: "favicon.ico"
 -   GitHub - if you do not have a public GitHub account already, please register for one <a href="https://github.com/join?source=header-home" target="_blank">here</a>
 -   If you are an intern, fill out anticipated quarterly schedule on the intern google calendar shared with you.
 -   <a href="https://timekeeping.ucsb.edu/" target="_blank">Electronic Timekeeping</a> - make sure you can log on to electronic timekeeping via your UCSBNetID and password (may not be accessible on the first day, if you continue to have issues please let Ana know). If you are an hourly employee, log your hours for your first day! Under today's date select 'Hours Worked' under the Pay Code column, enter the amount of hours under the Amount column, and finally click the 'Save' button in the top right. At the end of every two-week pay period you will also need to click the 'Approve Timecard' button in order to submit your timecard.\
--   <a href="https://www.ucpath.ucsb.edu/" target="_blank">UCPath</a> - you can set up your paycheck preferences here, including direct deposit and income tax withholding. <a href="https://timekeeping.ucsb.edu/sites/default/files/employee_hours_worked_0.pdf" target="_blank">Detailed Instructions</a>
+-   <a href="https://www.ucpath.ucsb.edu/" target="_blank">UCPath</a> - you can set up your paycheck preferences here, including direct deposit and income tax withholding. <a href="https://www.ucpath.ucsb.edu/employee-self-service" target="_blank">Detailed Instructions</a>
 -   Let Justin or Maggie know what email you would like to use for general NCEAS updates from [all\@nceas.ucsb.edu](mailto:all@nceas.ucsb.edu){.email}
 
 ## NCEAS events {.unnumbered}
