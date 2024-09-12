@@ -15,7 +15,7 @@ Useful search terms to use:
  - Keywords
  - Access permissions
  
- ### Set Access Permissions
+### Set Access Permissions
 For some portals such as PerCS portal, will need to be added by running `set_access()`. Please see the specific portal for the exact arguments to pass.
 
 ### Advanced portal customizations
