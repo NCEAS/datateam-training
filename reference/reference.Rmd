@@ -145,3 +145,17 @@ children <- paste0(chapter, sections)
 
 ```{r, child = children}
 ```
+
+# Large Dataset Method
+
+The large dataset method is currently used when processing dataset that have a large number of files or contain very large files, both of which are not well-supported on the current ADC site. Our development team is currently working on addressing this, but in the meantime we are having PIs upload their data files to our servers directly through SFTP (secure file transfer protocol), where we will host them until these changes take place. The current method we use will allow the data files to automatically be uploaded once the updates to the ADC site take place.
+
+```{r, echo = FALSE}
+chapter <- "../workflows/large_dataset_method/"
+sections <- dir(path = chapter, pattern = ".Rmd$")
+children <- paste0(chapter, sections)
+```
+
+```{r, child = children}
+```
+
