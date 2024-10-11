@@ -1,0 +1,32 @@
+## Example Dataset
+
+Here is an example of a published dataset using the large dataset method:
+
+https://arcticdata.io/catalog/view/doi:10.18739/A2X63B701
+
+In the example dataset, you can see:
+
+1. A link in the abstract that directs to the folder with all the data in it
+
+
+![](../images/large_dataset_abstract.png)
+
+2. Other entities that are in a generalized format are representative of the files on the server
+
+
+![](../images/large_dataset_entities.png)
+
+## Processing
+
+The general way to process this type of dataset is:
+
+1. Inspect the files and folder hierarchy where the PI uploaded them in their folder on the datateam server in /home/visitor 
+2. Upload one of each type of file to the dataset to more easily annotate the attributes as normal
+  - Alternatively, you can create and annotate the other entities fully in R if preferred
+3. Change the name and description of each file to be representative of all of the same type of files on the server. 
+  - The name should include the entire file path
+  - You may need to reach out to the PI and have them explain the naming structure of the files
+4. Ask a Data Coordinator to move the data files from the ‘visitor’ folder to var/data’.
+5. Format the abstract using Markdown to include a link to the server using the dataset’s pre-issued DOI
+  - The format is 'http[]()://arcticdata.io/data/[pre-issued DOI]'
+6. Once peer-reviewed, remove the files leaving the representative entities behind.
