@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Understand the EML schema | NCEAS Data Team Reference Guide</title>
+  <title>Large Dataset Method | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Understand the EML schema | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Large Dataset Method | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Understand the EML schema | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Large Dataset Method | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="navigate-through-eml.html"/>
-<link rel="next" href="edit-eml.html"/>
+<link rel="prev" href="example.html"/>
+<link rel="next" href="example-dataset.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -431,25 +431,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="understand-the-eml-schema" class="section level2 hasAnchor">
-<h2>Understand the EML schema<a href="understand-the-eml-schema.html#understand-the-eml-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Another great resource for navigating the EML structure is looking at the <a href = 'https://eml.ecoinformatics.org/schema/' target='_blank'>schema</a> which defines the structure. The schema diagrams on this page are interactive. Further explanations of the symbology can be found <a href = 'https://www.oxygenxml.com/doc/versions/22.0/ug-editor/topics/relax-ng-schema-diagram-symbols.html?hl=symbols' target='_blank'>here</a>. The schema is complicated and may take some time to get familiar with before you will be able to fully understand it. Use your browser’s “search in page” function (usually CTRL-F or Command-F) to navigate the EML schema page quickly.</p>
-<p>For example, let’s take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.</p>
-<p><img src="../images/eml-party.png" /></p>
-<p>A bold line indicates that the element is <em>required</em> if the element above it (to the left in the schema) is used, otherwise the element is <em>optional</em>.</p>
-<p>Notice also that next to the <code>givenName</code> element it says “0..infinity”. This means that the element is unbounded — a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the <code>surName</code> element — a party can have only one surname.</p>
-<p>You will also see icons linking the EML slots together, which indicate the ordering of subsequent slots. These can indicate either a “sequence” or a “choice”. In our example from <code>eml-party</code>, a “choice” icon indicates that either an <code>individualName</code>, <code>organizationName</code>, or <code>positionName</code> is required, but you do not need all three. However, the “sequence” icon tells us that if you use an <code>individualName</code>, you must include the <code>surName</code> as a child element. If you include the optional child elements <code>salutation</code> and <code>givenName</code>, they must be written in the order presented in the schema.</p>
-<p>The eml schema sections you may find particularly helpful include <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>, <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>eml-attribute</a> and <a href = 'https://eml.ecoinformatics.org/images/eml-physical.png' target='_blank'>eml-physical</a>.</p>
-<p>For a more detailed description of the EML schema, see the <a href = 'https://nceas.github.io/datateam-training/reference/explore-eml.html' target='_blank'>reference section on exploring EML</a>.</p>
+<div id="large-dataset-method" class="section level1 hasAnchor">
+<h1>Large Dataset Method<a href="large-dataset-method.html#large-dataset-method" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The large dataset method is currently used when processing dataset that have a large number of files or contain very large files, both of which are not well-supported on the current ADC site. Our development team is currently working on addressing this, but in the meantime we are having PIs upload their data files to our servers directly through SFTP (secure file transfer protocol), where we will host them until these changes take place. The current method we use will allow the data files to automatically be uploaded once the updates to the ADC site take place.</p>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="navigate-through-eml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="edit-eml.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="example-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
