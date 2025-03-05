@@ -1,0 +1,31 @@
+## Uploading files to `datateam`
+
+We'll use the large dataset method if a submitter has a dataset with around 700+ files, as the uploading would take too long through the website. When we confirm with a PI that their submission has 700+ files, we will begin to give instructions for how they can directly upload all their files to our datateam server. Eventually, we'll move these files to a web-accessible folder so that viewers can access their files directly from our server instead of through metacat.
+
+### Instructions for uploading files to `datateam`
+
+To have submitters upload their files to our server, we will give them access through SSH (secure shell). Please reach out to a Data Coordinator for the credentials of the `visitor` account in the `datateam` server.
+
+If the submitter is familiar with SSH, we can give them the credentials and tell them to create a folder under the home directory of `/home/visitor` to add all their files. If they are not familiar, we will give them the following instructions to use a GUI client for SSH:
+
+> Cyberduck is a free software that you can download at <https://cyberduck.io/download/>, and follow the directions below:
+>
+> 1.  Open Cyberduck.
+>
+> 2.  Click "Open Connection".
+>
+> 3.  From the drop-down, choose "SFTP (Secure File Transfer Protocol)".
+>
+> 4.  Enter "datateam.nceas.ucsb.edu" for Server.
+>
+> 5.  Enter your username and password (ask Data Coordinators)
+>
+> 6.  Connect.
+>
+> 7.  Create the folder `/home/visitor/submitter_name` and upload your files.
+
+### Moving files within `datateam`
+
+Eventually, we will be moving the files from `/home/visitor` to the `/var/data` shoulder. While we are in the process of curating the dataset, we will move the files to `var/data/curation`.
+
+Then, when we are ready for the files to be in a web-accessible location (i.e. when the dataset is ready to be published), we'll move the files to `var/data/10.18739/preIssuedDOI/`. Before we can create the `preIssuedDOI` directory, we'll need to mint a pre-issued DOI for this dataset.
