@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Customizing Data Portals | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Customizing Data Portals | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -517,23 +519,23 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="updating-portals" class="section level3 hasAnchor">
 <h3>Updating portals<a href="customizing-data-portals.html#updating-portals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For portals on DataOne - use the ucsb node. Portals made on the ADC use the same node as the datasets.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="customizing-data-portals.html#cb219-1" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
-<span id="cb219-2"><a href="customizing-data-portals.html#cb219-2" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
-<span id="cb219-3"><a href="customizing-data-portals.html#cb219-3" tabindex="-1"></a></span>
-<span id="cb219-4"><a href="customizing-data-portals.html#cb219-4" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb219-5"><a href="customizing-data-portals.html#cb219-5" tabindex="-1"></a>ucsb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:mnUCSB1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="customizing-data-portals.html#cb220-1" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
+<span id="cb220-2"><a href="customizing-data-portals.html#cb220-2" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
+<span id="cb220-3"><a href="customizing-data-portals.html#cb220-3" tabindex="-1"></a></span>
+<span id="cb220-4"><a href="customizing-data-portals.html#cb220-4" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb220-5"><a href="customizing-data-portals.html#cb220-5" tabindex="-1"></a>ucsb <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:mnUCSB1&quot;</span>)</span></code></pre></div>
 <p>Look for portals using <code>query()</code>so you can get the appropriate seriesID</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="customizing-data-portals.html#cb220-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">query</span>(ucsb, <span class="fu">list</span>(<span class="at">q =</span><span class="st">&quot;formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
-<span id="cb220-2"><a href="customizing-data-portals.html#cb220-2" tabindex="-1"></a>                       <span class="at">rows =</span> <span class="st">&quot;300&quot;</span>,</span>
-<span id="cb220-3"><a href="customizing-data-portals.html#cb220-3" tabindex="-1"></a>                       <span class="at">fl =</span> <span class="st">&quot;identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId&quot;</span>,</span>
-<span id="cb220-4"><a href="customizing-data-portals.html#cb220-4" tabindex="-1"></a>                       <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>),</span>
-<span id="cb220-5"><a href="customizing-data-portals.html#cb220-5" tabindex="-1"></a>            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="customizing-data-portals.html#cb221-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">query</span>(ucsb, <span class="fu">list</span>(<span class="at">q =</span><span class="st">&quot;formatId:*purl.dataone.org/portals-1.0.0 AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb221-2"><a href="customizing-data-portals.html#cb221-2" tabindex="-1"></a>                       <span class="at">rows =</span> <span class="st">&quot;300&quot;</span>,</span>
+<span id="cb221-3"><a href="customizing-data-portals.html#cb221-3" tabindex="-1"></a>                       <span class="at">fl =</span> <span class="st">&quot;identifier,dateUploaded,formatId,obsoletedBy,origin,formatType,title, seriesId&quot;</span>,</span>
+<span id="cb221-4"><a href="customizing-data-portals.html#cb221-4" tabindex="-1"></a>                       <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>),</span>
+<span id="cb221-5"><a href="customizing-data-portals.html#cb221-5" tabindex="-1"></a>            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <p>Download the file and open to edit and add the filters and other options.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="customizing-data-portals.html#cb221-1" tabindex="-1"></a>id <span class="ot">&lt;-</span> df[df<span class="sc">$</span>title <span class="sc">==</span> <span class="st">&quot;Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition&quot;</span>, <span class="dv">2</span>] <span class="co">#series ID</span></span>
-<span id="cb221-2"><a href="customizing-data-portals.html#cb221-2" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(ucsb, id), <span class="st">&quot;file_mosaic.xml&quot;</span>) <span class="co">#download</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="customizing-data-portals.html#cb222-1" tabindex="-1"></a>id <span class="ot">&lt;-</span> df[df<span class="sc">$</span>title <span class="sc">==</span> <span class="st">&quot;Multidisciplinary drifting Observatory for the Study of Arctic Climate expedition&quot;</span>, <span class="dv">2</span>] <span class="co">#series ID</span></span>
+<span id="cb222-2"><a href="customizing-data-portals.html#cb222-2" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(ucsb, id), <span class="st">&quot;file_mosaic.xml&quot;</span>) <span class="co">#download</span></span></code></pre></div>
 <p>Make whatever edits you need and upload the file. The identifier should be updated if successful but if there is an issue with the xml document go back and fix the issue before re-uploading again.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="customizing-data-portals.html#cb222-1" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(ucsb,  id)</span>
-<span id="cb222-2"><a href="customizing-data-portals.html#cb222-2" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">update_object</span>(ucsb, sys<span class="sc">@</span>identifier, <span class="at">path =</span> <span class="st">&quot;file_mosaic.xml&quot;</span>, <span class="at">format_id =</span> sys<span class="sc">@</span>formatId, <span class="at">sid =</span> sys<span class="sc">@</span>seriesId)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="customizing-data-portals.html#cb223-1" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(ucsb,  id)</span>
+<span id="cb223-2"><a href="customizing-data-portals.html#cb223-2" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">update_object</span>(ucsb, sys<span class="sc">@</span>identifier, <span class="at">path =</span> <span class="st">&quot;file_mosaic.xml&quot;</span>, <span class="at">format_id =</span> sys<span class="sc">@</span>formatId, <span class="at">sid =</span> sys<span class="sc">@</span>seriesId)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -556,42 +558,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

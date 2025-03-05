@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Use references | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Use references | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -472,9 +474,9 @@ will need to keep this in account.
   &lt;/dataset&gt;
 &lt;/eml&gt;</code></pre>
 <p>So you see those two times Bryce Mecum is referenced there? If you mean to state that Bryce Mecum is the creator and contact for the dataset, this is a good start. But with just a name, there’s some ambiguity as to whether the creator and contact are truly the same person. Using references, we can remove all doubt.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="use-references.html#cb155-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
-<span id="cb155-2"><a href="use-references.html#cb155-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
-<span id="cb155-3"><a href="use-references.html#cb155-3" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="use-references.html#cb156-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator[[<span class="dv">1</span>]]<span class="sc">$</span>id  <span class="ot">&lt;-</span> <span class="st">&quot;reference_id&quot;</span></span>
+<span id="cb156-2"><a href="use-references.html#cb156-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;reference_id&quot;</span>) </span>
+<span id="cb156-3"><a href="use-references.html#cb156-3" tabindex="-1"></a><span class="fu">print</span>(doc)</span></code></pre></div>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;eml:eml xmlns:eml=&quot;eml://ecoinformatics.org/eml-2.1.1&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:stmml=&quot;http://www.xml-cml.org/schema/stmml-1.1&quot; packageId=&quot;id&quot; system=&quot;system&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1/ eml.xsd&quot;&gt;
   &lt;dataset&gt;
@@ -506,12 +508,12 @@ record but doesn’t need to have meaning outside of that.
 <li>Use references to add that information into the <code>attributeList</code>s of the other data tables</li>
 </ol>
 <p>For example, if all the data tables in our data package have the same attributes, we can set the attribute list for the first one, and use references for the rest:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="use-references.html#cb157-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
-<span id="cb157-2"><a href="use-references.html#cb157-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
-<span id="cb157-3"><a href="use-references.html#cb157-3" tabindex="-1"></a></span>
-<span id="cb157-4"><a href="use-references.html#cb157-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
-<span id="cb157-5"><a href="use-references.html#cb157-5" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
-<span id="cb157-6"><a href="use-references.html#cb157-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="use-references.html#cb158-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> attribute_list</span>
+<span id="cb158-2"><a href="use-references.html#cb158-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;shared_attributes&quot;</span> <span class="co"># use any unique name for your id</span></span>
+<span id="cb158-3"><a href="use-references.html#cb158-3" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="use-references.html#cb158-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable)) {</span>
+<span id="cb158-5"><a href="use-references.html#cb158-5" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">references =</span> <span class="st">&quot;shared_attributes&quot;</span>) <span class="co"># use the id you set above</span></span>
+<span id="cb158-6"><a href="use-references.html#cb158-6" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <!-- </div> -->
@@ -535,42 +537,42 @@ record but doesn’t need to have meaning outside of that.
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

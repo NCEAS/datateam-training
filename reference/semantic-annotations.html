@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Semantic annotations | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Semantic annotations | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -467,7 +469,7 @@ spatialVectors and dataTables
 <p>Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (<code>propertyURI</code>),
 and object (<code>valueURI</code>). Because of the way our search interface is built, for now we will be using attribute annotations that have a <code>propertyURI</code> label of “contains measurements of type”.</p>
 <p>Here is what an annotation for an attribute looks like in R. Note that both the <code>propertyURI</code> and <code>valueURI</code> have both a label, and the URI itself.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="semantic-annotations.html#cb117-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="semantic-annotations.html#cb118-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>annotation</span></code></pre></div>
 <pre><code>$id
 [1] &quot;ODBcOyaTsg&quot;
 
@@ -533,20 +535,20 @@ attribute</a> in this dataset
 <h4>Manually Annotating<a href="semantic-annotations.html#manually-annotating" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists</em></p>
 <p>First you need to figure out the index of the attribute you want to annotate.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="semantic-annotations.html#cb119-1" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="semantic-annotations.html#cb120-1" tabindex="-1"></a><span class="fu">eml_get_simple</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList, <span class="st">&quot;attributeName&quot;</span>)</span></code></pre></div>
 <pre><code> [1] &quot;prdM&quot;         &quot;t090C&quot;        &quot;t190C&quot;        &quot;c0mS/cm&quot;      &quot;c1mS/cm&quot;      &quot;sal00&quot;        &quot;sal11&quot;        &quot;sbeox0V&quot;      &quot;flECO-AFL&quot;
 [10] &quot;CStarTr0&quot;     &quot;cpar&quot;         &quot;v0&quot;           &quot;v4&quot;           &quot;v6&quot;           &quot;v7&quot;           &quot;svCM&quot;         &quot;altM&quot;         &quot;depSM&quot;    
 [19] &quot;scan&quot;         &quot;sbeox0ML/L&quot;   &quot;sbeox0dOV/dT&quot; &quot;flag&quot;    </code></pre>
 <p>Next, assign an <code>id</code> to the attribute. It should be unique within the document, and it’s nice if it is human readable and related to the attribute it is describing. One format you could use is <code>entity_x_attribute_y</code> which should be unique in scope, and is nice and descriptive.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="semantic-annotations.html#cb121-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;entity_ctd_attribute_salinity&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="semantic-annotations.html#cb122-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="st">&quot;entity_ctd_attribute_salinity&quot;</span></span></code></pre></div>
 <p>Now, assign the <code>propertyURI</code> information. This will be the same for every annotation you build.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="semantic-annotations.html#cb122-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>propertyURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</span>
-<span id="cb122-2"><a href="semantic-annotations.html#cb122-2" tabindex="-1"></a>                                                                                       <span class="at">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="semantic-annotations.html#cb123-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>propertyURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;contains measurements of type&quot;</span>,</span>
+<span id="cb123-2"><a href="semantic-annotations.html#cb123-2" tabindex="-1"></a>                                                                                       <span class="at">propertyURI =</span> <span class="st">&quot;http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType&quot;</span>)</span></code></pre></div>
 <p>Finally, add the <code>valueURI</code> information from your search.</p>
 <p><img src="../images/bioportal_term.png" />
 You should see an ID on the Bioportal page that looks like a URL - this is the <code>valueURI</code>. Use the value to populate the label element.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="semantic-annotations.html#cb123-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
-<span id="cb123-2"><a href="semantic-annotations.html#cb123-2" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="semantic-annotations.html#cb124-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">3</span>]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[<span class="dv">6</span>]]<span class="sc">$</span>annotation<span class="sc">$</span>valueURI <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">label =</span> <span class="st">&quot;Water Salinity&quot;</span>,</span>
+<span id="cb124-2"><a href="semantic-annotations.html#cb124-2" tabindex="-1"></a>                                                                                       <span class="at">valueURI =</span> <span class="st">&quot;http://purl.dataone.org/odo/ECSO_00001164&quot;</span>)</span></code></pre></div>
 </div>
 <div id="shiny-attributes" class="section level4 hasAnchor">
 <h4>Shiny Attributes<a href="semantic-annotations.html#shiny-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -566,9 +568,9 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <p>As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.</p>
 <p>Datasets will be categorized using the <a href="https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&amp;conceptid=root">Academic Ontology</a>. These annotations will be seen at the top of the landing page, and can be thought of as “themes” for the dataset. In reality, they are dataset-level annotations.</p>
 <p>Be sure to ask your peers in the #datateam slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="semantic-annotations.html#cb124-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_categorize_dataset</span>(doc, <span class="fu">c</span>(<span class="st">&quot;Soil Science&quot;</span>, <span class="st">&quot;Plant Science&quot;</span>, <span class="st">&quot;Ecology&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="semantic-annotations.html#cb125-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">eml_categorize_dataset</span>(doc, <span class="fu">c</span>(<span class="st">&quot;Soil Science&quot;</span>, <span class="st">&quot;Plant Science&quot;</span>, <span class="st">&quot;Ecology&quot;</span>))</span></code></pre></div>
 <p>Be careful not to duplicate dataset annotations. The above code does not existing prior dataset annotations. Duplicate annotations can be removed by setting them to <code>NULL</code>.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="semantic-annotations.html#cb125-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="semantic-annotations.html#cb126-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>annotation[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -592,42 +594,42 @@ You should see an ID on the Bioportal page that looks like a URL - this is the <
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

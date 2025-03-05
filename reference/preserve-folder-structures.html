@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Preserve folder structures | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Preserve folder structures | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -434,14 +436,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="preserve-folder-structures" class="section level2 hasAnchor">
 <h2>Preserve folder structures<a href="preserve-folder-structures.html#preserve-folder-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes, researchers will upload zip files that a contain nested file and folder structure that we would like to maintain. This reference section will walk you through how to re-upload the contents of the zip file to the Arctic Data Center such that the files and folders are preserved. Note that changing the locations of the files within the package can be tricky, so take these steps with care and try to make sure it is done correctly.</p>
-<p>With that, here are the steps assuming that the PI has uploaded one zip file to their dataset. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator. In particular, tar files (.tgz) or rar files (.rar) are also compressed archives that might be better to unpack using command line tools.</p>
+<p>With that, here are the steps assuming that the PI has uploaded one zip file to their dataset that holds all their files organized in their desired file hierarchy. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator. In particular, tar files (.tgz) or rar files (.rar) are also compressed archives that might be better to unpack using command line tools.</p>
 <div id="download-the-zip-file-to-datateam" class="section level3 hasAnchor">
 <h3>Download the zip file to datateam<a href="preserve-folder-structures.html#download-the-zip-file-to-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, we will download the file, using R.</p>
 <ol style="list-style-type: decimal">
 <li>Navigate to the dataset landing page on the Arctic Data Center</li>
-<li>Right click the “download” button next to the zip file</li>
-<li>Select “copy link address”</li>
+<li>Right click the “Download” button next to the zip file</li>
+<li>Select “Copy Link Address”</li>
 <li>Run the following two lines of code to set the URL variable, and extract the pid</li>
 </ol>
 <p>Here is an example on the test site. Note that on production, you will need to change the URL that you are substituting in the second line of code.</p>
@@ -452,23 +454,23 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Download the file</li>
 </ol>
 <p>Note that this will download the file to the location you specify as the second argument in <code>writeBin</code>. If you are organizing your scripts and data by submitter, it would look like the example below.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="preserve-folder-structures.html#cb51-1" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid), <span class="st">&quot;~/Submitter/example.zip&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="preserve-folder-structures.html#cb51-1" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid), <span class="st">&quot;~/submitter/data/example.zip&quot;</span>)</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Unzip the file into your submitter directory.</li>
 </ol>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="preserve-folder-structures.html#cb52-1" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/Submitter/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/Submitter&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="preserve-folder-structures.html#cb52-1" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/submitter/data/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/submitter/data&quot;</span>)</span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Delete the zip file (example.zip)</li>
 </ol>
-<p>Now if you look at the directory, you shuold see the unzipped contents of the file in a subdirectory of <code>~/Submitter</code>. The name of the directory will be the name of the folder the PI created the archive from.</p>
-<p>Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for csv versions of excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.</p>
+<p>Now if you look at the directory, you should see the unzipped contents of the file in a sub-directory of <code>~/submitter/data</code>. The name of the directory will be the name of the folder the PI created the archive from. In this case, that folder is titled <code>final_image_set</code>.</p>
+<p>Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for CSV versions of Excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.</p>
 </div>
 <div id="re-upload-the-contents-to-the-arctic-data-center" class="section level3 hasAnchor">
 <h3>Re-upload the contents to the Arctic Data Center<a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you have confirmed everything is all good, we can upload the files to the ADC while preserving the directory structure.</p>
 <p>First, get the data package loaded into your R session as usual. I recommend not attempting any EML edits while you do these steps, this update adding the files is best done on it’s own, and EML edits can be done on the next version.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="preserve-folder-structures.html#cb53-1" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;identifier&quot;</span>)</span></code></pre></div>
-<p>Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the download all result) of the data package.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="preserve-folder-structures.html#cb53-1" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier =</span> resourceMapId, <span class="at">lazyLoad =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>) <span class="co"># Gather data package</span></span></code></pre></div>
+<p>Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the “Download All” result) of the data package.</p>
 <div class="warning">
 <p>
 If you don’t know the difference between an absolute and relative
@@ -479,65 +481,68 @@ A path is a location of a file or folder on a computer. There are two
 types of paths in computing: absolute paths and relative paths.
 </p>
 <p>
-An absolute path always starts with the root of your file system and
-locates files from there. The absolute path to my example submitter zip
-is: <code>/home/jclark/Submitter/example.zip</code>. The generic
-shortcut <code>~/</code> is often used to replace the location of your
-home directory (<code>/home/username</code>) to save typing, but your
-path is still an absolute path if it starts with <code>~/</code>. Note
-that a relative path will <strong>always</strong> start with either
-<code>~/</code> or <code>/</code>.
+<em>Absolute paths</em> always start with the root of your file
+system and locates files from there. The absolute path to my example
+submitter zip is: <code>/home/jclark/submitter/data/example.zip</code>.
+The generic shortcut <code>~/</code> is often used to replace the
+location of your home directory (<code>/home/username</code>) to save
+typing, but your path is still an absolute path if it starts with
+<code>~/</code>. Note that a relative path will <strong>always</strong>
+start with either <code>~/</code> or <code>/</code>.
 </p>
 <p>
-Relative paths start from some location in your file system that is
-below the root. Relative paths are combined with the path of that
-location to locate files on your system. R (and some other languages
-like MATLAB) refer to the location where the relative path starts as our
-working directory. If our working directory is set to
-<code>~/Submitter</code>, the relative path to the zip would be just
-<code>example.zip</code>. Note that a relative path will
+<em>Relative paths</em> start from some location in your file system
+that is below the root. Relative paths are combined with the path of
+that location to locate files on your system. R (and some other
+languages like MATLAB) refer to the location where the relative path
+starts as our working directory. If our working directory is set to
+<code>~/submitter</code>, the relative path to the zip would be just
+<code>data/example.zip</code>. Note that a relative path will
 <strong>never</strong> start with either <code>~/</code> or
 <code>/</code>.
 </p>
 </div>
-<p>Getting these paths right is very important because we don’t want submitters to download a folder of data, and have the paths look like <code>/home/internname/ticket_27341/important_folder/important_file.csv</code>. The first part of that path is particular to however the person processing the ticket organized the data, and is not how the submitter of the data intented to organize the data. Follow the steps below to make sure this does not happen.</p>
+<p>Getting these paths right is very important because we don’t want submitters to download a folder of data, and have the paths look like <code>/home/internname/ticket_27341/important_folder/important_file.csv</code>. The first part of that absolute path is particular to however the person processing the ticket organized the data, and is not how the submitter of the data intended to organize the data. Follow the steps below to make sure this does not happen.</p>
 <ol style="list-style-type: decimal">
-<li><p>get a list of absolute paths for each file in the directory. <strong>NOTE</strong> The “PI_dir_name” here represents whatever directory you retrieved after running <code>unzip</code> in the previous step. The actual .zip file should not be in this directory.</p></li>
-<li><p>get a list of relative paths for each file in the directory. Note this is the same command, but with the argument <code>full.names</code> set to <code>FALSE</code>.</p></li>
+<li><p>Get a list of absolute paths for each file in the directory. <strong>NOTE</strong> The “PI_dir_name” here represents whatever directory you retrieved after running <code>unzip</code> in the previous step. The actual .zip file should not be in this directory. In our example, this “PI_dir_name” is <code>final_image_set</code>.</p></li>
+<li><p>Get a list of relative paths for each file in the directory. Note this is the same command, but with the argument <code>full.names</code> set to <code>FALSE</code>.</p></li>
 </ol>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="preserve-folder-structures.html#cb54-1" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-2"><a href="preserve-folder-structures.html#cb54-2" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="preserve-folder-structures.html#cb54-1" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-2"><a href="preserve-folder-structures.html#cb54-2" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="warning">
 <p>
 Make sure that these paths look correct! They should contain ONLY the
 files that were unzipped. If you have other scripts or metadata files
 you might want to rearrange your directories to get the correct paths.
-The relative paths should start with the submitter’s directory name. In
-this example they will look like the below:
+The <em>relative paths</em> should start with the submitter’s directory
+name. In this example, that submitter’s top-level directory is titled
+<code>final_image_set</code>, so they will look like the names
+below:
 </p>
 <p>
 <code>“final_image_set/level1.png” “final_image_set/photos/level2_1.png” “final_image_set/photos/level2_2.png”</code>
 </p>
 </div>
 <p>Now for each of these files, we can create a <code>dataObject</code> for them and add them to the package using a loop. Before running this, look at the values of your <code>abs_paths</code> and <code>rel_paths</code> and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="preserve-folder-structures.html#cb55-1" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
-<span id="cb55-2"><a href="preserve-folder-structures.html#cb55-2" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="preserve-folder-structures.html#cb55-3" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataObj))</span>
-<span id="cb55-4"><a href="preserve-folder-structures.html#cb55-4" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb55-5"><a href="preserve-folder-structures.html#cb55-5" tabindex="-1"></a>oes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb55-6"><a href="preserve-folder-structures.html#cb55-6" tabindex="-1"></a></span>
-<span id="cb55-7"><a href="preserve-folder-structures.html#cb55-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)){</span>
-<span id="cb55-8"><a href="preserve-folder-structures.html#cb55-8" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
-<span id="cb55-9"><a href="preserve-folder-structures.html#cb55-9" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(d1c<span class="sc">@</span>mn, <span class="at">scheme =</span> <span class="st">&quot;uuid&quot;</span>)</span>
-<span id="cb55-10"><a href="preserve-folder-structures.html#cb55-10" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i], <span class="at">id =</span> id)</span>
-<span id="cb55-11"><a href="preserve-folder-structures.html#cb55-11" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataObj)</span>
-<span id="cb55-12"><a href="preserve-folder-structures.html#cb55-12" tabindex="-1"></a>  oes[[i]] <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">otherEntity</span>(<span class="at">entityName =</span> rel_paths[i], <span class="at">entityType =</span> formatId, <span class="at">id =</span> id)</span>
-<span id="cb55-13"><a href="preserve-folder-structures.html#cb55-13" tabindex="-1"></a>}</span>
-<span id="cb55-14"><a href="preserve-folder-structures.html#cb55-14" tabindex="-1"></a></span>
-<span id="cb55-15"><a href="preserve-folder-structures.html#cb55-15" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> oes</span>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="preserve-folder-structures.html#cb55-1" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>) <span class="co"># Get metadata PID</span></span>
+<span id="cb55-2"><a href="preserve-folder-structures.html#cb55-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId)) <span class="co"># Read in metadata EML file</span></span>
+<span id="cb55-3"><a href="preserve-folder-structures.html#cb55-3" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="preserve-folder-structures.html#cb55-4" tabindex="-1"></a>oes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb55-5"><a href="preserve-folder-structures.html#cb55-5" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="preserve-folder-structures.html#cb55-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)) {</span>
+<span id="cb55-7"><a href="preserve-folder-structures.html#cb55-7" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
+<span id="cb55-8"><a href="preserve-folder-structures.html#cb55-8" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(d1c<span class="sc">@</span>mn, <span class="at">scheme =</span> <span class="st">&quot;uuid&quot;</span>)</span>
+<span id="cb55-9"><a href="preserve-folder-structures.html#cb55-9" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i], <span class="at">id =</span> id)</span>
+<span id="cb55-10"><a href="preserve-folder-structures.html#cb55-10" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataId)</span>
+<span id="cb55-11"><a href="preserve-folder-structures.html#cb55-11" tabindex="-1"></a>  oes[[i]] <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">otherEntity</span>(<span class="at">entityName =</span> rel_paths[i], <span class="at">entityType =</span> formatId, <span class="at">id =</span> id) <span class="co"># Can add entityDescription in this command also</span></span>
+<span id="cb55-12"><a href="preserve-folder-structures.html#cb55-12" tabindex="-1"></a>}</span>
+<span id="cb55-13"><a href="preserve-folder-structures.html#cb55-13" tabindex="-1"></a></span>
+<span id="cb55-14"><a href="preserve-folder-structures.html#cb55-14" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Removing otherEntity of zip file</span></span>
+<span id="cb55-15"><a href="preserve-folder-structures.html#cb55-15" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> oes <span class="co"># Adding otherEntities to section</span></span>
 <span id="cb55-16"><a href="preserve-folder-structures.html#cb55-16" tabindex="-1"></a></span>
-<span id="cb55-17"><a href="preserve-folder-structures.html#cb55-17" tabindex="-1"></a><span class="fu">write_eml</span>(doc, <span class="st">&quot;~/metadata.xml&quot;</span>)</span>
-<span id="cb55-18"><a href="preserve-folder-structures.html#cb55-18" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataObj, <span class="at">replacement=</span><span class="st">&quot;~/metadata.xml&quot;</span>)</span></code></pre></div>
+<span id="cb55-17"><a href="preserve-folder-structures.html#cb55-17" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span>
+<span id="cb55-18"><a href="preserve-folder-structures.html#cb55-18" tabindex="-1"></a><span class="fu">write_eml</span>(doc, <span class="st">&quot;~/metadata.xml&quot;</span>)</span>
+<span id="cb55-19"><a href="preserve-folder-structures.html#cb55-19" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span><span class="st">&quot;~/metadata.xml&quot;</span>)</span></code></pre></div>
 <p>Once this is finished you can examine the relationships by running <code>View(dp@relations$relations)</code>. If everything worked out well you should see rows that look like this:</p>
 <div class="line-block"><code>urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d</code> | <code>http://www.w3.org/ns/prov#atLocation</code> | <code>figure2/figure2.tif</code> |</div>
 <p>The <code>targetPath</code> (3rd column) should NOT look like</p>
@@ -549,25 +554,107 @@ this example they will look like the below:
 <div id="summary" class="section level3 hasAnchor">
 <h3>Summary<a href="preserve-folder-structures.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here is the example code all put together. Make sure you change all of the relevant bits, and check your work carefully!!</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="preserve-folder-structures.html#cb57-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338&quot;</span></span>
-<span id="cb57-2"><a href="preserve-folder-structures.html#cb57-2" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
-<span id="cb57-3"><a href="preserve-folder-structures.html#cb57-3" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="preserve-folder-structures.html#cb57-4" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid), <span class="st">&quot;~/Submitter/example.zip&quot;</span>)</span>
-<span id="cb57-5"><a href="preserve-folder-structures.html#cb57-5" tabindex="-1"></a></span>
-<span id="cb57-6"><a href="preserve-folder-structures.html#cb57-6" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/Submitter/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/Submitter&quot;</span>)</span>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="preserve-folder-structures.html#cb57-1" tabindex="-1"></a><span class="do">### Downloading ZIP file</span></span>
+<span id="cb57-2"><a href="preserve-folder-structures.html#cb57-2" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338&quot;</span></span>
+<span id="cb57-3"><a href="preserve-folder-structures.html#cb57-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
+<span id="cb57-4"><a href="preserve-folder-structures.html#cb57-4" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="preserve-folder-structures.html#cb57-5" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid), <span class="st">&quot;~/submitter/data/example.zip&quot;</span>)</span>
+<span id="cb57-6"><a href="preserve-folder-structures.html#cb57-6" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/submitter/data/example.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/submitter/data&quot;</span>)</span>
 <span id="cb57-7"><a href="preserve-folder-structures.html#cb57-7" tabindex="-1"></a></span>
-<span id="cb57-8"><a href="preserve-folder-structures.html#cb57-8" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="st">&quot;identifier&quot;</span>)</span>
-<span id="cb57-9"><a href="preserve-folder-structures.html#cb57-9" tabindex="-1"></a></span>
-<span id="cb57-10"><a href="preserve-folder-structures.html#cb57-10" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb57-11"><a href="preserve-folder-structures.html#cb57-11" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/Submitter/PI_dir_name/&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb57-12"><a href="preserve-folder-structures.html#cb57-12" tabindex="-1"></a></span>
-<span id="cb57-13"><a href="preserve-folder-structures.html#cb57-13" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>)</span>
-<span id="cb57-14"><a href="preserve-folder-structures.html#cb57-14" tabindex="-1"></a></span>
-<span id="cb57-15"><a href="preserve-folder-structures.html#cb57-15" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)){</span>
-<span id="cb57-16"><a href="preserve-folder-structures.html#cb57-16" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
-<span id="cb57-17"><a href="preserve-folder-structures.html#cb57-17" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i])</span>
-<span id="cb57-18"><a href="preserve-folder-structures.html#cb57-18" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataObj)</span>
-<span id="cb57-19"><a href="preserve-folder-structures.html#cb57-19" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb57-8"><a href="preserve-folder-structures.html#cb57-8" tabindex="-1"></a><span class="do">### Re-uploading contents to data package</span></span>
+<span id="cb57-9"><a href="preserve-folder-structures.html#cb57-9" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>) <span class="co"># Setting the Member Node</span></span>
+<span id="cb57-10"><a href="preserve-folder-structures.html#cb57-10" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier =</span> resourceMapId, <span class="at">lazyLoad =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>) <span class="co"># Gather data package</span></span>
+<span id="cb57-11"><a href="preserve-folder-structures.html#cb57-11" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="preserve-folder-structures.html#cb57-12" tabindex="-1"></a><span class="do">##### Gather Metadata EML</span></span>
+<span id="cb57-13"><a href="preserve-folder-structures.html#cb57-13" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>) <span class="co"># Get metadata PID</span></span>
+<span id="cb57-14"><a href="preserve-folder-structures.html#cb57-14" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId)) <span class="co"># Read in metadata EML file</span></span>
+<span id="cb57-15"><a href="preserve-folder-structures.html#cb57-15" tabindex="-1"></a></span>
+<span id="cb57-16"><a href="preserve-folder-structures.html#cb57-16" tabindex="-1"></a><span class="do">##### Get paths</span></span>
+<span id="cb57-17"><a href="preserve-folder-structures.html#cb57-17" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-18"><a href="preserve-folder-structures.html#cb57-18" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-19"><a href="preserve-folder-structures.html#cb57-19" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="preserve-folder-structures.html#cb57-20" tabindex="-1"></a>oes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb57-21"><a href="preserve-folder-structures.html#cb57-21" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)) {</span>
+<span id="cb57-22"><a href="preserve-folder-structures.html#cb57-22" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
+<span id="cb57-23"><a href="preserve-folder-structures.html#cb57-23" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(d1c<span class="sc">@</span>mn, <span class="at">scheme =</span> <span class="st">&quot;uuid&quot;</span>)</span>
+<span id="cb57-24"><a href="preserve-folder-structures.html#cb57-24" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i], <span class="at">id =</span> id)</span>
+<span id="cb57-25"><a href="preserve-folder-structures.html#cb57-25" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataId)</span>
+<span id="cb57-26"><a href="preserve-folder-structures.html#cb57-26" tabindex="-1"></a>  oes[[i]] <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">otherEntity</span>(<span class="at">entityName =</span> rel_paths[i], <span class="at">entityType =</span> formatId, <span class="at">id =</span> id) <span class="co"># Can add entityDescription in this command also</span></span>
+<span id="cb57-27"><a href="preserve-folder-structures.html#cb57-27" tabindex="-1"></a>}</span>
+<span id="cb57-28"><a href="preserve-folder-structures.html#cb57-28" tabindex="-1"></a></span>
+<span id="cb57-29"><a href="preserve-folder-structures.html#cb57-29" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Removing otherEntity of zip file</span></span>
+<span id="cb57-30"><a href="preserve-folder-structures.html#cb57-30" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> oes <span class="co"># Adding otherEntities to section</span></span>
+<span id="cb57-31"><a href="preserve-folder-structures.html#cb57-31" tabindex="-1"></a></span>
+<span id="cb57-32"><a href="preserve-folder-structures.html#cb57-32" tabindex="-1"></a><span class="do">### Validate and save EML</span></span>
+<span id="cb57-33"><a href="preserve-folder-structures.html#cb57-33" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span>
+<span id="cb57-34"><a href="preserve-folder-structures.html#cb57-34" tabindex="-1"></a><span class="fu">write_eml</span>(doc, <span class="st">&quot;~/metadata.xml&quot;</span>)</span>
+<span id="cb57-35"><a href="preserve-folder-structures.html#cb57-35" tabindex="-1"></a></span>
+<span id="cb57-36"><a href="preserve-folder-structures.html#cb57-36" tabindex="-1"></a><span class="do">### Upload Dataset</span></span>
+<span id="cb57-37"><a href="preserve-folder-structures.html#cb57-37" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span><span class="st">&quot;~/metadata.xml&quot;</span>) <span class="co"># Replace metadata file</span></span>
+<span id="cb57-38"><a href="preserve-folder-structures.html#cb57-38" tabindex="-1"></a></span>
+<span id="cb57-39"><a href="preserve-folder-structures.html#cb57-39" tabindex="-1"></a>myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>)</span>
+<span id="cb57-40"><a href="preserve-folder-structures.html#cb57-40" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span>F, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p>One note: if you have files you want to keep in your dataset along with the ZIP file contents you’re adding, you can run <code>doc$dataset$otherEntity &lt;- c(doc$dataset$otherEntity, oes)</code> so that you’ll just be adding your new entities instead of replacing the older ones.</p>
+</div>
+<div id="example-with-multiple-zip-files" class="section level3 hasAnchor">
+<h3>Example with multiple ZIP files<a href="preserve-folder-structures.html#example-with-multiple-zip-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is an example script for a dataset in which the PI uploaded multiple ZIP files they wanted to represent different folders of their dataset</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="preserve-folder-structures.html#cb58-1" tabindex="-1"></a><span class="do">### Downloading and unzipping 3 ZIP files</span></span>
+<span id="cb58-2"><a href="preserve-folder-structures.html#cb58-2" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A5f177997-841b-4081-bc91-65521016b205&quot;</span></span>
+<span id="cb58-3"><a href="preserve-folder-structures.html#cb58-3" tabindex="-1"></a>pid1 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url1) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
+<span id="cb58-4"><a href="preserve-folder-structures.html#cb58-4" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="preserve-folder-structures.html#cb58-5" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A44f29c80-0f27-48be-a04e-fc171c1e5088&quot;</span></span>
+<span id="cb58-6"><a href="preserve-folder-structures.html#cb58-6" tabindex="-1"></a>pid2 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url2) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
+<span id="cb58-7"><a href="preserve-folder-structures.html#cb58-7" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="preserve-folder-structures.html#cb58-8" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A9a0048b4-c24b-410d-b695-ee95bda97063&quot;</span></span>
+<span id="cb58-9"><a href="preserve-folder-structures.html#cb58-9" tabindex="-1"></a>pid3 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;https://arcticdata.io/metacat/d1/mn/v2/object/&quot;</span>, <span class="st">&quot;&quot;</span>, url3) <span class="sc">%&gt;%</span>  <span class="fu">gsub</span>(<span class="st">&quot;%3A&quot;</span>, <span class="st">&quot;:&quot;</span>, .)</span>
+<span id="cb58-10"><a href="preserve-folder-structures.html#cb58-10" tabindex="-1"></a></span>
+<span id="cb58-11"><a href="preserve-folder-structures.html#cb58-11" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid1), <span class="st">&quot;~/datasets/submitter/data/Regional_estimates.zip&quot;</span>)</span>
+<span id="cb58-12"><a href="preserve-folder-structures.html#cb58-12" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid2), <span class="st">&quot;~/datasets/submitter/data/Terminus_Ablation.zip&quot;</span>)</span>
+<span id="cb58-13"><a href="preserve-folder-structures.html#cb58-13" tabindex="-1"></a><span class="fu">writeBin</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, pid3), <span class="st">&quot;~/datasets/submitter/data/Terminus_Mass_Error.zip&quot;</span>)</span>
+<span id="cb58-14"><a href="preserve-folder-structures.html#cb58-14" tabindex="-1"></a></span>
+<span id="cb58-15"><a href="preserve-folder-structures.html#cb58-15" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/datasets/submitter/data/Regional_estimates.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/datasets/submitter/data/Regional_estimates&quot;</span>)</span>
+<span id="cb58-16"><a href="preserve-folder-structures.html#cb58-16" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/datasets/submitter/data/Terminus_Ablation.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/datasets/submitter/data/Terminus_Ablation&quot;</span>)</span>
+<span id="cb58-17"><a href="preserve-folder-structures.html#cb58-17" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;~/datasets/submitter/data/Terminus_Mass_Error.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;~/datasets/submitter/data/Terminus_Mass_Error&quot;</span>)</span>
+<span id="cb58-18"><a href="preserve-folder-structures.html#cb58-18" tabindex="-1"></a></span>
+<span id="cb58-19"><a href="preserve-folder-structures.html#cb58-19" tabindex="-1"></a><span class="do">######################################################</span></span>
+<span id="cb58-20"><a href="preserve-folder-structures.html#cb58-20" tabindex="-1"></a></span>
+<span id="cb58-21"><a href="preserve-folder-structures.html#cb58-21" tabindex="-1"></a><span class="do">### Set up node and gather data package</span></span>
+<span id="cb58-22"><a href="preserve-folder-structures.html#cb58-22" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;STAGING&quot;</span>, <span class="st">&quot;urn:node:mnTestARCTIC&quot;</span>) <span class="co"># Setting the Member Node</span></span>
+<span id="cb58-23"><a href="preserve-folder-structures.html#cb58-23" tabindex="-1"></a>resourceMapId <span class="ot">&lt;-</span> <span class="st">&quot;...&quot;</span> <span class="co"># Get data package PID (resource map ID)</span></span>
+<span id="cb58-24"><a href="preserve-folder-structures.html#cb58-24" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier =</span> resourceMapId, <span class="at">lazyLoad =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>) <span class="co"># Gather data package</span></span>
+<span id="cb58-25"><a href="preserve-folder-structures.html#cb58-25" tabindex="-1"></a></span>
+<span id="cb58-26"><a href="preserve-folder-structures.html#cb58-26" tabindex="-1"></a><span class="do">### Gather Metadata EML</span></span>
+<span id="cb58-27"><a href="preserve-folder-structures.html#cb58-27" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>) <span class="co"># Get metadata PID</span></span>
+<span id="cb58-28"><a href="preserve-folder-structures.html#cb58-28" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId)) <span class="co"># Read in metadata EML file</span></span>
+<span id="cb58-29"><a href="preserve-folder-structures.html#cb58-29" tabindex="-1"></a></span>
+<span id="cb58-30"><a href="preserve-folder-structures.html#cb58-30" tabindex="-1"></a><span class="do">### Paths</span></span>
+<span id="cb58-31"><a href="preserve-folder-structures.html#cb58-31" tabindex="-1"></a>abs_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/datasets/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-32"><a href="preserve-folder-structures.html#cb58-32" tabindex="-1"></a>rel_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;~/datasets/submitter/data&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-33"><a href="preserve-folder-structures.html#cb58-33" tabindex="-1"></a></span>
+<span id="cb58-34"><a href="preserve-folder-structures.html#cb58-34" tabindex="-1"></a><span class="do">### Uploading files to data package and saving otherEntities for each file</span></span>
+<span id="cb58-35"><a href="preserve-folder-structures.html#cb58-35" tabindex="-1"></a>oes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb58-36"><a href="preserve-folder-structures.html#cb58-36" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(abs_paths)) {</span>
+<span id="cb58-37"><a href="preserve-folder-structures.html#cb58-37" tabindex="-1"></a>  formatId <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">guess_format_id</span>(abs_paths[i])</span>
+<span id="cb58-38"><a href="preserve-folder-structures.html#cb58-38" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(d1c<span class="sc">@</span>mn, <span class="at">scheme =</span> <span class="st">&quot;uuid&quot;</span>)</span>
+<span id="cb58-39"><a href="preserve-folder-structures.html#cb58-39" tabindex="-1"></a>  dataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format =</span> formatId, <span class="at">filename =</span> abs_paths[i], <span class="at">targetPath =</span> rel_paths[i], <span class="at">id =</span> id)</span>
+<span id="cb58-40"><a href="preserve-folder-structures.html#cb58-40" tabindex="-1"></a>  dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, dataObj, metadataId)</span>
+<span id="cb58-41"><a href="preserve-folder-structures.html#cb58-41" tabindex="-1"></a>  oes[[i]] <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">otherEntity</span>(<span class="at">entityName =</span> rel_paths[i], <span class="at">entityType =</span> formatId, <span class="at">id =</span> id) <span class="co"># Can add entityDescription in this command also</span></span>
+<span id="cb58-42"><a href="preserve-folder-structures.html#cb58-42" tabindex="-1"></a>}</span>
+<span id="cb58-43"><a href="preserve-folder-structures.html#cb58-43" tabindex="-1"></a></span>
+<span id="cb58-44"><a href="preserve-folder-structures.html#cb58-44" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> oes <span class="co"># Replace otherEntity section with new otherEntities</span></span>
+<span id="cb58-45"><a href="preserve-folder-structures.html#cb58-45" tabindex="-1"></a></span>
+<span id="cb58-46"><a href="preserve-folder-structures.html#cb58-46" tabindex="-1"></a><span class="do">### Check and save the metadata</span></span>
+<span id="cb58-47"><a href="preserve-folder-structures.html#cb58-47" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span>
+<span id="cb58-48"><a href="preserve-folder-structures.html#cb58-48" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">title_to_file_name</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>title)</span>
+<span id="cb58-49"><a href="preserve-folder-structures.html#cb58-49" tabindex="-1"></a>eml_path <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;/home/intern/datasets/submitter/&quot;</span>, eml_path, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb58-50"><a href="preserve-folder-structures.html#cb58-50" tabindex="-1"></a><span class="fu">write_eml</span>(doc, eml_path)</span>
+<span id="cb58-51"><a href="preserve-folder-structures.html#cb58-51" tabindex="-1"></a></span>
+<span id="cb58-52"><a href="preserve-folder-structures.html#cb58-52" tabindex="-1"></a><span class="do">### Upload Dataset</span></span>
+<span id="cb58-53"><a href="preserve-folder-structures.html#cb58-53" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">replaceMember</span>(dp, metadataId, <span class="at">replacement=</span>eml_path) <span class="co"># Replace metadata file</span></span>
+<span id="cb58-54"><a href="preserve-folder-structures.html#cb58-54" tabindex="-1"></a></span>
+<span id="cb58-55"><a href="preserve-folder-structures.html#cb58-55" tabindex="-1"></a>myAccessRules <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject=</span><span class="st">&quot;CN=arctic-data-admins,DC=dataone,DC=org&quot;</span>, <span class="at">permission=</span><span class="st">&quot;changePermission&quot;</span>)</span>
+<span id="cb58-56"><a href="preserve-folder-structures.html#cb58-56" tabindex="-1"></a>packageId <span class="ot">&lt;-</span> <span class="fu">uploadDataPackage</span>(d1c, dp, <span class="at">public=</span>F, <span class="at">accessRules=</span>myAccessRules, <span class="at">quiet=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -590,42 +677,42 @@ this example they will look like the below:
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

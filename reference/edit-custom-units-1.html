@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit custom units | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit custom units | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -434,8 +436,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="edit-custom-units-1" class="section level2 hasAnchor">
 <h2>Edit custom units<a href="edit-custom-units-1.html#edit-custom-units-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>EML has a set list of units that can be added to an EML file. These can be seen by using the following code:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="edit-custom-units-1.html#cb99-1" tabindex="-1"></a>standardUnits <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_unitList</span>()</span>
-<span id="cb99-2"><a href="edit-custom-units-1.html#cb99-2" tabindex="-1"></a><span class="fu">View</span>(standardUnits<span class="sc">$</span>units)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="edit-custom-units-1.html#cb100-1" tabindex="-1"></a>standardUnits <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">get_unitList</span>()</span>
+<span id="cb100-2"><a href="edit-custom-units-1.html#cb100-2" tabindex="-1"></a><span class="fu">View</span>(standardUnits<span class="sc">$</span>units)</span></code></pre></div>
 <p>If you have units that are not in the standard EML unit list, you will need to build a custom unit list. A unit typically consists of the following fields:</p>
 <ul>
 <li><strong>id</strong>: The <code>unit id</code> (ids are camelCased)</li>
@@ -446,29 +448,29 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>description</strong>: Text defining the unit (e.g. for kilometer <code>description</code> = “1000 meters”)</li>
 </ul>
 <p>To manually generate the custom units list, create a dataframe with the fields mentioned above. An example is provided below that can be used as a template:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="edit-custom-units-1.html#cb100-1" tabindex="-1"></a>custom_units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb100-2"><a href="edit-custom-units-1.html#cb100-2" tabindex="-1"></a>    </span>
-<span id="cb100-3"><a href="edit-custom-units-1.html#cb100-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&#39;partsPerThousand&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;wattsPerSquareMeter&#39;</span>, <span class="st">&#39;micromolesPerGram&#39;</span>, <span class="st">&#39;practicalSalinityUnit&#39;</span>),</span>
-<span id="cb100-4"><a href="edit-custom-units-1.html#cb100-4" tabindex="-1"></a>  <span class="at">unitType =</span> <span class="fu">c</span>(<span class="st">&#39;dimensionless&#39;</span>, <span class="st">&#39;pressure&#39;</span>, <span class="st">&#39;power&#39;</span>, <span class="st">&#39;amountOfSubstanceWeight&#39;</span>， <span class="st">&#39;dimensionless&#39;</span>),</span>
-<span id="cb100-5"><a href="edit-custom-units-1.html#cb100-5" tabindex="-1"></a>  <span class="at">parentSI =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&#39;pascal&#39;</span>, <span class="st">&#39;watt&#39;</span>, <span class="st">&#39;molesPerKilogram&#39;</span>， <span class="cn">NA</span>),</span>
-<span id="cb100-6"><a href="edit-custom-units-1.html#cb100-6" tabindex="-1"></a>  <span class="at">multiplierToSI =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&#39;10000&#39;</span>, <span class="st">&#39;1&#39;</span>, <span class="st">&#39;1000000000&#39;</span>, <span class="cn">NA</span>),</span>
-<span id="cb100-7"><a href="edit-custom-units-1.html#cb100-7" tabindex="-1"></a>  <span class="at">abbreviation =</span> <span class="fu">c</span>(<span class="st">&#39;ppt&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;W/m^2&#39;</span>, <span class="st">&#39;umol/g&#39;</span>, <span class="st">&#39;PSU&#39;</span>),</span>
-<span id="cb100-8"><a href="edit-custom-units-1.html#cb100-8" tabindex="-1"></a>  <span class="at">description =</span> <span class="fu">c</span>(<span class="st">&#39;parts per thousand&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;watts per square meter&#39;</span>, <span class="st">&#39;micro moles per gram&#39;</span>, <span class="st">&#39;used to describe the concentration of dissolved salts in water, the UNESCO Practical Salinity Scale of 1978 (PSS78) defines salinity in terms of a conductivity ratio&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="edit-custom-units-1.html#cb101-1" tabindex="-1"></a>custom_units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb101-2"><a href="edit-custom-units-1.html#cb101-2" tabindex="-1"></a>    </span>
+<span id="cb101-3"><a href="edit-custom-units-1.html#cb101-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&#39;partsPerThousand&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;wattsPerSquareMeter&#39;</span>, <span class="st">&#39;micromolesPerGram&#39;</span>, <span class="st">&#39;practicalSalinityUnit&#39;</span>),</span>
+<span id="cb101-4"><a href="edit-custom-units-1.html#cb101-4" tabindex="-1"></a>  <span class="at">unitType =</span> <span class="fu">c</span>(<span class="st">&#39;dimensionless&#39;</span>, <span class="st">&#39;pressure&#39;</span>, <span class="st">&#39;power&#39;</span>, <span class="st">&#39;amountOfSubstanceWeight&#39;</span>， <span class="st">&#39;dimensionless&#39;</span>),</span>
+<span id="cb101-5"><a href="edit-custom-units-1.html#cb101-5" tabindex="-1"></a>  <span class="at">parentSI =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&#39;pascal&#39;</span>, <span class="st">&#39;watt&#39;</span>, <span class="st">&#39;molesPerKilogram&#39;</span>， <span class="cn">NA</span>),</span>
+<span id="cb101-6"><a href="edit-custom-units-1.html#cb101-6" tabindex="-1"></a>  <span class="at">multiplierToSI =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&#39;10000&#39;</span>, <span class="st">&#39;1&#39;</span>, <span class="st">&#39;1000000000&#39;</span>, <span class="cn">NA</span>),</span>
+<span id="cb101-7"><a href="edit-custom-units-1.html#cb101-7" tabindex="-1"></a>  <span class="at">abbreviation =</span> <span class="fu">c</span>(<span class="st">&#39;ppt&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;W/m^2&#39;</span>, <span class="st">&#39;umol/g&#39;</span>, <span class="st">&#39;PSU&#39;</span>),</span>
+<span id="cb101-8"><a href="edit-custom-units-1.html#cb101-8" tabindex="-1"></a>  <span class="at">description =</span> <span class="fu">c</span>(<span class="st">&#39;parts per thousand&#39;</span>, <span class="st">&#39;decibar&#39;</span>, <span class="st">&#39;watts per square meter&#39;</span>, <span class="st">&#39;micro moles per gram&#39;</span>, <span class="st">&#39;used to describe the concentration of dissolved salts in water, the UNESCO Practical Salinity Scale of 1978 (PSS78) defines salinity in terms of a conductivity ratio&#39;</span>))</span></code></pre></div>
 <p>Using <code>EML::get_unit_id</code> for custom units will also generate valid EML unit ids.</p>
 <p>Custom units are then added to <code>additionalMetadata</code> using the following command:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="edit-custom-units-1.html#cb101-1" tabindex="-1"></a>unitlist <span class="ot">&lt;-</span> <span class="fu">set_unitList</span>(custom_units, <span class="at">as_metadata =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb101-2"><a href="edit-custom-units-1.html#cb101-2" tabindex="-1"></a>doc<span class="sc">$</span>additionalMetadata <span class="ot">&lt;-</span> unitlist</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="edit-custom-units-1.html#cb102-1" tabindex="-1"></a>unitlist <span class="ot">&lt;-</span> <span class="fu">set_unitList</span>(custom_units, <span class="at">as_metadata =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb102-2"><a href="edit-custom-units-1.html#cb102-2" tabindex="-1"></a>doc<span class="sc">$</span>additionalMetadata <span class="ot">&lt;-</span> unitlist</span></code></pre></div>
 <p>If units that should be <code>standardUnit</code> are added as <code>customUnit</code>, you can use the following code to fix this issue:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="edit-custom-units-1.html#cb102-1" tabindex="-1"></a><span class="co"># add standard unit</span></span>
-<span id="cb102-2"><a href="edit-custom-units-1.html#cb102-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>standardUnit <span class="ot">&lt;-</span> <span class="st">&quot;your standard unit&quot;</span></span>
-<span id="cb102-3"><a href="edit-custom-units-1.html#cb102-3" tabindex="-1"></a></span>
-<span id="cb102-4"><a href="edit-custom-units-1.html#cb102-4" tabindex="-1"></a><span class="co"># get rid of custom unit</span></span>
-<span id="cb102-5"><a href="edit-custom-units-1.html#cb102-5" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>customUnit <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="edit-custom-units-1.html#cb103-1" tabindex="-1"></a><span class="co"># add standard unit</span></span>
+<span id="cb103-2"><a href="edit-custom-units-1.html#cb103-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>standardUnit <span class="ot">&lt;-</span> <span class="st">&quot;your standard unit&quot;</span></span>
+<span id="cb103-3"><a href="edit-custom-units-1.html#cb103-3" tabindex="-1"></a></span>
+<span id="cb103-4"><a href="edit-custom-units-1.html#cb103-4" tabindex="-1"></a><span class="co"># get rid of custom unit</span></span>
+<span id="cb103-5"><a href="edit-custom-units-1.html#cb103-5" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute[[i]]<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>customUnit <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>If you want to find all of the positions of a certain custom unit that should be standard, try this code:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="edit-custom-units-1.html#cb103-1" tabindex="-1"></a>ls <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute, </span>
-<span id="cb103-2"><a href="edit-custom-units-1.html#cb103-2" tabindex="-1"></a>                  <span class="sc">~</span><span class="fu">str_detect</span>(.x<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>customUnit, <span class="st">&quot;your standard unit&quot;</span>))</span>
-<span id="cb103-3"><a href="edit-custom-units-1.html#cb103-3" tabindex="-1"></a>                  </span>
-<span id="cb103-4"><a href="edit-custom-units-1.html#cb103-4" tabindex="-1"></a><span class="fu">which</span>(ls <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="edit-custom-units-1.html#cb104-1" tabindex="-1"></a>ls <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[i]]<span class="sc">$</span>attributeList<span class="sc">$</span>attribute, </span>
+<span id="cb104-2"><a href="edit-custom-units-1.html#cb104-2" tabindex="-1"></a>                  <span class="sc">~</span><span class="fu">str_detect</span>(.x<span class="sc">$</span>measurementScale<span class="sc">$</span>ratio<span class="sc">$</span>unit<span class="sc">$</span>customUnit, <span class="st">&quot;your standard unit&quot;</span>))</span>
+<span id="cb104-3"><a href="edit-custom-units-1.html#cb104-3" tabindex="-1"></a>                  </span>
+<span id="cb104-4"><a href="edit-custom-units-1.html#cb104-4" tabindex="-1"></a><span class="fu">which</span>(ls <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
             </section>
 
@@ -490,42 +492,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

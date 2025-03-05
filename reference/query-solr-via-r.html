@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Query Solr via R | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Query Solr via R | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -440,20 +442,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Why does #2 matter? Well by default, all of those URLs above only return publicly-readable Solr documents.
 If a private document matches any of those queries, Solr won’t tell you that. It will act like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="query-solr-via-r.html#cb193-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb193-2"><a href="query-solr-via-r.html#cb193-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb193-3"><a href="query-solr-via-r.html#cb193-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
-<span id="cb193-4"><a href="query-solr-via-r.html#cb193-4" tabindex="-1"></a></span>
-<span id="cb193-5"><a href="query-solr-via-r.html#cb193-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
-<span id="cb193-6"><a href="query-solr-via-r.html#cb193-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
-<span id="cb193-7"><a href="query-solr-via-r.html#cb193-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb193-8"><a href="query-solr-via-r.html#cb193-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb193-9"><a href="query-solr-via-r.html#cb193-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="query-solr-via-r.html#cb194-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb194-2"><a href="query-solr-via-r.html#cb194-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb194-3"><a href="query-solr-via-r.html#cb194-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
+<span id="cb194-4"><a href="query-solr-via-r.html#cb194-4" tabindex="-1"></a></span>
+<span id="cb194-5"><a href="query-solr-via-r.html#cb194-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
+<span id="cb194-6"><a href="query-solr-via-r.html#cb194-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
+<span id="cb194-7"><a href="query-solr-via-r.html#cb194-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb194-8"><a href="query-solr-via-r.html#cb194-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb194-9"><a href="query-solr-via-r.html#cb194-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
 <p>By default, <code>query</code> returns the result as a <code>list</code>, but a <code>data.frame</code> can be a more useful way to work with the result. To get a <code>data.frame</code> instead, just set the <code>as</code> argument to ‘data.frame’ to get a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="query-solr-via-r.html#cb194-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb194-2"><a href="query-solr-via-r.html#cb194-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb194-3"><a href="query-solr-via-r.html#cb194-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
-<span id="cb194-4"><a href="query-solr-via-r.html#cb194-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="query-solr-via-r.html#cb195-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb195-2"><a href="query-solr-via-r.html#cb195-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb195-3"><a href="query-solr-via-r.html#cb195-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
+<span id="cb195-4"><a href="query-solr-via-r.html#cb195-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
@@ -475,42 +477,42 @@ If a private document matches any of those queries, Solr won’t tell you that. 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

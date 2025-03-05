@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -437,17 +439,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>View submissions to the Arctic Data Center from 10/1/18 to 10/7/18</li>
 </ul>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="list-submissions-to-the-arctic-data-center.html#cb213-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb213-2"><a href="list-submissions-to-the-arctic-data-center.html#cb213-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb213-3"><a href="list-submissions-to-the-arctic-data-center.html#cb213-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="list-submissions-to-the-arctic-data-center.html#cb214-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb214-2"><a href="list-submissions-to-the-arctic-data-center.html#cb214-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb214-3"><a href="list-submissions-to-the-arctic-data-center.html#cb214-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
 <ul>
 <li>The following code shows the underlying solr query</li>
 </ul>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="list-submissions-to-the-arctic-data-center.html#cb214-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
-<span id="cb214-2"><a href="list-submissions-to-the-arctic-data-center.html#cb214-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
-<span id="cb214-3"><a href="list-submissions-to-the-arctic-data-center.html#cb214-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
-<span id="cb214-4"><a href="list-submissions-to-the-arctic-data-center.html#cb214-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
-<span id="cb214-5"><a href="list-submissions-to-the-arctic-data-center.html#cb214-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="list-submissions-to-the-arctic-data-center.html#cb215-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
+<span id="cb215-2"><a href="list-submissions-to-the-arctic-data-center.html#cb215-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
+<span id="cb215-3"><a href="list-submissions-to-the-arctic-data-center.html#cb215-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
+<span id="cb215-4"><a href="list-submissions-to-the-arctic-data-center.html#cb215-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
+<span id="cb215-5"><a href="list-submissions-to-the-arctic-data-center.html#cb215-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
@@ -469,42 +471,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

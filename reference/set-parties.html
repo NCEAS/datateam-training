@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set parties | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set parties | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -435,48 +437,48 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Set parties<a href="set-parties.html#set-parties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>address</code>, <code>creator</code>, <code>contact</code>, and <code>associatedParty</code> classes can easily be created using functions from the <code>EML</code> package. However it is often easier to just edit this through the webform.</p>
 <p>To add people, with their addresses, you need to add addresses as their own object class, which you then add to the <code>contact</code>, <code>creator</code>, or <code>associatedParty</code> classes.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="set-parties.html#cb145-1" tabindex="-1"></a>NCEASadd <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">address</span>( </span>
-<span id="cb145-2"><a href="set-parties.html#cb145-2" tabindex="-1"></a>                <span class="at">deliveryPoint =</span> <span class="st">&quot;735 State St #300&quot;</span>, </span>
-<span id="cb145-3"><a href="set-parties.html#cb145-3" tabindex="-1"></a>                <span class="at">city =</span> <span class="st">&quot;Santa Barbara&quot;</span>, </span>
-<span id="cb145-4"><a href="set-parties.html#cb145-4" tabindex="-1"></a>                <span class="at">administrativeArea =</span> <span class="st">&#39;CA&#39;</span>, </span>
-<span id="cb145-5"><a href="set-parties.html#cb145-5" tabindex="-1"></a>                <span class="at">postalCode =</span> <span class="st">&#39;93101&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="set-parties.html#cb146-1" tabindex="-1"></a>NCEASadd <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">address</span>( </span>
+<span id="cb146-2"><a href="set-parties.html#cb146-2" tabindex="-1"></a>                <span class="at">deliveryPoint =</span> <span class="st">&quot;735 State St #300&quot;</span>, </span>
+<span id="cb146-3"><a href="set-parties.html#cb146-3" tabindex="-1"></a>                <span class="at">city =</span> <span class="st">&quot;Santa Barbara&quot;</span>, </span>
+<span id="cb146-4"><a href="set-parties.html#cb146-4" tabindex="-1"></a>                <span class="at">administrativeArea =</span> <span class="st">&#39;CA&#39;</span>, </span>
+<span id="cb146-5"><a href="set-parties.html#cb146-5" tabindex="-1"></a>                <span class="at">postalCode =</span> <span class="st">&#39;93101&#39;</span>)</span></code></pre></div>
 <p>Here, we use <code>eml_creator()</code> to set our data set <code>creator</code>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="set-parties.html#cb146-1" tabindex="-1"></a>JC_creator <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">creator</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
-<span id="cb146-2"><a href="set-parties.html#cb146-2" tabindex="-1"></a>                                                <span class="at">surName =</span> <span class="st">&quot;Clark&quot;</span>), </span>
-<span id="cb146-3"><a href="set-parties.html#cb146-3" tabindex="-1"></a>                          <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
-<span id="cb146-4"><a href="set-parties.html#cb146-4" tabindex="-1"></a>                          <span class="at">electronicMailAddress =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </span>
-<span id="cb146-5"><a href="set-parties.html#cb146-5" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>, </span>
-<span id="cb146-6"><a href="set-parties.html#cb146-6" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
-<span id="cb146-7"><a href="set-parties.html#cb146-7" tabindex="-1"></a>                          <span class="at">address =</span> NCEASadd)</span>
-<span id="cb146-8"><a href="set-parties.html#cb146-8" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator <span class="ot">&lt;-</span> JC_creator</span></code></pre></div>
-<p>Similarly, we can set a single <code>contact</code> or multiple. In this case, there are two, so we set <code>doc$dataset$contact</code> as a list containing both of them.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="set-parties.html#cb147-1" tabindex="-1"></a>JC_contact <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">contact</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="set-parties.html#cb147-1" tabindex="-1"></a>JC_creator <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">creator</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
 <span id="cb147-2"><a href="set-parties.html#cb147-2" tabindex="-1"></a>                                                <span class="at">surName =</span> <span class="st">&quot;Clark&quot;</span>), </span>
 <span id="cb147-3"><a href="set-parties.html#cb147-3" tabindex="-1"></a>                          <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
 <span id="cb147-4"><a href="set-parties.html#cb147-4" tabindex="-1"></a>                          <span class="at">electronicMailAddress =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </span>
-<span id="cb147-5"><a href="set-parties.html#cb147-5" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
-<span id="cb147-6"><a href="set-parties.html#cb147-6" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,<span class="at">id =</span> eml<span class="sc">$</span><span class="fu">userId</span>(<span class="at">directory =</span> eml<span class="sc">$</span>dir)</span>
+<span id="cb147-5"><a href="set-parties.html#cb147-5" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>, </span>
+<span id="cb147-6"><a href="set-parties.html#cb147-6" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
 <span id="cb147-7"><a href="set-parties.html#cb147-7" tabindex="-1"></a>                          <span class="at">address =</span> NCEASadd)</span>
-<span id="cb147-8"><a href="set-parties.html#cb147-8" tabindex="-1"></a></span>
-<span id="cb147-9"><a href="set-parties.html#cb147-9" tabindex="-1"></a>JG_contact <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">contact</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
-<span id="cb147-10"><a href="set-parties.html#cb147-10" tabindex="-1"></a>                                                <span class="at">surName =</span> <span class="st">&quot;Goldstein&quot;</span>), </span>
-<span id="cb147-11"><a href="set-parties.html#cb147-11" tabindex="-1"></a>                          <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
-<span id="cb147-12"><a href="set-parties.html#cb147-12" tabindex="-1"></a>                          <span class="at">electronicMailAddress =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>, </span>
-<span id="cb147-13"><a href="set-parties.html#cb147-13" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
-<span id="cb147-14"><a href="set-parties.html#cb147-14" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
-<span id="cb147-15"><a href="set-parties.html#cb147-15" tabindex="-1"></a>                          <span class="at">address =</span> NCEASadd)</span>
-<span id="cb147-16"><a href="set-parties.html#cb147-16" tabindex="-1"></a></span>
-<span id="cb147-17"><a href="set-parties.html#cb147-17" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(JC_contact, JG_contact)</span></code></pre></div>
+<span id="cb147-8"><a href="set-parties.html#cb147-8" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>creator <span class="ot">&lt;-</span> JC_creator</span></code></pre></div>
+<p>Similarly, we can set a single <code>contact</code> or multiple. In this case, there are two, so we set <code>doc$dataset$contact</code> as a list containing both of them.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="set-parties.html#cb148-1" tabindex="-1"></a>JC_contact <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">contact</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jeanette&quot;</span>, </span>
+<span id="cb148-2"><a href="set-parties.html#cb148-2" tabindex="-1"></a>                                                <span class="at">surName =</span> <span class="st">&quot;Clark&quot;</span>), </span>
+<span id="cb148-3"><a href="set-parties.html#cb148-3" tabindex="-1"></a>                          <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb148-4"><a href="set-parties.html#cb148-4" tabindex="-1"></a>                          <span class="at">electronicMailAddress =</span> <span class="st">&quot;jclark@nceas.ucsb.edu&quot;</span>, </span>
+<span id="cb148-5"><a href="set-parties.html#cb148-5" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb148-6"><a href="set-parties.html#cb148-6" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,<span class="at">id =</span> eml<span class="sc">$</span><span class="fu">userId</span>(<span class="at">directory =</span> eml<span class="sc">$</span>dir)</span>
+<span id="cb148-7"><a href="set-parties.html#cb148-7" tabindex="-1"></a>                          <span class="at">address =</span> NCEASadd)</span>
+<span id="cb148-8"><a href="set-parties.html#cb148-8" tabindex="-1"></a></span>
+<span id="cb148-9"><a href="set-parties.html#cb148-9" tabindex="-1"></a>JG_contact <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">contact</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
+<span id="cb148-10"><a href="set-parties.html#cb148-10" tabindex="-1"></a>                                                <span class="at">surName =</span> <span class="st">&quot;Goldstein&quot;</span>), </span>
+<span id="cb148-11"><a href="set-parties.html#cb148-11" tabindex="-1"></a>                          <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb148-12"><a href="set-parties.html#cb148-12" tabindex="-1"></a>                          <span class="at">electronicMailAddress =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>, </span>
+<span id="cb148-13"><a href="set-parties.html#cb148-13" tabindex="-1"></a>                          <span class="at">phone =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb148-14"><a href="set-parties.html#cb148-14" tabindex="-1"></a>                          <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb148-15"><a href="set-parties.html#cb148-15" tabindex="-1"></a>                          <span class="at">address =</span> NCEASadd)</span>
+<span id="cb148-16"><a href="set-parties.html#cb148-16" tabindex="-1"></a></span>
+<span id="cb148-17"><a href="set-parties.html#cb148-17" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>contact <span class="ot">&lt;-</span> <span class="fu">list</span>(JC_contact, JG_contact)</span></code></pre></div>
 <p>Finally, the <code>associatedParty</code>s are set. Note that <code>associatedParty</code>s MUST have a role defined, unlike <code>creator</code> or <code>contact</code>.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="set-parties.html#cb148-1" tabindex="-1"></a>JG_ap <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">associatedParty</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
-<span id="cb148-2"><a href="set-parties.html#cb148-2" tabindex="-1"></a>                                                   <span class="at">surName =</span> <span class="st">&quot;Goldstein&quot;</span>),</span>
-<span id="cb148-3"><a href="set-parties.html#cb148-3" tabindex="-1"></a>                             <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
-<span id="cb148-4"><a href="set-parties.html#cb148-4" tabindex="-1"></a>                             <span class="at">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>,</span>
-<span id="cb148-5"><a href="set-parties.html#cb148-5" tabindex="-1"></a>                             <span class="at">electronicMailAddress =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
-<span id="cb148-6"><a href="set-parties.html#cb148-6" tabindex="-1"></a>                             <span class="at">address =</span> NCEASadd, </span>
-<span id="cb148-7"><a href="set-parties.html#cb148-7" tabindex="-1"></a>                             <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
-<span id="cb148-8"><a href="set-parties.html#cb148-8" tabindex="-1"></a>                             <span class="at">role =</span> <span class="st">&quot;metadataProvider&quot;</span>)</span>
-<span id="cb148-9"><a href="set-parties.html#cb148-9" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>associatedParty <span class="ot">&lt;-</span> JG_ap</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="set-parties.html#cb149-1" tabindex="-1"></a>JG_ap <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">associatedParty</span>(<span class="at">individualName =</span> <span class="fu">list</span>(<span class="at">givenName =</span> <span class="st">&quot;Jesse&quot;</span>, </span>
+<span id="cb149-2"><a href="set-parties.html#cb149-2" tabindex="-1"></a>                                                   <span class="at">surName =</span> <span class="st">&quot;Goldstein&quot;</span>),</span>
+<span id="cb149-3"><a href="set-parties.html#cb149-3" tabindex="-1"></a>                             <span class="at">organization =</span> <span class="st">&quot;NCEAS&quot;</span>, </span>
+<span id="cb149-4"><a href="set-parties.html#cb149-4" tabindex="-1"></a>                             <span class="at">email =</span> <span class="st">&quot;jgoldstein@nceas.ucsb.edu&quot;</span>,</span>
+<span id="cb149-5"><a href="set-parties.html#cb149-5" tabindex="-1"></a>                             <span class="at">electronicMailAddress =</span> <span class="st">&quot;123-456-7890&quot;</span>,  </span>
+<span id="cb149-6"><a href="set-parties.html#cb149-6" tabindex="-1"></a>                             <span class="at">address =</span> NCEASadd, </span>
+<span id="cb149-7"><a href="set-parties.html#cb149-7" tabindex="-1"></a>                             <span class="at">userId =</span> <span class="st">&quot;https://orcid.org/WWWW-XXXX-YYYY-ZZZZ&quot;</span>,</span>
+<span id="cb149-8"><a href="set-parties.html#cb149-8" tabindex="-1"></a>                             <span class="at">role =</span> <span class="st">&quot;metadataProvider&quot;</span>)</span>
+<span id="cb149-9"><a href="set-parties.html#cb149-9" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>associatedParty <span class="ot">&lt;-</span> JG_ap</span></code></pre></div>
 </div>
             </section>
 
@@ -498,42 +500,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

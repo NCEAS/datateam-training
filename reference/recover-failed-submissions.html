@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Recover failed submissions | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Recover failed submissions | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -435,11 +437,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Recover failed submissions<a href="recover-failed-submissions.html#recover-failed-submissions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A submission may result in an error when the EML cannot be validated through <code>EML::eml_validate</code>, preventing it from being written to an indicated path. This usually occurs when the metacatUI detects a submission error and uploads the EML as a data object instead of text. When this happens, <code>arcticdatautils::recover_failed_submission</code> can be used to retrieve the original EML file. The function removes the error message to get a valid EML document.</p>
 <p>For the example below, <code>pid</code> is the metadata <code>pid</code> containing the failed submission. The <code>path</code> parameter indicates where you want to write the recovered EML version to on your server’s local working directory.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="recover-failed-submissions.html#cb215-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
-<span id="cb215-2"><a href="recover-failed-submissions.html#cb215-2" tabindex="-1"></a></span>
-<span id="cb215-3"><a href="recover-failed-submissions.html#cb215-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;your_metadata_pid&quot;</span></span>
-<span id="cb215-4"><a href="recover-failed-submissions.html#cb215-4" tabindex="-1"></a></span>
-<span id="cb215-5"><a href="recover-failed-submissions.html#cb215-5" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">recover_failed_submission</span>(adc, pid, path)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="recover-failed-submissions.html#cb216-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;path/to/save/eml.xml&quot;</span></span>
+<span id="cb216-2"><a href="recover-failed-submissions.html#cb216-2" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="recover-failed-submissions.html#cb216-3" tabindex="-1"></a>pid <span class="ot">&lt;-</span> <span class="st">&quot;your_metadata_pid&quot;</span></span>
+<span id="cb216-4"><a href="recover-failed-submissions.html#cb216-4" tabindex="-1"></a></span>
+<span id="cb216-5"><a href="recover-failed-submissions.html#cb216-5" tabindex="-1"></a>arcticdatautils<span class="sc">::</span><span class="fu">recover_failed_submission</span>(adc, pid, path)</span></code></pre></div>
 <p>The output of this function is a valid EML file written to your chosen path. After recovering the document, make sure to set the rights and access to the correct submitter.</p>
 <p>Note that <code>arcticdatautils::recover_failed_submission</code> may not always work. Its functionality depends on the error message since they can vary.</p>
 </div>
@@ -464,42 +466,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Set methods | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Set methods | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -435,25 +437,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Set methods<a href="set-methods.html#set-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The methods tree in the EML section has many different options, visible in the <a href = 'https://eml.ecoinformatics.org/schema/index.html' target='_blank'>schema</a>. You can create new elements in the methods tree by following the schema and using the <code>eml</code> helpers.</p>
 <p>Another simple and potentially useful way to add methods to an EML that has no methods at all is by adding them via a MS Word document. An example is shown below:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="set-methods.html#cb143-1" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</span>
-<span id="cb143-2"><a href="set-methods.html#cb143-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="set-methods.html#cb144-1" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(<span class="st">&#39;methods_doc.docx&#39;</span>)</span>
+<span id="cb144-2"><a href="set-methods.html#cb144-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 <p>If you want to make minor changes to existing methods information that has a lot of nested elements, your best bet may be to edit the EML manually in a text editor (or in RStudio), otherwise there is a risk of accidentally overwriting nested elements with blank object classes, therefore losing methods information.</p>
 <div id="adding-sampling-info-to-methods-section" class="section level3 hasAnchor">
 <h3>Adding sampling info to methods section<a href="set-methods.html#adding-sampling-info-to-methods-section" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="set-methods.html#cb144-1" tabindex="-1"></a><span class="co"># add method steps as new variables</span></span>
-<span id="cb144-2"><a href="set-methods.html#cb144-2" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methodStep</span>(<span class="at">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</span>
-<span id="cb144-3"><a href="set-methods.html#cb144-3" tabindex="-1"></a></span>
-<span id="cb144-4"><a href="set-methods.html#cb144-4" tabindex="-1"></a>stEx <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">studyExtent</span>(<span class="at">description =</span> <span class="st">&quot;study extent description&quot;</span>)</span>
-<span id="cb144-5"><a href="set-methods.html#cb144-5" tabindex="-1"></a></span>
-<span id="cb144-6"><a href="set-methods.html#cb144-6" tabindex="-1"></a>samp <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">sampling</span>(<span class="at">studyExtent =</span> stEx,</span>
-<span id="cb144-7"><a href="set-methods.html#cb144-7" tabindex="-1"></a>                     <span class="at">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</span>
-<span id="cb144-8"><a href="set-methods.html#cb144-8" tabindex="-1"></a></span>
-<span id="cb144-9"><a href="set-methods.html#cb144-9" tabindex="-1"></a></span>
-<span id="cb144-10"><a href="set-methods.html#cb144-10" tabindex="-1"></a><span class="co"># combine all methods steps and sampling info </span></span>
-<span id="cb144-11"><a href="set-methods.html#cb144-11" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methods</span>(<span class="at">methodStep =</span> step1, </span>
-<span id="cb144-12"><a href="set-methods.html#cb144-12" tabindex="-1"></a>                        <span class="at">sampling =</span> samp)</span>
-<span id="cb144-13"><a href="set-methods.html#cb144-13" tabindex="-1"></a></span>
-<span id="cb144-14"><a href="set-methods.html#cb144-14" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="set-methods.html#cb145-1" tabindex="-1"></a><span class="co"># add method steps as new variables</span></span>
+<span id="cb145-2"><a href="set-methods.html#cb145-2" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methodStep</span>(<span class="at">description =</span> <span class="st">&quot;text describing the methods used&quot;</span>)</span>
+<span id="cb145-3"><a href="set-methods.html#cb145-3" tabindex="-1"></a></span>
+<span id="cb145-4"><a href="set-methods.html#cb145-4" tabindex="-1"></a>stEx <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">studyExtent</span>(<span class="at">description =</span> <span class="st">&quot;study extent description&quot;</span>)</span>
+<span id="cb145-5"><a href="set-methods.html#cb145-5" tabindex="-1"></a></span>
+<span id="cb145-6"><a href="set-methods.html#cb145-6" tabindex="-1"></a>samp <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">sampling</span>(<span class="at">studyExtent =</span> stEx,</span>
+<span id="cb145-7"><a href="set-methods.html#cb145-7" tabindex="-1"></a>                     <span class="at">samplingDescription =</span> <span class="st">&quot;sampling description text&quot;</span>)</span>
+<span id="cb145-8"><a href="set-methods.html#cb145-8" tabindex="-1"></a></span>
+<span id="cb145-9"><a href="set-methods.html#cb145-9" tabindex="-1"></a></span>
+<span id="cb145-10"><a href="set-methods.html#cb145-10" tabindex="-1"></a><span class="co"># combine all methods steps and sampling info </span></span>
+<span id="cb145-11"><a href="set-methods.html#cb145-11" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">methods</span>(<span class="at">methodStep =</span> step1, </span>
+<span id="cb145-12"><a href="set-methods.html#cb145-12" tabindex="-1"></a>                        <span class="at">sampling =</span> samp)</span>
+<span id="cb145-13"><a href="set-methods.html#cb145-13" tabindex="-1"></a></span>
+<span id="cb145-14"><a href="set-methods.html#cb145-14" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>methods <span class="ot">&lt;-</span> methods1</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -476,42 +478,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

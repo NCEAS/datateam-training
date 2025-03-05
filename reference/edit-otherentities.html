@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Edit otherEntities | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Edit otherEntities | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -436,21 +438,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="remove-otherentities" class="section level3 hasAnchor">
 <h3>Remove otherEntities<a href="edit-otherentities.html#remove-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To remove an <code>otherEntity</code> use the following command. This may be useful if a data object is originally listed as an <code>otherEntity</code> and then transferred to a <code>dataTable</code>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="edit-otherentities.html#cb111-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="edit-otherentities.html#cb112-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="create-otherentities" class="section level3 hasAnchor">
 <h3>Create otherEntities<a href="edit-otherentities.html#create-otherentities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you need to create/update an <code>otherEntity</code>, make sure to <a href = 'https://nceas.github.io/datateam-training/reference/publish-an-object.html#publish-an-object' target='_blank'>publish</a> or <a href = 'https://nceas.github.io/datateam-training/reference/edit-otherentities.html#update-a-data-file' target='_blank'>update</a> your data object first (if it is not already on the DataONE MN). Then build your <code>otherEntity</code>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="edit-otherentities.html#cb112-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="edit-otherentities.html#cb113-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, pkg<span class="sc">$</span>data[[i]])</span></code></pre></div>
 <p>Alternatively, you can build the <code>otherEntity</code> of a data object not in your package by simply inputting the data <code>PID</code>.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="edit-otherentities.html#cb113-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>, <span class="at">entityType =</span> <span class="st">&quot;otherEntity&quot;</span>, <span class="at">entityName =</span> <span class="st">&quot;Entity Name&quot;</span>, <span class="at">entityDescription =</span> <span class="st">&quot;Description about entity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="edit-otherentities.html#cb114-1" tabindex="-1"></a>otherEntity <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_entity</span>(mn, <span class="st">&quot;your_data_pid&quot;</span>, <span class="at">entityType =</span> <span class="st">&quot;otherEntity&quot;</span>, <span class="at">entityName =</span> <span class="st">&quot;Entity Name&quot;</span>, <span class="at">entityDescription =</span> <span class="st">&quot;Description about entity&quot;</span>)</span></code></pre></div>
 <p>The <code>otherEntity</code> must then be set to the EML, like so:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="edit-otherentities.html#cb114-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="edit-otherentities.html#cb115-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
 <p>If you have more than one <code>otherEntity</code> object in the EML already, you can add the new one like this:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="edit-otherentities.html#cb115-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="edit-otherentities.html#cb116-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]] <span class="ot">&lt;-</span> otherEntity</span></code></pre></div>
 <p>Where <code>i</code> is set to the number of existing entities plus one.</p>
 <p>Remember the warning from the last section, however. If you only have one <code>otherEntity</code>, and you are trying to add another, you have to run:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="edit-otherentities.html#cb116-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="fu">list</span>(otherEntity, doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="edit-otherentities.html#cb117-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="fu">list</span>(otherEntity, doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -473,42 +475,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

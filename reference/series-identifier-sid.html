@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Series Identifier (SID) | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Series Identifier (SID) | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -438,30 +440,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-a-sid-to-a-package" class="section level3 hasAnchor">
 <h3>Adding a SID to a package<a href="series-identifier-sid.html#adding-a-sid-to-a-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Adding a series identifier should be the last step. In most cases the SID will be in <code>DOI</code> format. Once the data package is complete (peer-reviewd and approved by the PI) the series identifier can be added by updating the <code>seriesId</code> field of the system metadata of the metadata object.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="series-identifier-sid.html#cb137-1" tabindex="-1"></a><span class="co"># The metadata identifier we&#39;re assigning an SID to</span></span>
-<span id="cb137-2"><a href="series-identifier-sid.html#cb137-2" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span> <span class="st">&#39;metadata_pid&#39;</span></span>
-<span id="cb137-3"><a href="series-identifier-sid.html#cb137-3" tabindex="-1"></a></span>
-<span id="cb137-4"><a href="series-identifier-sid.html#cb137-4" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, metadata_pid)</span>
-<span id="cb137-5"><a href="series-identifier-sid.html#cb137-5" tabindex="-1"></a>sys<span class="sc">@</span>seriesId <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="at">scheme =</span> <span class="st">&#39;DOI&#39;</span>) <span class="co">#update the scheme argument if it should not be a DOI</span></span>
-<span id="cb137-6"><a href="series-identifier-sid.html#cb137-6" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, metadata_pid, sys)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="series-identifier-sid.html#cb138-1" tabindex="-1"></a><span class="co"># The metadata identifier we&#39;re assigning an SID to</span></span>
+<span id="cb138-2"><a href="series-identifier-sid.html#cb138-2" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span> <span class="st">&#39;metadata_pid&#39;</span></span>
+<span id="cb138-3"><a href="series-identifier-sid.html#cb138-3" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="series-identifier-sid.html#cb138-4" tabindex="-1"></a>sys <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(mn, metadata_pid)</span>
+<span id="cb138-5"><a href="series-identifier-sid.html#cb138-5" tabindex="-1"></a>sys<span class="sc">@</span>seriesId <span class="ot">&lt;-</span> <span class="fu">generateIdentifier</span>(mn, <span class="at">scheme =</span> <span class="st">&#39;DOI&#39;</span>) <span class="co">#update the scheme argument if it should not be a DOI</span></span>
+<span id="cb138-6"><a href="series-identifier-sid.html#cb138-6" tabindex="-1"></a><span class="fu">updateSystemMetadata</span>(mn, metadata_pid, sys)</span></code></pre></div>
 </div>
 <div id="updating-the-child-packages-of-a-parent-package-with-a-sid" class="section level3 hasAnchor">
 <h3>Updating the child packages of a parent package with a SID<a href="series-identifier-sid.html#updating-the-child-packages-of-a-parent-package-with-a-sid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When updating a parent package with a series identifier you need to use <code>update_resource_map</code> rather than <code>publish_update</code>. In this case our goal is add nested data packages to an existing parent package.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="series-identifier-sid.html#cb138-1" tabindex="-1"></a><span class="co"># Call get_package on the parent package that has a `seriesId` in its system metadata </span></span>
-<span id="cb138-2"><a href="series-identifier-sid.html#cb138-2" tabindex="-1"></a>parent_package <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb138-3"><a href="series-identifier-sid.html#cb138-3" tabindex="-1"></a><span class="co"># The resource map of the package we want to add to the &#39;child_pids&#39; of the parent</span></span>
-<span id="cb138-4"><a href="series-identifier-sid.html#cb138-4" tabindex="-1"></a>resource_map_new_child <span class="ot">&lt;-</span> <span class="st">&#39;&#39;</span> </span>
-<span id="cb138-5"><a href="series-identifier-sid.html#cb138-5" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="series-identifier-sid.html#cb138-6" tabindex="-1"></a><span class="fu">update_resource_map</span>(mn, parent_package<span class="sc">$</span>resource_map, parent_package<span class="sc">$</span>metadata, parent_package<span class="sc">$</span>data,</span>
-<span id="cb138-7"><a href="series-identifier-sid.html#cb138-7" tabindex="-1"></a>                    <span class="fu">c</span>(parent_package<span class="sc">$</span>child_packages, resource_map_new_child))</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="series-identifier-sid.html#cb139-1" tabindex="-1"></a><span class="co"># Call get_package on the parent package that has a `seriesId` in its system metadata </span></span>
+<span id="cb139-2"><a href="series-identifier-sid.html#cb139-2" tabindex="-1"></a>parent_package <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
+<span id="cb139-3"><a href="series-identifier-sid.html#cb139-3" tabindex="-1"></a><span class="co"># The resource map of the package we want to add to the &#39;child_pids&#39; of the parent</span></span>
+<span id="cb139-4"><a href="series-identifier-sid.html#cb139-4" tabindex="-1"></a>resource_map_new_child <span class="ot">&lt;-</span> <span class="st">&#39;&#39;</span> </span>
+<span id="cb139-5"><a href="series-identifier-sid.html#cb139-5" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="series-identifier-sid.html#cb139-6" tabindex="-1"></a><span class="fu">update_resource_map</span>(mn, parent_package<span class="sc">$</span>resource_map, parent_package<span class="sc">$</span>metadata, parent_package<span class="sc">$</span>data,</span>
+<span id="cb139-7"><a href="series-identifier-sid.html#cb139-7" tabindex="-1"></a>                    <span class="fu">c</span>(parent_package<span class="sc">$</span>child_packages, resource_map_new_child))</span></code></pre></div>
 </div>
 <div id="updating-the-metadata-of-a-package-with-a-sid" class="section level3 hasAnchor">
 <h3>Updating the metadata of a package with a SID<a href="series-identifier-sid.html#updating-the-metadata-of-a-package-with-a-sid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When updating the metadata (xml) of a package with a series identifier use <code>publish_update</code>. It’s important that you pass the metadata pid to the <code>metadata_pid</code> argument rather than <code>seriesId</code>. The metadata pid will usually have the text “version:” ahead of it, however it’s best to use <code>get_package</code> first to avoid mistakes.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="series-identifier-sid.html#cb139-1" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
-<span id="cb139-2"><a href="series-identifier-sid.html#cb139-2" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>resource_map, pkg<span class="sc">$</span>data, </span>
-<span id="cb139-3"><a href="series-identifier-sid.html#cb139-3" tabindex="-1"></a>                      <span class="at">child_pids =</span> pkg<span class="sc">$</span>child_pids) <span class="co"># + any additional arguments to &quot;publish_update&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="series-identifier-sid.html#cb140-1" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_pid&#39;</span>)</span>
+<span id="cb140-2"><a href="series-identifier-sid.html#cb140-2" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">publish_update</span>(mn, pkg<span class="sc">$</span>metadata, pkg<span class="sc">$</span>resource_map, pkg<span class="sc">$</span>data, </span>
+<span id="cb140-3"><a href="series-identifier-sid.html#cb140-3" tabindex="-1"></a>                      <span class="at">child_pids =</span> pkg<span class="sc">$</span>child_pids) <span class="co"># + any additional arguments to &quot;publish_update&quot;</span></span></code></pre></div>
 </div>
 </div>
             </section>
@@ -484,42 +486,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

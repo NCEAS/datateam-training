@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Distributed Biological Observatory (DBO) submissions | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Distributed Biological Observatory (DBO) submissions | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -454,13 +456,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>the geographic coverage should be one coverage per DBO transect sampled. The geographicDescription and bounding coordinates should be from the controlled vocabulary given in the code snippet below, which will create a data.frame with these values in your R environment</li>
 </ul>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-1" tabindex="-1"></a>geo_locs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>siteNew, <span class="sc">~</span>westBoundingCoordinate, <span class="sc">~</span>eastBoundingCoordinate, <span class="sc">~</span>northBoundingCoordinate,<span class="sc">~</span> southBoundingCoordinate,</span>
-<span id="cb223-2"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-2" tabindex="-1"></a><span class="st">&quot;DBO 1 - South of St. Lawrence Island, Bering Sea&quot;</span>, <span class="sc">-</span><span class="fl">176.147</span>,   <span class="sc">-</span><span class="fl">172.187</span>,   <span class="fl">63.769</span>, <span class="fl">61.847</span>,</span>
-<span id="cb223-3"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-3" tabindex="-1"></a><span class="st">&quot;DBO 2 - Chirikov Basin, Northern Bering Sea&quot;</span>,  <span class="sc">-</span><span class="fl">170.492</span>,   <span class="sc">-</span><span class="fl">167.86</span>,    <span class="fl">65.111</span>, <span class="fl">64.482</span>,</span>
-<span id="cb223-4"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-4" tabindex="-1"></a><span class="st">&quot;DBO 3 - Southern Chukchi Sea&quot;</span>, <span class="sc">-</span><span class="fl">171.419</span>,   <span class="sc">-</span><span class="fl">166.481</span>,   <span class="fl">68.609</span>, <span class="fl">66.752</span>,</span>
-<span id="cb223-5"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-5" tabindex="-1"></a><span class="st">&quot;DBO 4 - Northeast Chukchi Sea&quot;</span>,    <span class="sc">-</span><span class="fl">164.553</span>,   <span class="sc">-</span><span class="fl">160.507</span>,   <span class="fl">71.867</span>, <span class="fl">70.682</span>,</span>
-<span id="cb223-6"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-6" tabindex="-1"></a><span class="st">&quot;DBO 5 - Barrow Canyon, Chukchi Sea&quot;</span>,   <span class="sc">-</span><span class="fl">158.848</span>,   <span class="sc">-</span><span class="fl">155.931</span>,   <span class="fl">71.808</span>, <span class="fl">71.111</span>,</span>
-<span id="cb223-7"><a href="distributed-biological-observatory-dbo-submissions.html#cb223-7" tabindex="-1"></a><span class="st">&quot;DBO 6 - Beaufort Sea - 152 W&quot;</span>, <span class="sc">-</span><span class="fl">153.865</span>,   <span class="sc">-</span><span class="fl">150.976</span>,   <span class="fl">72.119</span>, <span class="fl">70.89</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-1" tabindex="-1"></a>geo_locs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>siteNew, <span class="sc">~</span>westBoundingCoordinate, <span class="sc">~</span>eastBoundingCoordinate, <span class="sc">~</span>northBoundingCoordinate,<span class="sc">~</span> southBoundingCoordinate,</span>
+<span id="cb224-2"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-2" tabindex="-1"></a><span class="st">&quot;DBO 1 - South of St. Lawrence Island, Bering Sea&quot;</span>, <span class="sc">-</span><span class="fl">176.147</span>,   <span class="sc">-</span><span class="fl">172.187</span>,   <span class="fl">63.769</span>, <span class="fl">61.847</span>,</span>
+<span id="cb224-3"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-3" tabindex="-1"></a><span class="st">&quot;DBO 2 - Chirikov Basin, Northern Bering Sea&quot;</span>,  <span class="sc">-</span><span class="fl">170.492</span>,   <span class="sc">-</span><span class="fl">167.86</span>,    <span class="fl">65.111</span>, <span class="fl">64.482</span>,</span>
+<span id="cb224-4"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-4" tabindex="-1"></a><span class="st">&quot;DBO 3 - Southern Chukchi Sea&quot;</span>, <span class="sc">-</span><span class="fl">171.419</span>,   <span class="sc">-</span><span class="fl">166.481</span>,   <span class="fl">68.609</span>, <span class="fl">66.752</span>,</span>
+<span id="cb224-5"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-5" tabindex="-1"></a><span class="st">&quot;DBO 4 - Northeast Chukchi Sea&quot;</span>,    <span class="sc">-</span><span class="fl">164.553</span>,   <span class="sc">-</span><span class="fl">160.507</span>,   <span class="fl">71.867</span>, <span class="fl">70.682</span>,</span>
+<span id="cb224-6"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-6" tabindex="-1"></a><span class="st">&quot;DBO 5 - Barrow Canyon, Chukchi Sea&quot;</span>,   <span class="sc">-</span><span class="fl">158.848</span>,   <span class="sc">-</span><span class="fl">155.931</span>,   <span class="fl">71.808</span>, <span class="fl">71.111</span>,</span>
+<span id="cb224-7"><a href="distributed-biological-observatory-dbo-submissions.html#cb224-7" tabindex="-1"></a><span class="st">&quot;DBO 6 - Beaufort Sea - 152 W&quot;</span>, <span class="sc">-</span><span class="fl">153.865</span>,   <span class="sc">-</span><span class="fl">150.976</span>,   <span class="fl">72.119</span>, <span class="fl">70.89</span>)</span></code></pre></div>
 <ul>
 <li>one of the following key phrases referencing the data type should exist in the dataset. If the dataset doesn’t seem to fit in one of these categories, ask Jeanette or Dominic
 <ul>
@@ -497,42 +499,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

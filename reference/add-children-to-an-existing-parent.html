@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Add children to an existing parent | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.41.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Add children to an existing parent | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,8 +54,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -196,6 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -435,16 +437,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2>Add children to an existing parent<a href="add-children-to-an-existing-parent.html#add-children-to-an-existing-parent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A new package is published with a DOI and needs to be nested underneath a pre-existing parent.
 Nest the new child using the <code>child_pids</code> argument in <code>publish_update()</code>.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="add-children-to-an-existing-parent.html#cb239-1" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
-<span id="cb239-2"><a href="add-children-to-an-existing-parent.html#cb239-2" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
-<span id="cb239-3"><a href="add-children-to-an-existing-parent.html#cb239-3" tabindex="-1"></a></span>
-<span id="cb239-4"><a href="add-children-to-an-existing-parent.html#cb239-4" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
-<span id="cb239-5"><a href="add-children-to-an-existing-parent.html#cb239-5" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
-<span id="cb239-6"><a href="add-children-to-an-existing-parent.html#cb239-6" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
-<span id="cb239-7"><a href="add-children-to-an-existing-parent.html#cb239-7" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
-<span id="cb239-8"><a href="add-children-to-an-existing-parent.html#cb239-8" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
-<span id="cb239-9"><a href="add-children-to-an-existing-parent.html#cb239-9" tabindex="-1"></a>                              resource_map_child_new))</span>
-<span id="cb239-10"><a href="add-children-to-an-existing-parent.html#cb239-10" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="add-children-to-an-existing-parent.html#cb240-1" tabindex="-1"></a>resource_map_child_new <span class="ot">&lt;-</span> <span class="st">&quot;some_child_resource_map_pid&quot;</span></span>
+<span id="cb240-2"><a href="add-children-to-an-existing-parent.html#cb240-2" tabindex="-1"></a>pkg_parent <span class="ot">&lt;-</span> <span class="fu">get_package</span>(mn, <span class="st">&#39;resource_map_parent&#39;</span>)</span>
+<span id="cb240-3"><a href="add-children-to-an-existing-parent.html#cb240-3" tabindex="-1"></a></span>
+<span id="cb240-4"><a href="add-children-to-an-existing-parent.html#cb240-4" tabindex="-1"></a><span class="fu">publish_update</span>(mn,</span>
+<span id="cb240-5"><a href="add-children-to-an-existing-parent.html#cb240-5" tabindex="-1"></a>               <span class="at">resource_map_pid =</span> pkg_parent<span class="sc">$</span>resource_map,</span>
+<span id="cb240-6"><a href="add-children-to-an-existing-parent.html#cb240-6" tabindex="-1"></a>               <span class="at">metadata_pid =</span> pkg_parent<span class="sc">$</span>metadata,</span>
+<span id="cb240-7"><a href="add-children-to-an-existing-parent.html#cb240-7" tabindex="-1"></a>               <span class="at">data_pids =</span> pkg_parent<span class="sc">$</span>data_pids,  <span class="co"># parents usually don&#39;t contain data, but better to be safe</span></span>
+<span id="cb240-8"><a href="add-children-to-an-existing-parent.html#cb240-8" tabindex="-1"></a>               <span class="at">child_pids =</span> <span class="fu">c</span>(pkg_parent<span class="sc">$</span>child_packages, </span>
+<span id="cb240-9"><a href="add-children-to-an-existing-parent.html#cb240-9" tabindex="-1"></a>                              resource_map_child_new))</span>
+<span id="cb240-10"><a href="add-children-to-an-existing-parent.html#cb240-10" tabindex="-1"></a><span class="co"># include the resource map PIDs of ALL the childs* in the `child_pids` argument, otherwise the nesting relationships between any omitted childs and the parent will be deleted</span></span></code></pre></div>
 <div class="warning">
 <p>
 Check through all arguments carefully before you publish to
@@ -478,42 +480,42 @@ try it on a test node.
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>
