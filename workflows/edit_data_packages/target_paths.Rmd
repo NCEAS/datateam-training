@@ -2,15 +2,15 @@
 
 Sometimes, researchers will upload zip files that a contain nested file and folder structure that we would like to maintain. This reference section will walk you through how to re-upload the contents of the zip file to the Arctic Data Center such that the files and folders are preserved. Note that changing the locations of the files within the package can be tricky, so take these steps with care and try to make sure it is done correctly.
 
-With that, here are the steps assuming that the PI has uploaded one zip file to their dataset. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator. In particular, tar files (.tgz) or rar files (.rar) are also compressed archives that might be better to unpack using command line tools.
+With that, here are the steps assuming that the PI has uploaded one zip file to their dataset that holds all their files organized in their desired file hierarchy. You may need to modify the steps for other scenarios, but if you are not sure, feel free to ask the data coordinator. In particular, tar files (.tgz) or rar files (.rar) are also compressed archives that might be better to unpack using command line tools.
 
 ### Download the zip file to datateam
 
 First, we will download the file, using R.
 
 1.  Navigate to the dataset landing page on the Arctic Data Center
-2.  Right click the "download" button next to the zip file
-3.  Select "copy link address"
+2.  Right click the "Download" button next to the zip file
+3.  Select "Copy Link Address"
 4.  Run the following two lines of code to set the URL variable, and extract the pid
 
 Here is an example on the test site. Note that on production, you will need to change the URL that you are substituting in the second line of code.
@@ -26,21 +26,21 @@ pid <- gsub("https://test.arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>% 
 Note that this will download the file to the location you specify as the second argument in `writeBin`. If you are organizing your scripts and data by submitter, it would look like the example below.
 
 ```{r, eval = FALSE}
-writeBin(getObject(d1c@mn, pid), "~/Submitter/example.zip")
+writeBin(getObject(d1c@mn, pid), "~/submitter/data/example.zip")
 ```
 
 6.  Unzip the file into your submitter directory.
 
 ```{r, eval = FALSE}
-unzip("~/Submitter/example.zip", exdir = "~/Submitter")
+unzip("~/submitter/data/example.zip", exdir = "~/submitter/data")
 ```
 
 
 7. Delete the zip file (example.zip)
 
-Now if you look at the directory, you shuold see the unzipped contents of the file in a subdirectory of `~/Submitter`. The name of the directory will be the name of the folder the PI created the archive from.
+Now if you look at the directory, you should see the unzipped contents of the file in a sub-directory of `~/submitter/data`. The name of the directory will be the name of the folder the PI created the archive from. In this case, that folder is titled `final_image_set`.
 
-Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for csv versions of excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.
+Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for CSV versions of Excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.
 
 ### Re-upload the contents to the Arctic Data Center
 
@@ -49,34 +49,34 @@ Once you have confirmed everything is all good, we can upload the files to the A
 First, get the data package loaded into your R session as usual. I recommend not attempting any EML edits while you do these steps, this update adding the files is best done on it's own, and EML edits can be done on the next version.
 
 ```{r, eval = FALSE}
-dp <- getDataPackage(d1c, "identifier")
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
 ```
 
-Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the download all result) of the data package.
+Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the "Download All" result) of the data package.
 
 ```{block, type = "warning"}
 If you don't know the difference between an absolute and relative path, read on. It is SUPER IMPORTANT! 
 
 A path is a location of a file or folder on a computer. There are two types of paths in computing: absolute paths and relative paths.
 
-An absolute path always starts with the root of your file system and locates files from there. The absolute path to my example submitter zip is: `/home/jclark/Submitter/example.zip`. The generic shortcut `~/` is often used to replace the location of your home directory (`/home/username`) to save typing, but your path is still an absolute path if it starts with `~/`. Note that a relative path will **always** start with either `~/` or `/`.
+*Absolute paths* always start with the root of your file system and locates files from there. The absolute path to my example submitter zip is: `/home/jclark/submitter/data/example.zip`. The generic shortcut `~/` is often used to replace the location of your home directory (`/home/username`) to save typing, but your path is still an absolute path if it starts with `~/`. Note that a relative path will **always** start with either `~/` or `/`.
 
-Relative paths start from some location in your file system that is below the root. Relative paths are combined with the path of that location to locate files on your system. R (and some other languages like MATLAB) refer to the location where the relative path starts as our working directory. If our working directory is set to `~/Submitter`, the relative path to the zip would be just `example.zip`. Note that a relative path will **never** start with either `~/` or `/`.
+*Relative paths* start from some location in your file system that is below the root. Relative paths are combined with the path of that location to locate files on your system. R (and some other languages like MATLAB) refer to the location where the relative path starts as our working directory. If our working directory is set to `~/submitter`, the relative path to the zip would be just `data/example.zip`. Note that a relative path will **never** start with either `~/` or `/`.
 ```
 
-Getting these paths right is very important because we don't want submitters to download a folder of data, and have the paths look like `/home/internname/ticket_27341/important_folder/important_file.csv`. The first part of that path is particular to however the person processing the ticket organized the data, and is not how the submitter of the data intented to organize the data. Follow the steps below to make sure this does not happen.
+Getting these paths right is very important because we don't want submitters to download a folder of data, and have the paths look like `/home/internname/ticket_27341/important_folder/important_file.csv`. The first part of that absolute path is particular to however the person processing the ticket organized the data, and is not how the submitter of the data intended to organize the data. Follow the steps below to make sure this does not happen.
 
-1.  get a list of absolute paths for each file in the directory. **NOTE** The "PI_dir_name" here represents whatever directory you retrieved after running `unzip` in the previous step. The actual .zip file should not be in this directory.
+1.  Get a list of absolute paths for each file in the directory. **NOTE** The "PI_dir_name" here represents whatever directory you retrieved after running `unzip` in the previous step. The actual .zip file should not be in this directory. In our example, this "PI_dir_name" is `final_image_set`.
 
-2.  get a list of relative paths for each file in the directory. Note this is the same command, but with the argument `full.names` set to `FALSE`.
+2.  Get a list of relative paths for each file in the directory. Note this is the same command, but with the argument `full.names` set to `FALSE`.
 
 ```{r, eval = FALSE}
-abs_paths <- list.files("~/Submitter", full.names = TRUE, recursive = TRUE)
-rel_paths <- list.files("~/Submitter", full.names = FALSE, recursive = TRUE)
+abs_paths <- list.files("~/submitter/data", full.names = TRUE, recursive = TRUE)
+rel_paths <- list.files("~/submitter/data", full.names = FALSE, recursive = TRUE)
 ```
 
 ```{block, type = "warning"}
-Make sure that these paths look correct! They should contain ONLY the files that were unzipped. If you have other scripts or metadata files you might want to rearrange your directories to get the correct paths. The relative paths should start with the submitter's directory name. In this example they will look like the below:
+Make sure that these paths look correct! They should contain ONLY the files that were unzipped. If you have other scripts or metadata files you might want to rearrange your directories to get the correct paths. The *relative paths* should start with the submitter's directory name. In this example, that submitter's top-level directory is titled `final_image_set`, so they will look like the names below:
 
 `"final_image_set/level1.png"          "final_image_set/photos/level2_1.png" "final_image_set/photos/level2_2.png"`
 ```
@@ -84,24 +84,25 @@ Make sure that these paths look correct! They should contain ONLY the files that
 Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.
 
 ```{r, eval = FALSE}
-metadataObj <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
 
-doc <- read_eml(getObject(d1c@mn, metadataObj))
-doc$dataset$otherEntity <- NULL
 oes <- list()
 
-for (i in 1:length(abs_paths)){
+for (i in 1:length(abs_paths)) {
   formatId <- arcticdatautils::guess_format_id(abs_paths[i])
   id <- generateIdentifier(d1c@mn, scheme = "uuid")
   dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
-  dp <- addMember(dp, dataObj, metadataObj)
-  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id)
+  dp <- addMember(dp, dataObj, metadataId)
+  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
 }
 
-doc$dataset$otherEntity <- oes
+doc$dataset$otherEntity <- NULL # Removing otherEntity of zip file
+doc$dataset$otherEntity <- oes # Adding otherEntities to section
 
+eml_validate(doc)
 write_eml(doc, "~/metadata.xml")
-dp <- replaceMember(dp, metadataObj, replacement="~/metadata.xml")
+dp <- replaceMember(dp, metadataId, replacement="~/metadata.xml")
 ```
 
 Once this is finished you can examine the relationships by running `View(dp@relations$relations)`. If everything worked out well you should see rows that look like this:
@@ -127,24 +128,44 @@ Finally, check your work. Go to the Arctic Data Center and see if the package di
 Here is the example code all put together. Make sure you change all of the relevant bits, and check your work carefully!!
 
 ```{r, eval = FALSE}
+### Downloading ZIP file
 url <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A8fee5046-1a8f-4ccc-80f2-70c557a66338"
 pid <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url) %>%  gsub("%3A", ":", .)
 
-writeBin(getObject(d1c@mn, pid), "~/Submitter/example.zip")
+writeBin(getObject(d1c@mn, pid), "~/submitter/data/example.zip")
+unzip("~/submitter/data/example.zip", exdir = "~/submitter/data")
 
-unzip("~/Submitter/example.zip", exdir = "~/Submitter")
+### Re-uploading contents to data package
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
 
-dp <- getDataPackage(d1c, "identifier")
+##### Gather Metadata EML
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
 
-abs_paths <- list.files("~/Submitter/PI_dir_name/", full.names = TRUE, recursive = TRUE)
-rel_paths <- list.files("~/Submitter/PI_dir_name/", full.names = FALSE, recursive = TRUE)
+##### Get paths
+abs_paths <- list.files("~/submitter/data", full.names = TRUE, recursive = TRUE)
+rel_paths <- list.files("~/submitter/data", full.names = FALSE, recursive = TRUE)
 
-metadataObj <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0")
-
-for (i in 1:length(abs_paths)){
+oes <- list()
+for (i in 1:length(abs_paths)) {
   formatId <- arcticdatautils::guess_format_id(abs_paths[i])
-  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i])
-  dp <- addMember(dp, dataObj, metadataObj)
+  id <- generateIdentifier(d1c@mn, scheme = "uuid")
+  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
+  dp <- addMember(dp, dataObj, metadataId)
+  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
 }
+
+doc$dataset$otherEntity <- NULL # Removing otherEntity of zip file
+doc$dataset$otherEntity <- oes # Adding otherEntities to section
+
+### Validate and save EML
+eml_validate(doc)
+write_eml(doc, "~/metadata.xml")
+
+### Upload Dataset
+dp <- replaceMember(dp, metadataId, replacement="~/metadata.xml") # Replace metadata file
+
+myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission")
+packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
 ```
 
