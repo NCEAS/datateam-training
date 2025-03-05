@@ -136,6 +136,7 @@ writeBin(getObject(d1c@mn, pid), "~/submitter/data/example.zip")
 unzip("~/submitter/data/example.zip", exdir = "~/submitter/data")
 
 ### Re-uploading contents to data package
+d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC") # Setting the Member Node
 dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
 
 ##### Gather Metadata EML
@@ -164,6 +165,72 @@ write_eml(doc, "~/metadata.xml")
 
 ### Upload Dataset
 dp <- replaceMember(dp, metadataId, replacement="~/metadata.xml") # Replace metadata file
+
+myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission")
+packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
+```
+
+One note: if you have files you want to keep in your dataset along with the ZIP file contents you're adding, you can run `doc$dataset$otherEntity <- c(doc$dataset$otherEntity, oes)` so that you'll just be adding your new entities instead of replacing the older ones.
+
+### Example with multiple ZIP files
+
+Here is an example script for a dataset in which the PI uploaded multiple ZIP files they wanted to represent different folders of their dataset
+
+```{r, eval=FALSE}
+
+### Downloading and unzipping 3 ZIP files
+url1 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A5f177997-841b-4081-bc91-65521016b205"
+pid1 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url1) %>%  gsub("%3A", ":", .)
+
+url2 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A44f29c80-0f27-48be-a04e-fc171c1e5088"
+pid2 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url2) %>%  gsub("%3A", ":", .)
+
+url3 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A9a0048b4-c24b-410d-b695-ee95bda97063"
+pid3 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url3) %>%  gsub("%3A", ":", .)
+
+writeBin(getObject(d1c@mn, pid1), "~/datasets/submitter/data/Regional_estimates.zip")
+writeBin(getObject(d1c@mn, pid2), "~/datasets/submitter/data/Terminus_Ablation.zip")
+writeBin(getObject(d1c@mn, pid3), "~/datasets/submitter/data/Terminus_Mass_Error.zip")
+
+unzip("~/datasets/submitter/data/Regional_estimates.zip", exdir = "~/datasets/submitter/data/Regional_estimates")
+unzip("~/datasets/submitter/data/Terminus_Ablation.zip", exdir = "~/datasets/submitter/data/Terminus_Ablation")
+unzip("~/datasets/submitter/data/Terminus_Mass_Error.zip", exdir = "~/datasets/submitter/data/Terminus_Mass_Error")
+
+######################################################
+
+### Set up node and gather data package
+d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC") # Setting the Member Node
+resourceMapId <- "..." # Get data package PID (resource map ID)
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
+
+### Gather Metadata EML
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
+
+### Paths
+abs_paths <- list.files("~/datasets/submitter/data", full.names = TRUE, recursive = TRUE)
+rel_paths <- list.files("~/datasets/submitter/data", full.names = FALSE, recursive = TRUE)
+
+### Uploading files to data package and saving otherEntities for each file
+oes <- list()
+for (i in 1:length(abs_paths)) {
+  formatId <- arcticdatautils::guess_format_id(abs_paths[i])
+  id <- generateIdentifier(d1c@mn, scheme = "uuid")
+  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
+  dp <- addMember(dp, dataObj, metadataId)
+  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
+}
+
+doc$dataset$otherEntity <- oes # Replace otherEntity section with new otherEntities
+
+### Check and save the metadata
+eml_validate(doc)
+eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
+eml_path <- paste("/home/intern/datasets/submitter/", eml_path, sep="")
+write_eml(doc, eml_path)
+
+### Upload Dataset
+dp <- replaceMember(dp, metadataId, replacement=eml_path) # Replace metadata file
 
 myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission")
 packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
