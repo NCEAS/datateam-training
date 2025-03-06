@@ -1,0 +1,83 @@
+## Processing
+
+As seen in the example dataset, the majority of the data files will be hosted directly on our server. In order to still have some metadata to describe the contents of the data package, we'll create generalized representative entities to describe the files.
+
+### Understanding the contents of a large data submission
+
+First, we'll need to inspect the files and folders submitted by the PI. Ideally, the PI will have organized the files in a comprehensive folder hierarchy with a file naming convention. Asking the PI to provide the file and folder naming convention for all their submitted files is helpful, as it allows us to create one representative entity for each type of file they have.
+
+We'll also need the PI to submit a dataset, as normal, through the ADC. Since they'll have uploaded their files directly to our server, they won't need to upload any files to their metadata submission.
+
+### Creating representative entities
+
+To create representative entities, there are 2 ways:
+
+#### 1. Creating entities through R
+
+To create the representative entities through R, we will use `eml` library. In this example, we'll create a general `dataTable` entity:
+
+```{r, eval=FALSE}
+dataTable1 <- eml$dataTable(entityName = "[region_name]/[lake_name]_[YYYY-MM-DD].csv",
+                            entityDescription = "These CSV files contain lake measurement information. YYYY-MM-DD represents the date of measurement.")
+
+doc$dataset$dataTable[[1]] <- dataTable1
+```
+
+Now, we can add an attribute table to this entity to document the files' metadata.
+
+```{r, eval=FALSE}
+atts <- EML::shiny_attributes()
+doc$dataset$dataTable[[1]]$attributeList <- EML::set_attributes(attributes = atts$attributes, factors = atts$factors)
+```
+
+Similarly, we can create representative entities for an `otherEntity`, `spatialVector`, or `spatialRaster`. The required sections for each of these different types of entities may slightly differ, so be sure to check the [EML schema documentation](https://eml.ecoinformatics.org/schema/) so that all the required sections are added. Otherwise, the EML will not validate.
+
+For example, you'll need to have a coordinate reference system for a `spatialVector` or `spatialRaster`.
+
+#### 2. Creating entities through the ADC
+
+Another method to create representative entities is to
+
+1.  Download one of each type of file from the dataset.
+
+2.  Upload each file into the data package through the ADC web editor.
+
+3.  Add file descriptions and attributes as normal.
+
+4.  Change the `entityName` of the file to be more general, showing the file and folder naming convention.
+
+5.  Before the dataset is published, remove any physicals, then remove the files from the data package using `arcticdatautils::updateResourceMap()`. This will remove the file PIDs from the resource map, but it will leave the entities in the EML document. Please ask a Data Coordinator if you have not used `updateResourceMap()` before.
+
+### Moving files to web-accessible location
+
+As mentioned in the section, "Uploading files to `datateam`", we'll need to move the files to their web-accessible location in `var/data/10.18739/preIssuedDOI`.
+
+### Adding Markdown link to abstract in EML
+
+We'll need to provide the link to the files that will be hosted on our server for viewers to download files. The link to the dataset will be:
+
+> http://arcticdata.io/data/preIssuedDOI
+
+To add this as a clickable Markdown link in the Abstract section of an EML doc, we'll need to
+
+1.  Open the EML doc in a text editor.
+
+2.  Navigate to the <abstract> section.
+
+3.  Underneath the <abstract> section, add a <markdown> ... </markdown> section.
+
+4.  Add in Markdown-formatted text without any indentations.
+
+This will look like:
+
+```         
+  <abstract>
+      <markdown>
+### Access
+Files be accessed and downloaded from the directory via: [http://arcticdata.io/data/10.18739/DOI](http://arcticdata.io/data/10.18739/DOI).
+      
+### Overview
+This is the original abstract overview that the PI submitted.
+      </markdown>
+  </abstract>
+```

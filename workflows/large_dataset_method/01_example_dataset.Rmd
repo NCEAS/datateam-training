@@ -1,0 +1,17 @@
+## Example Dataset
+
+Here is an example of a published dataset using the large dataset method:
+
+https://arcticdata.io/catalog/view/doi:10.18739/A2X63B701
+
+In the example dataset, you can see:
+
+1. A link in the abstract that directs to the folder with all the data in it
+
+
+![](../images/large_dataset_abstract.png)
+
+2. Other entities that are in a generalized format are representative of the files on the server
+
+
+![](../images/large_dataset_entities.png)
