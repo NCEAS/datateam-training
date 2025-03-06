@@ -71,7 +71,7 @@ To add this as a clickable Markdown link in the Abstract section of an EML doc, 
 This will look like:
 
 ```         
- <abstract>
+  <abstract>
       <markdown>
 ### Access
 Files be accessed and downloaded from the directory via: [http://arcticdata.io/data/10.18739/DOI](http://arcticdata.io/data/10.18739/DOI).
@@ -79,5 +79,5 @@ Files be accessed and downloaded from the directory via: [http://arcticdata.io/d
 ### Overview
 This is the original abstract overview that the PI submitted.
       </markdown>
-    </abstract>
+  </abstract>
 ```
