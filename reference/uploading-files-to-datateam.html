@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Format text in EML | NCEAS Data Team Reference Guide</title>
+  <title>Uploading files to datateam | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Format text in EML | NCEAS Data Team Reference Guide" />
+  <meta property="og:title" content="Uploading files to datateam | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   <meta name="github-repo" content="NCEAS/datateam-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Format text in EML | NCEAS Data Team Reference Guide" />
+  <meta name="twitter:title" content="Uploading files to datateam | NCEAS Data Team Reference Guide" />
   
   <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="edit-spatial-data.html"/>
-<link rel="next" href="series-identifier-sid.html"/>
+<link rel="prev" href="example-dataset.html"/>
+<link rel="next" href="processing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -444,51 +444,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="format-text-in-eml" class="section level2 hasAnchor">
-<h2>Format text in EML<a href="format-text-in-eml.html#format-text-in-eml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Currently, only certain fields (abstracts, methods) support text formatting in EML. Check out this <a href = 'https://github.nceas.ucsb.edu/KNB/arctic-data/blob/ac4cabed2ee9ff3654130ee162266174fafa003a/datateam/How_To/EML/EMl_textType_example.xml' target='_blank'>demo</a> for a full example. Additional info is also available <a href = 'https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-text.html' target='_blank'>here</a>.</p>
-<div class="note">
-<p>
-Many of these formatting functions only work when enclosed by
-<code>&lt;para&gt;&lt;/para&gt;</code>
-</p>
+<div id="uploading-files-to-datateam" class="section level2 hasAnchor">
+<h2>Uploading files to <code>datateam</code><a href="uploading-files-to-datateam.html#uploading-files-to-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll use the large dataset method if a submitter has a dataset with around 700+ files, as the uploading would take too long through the website. When we confirm with a PI that their submission has 700+ files, we will begin to give instructions for how they can directly upload all their files to our datateam server. Eventually, we’ll move these files to a web-accessible folder so that viewers can access their files directly from our server instead of through metacat.</p>
+<div id="instructions-for-uploading-files-to-datateam" class="section level3 hasAnchor">
+<h3>Instructions for uploading files to <code>datateam</code><a href="uploading-files-to-datateam.html#instructions-for-uploading-files-to-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To have submitters upload their files to our server, we will give them access through SSH (secure shell). Please reach out to a Data Coordinator for the credentials of the <code>visitor</code> account in the <code>datateam</code> server.</p>
+<p>If the submitter is familiar with SSH, we can give them the credentials and tell them to create a folder under the home directory of <code>/home/visitor</code> to add all their files. If they are not familiar, we will give them the following instructions to use a GUI client for SSH:</p>
+<blockquote>
+<p>Cyberduck is a free software that you can download at <a href="https://cyberduck.io/download/" class="uri">https://cyberduck.io/download/</a>, and follow the directions below:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open Cyberduck.</p></li>
+<li><p>Click “Open Connection”.</p></li>
+<li><p>From the drop-down, choose “SFTP (Secure File Transfer Protocol)”.</p></li>
+<li><p>Enter “datateam.nceas.ucsb.edu” for Server.</p></li>
+<li><p>Enter your username and password (ask Data Coordinators)</p></li>
+<li><p>Connect.</p></li>
+<li><p>Create the folder <code>/home/visitor/submitter_name</code> and upload your files.</p></li>
+</ol>
+</blockquote>
 </div>
-<p>You can insert these tags directly into the EML document using syntax that looks like this:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="format-text-in-eml.html#cb133-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>abstract <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">abstract</span>(<span class="at">para =</span> <span class="st">&quot;Some abstracts require subscripts like CO&lt;subscript&gt;2&lt;/subscript&gt;&quot;</span>)</span></code></pre></div>
-<div id="type-setting" class="section level3 hasAnchor">
-<h3>Type-setting<a href="format-text-in-eml.html#type-setting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Subscripts, superscripts, and italics:</p>
-<pre><code>&lt;subscript&gt;You can do subscripts&lt;/subscript&gt;
-&lt;superscript&gt;or superscipts&lt;/superscript&gt;
-&lt;emphasis&gt;or even italics.&lt;/emphasis&gt; </code></pre>
-</div>
-<div id="links" class="section level3 hasAnchor">
-<h3>Links<a href="format-text-in-eml.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Be sure to include the “<a href="https://" class="uri">https://</a>” before the link or it will redirect incorrectly. Also, always check that your links go through to the correct page. Please be aware that most links are inherently unstable so always default to archiving files over pointing to websites when possible and appropriate.</p>
-<pre><code>&lt;ulink url=&quot;https://some_url.com&quot;&gt;
-    &lt;citetitle&gt;some text&lt;/citetitle&gt;
-&lt;/ulink&gt;</code></pre>
-</div>
-<div id="lists" class="section level3 hasAnchor">
-<h3>Lists<a href="format-text-in-eml.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Unordered (bulleted) lists:</p>
-<pre><code>&lt;itemizedlist&gt;
-    &lt;listitem&gt;
-        &lt;para&gt;Paragraphs&lt;/para&gt;
-    &lt;/listitem&gt;
-    &lt;listitem&gt;
-        &lt;para&gt;Sections w/ subsections (w/ titles)&lt;/para&gt;
-    &lt;/listitem&gt;
-&lt;/itemizedlist&gt;</code></pre>
-<p>Ordered lists (1, 2, 3)…</p>
-<pre><code>&lt;orderedlist&gt;
-    &lt;listitem&gt;
-        &lt;para&gt;something&lt;/para&gt;
-    &lt;/listitem&gt;
-    &lt;listitem&gt;
-        &lt;para&gt;something else&lt;/para&gt;
-    &lt;/listitem&gt;
-&lt;/orderedlist&gt;</code></pre>
+<div id="moving-files-within-datateam" class="section level3 hasAnchor">
+<h3>Moving files within <code>datateam</code><a href="uploading-files-to-datateam.html#moving-files-within-datateam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Eventually, we will be moving the files from <code>/home/visitor</code> to the <code>/var/data</code> shoulder. While we are in the process of curating the dataset, we will move the files to <code>var/data/curation</code>.</p>
+<p>Then, when we are ready for the files to be in a web-accessible location (i.e. when the dataset is ready to be published), we’ll move the files to <code>var/data/10.18739/preIssuedDOI/</code>. Before we can create the <code>preIssuedDOI</code> directory, we’ll need to mint a pre-issued DOI for this dataset.</p>
 </div>
 </div>
             </section>
@@ -496,8 +475,8 @@ Many of these formatting functions only work when enclosed by
           </div>
         </div>
       </div>
-<a href="edit-spatial-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="series-identifier-sid.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-dataset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="processing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

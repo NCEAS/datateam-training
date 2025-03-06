@@ -22,14 +22,14 @@
 
 
 
-<meta name="date" content="2025-03-05" />
+<meta name="date" content="2025-03-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="example-dataset.html"/>
+<link rel="prev" href="uploading-files-to-datateam.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -412,7 +412,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="large-dataset-method.html"><a href="large-dataset-method.html"><i class="fa fa-check"></i>Large Dataset Method</a>
 <ul>
 <li class="chapter" data-level="" data-path="example-dataset.html"><a href="example-dataset.html"><i class="fa fa-check"></i>Example Dataset</a></li>
-<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html"><i class="fa fa-check"></i>Processing</a></li>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html"><i class="fa fa-check"></i>Uploading files to <code>datateam</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html#instructions-for-uploading-files-to-datateam"><i class="fa fa-check"></i>Instructions for uploading files to <code>datateam</code></a></li>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html#moving-files-within-datateam"><i class="fa fa-check"></i>Moving files within <code>datateam</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html"><i class="fa fa-check"></i>Processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#understanding-the-contents-of-a-large-data-submission"><i class="fa fa-check"></i>Understanding the contents of a large data submission</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#creating-representative-entities"><i class="fa fa-check"></i>Creating representative entities</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#moving-files-to-web-accessible-location"><i class="fa fa-check"></i>Moving files to web-accessible location</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#adding-markdown-link-to-abstract-in-eml"><i class="fa fa-check"></i>Adding Markdown link to abstract in EML</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>
@@ -435,32 +446,69 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="processing" class="section level2 hasAnchor">
 <h2>Processing<a href="processing.html#processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The general way to process this type of dataset is:</p>
+<p>As seen in the example dataset, the majority of the data files will be hosted directly on our server. In order to still have some metadata to describe the contents of the data package, we’ll create generalized representative entities to describe the files.</p>
+<div id="understanding-the-contents-of-a-large-data-submission" class="section level3 hasAnchor">
+<h3>Understanding the contents of a large data submission<a href="processing.html#understanding-the-contents-of-a-large-data-submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we’ll need to inspect the files and folders submitted by the PI. Ideally, the PI will have organized the files in a comprehensive folder hierarchy with a file naming convention. Asking the PI to provide the file and folder naming convention for all their submitted files is helpful, as it allows us to create one representative entity for each type of file they have.</p>
+<p>We’ll also need the PI to submit a dataset, as normal, through the ADC. Since they’ll have uploaded their files directly to our server, they won’t need to upload any files to their metadata submission.</p>
+</div>
+<div id="creating-representative-entities" class="section level3 hasAnchor">
+<h3>Creating representative entities<a href="processing.html#creating-representative-entities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To create representative entities, there are 2 ways:</p>
+<div id="creating-entities-through-r" class="section level4 hasAnchor">
+<h4>1. Creating entities through R<a href="processing.html#creating-entities-through-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To create the representative entities through R, we will use <code>eml</code> library. In this example, we’ll create a general <code>dataTable</code> entity:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="processing.html#cb252-1" tabindex="-1"></a>dataTable1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;[region_name]/[lake_name]_[YYYY-MM-DD].csv&quot;</span>,</span>
+<span id="cb252-2"><a href="processing.html#cb252-2" tabindex="-1"></a>                            <span class="at">entityDescription =</span> <span class="st">&quot;These CSV files contain lake measurement information. YYYY-MM-DD represents the date of measurement.&quot;</span>)</span>
+<span id="cb252-3"><a href="processing.html#cb252-3" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="processing.html#cb252-4" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> dataTable1</span></code></pre></div>
+<p>Now, we can add an attribute table to this entity to document the files’ metadata.</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="processing.html#cb253-1" tabindex="-1"></a>atts <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">shiny_attributes</span>()</span>
+<span id="cb253-2"><a href="processing.html#cb253-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> atts<span class="sc">$</span>attributes, <span class="at">factors =</span> atts<span class="sc">$</span>factors)</span></code></pre></div>
+<p>Similarly, we can create representative entities for an <code>otherEntity</code>, <code>spatialVector</code>, or <code>spatialRaster</code>. The required sections for each of these different types of entities may slightly differ, so be sure to check the <a href="https://eml.ecoinformatics.org/schema/">EML schema documentation</a> so that all the required sections are added. Otherwise, the EML will not validate.</p>
+<p>For example, you’ll need to have a coordinate reference system for a <code>spatialVector</code> or <code>spatialRaster</code>.</p>
+</div>
+<div id="creating-entities-through-the-adc" class="section level4 hasAnchor">
+<h4>2. Creating entities through the ADC<a href="processing.html#creating-entities-through-the-adc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Another method to create representative entities is to</p>
 <ol style="list-style-type: decimal">
-<li>Inspect the files and folder hierarchy where the PI uploaded them in their folder on the datateam server in /home/visitor</li>
-<li>Upload one of each type of file to the dataset to more easily annotate the attributes as normal</li>
+<li><p>Download one of each type of file from the dataset.</p></li>
+<li><p>Upload each file into the data package through the ADC web editor.</p></li>
+<li><p>Add file descriptions and attributes as normal.</p></li>
+<li><p>Change the <code>entityName</code> of the file to be more general, showing the file and folder naming convention.</p></li>
+<li><p>Before the dataset is published, remove any physicals, then remove the files from the data package using <code>arcticdatautils::updateResourceMap()</code>. This will remove the file PIDs from the resource map, but it will leave the entities in the EML document. Please ask a Data Coordinator if you have not used <code>updateResourceMap()</code> before.</p></li>
 </ol>
-<ul>
-<li>Alternatively, you can create and annotate the other entities fully in R if preferred</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Change the name and description of each file to be representative of all of the same type of files on the server.</li>
+</div>
+</div>
+<div id="moving-files-to-web-accessible-location" class="section level3 hasAnchor">
+<h3>Moving files to web-accessible location<a href="processing.html#moving-files-to-web-accessible-location" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As mentioned in the section, “Uploading files to <code>datateam</code>”, we’ll need to move the files to their web-accessible location in <code>var/data/10.18739/preIssuedDOI</code>.</p>
+</div>
+<div id="adding-markdown-link-to-abstract-in-eml" class="section level3 hasAnchor">
+<h3>Adding Markdown link to abstract in EML<a href="processing.html#adding-markdown-link-to-abstract-in-eml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We’ll need to provide the link to the files that will be hosted on our server for viewers to download files. The link to the dataset will be:</p>
+<blockquote>
+<p><a href="http://arcticdata.io/data/preIssuedDOI" class="uri">http://arcticdata.io/data/preIssuedDOI</a></p>
+</blockquote>
+<p>To add this as a clickable Markdown link in the Abstract section of an EML doc, we’ll need to</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the EML doc in a text editor.</p></li>
+<li><p>Navigate to the <abstract> section.</p></li>
+<li><p>Underneath the <abstract> section, add a <markdown> … </markdown> section.</p></li>
+<li><p>Add in Markdown-formatted text without any indentations.</p></li>
 </ol>
-<ul>
-<li>The name should include the entire file path</li>
-<li>You may need to reach out to the PI and have them explain the naming structure of the files</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li>Ask a Data Coordinator to move the data files from the ‘visitor’ folder to var/data’.</li>
-<li>Format the abstract using Markdown to include a link to the server using the dataset’s pre-issued DOI</li>
-</ol>
-<ul>
-<li>The format is ‘http<a href=""></a>://arcticdata.io/data/[pre-issued DOI]’</li>
-</ul>
-<ol start="6" style="list-style-type: decimal">
-<li>Once peer-reviewed, remove the files leaving the representative entities behind.</li>
-</ol>
+<p>This will look like:</p>
+<pre><code>  &lt;abstract&gt;
+      &lt;markdown&gt;
+### Access
+Files be accessed and downloaded from the directory via: [http://arcticdata.io/data/10.18739/DOI](http://arcticdata.io/data/10.18739/DOI).
+      
+### Overview
+This is the original abstract overview that the PI submitted.
+      &lt;/markdown&gt;
+  &lt;/abstract&gt;</code></pre>
 
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -468,7 +516,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="example-dataset.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="uploading-files-to-datateam.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
