@@ -1,0 +1,165 @@
+## Spatial vector data
+
+### About
+
+Spatial vector files are geospatial files that represent geographic features using points, lines, and polygons. Spatial vector files can include GeoJSON (.json), ESRI shapefiles (.shp), GeoPackage (.gpkg), GeoParquet (.parquet), Google Keyhole Markup Language (.kml, .kmz), etc.
+
+### Processing `spatialVector` entities
+
+In addition to the usual metadata information we'll need (description, attributes, physical), we'll need some additional metadata to create a `spatialVector` entity. In particular, we'll need to know the *geometry* and *coordinate reference system* of the file.
+
+To do this, we can either get this information from the submitter directly or upload the vector file into QGIS (or another GIS software) to explore its metadata. Otherwise, it will take some extra sleuthing and file processing in R from our end. Here we'll go over some techniques to gather this information from vector files. Then, we'll show how to create a `spatialVector` entity within an EML doc.
+
+We'll start by setting our node, reading in the data package, and gathering the PID of our geospatial file:
+
+```{r, eval=FALSE}
+library(sf)
+library(dataone)
+library(datapack)
+library(uuid)
+library(arcticdatautils)
+library(EML)
+
+### Set up node and gather data package
+d1c <- dataone::D1Client("...", "urn:node:...") # Setting the Member Node
+resourceMapId <- "..." # Get data package PID (resource map ID)
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
+
+### Load in Metadata EML
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
+
+### Read in spatial vector file
+spatial_vector_pid <- selectMember(dp, "sysmeta@fileName", "exampleFile.zip")
+```
+
+#### Reading in the vector file
+
+We'll first need to read in the vector file to extract the necessary metadata.
+
+##### ESRI shapefiles
+
+To find information from ESRI shapefiles, we can first use a function `arcticdatautils::read_zip_shapefile()`.
+
+```{r, eval=FALSE}
+shapefile <- arcticdatautils::read_zip_shapefile(d1c@mn, shp_pid)
+```
+
+##### GeoJSON, GeoPackage, and Parquet files
+
+For GeoJSON, GeoPackage, and Parquet files, we don't have an arcticdatautils function to read the file from the node, so you'll need to download the file locally. We can use the `sf` library to read in these vector files instead.
+
+```{r, eval=FALSE}
+geojson_file <- sf::st_read("~/path/to/vectorFile.json")
+geopackage_file <- sf::st_read("~/path/to/vectorFile.gpkg")
+geoparquet_file <- sf::st_read("~/path/to/vectorFile.parquet")
+```
+
+#### Exploring vector file for metadata
+
+To find information from ESRI shapefiles, GeoJSONs, GeoPackages, and Parquet files, we can use the `sf` library again to find the *coordinate reference system* and *geometry*.
+
+```{r, eval=FALSE}
+### Get coordinate reference system
+sf::st_crs(file)
+
+### Find the geometry
+sf::st_geometry(file)
+```
+
+To reference the names of the coordinate reference systems, we can use `arcticdatautils::get_coord_list()`.
+
+##### Additional files
+
+For `.kml` and `.kmz` files, or other vector files not mentioned, there may be other libraries in R that can be used to explore their metadata. Uploading the file into QGIS or another GIS software is another quick way to retrieve this metadata information.
+
+#### Edit format ID
+
+Next, we'll want to check the format ID and, if necessary, change the format ID to reflect the correct file type. If it needs to be changed to an ESRI shapefile, we'll do the following:
+
+```{r, eval=FALSE}
+spatial_vector_pid <- selectMember(dp, "sysmeta@fileName", "exampleFile.zip")
+sysmeta <- dataone::getSystemMetadata(d1c@mn, spatial_vector_pid)
+sysmeta@formatId <- "application/vnd.shp+zip"
+
+dataone::updateSystemMetadata(d1c@mn, spatial_vector_pid, sysmeta)
+```
+
+You can check for format IDs in this [documentation](https://cn.dataone.org/cn/v2/formats).
+
+#### Creating `spatialVector` entity
+
+Next, we'll be creating our `spatialVector` entity. We can use an `arcticdatautils` function to do this. Then, we'll add it to the EML doc.
+
+One thing we'll need for this entity is an attribute list. If one was already created from the web editor, you can copy that over. Otherwise, you can use R to create and add one for this file. The example code below will assume that we're copying the attribute list over from the `otherEntity` of an ESRI shapefile.
+
+```{r, eval=FALSE}
+spatialVector <- arcticdatautils::pid_to_eml_entity(d1c@mn,
+                                                    spatial_vector_pid,
+                                                    entity_type = "spatialVector",
+                                                    entityName = "exampleFile.zip",
+                                                    entityDescription = "spatial vector description",
+                                                    attributeList = doc$dataset$otherEntity[[i]]$attributeList,
+                                                    geometry = "Polygon",
+                                                    spatialReference = "list(horizCoordSysName = GCS_North_American_1983"))
+
+doc$dataset$spatialVector[[1]] <- spatialVector
+
+doc$dataset$otherEntity[[i]] <- NULL # removing the previous otherEntity of the file
+```
+
+Finally, we'll run `eml_validate(doc)` to make sure everything is fine.
+
+### Example script
+
+Here is an example script combining everything when processing an ESRI shapefile:
+
+```{r, eval=FALSE}
+### Set up node and gather data package
+d1c <- dataone::D1Client("PROD", "urn:node:ARCTIC") # Setting the Member Node
+resourceMapId <- "..." # Get data package PID (resource map ID)
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
+
+### Load in Metadata EML
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
+
+### Creating Spatial Vector
+
+# read in shapefile
+shp_pid <- selectMember(dp, "sysmeta@fileName", "PeatTess.zip")
+shapefile <- arcticdatautils::read_zip_shapefile(d1c@mn, shp_pid)
+
+# get coordinate system
+sf::st_crs(shapefile) # -> GCS_North_American_1927
+
+# find geometry of shapefile
+sf::st_geometry(shapefile) # -> polygon
+
+### Edit formatId
+
+# Format ID
+vector_pid <- selectMember(dp, "sysmeta@fileName", "PeatTess.zip")
+sysmeta <- getSystemMetadata(d1c@mn, vector_pid)
+sysmeta@formatId <- "application/vnd.shp+zip"
+
+updateSystemMetadata(d1c@mn, vector_pid, sysmeta)
+
+### Create spatial vector entity
+spatialVector <- pid_to_eml_entity(d1c@mn,
+                                   shp_pid,
+                                   entity_type = "spatialVector",
+                                   entityName = "PeatTess.zip",
+                                   entityDescription = "1km tessellation of the Alaska peatland map",
+                                   attributeList = doc$dataset$otherEntity$attributeList,
+                                   geometry = "Polygon",
+                                   spatialReference = list(horizCoordSysName = "GCS_North_American_1927"))
+
+# add spatial vector to doc
+doc$dataset$spatialVector[[1]] <- spatialVector
+
+# NULL the corresponding otherEntity
+doc$dataset$otherEntity <- NULL
+
+eml_validate(doc)
+```
