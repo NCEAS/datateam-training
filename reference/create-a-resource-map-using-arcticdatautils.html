@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Create a resource map using arcticdatautils | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -449,9 +460,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>If you are creating a new data package, you must create a resource map. Resource maps provide information about the resources in the data package (i.e. which data files are associated with a particular metadata file (xml)).</p>
 <p>Before creating a new resource map, it is best to ensure that all the objects of interest have already been published to the node. Therefore, if you’ve only run <code>publish_object()</code> on the xml (in section 2.4 above), you will also need to publish all the data objects you wish to associate with the xml. The resource map you are about to create controls these linkages.</p>
 <p>Once all the objects that ought to belong to the package have been published, create a resource map using their respective PIDs (or the variables you saved the PIDs to) via the <code>arcticdatautils::create_resource_map()</code> function, like so:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb232-1" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
-<span id="cb232-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb232-2" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
-<span id="cb232-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb232-3" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="create-a-resource-map-using-arcticdatautils.html#cb248-1" tabindex="-1"></a>resource_map_pid <span class="ot">&lt;-</span> <span class="fu">create_resource_map</span>(adc_test,</span>
+<span id="cb248-2"><a href="create-a-resource-map-using-arcticdatautils.html#cb248-2" tabindex="-1"></a>                                        <span class="at">metadata_pid =</span> metadata_pid,</span>
+<span id="cb248-3"><a href="create-a-resource-map-using-arcticdatautils.html#cb248-3" tabindex="-1"></a>                                        <span class="at">data_pids =</span> data_pids)</span></code></pre></div>
 </div>
             </section>
 

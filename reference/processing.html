@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Processing | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Processing | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -458,13 +469,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="creating-entities-through-r" class="section level4 hasAnchor">
 <h4>1. Creating entities through R<a href="processing.html#creating-entities-through-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To create the representative entities through R, we will use <code>eml</code> library. In this example, we’ll create a general <code>dataTable</code> entity:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="processing.html#cb252-1" tabindex="-1"></a>dataTable1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;[region_name]/[lake_name]_[YYYY-MM-DD].csv&quot;</span>,</span>
-<span id="cb252-2"><a href="processing.html#cb252-2" tabindex="-1"></a>                            <span class="at">entityDescription =</span> <span class="st">&quot;These CSV files contain lake measurement information. YYYY-MM-DD represents the date of measurement.&quot;</span>)</span>
-<span id="cb252-3"><a href="processing.html#cb252-3" tabindex="-1"></a></span>
-<span id="cb252-4"><a href="processing.html#cb252-4" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> dataTable1</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="processing.html#cb268-1" tabindex="-1"></a>dataTable1 <span class="ot">&lt;-</span> eml<span class="sc">$</span><span class="fu">dataTable</span>(<span class="at">entityName =</span> <span class="st">&quot;[region_name]/[lake_name]_[YYYY-MM-DD].csv&quot;</span>,</span>
+<span id="cb268-2"><a href="processing.html#cb268-2" tabindex="-1"></a>                            <span class="at">entityDescription =</span> <span class="st">&quot;These CSV files contain lake measurement information. YYYY-MM-DD represents the date of measurement.&quot;</span>)</span>
+<span id="cb268-3"><a href="processing.html#cb268-3" tabindex="-1"></a></span>
+<span id="cb268-4"><a href="processing.html#cb268-4" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> dataTable1</span></code></pre></div>
 <p>Now, we can add an attribute table to this entity to document the files’ metadata.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="processing.html#cb253-1" tabindex="-1"></a>atts <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">shiny_attributes</span>()</span>
-<span id="cb253-2"><a href="processing.html#cb253-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> atts<span class="sc">$</span>attributes, <span class="at">factors =</span> atts<span class="sc">$</span>factors)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="processing.html#cb269-1" tabindex="-1"></a>atts <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">shiny_attributes</span>()</span>
+<span id="cb269-2"><a href="processing.html#cb269-2" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>dataTable[[<span class="dv">1</span>]]<span class="sc">$</span>attributeList <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">set_attributes</span>(<span class="at">attributes =</span> atts<span class="sc">$</span>attributes, <span class="at">factors =</span> atts<span class="sc">$</span>factors)</span></code></pre></div>
 <p>Similarly, we can create representative entities for an <code>otherEntity</code>, <code>spatialVector</code>, or <code>spatialRaster</code>. The required sections for each of these different types of entities may slightly differ, so be sure to check the <a href="https://eml.ecoinformatics.org/schema/">EML schema documentation</a> so that all the required sections are added. Otherwise, the EML will not validate.</p>
 <p>For example, you’ll need to have a coordinate reference system for a <code>spatialVector</code> or <code>spatialRaster</code>.</p>
 </div>

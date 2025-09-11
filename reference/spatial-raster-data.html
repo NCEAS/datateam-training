@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Spatial raster data | NCEAS Data Team Reference Guide</title>
+  <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Spatial raster data | NCEAS Data Team Reference Guide" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  <meta name="github-repo" content="NCEAS/datateam-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Spatial raster data | NCEAS Data Team Reference Guide" />
+  
+  <meta name="twitter:description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
+  
+
+
+
+<meta name="date" content="2025-09-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="spatial-data.html"/>
+<link rel="next" href="spatial-vector-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="../styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Team Reference Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i>Miscellaneous</a>
+<ul>
+<li class="chapter" data-level="" data-path="code-snippets.html"><a href="code-snippets.html"><i class="fa fa-check"></i>Code Snippets</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html"><i class="fa fa-check"></i>File paths</a>
+<ul>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#remote-files-vs.-local-files"><i class="fa fa-check"></i>Remote files vs. local files</a></li>
+<li class="chapter" data-level="" data-path="file-paths.html"><a href="file-paths.html#file-path-shortcuts"><i class="fa fa-check"></i>File path shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="metacat-version.html"><a href="metacat-version.html"><i class="fa fa-check"></i>Metacat version</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html"><i class="fa fa-check"></i>Resources for R</a>
+<ul>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#learning"><i class="fa fa-check"></i>Learning</a></li>
+<li class="chapter" data-level="" data-path="resources-for-r.html"><a href="resources-for-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-data-packages.html"><a href="edit-data-packages.html"><i class="fa fa-check"></i>Edit data packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html"><i class="fa fa-check"></i>datapack Background</a>
+<ul>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#navigating-data-packages"><i class="fa fa-check"></i>Navigating data packages</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#data-objects"><i class="fa fa-check"></i>Data Objects</a></li>
+<li class="chapter" data-level="" data-path="datapack-background.html"><a href="datapack-background.html#provenance"><i class="fa fa-check"></i>Provenance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html"><i class="fa fa-check"></i>Create a new data package</a>
+<ul>
+<li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html#upload-new-data-files"><i class="fa fa-check"></i>Upload new data files</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-data-package.html"><a href="create-a-new-data-package.html#upload-the-package"><i class="fa fa-check"></i>Upload the package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html"><i class="fa fa-check"></i>Update packages with datapack</a>
+<ul>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#get-the-package"><i class="fa fa-check"></i>Get the package</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#update-the-metadata"><i class="fa fa-check"></i>Update the metadata</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#modify-the-data-files"><i class="fa fa-check"></i>Modify the data files</a></li>
+<li class="chapter" data-level="" data-path="update-packages-with-datapack.html"><a href="update-packages-with-datapack.html#publish-update"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="add-a-pre-generated-identifier-to-the-eml.html"><a href="add-a-pre-generated-identifier-to-the-eml.html"><i class="fa fa-check"></i>Add a pre-generated identifier to the EML</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html"><i class="fa fa-check"></i>Edit sysmeta</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#identifiers-and-sysmeta"><i class="fa fa-check"></i>Identifiers and sysmeta</a></li>
+<li class="chapter" data-level="" data-path="edit-sysmeta.html"><a href="edit-sysmeta.html#additional-resources"><i class="fa fa-check"></i>Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="obsolescence-chain.html"><a href="obsolescence-chain.html"><i class="fa fa-check"></i>Obsolescence chain</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html"><i class="fa fa-check"></i>Set DataONE nodes</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#staging-test-nodes"><i class="fa fa-check"></i>Staging (Test) nodes</a></li>
+<li class="chapter" data-level="" data-path="set-dataone-nodes.html"><a href="set-dataone-nodes.html#production-nodes"><i class="fa fa-check"></i>Production nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html"><i class="fa fa-check"></i>Set rights and access</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-rights-and-access.html"><a href="set-rights-and-access.html#my-profile"><i class="fa fa-check"></i>My profile</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="show-indexing-status.html"><a href="show-indexing-status.html"><i class="fa fa-check"></i>Show indexing status</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html"><i class="fa fa-check"></i>Preserve folder structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
+<ul>
+<li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html#publish-update-1"><i class="fa fa-check"></i>Publish update</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="update-an-object.html"><a href="update-an-object.html"><i class="fa fa-check"></i>Update an object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="explore-eml.html"><a href="explore-eml.html"><i class="fa fa-check"></i>Explore EML</a>
+<ul>
+<li class="chapter" data-level="" data-path="access-specific-elements.html"><a href="access-specific-elements.html"><i class="fa fa-check"></i>Access specific elements</a></li>
+<li class="chapter" data-level="" data-path="navigate-through-eml.html"><a href="navigate-through-eml.html"><i class="fa fa-check"></i>Navigate through EML</a></li>
+<li class="chapter" data-level="" data-path="understand-the-eml-schema.html"><a href="understand-the-eml-schema.html"><i class="fa fa-check"></i>Understand the EML schema</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-eml.html"><a href="edit-eml.html"><i class="fa fa-check"></i>Edit EML</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html"><i class="fa fa-check"></i>Edit an EML element</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-strings"><i class="fa fa-check"></i>Edit EML with strings</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-the-eml-package"><i class="fa fa-check"></i>Edit EML with the “EML” package</a></li>
+<li class="chapter" data-level="" data-path="edit-an-eml-element.html"><a href="edit-an-eml-element.html#edit-eml-with-objects"><i class="fa fa-check"></i>Edit EML with objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html"><i class="fa fa-check"></i>Edit attributeLists</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-attributes"><i class="fa fa-check"></i>Edit attributes</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-custom-units"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#edit-factors"><i class="fa fa-check"></i>Edit factors</a></li>
+<li class="chapter" data-level="" data-path="edit-attributelists.html"><a href="edit-attributelists.html#finalize-attributelist"><i class="fa fa-check"></i>Finalize attributeList</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-custom-units-1.html"><a href="edit-custom-units-1.html"><i class="fa fa-check"></i>Edit custom units</a></li>
+<li class="chapter" data-level="" data-path="edit-datatables.html"><a href="edit-datatables.html"><i class="fa fa-check"></i>Edit dataTables</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html"><i class="fa fa-check"></i>Edit otherEntities</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#remove-otherentities"><i class="fa fa-check"></i>Remove otherEntities</a></li>
+<li class="chapter" data-level="" data-path="edit-otherentities.html"><a href="edit-otherentities.html#create-otherentities"><i class="fa fa-check"></i>Create otherEntities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html"><i class="fa fa-check"></i>Semantic annotations</a>
+<ul>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
+<ul>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#reading-spatial-files"><i class="fa fa-check"></i>Reading Spatial Files</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialvector"><i class="fa fa-check"></i>spatialVector</a></li>
+<li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html#spatialrasters"><i class="fa fa-check"></i>spatialRasters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html"><i class="fa fa-check"></i>Format text in EML</a>
+<ul>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#type-setting"><i class="fa fa-check"></i>Type-setting</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#links"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="" data-path="format-text-in-eml.html"><a href="format-text-in-eml.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html"><i class="fa fa-check"></i>Series Identifier (SID)</a>
+<ul>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#adding-a-sid-to-a-package"><i class="fa fa-check"></i>Adding a SID to a package</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-child-packages-of-a-parent-package-with-a-sid"><i class="fa fa-check"></i>Updating the child packages of a parent package with a SID</a></li>
+<li class="chapter" data-level="" data-path="series-identifier-sid.html"><a href="series-identifier-sid.html#updating-the-metadata-of-a-package-with-a-sid"><i class="fa fa-check"></i>Updating the metadata of a package with a SID</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html"><i class="fa fa-check"></i>Set coverages</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#set-multiple-coverages"><i class="fa fa-check"></i>Set multiple coverages</a></li>
+<li class="chapter" data-level="" data-path="set-coverages.html"><a href="set-coverages.html#special-coverages"><i class="fa fa-check"></i>Special coverages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html"><i class="fa fa-check"></i>Set methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-methods.html"><a href="set-methods.html#adding-sampling-info-to-methods-section"><i class="fa fa-check"></i>Adding sampling info to methods section</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="set-parties.html"><a href="set-parties.html"><i class="fa fa-check"></i>Set parties</a></li>
+<li class="chapter" data-level="" data-path="set-physical.html"><a href="set-physical.html"><i class="fa fa-check"></i>Set physical</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html"><i class="fa fa-check"></i>Use references</a>
+<ul>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-parties"><i class="fa fa-check"></i>Example with parties</a></li>
+<li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-attributes"><i class="fa fa-check"></i>Example with attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-correspondence.html"><a href="pi-correspondence.html"><i class="fa fa-check"></i>PI correspondence</a>
+<ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html"><i class="fa fa-check"></i>Email templates</a>
+<ul>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#initial-email-template"><i class="fa fa-check"></i>Initial email template</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#comment-templates-based-on-what-is-missing"><i class="fa fa-check"></i>Comment templates based on what is missing</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#final-email-templates"><i class="fa fa-check"></i>Final email templates</a></li>
+<li class="chapter" data-level="" data-path="email-templates.html"><a href="email-templates.html#additional-email-templates"><i class="fa fa-check"></i>Additional email templates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html"><i class="fa fa-check"></i>PI FAQ email templates</a>
+<ul>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#access"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="pi-faq-email-templates.html"><a href="pi-faq-email-templates.html#scope"><i class="fa fa-check"></i>Scope</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="good-examples-of-data-packages.html"><a href="good-examples-of-data-packages.html"><i class="fa fa-check"></i>Good Examples of data packages</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html"><i class="fa fa-check"></i>Final Checklist</a>
+<ul>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#special-datasets"><i class="fa fa-check"></i>Special Datasets</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#system-metadata"><i class="fa fa-check"></i>System Metadata</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#general-eml"><i class="fa fa-check"></i>General EML</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#title-1"><i class="fa fa-check"></i>Title</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#abstract-1"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#datatable-otherentity-spatialvectors"><i class="fa fa-check"></i>DataTable / OtherEntity / SpatialVectors</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#people"><i class="fa fa-check"></i>People</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#geographic-region"><i class="fa fa-check"></i>Geographic region</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#project"><i class="fa fa-check"></i>Project</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#check-eml-version"><i class="fa fa-check"></i>Check EML Version</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#access-1"><i class="fa fa-check"></i>Access</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#sftp-files"><i class="fa fa-check"></i>SFTP Files</a></li>
+<li class="chapter" data-level="" data-path="final-checklist.html"><a href="final-checklist.html#updated-datasets"><i class="fa fa-check"></i>Updated datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="initial-review-checklist.html"><a href="initial-review-checklist.html"><i class="fa fa-check"></i>Initial review checklist</a></li>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html"><i class="fa fa-check"></i>Large file transfer</a>
+<ul>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html#sftp"><i class="fa fa-check"></i>sFTP</a></li>
+<li class="chapter" data-level="" data-path="large-file-transfer.html"><a href="large-file-transfer.html#globus-endpoint"><i class="fa fa-check"></i>Globus Endpoint</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html"><i class="fa fa-check"></i>Navigate RT</a>
+<ul>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#front-page"><i class="fa fa-check"></i>Front page</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#all-tickets"><i class="fa fa-check"></i>All tickets</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#example-ticket"><i class="fa fa-check"></i>Example ticket</a></li>
+<li class="chapter" data-level="" data-path="navigate-rt.html"><a href="navigate-rt.html#new-data-submission"><i class="fa fa-check"></i>New data submission</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="replicate-datasets.html"><a href="replicate-datasets.html"><i class="fa fa-check"></i>Replicate Datasets</a>
+<ul>
+<li class="chapter" data-level="" data-path="replicate-datasets.html"><a href="replicate-datasets.html#cloning-the-packages"><i class="fa fa-check"></i>Cloning the packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="miscellaneous-file-types.html"><a href="miscellaneous-file-types.html"><i class="fa fa-check"></i>Miscellaneous file types</a>
+<ul>
+<li class="chapter" data-level="" data-path="convert-excel-file-to-csv.html"><a href="convert-excel-file-to-csv.html"><i class="fa fa-check"></i>Convert Excel file to CSV</a></li>
+<li class="chapter" data-level="" data-path="datalogger-files.html"><a href="datalogger-files.html"><i class="fa fa-check"></i>Datalogger files</a></li>
+<li class="chapter" data-level="" data-path="netcdfs.html"><a href="netcdfs.html"><i class="fa fa-check"></i>NetCDFs</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html"><i class="fa fa-check"></i>Reorganize files on the server</a>
+<ul>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#basics"><i class="fa fa-check"></i>Basics</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#rename-file-based-on-file-path"><i class="fa fa-check"></i>Rename file based on file path</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#unzip-files"><i class="fa fa-check"></i>Unzip files</a></li>
+<li class="chapter" data-level="" data-path="reorganize-files-on-the-server.html"><a href="reorganize-files-on-the-server.html#zip-shapefiles"><i class="fa fa-check"></i>Zip shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
+<li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
+<ul>
+<li class="chapter" data-level="" data-path="clean-column-names.html"><a href="clean-column-names.html"><i class="fa fa-check"></i>Clean column names</a></li>
+<li class="chapter" data-level="" data-path="fix-excel-dates.html"><a href="fix-excel-dates.html"><i class="fa fa-check"></i>Fix Excel dates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="solr-queries.html"><a href="solr-queries.html"><i class="fa fa-check"></i>Solr queries</a>
+<ul>
+<li class="chapter" data-level="" data-path="construct-a-query.html"><a href="construct-a-query.html"><i class="fa fa-check"></i>Construct a query</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-a-browser.html"><a href="query-solr-via-a-browser.html"><i class="fa fa-check"></i>Query Solr via a browser</a></li>
+<li class="chapter" data-level="" data-path="query-solr-via-r.html"><a href="query-solr-via-r.html"><i class="fa fa-check"></i>Query Solr via R</a></li>
+<li class="chapter" data-level="" data-path="use-facets.html"><a href="use-facets.html"><i class="fa fa-check"></i>Use facets</a></li>
+<li class="chapter" data-level="" data-path="use-stats.html"><a href="use-stats.html"><i class="fa fa-check"></i>Use stats</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html"><i class="fa fa-check"></i>Example Solr queries</a>
+<ul>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#find-everything"><i class="fa fa-check"></i>Find everything</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-wildcard-expression"><i class="fa fa-check"></i>Query a wildcard expression</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-fields"><i class="fa fa-check"></i>Query multiple fields</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-by-formattype"><i class="fa fa-check"></i>Query by formatType</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-by-a-specific-submitter"><i class="fa fa-check"></i>Query pids by a specific submitter</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-pids-with-special-characters"><i class="fa fa-check"></i>Query pids with special characters</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-multiple-conditions-within-one-field"><i class="fa fa-check"></i>Query multiple conditions within one field</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-latest-versions-only"><i class="fa fa-check"></i>Query for latest versions only</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-not-in-a-query"><i class="fa fa-check"></i>Use NOT in a query</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-a-coordinating-node"><i class="fa fa-check"></i>Query a coordinating node</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid"><i class="fa fa-check"></i>Query for EMLs that document a specific data pid</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time"><i class="fa fa-check"></i>Query for files uploaded during a specific time</a></li>
+<li class="chapter" data-level="" data-path="example-solr-queries.html"><a href="example-solr-queries.html#use-facets-1"><i class="fa fa-check"></i>Use facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="more-resources.html"><a href="more-resources.html"><i class="fa fa-check"></i>More resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="adc-web-submissions.html"><a href="adc-web-submissions.html"><i class="fa fa-check"></i>ADC web submissions</a>
+<ul>
+<li class="chapter" data-level="" data-path="add-physicals-to-submissions.html"><a href="add-physicals-to-submissions.html"><i class="fa fa-check"></i>Add physicals to submissions</a></li>
+<li class="chapter" data-level="" data-path="assess-attributes.html"><a href="assess-attributes.html"><i class="fa fa-check"></i>Assess attributes</a></li>
+<li class="chapter" data-level="" data-path="list-submissions-to-the-arctic-data-center.html"><a href="list-submissions-to-the-arctic-data-center.html"><i class="fa fa-check"></i>List submissions to the Arctic Data Center</a></li>
+<li class="chapter" data-level="" data-path="recover-failed-submissions.html"><a href="recover-failed-submissions.html"><i class="fa fa-check"></i>Recover failed submissions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-portals.html"><a href="data-portals.html"><i class="fa fa-check"></i>Data Portals</a>
+<ul>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html"><i class="fa fa-check"></i>Customizing Data Portals</a>
+<ul>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#my-portals"><i class="fa fa-check"></i>My portals</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#creating-data-filters"><i class="fa fa-check"></i>Creating Data Filters</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#set-access-permissions"><i class="fa fa-check"></i>Set Access Permissions</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#advanced-portal-customizations"><i class="fa fa-check"></i>Advanced portal customizations</a></li>
+<li class="chapter" data-level="" data-path="customizing-data-portals.html"><a href="customizing-data-portals.html#updating-portals"><i class="fa fa-check"></i>Updating portals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a>
+<ul>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#portal-updates"><i class="fa fa-check"></i>Portal updates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="using-arcticdatautils.html"><a href="using-arcticdatautils.html"><i class="fa fa-check"></i>Using arcticdatautils</a>
+<ul>
+<li class="chapter" data-level="" data-path="create-a-resource-map-using-arcticdatautils.html"><a href="create-a-resource-map-using-arcticdatautils.html"><i class="fa fa-check"></i>Create a resource map using arcticdatautils</a></li>
+<li class="chapter" data-level="" data-path="get-package-and-eml.html"><a href="get-package-and-eml.html"><i class="fa fa-check"></i>Get package and EML</a></li>
+<li class="chapter" data-level="" data-path="publish-an-object.html"><a href="publish-an-object.html"><i class="fa fa-check"></i>Publish an object</a></li>
+<li class="chapter" data-level="" data-path="reorder-entities.html"><a href="reorder-entities.html"><i class="fa fa-check"></i>Reorder entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nesting-data.html"><a href="nesting-data.html"><i class="fa fa-check"></i>Nesting Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="nesting-a-data-package.html"><a href="nesting-a-data-package.html"><i class="fa fa-check"></i>Nesting a data package</a></li>
+<li class="chapter" data-level="" data-path="add-children-to-an-existing-parent.html"><a href="add-children-to-an-existing-parent.html"><i class="fa fa-check"></i>Add children to an existing parent</a></li>
+<li class="chapter" data-level="" data-path="create-a-new-parent-package.html"><a href="create-a-new-parent-package.html"><i class="fa fa-check"></i>Create a new parent package</a></li>
+<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="large-dataset-method.html"><a href="large-dataset-method.html"><i class="fa fa-check"></i>Large Dataset Method</a>
+<ul>
+<li class="chapter" data-level="" data-path="example-dataset.html"><a href="example-dataset.html"><i class="fa fa-check"></i>Example Dataset</a></li>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html"><i class="fa fa-check"></i>Uploading files to <code>datateam</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html#instructions-for-uploading-files-to-datateam"><i class="fa fa-check"></i>Instructions for uploading files to <code>datateam</code></a></li>
+<li class="chapter" data-level="" data-path="uploading-files-to-datateam.html"><a href="uploading-files-to-datateam.html#moving-files-within-datateam"><i class="fa fa-check"></i>Moving files within <code>datateam</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html"><i class="fa fa-check"></i>Processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#understanding-the-contents-of-a-large-data-submission"><i class="fa fa-check"></i>Understanding the contents of a large data submission</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#creating-representative-entities"><i class="fa fa-check"></i>Creating representative entities</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#moving-files-to-web-accessible-location"><i class="fa fa-check"></i>Moving files to web-accessible location</a></li>
+<li class="chapter" data-level="" data-path="processing.html"><a href="processing.html#adding-markdown-link-to-abstract-in-eml"><i class="fa fa-check"></i>Adding Markdown link to abstract in EML</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://nceas.github.io/datateam-training/training/" target="blank">Training</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NCEAS Data Team Reference Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spatial-raster-data" class="section level2 hasAnchor">
+<h2>Spatial raster data<a href="spatial-raster-data.html#spatial-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="about-1" class="section level3 hasAnchor">
+<h3>About<a href="spatial-raster-data.html#about-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The spatial raster files that we typically work with are <code>.tif</code> files.</p>
+</div>
+<div id="processing-spatialraster-entities" class="section level3 hasAnchor">
+<h3>Processing <code>spatialRaster</code> entities<a href="spatial-raster-data.html#processing-spatialraster-entities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This reference tutorial will assume that the <code>otherEntity</code> of the <code>.tif</code> file already has an attribute list. If it exists, you can copy it. Otherwise, you can add one through the web editor before beginning this process, or create one through R to add.</p>
+<p>In addition to the usual metadata information we’ll need (description, attributes, physical), we’ll need some additional metadata to create a <code>spatialRaster</code> entity. In particular, we’ll need to know the <em>coordinate reference system</em> of the file, <em>number of bands</em>, <em>cell size</em>, and other information that we can gather from exploring the TIF files.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="spatial-raster-data.html#cb190-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb190-2"><a href="spatial-raster-data.html#cb190-2" tabindex="-1"></a><span class="fu">library</span>(dataone)</span>
+<span id="cb190-3"><a href="spatial-raster-data.html#cb190-3" tabindex="-1"></a><span class="fu">library</span>(datapack)</span>
+<span id="cb190-4"><a href="spatial-raster-data.html#cb190-4" tabindex="-1"></a><span class="fu">library</span>(uuid)</span>
+<span id="cb190-5"><a href="spatial-raster-data.html#cb190-5" tabindex="-1"></a><span class="fu">library</span>(arcticdatautils)</span>
+<span id="cb190-6"><a href="spatial-raster-data.html#cb190-6" tabindex="-1"></a><span class="fu">library</span>(EML)</span>
+<span id="cb190-7"><a href="spatial-raster-data.html#cb190-7" tabindex="-1"></a></span>
+<span id="cb190-8"><a href="spatial-raster-data.html#cb190-8" tabindex="-1"></a><span class="do">### Set up node and gather data package</span></span>
+<span id="cb190-9"><a href="spatial-raster-data.html#cb190-9" tabindex="-1"></a>d1c <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">D1Client</span>(<span class="st">&quot;...&quot;</span>, <span class="st">&quot;urn:node:...&quot;</span>) <span class="co"># Setting the Member Node</span></span>
+<span id="cb190-10"><a href="spatial-raster-data.html#cb190-10" tabindex="-1"></a>resourceMapId <span class="ot">&lt;-</span> <span class="st">&quot;...&quot;</span> <span class="co"># Get data package PID (resource map ID)</span></span>
+<span id="cb190-11"><a href="spatial-raster-data.html#cb190-11" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">getDataPackage</span>(d1c, <span class="at">identifier =</span> resourceMapId, <span class="at">lazyLoad =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>) <span class="co"># Gather data package</span></span>
+<span id="cb190-12"><a href="spatial-raster-data.html#cb190-12" tabindex="-1"></a></span>
+<span id="cb190-13"><a href="spatial-raster-data.html#cb190-13" tabindex="-1"></a><span class="do">### Load in Metadata EML</span></span>
+<span id="cb190-14"><a href="spatial-raster-data.html#cb190-14" tabindex="-1"></a>metadataId <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="at">name=</span><span class="st">&quot;sysmeta@formatId&quot;</span>, <span class="at">value=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>) <span class="co"># Get metadata PID</span></span>
+<span id="cb190-15"><a href="spatial-raster-data.html#cb190-15" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(d1c<span class="sc">@</span>mn, metadataId)) <span class="co"># Read in metadata EML file</span></span></code></pre></div>
+<div id="downloading-the-files" class="section level4 hasAnchor">
+<h4>Downloading the files<a href="spatial-raster-data.html#downloading-the-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will first download the files into our <code>datateam</code> server. We can do this using the <code>download.file()</code> function.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="spatial-raster-data.html#cb191-1" tabindex="-1"></a><span class="fu">download.file</span>(url1, destination1)</span></code></pre></div>
+</div>
+<div id="changing-the-format-ids" class="section level4 hasAnchor">
+<h4>Changing the format IDs<a href="spatial-raster-data.html#changing-the-format-ids" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will then change the format IDs within the <code>sysmeta</code> and in the entity itself. The following example code assumes that you only have geoTIFF files.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="spatial-raster-data.html#cb192-1" tabindex="-1"></a>pids <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="st">&quot;sysmeta@fileName&quot;</span>, <span class="st">&quot;.tif&quot;</span>)</span>
+<span id="cb192-2"><a href="spatial-raster-data.html#cb192-2" tabindex="-1"></a></span>
+<span id="cb192-3"><a href="spatial-raster-data.html#cb192-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pids)){</span>
+<span id="cb192-4"><a href="spatial-raster-data.html#cb192-4" tabindex="-1"></a>  sysmeta <span class="ot">&lt;-</span> <span class="fu">getSystemMetadata</span>(d1c<span class="sc">@</span>mn, pids[i])</span>
+<span id="cb192-5"><a href="spatial-raster-data.html#cb192-5" tabindex="-1"></a>  </span>
+<span id="cb192-6"><a href="spatial-raster-data.html#cb192-6" tabindex="-1"></a>  sysmeta<span class="sc">@</span>formatId <span class="ot">&lt;-</span> <span class="st">&quot;image/geotiff&quot;</span></span>
+<span id="cb192-7"><a href="spatial-raster-data.html#cb192-7" tabindex="-1"></a>  </span>
+<span id="cb192-8"><a href="spatial-raster-data.html#cb192-8" tabindex="-1"></a>  <span class="fu">updateSystemMetadata</span>(d1c<span class="sc">@</span>mn, pids[i], sysmeta)</span>
+<span id="cb192-9"><a href="spatial-raster-data.html#cb192-9" tabindex="-1"></a>}</span>
+<span id="cb192-10"><a href="spatial-raster-data.html#cb192-10" tabindex="-1"></a></span>
+<span id="cb192-11"><a href="spatial-raster-data.html#cb192-11" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity)){</span>
+<span id="cb192-12"><a href="spatial-raster-data.html#cb192-12" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]<span class="sc">$</span>entityType <span class="ot">&lt;-</span> <span class="st">&quot;image/geotiff&quot;</span></span>
+<span id="cb192-13"><a href="spatial-raster-data.html#cb192-13" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="getting-raster-metadata" class="section level4 hasAnchor">
+<h4>Getting raster metadata<a href="spatial-raster-data.html#getting-raster-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We have defined this function that we haven’t added into <code>arcticdatautils</code> yet, but we will share below.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="spatial-raster-data.html#cb193-1" tabindex="-1"></a>get_raster_metadata <span class="ot">&lt;-</span> <span class="cf">function</span>(path, <span class="at">coord_name =</span> <span class="cn">NULL</span>, attributeList){</span>
+<span id="cb193-2"><a href="spatial-raster-data.html#cb193-2" tabindex="-1"></a>  </span>
+<span id="cb193-3"><a href="spatial-raster-data.html#cb193-3" tabindex="-1"></a>  <span class="co"># define a raste object</span></span>
+<span id="cb193-4"><a href="spatial-raster-data.html#cb193-4" tabindex="-1"></a>  raster_obj <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">raster</span>(path)</span>
+<span id="cb193-5"><a href="spatial-raster-data.html#cb193-5" tabindex="-1"></a>  <span class="co">#message(paste(&quot;Reading raster object with proj4string of &quot;, raster::crs(raster_obj)@projargs))</span></span>
+<span id="cb193-6"><a href="spatial-raster-data.html#cb193-6" tabindex="-1"></a>  </span>
+<span id="cb193-7"><a href="spatial-raster-data.html#cb193-7" tabindex="-1"></a>  <span class="co"># determine coordinates of raster</span></span>
+<span id="cb193-8"><a href="spatial-raster-data.html#cb193-8" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(coord_name)){</span>
+<span id="cb193-9"><a href="spatial-raster-data.html#cb193-9" tabindex="-1"></a>    coord_name <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">crs</span>(raster_obj)<span class="sc">@</span>projargs</span>
+<span id="cb193-10"><a href="spatial-raster-data.html#cb193-10" tabindex="-1"></a>  }</span>
+<span id="cb193-11"><a href="spatial-raster-data.html#cb193-11" tabindex="-1"></a>  </span>
+<span id="cb193-12"><a href="spatial-raster-data.html#cb193-12" tabindex="-1"></a>  raster_info <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">entityName =</span> <span class="fu">basename</span>(path),</span>
+<span id="cb193-13"><a href="spatial-raster-data.html#cb193-13" tabindex="-1"></a>                      <span class="at">attributeList =</span> attributeList,</span>
+<span id="cb193-14"><a href="spatial-raster-data.html#cb193-14" tabindex="-1"></a>                      <span class="at">spatialReference =</span> <span class="fu">list</span>(<span class="at">horizCoordSysName =</span> coord_name),</span>
+<span id="cb193-15"><a href="spatial-raster-data.html#cb193-15" tabindex="-1"></a>                      <span class="at">horizontalAccuracy =</span> <span class="fu">list</span>(<span class="at">accuracyReport =</span> <span class="st">&quot;unknown&quot;</span>),</span>
+<span id="cb193-16"><a href="spatial-raster-data.html#cb193-16" tabindex="-1"></a>                      <span class="at">verticalAccuracy =</span> <span class="fu">list</span>(<span class="at">accuracyReport =</span> <span class="st">&quot;unknown&quot;</span>),</span>
+<span id="cb193-17"><a href="spatial-raster-data.html#cb193-17" tabindex="-1"></a>                      <span class="at">cellSizeXDirection =</span> raster<span class="sc">::</span><span class="fu">res</span>(raster_obj)[<span class="dv">1</span>],</span>
+<span id="cb193-18"><a href="spatial-raster-data.html#cb193-18" tabindex="-1"></a>                      <span class="at">cellSizeYDirection =</span> raster<span class="sc">::</span><span class="fu">res</span>(raster_obj)[<span class="dv">2</span>],</span>
+<span id="cb193-19"><a href="spatial-raster-data.html#cb193-19" tabindex="-1"></a>                      <span class="at">numberOfBands =</span> raster<span class="sc">::</span><span class="fu">nbands</span>(raster_obj),</span>
+<span id="cb193-20"><a href="spatial-raster-data.html#cb193-20" tabindex="-1"></a>                      <span class="at">rasterOrigin =</span> <span class="st">&quot;Upper Left&quot;</span>,</span>
+<span id="cb193-21"><a href="spatial-raster-data.html#cb193-21" tabindex="-1"></a>                      <span class="at">rows =</span> <span class="fu">dim</span>(raster_obj)[<span class="dv">1</span>],</span>
+<span id="cb193-22"><a href="spatial-raster-data.html#cb193-22" tabindex="-1"></a>                      <span class="at">columns =</span> <span class="fu">dim</span>(raster_obj)[<span class="dv">2</span>],</span>
+<span id="cb193-23"><a href="spatial-raster-data.html#cb193-23" tabindex="-1"></a>                      <span class="at">verticals =</span> <span class="fu">dim</span>(raster_obj)[<span class="dv">3</span>],</span>
+<span id="cb193-24"><a href="spatial-raster-data.html#cb193-24" tabindex="-1"></a>                      <span class="at">cellGeometry =</span> <span class="st">&quot;pixel&quot;</span>)</span>
+<span id="cb193-25"><a href="spatial-raster-data.html#cb193-25" tabindex="-1"></a>  <span class="fu">return</span>(raster_info)</span>
+<span id="cb193-26"><a href="spatial-raster-data.html#cb193-26" tabindex="-1"></a>}</span></code></pre></div>
+<p>This function takes in a path to the geotiff file and creates a <code>spatialRaster</code> object to be added into the EML.</p>
+<p>To use this function, we will need to know the coordinate reference system as well to add as an argument. We can do this using the <code>raster</code> library in R.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="spatial-raster-data.html#cb194-1" tabindex="-1"></a><span class="co"># Create object with path to folder containing all the tif files</span></span>
+<span id="cb194-2"><a href="spatial-raster-data.html#cb194-2" tabindex="-1"></a>raster_folder <span class="ot">&lt;-</span> <span class="st">&quot;path/to/your/rasters&quot;</span></span>
+<span id="cb194-3"><a href="spatial-raster-data.html#cb194-3" tabindex="-1"></a></span>
+<span id="cb194-4"><a href="spatial-raster-data.html#cb194-4" tabindex="-1"></a><span class="co"># Create list of the file names with full file paths</span></span>
+<span id="cb194-5"><a href="spatial-raster-data.html#cb194-5" tabindex="-1"></a>raster_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(raster_folder, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb194-6"><a href="spatial-raster-data.html#cb194-6" tabindex="-1"></a></span>
+<span id="cb194-7"><a href="spatial-raster-data.html#cb194-7" tabindex="-1"></a><span class="co"># Find datum of a TIF file</span></span>
+<span id="cb194-8"><a href="spatial-raster-data.html#cb194-8" tabindex="-1"></a>raster<span class="sc">::</span><span class="fu">raster</span>(raster_names[[<span class="dv">1</span>]])</span>
+<span id="cb194-9"><a href="spatial-raster-data.html#cb194-9" tabindex="-1"></a>raster<span class="sc">::</span><span class="fu">crs</span>(raster<span class="sc">::</span><span class="fu">raster</span>(raster_names[[<span class="dv">1</span>]]))<span class="sc">@</span>projargs</span>
+<span id="cb194-10"><a href="spatial-raster-data.html#cb194-10" tabindex="-1"></a></span>
+<span id="cb194-11"><a href="spatial-raster-data.html#cb194-11" tabindex="-1"></a><span class="co"># Loop through all of the files</span></span>
+<span id="cb194-12"><a href="spatial-raster-data.html#cb194-12" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(raster_names)){</span>
+<span id="cb194-13"><a href="spatial-raster-data.html#cb194-13" tabindex="-1"></a>  <span class="fu">print</span>(raster<span class="sc">::</span><span class="fu">crs</span>(raster<span class="sc">::</span><span class="fu">raster</span>(raster_names[[i]]))<span class="sc">@</span>projargs)</span>
+<span id="cb194-14"><a href="spatial-raster-data.html#cb194-14" tabindex="-1"></a>}</span>
+<span id="cb194-15"><a href="spatial-raster-data.html#cb194-15" tabindex="-1"></a></span>
+<span id="cb194-16"><a href="spatial-raster-data.html#cb194-16" tabindex="-1"></a><span class="co"># An example output of this section can look like</span></span>
+<span id="cb194-17"><a href="spatial-raster-data.html#cb194-17" tabindex="-1"></a>  <span class="co"># datum WGS84</span></span>
+<span id="cb194-18"><a href="spatial-raster-data.html#cb194-18" tabindex="-1"></a>  <span class="co"># projection UTM</span></span>
+<span id="cb194-19"><a href="spatial-raster-data.html#cb194-19" tabindex="-1"></a>  <span class="co"># zone = 22</span></span>
+<span id="cb194-20"><a href="spatial-raster-data.html#cb194-20" tabindex="-1"></a>  <span class="co"># units = m</span></span></code></pre></div>
+<p>We can use <code>arcticdatautils::get_coord_list()</code> to see a table of coordinate reference systems that we can use in our EML document. We can look through this table by looking for <code>WGS_1984_UTM_Zone_22</code> in the <code>horizCoordSysDef</code> column. Then, we can look for the corresponding <code>geogCoordSys</code> and see our coordinate system is <code>GCS_WGS_1984</code>.</p>
+</div>
+<div id="creating-the-spatialraster-object" class="section level4 hasAnchor">
+<h4>Creating the <code>spatialRaster</code> object<a href="spatial-raster-data.html#creating-the-spatialraster-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will first create an empty list for spatial raster entities to live. Then, we’ll use the function to populate this list.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="spatial-raster-data.html#cb195-1" tabindex="-1"></a>spatialRaster <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(raster_names))</span>
+<span id="cb195-2"><a href="spatial-raster-data.html#cb195-2" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="spatial-raster-data.html#cb195-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(raster_names)) {</span>
+<span id="cb195-4"><a href="spatial-raster-data.html#cb195-4" tabindex="-1"></a>  spatialRaster[[i]] <span class="ot">&lt;-</span> <span class="fu">get_raster_metadata</span>(raster_names[i],</span>
+<span id="cb195-5"><a href="spatial-raster-data.html#cb195-5" tabindex="-1"></a>                                            <span class="at">coord_name =</span> <span class="st">&quot;GCS_WGS_1984&quot;</span>,</span>
+<span id="cb195-6"><a href="spatial-raster-data.html#cb195-6" tabindex="-1"></a>                                            <span class="at">attributeList =</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[[i]]<span class="sc">$</span>attributeList)</span>
+<span id="cb195-7"><a href="spatial-raster-data.html#cb195-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>Note that this code assumes that the <code>otherEntity</code> and <code>raster_names</code> have the TIF files in the same order when assigning the attribute list. If this is different, we will need to find a way to assign the correct attribute list.</p>
+</div>
+<div id="adding-spatialraster-entity" class="section level4 hasAnchor">
+<h4>Adding <code>spatialRaster</code> entity<a href="spatial-raster-data.html#adding-spatialraster-entity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Before we’re able to validate the EML doc, we’ll need to assign the <code>spatialRaster</code> entities and remove the corresponding <code>otherEntities</code>.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="spatial-raster-data.html#cb196-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialRaster <span class="ot">&lt;-</span> spatialRaster</span>
+<span id="cb196-2"><a href="spatial-raster-data.html#cb196-2" tabindex="-1"></a></span>
+<span id="cb196-3"><a href="spatial-raster-data.html#cb196-3" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb196-4"><a href="spatial-raster-data.html#cb196-4" tabindex="-1"></a></span>
+<span id="cb196-5"><a href="spatial-raster-data.html#cb196-5" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
+<p>Note that if there are other files in the data package’s <code>otherEntity</code> section that are not TIFs, we don’t want to set them all to <code>NULL</code>. In that case, we would only <code>NULL</code> the corresponding files.</p>
+<p>Then, remember to set the physicals for the <code>spatialRaster</code> section.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="spatial-raster-data.html#cb197-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialRaster)) {</span>
+<span id="cb197-2"><a href="spatial-raster-data.html#cb197-2" tabindex="-1"></a>  raster_name <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialRaster[[i]]<span class="sc">$</span>entityName</span>
+<span id="cb197-3"><a href="spatial-raster-data.html#cb197-3" tabindex="-1"></a>  </span>
+<span id="cb197-4"><a href="spatial-raster-data.html#cb197-4" tabindex="-1"></a>  raster_pid <span class="ot">&lt;-</span> <span class="fu">selectMember</span>(dp, <span class="st">&quot;sysmeta@fileName&quot;</span>, raster_name)</span>
+<span id="cb197-5"><a href="spatial-raster-data.html#cb197-5" tabindex="-1"></a>  physical <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">pid_to_eml_physical</span>(d1c<span class="sc">@</span>mn, raster_pid)</span>
+<span id="cb197-6"><a href="spatial-raster-data.html#cb197-6" tabindex="-1"></a>  </span>
+<span id="cb197-7"><a href="spatial-raster-data.html#cb197-7" tabindex="-1"></a>  doc<span class="sc">$</span>dataset<span class="sc">$</span>spatialRaster[[i]]<span class="sc">$</span>physical <span class="ot">&lt;-</span> physical</span>
+<span id="cb197-8"><a href="spatial-raster-data.html#cb197-8" tabindex="-1"></a>}</span>
+<span id="cb197-9"><a href="spatial-raster-data.html#cb197-9" tabindex="-1"></a></span>
+<span id="cb197-10"><a href="spatial-raster-data.html#cb197-10" tabindex="-1"></a><span class="fu">eml_validate</span>(doc)</span></code></pre></div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spatial-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-vector-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Reorder entities | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Reorder entities | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -451,13 +462,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Metadata</li>
 </ol>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="reorder-entities.html#cb238-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[<span class="fu">order</span>(entity_names)]</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="reorder-entities.html#cb254-1" tabindex="-1"></a>doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity <span class="ot">&lt;-</span> doc<span class="sc">$</span>dataset<span class="sc">$</span>otherEntity[<span class="fu">order</span>(entity_names)]</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Data files and PIDs retrieved with <code>get_package</code></li>
 </ol>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="reorder-entities.html#cb239-1" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm, <span class="at">file_names =</span> T)</span>
-<span id="cb239-2"><a href="reorder-entities.html#cb239-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg<span class="sc">$</span>metadata))</span>
-<span id="cb239-3"><a href="reorder-entities.html#cb239-3" tabindex="-1"></a>reordered <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">reorder_pids</span>(pkg<span class="sc">$</span>data, doc)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="reorder-entities.html#cb255-1" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc, rm, <span class="at">file_names =</span> T)</span>
+<span id="cb255-2"><a href="reorder-entities.html#cb255-2" tabindex="-1"></a>doc <span class="ot">&lt;-</span> EML<span class="sc">::</span><span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc, pkg<span class="sc">$</span>metadata))</span>
+<span id="cb255-3"><a href="reorder-entities.html#cb255-3" tabindex="-1"></a>reordered <span class="ot">&lt;-</span> arcticdatautils<span class="sc">::</span><span class="fu">reorder_pids</span>(pkg<span class="sc">$</span>data, doc)</span></code></pre></div>
 </div>
 <!-- </div> -->
             </section>

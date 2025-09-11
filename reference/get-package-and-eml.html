@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Get package and EML | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Get package and EML | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -447,11 +458,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="get-package-and-eml" class="section level2 hasAnchor">
 <h2>Get package and EML<a href="get-package-and-eml.html#get-package-and-eml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we look more in depth at EML, we first need to load your data package into R. After <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>setting your node</a>, use the following commands to load the package:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="get-package-and-eml.html#cb233-1" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
-<span id="cb233-2"><a href="get-package-and-eml.html#cb233-2" tabindex="-1"></a></span>
-<span id="cb233-3"><a href="get-package-and-eml.html#cb233-3" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
-<span id="cb233-4"><a href="get-package-and-eml.html#cb233-4" tabindex="-1"></a>                   rm_pid,</span>
-<span id="cb233-5"><a href="get-package-and-eml.html#cb233-5" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="get-package-and-eml.html#cb249-1" tabindex="-1"></a>rm_pid <span class="ot">&lt;-</span> <span class="st">&quot;your_resource_map_pid&quot;</span></span>
+<span id="cb249-2"><a href="get-package-and-eml.html#cb249-2" tabindex="-1"></a></span>
+<span id="cb249-3"><a href="get-package-and-eml.html#cb249-3" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">get_package</span>(adc_test,</span>
+<span id="cb249-4"><a href="get-package-and-eml.html#cb249-4" tabindex="-1"></a>                   rm_pid,</span>
+<span id="cb249-5"><a href="get-package-and-eml.html#cb249-5" tabindex="-1"></a>                   <span class="at">file_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="note">
 <p>
 <strong>Keeping track of PIDs</strong>
@@ -467,11 +478,11 @@ For example, if you assigned the value from
 refer to the following by using the corresponding commands:
 </p>
 </div>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="get-package-and-eml.html#cb234-1" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
-<span id="cb234-2"><a href="get-package-and-eml.html#cb234-2" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
-<span id="cb234-3"><a href="get-package-and-eml.html#cb234-3" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="get-package-and-eml.html#cb250-1" tabindex="-1"></a>metadata_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>metadata</span>
+<span id="cb250-2"><a href="get-package-and-eml.html#cb250-2" tabindex="-1"></a>data_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>data</span>
+<span id="cb250-3"><a href="get-package-and-eml.html#cb250-3" tabindex="-1"></a>resource_pid <span class="ot">&lt;-</span>  pkg<span class="sc">$</span>resource_map</span></code></pre></div>
 <p>After loading the package, you can also load the EML file into R using the following command:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="get-package-and-eml.html#cb235-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="get-package-and-eml.html#cb251-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_eml</span>(<span class="fu">getObject</span>(adc_test, pkg<span class="sc">$</span>metadata))</span></code></pre></div>
 <p>Note that we named the object <code>doc</code>. This is a good generic name to use for EML documents. The generic name <code>eml</code> should not be used - as the EML package ships with an <code>eml</code> function, which can cause namespace issues in your environment if you have an object also called <code>eml</code>.</p>
 <div class="note">
 <p>

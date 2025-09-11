@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="List submissions to the Arctic Data Center | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -450,17 +461,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>View submissions to the Arctic Data Center from 10/1/18 to 10/7/18</li>
 </ul>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="list-submissions-to-the-arctic-data-center.html#cb214-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
-<span id="cb214-2"><a href="list-submissions-to-the-arctic-data-center.html#cb214-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
-<span id="cb214-3"><a href="list-submissions-to-the-arctic-data-center.html#cb214-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="list-submissions-to-the-arctic-data-center.html#cb230-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">CNode</span>(<span class="st">&#39;PROD&#39;</span>)</span>
+<span id="cb230-2"><a href="list-submissions-to-the-arctic-data-center.html#cb230-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">getMNode</span>(cn,<span class="st">&#39;urn:node:ARCTIC&#39;</span>)</span>
+<span id="cb230-3"><a href="list-submissions-to-the-arctic-data-center.html#cb230-3" tabindex="-1"></a><span class="fu">View</span>(arcticdatautils<span class="sc">::</span><span class="fu">list_submissions</span>(adc, <span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-07&#39;</span>))</span></code></pre></div>
 <ul>
 <li>The following code shows the underlying solr query</li>
 </ul>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="list-submissions-to-the-arctic-data-center.html#cb215-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
-<span id="cb215-2"><a href="list-submissions-to-the-arctic-data-center.html#cb215-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
-<span id="cb215-3"><a href="list-submissions-to-the-arctic-data-center.html#cb215-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
-<span id="cb215-4"><a href="list-submissions-to-the-arctic-data-center.html#cb215-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
-<span id="cb215-5"><a href="list-submissions-to-the-arctic-data-center.html#cb215-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="list-submissions-to-the-arctic-data-center.html#cb231-1" tabindex="-1"></a>  q <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;dateUploaded:[&quot;2018-10-01T00:00:00Z&quot; TO &quot;2018-10-08T00:00:00Z&quot;] AND formatType:*&#39;</span>)</span>
+<span id="cb231-2"><a href="list-submissions-to-the-arctic-data-center.html#cb231-2" tabindex="-1"></a>  results <span class="ot">&lt;-</span> dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> q,</span>
+<span id="cb231-3"><a href="list-submissions-to-the-arctic-data-center.html#cb231-3" tabindex="-1"></a>                                     <span class="at">fl =</span> <span class="st">&quot;identifier AND submitter AND dateUploaded AND formatType AND fileName&quot;</span>,</span>
+<span id="cb231-4"><a href="list-submissions-to-the-arctic-data-center.html#cb231-4" tabindex="-1"></a>                                     <span class="at">rows =</span> <span class="dv">10000</span>),</span>
+<span id="cb231-5"><a href="list-submissions-to-the-arctic-data-center.html#cb231-5" tabindex="-1"></a>                            <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 

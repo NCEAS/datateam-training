@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Example Solr queries | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Example Solr queries | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -449,26 +460,26 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>For additional examples and explanations, check out the Apache Lucene <a href = 'https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>Query Parser Syntax</a> page.</p>
 <div id="find-everything" class="section level3 hasAnchor">
 <h3>Find everything<a href="example-solr-queries.html#find-everything" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="example-solr-queries.html#cb196-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;*:*&quot;</span>,</span>
-<span id="cb196-2"><a href="example-solr-queries.html#cb196-2" tabindex="-1"></a>                               <span class="at">fl=</span><span class="st">&quot;*&quot;</span>,</span>
-<span id="cb196-3"><a href="example-solr-queries.html#cb196-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb196-4"><a href="example-solr-queries.html#cb196-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="example-solr-queries.html#cb211-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;*:*&quot;</span>,</span>
+<span id="cb211-2"><a href="example-solr-queries.html#cb211-2" tabindex="-1"></a>                               <span class="at">fl=</span><span class="st">&quot;*&quot;</span>,</span>
+<span id="cb211-3"><a href="example-solr-queries.html#cb211-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb211-4"><a href="example-solr-queries.html#cb211-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-a-wildcard-expression" class="section level3 hasAnchor">
 <h3>Query a wildcard expression<a href="example-solr-queries.html#query-a-wildcard-expression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="example-solr-queries.html#cb197-1" tabindex="-1"></a><span class="co">#find any id that starts with arctic-data.6</span></span>
-<span id="cb197-2"><a href="example-solr-queries.html#cb197-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;id:arctic-data.6*&quot;</span>,</span>
-<span id="cb197-3"><a href="example-solr-queries.html#cb197-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb197-4"><a href="example-solr-queries.html#cb197-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="example-solr-queries.html#cb212-1" tabindex="-1"></a><span class="co">#find any id that starts with arctic-data.6</span></span>
+<span id="cb212-2"><a href="example-solr-queries.html#cb212-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;id:arctic-data.6*&quot;</span>,</span>
+<span id="cb212-3"><a href="example-solr-queries.html#cb212-3" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb212-4"><a href="example-solr-queries.html#cb212-4" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-multiple-fields" class="section level3 hasAnchor">
 <h3>Query multiple fields<a href="example-solr-queries.html#query-multiple-fields" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="example-solr-queries.html#cb198-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil*+AND+origin:Ludwig&quot;</span>,</span>
-<span id="cb198-2"><a href="example-solr-queries.html#cb198-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb198-3"><a href="example-solr-queries.html#cb198-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="example-solr-queries.html#cb199-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* OR origin:Ludwig&quot;</span>,</span>
-<span id="cb199-2"><a href="example-solr-queries.html#cb199-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb199-3"><a href="example-solr-queries.html#cb199-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="example-solr-queries.html#cb213-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil*+AND+origin:Ludwig&quot;</span>,</span>
+<span id="cb213-2"><a href="example-solr-queries.html#cb213-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb213-3"><a href="example-solr-queries.html#cb213-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="example-solr-queries.html#cb214-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* OR origin:Ludwig&quot;</span>,</span>
+<span id="cb214-2"><a href="example-solr-queries.html#cb214-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb214-3"><a href="example-solr-queries.html#cb214-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 <div class="note">
 <p>
 You can use either spaces or <code>+</code> to separate query
@@ -482,887 +493,85 @@ with <code>%20</code>.)
 <div id="query-by-formattype" class="section level3 hasAnchor">
 <h3>Query by formatType<a href="example-solr-queries.html#query-by-formattype" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Objects are queryable via their <code>formatType</code> which is one of DATA, METADATA, or RESOURCE.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="example-solr-queries.html#cb200-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:RESOURCE AND submitter:&quot;http://orcid.org/0000-0002-2561-5840&quot;&#39;</span>,</span>
-<span id="cb200-2"><a href="example-solr-queries.html#cb200-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
-<span id="cb200-3"><a href="example-solr-queries.html#cb200-3" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb200-4"><a href="example-solr-queries.html#cb200-4" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
-<span id="cb200-5"><a href="example-solr-queries.html#cb200-5" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb200-6"><a href="example-solr-queries.html#cb200-6" tabindex="-1"></a></span>
-<span id="cb200-7"><a href="example-solr-queries.html#cb200-7" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:METADATA AND title:*Toolik*&#39;</span>,</span>
-<span id="cb200-8"><a href="example-solr-queries.html#cb200-8" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
-<span id="cb200-9"><a href="example-solr-queries.html#cb200-9" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb200-10"><a href="example-solr-queries.html#cb200-10" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
-<span id="cb200-11"><a href="example-solr-queries.html#cb200-11" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="example-solr-queries.html#cb215-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:RESOURCE AND submitter:&quot;http://orcid.org/0000-0002-2561-5840&quot;&#39;</span>,</span>
+<span id="cb215-2"><a href="example-solr-queries.html#cb215-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
+<span id="cb215-3"><a href="example-solr-queries.html#cb215-3" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb215-4"><a href="example-solr-queries.html#cb215-4" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
+<span id="cb215-5"><a href="example-solr-queries.html#cb215-5" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb215-6"><a href="example-solr-queries.html#cb215-6" tabindex="-1"></a></span>
+<span id="cb215-7"><a href="example-solr-queries.html#cb215-7" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;formatType:METADATA AND title:*Toolik*&#39;</span>,</span>
+<span id="cb215-8"><a href="example-solr-queries.html#cb215-8" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName&#39;</span>,</span>
+<span id="cb215-9"><a href="example-solr-queries.html#cb215-9" tabindex="-1"></a>                          <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb215-10"><a href="example-solr-queries.html#cb215-10" tabindex="-1"></a>                          <span class="at">rows=</span><span class="st">&#39;10&#39;</span>),</span>
+<span id="cb215-11"><a href="example-solr-queries.html#cb215-11" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-pids-by-a-specific-submitter" class="section level3 hasAnchor">
 <h3>Query pids by a specific submitter<a href="example-solr-queries.html#query-pids-by-a-specific-submitter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="example-solr-queries.html#cb201-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;submitter:&quot;http://orcid.org/0000-0003-4703-1974&quot;&#39;</span>,</span>
-<span id="cb201-2"><a href="example-solr-queries.html#cb201-2" tabindex="-1"></a>               <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName, size&#39;</span>,</span>
-<span id="cb201-3"><a href="example-solr-queries.html#cb201-3" tabindex="-1"></a>               <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
-<span id="cb201-4"><a href="example-solr-queries.html#cb201-4" tabindex="-1"></a>               <span class="at">rows=</span><span class="st">&#39;1000&#39;</span>),</span>
-<span id="cb201-5"><a href="example-solr-queries.html#cb201-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="example-solr-queries.html#cb216-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&#39;submitter:&quot;http://orcid.org/0000-0003-4703-1974&quot;&#39;</span>,</span>
+<span id="cb216-2"><a href="example-solr-queries.html#cb216-2" tabindex="-1"></a>               <span class="at">fl =</span> <span class="st">&#39;identifier,submitter,fileName, size&#39;</span>,</span>
+<span id="cb216-3"><a href="example-solr-queries.html#cb216-3" tabindex="-1"></a>               <span class="at">sort =</span> <span class="st">&#39;dateUploaded+desc&#39;</span>,</span>
+<span id="cb216-4"><a href="example-solr-queries.html#cb216-4" tabindex="-1"></a>               <span class="at">rows=</span><span class="st">&#39;1000&#39;</span>),</span>
+<span id="cb216-5"><a href="example-solr-queries.html#cb216-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-pids-with-special-characters" class="section level3 hasAnchor">
 <h3>Query pids with special characters<a href="example-solr-queries.html#query-pids-with-special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="example-solr-queries.html#cb202-1" tabindex="-1"></a><span class="co"># Wrap the pid with special characters with escaped backslashes</span></span>
-<span id="cb202-2"><a href="example-solr-queries.html#cb202-2" tabindex="-1"></a>dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;id:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;doi:10.18739/A20R9M36V&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
-<span id="cb202-3"><a href="example-solr-queries.html#cb202-3" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&#39;dateUploaded AND identifier&#39;</span>,</span>
-<span id="cb202-4"><a href="example-solr-queries.html#cb202-4" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="dv">5000</span>),</span>
-<span id="cb202-5"><a href="example-solr-queries.html#cb202-5" tabindex="-1"></a>               <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="example-solr-queries.html#cb217-1" tabindex="-1"></a><span class="co"># Wrap the pid with special characters with escaped backslashes</span></span>
+<span id="cb217-2"><a href="example-solr-queries.html#cb217-2" tabindex="-1"></a>dataone<span class="sc">::</span><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;id:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;doi:10.18739/A20R9M36V&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
+<span id="cb217-3"><a href="example-solr-queries.html#cb217-3" tabindex="-1"></a>                         <span class="at">fl =</span> <span class="st">&#39;dateUploaded AND identifier&#39;</span>,</span>
+<span id="cb217-4"><a href="example-solr-queries.html#cb217-4" tabindex="-1"></a>                         <span class="at">rows =</span> <span class="dv">5000</span>),</span>
+<span id="cb217-5"><a href="example-solr-queries.html#cb217-5" tabindex="-1"></a>               <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-multiple-conditions-within-one-field" class="section level3 hasAnchor">
 <h3>Query multiple conditions within one field<a href="example-solr-queries.html#query-multiple-conditions-within-one-field" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="example-solr-queries.html#cb203-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil* AND carbo*)&quot;</span>,</span>
-<span id="cb203-2"><a href="example-solr-queries.html#cb203-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb203-3"><a href="example-solr-queries.html#cb203-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="example-solr-queries.html#cb218-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil* AND carbo*)&quot;</span>,</span>
+<span id="cb218-2"><a href="example-solr-queries.html#cb218-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb218-3"><a href="example-solr-queries.html#cb218-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>) </span></code></pre></div>
 </div>
 <div id="query-for-latest-versions-only" class="section level3 hasAnchor">
 <h3>Query for latest versions only<a href="example-solr-queries.html#query-for-latest-versions-only" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="example-solr-queries.html#cb204-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
-<span id="cb204-2"><a href="example-solr-queries.html#cb204-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId&quot;</span>,</span>
-<span id="cb204-3"><a href="example-solr-queries.html#cb204-3" tabindex="-1"></a>                          <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
-<span id="cb204-4"><a href="example-solr-queries.html#cb204-4" tabindex="-1"></a>                          <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
-<span id="cb204-5"><a href="example-solr-queries.html#cb204-5" tabindex="-1"></a>                     <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="example-solr-queries.html#cb219-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="st">&quot;rightsHolder:*orcid.org/0000-000X-XXXX-XXXX* AND (*:* NOT obsoletedBy:*)&quot;</span>,</span>
+<span id="cb219-2"><a href="example-solr-queries.html#cb219-2" tabindex="-1"></a>                          <span class="at">fl =</span> <span class="st">&quot;identifier,rightsHolder,formatId&quot;</span>,</span>
+<span id="cb219-3"><a href="example-solr-queries.html#cb219-3" tabindex="-1"></a>                          <span class="at">start =</span><span class="st">&quot;0&quot;</span>,</span>
+<span id="cb219-4"><a href="example-solr-queries.html#cb219-4" tabindex="-1"></a>                          <span class="at">rows =</span> <span class="st">&quot;1500&quot;</span>),</span>
+<span id="cb219-5"><a href="example-solr-queries.html#cb219-5" tabindex="-1"></a>                     <span class="at">as=</span><span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="use-not-in-a-query" class="section level3 hasAnchor">
 <h3>Use NOT in a query<a href="example-solr-queries.html#use-not-in-a-query" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Just add <code>-</code> before a query parameter!</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="example-solr-queries.html#cb205-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil AND -carbon)&quot;</span>,</span>
-<span id="cb205-2"><a href="example-solr-queries.html#cb205-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb205-3"><a href="example-solr-queries.html#cb205-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="example-solr-queries.html#cb220-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:(soil AND -carbon)&quot;</span>,</span>
+<span id="cb220-2"><a href="example-solr-queries.html#cb220-2" tabindex="-1"></a>                               <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb220-3"><a href="example-solr-queries.html#cb220-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-a-coordinating-node" class="section level3 hasAnchor">
 <h3>Query a coordinating node<a href="example-solr-queries.html#query-a-coordinating-node" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="example-solr-queries.html#cb206-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* AND origin:Ludwig&quot;</span>,</span>
-<span id="cb206-2"><a href="example-solr-queries.html#cb206-2" tabindex="-1"></a>                              <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
-<span id="cb206-3"><a href="example-solr-queries.html#cb206-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="example-solr-queries.html#cb221-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">query</span>(cn, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:soil* AND origin:Ludwig&quot;</span>,</span>
+<span id="cb221-2"><a href="example-solr-queries.html#cb221-2" tabindex="-1"></a>                              <span class="at">rows=</span><span class="st">&quot;5000&quot;</span>),</span>
+<span id="cb221-3"><a href="example-solr-queries.html#cb221-3" tabindex="-1"></a>                <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-for-emls-that-document-a-specific-data-pid" class="section level3 hasAnchor">
 <h3>Query for EMLs that document a specific data pid<a href="example-solr-queries.html#query-for-emls-that-document-a-specific-data-pid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="example-solr-queries.html#cb207-1" tabindex="-1"></a><span class="co"># Wrap the pid in escaped quotation marks if it contains special characters </span></span>
-<span id="cb207-2"><a href="example-solr-queries.html#cb207-2" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;documents:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
-<span id="cb207-3"><a href="example-solr-queries.html#cb207-3" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
-<span id="cb207-4"><a href="example-solr-queries.html#cb207-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb207-5"><a href="example-solr-queries.html#cb207-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb207-6"><a href="example-solr-queries.html#cb207-6" tabindex="-1"></a></span>
-<span id="cb207-7"><a href="example-solr-queries.html#cb207-7" tabindex="-1"></a><span class="co"># Alternatively we can use a wildcard expression in place of &quot;urn:uuid:&quot;</span></span>
-<span id="cb207-8"><a href="example-solr-queries.html#cb207-8" tabindex="-1"></a><span class="co"># This way we don&#39;t need to escape the colon special characters </span></span>
-<span id="cb207-9"><a href="example-solr-queries.html#cb207-9" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&quot;</span>),</span>
-<span id="cb207-10"><a href="example-solr-queries.html#cb207-10" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
-<span id="cb207-11"><a href="example-solr-queries.html#cb207-11" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
-<span id="cb207-12"><a href="example-solr-queries.html#cb207-12" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="example-solr-queries.html#cb222-1" tabindex="-1"></a><span class="co"># Wrap the pid in escaped quotation marks if it contains special characters </span></span>
+<span id="cb222-2"><a href="example-solr-queries.html#cb222-2" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&#39;documents:&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;urn:uuid:f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&#39;</span>, <span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>),</span>
+<span id="cb222-3"><a href="example-solr-queries.html#cb222-3" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
+<span id="cb222-4"><a href="example-solr-queries.html#cb222-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb222-5"><a href="example-solr-queries.html#cb222-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb222-6"><a href="example-solr-queries.html#cb222-6" tabindex="-1"></a></span>
+<span id="cb222-7"><a href="example-solr-queries.html#cb222-7" tabindex="-1"></a><span class="co"># Alternatively we can use a wildcard expression in place of &quot;urn:uuid:&quot;</span></span>
+<span id="cb222-8"><a href="example-solr-queries.html#cb222-8" tabindex="-1"></a><span class="co"># This way we don&#39;t need to escape the colon special characters </span></span>
+<span id="cb222-9"><a href="example-solr-queries.html#cb222-9" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q =</span> <span class="fu">paste0</span>(<span class="st">&quot;documents:*f551460b-ce36-4dd3-aaa6-3a6c6e338ec9&quot;</span>),</span>
+<span id="cb222-10"><a href="example-solr-queries.html#cb222-10" tabindex="-1"></a>                <span class="at">fl =</span> <span class="st">&quot;identifier&quot;</span>,</span>
+<span id="cb222-11"><a href="example-solr-queries.html#cb222-11" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;20&quot;</span>),</span>
+<span id="cb222-12"><a href="example-solr-queries.html#cb222-12" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
 <div id="query-for-files-uploaded-during-a-specific-time" class="section level3 hasAnchor">
 <h3>Query for files uploaded during a specific time<a href="example-solr-queries.html#query-for-files-uploaded-during-a-specific-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="example-solr-queries.html#cb208-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;dateUploaded:[2020-05-06T00:00:00Z TO NOW]&quot;</span>,</span>
-<span id="cb208-2"><a href="example-solr-queries.html#cb208-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title,identifier,resourceMap,dateUploaded,dateModified&quot;</span>,</span>
-<span id="cb208-3"><a href="example-solr-queries.html#cb208-3" tabindex="-1"></a>                <span class="at">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</span>
-<span id="cb208-4"><a href="example-solr-queries.html#cb208-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
-<span id="cb208-5"><a href="example-solr-queries.html#cb208-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
-<pre><code>##                                                     identifier
-## 1                          resource_map_doi:10.18739/A21Z41V65
-## 2                                       doi:10.18739/A21Z41V65
-## 3   resource_map_urn:uuid:0010cbf6-ab79-4df8-bfe9-b0ab4a9fdc75
-## 4                urn:uuid:0010cbf6-ab79-4df8-bfe9-b0ab4a9fdc75
-## 5   resource_map_urn:uuid:15320c15-b8a2-46c2-aca9-762d6c893579
-## 6                urn:uuid:34a9d181-520c-4337-8285-912d3547d34c
-## 7                          resource_map_doi:10.18739/A25Q4RN8Z
-## 8                                       doi:10.18739/A25Q4RN8Z
-## 9   resource_map_urn:uuid:b0180a29-1fff-46ba-ac9f-b11af5c522db
-## 10               urn:uuid:b0180a29-1fff-46ba-ac9f-b11af5c522db
-## 11  resource_map_urn:uuid:feea6755-d9e0-404a-86a0-7c8362b356f8
-## 12               urn:uuid:feea6755-d9e0-404a-86a0-7c8362b356f8
-## 13  resource_map_urn:uuid:25f78ffd-a63d-4f88-a6e1-82af0f83f330
-## 14               urn:uuid:25f78ffd-a63d-4f88-a6e1-82af0f83f330
-## 15  resource_map_urn:uuid:5be9caa4-dd27-49d3-ab3a-3413ff8be000
-## 16               urn:uuid:54e0fc01-668d-47bb-8412-2615c67320d3
-## 17                         resource_map_doi:10.18739/A2BG2HC00
-## 18                                      doi:10.18739/A2BG2HC00
-## 19  resource_map_urn:uuid:02c6629f-49e1-441b-a006-a584a4cd1b70
-## 20               urn:uuid:02c6629f-49e1-441b-a006-a584a4cd1b70
-## 21               urn:uuid:5ae5936c-746e-4ba7-afdf-74cea7975c6d
-## 22               urn:uuid:761966c5-11a8-47d0-a917-36dc10711ead
-## 23  resource_map_urn:uuid:15652a6b-d0bb-4b44-93ef-84a597ca79b8
-## 24               urn:uuid:24cef261-c25d-4e8b-89ff-6a011ad22cfc
-## 25               urn:uuid:3f6b30f3-cb2b-4fa0-beb0-196d5366c5ad
-## 26               urn:uuid:a6119dcb-2714-4db5-ace8-80d1a07342e0
-## 27                         resource_map_doi:10.18739/A2Z60C41R
-## 28                                      doi:10.18739/A2Z60C41R
-## 29                         resource_map_doi:10.18739/A29G5GG2Q
-## 30                                      doi:10.18739/A29G5GG2Q
-## 31                                      doi:10.18739/A2F76687B
-## 32               urn:uuid:b416270c-c8a3-49c0-839c-7c44e0650fe2
-## 33                         resource_map_doi:10.18739/A2PR7MW54
-## 34                                      doi:10.18739/A2PR7MW54
-## 35  resource_map_urn:uuid:c78a97d9-d4c5-46a3-aa54-6853452dcba1
-## 36               urn:uuid:110cb7bd-6bff-4d3c-8772-48681b04baf9
-## 37                         resource_map_doi:10.18739/A2TH8BP8S
-## 38                                      doi:10.18739/A2TH8BP8S
-## 39  resource_map_urn:uuid:3b0da169-9061-4a23-b090-3cbf7489fbf9
-## 40               urn:uuid:d2cb331d-8809-457a-8076-f48521827aa2
-## 41  resource_map_urn:uuid:af67f912-96a6-4524-9224-f1f2c03ee58f
-## 42               urn:uuid:af67f912-96a6-4524-9224-f1f2c03ee58f
-## 43               urn:uuid:0d74dc46-16c4-4192-814e-9cb32d47f3e9
-## 44                         resource_map_doi:10.18739/A22Z12R5X
-## 45                                      doi:10.18739/A22Z12R5X
-## 46                         resource_map_doi:10.18739/A26Q1SJ9P
-## 47                                      doi:10.18739/A26Q1SJ9P
-## 48  resource_map_urn:uuid:d8ed9446-eede-4837-a858-86a80b44dffc
-## 49               urn:uuid:d8ed9446-eede-4837-a858-86a80b44dffc
-## 50                         resource_map_doi:10.18739/A2VD6P67P
-## 51                                      doi:10.18739/A2VD6P67P
-## 52               urn:uuid:0055cf83-af20-480b-9886-39ac2e606ff4
-## 53               urn:uuid:4747a1e4-3087-424c-8adf-83a8b7430869
-## 54               urn:uuid:d55a1604-5b6f-43f9-bb0a-aeca1c0f044e
-## 55                         resource_map_doi:10.18739/A2BG2HC4X
-## 56                                      doi:10.18739/A2BG2HC4X
-## 57                         resource_map_doi:10.18739/A2G737582
-## 58                                      doi:10.18739/A2G737582
-## 59                         resource_map_doi:10.18739/A2M03Z02F
-## 60                                      doi:10.18739/A2M03Z02F
-## 61               urn:uuid:a0bdc784-d219-4f48-812a-9486e0876a08
-## 62               urn:uuid:6b7c92fd-a301-4223-8a4f-4fe539e374e7
-## 63               urn:uuid:dd29ccd6-2c38-4a40-a72f-719a37b26d19
-## 64               urn:uuid:97230bc2-e275-4f34-8516-883e1d623292
-## 65               urn:uuid:c40c1be6-d16d-4773-90fe-bb74d9fabdf5
-## 66               urn:uuid:0a9a547c-ab5b-484f-b2b0-e173494a2a31
-## 67               urn:uuid:bce8638f-66c1-4e07-b98a-00766af46df8
-## 68               urn:uuid:1aa13257-802a-4156-9650-bb871063a0ea
-## 69  resource_map_urn:uuid:f3f55b10-3e03-47e2-a6e6-eeadf4c51755
-## 70               urn:uuid:27a7aa7d-3bb5-416a-9c48-5cd1c1d10597
-## 71  resource_map_urn:uuid:9fb000cd-d121-4c96-83bb-8c34e9949a5d
-## 72               urn:uuid:3a89964e-b0f3-4d4c-b31f-7a70520e46d7
-## 73  resource_map_urn:uuid:0095372b-4337-427e-abda-9f51b2658144
-## 74               urn:uuid:676464a6-1cb8-4127-a287-d5b061ecf8dc
-## 75  resource_map_urn:uuid:415d53c0-4455-4543-a2a8-aeac5c9f7a0c
-## 76               urn:uuid:15f5bb8c-cc2e-46e1-b790-fa67447999cf
-## 77               urn:uuid:d3e4a8e0-b64c-4983-a682-8febc3f09a39
-## 78               urn:uuid:360db4a4-07bf-4641-94f8-4ca3abce8063
-## 79                         resource_map_doi:10.18739/A2QR4NS5C
-## 80                                      doi:10.18739/A2QR4NS5C
-## 81                         resource_map_doi:10.18739/A2RN3092P
-## 82                                      doi:10.18739/A2RN3092P
-## 83  resource_map_urn:uuid:1c3295c0-7823-4ea6-9a2a-44157ec0b7f3
-## 84               urn:uuid:1c3295c0-7823-4ea6-9a2a-44157ec0b7f3
-## 85  resource_map_urn:uuid:77fcd3ed-64da-47e6-84d2-7cff21a329c8
-## 86               urn:uuid:dab3aa1f-0fb6-447e-b927-608351e317fa
-## 87  resource_map_urn:uuid:d52187d5-aa96-49c8-a027-597a93a62361
-## 88               urn:uuid:8b009895-d2ca-47c1-891f-0a6e5936bc9a
-## 89               urn:uuid:c424189c-3ef2-4c98-8656-cfb26664ad6a
-## 90               urn:uuid:dae1ade6-a03f-40be-aff1-8c4f3731e875
-## 91               urn:uuid:d2d914fd-e839-4068-aa7d-b5baa07ce720
-## 92               urn:uuid:cd986a9e-e89f-4f4f-a03d-e8812d306f99
-## 93               urn:uuid:56e032ea-c254-4ac5-9f89-ab2609c96b1c
-## 94               urn:uuid:4332caba-a3e0-430f-951f-f632d11c54b0
-## 95  resource_map_urn:uuid:4e8773b4-574c-4e99-9967-3d56ad06c151
-## 96               urn:uuid:d8056f24-1843-42b4-a830-af4f7679486c
-## 97  resource_map_urn:uuid:5b5fc40a-7c8b-4600-bc79-4400bc42f684
-## 98               urn:uuid:f35d4cfe-cca4-4d0a-a0c7-1a5b6e47161b
-## 99  resource_map_urn:uuid:b6abc48c-6acf-4ba0-b0fb-5b8bd6935f49
-## 100              urn:uuid:3bfc4b80-3817-42d1-aedd-a65ecafaff8b
-## 101 resource_map_urn:uuid:6cdefc39-b712-4d60-ae5f-4551311078d1
-## 102              urn:uuid:e2b0d1e3-588e-41a0-a3e4-ee674660939f
-## 103 resource_map_urn:uuid:5d7d7cc6-800e-4829-8f58-82bd42bb015d
-## 104              urn:uuid:f13b05e1-93bc-4b53-95ee-d02b4d27277a
-## 105 resource_map_urn:uuid:6fb2116e-0912-418f-9664-01c6a6c9874e
-## 106              urn:uuid:8dfa49d0-699d-473f-8112-016e4caba10d
-## 107 resource_map_urn:uuid:721599de-0329-4a09-90fc-c0a9f2eb8587
-## 108              urn:uuid:721599de-0329-4a09-90fc-c0a9f2eb8587
-## 109 resource_map_urn:uuid:491cfc9d-8c74-4d7f-bb16-38e6ec1d095d
-## 110              urn:uuid:491cfc9d-8c74-4d7f-bb16-38e6ec1d095d
-## 111 resource_map_urn:uuid:495a1df0-5085-417d-9f58-8e99826ac6a4
-## 112              urn:uuid:495a1df0-5085-417d-9f58-8e99826ac6a4
-## 113 resource_map_urn:uuid:09b3b50c-e18e-4e74-8acc-28f31afe1e69
-## 114              urn:uuid:09b3b50c-e18e-4e74-8acc-28f31afe1e69
-## 115              urn:uuid:c477de02-504c-43d5-a2b4-112d5c2d6485
-## 116              urn:uuid:fb511ef1-7d48-42b5-9a3d-abcb957ebc89
-## 117              urn:uuid:5f000611-b363-4402-996e-25361f19a4b4
-## 118              urn:uuid:cd01ecf0-b470-4dca-94c2-5be39d21f95c
-## 119              urn:uuid:7dd3943b-cba8-46ea-903b-441d2df20ea1
-## 120              urn:uuid:0b9cb2c0-00a1-4c8d-ae4a-248e23f38cd4
-## 121              urn:uuid:bcb2647c-7e96-4863-a719-8978343d1a73
-## 122              urn:uuid:8bd2445f-4940-4092-98b8-631d3d2c97c5
-## 123              urn:uuid:ec11943e-8a2b-4a4a-901b-88b9bc790b41
-## 124              urn:uuid:352e4618-3e4e-4214-83ef-0d30d63ddf92
-## 125              urn:uuid:2cbf802f-6cbd-4b87-9135-7f830da3c3be
-## 126              urn:uuid:e5d58a02-d035-4886-b3fa-810eae849415
-## 127 resource_map_urn:uuid:a2730eb8-098f-4a56-b958-c1860ce66909
-## 128              urn:uuid:78e3c2d4-e8df-4136-82f0-cf41db21fcff
-## 129 resource_map_urn:uuid:2e033fdc-5fe0-4c35-8f37-4c13aeb4de96
-## 130              urn:uuid:c4b6ed41-bc08-45be-b692-70cbd874c218
-## 131                        resource_map_doi:10.18739/A2CF9J84M
-## 132                                     doi:10.18739/A2CF9J84M
-## 133                        resource_map_doi:10.18739/A2H708289
-## 134                                     doi:10.18739/A2H708289
-## 135                        resource_map_doi:10.18739/A2GM81Q8F
-## 136                                     doi:10.18739/A2GM81Q8F
-## 137                        resource_map_doi:10.18739/A2WD3Q35Z
-## 138                                     doi:10.18739/A2WD3Q35Z
-## 139 resource_map_urn:uuid:d6b7c83f-9b6e-4eea-bd09-d615da8fd60b
-## 140              urn:uuid:8c171b60-9c2c-4e41-b0e2-c46accfa850a
-## 141 resource_map_urn:uuid:1a1defdd-036d-4e83-87eb-9985b9db6c47
-## 142              urn:uuid:9780944f-8322-4c36-b16e-3eeab4ac60b8
-## 143 resource_map_urn:uuid:f9a15260-683a-47f4-bfe4-7d6790d9e75f
-## 144              urn:uuid:54dede8d-ebb6-44a8-bc8f-14d848728263
-## 145 resource_map_urn:uuid:57622f23-967f-403a-b0ea-c7d59ba98126
-## 146              urn:uuid:a51a38ae-5466-4482-907a-372b7e350a7a
-## 147 resource_map_urn:uuid:7a117154-4959-44c9-9544-e39d1e39a39f
-## 148              urn:uuid:fe8c29eb-b638-4927-9ef7-95282d2564d5
-## 149 resource_map_urn:uuid:9978849d-7f29-4f88-8f07-66890ac1f9cc
-## 150              urn:uuid:dd17ac64-6672-4e32-8441-6eb8421f70d7
-## 151 resource_map_urn:uuid:6a825795-93a8-44ea-abcd-458bb72101ad
-## 152              urn:uuid:a1dbde5a-25f8-43ef-a6de-7b8fafbde99b
-## 153 resource_map_urn:uuid:dc072124-c200-49fc-87f3-4cc9741ffa2a
-## 154              urn:uuid:4900ea2a-ffdc-45a3-9b98-804263c435da
-## 155 resource_map_urn:uuid:efe79d02-c302-452e-a248-6d587239e472
-## 156              urn:uuid:efe79d02-c302-452e-a248-6d587239e472
-## 157 resource_map_urn:uuid:9fbed760-46b4-4344-a90b-6381fedf2b79
-## 158              urn:uuid:0c94b4b1-92e4-4bf4-b3e9-5f4ab3614540
-## 159 resource_map_urn:uuid:6702dd1a-cc55-4998-a5c6-77ba057f29fe
-## 160              urn:uuid:6702dd1a-cc55-4998-a5c6-77ba057f29fe
-## 161 resource_map_urn:uuid:15585e89-18af-4276-8966-1b72995abc45
-## 162              urn:uuid:656a8fd6-b597-4cf6-a8ba-9587e21905f0
-## 163 resource_map_urn:uuid:17034ba4-e404-4308-bc1c-670a2d900ac7
-## 164              urn:uuid:17034ba4-e404-4308-bc1c-670a2d900ac7
-## 165 resource_map_urn:uuid:1dfdc011-9ae7-4794-b218-f770c99919f7
-## 166              urn:uuid:33c41626-c0d8-4d6f-8789-4a0b1f02d8fc
-## 167 resource_map_urn:uuid:94a7fabd-48d4-4fde-a539-665a0ba166af
-## 168              urn:uuid:94a7fabd-48d4-4fde-a539-665a0ba166af
-## 169 resource_map_urn:uuid:db698007-b1a9-47a4-ac46-bec8442c30ce
-## 170              urn:uuid:af89ddf5-4f06-44b7-ab1b-9c52a313eafb
-## 171 resource_map_urn:uuid:534163d3-3ca9-4159-aac4-e66f88f34ac8
-## 172              urn:uuid:534163d3-3ca9-4159-aac4-e66f88f34ac8
-## 173                        resource_map_doi:10.18739/A2TT4FV8V
-## 174                                     doi:10.18739/A2TT4FV8V
-## 175                        resource_map_doi:10.18739/A2707WQ62
-## 176                                     doi:10.18739/A2707WQ62
-## 177                      resource_map_1_doi:10.18739/A2RN30916
-## 178                        resource_map_doi:10.18739/A2RN30916
-## 179                                     doi:10.18739/A2RN30916
-## 180 resource_map_urn:uuid:b2d3481c-1083-4350-aaf2-4f7904b3322c
-## 181              urn:uuid:b2d3481c-1083-4350-aaf2-4f7904b3322c
-## 182 resource_map_urn:uuid:94f950a3-1890-456e-a9f6-d5588906619b
-## 183              urn:uuid:94f950a3-1890-456e-a9f6-d5588906619b
-## 184                        resource_map_doi:10.18739/A28P5VB9M
-## 185                                     doi:10.18739/A28P5VB9M
-## 186 resource_map_urn:uuid:413b5eb2-3885-474a-82c1-b6d95f65313d
-## 187              urn:uuid:b70c8e80-63c7-4035-b0c9-40bb6613e732
-## 188              urn:uuid:0cf43016-dd25-4906-9cb2-035a5d48cd1f
-## 189              urn:uuid:14fe8863-cc29-4ab8-b47d-f56227ee3f8a
-## 190              urn:uuid:b2b590e4-2a63-492c-8d91-af322ae3cc99
-## 191              urn:uuid:332e7185-9b5b-4ffe-98a6-e99186be2276
-## 192              urn:uuid:067c7911-a947-4848-a16b-26ea921680f7
-## 193                        resource_map_doi:10.18739/A2DF6K53C
-## 194                                     doi:10.18739/A2DF6K53C
-## 195                        resource_map_doi:10.18739/A2251FN18
-## 196                                     doi:10.18739/A2251FN18
-## 197              urn:uuid:c9c83d5c-701b-4c4f-af8f-8b55b904ed7c
-## 198                        resource_map_doi:10.18739/A29P2W79V
-## 199                                     doi:10.18739/A29P2W79V
-## 200                        resource_map_doi:10.18739/A2J678Z6M
-##            dateUploaded        dateModified
-## 1   2025-03-04 17:52:19 2025-03-04 17:52:20
-## 2   2025-03-04 17:52:11 2025-03-04 17:52:16
-## 3   2025-03-04 17:48:09 2025-03-04 17:52:19
-## 4   2025-03-04 17:48:00 2025-03-04 17:52:15
-## 5   2025-03-04 11:18:54 2025-03-04 17:48:09
-## 6   2025-03-04 11:18:47 2025-03-04 17:48:05
-## 7   2025-03-03 23:50:07 2025-03-04 11:18:54
-## 8   2025-03-03 23:49:57 2025-03-04 11:18:51
-## 9   2025-03-03 23:47:08 2025-03-03 23:50:07
-## 10  2025-03-03 23:47:01 2025-03-03 23:50:02
-## 11  2025-03-03 23:43:36 2025-03-03 23:47:09
-## 12  2025-03-03 23:43:27 2025-03-03 23:47:04
-## 13  2025-03-03 23:32:23 2025-03-03 23:43:36
-## 14  2025-03-03 23:32:15 2025-03-03 23:43:32
-## 15  2025-03-03 21:54:31 2025-03-03 23:32:24
-## 16  2025-03-03 21:54:26 2025-03-03 23:32:18
-## 17  2025-03-03 21:16:36 2025-03-03 21:16:37
-## 18  2025-03-03 21:16:24 2025-03-03 21:16:31
-## 19  2025-03-03 20:57:42 2025-03-03 21:54:32
-## 20  2025-03-03 20:57:32 2025-03-03 21:54:30
-## 21  2025-03-03 20:57:30 2025-03-04 17:51:57
-## 22  2025-03-03 20:57:29 2025-03-04 17:52:07
-## 23  2025-03-03 19:46:24 2025-03-03 20:57:42
-## 24  2025-03-03 19:46:17 2025-03-03 20:57:37
-## 25  2025-03-03 19:46:12 2025-03-04 17:51:59
-## 26  2025-03-03 19:46:12 2025-03-04 17:51:56
-## 27  2025-03-03 19:36:29 2025-03-03 19:36:30
-## 28  2025-03-03 19:36:21 2025-03-03 19:36:26
-## 29  2025-03-03 18:59:34 2025-03-03 18:59:34
-## 30  2025-03-03 18:59:27 2025-03-03 18:59:30
-## 31  2025-03-03 18:29:09 2025-03-03 18:31:13
-## 32  2025-03-01 03:29:52 2025-03-03 19:36:06
-## 33  2025-02-28 20:26:35 2025-02-28 20:26:36
-## 34  2025-02-28 20:26:27 2025-02-28 20:26:31
-## 35  2025-02-28 19:43:50 2025-02-28 20:26:35
-## 36  2025-02-28 19:43:45 2025-02-28 20:26:30
-## 37  2025-02-27 22:50:08 2025-02-27 22:50:08
-## 38  2025-02-27 22:50:01 2025-02-27 22:50:03
-## 39  2025-02-27 22:24:11 2025-02-27 22:50:08
-## 40  2025-02-27 22:24:06 2025-02-27 22:50:03
-## 41  2025-02-27 22:18:47 2025-02-27 22:24:11
-## 42  2025-02-27 22:18:39 2025-02-27 22:24:08
-## 43  2025-02-27 19:50:08 2025-03-03 19:36:15
-## 44  2025-02-27 17:45:30 2025-02-27 17:45:31
-## 45  2025-02-27 17:45:22 2025-02-27 17:45:26
-## 46  2025-02-27 00:41:37 2025-02-27 00:41:38
-## 47  2025-02-27 00:41:32 2025-02-27 00:41:34
-## 48  2025-02-27 00:38:38 2025-02-27 00:41:37
-## 49  2025-02-27 00:38:32 2025-02-27 00:41:33
-## 50  2025-02-26 23:02:27 2025-02-26 23:02:28
-## 51  2025-02-26 23:02:21 2025-02-26 23:02:23
-## 52  2025-02-26 22:31:36 2025-03-03 19:36:17
-## 53  2025-02-26 21:52:16 2025-02-27 17:45:18
-## 54  2025-02-26 21:52:07 2025-02-27 17:45:20
-## 55  2025-02-26 21:02:53 2025-02-26 21:02:54
-## 56  2025-02-26 21:02:44 2025-02-26 21:02:47
-## 57  2025-02-26 19:23:03 2025-02-26 19:23:04
-## 58  2025-02-26 19:22:54 2025-02-26 19:22:58
-## 59  2025-02-26 18:43:21 2025-02-26 18:43:22
-## 60  2025-02-26 18:43:14 2025-02-26 18:43:17
-## 61  2025-02-26 18:31:05 2025-03-03 19:36:04
-## 62  2025-02-26 18:31:05 2025-03-03 19:36:18
-## 63  2025-02-26 18:31:05 2025-03-03 19:36:11
-## 64  2025-02-26 18:31:05 2025-03-03 19:36:02
-## 65  2025-02-26 18:31:05 2025-03-03 19:36:08
-## 66  2025-02-26 18:31:05 2025-03-03 19:36:14
-## 67  2025-02-26 18:31:05 2025-03-03 19:36:12
-## 68  2025-02-26 18:31:04 2025-03-03 19:36:09
-## 69  2025-02-26 13:52:57 2025-03-03 19:46:24
-## 70  2025-02-26 13:52:50 2025-03-03 19:46:21
-## 71  2025-02-26 10:54:01 2025-02-26 13:52:57
-## 72  2025-02-26 10:53:53 2025-02-26 13:52:53
-## 73  2025-02-26 08:56:53 2025-02-26 10:54:01
-## 74  2025-02-26 08:56:46 2025-02-26 10:53:58
-## 75  2025-02-26 02:16:47 2025-02-27 00:38:38
-## 76  2025-02-26 02:16:42 2025-02-27 00:38:33
-## 77  2025-02-26 02:12:48 2025-02-27 00:41:29
-## 78  2025-02-26 02:01:20 2025-02-26 02:01:20
-## 79  2025-02-25 00:52:35 2025-02-25 00:52:36
-## 80  2025-02-25 00:51:44 2025-02-25 00:52:21
-## 81  2025-02-25 00:21:34 2025-02-25 00:21:35
-## 82  2025-02-25 00:21:24 2025-02-25 00:21:30
-## 83  2025-02-24 20:06:19 2025-02-25 00:21:34
-## 84  2025-02-24 20:06:08 2025-02-25 00:21:30
-## 85  2025-02-24 20:02:17 2025-02-24 20:06:19
-## 86  2025-02-24 20:02:09 2025-02-24 20:06:14
-## 87  2025-02-23 18:13:59 2025-02-24 20:02:17
-## 88  2025-02-23 18:13:54 2025-02-24 20:02:14
-## 89  2025-02-23 18:13:52 2025-02-25 00:21:19
-## 90  2025-02-23 18:13:43 2025-02-25 00:21:06
-## 91  2025-02-23 18:13:42 2025-02-23 18:13:57
-## 92  2025-02-23 18:13:42 2025-02-25 00:21:16
-## 93  2025-02-23 18:13:42 2025-02-25 00:21:15
-## 94  2025-02-22 02:44:17 2025-02-22 02:44:22
-## 95  2025-02-22 00:11:57 2025-02-26 08:56:53
-## 96  2025-02-22 00:11:52 2025-02-26 08:56:50
-## 97  2025-02-21 23:33:31 2025-02-22 00:11:58
-## 98  2025-02-21 23:33:25 2025-02-22 00:11:55
-## 99  2025-02-21 23:29:39 2025-02-21 23:33:31
-## 100 2025-02-21 23:29:34 2025-02-21 23:33:28
-## 101 2025-02-21 23:17:56 2025-02-21 23:29:39
-## 102 2025-02-21 23:17:51 2025-02-21 23:29:37
-## 103 2025-02-21 23:16:05 2025-02-21 23:17:56
-## 104 2025-02-21 23:15:59 2025-02-21 23:17:54
-## 105 2025-02-21 23:14:34 2025-02-21 23:16:05
-## 106 2025-02-21 23:14:28 2025-02-21 23:16:03
-## 107 2025-02-21 23:02:15 2025-02-21 23:14:34
-## 108 2025-02-21 23:02:07 2025-02-21 23:14:32
-## 109 2025-02-21 21:54:04 2025-02-21 23:02:15
-## 110 2025-02-21 21:53:56 2025-02-21 23:02:10
-## 111 2025-02-21 21:04:58 2025-02-21 21:54:05
-## 112 2025-02-21 21:04:51 2025-02-21 21:53:59
-## 113 2025-02-21 19:44:37 2025-02-21 21:04:59
-## 114 2025-02-21 19:44:29 2025-02-21 21:04:53
-## 115 2025-02-21 19:44:26 2025-03-04 17:51:48
-## 116 2025-02-21 19:44:23 2025-03-04 17:52:06
-## 117 2025-02-21 19:44:19 2025-03-04 17:51:54
-## 118 2025-02-21 19:44:14 2025-03-04 17:52:02
-## 119 2025-02-21 19:44:10 2025-03-04 17:52:04
-## 120 2025-02-21 19:44:08 2025-03-04 17:51:55
-## 121 2025-02-21 19:44:08 2025-03-04 17:52:10
-## 122 2025-02-21 19:44:07 2025-03-04 17:52:08
-## 123 2025-02-21 19:44:05 2025-03-04 17:51:52
-## 124 2025-02-21 19:44:03 2025-03-04 17:52:01
-## 125 2025-02-21 19:44:02 2025-03-04 17:52:05
-## 126 2025-02-21 19:44:01 2025-03-04 17:51:51
-## 127 2025-02-21 19:14:01 2025-02-21 19:44:37
-## 128 2025-02-21 19:13:57 2025-02-21 19:44:32
-## 129 2025-02-21 18:57:31 2025-02-21 19:14:01
-## 130 2025-02-21 18:57:24 2025-02-21 19:13:59
-## 131 2025-02-20 18:16:28 2025-02-26 02:16:47
-## 132 2025-02-20 18:16:24 2025-02-26 02:16:44
-## 133 2025-02-20 18:14:29 2025-02-20 18:14:30
-## 134 2025-02-20 18:14:23 2025-02-20 18:14:24
-## 135 2025-02-20 00:36:12 2025-02-20 00:36:12
-## 136 2025-02-20 00:36:05 2025-02-20 00:36:08
-## 137 2025-02-20 00:16:24 2025-02-20 00:16:24
-## 138 2025-02-20 00:16:02 2025-02-20 00:16:07
-## 139 2025-02-20 00:13:17 2025-02-23 18:13:59
-## 140 2025-02-20 00:13:11 2025-02-23 18:13:47
-## 141 2025-02-20 00:13:00 2025-02-20 00:16:24
-## 142 2025-02-20 00:12:54 2025-02-20 00:16:06
-## 143 2025-02-20 00:11:54 2025-02-20 00:13:17
-## 144 2025-02-20 00:11:47 2025-02-20 00:13:15
-## 145 2025-02-20 00:04:36 2025-02-20 00:11:54
-## 146 2025-02-20 00:04:29 2025-02-20 00:11:51
-## 147 2025-02-19 23:53:30 2025-02-20 00:04:37
-## 148 2025-02-19 23:53:25 2025-02-20 00:04:34
-## 149 2025-02-19 23:51:22 2025-02-19 23:53:30
-## 150 2025-02-19 23:51:16 2025-02-19 23:53:29
-## 151 2025-02-19 23:47:29 2025-02-19 23:51:22
-## 152 2025-02-19 23:47:22 2025-02-19 23:51:20
-## 153 2025-02-19 23:46:21 2025-02-19 23:47:29
-## 154 2025-02-19 23:46:14 2025-02-19 23:47:27
-## 155 2025-02-19 23:42:34 2025-02-19 23:46:21
-## 156 2025-02-19 23:42:21 2025-02-19 23:46:19
-## 157 2025-02-19 23:31:24 2025-02-19 23:42:34
-## 158 2025-02-19 23:31:18 2025-02-19 23:42:25
-## 159 2025-02-19 23:29:07 2025-02-19 23:31:24
-## 160 2025-02-19 23:28:59 2025-02-19 23:31:22
-## 161 2025-02-19 23:22:45 2025-02-19 23:29:07
-## 162 2025-02-19 23:22:38 2025-02-19 23:29:03
-## 163 2025-02-19 23:20:48 2025-02-19 23:22:45
-## 164 2025-02-19 23:20:37 2025-02-19 23:22:43
-## 165 2025-02-19 23:09:10 2025-02-19 23:20:48
-## 166 2025-02-19 23:09:04 2025-02-19 23:20:42
-## 167 2025-02-19 23:06:28 2025-02-19 23:09:10
-## 168 2025-02-19 23:06:18 2025-02-19 23:09:09
-## 169 2025-02-19 22:59:21 2025-02-19 23:06:28
-## 170 2025-02-19 22:59:14 2025-02-19 23:06:22
-## 171 2025-02-19 22:42:14 2025-02-19 22:59:21
-## 172 2025-02-19 22:42:06 2025-02-19 22:59:20
-## 173 2025-02-19 19:23:06 2025-02-19 19:23:06
-## 174 2025-02-19 19:23:01 2025-02-19 19:23:02
-## 175 2025-02-19 17:27:44 2025-02-19 17:27:45
-## 176 2025-02-19 17:27:17 2025-02-19 17:27:37
-## 177 2025-02-19 00:26:19 2025-02-20 00:13:01
-## 178 2025-02-19 00:24:00 2025-02-26 17:41:28
-## 179 2025-02-19 00:23:52 2025-02-20 00:12:58
-## 180 2025-02-19 00:21:20 2025-02-27 18:15:17
-## 181 2025-02-19 00:21:11 2025-02-27 18:15:16
-## 182 2025-02-19 00:10:47 2025-02-27 18:15:13
-## 183 2025-02-19 00:10:23 2025-02-27 18:15:11
-## 184 2025-02-18 23:55:36 2025-02-18 23:55:37
-## 185 2025-02-18 23:55:29 2025-02-18 23:55:32
-## 186 2025-02-17 02:22:21 2025-02-27 18:15:09
-## 187 2025-02-17 02:22:16 2025-02-27 18:15:06
-## 188 2025-02-17 02:22:12 2025-02-19 00:25:54
-## 189 2025-02-17 02:22:05 2025-02-19 00:25:55
-## 190 2025-02-17 02:22:05 2025-02-19 00:26:00
-## 191 2025-02-17 02:22:05 2025-02-19 00:26:03
-## 192 2025-02-17 02:22:04 2025-02-27 18:17:46
-## 193 2025-02-15 01:16:11 2025-02-15 01:16:14
-## 194 2025-02-15 01:16:02 2025-02-15 01:16:07
-## 195 2025-02-14 23:30:19 2025-02-14 23:30:19
-## 196 2025-02-14 23:30:09 2025-02-14 23:30:15
-## 197 2025-02-14 17:12:13 2025-02-18 23:55:28
-## 198 2025-02-14 00:05:00 2025-02-14 00:05:01
-## 199 2025-02-14 00:04:52 2025-02-14 00:04:54
-## 200 2025-02-13 23:35:21 2025-02-13 23:35:21
-##                                                                                                                                                                                      title
-## 1                                                                                                                                                                                     &lt;NA&gt;
-## 2                                                      DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 3                                                                                                                                                                                     &lt;NA&gt;
-## 4                                                      DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 5                                                                                                                                                                                     &lt;NA&gt;
-## 6                                                      DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 7                                                                                                                                                                                     &lt;NA&gt;
-## 8                                                      DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 9                                                                                                                                                                                     &lt;NA&gt;
-## 10                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 11                                                                                                                                                                                    &lt;NA&gt;
-## 12                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 13                                                                                                                                                                                    &lt;NA&gt;
-## 14                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 15                                                                                                                                                                                    &lt;NA&gt;
-## 16                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 17                                                                                                                                                                                    &lt;NA&gt;
-## 18                                                                   Burning trees in frozen soil: Simulating fire, vegetation, soil, and hydrology in the boreal forests of Alaska, 2022.
-## 19                                                                                                                                                                                    &lt;NA&gt;
-## 20                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 21                                                                                                                                                                                    &lt;NA&gt;
-## 22                                                                                                                                                                                    &lt;NA&gt;
-## 23                                                                                                                                                                                    &lt;NA&gt;
-## 24                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 25                                                                                                                                                                                    &lt;NA&gt;
-## 26                                                                                                                                                                                    &lt;NA&gt;
-## 27                                                                                                                                                                                    &lt;NA&gt;
-## 28                                                                                                                      Enzyme activities and nutrient dynamics in arctic soil (2021-2023)
-## 29                                                                                                                                                                                    &lt;NA&gt;
-## 30                                                                                        Scoping Interviews and workshops about electric vehicles in Kotzebue, Galena, and Bethel, Alaska
-## 31                                                                                        Scoping Interviews and workshops about electric vehicles in Kotzebue, Galena, and Bethel, Alaska
-## 32                                                                                                                                                                                    &lt;NA&gt;
-## 33                                                                                                                                                                                    &lt;NA&gt;
-## 34                                                                                                 Anchorage, Alaska modified ABoVE: Landsat-derived Annual Dominant Land Cover, 1984-2054
-## 35                                                                                                                                                                                    &lt;NA&gt;
-## 36                                                                                                 Anchorage, Alaska modified ABoVE: Landsat-derived Annual Dominant Land Cover, 1984-2054
-## 37                                                                                                                                                                                    &lt;NA&gt;
-## 38  Root tissue chemistry, mycorrhizal colonization, and uptake of nitrogen-15 tracer in glycine, ammonium, and nitrate form across a tree density gradient in northeastern Siberia. 2017.
-## 39                                                                                                                                                                                    &lt;NA&gt;
-## 40  Root tissue chemistry, mycorrhizal colonization, and uptake of nitrogen-15 tracer in glycine, ammonium, and nitrate form across a tree density gradient in northeastern Siberia. 2017.
-## 41                                                                                                                                                                                    &lt;NA&gt;
-## 42  Root tissue chemistry, mycorrhizal colonization, and uptake of nitrogen-15 tracer in glycine, ammonium, and nitrate form across a tree density gradient in northeastern Siberia. 2017.
-## 43                                                                                                                                                                                    &lt;NA&gt;
-## 44                                                                                                                                                                                    &lt;NA&gt;
-## 45                             Suspended and bed sediment grain size distributions at three riverine sites in the Yukon River Watershed: Alakanuk, Beaver, and Huslia (Alaska) (2018-2023)
-## 46                                                                                                                                                                                    &lt;NA&gt;
-## 47                                                     Thermokarst-pond plant community characteristics and effects on ice-wedge degradation in the Prudhoe Bay region, Alaska (2021-2022)
-## 48                                                                                                                                                                                    &lt;NA&gt;
-## 49                                                     Thermokarst-pond plant community characteristics and effects on ice-wedge degradation in the Prudhoe Bay region, Alaska (2021-2022)
-## 50                                                                                                                                                                                    &lt;NA&gt;
-## 51                                                                                                                                    Xeitl Sít’ (LeConte Glacier) acoustic data 2016–2017
-## 52                                                                                                                                                                                    &lt;NA&gt;
-## 53                                                                                                                                                                                    &lt;NA&gt;
-## 54                                                                                                                                                                                    &lt;NA&gt;
-## 55                                                                                                                                                                                    &lt;NA&gt;
-## 56                                                            Data for Decadal increases in carbon uptake offset by respiratory losses across northern permafrost ecosystems (1995 - 2021)
-## 57                                                                                                                                                                                    &lt;NA&gt;
-## 58                                                                              Marine Mammal Watch, collected from the Research Vessel Sikuliaq, Northern Bering Sea to Chukchi Sea, 2024
-## 59                                                                                                                                                                                    &lt;NA&gt;
-## 60                                      Wetland plant functional trait responses to experimental warming, flooding, and herbivory, Yukon-Kuskokwim Delta (Western Alaska, USA) (2022-2023)
-## 61                                                                                                                                                                                    &lt;NA&gt;
-## 62                                                                                                                                                                                    &lt;NA&gt;
-## 63                                                                                                                                                                                    &lt;NA&gt;
-## 64                                                                                                                                                                                    &lt;NA&gt;
-## 65                                                                                                                                                                                    &lt;NA&gt;
-## 66                                                                                                                                                                                    &lt;NA&gt;
-## 67                                                                                                                                                                                    &lt;NA&gt;
-## 68                                                                                                                                                                                    &lt;NA&gt;
-## 69                                                                                                                                                                                    &lt;NA&gt;
-## 70                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 71                                                                                                                                                                                    &lt;NA&gt;
-## 72                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 73                                                                                                                                                                                    &lt;NA&gt;
-## 74                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 75                                                                                                                                                                                    &lt;NA&gt;
-## 76                                                     Thermokarst-pond plant community characteristics and effects on ice-wedge degradation in the Prudhoe Bay region, Alaska (2021-2022)
-## 77                                                                                                                                                                                    &lt;NA&gt;
-## 78                                                                                                                                                                                    &lt;NA&gt;
-## 79                                                                                                                                                                                    &lt;NA&gt;
-## 80                        Atmosphere to Surface Profiles of Water Vapor Isotopes and Meteorological Conditions over the Northeast Greenland Ice Sheet Data Product for 2022 Field Campaign
-## 81                                                                                                                                                                                    &lt;NA&gt;
-## 82                                                                              FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 83                                                                                                                                                                                    &lt;NA&gt;
-## 84                                                                              FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 85                                                                                                                                                                                    &lt;NA&gt;
-## 86                                                                              FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 87                                                                                                                                                                                    &lt;NA&gt;
-## 88                                                                              FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 89                                                                                                                                                                                    &lt;NA&gt;
-## 90                                                                                                                                                                                    &lt;NA&gt;
-## 91                                                                              FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 92                                                                                                                                                                                    &lt;NA&gt;
-## 93                                                                                                                                                                                    &lt;NA&gt;
-## 94                                                                                                                                Proceedings of the Permafrost &amp; Infrastructure Symposium
-## 95                                                                                                                                                                                    &lt;NA&gt;
-## 96                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 97                                                                                                                                                                                    &lt;NA&gt;
-## 98                                                     DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 99                                                                                                                                                                                    &lt;NA&gt;
-## 100                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 101                                                                                                                                                                                   &lt;NA&gt;
-## 102                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 103                                                                                                                                                                                   &lt;NA&gt;
-## 104                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 105                                                                                                                                                                                   &lt;NA&gt;
-## 106                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 107                                                                                                                                                                                   &lt;NA&gt;
-## 108                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 109                                                                                                                                                                                   &lt;NA&gt;
-## 110                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 111                                                                                                                                                                                   &lt;NA&gt;
-## 112                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 113                                                                                                                                                                                   &lt;NA&gt;
-## 114                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 115                                                                                                                                                                                   &lt;NA&gt;
-## 116                                                                                                                                                                                   &lt;NA&gt;
-## 117                                                                                                                                                                                   &lt;NA&gt;
-## 118                                                                                                                                                                                   &lt;NA&gt;
-## 119                                                                                                                                                                                   &lt;NA&gt;
-## 120                                                                                                                                                                                   &lt;NA&gt;
-## 121                                                                                                                                                                                   &lt;NA&gt;
-## 122                                                                                                                                                                                   &lt;NA&gt;
-## 123                                                                                                                                                                                   &lt;NA&gt;
-## 124                                                                                                                                                                                   &lt;NA&gt;
-## 125                                                                                                                                                                                   &lt;NA&gt;
-## 126                                                                                                                                                                                   &lt;NA&gt;
-## 127                                                                                                                                                                                   &lt;NA&gt;
-## 128                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 129                                                                                                                                                                                   &lt;NA&gt;
-## 130                                                    DARTS: Multi-year database of AI detected retrogressive thaw slumps (RTS) in hotspots of the circum-arctic permafrost region - v1.1
-## 131                                                                                                                                                                                   &lt;NA&gt;
-## 132                                                    Thermokarst-pond plant community characteristics and effects on ice-wedge degradation in the Prudhoe Bay region, Alaska (2021-2022)
-## 133                                                                                                                                                                                   &lt;NA&gt;
-## 134                                                                            Learning from the Permafrost &amp; Infrastructure Symposium: A roadmap to resilience - Fairbanks, Alaska (2023)
-## 135                                                                                                                                                                                   &lt;NA&gt;
-## 136                                                                         Buildings and roads detected from 0.5 meter resolution Maxar satellite imagery, Alaskan communities, 2018-2023
-## 137                                                                                                                                                                                   &lt;NA&gt;
-## 138                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 139                                                                                                                                                                                   &lt;NA&gt;
-## 140                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 141                                                                                                                                                                                   &lt;NA&gt;
-## 142                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 143                                                                                                                                                                                   &lt;NA&gt;
-## 144                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 145                                                                                                                                                                                   &lt;NA&gt;
-## 146                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 147                                                                                                                                                                                   &lt;NA&gt;
-## 148                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 149                                                                                                                                                                                   &lt;NA&gt;
-## 150                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 151                                                                                                                                                                                   &lt;NA&gt;
-## 152                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 153                                                                                                                                                                                   &lt;NA&gt;
-## 154                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 155                                                                                                                                                                                   &lt;NA&gt;
-## 156                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 157                                                                                                                                                                                   &lt;NA&gt;
-## 158                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 159                                                                                                                                                                                   &lt;NA&gt;
-## 160                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 161                                                                                                                                                                                   &lt;NA&gt;
-## 162                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 163                                                                                                                                                                                   &lt;NA&gt;
-## 164                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 165                                                                                                                                                                                   &lt;NA&gt;
-## 166                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 167                                                                                                                                                                                   &lt;NA&gt;
-## 168                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 169                                                                                                                                                                                   &lt;NA&gt;
-## 170                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 171                                                                                                                                                                                   &lt;NA&gt;
-## 172                                                                             FireALT dataset: estimated active layer thickness for paired burned unburned sites measured from 2001-2023
-## 173                                                                                                                                                                                   &lt;NA&gt;
-## 174                                                            Subpolar North Atlantic Ocean Biogeochemistry and Overturning in the Subpolar North Atlantic Program (OSNAP) Workshop, 2024
-## 175                                                                                                                                                                                   &lt;NA&gt;
-## 176    Water temperature, salinity, and velocity from Overturning in the Subpolar North Atlantic Program (OSNAP) East moorings CF1 - CF7 in the Irminger Sea from July 2020 to August 2022
-## 177                                                                                                                                                                                   &lt;NA&gt;
-## 178                                                                                                                                                                                   &lt;NA&gt;
-## 179                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 180                                                                                                                                                                                   &lt;NA&gt;
-## 181                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 182                                                                                                                                                                                   &lt;NA&gt;
-## 183                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 184                                                                                                                                                                                   &lt;NA&gt;
-## 185                                                                                        Meroplanktonic larvae collected during the polar night in Kongsfjorden, Svalbard (January 2023)
-## 186                                                                                                                                                                                   &lt;NA&gt;
-## 187                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 188                                                                                                                                                                                   &lt;NA&gt;
-## 189                                                                                                                                                                                   &lt;NA&gt;
-## 190                                                                                                                                                                                   &lt;NA&gt;
-## 191                                                                                                                                                                                   &lt;NA&gt;
-## 192                  Merged Datasets for the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) Central Observatory in the Arctic Ocean (2019-2020) version 2
-## 193                                                                                                                                                                                   &lt;NA&gt;
-## 194                                                                                                          Heavy Metal and Nutrient Concentrations in West Greenland Lakes (Summer 2023)
-## 195                                                                                                                                                                                   &lt;NA&gt;
-## 196            Airborne Laser Altimeter, Global Positioning System (GPS), Inertial Measurement Unit (IMU) and Imagery Campaign of the Surging Negribreen Glacier, Svalbard, in August 2019
-## 197                                                                                                                                                                                   &lt;NA&gt;
-## 198                                                                                                                                                                                   &lt;NA&gt;
-## 199                                                                                                      Game Camera Footage of Beaver-Impacted Streams in the Northwest Arctic, 2023-2024
-## 200                                                                                                                                                                                   &lt;NA&gt;
-##      resourceMap
-## 1               
-## 2   resource....
-## 3               
-## 4   resource....
-## 5               
-## 6   resource....
-## 7               
-## 8   resource....
-## 9               
-## 10  resource....
-## 11              
-## 12  resource....
-## 13              
-## 14  resource....
-## 15              
-## 16  resource....
-## 17              
-## 18  resource....
-## 19              
-## 20  resource....
-## 21  resource....
-## 22  resource....
-## 23              
-## 24  resource....
-## 25  resource....
-## 26  resource....
-## 27              
-## 28  resource....
-## 29              
-## 30  resource....
-## 31  resource....
-## 32  resource....
-## 33              
-## 34  resource....
-## 35              
-## 36  resource....
-## 37              
-## 38  resource....
-## 39              
-## 40  resource....
-## 41              
-## 42  resource....
-## 43  resource....
-## 44              
-## 45  resource....
-## 46              
-## 47  resource....
-## 48              
-## 49  resource....
-## 50              
-## 51  resource....
-## 52  resource....
-## 53  resource....
-## 54  resource....
-## 55              
-## 56  resource....
-## 57              
-## 58  resource....
-## 59              
-## 60  resource....
-## 61  resource....
-## 62  resource....
-## 63  resource....
-## 64  resource....
-## 65  resource....
-## 66  resource....
-## 67  resource....
-## 68  resource....
-## 69              
-## 70  resource....
-## 71              
-## 72  resource....
-## 73              
-## 74  resource....
-## 75              
-## 76  resource....
-## 77  resource....
-## 78              
-## 79              
-## 80  resource....
-## 81              
-## 82  resource....
-## 83              
-## 84  resource....
-## 85              
-## 86  resource....
-## 87              
-## 88  resource....
-## 89  resource....
-## 90  resource....
-## 91              
-## 92  resource....
-## 93  resource....
-## 94              
-## 95              
-## 96  resource....
-## 97              
-## 98  resource....
-## 99              
-## 100 resource....
-## 101             
-## 102 resource....
-## 103             
-## 104 resource....
-## 105             
-## 106 resource....
-## 107             
-## 108 resource....
-## 109             
-## 110 resource....
-## 111             
-## 112 resource....
-## 113             
-## 114 resource....
-## 115 resource....
-## 116 resource....
-## 117 resource....
-## 118 resource....
-## 119 resource....
-## 120 resource....
-## 121 resource....
-## 122 resource....
-## 123 resource....
-## 124 resource....
-## 125 resource....
-## 126 resource....
-## 127             
-## 128 resource....
-## 129             
-## 130 resource....
-## 131             
-## 132 resource....
-## 133             
-## 134 resource....
-## 135             
-## 136 resource....
-## 137             
-## 138 resource....
-## 139             
-## 140 resource....
-## 141             
-## 142 resource....
-## 143             
-## 144 resource....
-## 145             
-## 146 resource....
-## 147             
-## 148 resource....
-## 149             
-## 150 resource....
-## 151             
-## 152 resource....
-## 153             
-## 154 resource....
-## 155             
-## 156 resource....
-## 157             
-## 158 resource....
-## 159             
-## 160 resource....
-## 161             
-## 162 resource....
-## 163             
-## 164 resource....
-## 165             
-## 166 resource....
-## 167             
-## 168 resource....
-## 169             
-## 170 resource....
-## 171             
-## 172 resource....
-## 173             
-## 174 resource....
-## 175             
-## 176 resource....
-## 177             
-## 178             
-## 179 resource....
-## 180             
-## 181 resource....
-## 182             
-## 183 resource....
-## 184             
-## 185 resource....
-## 186             
-## 187 resource....
-## 188 resource....
-## 189 resource....
-## 190 resource....
-## 191 resource....
-## 192             
-## 193             
-## 194 resource....
-## 195             
-## 196 resource....
-## 197 resource....
-## 198             
-## 199 resource....
-## 200</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="example-solr-queries.html#cb223-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;dateUploaded:[2020-05-06T00:00:00Z TO NOW]&quot;</span>,</span>
+<span id="cb223-2"><a href="example-solr-queries.html#cb223-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title,identifier,resourceMap,dateUploaded,dateModified&quot;</span>,</span>
+<span id="cb223-3"><a href="example-solr-queries.html#cb223-3" tabindex="-1"></a>                <span class="at">sort =</span> <span class="st">&quot;dateUploaded+desc&quot;</span>,</span>
+<span id="cb223-4"><a href="example-solr-queries.html#cb223-4" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;200&quot;</span>), </span>
+<span id="cb223-5"><a href="example-solr-queries.html#cb223-5" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<pre><code>## Error accessing https://arcticdata.io/metacat/d1/mn/v2/query/solr/q=dateUploaded:[2020-05-06T00:00:00Z%20TO%20NOW]&amp;fl=title,identifier,resourceMap,dateUploaded,dateModified&amp;sort=dateUploaded+desc&amp;rows=200: Client error: (400) Bad Request</code></pre>
+<pre><code>## NULL</code></pre>
 </div>
 <div id="use-facets-1" class="section level3 hasAnchor">
 <h3>Use facets<a href="example-solr-queries.html#use-facets-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>

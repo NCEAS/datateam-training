@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Query Solr via R | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.42.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Query Solr via R | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-06" />
+<meta name="date" content="2025-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="scan-rar-files.html"><a href="scan-rar-files.html"><i class="fa fa-check"></i>Scan rar files</a></li>
 <li class="chapter" data-level="" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i>Spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html"><i class="fa fa-check"></i>Spatial raster data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#about-1"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-raster-data.html"><a href="spatial-raster-data.html#processing-spatialraster-entities"><i class="fa fa-check"></i>Processing <code>spatialRaster</code> entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html"><i class="fa fa-check"></i>Spatial vector data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#about-2"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#processing-spatialvector-entities"><i class="fa fa-check"></i>Processing <code>spatialVector</code> entities</a></li>
+<li class="chapter" data-level="" data-path="spatial-vector-data.html"><a href="spatial-vector-data.html#example-script"><i class="fa fa-check"></i>Example script</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i>Wrangle data</a>
 <ul>
@@ -453,20 +464,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Why does #2 matter? Well by default, all of those URLs above only return publicly-readable Solr documents.
 If a private document matches any of those queries, Solr won’t tell you that. It will act like the non-public-readable documents don’t exist. So we must pass an authentication token to access non-public-readable content. This bit is crucial for working with the ADC, so you’ll very often want to use R instead of visiting those URLs in a web browser.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="query-solr-via-r.html#cb194-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
-<span id="cb194-2"><a href="query-solr-via-r.html#cb194-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
-<span id="cb194-3"><a href="query-solr-via-r.html#cb194-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
-<span id="cb194-4"><a href="query-solr-via-r.html#cb194-4" tabindex="-1"></a></span>
-<span id="cb194-5"><a href="query-solr-via-r.html#cb194-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
-<span id="cb194-6"><a href="query-solr-via-r.html#cb194-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
-<span id="cb194-7"><a href="query-solr-via-r.html#cb194-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb194-8"><a href="query-solr-via-r.html#cb194-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb194-9"><a href="query-solr-via-r.html#cb194-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="query-solr-via-r.html#cb209-1" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">CNode</span>(<span class="st">&quot;PROD&quot;</span>)</span>
+<span id="cb209-2"><a href="query-solr-via-r.html#cb209-2" tabindex="-1"></a>adc <span class="ot">&lt;-</span> <span class="fu">getMNode</span>(cn, <span class="st">&quot;urn:node:ARCTIC&quot;</span>)</span>
+<span id="cb209-3"><a href="query-solr-via-r.html#cb209-3" tabindex="-1"></a><span class="co"># Set your token if you need/want!</span></span>
+<span id="cb209-4"><a href="query-solr-via-r.html#cb209-4" tabindex="-1"></a></span>
+<span id="cb209-5"><a href="query-solr-via-r.html#cb209-5" tabindex="-1"></a><span class="co">#string your parameters together like this: dataone::query(mn, &quot;q=title:*soil*&amp;fl=title&amp;rows=10&quot;)</span></span>
+<span id="cb209-6"><a href="query-solr-via-r.html#cb209-6" tabindex="-1"></a><span class="co">#or alternatively, list them out:</span></span>
+<span id="cb209-7"><a href="query-solr-via-r.html#cb209-7" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb209-8"><a href="query-solr-via-r.html#cb209-8" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb209-9"><a href="query-solr-via-r.html#cb209-9" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>))</span></code></pre></div>
 <p>By default, <code>query</code> returns the result as a <code>list</code>, but a <code>data.frame</code> can be a more useful way to work with the result. To get a <code>data.frame</code> instead, just set the <code>as</code> argument to ‘data.frame’ to get a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="query-solr-via-r.html#cb195-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
-<span id="cb195-2"><a href="query-solr-via-r.html#cb195-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
-<span id="cb195-3"><a href="query-solr-via-r.html#cb195-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
-<span id="cb195-4"><a href="query-solr-via-r.html#cb195-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="query-solr-via-r.html#cb210-1" tabindex="-1"></a><span class="fu">query</span>(adc, <span class="fu">list</span>(<span class="at">q=</span><span class="st">&quot;title:*soil*&quot;</span>,</span>
+<span id="cb210-2"><a href="query-solr-via-r.html#cb210-2" tabindex="-1"></a>                <span class="at">fl=</span><span class="st">&quot;title&quot;</span>,</span>
+<span id="cb210-3"><a href="query-solr-via-r.html#cb210-3" tabindex="-1"></a>                <span class="at">rows=</span><span class="st">&quot;10&quot;</span>),</span>
+<span id="cb210-4"><a href="query-solr-via-r.html#cb210-4" tabindex="-1"></a>      <span class="at">as =</span> <span class="st">&quot;data.frame&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
