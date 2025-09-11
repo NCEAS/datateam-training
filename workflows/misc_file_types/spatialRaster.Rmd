@@ -1,0 +1,165 @@
+## Spatial raster data
+
+### About
+
+The spatial raster files that we typically work with are `.tif` files.
+
+### Processing `spatialRaster` entities
+
+This reference tutorial will assume that the `otherEntity` of the `.tif` file already has an attribute list. If it exists, you can copy it. Otherwise, you can add one through the web editor before beginning this process, or create one through R to add.
+
+In addition to the usual metadata information we'll need (description, attributes, physical), we'll need some additional metadata to create a `spatialRaster` entity. In particular, we'll need to know the *coordinate reference system* of the file, *number of bands*, *cell size*, and other information that we can gather from exploring the TIF files.
+
+```{r, eval=FALSE}
+library(sf)
+library(dataone)
+library(datapack)
+library(uuid)
+library(arcticdatautils)
+library(EML)
+
+### Set up node and gather data package
+d1c <- dataone::D1Client("...", "urn:node:...") # Setting the Member Node
+resourceMapId <- "..." # Get data package PID (resource map ID)
+dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
+
+### Load in Metadata EML
+metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
+doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
+```
+
+#### Downloading the files
+
+We will first download the files into our `datateam` server. We can do this using the `download.file()` function.
+```{r, eval=FALSE}
+download.file(url1, destination1)
+```
+
+#### Changing the format IDs
+
+We will then change the format IDs within the `sysmeta` and in the entity itself. The following example code assumes that you only have geoTIFF files.
+
+```{r, eval=FALSE}
+pids <- selectMember(dp, "sysmeta@fileName", ".tif")
+
+for(i in 1:length(pids)){
+  sysmeta <- getSystemMetadata(d1c@mn, pids[i])
+  
+  sysmeta@formatId <- "image/geotiff"
+  
+  updateSystemMetadata(d1c@mn, pids[i], sysmeta)
+}
+
+for(i in 1:length(doc$dataset$otherEntity)){
+  doc$dataset$otherEntity[[i]]$entityType <- "image/geotiff"
+}
+```
+
+#### Getting raster metadata
+
+We have defined this function that we haven't added into `arcticdatautils` yet, but we will share below.
+
+```{r, eval=FALSE}
+get_raster_metadata <- function(path, coord_name = NULL, attributeList){
+  
+  # define a raste object
+  raster_obj <- raster::raster(path)
+  #message(paste("Reading raster object with proj4string of ", raster::crs(raster_obj)@projargs))
+  
+  # determine coordinates of raster
+  if (is.null(coord_name)){
+    coord_name <- raster::crs(raster_obj)@projargs
+  }
+  
+  raster_info <- list(entityName = basename(path),
+                      attributeList = attributeList,
+                      spatialReference = list(horizCoordSysName = coord_name),
+                      horizontalAccuracy = list(accuracyReport = "unknown"),
+                      verticalAccuracy = list(accuracyReport = "unknown"),
+                      cellSizeXDirection = raster::res(raster_obj)[1],
+                      cellSizeYDirection = raster::res(raster_obj)[2],
+                      numberOfBands = raster::nbands(raster_obj),
+                      rasterOrigin = "Upper Left",
+                      rows = dim(raster_obj)[1],
+                      columns = dim(raster_obj)[2],
+                      verticals = dim(raster_obj)[3],
+                      cellGeometry = "pixel")
+  return(raster_info)
+}
+```
+
+This function takes in a path to the geotiff file and creates a `spatialRaster` object to be added into the EML.
+
+To use this function, we will need to know the coordinate reference system as well to add as an argument. We can do this using the `raster` library in R.
+
+```{r, eval=FALSE}
+# Create object with path to folder containing all the tif files
+raster_folder <- "path/to/your/rasters"
+
+# Create list of the file names with full file paths
+raster_names <- list.files(raster_folder, full.names = TRUE)
+
+# Find datum of a TIF file
+raster::raster(raster_names[[1]])
+raster::crs(raster::raster(raster_names[[1]]))@projargs
+
+# Loop through all of the files
+for(i in 1:length(raster_names)){
+  print(raster::crs(raster::raster(raster_names[[i]]))@projargs)
+}
+
+# An example output of this section can look like
+  # datum WGS84
+  # projection UTM
+  # zone = 22
+  # units = m
+```
+
+
+We can use `arcticdatautils::get_coord_list()` to see a table of coordinate reference systems that we can use in our EML document. We can look through this table by looking for `WGS_1984_UTM_Zone_22` in the `horizCoordSysDef` column. Then, we can look for the corresponding `geogCoordSys` and see our coordinate system is `GCS_WGS_1984`.
+
+#### Creating the `spatialRaster` object
+
+We will first create an empty list for spatial raster entities to live. Then, we'll use the function to populate this list.
+
+```{r, eval=FALSE}
+spatialRaster <- vector("list", length(raster_names))
+
+for (i in 1:length(raster_names)) {
+  spatialRaster[[i]] <- get_raster_metadata(raster_names[i],
+                                            coord_name = "GCS_WGS_1984",
+                                            attributeList = doc$dataset$otherEntity[[i]]$attributeList)
+}
+```
+
+Note that this code assumes that the `otherEntity` and `raster_names` have the TIF files in the same order when assigning the attribute list. If this is different, we will need to find a way to assign the correct attribute list.
+
+#### Adding `spatialRaster` entity
+
+Before we're able to validate the EML doc, we'll need to assign the `spatialRaster` entities and remove the corresponding `otherEntities`.
+
+```{r, eval=FALSE}
+doc$dataset$spatialRaster <- spatialRaster
+
+doc$dataset$otherEntity <- NULL
+
+eml_validate(doc)
+```
+
+Note that if there are other files in the data package's `otherEntity` section that are not TIFs, we don't want to set them all to `NULL`. In that case, we would only `NULL` the corresponding files.
+
+Then, remember to set the physicals for the `spatialRaster` section.
+
+```{r, eval=FALSE}
+for (i in seq_along(doc$dataset$spatialRaster)) {
+  raster_name <- doc$dataset$spatialRaster[[i]]$entityName
+  
+  raster_pid <- selectMember(dp, "sysmeta@fileName", raster_name)
+  physical <- arcticdatautils::pid_to_eml_physical(d1c@mn, raster_pid)
+  
+  doc$dataset$spatialRaster[[i]]$physical <- physical
+}
+
+eml_validate(doc)
+```
+
