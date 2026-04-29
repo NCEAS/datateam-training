@@ -10,13 +10,15 @@ dataTable <- eml$dataTable(entityName = "A descriptive name for the data (does n
                  attributeList = attributeList)
 ```
 
-The `dataTable` must then be added to the EML. How exactly you do this will depend on whether there are `dataTable` elements in your EML, and how many there are. To replace whatever dataTable elements already exist, you could write:
+The `dataTable` must then be added to the EML. How exactly you do this will depend on whether there are `dataTable` elements in your EML already, and how many there are. To replace whatever `dataTable` elements already exist, you could write:
 
 ```{r, eval = FALSE}
 doc$dataset$dataTable <- dataTable
 ```
 
-If there is only one `dataTable` in your dataset, the EML package will usually "unpack" these, so that it is not contained within a list of length 1 - this means that to add a second `dataTable`, you cannot use the syntax `doc$dataset$dataTable[[2]]`, since when unpacked this will contain the `entityDescription` as opposed to pointing to the second in a series of `dataTable` elements. Confusing - I know. Not to fear though - this syntax will get you on your way, should you be trying to add a second `dataTable`.
+If there is only one `dataTable` in your dataset, the EML package will usually "unpack" these, so that it is not contained within a list of length 1 - this means that to add a second `dataTable`, you cannot use the syntax `doc$dataset$dataTable[[2]]`, since when unpacked this will contain the `entityDescription` as opposed to pointing to the second in a series of `dataTable` elements. 
+
+Confusing - I know. Not to fear though - this syntax will get you on your way, should you be trying to add a second `dataTable`. It takes the existing `dataTable`, then replaces it with a new list of 2 items: the existing `dataTable` and the newest `dataTable.`
 
 ```{r, eval = FALSE}
 doc$dataset$dataTable <- list(doc$dataset$dataTable, dataTable)
@@ -50,7 +52,7 @@ After getting a list of `dataTables`, assign the resulting list to `dataTable` E
 doc$dataset$dataTable <- dts
 ```
 
-By default, the online submission form adds all entities as `otherEntity`, even when most should probably be `dataTable`.  You can use `eml_otherEntity_to_dataTable` to easily move items in `otherEntity` over to `dataTable`, and delete the old `otherEntity`. 
+By default, the online submission form adds all entities as `otherEntity`, even when most should probably be `dataTable`.  You can use `eml_otherEntity_to_dataTable` from our `arcticdatautils` package to easily move items in `otherEntity` over to `dataTable`, and delete the old `otherEntity`. 
 
 Most tabular data or data that contain variables should be listed as a `dataTable`. Data that do not contain variables (eg: plain text readme files, pdfs, jpegs) should be listed as `otherEntity`.
 ```{r, eval = FALSE}
