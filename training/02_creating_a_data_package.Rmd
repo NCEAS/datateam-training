@@ -123,14 +123,14 @@ This exercise will take you through how to do the submission process through R i
 For our convenience, we will be grabbing the metadata and data files from the file we published earlier:
 
 * Locate the data package you published in [Exercise 1](#exercise-1) by navigating to the "My Profile > My Data" section on <a href = 'https://test.arcticdata.io' target='_blank'>test.arcticdata.io</a>.
-* Download the metadata and data files and transfer them to the Datateam server.
+* Download the metadata and data files and transfer them to the Datateam server. To do this, you can click the "Upload" button in your file explorer in RStudio.
 
 ### Part 2 - Working in R
 
 Now we want to publish the metadata and data files we downloaded again to `test.arcticdata.io`
 
 * Obtain a token and **please note** that for this exercise please make sure you grab the token from the <a href = 'https://test.arcticdata.io' target='_blank'> arcticdata test site</a>
-* Publish your metadata and data file to the site.
+* Publish your metadata and data file to the test site.
 
 ``` {r, eval = FALSE, class.source = 'exercise'}
 #set the node
@@ -151,6 +151,7 @@ myAccessRules <- data.frame(...)
 packageId <- uploadDataPackage(...)
 ```
 
+* The `packageId` variable you get back is the identifier for the resource map. You can find the metadata PID and data PIDs by looking at the `dp` object in your environment pane. The metadata PID will be listed under "metadata" and the data PIDs will be listed under "data".
 * View your new data set by appending the metadata PID to the end of the URL test.arcticdata.io/view/... 
 * If you are successful it should look the same as the dataset you created in exercise 1
-* Send a message to #datateam with the exercise number and a link to your new package.
+* Send a message to `#datateam` with the exercise number and a link to your new package.
