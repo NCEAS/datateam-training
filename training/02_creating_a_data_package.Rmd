@@ -1,16 +1,16 @@
 # Creating a data package
 
-This chapter will teach you how to create and submit a data package to a DataONE MN via R. But first, please read [this paper](data/eml-principles.pdf) on the value of structured metadata, namely the Ecological Metadata Language (EML).
+In the previous chapter, we submmitted a data package through the web form. In this chapter, we will teach you how to create and submit a data package to a DataONE member node (MN) via R. But first, please read [this paper](data/eml-principles.pdf) on the value of structured metadata, namely the Ecological Metadata Language (EML).
 
 ## What is in a package?
 
 A data package generally consists of at least 3 components. 
 
-1. Metadata: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata are information that describe data (e.g. who made the data, how were the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML (Ecological Metadata Language), which is the metadata standard that it uses. Each dataset page in the Arctic Data Center is a direct representation of an EML document, made to look prettier for the web.
+1. *Metadata*: One object is the metadata file itself. In case you are unfamiliar with metadata, metadata is information that describes data (e.g. who made the data, how was the data made, etc.). The metadata file will be in an XML format, and have the extension `.xml` (extensible markup language). We often refer to this file as the EML (Ecological Metadata Language), which is the metadata standard that it uses. Each dataset page in the Arctic Data Center is a direct representation of an EML document, made to look prettier for the web.
 
-2. Data: Other objects in a package are the data files themselves. Most commonly these are data tables (`.csv`), but they can also be audio files, NetCDF files, plain text files, PDF documents, image files, etc. 
+2. *Data*: Other objects in a package are the data files themselves. Most commonly these are data tables (`.csv`), but they can also be audio files, NetCDF files, plain text files, PDF documents, image files, etc. 
 
-3. Resource Map: The final object is the resource map. This object is a plain text file with the extension `.rdf` (<a href = 'https://www.w3.org/RDF/' target='_blank'>Resource Description Framework</a>) that defines the relationships between all of the other objects in the data package. You can think of it like a "basket" that holds the metadata file and all data files together. It says things like "this metadata file describes this data file," and is critical to making a data package render correctly on the website. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using tools in R.
+3. *Resource Map*: The final object is the resource map. This object is a plain text file with the extension `.rdf` (<a href = 'https://www.w3.org/RDF/' target='_blank'>Resource Description Framework</a>) that defines the relationships between all of the other objects in the data package. You can think of it like a "basket" that holds the metadata file and all data files together. It says things like "this metadata file describes this data file," and it is critical to making a data package render correctly on the website. Fortunately, we rarely, if ever, have to actually look at the contents of resource maps; they are generated for us using tools in R.
 
 ![From the DataOne Community Meeting (Session 7)](images/data-submission-workflow2.png)
 
@@ -22,25 +22,25 @@ All of the package information is represented when you go to the landing page fo
 
 ## About identifiers
 
-Each object (metadata files, data files, resource maps) on the ADC or the KNB (another repo) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a dataset, for example <a href = 'https://arcticdata.io/catalog/#view/doi:10.18739/A2836Z' target='_blank'>here</a>, you can find the resource map identifier listed under the title in the gray bar after the words "Files in this dataset Package:" (`resource_map_doi:10.18739/A2836Z`), the metadata identifier in the "General > Identifier" section of the metadata record or after the title with blue font (`doi:10.18739/A2836Z`), and the data identifier by clicking the "more info" link next to the data object, and looking at the "Online Distribution Info" section (`arctic-data.9546.1`).
+Each object (metadata files, data files, resource maps) on the ADC or the KNB (another repository) has a unique identifier, also sometimes called a "PID" (persistent identifier). When you look at the landing page for a dataset (for example <a href = 'https://arcticdata.io/catalog/#view/doi:10.18739/A2836Z' target='_blank'>here</a>), you can find the resource map identifier listed under the title in the gray bar after the words "Files in this dataset Package:" (`resource_map_doi:10.18739/A2836Z`). The metadata identifier is in the "General > Identifier" section of the metadata record or after the title with blue font (`doi:10.18739/A2836Z`). And the identifiers for the individual data objects can be found by clicking the "more info" button next to the data object, then looking at the "Online Distribution Info" section.
 
-Note, all datasets submitted are given a preliminary identifier (usually starting with `urn:uuid:`). When the dataset is finalized, a doi will be issued.
+Note, all datasets submitted are given a preliminary identifier (usually starting with `urn:uuid:`). When the dataset is finalized, a DOI (digital object identifier) will be issued. DOIs are permenant identifiers assigned to digital objects such as journal papers or datasets. The DOI is the permanent identifier that should be used for citations and sharing.
 
 
 ![](images/PIDs.png)
 
 
-Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file, changing a metadata record, etc, will result in a new identifier for the new version of the updated object. When making changes to a package, always use `datapack::uploadDataPackage()` for updating the entire package on the *latest versions* of all objects to ensure that the version chain is maintained.
+Different versions of a package are linked together by what we call the "version chain" or "obsolescence chain". Making an update to a data package, such as replacing a data file or editing the metadata, will result in a new identifier for the new version of the updated object. When making changes to a package, always use `datapack::uploadDataPackage()` for updating the entire package on the *latest versions* of all objects to ensure that the version chain is maintained. You can walk through the version chain of a data package on the ADC by clicking through the "Version History" arrows near the top left of the dataset's landing page.
 
 ## Upload a package
 
-We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCid and password, then hovering over your name in the top right corner and clicking on "My profile", then navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your *R console*. The console is the bottom left window in RStudio.
+We will be using R to connect to the <a href = 'https://arcticdata.io/catalog/#data' target='_blank'>NSF Arctic Data Center (ADC)</a> data repository to push and pull edits in actual datasets. To identify yourself as an admin you will need to pass a 'token' into R. Do this by signing in to the ADC with your ORCiD and password, hovering over your name in the top right corner and clicking on "My profile", navigating to "Settings" and "Authentication Token", copying the "Token for DataONE R", and finally pasting and running it in your *R console*. The console is the bottom left window in RStudio.
 
 ```{block, type = "warning"}
 **This token is your identity on these sites, please treat it as you would a password** (i.e. don't paste into scripts that will be shared). The easiest way to do this is to always run the token in the *console*. There's no need to keep it in your script since it's temporary anyway.
 ```
 
-You will need to retrieve a new one after it either expires or you quit your R session.
+You will need to retrieve a new one after it either expires or you quit your R session. They expire after about 24 hours.
 
 Setting the token does not produce any output in the console. If the token is not set or is set incorrectly, you will know when an error is produced after trying to load a private dataset.
 
@@ -54,7 +54,7 @@ options(dataone_test_token = "...")
 Since we will be working on the test site and not the production site, please remember to get your token from test.arcticdata.io
 ```
 
-Next, please be sure these packages are loaded for the training (these should already exist if you are working on the server):
+Next, please be sure these packages are loaded for the training (these should already be installed if you are working on the server):
 
 ```{r load libraries, message=FALSE, eval=FALSE}
 library(devtools)
@@ -66,7 +66,7 @@ library(XML)
 library(uuid)
 ```
 
-If any package could not be loaded, use the following command (replacing package_name with the actual package name) to install the package, then load them.
+If any package could not be loaded, use the following command (replacing "package_name" with the actual package name) to install the package, then load them.
 
 ```{r, eval = FALSE}
 install.packages("package_name")
@@ -89,7 +89,7 @@ library(EML)
 library(arcticdatautils)
 ```
 
-For this training, we will be working exclusively on the Arctic test site, or "node." In many of the functions you will use this will be the first argument. It is often referred to in documentation as `mn`, short for member node. 
+For this training, we will be working exclusively on the test site, or "node." In many of the functions you will use, this will be the first argument. It is often referred to in documentation as `mn`, short for member node. 
 
 Different repositories use different member nodes. More information on the other nodes can be found in the reference section under Set DataONE nodes [Set DataONE nodes](https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html)
 
@@ -99,7 +99,7 @@ For example, if we are using the test site, set the node to the test Arctic node
 d1c_test <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC")
 ```
 
-Once all set up you can first publish an object (data)
+Once it is all set up, you'll be able to publish a data object.
 
 If you are curious how everything magically works, here is a handy diagram:
 
