@@ -1,16 +1,21 @@
 ## Edit attributeLists
 
-Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a>. When editing attributes in R, we convert the attribute list information to data frame (table) format so that it is easier to edit. When editing attributes you will need to create one to three data frame objects:
+Attributes are descriptions of variables, typically columns or column names in tabular data. Attributes are stored in an <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>attributeList</a> element. When editing attributes in R, we convert the attribute list information to data frame (table) format so that it is easier to edit. When editing attributes you will need to create one to three data frame objects:
 
 1. A data.frame of attributes
 2. A data.frame of custom units (if applicable)
 3. A data.frame of factors (if applicable)
 
-The `attributeList` is an element within one of 4 different types of entity objects. An entity corresponds to a file, typically. Multiple entities (files) can exist within a dataset. The 4 different entity types are `dataTable` (most common for us), `spatialVector`, `spatialRaster`, and `otherEntity`.
+The `attributeList` is an element within one of 4 different types of entity objects. An entity corresponds to a file, typically. Multiple entities (files) can exist within a dataset. The 4 different entity types are:
 
-Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` or `spatialRaster` object for spatial data.
+- `dataTable` (most common for us)
+- `spatialVector`
+- `spatialRaster`
+- `otherEntity`
 
-To edit or examine an existing attribute list already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (ie there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
+Please note that submitting attribute information through the website will store them in an `otherEntity` object by default. We prefer to store them in a `dataTable` object for tabular data or a `spatialVector` or `spatialRaster` object for geospatial data.
+
+To edit or examine an existing attribute list already in an EML file, you can use the following commands, where `i` represents the index of the series element you are interested in. Note that if there is only one item in the series (i.e. there is only one `dataTable`), you should just call `doc$dataset$dataTable`, as in this case `doc$dataset$dataTable[[1]]` will return the first sub-element of the `dataTable` (the `entityName`)
 
 ```{r, eval = FALSE}
 # If they are stored in an otherEntity (submitted from the website by default)
@@ -25,7 +30,7 @@ attribute_tables$attributes
 print(attribute_tables$attributes)
 ```
 
-
+The other 2 data frames can also be accessed by using the `$` operator and the name of the table. The custom units table is called `attribute_tables$units` and the factors table is called `attribute_tables$factors`. If there are no custom units or factors, these tables will be empty data frames.
 
 
 ### Edit attributes
@@ -40,14 +45,14 @@ Attribute information should be stored in a `data.frame` with the following colu
     + *ordinal*: ordered categories. e.g.: Low, Medium, High
     + *dateTime*: date or time values from the Gregorian calendar. e.g.: 01-01-2001
     + *ratio*: measurement scale with a meaningful zero point in nature. Ratios are proportional to the measured variable. e.g.: 0 Kelvin represents a complete absence of heat. 200 Kelvin is half as hot as 400 Kelvin. 1.2 meters per second is twice as fast as 0.6 meters per second.
-    + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or any other human-constructed scale. e.g.: there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius.
+    + *interval*: values from a scale with equidistant points, where the zero point is arbitrary. This is usually reserved for degrees Celsius or Fahrenheit, or any other human-constructed scale. (e.g. there is still heat at 0° Celsius; 12° Celsius is NOT half as hot as 24° Celsius.)
 * **domain**: One of: `textDomain`, `enumeratedDomain`, `numericDomain`, `dateTime`. Required.
     + *textDomain*: text that is free-form, or matches a pattern
-    + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. e.g.: CASC = Cascade Lake, HEAR = Heart Lake
+    + *enumeratedDomain*: text that belongs to a defined list of codes and definitions. (e.g. CASC = Cascade Lake, HEAR = Heart Lake)
     + *dateTimeDomain*: `dateTime` attributes
     + *numericDomain*: attributes that are numbers (either `ratio` or `interval`)
 * **formatString**: Required for `dateTime`, NA otherwise. Format string for dates, e.g. "DD/MM/YYYY".
-* **definition**: Required for `textDomain`, NA otherwise. Defines a format for attributes that are a character string. e.g.: "Any text" or "7-digit alphanumeric code"
+* **definition**: Required for `textDomain`, NA otherwise. Defines a format for attributes that are a character string. (e.g. "Any text" or "7-digit alphanumeric code")
 * **unit**: Required for `numericDomain`, NA otherwise. Unit string. If the unit is not a standard unit, a warning will appear when you create the attribute list, saying that it has been forced into a custom unit. Use caution here to make sure the unit really needs to be a custom unit. A list of standard units can be found using: `standardUnits <- EML::get_unitList()` then running `View(standardUnits$units)`.
 * **numberType**: Required for `numericDomain`, NA otherwise. Options are `real`, `natural`, `whole`, and `integer`.
     + *real*: positive and negative fractions and integers (...-1,-0.25,0,0.25,1...)
@@ -74,7 +79,7 @@ attributes <- data.frame(
     missingValueCodeExplanation = c(NA, NA, NA,NA, NA, NA, NA, 'no sampling comments'))
 ```
 
-However, typing this out in R can be a major pain. Luckily, there's a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended as the app will auto-fill some fields for you) to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes. 
+However, typing this out in R can be a major pain. Luckily, there's a Shiny app that you can use to build attribute information. You can use the app to build attributes from a data file loaded into R (recommended, as the app will auto-fill some fields for you), to edit an existing attribute table, or to create attributes from scratch. Use the following commands to create or modify attributes. 
 
 Use the following commands to create or modify attributes. These commands will launch a "Shiny" app in your web browser.
 
@@ -96,19 +101,22 @@ attribute_tables <- get_attributes(doc$dataset$dataTable[[i]]$attributeList)
 attribute_tables <- EML::shiny_attributes(attributes = attribute_tables$attributes)
 ```
 
-Once you are done editing a table in the browser app, quit the app by pressing the red "Quit App" button in the top right corner of the page. 
+Once you are done editing a table in the browser app, be sure to quit the app by pressing the red "Quit App" button in the top right corner of the page. This is necessary to save your work to the `attribute_tables` variable in R.
 
-If you close the Shiny app tab in your browser instead of using the "Quit App" button, your work will not be saved, R will think that the Shiny app is still open, and you will not be able to run other code. You can tell if R is confused if you have closed the Shiny app and the bottom line in the console still says `Listening on http://...`. If this happens, press the red stop sign button on the right hand side of the console window in order to interrupt R.
+If you close the Shiny app tab in your browser instead of using the "Quit App" button, your work will not be saved. R will think that the Shiny app is still open, and you will not be able to run other code. You can tell if R is confused if you have closed the Shiny app and the bottom line in the console still says `Listening on http://...`. If this happens, press the red stop sign button on the right hand side of the console window in order to interrupt R.
 
 The tables you constructed in the app will be assigned to the `attribute_tables` variable as a list of data frames (one for attributes, factors, and units). Be careful to not overwrite your completed `attribute_tables` object when trying to make edits. The last line of code can be used in order to make edits to an existing `attribute_tables` object.
 
-Alternatively, each table can be to exported to a csv file by clicking the `Download` button. If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`), or just use the variable that `shiny_attributes` returned.
+Alternatively, each table can be exported to a csv file by clicking the `Download` button. If you downloaded the table, read the table back into your R session and assign it to a variable in your script (e.g. `attributes <- data.frame(...)`), or just use the variable that `shiny_attributes` returned.
 
 For simple attribute corrections, `datamgmt::edit_attribute()` allows you to edit the slots of a single attribute within an attribute list. To use this function, pass an attribute through `datamgmt::edit_attribute()` and fill out the parameters you wish to edit/update. An example is provided below where we are changing `attributeName`, `domain`, and `measurementScale` in the first attribute of a dataset. After completing the edits, insert the new version of the attribute back into the EML document.
 
 ```{r, eval = FALSE}
 
-new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeList$attribute[[1]], attributeName = 'date_and_time', domain = 'dateTimeDomain', measurementScale = 'dateTime')
+new_attribute <- datamgmt::edit_attribute(doc$dataset$dataTable[[1]]$attributeList$attribute[[1]], 
+                                          attributeName = 'date_and_time', 
+                                          domain = 'dateTimeDomain', 
+                                          measurementScale = 'dateTime')
 doc$dataset$dataTable[[1]]$attributeList$attribute[[1]] <- new_attribute
 
 ```
@@ -122,7 +130,7 @@ standardUnits <- EML::get_unitList()
 View(standardUnits$units)
 ```
 
-Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit ie `meters` in the table to see if there are any matches.
+Search the units list for your unit before attempting to create a custom unit. You can search part of the unit you can look up part of the unit (e.g. `meters` in the table) to see if there are any matches.
 
 If you have units that are not in the standard EML unit list, you will need to build a custom unit list. Attribute tables with custom units listed will generate a warning indicating that a custom unit will need to be described.
 
@@ -148,7 +156,7 @@ custom_units <- data.frame(
   description = c('siemens per meter', 'decibar'))
 ```
 
-Custom units can also be created in the shiny app, under the "units" tab. They cannot be edited again in the shiny app once created.
+Custom units can also be created in the Shiny app, under the "units" tab. They cannot be edited again in the shiny app once created.
 ```{r, eval=FALSE}
 attribute_tables <- EML::shiny_attributes()
 
@@ -176,8 +184,12 @@ For attributes that are `enumeratedDomains`, a table is needed with three column
 To build factors by hand, you use the named character vectors and then convert them to a data.frame as shown in the example below. In this example, there are two enumerated domains in the attribute list - "Location" and "Region".
 
 ```{r, eval = FALSE}
-Location <- c(CASC = 'Cascade Lake', CHIK = 'Chikumunik Lake', HEAR = 'Heart Lake', NISH = 'Nishlik Lake' )
-Region <- c(W_MTN = 'West region, locations West of Eagle Mountain', E_MTN = 'East region, locations East of Eagle Mountain')
+Location <- c(CASC = 'Cascade Lake', 
+              CHIK = 'Chikumunik Lake', 
+              HEAR = 'Heart Lake', 
+              NISH = 'Nishlik Lake' )
+Region <- c(W_MTN = 'West region, locations West of Eagle Mountain', 
+            E_MTN = 'East region, locations East of Eagle Mountain')
 ```
 
 The definitions are then written into a data.frame using the names of the named character vectors and their definitions.
@@ -187,7 +199,7 @@ factors <- rbind(data.frame(attributeName = 'Location', code = names(Location), 
                   data.frame(attributeName = 'Region', code = names(Region), definition = unname(Region)))
 ```
 
-Factors can also be created in the shiny app, under the "factors" tab. They cannot be edited again in the shiny app once created.
+Factors can also be created in the Shiny app, under the "factors" tab. They cannot be edited again in the shiny app once created.
 ```{r, eval=FALSE}
 attribute_tables <- EML::shiny_attributes()
 
@@ -211,3 +223,4 @@ This `attributeList` object can then be checked for errors and [added to a `data
 doc$dataset$dataTable[[i]]$attributeList <- attributeList
 ```
 
+At this point, it's good to check if everything is valid by using the `eml_validate(doc)` function. If there are errors, they will be listed in the console and you can go back and fix them. If there are no errors, you should see `[1] TRUE` in the console.
