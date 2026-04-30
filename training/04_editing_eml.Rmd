@@ -17,9 +17,9 @@ When using R to edit EML documents, run each line individually by highlighting t
 
 ## FAIR data practices
 
-The result of these function calls won't show up on the webpage but they will add a `publisher` element to the `dataset` element and a `system` to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable). 
+The result of these function calls won't show up on the webpage, but they will add a `publisher` element to the `dataset` element and a `system` to all of the entities based on what the PID is. This will help make our metadata more FAIR (Findable, Accessible, Interoperable, Reusable). 
 
-These two functions come from the `arcticatautils` package, an R package we wrote to help with some very specific data processing tasks.
+These two functions come from the `arcticatautils` package, an R package we wrote to help with some very specific data processing tasks in our team.
 
 Add these function calls to all of your EML processing scripts.
 
@@ -51,13 +51,20 @@ Remember to use:
 ```{r, child = '../workflows/edit_eml/edit_semantic_annotation.Rmd'}
 ```
 
+```{r, child = '../workflows/edit_eml/set_project.Rmd'}
+```
+
 ## Exercise 3a {.exercise}
 
-The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add a attribute and physical to our entity (the csv file).
+The metadata for the dataset created earlier in Exercise 2 was not very complete. Here we will add an `attributeTable` and physical to our entity (the csv file).
 
 * Make sure your package from [before](#exercise-2) is loaded into R.
 * Convert `otherEntity` into `dataTable`.
 * Replace the existing `dataTable` with a new `dataTable` object with an `attributelist` you write in R using the above commands.
+* Be sure to add attribute-level annotations when possible to the attributes.
+* Add a physical to your entity using the `pid_to_eml_physical` function from `arcticdatautils`.
+* Categorize the dataset by adding a dataset-level annotation with a discipline.
+* Add the `award` section given the funding information.
 * We will continue using the objects created and updated in this exercise in 3b.
 
 Below is some pseudo-code for how to accomplish the above steps. Fill in the dots according to the above sections to complete the exercise.
@@ -73,15 +80,26 @@ metadataId <- selectMember(...)
 # read in EML
 doc <- read_eml(getObject(...))
 
-# convert otherEntity to dataTable
-doc <- eml_otherEntity_to_dataTable(...)
-
 # write an attribute list using shiny_attributes based on the data in your file
 ex_data <- read.csv(...)
 atts <- shiny_attributes(data = ex_data)
 
 # set the attributeList
-doc$dataset$dataTable$attributeList <- set_attributes(...)
+doc$dataset$otherEntity$attributeList <- set_attributes(...)
+
+# convert otherEntity to dataTable
+doc <- eml_otherEntity_to_dataTable(...)
+
+# add physical
+...
+
+# add dataset-level annotation
+
+
+# add award elements
+
+
+# add publisher and entity information
 
 ```
 
@@ -104,7 +122,7 @@ When troubleshooting EML errors, it is helpful to run `eml_validate()` after eve
 ```
 
 
-Then save your EML to a path of your choice or a temp file. You will later pass this path as an argument to update the package.
+Then, save your EML to a path of your choice or a temporary file. You will later pass this path as an argument to update the package.
 
 ```{r, eval = F}
 # Create a standardized EML name from the dataset title
