@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Understand the EML schema | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Understand the EML schema | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-09-11" />
+<meta name="date" content="2026-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,7 +197,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
-<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#data-packages-with-multiple-zip-files"><i class="fa fa-check"></i>Data packages with multiple ZIP files</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#adjusting-the-folder-hierarchy-of-files-already-in-the-data-package"><i class="fa fa-check"></i>Adjusting the folder hierarchy of files already in the data package</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -235,9 +236,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html"><i class="fa fa-check"></i>Semantic annotations</a>
 <ul>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-attribute-annotations-are-used"><i class="fa fa-check"></i>How attribute annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset-level Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -268,7 +269,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="set-parties.html"><a href="set-parties.html"><i class="fa fa-check"></i>Set parties</a></li>
 <li class="chapter" data-level="" data-path="set-physical.html"><a href="set-physical.html"><i class="fa fa-check"></i>Set physical</a></li>
-<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html#nsf-awards"><i class="fa fa-check"></i>NSF Awards</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html#custom-awards"><i class="fa fa-check"></i>Custom Awards</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html"><i class="fa fa-check"></i>Use references</a>
 <ul>
 <li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-parties"><i class="fa fa-check"></i>Example with parties</a></li>
@@ -402,7 +407,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a>
 <ul>
-<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations-1"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#portal-updates"><i class="fa fa-check"></i>Portal updates</a></li>
 </ul></li>
 </ul></li>
@@ -461,7 +466,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>For example, let’s take a look at <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>. To start off, notice that some elements have bolded lines leading to them.</p>
 <p><img src="../images/eml-party.png" /></p>
 <p>A bold line indicates that the element is <em>required</em> if the element above it (to the left in the schema) is used, otherwise the element is <em>optional</em>.</p>
-<p>Notice also that next to the <code>givenName</code> element it says “0..infinity”. This means that the element is unbounded — a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the <code>surName</code> element — a party can have only one surname.</p>
+<p>Notice also that next to the <code>givenName</code> element, it says “0..infinity”. This means that the element is unbounded — a single party can have many given names and there is no limit on how many you can add. However, this text does not appear for the <code>surName</code> element — a party can have only one surname.</p>
 <p>You will also see icons linking the EML slots together, which indicate the ordering of subsequent slots. These can indicate either a “sequence” or a “choice”. In our example from <code>eml-party</code>, a “choice” icon indicates that either an <code>individualName</code>, <code>organizationName</code>, or <code>positionName</code> is required, but you do not need all three. However, the “sequence” icon tells us that if you use an <code>individualName</code>, you must include the <code>surName</code> as a child element. If you include the optional child elements <code>salutation</code> and <code>givenName</code>, they must be written in the order presented in the schema.</p>
 <p>The eml schema sections you may find particularly helpful include <a href = 'https://eml.ecoinformatics.org/images/eml-party.png' target='_blank'>eml-party</a>, <a href = 'https://eml.ecoinformatics.org/images/eml-attribute.png' target='_blank'>eml-attribute</a> and <a href = 'https://eml.ecoinformatics.org/images/eml-physical.png' target='_blank'>eml-physical</a>.</p>
 <p>For a more detailed description of the EML schema, see the <a href = 'https://nceas.github.io/datateam-training/reference/explore-eml.html' target='_blank'>reference section on exploring EML</a>.</p>

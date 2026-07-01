@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Create a new data package | NCEAS Data Team Reference Guide</title>
   <meta name="description" content="This is a training guide and reference resource for NCEAS data team members working on the SASAP and Arctic Data Center projects" />
-  <meta name="generator" content="bookdown 0.44.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Create a new data package | NCEAS Data Team Reference Guide" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-09-11" />
+<meta name="date" content="2026-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,7 +197,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#download-the-zip-file-to-datateam"><i class="fa fa-check"></i>Download the zip file to datateam</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#re-upload-the-contents-to-the-arctic-data-center"><i class="fa fa-check"></i>Re-upload the contents to the Arctic Data Center</a></li>
 <li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#summary"><i class="fa fa-check"></i>Summary</a></li>
-<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#example-with-multiple-zip-files"><i class="fa fa-check"></i>Example with multiple ZIP files</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#data-packages-with-multiple-zip-files"><i class="fa fa-check"></i>Data packages with multiple ZIP files</a></li>
+<li class="chapter" data-level="" data-path="preserve-folder-structures.html"><a href="preserve-folder-structures.html#adjusting-the-folder-hierarchy-of-files-already-in-the-data-package"><i class="fa fa-check"></i>Adjusting the folder hierarchy of files already in the data package</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="update-a-package-with-a-new-data-object.html"><a href="update-a-package-with-a-new-data-object.html"><i class="fa fa-check"></i>Update a package with a new data object</a>
 <ul>
@@ -235,9 +236,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html"><i class="fa fa-check"></i>Semantic annotations</a>
 <ul>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-annotations-are-used"><i class="fa fa-check"></i>How annotations are used</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-attribute-annotations-are-used"><i class="fa fa-check"></i>How attribute annotations are used</a></li>
 <li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#how-to-add-an-annotation"><i class="fa fa-check"></i>How to add an annotation</a></li>
-<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-annotations"><i class="fa fa-check"></i>Dataset Annotations</a></li>
+<li class="chapter" data-level="" data-path="semantic-annotations.html"><a href="semantic-annotations.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset-level Annotations</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="edit-spatial-data.html"><a href="edit-spatial-data.html"><i class="fa fa-check"></i>Edit spatial data</a>
 <ul>
@@ -268,7 +269,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="set-parties.html"><a href="set-parties.html"><i class="fa fa-check"></i>Set parties</a></li>
 <li class="chapter" data-level="" data-path="set-physical.html"><a href="set-physical.html"><i class="fa fa-check"></i>Set physical</a></li>
-<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html"><i class="fa fa-check"></i>Set the project section</a>
+<ul>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html#nsf-awards"><i class="fa fa-check"></i>NSF Awards</a></li>
+<li class="chapter" data-level="" data-path="set-the-project-section.html"><a href="set-the-project-section.html#custom-awards"><i class="fa fa-check"></i>Custom Awards</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html"><i class="fa fa-check"></i>Use references</a>
 <ul>
 <li class="chapter" data-level="" data-path="use-references.html"><a href="use-references.html#example-with-parties"><i class="fa fa-check"></i>Example with parties</a></li>
@@ -402,7 +407,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="distributed-biological-observatory-dbo-submissions.html"><a href="distributed-biological-observatory-dbo-submissions.html"><i class="fa fa-check"></i>Distributed Biological Observatory (DBO) submissions</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html"><i class="fa fa-check"></i>MOSAiC</a>
 <ul>
-<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
+<li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#dataset-level-annotations-1"><i class="fa fa-check"></i>Dataset Level Annotations</a></li>
 <li class="chapter" data-level="" data-path="mosaic.html"><a href="mosaic.html#portal-updates"><i class="fa fa-check"></i>Portal updates</a></li>
 </ul></li>
 </ul></li>
@@ -462,19 +467,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-2"><a href="create-a-new-data-package.html#cb19-2" tabindex="-1"></a><span class="fu">library</span>(datapack)</span>
 <span id="cb19-3"><a href="create-a-new-data-package.html#cb19-3" tabindex="-1"></a><span class="fu">library</span>(uuid)</span></code></pre></div>
 <p>Create a new data package
-- data package is a class that has slots for <code>relations</code> (provenance), <code>objects</code>(the metadata and data file(s)) and <code>systemMetadata</code>.</p>
+- a data package is a class that has slots for <code>relations</code> (provenance), <code>objects</code>(the metadata and data file(s)) and <code>systemMetadata</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="create-a-new-data-package.html#cb20-1" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataPackage&quot;</span>)</span></code></pre></div>
 <div id="upload-new-data-files" class="section level3 hasAnchor">
 <h3>Upload new data files<a href="create-a-new-data-package.html#upload-new-data-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="create-and-add-a-metadata-file" class="section level4 hasAnchor">
-<h4>Create and add a metadata file<a href="create-a-new-data-package.html#create-and-add-a-metadata-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In this example we will use this previously written EML metadata. Here we are getting the file path from the dataone package and saving that as the object <code>emlFile</code>.</p>
-<p>This is a bit of an unusual way to reference a local file path, but all this does is looks within the R package <code>dataone</code> and grabs the path to a metadata document stored within that package. If you print the value of <code>emlFile</code> you’ll see it is just a file path, but it points to a special place on the server where that package is installed. Usually you will just reference EML paths that are stored within your user file system.</p>
+<div id="create-and-add-a-metadata-file-to-the-data-package" class="section level4 hasAnchor">
+<h4>Create and add a metadata file to the data package<a href="create-a-new-data-package.html#create-and-add-a-metadata-file-to-the-data-package" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In this example we will use this previously written EML metadata. Here, we are getting the file path from the <code>dataone</code> package and saving that as the object <code>emlFile</code>.</p>
+<p>This is a bit of an unusual way to reference a local file path, but all this does is it looks within the R package <code>dataone</code> and it grabs the path to a metadata document stored within that package. If you print the value of <code>emlFile</code> you’ll see it is just a file path, but it points to a special place on the server where that package is installed. Usually you will just reference EML paths that are stored within your user file system.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="create-a-new-data-package.html#cb21-1" tabindex="-1"></a>emlFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/strix-pacific-northwest.xml&quot;</span>, <span class="at">package=</span><span class="st">&quot;dataone&quot;</span>)</span></code></pre></div>
 <p>Create a new <code>DataObject</code> for the metadata and add it to the package.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="create-a-new-data-package.html#cb22-1" tabindex="-1"></a>metadataObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;DataObject&quot;</span>, <span class="at">format=</span><span class="st">&quot;https://eml.ecoinformatics.org/eml-2.2.0&quot;</span>, <span class="at">filename=</span>emlFile)</span>
 <span id="cb22-2"><a href="create-a-new-data-package.html#cb22-2" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fu">addMember</span>(dp, metadataObj)</span></code></pre></div>
-<p>Check the dp object to see if the metadata was added correctly.</p>
+<p>Here, we have to specify the format of the metadata file. In this case, we are using EML version 2.2.0, so we specify that as the format. Different format IDs can be browsed through this <a href="https://cn.dataone.org/cn/v2/formats">DataONE reference list</a>. The <code>addMember()</code> function adds the metadata object to the data package and also creates a unique identifier for it.</p>
+<p>Check the dp object to see if the metadata object was added correctly.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="create-a-new-data-package.html#cb23-1" tabindex="-1"></a>dp</span></code></pre></div>
 </div>
 <div id="add-some-additional-data-files" class="section level4 hasAnchor">
