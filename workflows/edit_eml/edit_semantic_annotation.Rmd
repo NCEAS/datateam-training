@@ -7,35 +7,41 @@ Even more information on how to add semantic annotations to EML 2.2.0 can be fou
  
 There are several elements in the EML 2.2.0 schema that can be annotated:
 
-* `dataset`
-* entity (eg: `otherEntity` or `dataTable`)
-* `attribute`
+* a `dataset`
+* an entity (eg: `otherEntity` or `dataTable`)
+* an `attribute`
 
 Attribute annotations can be edited in R and also on the website. Dataset and entity annotations are only done in R.
 
-### How annotations are used
+### How attribute annotations are used
 
 This is a  <a href = 'https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2KW57J9Q'>dataset</a> that has semantic annotations included.
 
-On the website you can see annotations in each of the attributes.
+On the website, you can see annotations in each of the attributes in the attribute list of the files.
 ![](../images/annotations_web.png)
 
 You can click on any one of them to search for more datasets with that same annotation.
 ![](../images/annotations_web_use.png)
 ```{block, type = "note"}
-Semantic attribute annotations can be applied to spatialRasters, spatialVectors and dataTables
+Semantic attribute annotations can be applied to spatialRasters, spatialVectors and dataTables, as all these types of files contain attributes.
 ```
 
 
 #### Attribute-level annotations on the website editor
 
-The website has a searchable list of attribute annotations that are grouped by category and specificity. Open your dataset on the test website from earlier and enter the attribute editor. Look through all of the available annotations.
+The website has a searchable list of attribute annotations that are grouped by *category* and *specificity*. Open your dataset on the test website from earlier and enter the attribute editor. Look through all of the available annotations for attributes..
 
-Adding attribute annotations using the website is the easiest way, however adding them using R and/or the Shiny app may be quicker with very larger datasets. 
+Adding attribute annotations using the website is the simplest way. However, adding them using R and/or the Shiny app may be quicker with much larger datasets that have a lot of attributes or files.
 
 #### Attribute-level annotations in R
 
-To manually add annotations to the `attributeList` in R you will need information about the `propertyURI` and `valueURI`.
+To manually add annotations to the `attributeList` in R you will need information about the `propertyURI` and `valueURI` as well as a unique `id` for the annotation. 
+
+- The `id` needs to be unique across all attributes and across all files in the dataset too. This will be added to the `id` column of the `attributeTable`.
+- The `propertyURI` is the same for every annotation you make for the attributes. It will be "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType" and 
+- The `propertyLabel` will be "contains measurements of type". This is the predicate in the sentence that describes the annotation.
+- The `valueURI` is the URI of the term you select from an ontology that best describes your attribute.
+- The `valueLabel` is the label of the term you select from an ontology that best describes your attribute.
 
 Annotations are essentially composed of a sentence, which contains a subject (the attribute), predicate (`propertyURI`),
 and object (`valueURI`). Because of the way our search interface is built, for now we will be using attribute annotations that have a `propertyURI` label of "contains measurements of type". 
@@ -65,6 +71,10 @@ $valueURI$valueURI
 [1] "http://purl.dataone.org/odo/ECSO_00002617"
 ```
 
+This shows that within the `attributeList`, the `i`th attribute of the `i`th dataTable has an annotation with 
+- a unique id of "ODBcOyaTsg",
+- a `propertyURI` with a label of "contains measurements of type" and a URI of "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType",
+- and a `valueURI` with a label of "Distributed Biological Observatory region identifier" and a URI of "http://purl.dataone.org/odo/ECSO_00002617".
 
 ### How to add an annotation
 
@@ -76,7 +86,7 @@ The goal for the datateam is to start annotating every dataset that comes in. Pl
 
 The next step is to find an appropriate value to fill in the blank of the sentence: "this attribute contains measurements of _____."
 
-There are several ontologies to search in. In order of most to least likely to be relevant to the Arctic Data Center they are:
+There are several ontologies (controlled vocabularies) to search in. In order of most to least likely to be relevant to the Arctic Data Center they are:
 
 * [The Ecosystem Ontology (ECSO)](http://bioportal.bioontology.org/ontologies/ECSO/?p=classes&conceptid=http://purl.dataone.org/odo/ECSO_00002925)  
     - this was developed at NCEAS, and has many terms that are relevant to ecosystem processes, especially those involving carbon and nutrient cycling
@@ -87,7 +97,7 @@ There are several ontologies to search in. In order of most to least likely to b
 * [Information Artifact Ontology (IAO)](http://bioportal.bioontology.org/ontologies/IAO/?p=summary)
     - this ontology contains terms related to information entities (eg: journals, articles, datasets, identifiers)
 
-To search, navigate through the "classes" until you find an appropriate term. When we are picking terms, it is important that we not just pick a similar term or a term that seems close -  we want a term that is 100% accurate. For example, if you have an attribute for carbon tetroxide flux and an ontology with a class hierarchy like this:
+To search, navigate through the "classes" until you find an appropriate term. When we are picking terms, it is important that we don't just pick a similar term or a term that seems close -  we want a term that is 100% accurate. For example, if you have an attribute for carbon tetroxide flux and an ontology with a class hierarchy like this:
 
 -- carbon flux  
   |---- carbon dioxide flux
@@ -104,9 +114,9 @@ e.g. selecting the lake area annotation for the [area attribute](https://arcticd
 
 #### Manually Annotating
 
-*this method is great for when you are inserting 1 annotation, fixing an existing annotation or programmatically updating annotations for multiple attributeLists*
+*This method is great for when you are inserting 1 annotation, fixing an existing annotation, or programmatically updating annotations for multiple `attributeLists`*.
 
-First you need to figure out the index of the attribute you want to annotate.
+First, you need to figure out the index of the attribute you want to annotate.
 
 ```{r, eval = F}
 eml_get_simple(doc$dataset$dataTable[[3]]$attributeList, "attributeName")
@@ -138,36 +148,48 @@ You should see an ID on the Bioportal page that looks like a URL - this is the `
 
 ```{r, eval = F}
 doc$dataset$dataTable[[3]]$attributeList$attribute[[6]]$annotation$valueURI <- list(label = "Water Salinity",
-                                                                                       valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
+                                                                                    valueURI = "http://purl.dataone.org/odo/ECSO_00001164")
 ```
+
+If you are working to programmatically add annotations in, we recommend using `dplyr` or other `data.table` manipulation tools to build out/edit your attributeTable and then using `set_attributes` to assign it back to the EML document.
 
 #### Shiny Attributes
 
-*this method is great for when you are updating many attributes*
+*This method is great for when you are updating many attributes.*
+
+You can use the `shiny_attributes` function to build out the attribute list and then use `set_attributes` to assign it to the EML document. This is a much more efficient way to add annotations to many attributes across many files.
 
 On the far right of the table of `shiny_attributes` there are 4 columns: `id`, `propertyURI`, `propertyLabel`, `valueURI`, `valueLabel` that can be filled out.
 
-### Dataset Annotations
+#### External Editing
 
-Dataset annotations can only be made using R. There are several helper functions that assist with making dataset annotations.
+*This method is great if you are more comfortable editing in Excel or Google Sheets, but it is not recommended for large datasets with many attributes.*
+
+Since an `attributeTable` is just a data frame, you can export it to a CSV, edit it in Excel or Google Sheets, and then read it back into R and assign it to the EML document. This is not recommended for large datasets with many attributes because it is easy to mess up the formatting of the `attributeTable` and lose information about the attributes that are not being edited.
+
+### Dataset-level Annotations
+
+We also want to annotate datasets with information about the *discipline* of the dataset and the *sensitivity* of the data.
+
+There are several helper functions that assist with making dataset annotations.
 
 #### Data Sensitivity
 
-Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&conceptid=root. 
+Sensitive datasets that might cover protected characteristics (human subjects data, endangered species locations, etc) should be annotated using the data sensitivity ontology: https://bioportal.bioontology.org/ontologies/SENSO/?p=classes&conceptid=root. The sensitivity annotations can be added through the web editor, and it is a required section for submitters.
 
 #### Dataset Discipline
 
-As a final step in the data processing pipeline, we will categorize the dataset. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center.
+As a final step in the data processing pipeline, we will categorize the dataset with a discipline. We are trying to categorize datasets so we can have a general idea of what kinds of data we have at the Arctic Data Center. It also helps with searching and filtering datasets on the website.
 
 Datasets will be categorized using the [Academic Ontology](https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&conceptid=root). These annotations will be seen at the top of the landing page, and can be thought of as "themes" for the dataset. In reality, they are dataset-level annotations.
 
-Be sure to ask your peers in the #datateam slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code: 
+Be sure to ask your peers in the `#datateam` Slack channel whether they agree with the themes you think best fit your dataset. Once there is consensus, use the following line of code: 
 
 ```{r, eval = F}
 doc <- arcticdatautils::eml_categorize_dataset(doc, c("Soil Science", "Plant Science", "Ecology"))
 ```
 
-Be careful not to duplicate dataset annotations. The above code does not existing prior dataset annotations. Duplicate annotations can be removed by setting them to `NULL`.
+Be careful not to duplicate dataset annotations. The above code does not remove existing dataset annotations. Duplicate annotations can be removed by setting them to `NULL`.
 ```{r, eval = F}
 doc$dataset$annotation[[i]] <- NULL
 ```

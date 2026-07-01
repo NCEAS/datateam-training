@@ -19,11 +19,12 @@ dp <- replaceMember(dp, dataId, replacement=file_path)
 ```
 
 
-If you want to remove some files from the data package we can use `datapack::removeMember`. If we wanted to remove all the zip files associated with this data package, we can use `datapack::removeMember`:
+If you want to remove some files from the data package we can use `datapack::removeMember`. For example, if we wanted to remove all the zip files associated with this data package, we can use `datapack::removeMember`:
 
 ```{r, eval = F}
+# Grab all PIDs of files with the format id of zip
 zipId <- selectMember(dp, name="sysmeta@formatId", value="application/vnd.shp+zip")
-removeMember(dp, zipId, removeRelationships = T)
+dp <- removeMember(dp, zipId, removeRelationships = T)
 ```
 
 

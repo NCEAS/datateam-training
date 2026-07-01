@@ -12,6 +12,11 @@ on:
 
 name: renderbook
 
+permissions:
+  contents: write   # required to push to gh-pages
+  pages: write      # optional but often needed for pages workflows
+  id-token: write   # optional for some pages deployments
+
 jobs:
   bookdown:
     name: Render-Book

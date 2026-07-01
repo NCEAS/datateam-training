@@ -1,11 +1,13 @@
 ## Set physical
 
+A `physical` is a description of the physical elements of the data objects. This includes things like the file name, file size, data format, and for tabular data, the number of header lines and attribute orientation. The `physical` is a required element for all entities in EML.
+
 To set the `physical` aspects of a data object, use the following commands to build a `physical` object from a data `PID` that exists in your package. **Remember to <a href = 'https://nceas.github.io/datateam-training/reference/set-dataone-nodes.html' target='_blank'>set the member node</a> to test.arcticdata.io!**
 
 Every entity that we upload needs a physical description added. When replacing files, the physical must be replaced as well.
 
 ```{block, type = "note"}
-The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk (basically, the serialization)). so,  we grouped metadata about the file (eg. dataformat, file size, file name) as written to disk in physical. It includes info like the file size. For CSV files, the physical describes the number of header lines and the attribute orientation.
+The word ‘physical’ derives from database systems, which distinguish the ‘logical’ model (e.g., what attributes are in a table, etc) from the physical model (how the data are written to a physical hard disk or the serialization). So, we grouped metadata about the file (eg. data format, file size, file name) as written to disk in physical. It includes info like the file size. For CSV files, the physical describes the number of header lines and the attribute orientation.
 ```
 
 ```{r, eval = FALSE}

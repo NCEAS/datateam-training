@@ -1,24 +1,13 @@
 ## Set the project section 
 
-The project section in an EML document is automatically filled out by the metacatUI editor. It sets the project title and project personnel to the submission's title and creators.  Most of the time at least some of this information is incorrect and we need to update it.  
+The project section in an EML document is automatically filled out by the metacatUI editor when a dataset is submitted. It sets the project title and project personnel to the submission's title and creators.  Most of the time, at least some of this information is incorrect and we need to update it.
 
-Start by searching for the funding information using <a href = 'https://www.nsf.gov/awardsearch/' target='_blank'>NSF's award search</a>. This will give us the project title, abstract, and personnel - along with some additional metadata.  
+If the dataset is funded by NSF, the project information can be found in the NSF award search. We've built a function in `arcticdatautils` that can help you retrieve this information and format it for EML in the `award` element. If your dataset is funded by another agency, you will need to find the custom project information and format it as an `award` element for EML yourself.
 
-Using this information we will set the title, personnel, and funding number. For NSF funded projects prepend the funding number with "NSF". If there are multiple awards associated with one dataset then additional `funding`, `title`, and `personnel` elements should be added to reflect the additional awards.    
+### NSF Awards
 
+There is a helper function `eml_nsf_to_project()` that can help find the necessary information for you. Just verify that the information retrieved is correct. This will create an `award` element in the project section, and it will remove the `funding` section.
 
-```
-doc$dataset$project$funding$para[[1]] <- 'NSF 1503846'
-
-doc$dataset$project$title[[1]] <- 'Collaborative Research: Reconciling conflicting Arctic temperature and fire reconstructions using multi-proxy records from lake sediments north of the Brooks Range, Alaska
-
-doc$dataset$project$personnel[[1]] <- eml$personnel(individualName = eml$individualName(givenName = 'Yongsong', surName = 'Huang'),
-                                                    role = 'Principal Investigator')
-doc$dataset$project$personnel[[2]] <- eml$personnel(individualName = eml$individualName(givenName = 'James', surName = 'Russell'),
-                                                    role = 'co Principal Investigator')
-```
-
-There is also a helper function `eml_nsf_to_project()` that can help do the searching for you. Just verify that the information retrieved is correct.
 ```
 # update NSF awards data
 awards <- c("1311655", "1417987", "1417993") # list of award numbers
@@ -27,7 +16,35 @@ proj <- eml_nsf_to_project(awards) #helper function
 doc$dataset$project <- proj
 ```
 
-On the web form right now only fills in the funding field. We need instructions on how to convert that to the new awards formatting until the form is updated to include these fields:
+Before this function, we would need to find the award information manually and format it for EML.
+
+To do that, you would start by searching for the funding information using <a href = 'https://www.nsf.gov/awardsearch/' target='_blank'>NSF's award search</a>. This will give us the project title, abstract, and personnel - along with some additional metadata.  
+
+Using this information we can set the title, personnel, and funding number. For NSF funded projects prepend the funding number with "NSF". If there are multiple awards associated with one dataset then additional `funding`, `title`, and `personnel` elements should be added to reflect the additional awards.    
+
+```
+doc$dataset$project$title[[1]] <- 'Collaborative Research: Reconciling conflicting Arctic temperature and fire reconstructions using multi-proxy records from lake sediments north of the Brooks Range, Alaska
+
+doc$dataset$project$personnel[[1]] <- eml$personnel(individualName = eml$individualName(givenName = 'Yongsong', surName = 'Huang'),
+                                                    role = 'Principal Investigator')
+doc$dataset$project$personnel[[2]] <- eml$personnel(individualName = eml$individualName(givenName = 'James', surName = 'Russell'),
+                                                    role = 'co Principal Investigator')
+```
+
+### Custom Awards
+
+If there is a funding source that is not from NSF, we will need to create a custom `award` element. The required information for an `award` element is the `funderName` and `title`. The `awardNumber` and `funderIdentifier` are optional, but if you have that information it can be added as well.
+
+Below is some example code for creating a custom `award` element.
+
+```
+### Add Awards Section
+award_1 <- eml$award(funderName = "Programme for Monitoring of the Greenland ice sheet (PROMICE.org)", 
+                     title = "The SUMup collaborative database: Surface mass balance, subsurface temperature and density measurements from the Greenland and Antarctic ice sheets (1912 - 2023)"
+                     )
+doc$dataset$project$award <- award_1
+doc$dataset$project$funding <- NULL # remove funding section
+```
 
 ```
 project$award$funderName # required

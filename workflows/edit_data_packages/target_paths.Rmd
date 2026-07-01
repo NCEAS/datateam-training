@@ -42,17 +42,19 @@ Now if you look at the directory, you should see the unzipped contents of the fi
 
 Right now, you should stop and examine each file in the directory closely (or each type of file). You may need to make some minor adjustments or ask for clarification from the PI. For example, we still may need to ask for CSV versions of Excel files, you may need to re-zip certain directories (for example: a zip which contains 5 different sets of shapefiles should be turned into 5 different zips). Evaluate the contents of the directory alongside the data coordinator.
 
+If the files are not already in Metacat, you can also upload the zip folder into the `datateam` server. The main point here is that we want to have the files on the `datateam` server so that we can use R to add them to the data package, and we want to make sure the files are organized in a way that makes sense before we do that.
+
 ### Re-upload the contents to the Arctic Data Center
 
 Once you have confirmed everything is all good, we can upload the files to the ADC while preserving the directory structure.
 
-First, get the data package loaded into your R session as usual. I recommend not attempting any EML edits while you do these steps, this update adding the files is best done on it's own, and EML edits can be done on the next version.
+First, get the data package loaded into your R session as usual. I recommend not attempting any EML edits while you do these steps. This update of adding the files is best done on it's own, and EML edits can be done on the next version.
 
 ```{r, eval = FALSE}
 dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
 ```
 
-Next, we will set up two types of paths describing each of the objects. The first will be an absolute path, so we can be sure the R function finds the files. The second will be a relative path, which will be what shows up on the landing page (or in the "Download All" result) of the data package.
+Next, we will set up two types of paths describing each of the objects. The first will be an *absolute path*, so we can be sure the R function finds the files. The second will be a *relative path*, which will be what shows up on the landing page (or in the "Download All" result) of the data package.
 
 ```{block, type = "warning"}
 If you don't know the difference between an absolute and relative path, read on. It is SUPER IMPORTANT! 
@@ -81,7 +83,7 @@ Make sure that these paths look correct! They should contain ONLY the files that
 `"final_image_set/level1.png"          "final_image_set/photos/level2_1.png" "final_image_set/photos/level2_2.png"`
 ```
 
-Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop we will also create otherEntities for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what.
+Now for each of these files, we can create a `dataObject` for them and add them to the package using a loop. Before running this, look at the values of your `abs_paths` and `rel_paths` and make sure they look correct based on what you know about both paths and the structure of the directory. Within this loop, we will also create `otherEntities` for each item, just putting in the bare minimum of information that will help us make sure that we know what files are what. If you're more familiar with EML, you can add more information to the `otherEntity` section or even add them in as `dataTables`, `spatialVectors`, or `spatialRasters`, but the main point here is to make sure that the relationships are correct and the files show up on the landing page in a way that makes sense.
 
 ```{r, eval = FALSE}
 metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
@@ -93,12 +95,13 @@ for (i in 1:length(abs_paths)) {
   formatId <- arcticdatautils::guess_format_id(abs_paths[i])
   id <- generateIdentifier(d1c@mn, scheme = "uuid")
   dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
+  dataObj@sysmeta@replicationAllowed <- FALSE  # This is needed to prevent replication for the ADC
   dp <- addMember(dp, dataObj, metadataId)
   oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
 }
 
-doc$dataset$otherEntity <- NULL # Removing otherEntity of zip file
-doc$dataset$otherEntity <- oes # Adding otherEntities to section
+doc$dataset$otherEntity <- NULL # Removing all otherEntities in the data package, assuming there are only ZIP files in the dp
+doc$dataset$otherEntity <- oes # Adding new otherEntities to section
 
 eml_validate(doc)
 write_eml(doc, "~/metadata.xml")
@@ -109,6 +112,8 @@ Once this is finished you can examine the relationships by running `View(dp@rela
 
 
 | `urn:uuid:a398312d-2c87-4b19-8380-3f11d2a1922d` | `http://www.w3.org/ns/prov#atLocation` | `figure2/figure2.tif` |
+
+These columns represent the "subject", "predicate", and "object" of the relationship, respectively. The "subject" is the PID of the data object, the "predicate" is the type of relationship (in this case, it is saying that the data object is located at a certain path), and the "object" is the relative path to the file in the data package. Note that the "object" should be just the relative path to the file, and should not contain any absolute paths.
 
 The `targetPath` (3rd column) should NOT look like
 
@@ -152,6 +157,7 @@ for (i in 1:length(abs_paths)) {
   formatId <- arcticdatautils::guess_format_id(abs_paths[i])
   id <- generateIdentifier(d1c@mn, scheme = "uuid")
   dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
+  dataobj@sysmeta@replicationAllowed <- FALSE  # This is needed to prevent replication for the ADC
   dp <- addMember(dp, dataObj, metadataId)
   oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
 }
@@ -170,69 +176,12 @@ myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", p
 packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
 ```
 
-One note: if you have files you want to keep in your dataset along with the ZIP file contents you're adding, you can run `doc$dataset$otherEntity <- c(doc$dataset$otherEntity, oes)` so that you'll just be adding your new entities instead of replacing the older ones.
+One note: if you already have files in your data package you want to keep in your dataset along with the ZIP file contents you're adding, you can run `doc$dataset$otherEntity <- list(doc$dataset$otherEntity, oes)` so that you'll just be adding your new entities instead of replacing the older ones.
 
-### Example with multiple ZIP files
+### Data packages with multiple ZIP files
 
-Here is an example script for a dataset in which the PI uploaded multiple ZIP files they wanted to represent different folders of their dataset
+If there are multiple data packages, you will just need to make sure that all the zip files are unzipped in the same directory, and that the `list.files` command is pointed to that directory. The loop will then run through all the files in all the unzipped folders and add them to the data package with their relative paths. Just make sure to check your work carefully, and make sure the paths look correct before you upload the package.
 
-```{r, eval=FALSE}
+### Adjusting the folder hierarchy of files already in the data package
 
-### Downloading and unzipping 3 ZIP files
-url1 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A5f177997-841b-4081-bc91-65521016b205"
-pid1 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url1) %>%  gsub("%3A", ":", .)
-
-url2 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A44f29c80-0f27-48be-a04e-fc171c1e5088"
-pid2 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url2) %>%  gsub("%3A", ":", .)
-
-url3 <- "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A9a0048b4-c24b-410d-b695-ee95bda97063"
-pid3 <- gsub("https://arcticdata.io/metacat/d1/mn/v2/object/", "", url3) %>%  gsub("%3A", ":", .)
-
-writeBin(getObject(d1c@mn, pid1), "~/datasets/submitter/data/Regional_estimates.zip")
-writeBin(getObject(d1c@mn, pid2), "~/datasets/submitter/data/Terminus_Ablation.zip")
-writeBin(getObject(d1c@mn, pid3), "~/datasets/submitter/data/Terminus_Mass_Error.zip")
-
-unzip("~/datasets/submitter/data/Regional_estimates.zip", exdir = "~/datasets/submitter/data/Regional_estimates")
-unzip("~/datasets/submitter/data/Terminus_Ablation.zip", exdir = "~/datasets/submitter/data/Terminus_Ablation")
-unzip("~/datasets/submitter/data/Terminus_Mass_Error.zip", exdir = "~/datasets/submitter/data/Terminus_Mass_Error")
-
-######################################################
-
-### Set up node and gather data package
-d1c <- dataone::D1Client("STAGING", "urn:node:mnTestARCTIC") # Setting the Member Node
-resourceMapId <- "..." # Get data package PID (resource map ID)
-dp <- getDataPackage(d1c, identifier = resourceMapId, lazyLoad = TRUE, quiet = FALSE) # Gather data package
-
-### Gather Metadata EML
-metadataId <- selectMember(dp, name="sysmeta@formatId", value="https://eml.ecoinformatics.org/eml-2.2.0") # Get metadata PID
-doc <- read_eml(getObject(d1c@mn, metadataId)) # Read in metadata EML file
-
-### Paths
-abs_paths <- list.files("~/datasets/submitter/data", full.names = TRUE, recursive = TRUE)
-rel_paths <- list.files("~/datasets/submitter/data", full.names = FALSE, recursive = TRUE)
-
-### Uploading files to data package and saving otherEntities for each file
-oes <- list()
-for (i in 1:length(abs_paths)) {
-  formatId <- arcticdatautils::guess_format_id(abs_paths[i])
-  id <- generateIdentifier(d1c@mn, scheme = "uuid")
-  dataObj <- new("DataObject", format = formatId, filename = abs_paths[i], targetPath = rel_paths[i], id = id)
-  dp <- addMember(dp, dataObj, metadataId)
-  oes[[i]] <- eml$otherEntity(entityName = rel_paths[i], entityType = formatId, id = id) # Can add entityDescription in this command also
-}
-
-doc$dataset$otherEntity <- oes # Replace otherEntity section with new otherEntities
-
-### Check and save the metadata
-eml_validate(doc)
-eml_path <- arcticdatautils::title_to_file_name(doc$dataset$title)
-eml_path <- paste("/home/intern/datasets/submitter/", eml_path, sep="")
-write_eml(doc, eml_path)
-
-### Upload Dataset
-dp <- replaceMember(dp, metadataId, replacement=eml_path) # Replace metadata file
-
-myAccessRules <- data.frame(subject="CN=arctic-data-admins,DC=dataone,DC=org", permission="changePermission")
-packageId <- uploadDataPackage(d1c, dp, public=F, accessRules=myAccessRules, quiet=FALSE)
-```
-
+If you need to adjust the folder hierarchy of files that are already in the data package, you can do that by changing the dp@relations$relations data frame. As discussed above, the "object" column of the rows with the predicate `http://www.w3.org/ns/prov#atLocation` contains the relative paths to the files in the data package. You can add new rows to this data table and add these paths in the "object" column with the PID of the data object in the "subject" column to adjust the folder hierarchy. Just make sure to check your work carefully, and make sure the paths look correct before you upload the package.
