@@ -61,6 +61,19 @@ Verify that this is indeed the two tickets you want to merge. It is non-reversib
  + Resolve - ticket completed  
 8. History - message history and option to reply (to `submitter` and beyond) or comment (internal message)
 
+### Customizing RT settings
+A couple potentially helpful modifications can be made to your RT account to help with organization:
+
++ Preferences/Mail - The RT system default will forward every RT interaction to your email. You can change the mail settings to give you a daily or weekly digest of RT instead.
++ About Me/Signature - It is helpful to submitters to identify members of our support services team when we interact with them. This also helps us inform people about our office hours schedule. Add your email signature under this field using this template, and enable the option to autopopulate it into emails:
+
+  > First Last (optional pronouns) | Position (Data Science Intern)\
+  > NSF Arctic Data Center\
+  > University of California, Santa Barbara\
+  > support@arcticdata.io
+  >
+  > Sign up for the ADC's monthly office hours for any data processing, management, upload, or publishing questions at https://calendar.app.google/kzSZ4mczusTYtMX4A. We're hosting these on the 3rd Wednesday of every month to provide data support for the Arctic researcher community.
+
 ### New data submission
 When notified by Arcticbot about a new data submission, here are the typical steps:
 
