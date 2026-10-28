@@ -101,6 +101,7 @@ navigate-rt
 front-page
 all-tickets
 example-ticket
+customizing-rt-settings
 new-data-submission
 initial-review-checklist
 sensitive-data
